@@ -50,7 +50,8 @@ public static class SpecialPowerRules
 
     /// <summary>The original's SpecialPowerStore::canUseSpecialPower: the player has the power's required science.</summary>
     public static bool CanUseSpecialPower(GameObject obj, SpecialPowerTemplate power) =>
-        power.RequiredScience.Length == 0 || obj.Owner.HasScience(power.RequiredScience);
+        (power.RequiredScience.Length == 0 || obj.Owner.HasScience(power.RequiredScience))
+        && (power.RequiredUpgrade.Length == 0 || obj.Owner.HasUpgrade(power.RequiredUpgrade));
 
     /// <summary>The object's module for this power, if it has one.</summary>
     public static SpecialPowerModule? ModuleFor(GameObject obj, SpecialPowerTemplate power) =>
@@ -70,6 +71,8 @@ public static class SpecialPowerRules
         if (module == null)
             return false;
         if (power.RequiredScience.Length > 0 && !obj.Owner.HasScience(power.RequiredScience))
+            return false;
+        if (power.RequiredUpgrade.Length > 0 && !obj.Owner.HasUpgrade(power.RequiredUpgrade))
             return false;
         return !checkSource || module.PercentReady >= 1f;
     }

@@ -1,0 +1,829 @@
+# GENERATED from Tiberian Dawn's TDATA.CPP (EA's GPL source release) by 'OpenGZH.Tools import-td-rules'.
+# Each key is the class member the original constructor argument sets.
+# This file is now the source of truth for these rules: edit it freely.
+TerrainObjects:
+  MINE:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 34
+    FullName: 505
+    IniName: MINE
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_MINE
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Mine
+  BOXES01:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 25
+    FullName: 220
+    IniName: BOXES01
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES01
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes01
+  BOXES02:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 26
+    FullName: 220
+    IniName: BOXES02
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES02
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes02
+  BOXES03:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 27
+    FullName: 220
+    IniName: BOXES03
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES03
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes03
+  BOXES04:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 28
+    FullName: 220
+    IniName: BOXES04
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES04
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes04
+  BOXES05:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 29
+    FullName: 220
+    IniName: BOXES05
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES05
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes05
+  BOXES06:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 30
+    FullName: 220
+    IniName: BOXES06
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES06
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes06
+  BOXES07:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 31
+    FullName: 220
+    IniName: BOXES07
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES07
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes07
+  BOXES08:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 32
+    FullName: 220
+    IniName: BOXES08
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES08
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes08
+  BOXES09:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 33
+    FullName: 220
+    IniName: BOXES09
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_BOXES09
+    Theater: THEATERF_INTERIOR
+    CenterBase: 12,24
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Boxes09
+  ICE01:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 20
+    FullName: 480
+    IniName: ICE01
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_ICE01
+    Theater: THEATERF_SNOW
+    CenterBase: 24,24
+    IsWaterBased: 1
+    Occupy: [0, 1, 128, 129, 32767]
+    MaxStrength: 800
+    SourceName: Ice01
+  ICE02:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 21
+    FullName: 480
+    IniName: ICE02
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_ICE02
+    Theater: THEATERF_SNOW
+    CenterBase: 12,24
+    IsWaterBased: 1
+    Occupy: [0, 128, 32767]
+    MaxStrength: 800
+    SourceName: Ice02
+  ICE03:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 22
+    FullName: 480
+    IniName: ICE03
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_ICE03
+    Theater: THEATERF_SNOW
+    CenterBase: 24,12
+    IsWaterBased: 1
+    Occupy: [0, 1, 32767]
+    MaxStrength: 800
+    SourceName: Ice03
+  ICE04:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 23
+    FullName: 480
+    IniName: ICE04
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_ICE04
+    Theater: THEATERF_SNOW
+    CenterBase: 12,12
+    IsWaterBased: 1
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Ice04
+  ICE05:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 24
+    FullName: 480
+    IniName: ICE05
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_ICE05
+    Theater: THEATERF_SNOW
+    CenterBase: 12,12
+    IsWaterBased: 1
+    Occupy: [0, 32767]
+    MaxStrength: 800
+    SourceName: Ice05
+  T01:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 0
+    FullName: 24
+    IniName: T01
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE1
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 11,41
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree1Class
+  T02:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 1
+    FullName: 24
+    IniName: T02
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE2
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 11,44
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree2Class
+  T03:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 2
+    FullName: 24
+    IniName: T03
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE3
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 12,45
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree3Class
+  T05:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 3
+    FullName: 24
+    IniName: T05
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE5
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 15,41
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree5Class
+  T06:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 4
+    FullName: 24
+    IniName: T06
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE6
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 16,37
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree6Class
+  T07:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 5
+    FullName: 24
+    IniName: T07
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE7
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 15,41
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree7Class
+  T08:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 6
+    FullName: 24
+    IniName: T08
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE8
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 14,22
+    IsWaterBased: 0
+    Occupy: [0, 32767]
+    Overlap: [1, 32767]
+    MaxStrength: 800
+    SourceName: Tree8Class
+  T10:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 7
+    FullName: 24
+    IniName: T10
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE10
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 25,43
+    IsWaterBased: 0
+    Occupy: [128, 129, 32767]
+    Overlap: [0, 1, 32767]
+    MaxStrength: 800
+    SourceName: Tree10Class
+  T11:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 8
+    FullName: 24
+    IniName: T11
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE11
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 23,44
+    IsWaterBased: 0
+    Occupy: [128, 129, 32767]
+    Overlap: [0, 1, 32767]
+    MaxStrength: 800
+    SourceName: Tree11Class
+  T12:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 9
+    FullName: 24
+    IniName: T12
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE12
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 14,36
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree12Class
+  T13:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 10
+    FullName: 24
+    IniName: T13
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE13
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 19,40
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 1, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree13Class
+  T14:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 11
+    FullName: 24
+    IniName: T14
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE14
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 19,40
+    IsWaterBased: 0
+    Occupy: [128, 129, 32767]
+    Overlap: [0, 1, 32767]
+    MaxStrength: 800
+    SourceName: Tree14Class
+  T15:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 12
+    FullName: 24
+    IniName: T15
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE15
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 19,40
+    IsWaterBased: 0
+    Occupy: [128, 129, 32767]
+    Overlap: [0, 1, 32767]
+    MaxStrength: 800
+    SourceName: Tree15Class
+  T16:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 13
+    FullName: 24
+    IniName: T16
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE16
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 13,36
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree16Class
+  T17:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 14
+    FullName: 24
+    IniName: T17
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 0
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_TREE17
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 18,44
+    IsWaterBased: 0
+    Occupy: [128, 32767]
+    Overlap: [0, 129, 32767]
+    MaxStrength: 800
+    SourceName: Tree17Class
+  TC01:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 15
+    FullName: 24
+    IniName: TC01
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_CLUMP1
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 28,41
+    IsWaterBased: 0
+    Occupy: [128, 129, 32767]
+    Overlap: [0, 1, 130, 32767]
+    MaxStrength: 800
+    SourceName: Clump1Class
+  TC02:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 16
+    FullName: 24
+    IniName: TC02
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_CLUMP2
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 38,41
+    IsWaterBased: 0
+    Occupy: [1, 128, 129, 32767]
+    Overlap: [0, 2, 130, 32767]
+    MaxStrength: 800
+    SourceName: Clump2Class
+  TC03:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 17
+    FullName: 24
+    IniName: TC03
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_CLUMP3
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 33,35
+    IsWaterBased: 0
+    Occupy: [0, 1, 128, 129, 32767]
+    Overlap: [2, 32767]
+    MaxStrength: 800
+    SourceName: Clump3Class
+  TC04:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 18
+    FullName: 24
+    IniName: TC04
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_CLUMP4
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 44,49
+    IsWaterBased: 0
+    Occupy: [128, 129, 130, 256, 32767]
+    Overlap: [0, 1, 2, 131, 257, 258, 32767]
+    MaxStrength: 800
+    SourceName: Clump4Class
+  TC05:
+    RTTI: RTTI_TERRAINTYPE
+    ID: 19
+    FullName: 24
+    IniName: TC05
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 0
+    IsLegalTarget: 0
+    IsInsignificant: 1
+    IsImmune: 1
+    IsFootprint: 1
+    IsCrushable: 0
+    Armor: ARMOR_NONE
+    ImageData: 0
+    RadarIcon: 0
+    Type: TERRAIN_CLUMP5
+    Theater: THEATERF_TEMPERATE THEATERF_SNOW
+    CenterBase: 49,58
+    IsWaterBased: 0
+    Occupy: [2, 128, 129, 130, 257, 258, 32767]
+    Overlap: [0, 1, 131, 256, 259, 32767]
+    MaxStrength: 800
+    SourceName: Clump5Class

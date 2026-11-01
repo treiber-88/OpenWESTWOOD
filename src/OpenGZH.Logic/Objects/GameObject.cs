@@ -97,6 +97,8 @@ public sealed partial class GameObject
 
     /// <summary>Set by the map or scripts: the owner may not sell this building.</summary>
     public bool IsUnsellable { get; set; }
+    /// <summary>OpenGZH: extra data a converted map gave the object ("objectMapData"; a Dune 2000 spice pile's cells).</summary>
+    public string MapData { get; set; } = "";
 
     /// <summary>The object this one is inside (a transport, building, tunnel). 0 if none.</summary>
     public uint ContainedById { get; private set; }

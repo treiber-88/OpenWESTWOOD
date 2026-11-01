@@ -182,6 +182,48 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
         });
     }
 
+    // ---- Electric bolts (Red Alert's Tesla Coil, Red Alert 2's IsElectricBolt weapons) ----
+
+    sealed record ElectricBolt(Vector3 From, Vector3 To, int ExpiresFrame, Vector3 Color);
+    readonly List<ElectricBolt> bolts = new();
+    readonly Random boltJitter = new();
+
+    /// <summary>
+    /// A crackling bolt from the shooter to its target, as RA's Electric_Zap and RA2's electric bolts draw it:
+    /// a few jagged strands re-drawn every frame for about a third of a second.
+    /// </summary>
+    public void Zap(Vector3 from, Vector3 to, Vector3 color, float seconds = 0.35f) =>
+        bolts.Add(new ElectricBolt(from, to, game.Frame + Math.Max(1, (int)(seconds * Logic.Core.LogicTime.FramesPerSecond)), color));
+
+    void DrawBolts()
+    {
+        bolts.RemoveAll(b => b.ExpiresFrame < game.Frame);
+        foreach (var bolt in bolts)
+        {
+            var span = bolt.To - bolt.From;
+            float length = span.Length();
+            if (length < 1)
+                continue;
+            var side = Vector3.Normalize(Vector3.Cross(span, Vector3.UnitZ) is { } c && c.LengthSquared() > 1e-4f ? c : Vector3.UnitX);
+            int segments = Math.Clamp((int)(length / 10), 4, 24);
+            for (int strand = 0; strand < 3; strand++)
+            {
+                float jag = strand == 0 ? 3f : 6f;
+                var previous = bolt.From;
+                for (int i = 1; i <= segments; i++)
+                {
+                    float t = i / (float)segments;
+                    var point = bolt.From + span * t;
+                    if (i < segments)
+                        point += side * ((float)boltJitter.NextDouble() * 2 - 1) * jag + Vector3.UnitZ * ((float)boltJitter.NextDouble() * 2 - 1) * jag;
+                    // A white-hot core and a coloured glow.
+                    renderer.Beam(null, EffectBlend.Additive, previous, point, strand == 0 ? 1.6f : 1f, new Vector4(strand == 0 ? Vector3.One : bolt.Color, strand == 0 ? 0.9f : 0.6f));
+                    previous = point;
+                }
+            }
+        }
+    }
+
     // ---- Weapon fire FX ----
 
     void OnWeaponFireFx(WeaponFireFx fx)
@@ -347,12 +389,16 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
     // ---- Drawing ----
 
     /// <summary>Scorch marks lie on the terrain: draw them right after it, before the models.</summary>
+    /// <summary>Other things lying flat on the terrain, drawn before the scorch marks (Dune 2000's spice).</summary>
+    public Action<EffectsRenderer>? GroundLayers { get; set; }
+
     public void RenderGround(Matrix4x4 viewProjection)
     {
         var decals = game.Effects.RadiusDecals.ToList();
-        if (scorches.Count == 0 && decals.Count == 0)
+        if (scorches.Count == 0 && decals.Count == 0 && GroundLayers == null)
             return;
         renderer.Begin(world.Camera);
+        GroundLayers?.Invoke(renderer);
         DrawRadiusDecals(decals);
         var texture = textures.Get("EXScorch01.tga", repeat: false);
         var light = world.TerrainLighting.Ambient + world.TerrainLighting.Colors[0] / 2;
@@ -431,6 +477,7 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
         renderer.Begin(world.Camera);
         DrawParticles();
         DrawBeams();
+        DrawBolts();
         DrawTracers();
         DrawProjectileStreams();
         DrawRopes();

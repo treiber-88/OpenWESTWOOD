@@ -13,7 +13,8 @@ namespace OpenGZH.Tools;
 public static class TdRulesImporter
 {
     // What the build defined (DEFINES.H: PATCH and the remaster's USE_RA_AI on; ADVANCED, SCENARIO_EDITOR... off).
-    static readonly HashSet<string> Defines = ["PATCH", "WIN32", "TRUE_FALSE_DEFINED", "USE_RA_AI"];
+    // Red Alert's DEFINES.H also turns on the Counterstrike/Aftermath additions (FIXIT_ANTS, FIXIT_CSII...); TD has none of them.
+    static readonly HashSet<string> Defines = ["PATCH", "WIN32", "TRUE_FALSE_DEFINED", "USE_RA_AI", "FIXIT_ANTS", "FIXIT_CSII", "FIXIT_CARRIER", "FIXIT_PHASETRANSPORT", "FIXIT_ENGINEER"];
 
     static readonly (string File, string Class, string Output)[] Tables =
     [
@@ -28,6 +29,8 @@ public static class TdRulesImporter
         ("AADATA.CPP", "AircraftTypeClass", "aircraft.yaml"),
         ("BDATA.CPP", "BuildingTypeClass", "buildings.yaml"),
         ("HDATA.CPP", "HouseTypeClass", "houses.yaml"),
+        // Red Alert's ships (its source has the same tables, plus these).
+        ("VDATA.CPP", "VesselTypeClass", "vessels.yaml"),
     ];
 
     public static int Run(string[] args)
@@ -718,6 +721,9 @@ public static class TdRulesImporter
         var members = memberNames ?? Regex.Matches(decl.Groups[1].Value, @"^\s*(?:unsigned\s+)?(?:\w+)\s+(\w+)(\s*\[[^\]]*\])?\s*;", RegexOptions.Multiline)
             .Select(m => m.Groups[1].Value).ToList();
         var array = Regex.Match(constText, $@"{cls}\s+const\s+{arrayName}\s*\[[^\]]*\]\s*=\s*\{{");
+        // Red Alert keeps its weapons and warheads in RULES.INI, not in arrays here.
+        if (!array.Success)
+            return;
         int open = constText.IndexOf('{', array.Index + array.Length - 1);
         int close = MatchBrace(constText, open);
         var rows = SplitTopLevel(constText[(open + 1)..close]).Select(r => r.Trim()).Where(r => r.StartsWith('{')).ToList();

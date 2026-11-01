@@ -62,6 +62,10 @@ public sealed class GameInfo
     public string Map { get; set; } = "";
     public int StartingCash { get; set; } = 10000;
     public bool SuperweaponRestriction { get; set; }
+    /// <summary>OpenGZH: the whole map starts explored (terrain known, fog over what isn't seen).</summary>
+    public bool ExploredMap { get; set; }
+    /// <summary>OpenGZH: no fog of war: everyone sees everything, all game long.</summary>
+    public bool NoFogOfWar { get; set; }
     public ulong Seed { get; set; }
     public int LocalSlot { get; set; }
 
@@ -178,7 +182,8 @@ public sealed class GameInfo
 
     void PopulateRandomStartPosition(GameRandom random, MapMetaData? map)
     {
-        int numPlayers = map?.NumPlayers ?? MaxSlots;
+        // (A map may have more start points than the game has slots, e.g. Dune 2000's 12: only the first eight are used.)
+        int numPlayers = Math.Min(map?.NumPlayers ?? MaxSlots, MaxSlots);
         if (numPlayers <= 0)
             return;
         var distance = new float[MaxSlots, MaxSlots];

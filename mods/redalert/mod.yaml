@@ -1,0 +1,38 @@
+# OpenGZH: Command & Conquer: Red Alert (1996), Westwood's original.
+#
+# The game files are the user's RA95 install's .mix archives, copied into content/redalert. Their headers
+# are encrypted (read as MIXFILE.CPP does), and most archives sit inside others ("OUTER.MIX>INNER.MIX").
+# Used by OpenGZH for its Red Alert factions in Zero Hour engine matches.
+
+Id: redalert
+Title: "Command & Conquer: Red Alert"
+Version: "1.0"
+Game: RedAlert
+
+# .mix archives keep only hashes of their file names; these are the names to look for
+# (recovered from EA's released source by a script).
+MixNames: "{mod}/filenames.txt"
+
+# Priority order: the FIRST package that contains a file wins (the expansions' files replace the originals,
+# as the game caches EXPAND2.MIX and EXPAND.MIX first).
+Packages:
+  - "{mod}/assets?"
+  - content/redalert/EXPAND2.MIX?
+  - content/redalert/EXPAND.MIX?
+  - content/redalert/REDALERT.MIX>LOCAL.MIX
+  - content/redalert/REDALERT.MIX>HIRES.MIX
+  - content/redalert/REDALERT.MIX>NCHIRES.MIX
+  - content/redalert/REDALERT.MIX>SPEECH.MIX
+  - content/redalert/HIRES1.MIX?
+  - content/redalert/MAIN1.MIX>CONQUER.MIX
+  - content/redalert/MAIN1.MIX>TEMPERAT.MIX
+  - content/redalert/MAIN1.MIX>SNOW.MIX
+  - content/redalert/MAIN1.MIX>INTERIOR.MIX
+  - content/redalert/MAIN1.MIX>SOUNDS.MIX
+  - content/redalert/MAIN1.MIX>ALLIES.MIX
+  - content/redalert/MAIN1.MIX>RUSSIAN.MIX
+  - content/redalert/MAIN1.MIX>GENERAL.MIX
+  - content/redalert/MAIN1.MIX>SCORES.MIX
+
+Rules:
+  - rules/*.yaml

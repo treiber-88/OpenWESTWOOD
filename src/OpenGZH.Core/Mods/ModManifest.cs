@@ -36,6 +36,9 @@ public sealed class ModManifest
     /// </summary>
     public string? MixNames { get; set; }
 
+    /// <summary>How the ".mix" packages name their entries: "Crc32" for Tiberian Sun and Red Alert 2, else Westwood's older hash.</summary>
+    public string? MixHash { get; set; }
+
     /// <summary>The folder this manifest was loaded from. Set by the loader.</summary>
     [YamlIgnore] public string Folder { get; set; } = "";
 
@@ -77,9 +80,34 @@ public sealed class ModManifest
         }
     }
 
+    // The name lists, read once (every archive of a mod shares the same array, so its hashes are worked out once).
+    static readonly Dictionary<string, string[]> nameLists = new(StringComparer.OrdinalIgnoreCase);
+
+    static string[] NameList(ModManifest mod, string gameRoot)
+    {
+        string key = (mod.MixNames ?? "") + "|" + mod.Folder + "|" + gameRoot;
+        lock (nameLists)
+        {
+            if (!nameLists.TryGetValue(key, out var names))
+                nameLists[key] = names = (mod.MixNames ?? "").Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Select(n => n.Replace("{mod}", mod.Folder))
+                    .Select(n => Path.IsPathRooted(n) ? n : Path.Combine(gameRoot, n))
+                    .Where(File.Exists)
+                    .SelectMany(File.ReadAllLines).Select(l => l.Trim()).Where(l => l.Length > 0).Distinct().ToArray();
+            return names;
+        }
+    }
+
     static void MountEntry(VirtualFileSystem fileSystem, string gameRoot, ModManifest mod, string entry)
     {
         string spec = entry.Replace("{mod}", mod.Folder);
+        // "crc32:...": a Tiberian Sun / Red Alert 2 archive (CRC-32 ids) mounted in a mod that otherwise hashes the older way.
+        bool crc32 = string.Equals(mod.MixHash, "Crc32", StringComparison.OrdinalIgnoreCase);
+        if (spec.StartsWith("crc32:", StringComparison.OrdinalIgnoreCase))
+        {
+            crc32 = true;
+            spec = spec[6..];
+        }
         string prefix = "";
         int at = spec.IndexOf('@');
         if (at >= 0)
@@ -96,16 +124,58 @@ public sealed class ModManifest
             fullPath = fullPath[..^1];
         }
 
+        // "...MIX>AUDIO.BAG": Red Alert 2's sound archive (its .IDX beside it) in that archive, its sounds as .WAV files.
+        string? bag = null;
+        if (fullPath.EndsWith(".bag", StringComparison.OrdinalIgnoreCase) && fullPath.LastIndexOf('>') is > 0 and var cut)
+        {
+            bag = fullPath[(cut + 1)..];
+            fullPath = fullPath[..cut];
+        }
+
         if (fullPath.EndsWith(".mix", StringComparison.OrdinalIgnoreCase))
         {
-            if (File.Exists(fullPath))
+            // "OUTER.MIX>INNER.MIX>...": an archive inside another (Red Alert's REDALERT.MIX>LOCAL.MIX).
+            var chain = fullPath.Split('>');
+            if (File.Exists(chain[0]))
             {
-                string? namesFile = mod.MixNames?.Replace("{mod}", mod.Folder);
-                var names = namesFile != null && File.Exists(Path.IsPathRooted(namesFile) ? namesFile : Path.Combine(gameRoot, namesFile))
-                    ? File.ReadAllLines(Path.IsPathRooted(namesFile) ? namesFile : Path.Combine(gameRoot, namesFile)).Select(l => l.Trim()).Where(l => l.Length > 0)
-                    : [];
-                fileSystem.Mount(new MixArchive(fullPath, names));
+                // MixNames: one or more name lists (";"), e.g. Tiberian Dawn's and Red Alert's.
+                var names = NameList(mod, gameRoot);
+                var mix = new MixArchive(chain[0], names, crc32);
+                foreach (string inner in chain.Skip(1))
+                {
+                    var nested = mix.OpenNested(inner);
+                    if (nested == null)
+                    {
+                        if (!optional)
+                            throw new FileNotFoundException($"Mod '{mod.Id}' needs '{inner}' inside '{mix.Name}', which is missing.");
+                        return;
+                    }
+                    mix = nested; // the outer archive's stream stays open for it
+                }
+                IPackage package = mix;
+                if (bag != null)
+                {
+                    string idx = Path.ChangeExtension(bag, ".IDX");
+                    if (!mix.Contains(bag) || !mix.Contains(idx))
+                    {
+                        if (!optional)
+                            throw new FileNotFoundException($"Mod '{mod.Id}' needs '{bag}' and '{idx}' inside '{mix.Name}'.");
+                        return;
+                    }
+                    package = new AudioBag(mix, idx, bag);
+                }
+                // "...@Prefix": its files under a folder.
+                fileSystem.Mount(prefix.Length > 0 ? new PrefixedPackage(package, prefix) : package);
             }
+            else if (!optional)
+                throw new FileNotFoundException($"Mod '{mod.Id}' needs package '{entry}', which is missing.", fullPath);
+            return;
+        }
+        // Dune 2000's resource archives (SOUND.RS).
+        if (fullPath.EndsWith(".rs", StringComparison.OrdinalIgnoreCase))
+        {
+            if (File.Exists(fullPath))
+                fileSystem.Mount(new RsArchive(fullPath));
             else if (!optional)
                 throw new FileNotFoundException($"Mod '{mod.Id}' needs package '{entry}', which is missing.", fullPath);
             return;

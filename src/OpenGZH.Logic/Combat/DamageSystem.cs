@@ -24,6 +24,53 @@ public sealed class DamageSystem
 
     public DamageSystem(GameLogic game) => this.game = game;
 
+    // Units taken over for a while (the Dune 2000 Deviator's ChangeOwner warhead): who owned them, and when they go back.
+    readonly List<(GameObject Unit, Player Owner, int Until)> takeovers = new();
+
+    /// <summary>Hands back units whose takeover has run out (each logic frame).</summary>
+    public void UpdateTakeovers()
+    {
+        for (int i = takeovers.Count - 1; i >= 0; i--)
+        {
+            var (unit, owner, until) = takeovers[i];
+            if (unit.IsDestroyed || unit.IsEffectivelyDead)
+                takeovers.RemoveAt(i);
+            else if (game.Frame >= until)
+            {
+                takeovers.RemoveAt(i);
+                unit.SetOwner(owner);
+                unit.AI?.Stop(Commands.CommandSource.AI);
+            }
+        }
+    }
+
+    /// <summary>
+    /// A ChangeOwner warhead (TdChangeOwnerSeconds, TdChangeOwnerRadius): enemy and neutral vehicles within the
+    /// radius serve the firer's owner for that long (not infantry, not buildings), then go back.
+    /// </summary>
+    void ChangeOwners(WeaponTemplate weapon, GameObject? source, Vector3 position)
+    {
+        float seconds = OpenGZH.Core.Rules.RuleValue.Float(weapon.Rules.GetString("TdChangeOwnerSeconds"));
+        if (seconds <= 0 || source == null || source.Owner is not { } taker)
+            return;
+        float radius = Math.Max(1f, OpenGZH.Core.Rules.RuleValue.Float(weapon.Rules.GetString("TdChangeOwnerRadius")));
+        foreach (var victim in game.ObjectsInRadius(position, radius))
+        {
+            if (victim.IsEffectivelyDead || victim.IsContained || !victim.IsMobile || victim.IsKindOf(Kind.Infantry) || victim.IsKindOf(Kind.Structure))
+                continue;
+            if (victim.Owner == taker || victim.Owner.IsAllyOf(taker) || victim.Owner == game.Players.Neutral && victim.AI == null)
+                continue;
+            int until = game.Frame + (int)(seconds * LogicTime.FramesPerSecond);
+            int existing = takeovers.FindIndex(t => t.Unit == victim);
+            if (existing >= 0)
+                takeovers[existing] = takeovers[existing] with { Until = until }; // already turned: it stays turned longer
+            else
+                takeovers.Add((victim, victim.Owner, until));
+            victim.SetOwner(taker);
+            victim.AI?.Stop(Commands.CommandSource.AI);
+        }
+    }
+
     /// <summary>Applies a weapon's damage at a position (and to <paramref name="primaryVictim"/>, if any).</summary>
     public void DealWeaponDamage(WeaponTemplate weapon, GameObject? source, GameObject? primaryVictim, Vector3 position, WeaponBonus bonus)
     {
@@ -39,6 +86,7 @@ public sealed class DamageSystem
         float secondaryDamage = weapon.SecondaryDamage * bonus.Damage;
         var affects = weapon.RadiusDamageAffects;
         float radius = Math.Max(primaryRadius, secondaryRadius);
+        ChangeOwners(weapon, source, primaryVictim is { IsDestroyed: false } pv ? pv.Position : position);
 
         if (radius <= 0)
         {

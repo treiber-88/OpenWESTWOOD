@@ -65,6 +65,68 @@ public sealed class ImageCatalog
             return images[name] = new MappedImage(name, name, 0, 0, 1, 1, cameo.Width, cameo.Height, false);
         }
 
+        // OpenGZH: "TSCAMEO:TYPE" is a Tiberian Sun / Firestorm build icon (its art's Cameo).
+        if (name.StartsWith("TSCAMEO:", StringComparison.OrdinalIgnoreCase))
+        {
+            if (textures.GetOrCreate(name, () => RedAlert2.Ra2Art.GetTiberianSun()?.Cameo(name["TSCAMEO:".Length..])) is not { } tsCameo)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, tsCameo.Width, tsCameo.Height, false);
+        }
+
+        // OpenGZH: "RA2CAMEO:TYPE" is a Red Alert 2 / Yuri's Revenge build icon (its art's Cameo).
+        if (name.StartsWith("RA2CAMEO:", StringComparison.OrdinalIgnoreCase))
+        {
+            if (textures.GetOrCreate(name, () => RedAlert2.Ra2Art.Get()?.Cameo(name["RA2CAMEO:".Length..])) is not { } ra2Cameo)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, ra2Cameo.Width, ra2Cameo.Height, false);
+        }
+
+        // OpenGZH: "RACAMEO:NAME" is a Red Alert build icon (NAMEICON.SHP), from the original RA files.
+        if (name.StartsWith("RACAMEO:", StringComparison.OrdinalIgnoreCase))
+        {
+            if (textures.GetOrCreate(name, () => RedAlertContent.Art is { } raArt && raArt.Cameo(name["RACAMEO:".Length..]) is { } raShape
+                    ? raArt.Frame(raShape, 0, null) : null) is not { } raCameo)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, raCameo.Width, raCameo.Height, false);
+        }
+
+        // OpenGZH: "KWCAMEO:Portrait_X" is a Kane's Wrath portrait (a packed image on one of its texture pages).
+        if (name.StartsWith("KWCAMEO:", StringComparison.OrdinalIgnoreCase))
+        {
+            var kw = textures.FileSystem.Packages.OfType<OpenGZH.Formats.Sage.SageArtPackage>().FirstOrDefault();
+            if (kw?.PackedImage(name["KWCAMEO:".Length..]) is not { } packed)
+                return null;
+            return images[name] = new MappedImage(name, packed.Texture, packed.Left / (float)packed.Width, packed.Top / (float)packed.Height,
+                packed.Right / (float)packed.Width, packed.Bottom / (float)packed.Height, packed.Right - packed.Left, packed.Bottom - packed.Top, false);
+        }
+
+        // OpenGZH: "D2KCAMEO:image" is a Dune 2000 build icon (the image's "icon" sequence).
+        if (name.StartsWith("D2KCAMEO:", StringComparison.OrdinalIgnoreCase))
+        {
+            if (textures.GetOrCreate(name, () => Dune2000.D2kArt.Get()?.Cameo(name["D2KCAMEO:".Length..])) is not { } d2kCameo)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, d2kCameo.Width, d2kCameo.Height, false);
+        }
+
+        // OpenGZH: "D2KCHROME:x,y,w,h" is a region of Dune 2000's interface art; "TDSHAPE:NAME:frame" a frame of a TD shape.
+        if (name.StartsWith("D2KCHROME:", StringComparison.OrdinalIgnoreCase)
+            && name["D2KCHROME:".Length..].Split(',') is [var cx, var cy, var cw, var ch])
+        {
+            if (textures.GetOrCreate(name, () => Dune2000.D2kArt.Get()?.Chrome(int.Parse(cx), int.Parse(cy), int.Parse(cw), int.Parse(ch))) is not { } region)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, region.Width, region.Height, false);
+        }
+        if ((name.StartsWith("TDSHAPE:", StringComparison.OrdinalIgnoreCase) || name.StartsWith("RASHAPE:", StringComparison.OrdinalIgnoreCase))
+            && name[8..].Split(':') is [var shapeName, var frameText])
+        {
+            // "RASHAPE:" is the same from Red Alert's files.
+            var shapeArt = name.StartsWith("RA", StringComparison.OrdinalIgnoreCase) ? RedAlertContent.Art : OpenGZH.Client.TiberianDawnContent.Art;
+            if (textures.GetOrCreate(name, () => shapeArt is { } art && art.Shape(shapeName) is { } shape
+                    ? art.Frame(shape, Math.Clamp(int.Parse(frameText), 0, shape.FrameCount - 1), null) : null) is not { } tdShape)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, tdShape.Width, tdShape.Height, false);
+        }
+
         // A plain texture file with this name works as a whole-image "mapped image".
         if (textures.Get(name + ".tga", repeat: false) is { } texture)
         {

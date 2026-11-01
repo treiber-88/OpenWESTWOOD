@@ -267,6 +267,12 @@ public sealed class AudioEventRts
     public void GenerateFilename()
     {
         Filename = Prefix(false);
+        // OpenGZH: "/PATH" is a file at the file system's root (Tiberian Dawn's and Dune 2000's .AUD files).
+        if (Info.Kind is AudioType.Music or AudioType.Streaming && Info.Filename.StartsWith('/'))
+        {
+            Filename = Info.Filename[1..];
+            return;
+        }
         if (Info.Kind is AudioType.Music or AudioType.Streaming)
         {
             Filename = Localize(Filename + Info.Filename);
@@ -287,7 +293,7 @@ public sealed class AudioEventRts
         }
         else
             which = ++PlayingAudioIndex % Info.Sounds.Count;
-        Filename = Localize(Filename + Info.Sounds[which] + Extension);
+        Filename = Info.Sounds[which].StartsWith('/') ? Info.Sounds[which][1..] : Localize(Filename + Info.Sounds[which] + Extension);
         Delay = Info.DelayMin == Info.DelayMax ? Info.DelayMin : Info.DelayMin + (float)Random.Shared.NextDouble() * (Info.DelayMax - Info.DelayMin);
     }
 

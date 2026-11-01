@@ -26,6 +26,13 @@ public sealed partial class Player
     /// <summary>The faction's side, e.g. "America" or "AmericaAirForceGeneral" (matches objects' Side).</summary>
     public string Side { get; }
 
+    /// <summary>OpenGZH: the faction's multipliers for damage dealt, damage withstood, fire rate, build cost and ground speed (1 = none).</summary>
+    public float FirepowerBias { get; } = 1;
+    public float ArmorBias { get; } = 1;
+    public float RateOfFireBias { get; } = 1;
+    public float CostBias { get; } = 1;
+    public float SpeedBias { get; } = 1;
+
     /// <summary>The general's base side, e.g. "USA", "China", "GLA".</summary>
     public string BaseSide { get; }
 
@@ -161,6 +168,13 @@ public sealed partial class Player
         Faction = faction;
         Side = faction?.GetString("Side", "Civilian") ?? "Civilian";
         BaseSide = faction?.GetString("BaseSide", Side) ?? Side;
+        // OpenGZH: a country's multipliers (Red Alert's HouseTypeClass biases: RULES.INI [England] Armor=1.1...).
+        float Bias(string key) => faction != null && RuleValue.Float(faction.GetString(key), 1) is var v && v > 0 ? v : 1;
+        FirepowerBias = Bias("TdFirepower");
+        ArmorBias = Bias("TdArmor");
+        RateOfFireBias = Bias("TdROF");
+        CostBias = Bias("TdCost");
+        SpeedBias = Bias("TdGroundspeed");
         ScriptName = name;
         DefaultTeam = game.Teams.CreateTeam(game.Teams.AddPrototype($"team{name}", this, isSingleton: true).Name);
         Tunnels = new Modules.Contain.TunnelTracker(game);
@@ -286,6 +300,7 @@ public sealed class Money
         if (amount < 0 || amount > Amount)
             return false;
         Amount -= amount;
+        Stored = Math.Max(0, Stored - amount);
         return true;
     }
 
@@ -294,6 +309,23 @@ public sealed class Money
     {
         int taken = Math.Clamp(amount, 0, Amount);
         Amount -= taken;
+        Stored = Math.Max(0, Stored - taken);
+        return taken;
+    }
+
+    /// <summary>
+    /// OpenGZH, for Tiberian Dawn and Dune 2000 factions: how much of <see cref="Amount"/> is harvested
+    /// Tiberium or spice, which needs room in refineries and silos (HouseClass's Tiberium against Capacity).
+    /// It is spent first, as HouseClass::Spend_Money takes from the Tiberium before the credits.
+    /// </summary>
+    public int Stored { get; private set; }
+
+    /// <summary>Adds harvested money up to the free storage; returns how much fit (the rest is lost, as in TD).</summary>
+    public int DepositHarvested(int amount, int capacity)
+    {
+        int taken = Math.Clamp(Math.Min(amount, capacity - Stored), 0, Math.Max(amount, 0));
+        Stored += taken;
+        Amount += taken;
         return taken;
     }
 }

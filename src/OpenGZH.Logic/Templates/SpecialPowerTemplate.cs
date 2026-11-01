@@ -19,6 +19,8 @@ public sealed class SpecialPowerTemplate
 
     /// <summary>The science the player must have bought to use it (empty if none).</summary>
     public string RequiredScience { get; }
+    /// <summary>OpenGZH: a player upgrade that must be researched first (Dune 2000's Airstrike needs the High Tech upgrade).</summary>
+    public string RequiredUpgrade { get; }
 
     /// <summary>Everyone sees the countdown (superweapons).</summary>
     public bool PublicTimer { get; }
@@ -43,6 +45,7 @@ public sealed class SpecialPowerTemplate
         ReloadFrames = LogicTime.Frames(RuleValue.Float(rules.GetString("ReloadTime")));
         string science = rules.GetString("RequiredScience");
         RequiredScience = science.Equals("None", StringComparison.OrdinalIgnoreCase) ? "" : science;
+        RequiredUpgrade = rules.GetString("RequiredUpgrade");
         PublicTimer = RuleValue.Bool(rules.GetString("PublicTimer"));
         SharedSyncedTimer = RuleValue.Bool(rules.GetString("SharedSyncedTimer"));
         DetectionFrames = LogicTime.Frames(RuleValue.Float(rules.GetString("DetectionTime")));

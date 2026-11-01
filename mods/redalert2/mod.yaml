@@ -1,0 +1,63 @@
+# OpenGZH: Command & Conquer: Red Alert 2 and Yuri's Revenge (Westwood, 2000-2001).
+#
+# The game files are the user's install's original .mix archives (not its CnCNet / Ares additions),
+# copied into content/redalert2. Their entries are named by CRC-32 ids (Tiberian Sun's scheme) and their
+# headers encrypted as Red Alert's; most sit inside others ("OUTER.MIX>INNER.MIX").
+# Used by OpenGZH for the Red Alert 2 factions in Zero Hour engine matches.
+
+Id: redalert2
+Title: "Command & Conquer: Red Alert 2 - Yuri's Revenge"
+Version: "1.001"
+Game: RedAlert2
+
+MixHash: Crc32
+# The names to look for (recovered from the game's own INI files by a script).
+MixNames: "{mod}/filenames.txt"
+
+# Priority order: the FIRST package that contains a file wins: Yuri's Revenge's 1.001 patch, then Yuri's
+# Revenge's archives, then Red Alert 2's (as the game searches them).
+Packages:
+  - "{mod}/assets?"
+  - content/redalert2/expandmd01.mix?
+  - content/redalert2/ra2md.mix>LOCALMD.MIX
+  - content/redalert2/ra2md.mix>CACHEMD.MIX
+  - content/redalert2/ra2md.mix>CONQMD.MIX
+  - content/redalert2/ra2md.mix>GENERMD.MIX
+  - content/redalert2/ra2md.mix>ISOGENMD.MIX
+  - content/redalert2/ra2md.mix>ISOTEMMD.MIX
+  - content/redalert2/ra2md.mix>ISOSNOMD.MIX
+  - content/redalert2/ra2md.mix>ISOURBMD.MIX
+  - content/redalert2/ra2md.mix>ISOUBNMD.MIX
+  - content/redalert2/ra2md.mix>ISODESMD.MIX
+  - content/redalert2/ra2md.mix>ISOLUNMD.MIX
+  - content/redalert2/ra2md.mix>SNOWMD.MIX
+  - content/redalert2/ra2md.mix>DESERT.MIX
+  - content/redalert2/ra2md.mix>ISODES.MIX
+  - content/redalert2/ra2md.mix>LUNAR.MIX
+  - content/redalert2/ra2md.mix>ISOLUN.MIX
+  - content/redalert2/ra2md.mix>SIDEC02MD.MIX
+  - content/redalert2/langmd.mix>CAMEOMD.MIX
+  - content/redalert2/langmd.mix>AUDIOMD.MIX
+  - content/redalert2/langmd.mix
+  - content/redalert2/multimd.mix
+  - content/redalert2/ra2.mix>LOCAL.MIX
+  - content/redalert2/ra2.mix>CACHE.MIX
+  - content/redalert2/ra2.mix>CONQUER.MIX
+  - content/redalert2/ra2.mix>GENERIC.MIX
+  - content/redalert2/ra2.mix>ISOGEN.MIX
+  - content/redalert2/ra2.mix>TEMPERAT.MIX
+  - content/redalert2/ra2.mix>ISOTEMP.MIX
+  - content/redalert2/ra2.mix>SNOW.MIX
+  - content/redalert2/ra2.mix>ISOSNOW.MIX
+  - content/redalert2/ra2.mix>URBAN.MIX
+  - content/redalert2/ra2.mix>ISOURB.MIX
+  - content/redalert2/ra2.mix>NEUTRAL.MIX
+  - content/redalert2/ra2.mix>SIDEC01.MIX
+  - content/redalert2/ra2.mix>SIDEC02.MIX
+  - content/redalert2/language.mix>CAMEO.MIX
+  - content/redalert2/language.mix>AUDIO.MIX
+  - content/redalert2/language.mix
+  - content/redalert2/multi.mix
+
+Rules:
+  - rules/*.yaml

@@ -63,7 +63,8 @@ public sealed class ProductionUpdate : Module, IUpdateModule
     {
         DisabledTypesToProcess = Definition.Settings.Has("DisabledTypesToProcess")
             ? Flags.Disabled.Parse(Setting("DisabledTypesToProcess")) : DisabledMask.Held;
-        maxQueueEntries = IntSetting("MaxQueueEntries", 9);
+        // OpenGZH: queues are unlimited (the user's choice); the original stopped at MaxQueueEntries (usually 9).
+        maxQueueEntries = int.MaxValue;
         PlacesStructures = BoolSetting("PlacesStructures");
         doorOpeningFrames = FramesSetting("DoorOpeningTime");
         doorWaitOpenFrames = FramesSetting("DoorWaitOpenTime");
@@ -232,6 +233,10 @@ public sealed class ProductionUpdate : Module, IUpdateModule
 
         var unit = Game.CreateObject(entry.Unit!, Owner.Owner, Owner.Position, Owner.Orientation);
         unit.ProducerId = Owner.Id;
+        // OpenGZH (Red Alert 2): a spy in an enemy barracks / war factory makes its side's infantry / vehicles veterans.
+        if (unit.IsKindOf("TD_OBJECT") && (unit.IsKindOf(Kind.Infantry) ? Owner.Owner.HasUpgrade("Upgrade_RA2VeteranInfantry")
+                : unit.IsKindOf(Kind.Vehicle) && Owner.Owner.HasUpgrade("Upgrade_RA2VeteranVehicles")) && unit.Veterancy < VeterancyLevel.Veteran)
+            unit.SetVeterancy(VeterancyLevel.Veteran);
         if (exit != null)
             exit.ExitViaDoor(unit, entry.Door);
         else
@@ -259,6 +264,7 @@ public sealed class ProductionUpdate : Module, IUpdateModule
         if (Game.Building.CheckLocation(template, position, angle, player, Owner) != Construction.BuildLocation.Ok)
             return null;
         position.Z = Game.Terrain.GroundHeight(position);
+        Game.Building.ClearSceneryFor(template, position, angle); // Tiberium under it goes, as in TD
         var structure = Game.CreateObject(template, player, position, angle);
         structure.ProducerId = Owner.Id;
         Game.TreatAsBuilt(structure);
@@ -352,6 +358,18 @@ public static class Prerequisites
                 if (!RuleValue.Words(line.Value).Any(owned.Contains))
                     return false;
         }
+
+        // OpenGZH: only these factions (Red Alert 2's country units: the Sniper for Great Britain...).
+        if (prerequisites.TryGet("Faction", out var factionLines))
+            foreach (var line in factionLines.AsList())
+                if (!RuleValue.Words(line.Value).Any(f => f.Equals(player.FactionName, StringComparison.OrdinalIgnoreCase)))
+                    return false;
+
+        // OpenGZH: researched player upgrades (Dune 2000's building upgrades); names on a line are alternatives.
+        if (prerequisites.TryGet("Upgrade", out var upgradeLines))
+            foreach (var line in upgradeLines.AsList())
+                if (!RuleValue.Words(line.Value).Any(player.HasUpgrade))
+                    return false;
 
         if (prerequisites.TryGet("Science", out var scienceLines))
             foreach (var line in scienceLines.AsList())

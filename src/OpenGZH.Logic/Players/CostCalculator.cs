@@ -27,6 +27,6 @@ public sealed class CostCalculator
             foreach (var (kindOf, percent) in list)
                 if (template.Is(kindOf))
                     multiplier += percent;
-        return Math.Max(0, (int)MathF.Round(template.BuildCost * multiplier));
+        return Math.Max(0, (int)MathF.Round(template.BuildCost * multiplier * player.CostBias));
     }
 }

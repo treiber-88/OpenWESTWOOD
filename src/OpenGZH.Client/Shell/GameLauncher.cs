@@ -12,7 +12,7 @@ namespace OpenGZH.Client.Shell;
 /// <summary>Builds games from maps and the game screens to play them in (missions and skirmishes).</summary>
 public sealed class GameLauncher(GL gl, IInputContext input, IWindow window, UiResources ui)
 {
-    MapFile ReadMap(string map) => MapFile.Read(ui.Content.FileSystem.ReadAllBytes(map.Replace('\\', '/')));
+    MapFile ReadMap(string map) => TiberianDawn.TdMaps.Read(ui.Content.FileSystem, map);
 
     byte[]? ReadFile(string path) => ui.Content.FileSystem.Exists(path) ? ui.Content.FileSystem.ReadAllBytes(path) : null;
 

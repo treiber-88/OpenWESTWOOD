@@ -1,0 +1,247 @@
+# OpenGZH: the announcers of the Tiberian Dawn and Dune 2000 houses (TD's SPEECH.MIX, Dune 2000's GAMESFX).
+# "/NAME" files are found at the file system's root (see mods/zh/mod.yaml). Edit freely.
+DialogEvents:
+  D2kEva_AI_ATACK:
+    Filename: /D2KSFX/AI_ATACK.AUD
+  D2kEva_AI_BDRDY:
+    Filename: /D2KSFX/AI_BDRDY.AUD
+  D2kEva_AI_BLOST:
+    Filename: /D2KSFX/AI_BLOST.AUD
+  D2kEva_AI_CAPT:
+    Filename: /D2KSFX/AI_CAPT.AUD
+  D2kEva_AI_DPLOY:
+    Filename: /D2KSFX/AI_DPLOY.AUD
+  D2kEva_AI_MONEY:
+    Filename: /D2KSFX/AI_MONEY.AUD
+  D2kEva_AI_NEWOP:
+    Filename: /D2KSFX/AI_NEWOP.AUD
+  D2kEva_AI_ORDER:
+    Filename: /D2KSFX/AI_ORDER.AUD
+  D2kEva_AI_POWER:
+    Filename: /D2KSFX/AI_POWER.AUD
+  D2kEva_AI_REINF:
+    Filename: /D2KSFX/AI_REINF.AUD
+  D2kEva_AI_SILOS:
+    Filename: /D2KSFX/AI_SILOS.AUD
+  D2kEva_AI_ULOST:
+    Filename: /D2KSFX/AI_ULOST.AUD
+  D2kEva_AI_UNRDY:
+    Filename: /D2KSFX/AI_UNRDY.AUD
+  D2kEva_AI_WATTK:
+    Filename: /D2KSFX/AI_WATTK.AUD
+  D2kEva_AI_WSIGN:
+    Filename: /D2KSFX/AI_WSIGN.AUD
+  D2kEva_HI_ATACK:
+    Filename: /D2KSFX/HI_ATACK.AUD
+  D2kEva_HI_BDRDY:
+    Filename: /D2KSFX/HI_BDRDY.AUD
+  D2kEva_HI_BLOST:
+    Filename: /D2KSFX/HI_BLOST.AUD
+  D2kEva_HI_CAPT:
+    Filename: /D2KSFX/HI_CAPT.AUD
+  D2kEva_HI_DPLOY:
+    Filename: /D2KSFX/HI_DPLOY.AUD
+  D2kEva_HI_MONEY:
+    Filename: /D2KSFX/HI_MONEY.AUD
+  D2kEva_HI_NEWOP:
+    Filename: /D2KSFX/HI_NEWOP.AUD
+  D2kEva_HI_ORDER:
+    Filename: /D2KSFX/HI_ORDER.AUD
+  D2kEva_HI_POWER:
+    Filename: /D2KSFX/HI_POWER.AUD
+  D2kEva_HI_REINF:
+    Filename: /D2KSFX/HI_REINF.AUD
+  D2kEva_HI_SILOS:
+    Filename: /D2KSFX/HI_SILOS.AUD
+  D2kEva_HI_ULOST:
+    Filename: /D2KSFX/HI_ULOST.AUD
+  D2kEva_HI_UNRDY:
+    Filename: /D2KSFX/HI_UNRDY.AUD
+  D2kEva_HI_WATTK:
+    Filename: /D2KSFX/HI_WATTK.AUD
+  D2kEva_HI_WSIGN:
+    Filename: /D2KSFX/HI_WSIGN.AUD
+  D2kEva_OI_ATACK:
+    Filename: /D2KSFX/OI_ATACK.AUD
+  D2kEva_OI_BDRDY:
+    Filename: /D2KSFX/OI_BDRDY.AUD
+  D2kEva_OI_BLOST:
+    Filename: /D2KSFX/OI_BLOST.AUD
+  D2kEva_OI_CAPT:
+    Filename: /D2KSFX/OI_CAPT.AUD
+  D2kEva_OI_DPLOY:
+    Filename: /D2KSFX/OI_DPLOY.AUD
+  D2kEva_OI_MONEY:
+    Filename: /D2KSFX/OI_MONEY.AUD
+  D2kEva_OI_NEWOP:
+    Filename: /D2KSFX/OI_NEWOP.AUD
+  D2kEva_OI_ORDER:
+    Filename: /D2KSFX/OI_ORDER.AUD
+  D2kEva_OI_POWER:
+    Filename: /D2KSFX/OI_POWER.AUD
+  D2kEva_OI_REINF:
+    Filename: /D2KSFX/OI_REINF.AUD
+  D2kEva_OI_SILOS:
+    Filename: /D2KSFX/OI_SILOS.AUD
+  D2kEva_OI_ULOST:
+    Filename: /D2KSFX/OI_ULOST.AUD
+  D2kEva_OI_UNRDY:
+    Filename: /D2KSFX/OI_UNRDY.AUD
+  D2kEva_OI_WATTK:
+    Filename: /D2KSFX/OI_WATTK.AUD
+  D2kEva_OI_WSIGN:
+    Filename: /D2KSFX/OI_WSIGN.AUD
+  RaEva_BASEATK1:
+    Filename: /RASFX/BASEATK1.AUD
+  RaEva_BLDGINF1:
+    Filename: /RASFX/BLDGINF1.AUD
+  RaEva_CONSCMP1:
+    Filename: /RASFX/CONSCMP1.AUD
+  RaEva_LOPOWER1:
+    Filename: /RASFX/LOPOWER1.AUD
+  RaEva_NEWOPT1:
+    Filename: /RASFX/NEWOPT1.AUD
+  RaEva_NODEPLY1:
+    Filename: /RASFX/NODEPLY1.AUD
+  RaEva_NOFUNDS1:
+    Filename: /RASFX/NOFUNDS1.AUD
+  RaEva_SILOND1:
+    Filename: /RASFX/SILOND1.AUD
+  RaEva_SLCTTGT1:
+    Filename: /RASFX/SLCTTGT1.AUD
+  RaEva_STRCKIL1:
+    Filename: /RASFX/STRCKIL1.AUD
+  RaEva_UNITLST1:
+    Filename: /RASFX/UNITLST1.AUD
+  RaEva_UNITRDY1:
+    Filename: /RASFX/UNITRDY1.AUD
+  TdEva_BASEATK1:
+    Filename: /BASEATK1.AUD
+  TdEva_CONSTRU1:
+    Filename: /CONSTRU1.AUD
+  TdEva_LOPOWER1:
+    Filename: /LOPOWER1.AUD
+  TdEva_SILOS1:
+    Filename: /SILOS1.AUD
+  TdEva_STRCLOST:
+    Filename: /STRCLOST.AUD
+  TdEva_UNITLOST:
+    Filename: /UNITLOST.AUD
+  TdEva_UNITREDY:
+    Filename: /UNITREDY.AUD
+
+# Which sound each side hears for an EVA event (SideEvaSounds: Event: Side: Sound).
+SideEvaSounds:
+  LowPower:
+    TDGDI: TdEva_LOPOWER1
+    TDNod: TdEva_LOPOWER1
+    D2KATR: D2kEva_AI_POWER
+    D2KHAR: D2kEva_HI_POWER
+    D2KORD: D2kEva_OI_POWER
+    RAAllies: RaEva_LOPOWER1
+    RASoviet: RaEva_LOPOWER1
+  InsufficientFunds:
+    D2KATR: D2kEva_AI_MONEY
+    D2KHAR: D2kEva_HI_MONEY
+    D2KORD: D2kEva_OI_MONEY
+    RAAllies: RaEva_NOFUNDS1
+    RASoviet: RaEva_NOFUNDS1
+  TdInsufficientFunds:
+    D2KATR: D2kEva_AI_MONEY
+    D2KHAR: D2kEva_HI_MONEY
+    D2KORD: D2kEva_OI_MONEY
+    RAAllies: RaEva_NOFUNDS1
+    RASoviet: RaEva_NOFUNDS1
+  BuildingLost:
+    TDGDI: TdEva_STRCLOST
+    TDNod: TdEva_STRCLOST
+    D2KATR: D2kEva_AI_BLOST
+    D2KHAR: D2kEva_HI_BLOST
+    D2KORD: D2kEva_OI_BLOST
+    RAAllies: RaEva_STRCKIL1
+    RASoviet: RaEva_STRCKIL1
+  BaseUnderAttack:
+    TDGDI: TdEva_BASEATK1
+    TDNod: TdEva_BASEATK1
+    D2KATR: D2kEva_AI_ATACK
+    D2KHAR: D2kEva_HI_ATACK
+    D2KORD: D2kEva_OI_ATACK
+    RAAllies: RaEva_BASEATK1
+    RASoviet: RaEva_BASEATK1
+  UnitLost:
+    TDGDI: TdEva_UNITLOST
+    TDNod: TdEva_UNITLOST
+    D2KATR: D2kEva_AI_ULOST
+    D2KHAR: D2kEva_HI_ULOST
+    D2KORD: D2kEva_OI_ULOST
+    RAAllies: RaEva_UNITLST1
+    RASoviet: RaEva_UNITLST1
+  UpgradeComplete:
+    D2KATR: D2kEva_AI_NEWOP
+    D2KHAR: D2kEva_HI_NEWOP
+    D2KORD: D2kEva_OI_NEWOP
+    RAAllies: RaEva_NEWOPT1
+    RASoviet: RaEva_NEWOPT1
+  UnitReady:
+    TDGDI: TdEva_UNITREDY
+    TDNod: TdEva_UNITREDY
+    D2KATR: D2kEva_AI_UNRDY
+    D2KHAR: D2kEva_HI_UNRDY
+    D2KORD: D2kEva_OI_UNRDY
+    RAAllies: RaEva_UNITRDY1
+    RASoviet: RaEva_UNITRDY1
+  BuildingComplete:
+    TDGDI: TdEva_CONSTRU1
+    TDNod: TdEva_CONSTRU1
+    D2KATR: D2kEva_AI_BDRDY
+    D2KHAR: D2kEva_HI_BDRDY
+    D2KORD: D2kEva_OI_BDRDY
+    RAAllies: RaEva_CONSCMP1
+    RASoviet: RaEva_CONSCMP1
+  TdConstructionComplete:
+    TDGDI: TdEva_CONSTRU1
+    TDNod: TdEva_CONSTRU1
+    D2KATR: D2kEva_AI_BDRDY
+    D2KHAR: D2kEva_HI_BDRDY
+    D2KORD: D2kEva_OI_BDRDY
+    RAAllies: RaEva_CONSCMP1
+    RASoviet: RaEva_CONSCMP1
+  TdSilosNeeded:
+    TDGDI: TdEva_SILOS1
+    TDNod: TdEva_SILOS1
+    D2KATR: D2kEva_AI_SILOS
+    D2KHAR: D2kEva_HI_SILOS
+    D2KORD: D2kEva_OI_SILOS
+    RAAllies: RaEva_SILOND1
+    RASoviet: RaEva_SILOND1
+  TdBuildingCaptured:
+    D2KATR: D2kEva_AI_CAPT
+    D2KHAR: D2kEva_HI_CAPT
+    D2KORD: D2kEva_OI_CAPT
+    RAAllies: RaEva_BLDGINF1
+    RASoviet: RaEva_BLDGINF1
+  TdCannotDeployHere:
+    D2KATR: D2kEva_AI_DPLOY
+    D2KHAR: D2kEva_HI_DPLOY
+    D2KORD: D2kEva_OI_DPLOY
+    RAAllies: RaEva_NODEPLY1
+    RASoviet: RaEva_NODEPLY1
+  D2kWormSign:
+    D2KATR: D2kEva_AI_WSIGN
+    D2KHAR: D2kEva_HI_WSIGN
+    D2KORD: D2kEva_OI_WSIGN
+  D2kUnitLostToWorm:
+    D2KATR: D2kEva_AI_WATTK
+    D2KHAR: D2kEva_HI_WATTK
+    D2KORD: D2kEva_OI_WATTK
+  D2kOrderPlaced:
+    D2KATR: D2kEva_AI_ORDER
+    D2KHAR: D2kEva_HI_ORDER
+    D2KORD: D2kEva_OI_ORDER
+  D2kReinforcementsArrived:
+    D2KATR: D2kEva_AI_REINF
+    D2KHAR: D2kEva_HI_REINF
+    D2KORD: D2kEva_OI_REINF
+  RaChronoSelectDestination:
+    RAAllies: RaEva_SLCTTGT1
+    RASoviet: RaEva_SLCTTGT1

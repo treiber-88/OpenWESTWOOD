@@ -351,6 +351,7 @@ public sealed class GameLogic
             return;
         t0 = GameProfiler.Enabled ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
         Players.Update();
+        Damage.UpdateTakeovers();
         if (GameProfiler.Enabled) GameProfiler.Add("~Players (AI, team scripts)", t0);
 
         // Each phase runs for every object before the next (AIs steer, physics moves, then the rest).
@@ -361,6 +362,7 @@ public sealed class GameLogic
                 if (!obj.IsDestroyed)
                     obj.RunUpdates(phase);
 
+        Locomotion.CrowdSeparation.Update(this);
         Building.Update();
         Terrain.Update(Frame);
         foreach (var player in Players.All)

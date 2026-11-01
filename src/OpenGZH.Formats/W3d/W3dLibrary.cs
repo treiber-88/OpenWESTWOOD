@@ -37,6 +37,23 @@ public sealed class W3dLibrary
                 Console.Error.WriteLine($"Could not read {path}: {e.Message}");
             }
         }
+        else
+        {
+            // Models some package builds itself (Kane's Wrath's compiled art).
+            foreach (var provider in fileSystem.Packages.OfType<IW3dProvider>())
+            {
+                try
+                {
+                    file = provider.GetW3d(name);
+                }
+                catch (Exception e)
+                {
+                    Console.Error.WriteLine($"Could not build {name}: {e.Message}");
+                }
+                if (file != null)
+                    break;
+            }
+        }
 
         files[name] = file;
         return file;

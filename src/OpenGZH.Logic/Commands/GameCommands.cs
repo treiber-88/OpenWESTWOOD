@@ -134,12 +134,34 @@ public sealed record PlaceReadyStructureCommand(int PlayerIndex, uint Factory, u
 }
 
 /// <summary>A Tiberian Dawn MCV unfolds into its Construction Yard where it stands (OpenGZH addition).</summary>
+/// <summary>Tiberian Dawn / Dune 2000: engineers capture, saboteurs and commandos demolish a building.</summary>
+public sealed record TdInfiltrateCommand(int PlayerIndex, uint[] Units, uint Building) : GameCommand(PlayerIndex)
+{
+    public override void Execute(GameLogic game)
+    {
+        if (game.FindObject(Building) is not { } building)
+            return;
+        foreach (var unit in Owned(game, Units))
+            unit.FindModule<Modules.Behaviors.TdInfiltrate>()?.Order(building);
+    }
+}
+
+/// <summary>Tiberian Dawn / Dune 2000: the building's repair button (on, or off again).</summary>
+public sealed record ToggleTdRepairCommand(int PlayerIndex, uint Structure) : GameCommand(PlayerIndex)
+{
+    public override void Execute(GameLogic game) =>
+        Owned(game, [Structure]).FirstOrDefault()?.FindModule<Modules.Behaviors.TdStructureRepair>()?.Toggle();
+}
+
 public sealed record DeployCommand(int PlayerIndex, uint[] Units) : GameCommand(PlayerIndex)
 {
     public override void Execute(GameLogic game)
     {
         foreach (var unit in Owned(game, Units).ToList())
+        {
             unit.FindModule<Modules.Behaviors.TdDeployToStructure>()?.Deploy();
+            unit.FindModule<Modules.Behaviors.D2kThumper>()?.ToggleDeploy();
+        }
     }
 }
 

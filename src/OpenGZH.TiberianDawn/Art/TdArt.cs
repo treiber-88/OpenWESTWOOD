@@ -123,7 +123,9 @@ public sealed class TdArt : ITdArt
     }
 
     /// <summary>TD's house colour ramp: the palette entries every remap table replaces.</summary>
-    public const int RemapFirst = 176, RemapLast = 191;
+    /// <summary>The house-colour ramp (TD: 176-191; Red Alert: 80-95).</summary>
+    public int RemapFirst { get; init; } = 176;
+    public int RemapLast { get; init; } = 191;
 
     /// <summary>
     /// A frame in any team colour (for Zero Hour engine players, whose colours TD's six remap tables

@@ -495,6 +495,8 @@ public sealed class TdTypes
 
     readonly Dictionary<int, BuildingTypeClass> buildings = new();
     readonly Dictionary<int, UnitTypeClass> units = new();
+    // Red Alert's ships (VDATA.CPP), read as units (their own ids).
+    readonly Dictionary<int, UnitTypeClass> vessels = new();
     readonly Dictionary<int, InfantryTypeClass> infantry = new();
     readonly Dictionary<int, AircraftTypeClass> aircraft = new();
     readonly Dictionary<int, BulletTypeClass> bullets = new();
@@ -513,6 +515,7 @@ public sealed class TdTypes
     {
         Load(rules, "Buildings", buildings, () => new BuildingTypeClass());
         Load(rules, "Vehicles", units, () => new UnitTypeClass());
+        Load(rules, "VesselTypeClass", vessels, () => new UnitTypeClass());
         Load(rules, "Infantry", infantry, () => new InfantryTypeClass());
         Load(rules, "Aircraft", aircraft, () => new AircraftTypeClass());
         Load(rules, "Projectiles", bullets, () => new BulletTypeClass());
@@ -536,12 +539,27 @@ public sealed class TdTypes
         }
     }
 
+    /// <summary>Red Alert's DoType order (DEFINES.H), named as Tiberian Dawn's DoTypes.</summary>
+    static readonly string[] RaDoTypes =
+    [
+        "DO_STAND_READY", "DO_STAND_GUARD", "DO_PRONE", "DO_WALK", "DO_FIRE_WEAPON", "DO_LIE_DOWN", "DO_CRAWL", "DO_GET_UP",
+        "DO_FIRE_PRONE", "DO_IDLE1", "DO_IDLE2", "DO_GUN_DEATH", "DO_EXPLOSION_DEATH", "DO_EXPLOSION2_DEATH", "DO_GRENADE_DEATH",
+        "DO_FIRE_DEATH", "DO_GESTURE1", "DO_SALUTE1", "DO_GESTURE2", "DO_SALUTE2", "DO_DOG_MAUL",
+    ];
+
     void Load<T>(RuleSet rules, string section, Dictionary<int, T> table, Func<T> make) where T : ObjectTypeClass
     {
         foreach (var (_, node) in rules.Section(section).Entries)
         {
             var type = make();
             RuleBinder.Bind(type, node);
+            // Red Alert's infantry list their DoControls in its DoType order (IDATA.CPP) rather than by name.
+            if (type is InfantryTypeClass infantry && infantry.DoTable.Count == 0 && node.TryGet("DoControls", out var doControls))
+            {
+                var rows = doControls.AsList().ToList();
+                for (int i = 0; i < rows.Count && i < RaDoTypes.Length; i++)
+                    infantry.DoTable[RaDoTypes[i]] = rows[i].AsList().Select(v => (int)(RuleBinder.Number(v.Value) ?? 0)).ToArray();
+            }
             table[type.Id] = type;
             byName.TryAdd(type.IniName, type);
         }
@@ -560,6 +578,8 @@ public sealed class TdTypes
     // Every type of a kind (for tools and other engines that convert TD's data).
     public IEnumerable<BuildingTypeClass> AllBuildings => buildings.OrderBy(e => e.Key).Select(e => e.Value);
     public IEnumerable<UnitTypeClass> AllUnits => units.OrderBy(e => e.Key).Select(e => e.Value);
+    public IEnumerable<UnitTypeClass> AllVessels => vessels.OrderBy(e => e.Key).Select(e => e.Value);
+    public bool IsVessel(ObjectTypeClass type) => type is UnitTypeClass u && vessels.ContainsValue(u);
     public IEnumerable<InfantryTypeClass> AllInfantry => infantry.OrderBy(e => e.Key).Select(e => e.Value);
     public IEnumerable<AircraftTypeClass> AllAircraft => aircraft.OrderBy(e => e.Key).Select(e => e.Value);
     public IEnumerable<BulletTypeClass> AllBullets => bullets.OrderBy(e => e.Key).Select(e => e.Value);
@@ -575,6 +595,7 @@ public sealed class TdTypes
     public AircraftTypeClass Aircraft(AircraftType type) => aircraft[(int)type];
     public BulletTypeClass Bullet(BulletType type) => bullets[(int)type];
     public AnimTypeClass Anim(AnimType type) => anims[(int)type];
+    public bool HasAnim(AnimType type) => anims.ContainsKey((int)type);
     public TerrainTypeClass Terrain(TerrainType type) => terrains[(int)type];
     public TemplateTypeClass? Template(TemplateType type) => templates.GetValueOrDefault((int)type);
     public OverlayTypeClass Overlay(OverlayType type) => overlays[(int)type];

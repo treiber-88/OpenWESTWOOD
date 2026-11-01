@@ -24,8 +24,11 @@ namespace OpenGZH.Tools;
 /// </summary>
 public static class TdFactionExporter
 {
-    const float CellUnits = 36f;                 // one TD cell in ZH world units
-    const float InfantrySpeedFactor = 1.5f;      // TD soldiers walk this much faster (see the infantry locomotors)
+    const float CellUnits = 36f;                 // one TD cell in ZH world units (distances: speeds, ranges, sight)
+    const float SizeScale = 0.9f;                // TD objects are drawn and built 10% smaller than a cell's 36 units
+    const float SizeUnits = CellUnits * SizeScale; // one TD cell of an object's size (footprints, bodies, art)
+    const float InfantrySpeedFactor = 2.3f;      // TD soldiers walk this much faster (see the infantry locomotors)
+    const float UnitStrengthFactor = 1.4f;       // TD units (not buildings) have this much more health
     const float LeptonUnits = CellUnits / 256f;  // one TD lepton
     const float FramesPerSecond = 15f;
     const int BuildLevel = 10;                   // TD skirmish's tech level
@@ -69,6 +72,20 @@ public static class TdFactionExporter
 
     static string F(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
 
+    /// <summary>
+    /// TD's sound effect files by VocType (AUDIO.CPP's SoundEffectName table, in the enum's order; only the
+    /// weapon sounds are needed here).
+    /// </summary>
+    static readonly Dictionary<VocType, string> VocFiles = new()
+    {
+        [VocType.VOC_BAZOOKA] = "BAZOOK1", [VocType.VOC_FLAMER1] = "FLAMER2", [VocType.VOC_RIFLE] = "GUN18", [VocType.VOC_M60] = "GUN19",
+        [VocType.VOC_GUN20] = "GUN20", [VocType.VOC_M60A] = "GUN5", [VocType.VOC_MINI] = "GUN8", [VocType.VOC_HVYGUN10] = "HVYGUN10",
+        [VocType.VOC_ION_CANNON] = "ION1", [VocType.VOC_MGUN11] = "MGUN11", [VocType.VOC_MGUN2] = "MGUN2", [VocType.VOC_NUKE_FIRE] = "NUKEMISL",
+        [VocType.VOC_LASER] = "OBELRAY1", [VocType.VOC_SNIPER] = "RAMGUN2", [VocType.VOC_ROCKET1] = "ROCKET1", [VocType.VOC_ROCKET2] = "ROCKET2",
+        [VocType.VOC_TANK1] = "TNKFIRE2", [VocType.VOC_TANK2] = "TNKFIRE3", [VocType.VOC_TANK3] = "TNKFIRE4", [VocType.VOC_TANK4] = "TNKFIRE6",
+
+    };
+
     public static int Run(string root)
     {
         using var td = TdContent.Load(root);
@@ -82,9 +99,28 @@ public static class TdFactionExporter
         var text = new TextNames();
         var objects = new StringBuilder("Objects:\n");
         var weapons = new StringBuilder("Weapons:\n");
+        var usedSounds = new SortedSet<string>();
         var locomotors = new StringBuilder("Locomotors:\n");
         var commandSets = new StringBuilder("CommandSets:\n");
         var buttons = new StringBuilder("CommandButtons:\n");
+        // ---- Superweapons (HOUSE.CPP's special weapons as Zero Hour special powers) ----
+        // The Ion Cannon (Advanced Comm. Center, GDI): ION_CANNON_GONE_TIME 9000 ticks = 10 minutes; the beam does
+        // 600 particle-beam damage where it strikes (AnimClass::Middle's Explosion_Damage, WARHEAD_PB).
+        // The nuke (Temple of Nod): NUKE_GONE_TIME 12600 ticks = 14 minutes; the multiplayer Atom_Blast is 100 fire
+        // damage (200 / (3/2 + 1)) to every cell of a 7x7 square.
+        var powers = new StringBuilder("SpecialPowers:\n");
+        powers.Append("  TD_SuperweaponIonCannon:\n    Enum: SPECIAL_TD_ION_CANNON\n    ReloadTime: 600000\n    PublicTimer: Yes\n    SharedSyncedTimer: No\n    ViewObjectDuration: 10000\n    ViewObjectRange: 250\n    RadiusCursorRadius: 40\n    ShortcutPower: Yes\n");
+        powers.Append("  TD_SuperweaponNuke:\n    Enum: SPECIAL_TD_NUCLEAR_BOMB\n    ReloadTime: 840000\n    PublicTimer: Yes\n    SharedSyncedTimer: No\n    ViewObjectDuration: 10000\n    ViewObjectRange: 300\n    RadiusCursorRadius: 126\n    ShortcutPower: Yes\n");
+        var ocls = new StringBuilder("ObjectCreationLists:\n");
+        ocls.Append("  OCL_TD_IonCannon:\n    Nuggets:\n    - Type: FireWeapon\n      Weapon: TD_Weapon_IonCannonBlast\n");
+        ocls.Append("  OCL_TD_Nuke:\n    Nuggets:\n    - Type: FireWeapon\n      Weapon: TD_Weapon_NukeBlast\n");
+        weapons.Append("  TD_Weapon_IonCannonBlast:\n    PrimaryDamage: 600.0\n    PrimaryDamageRadius: 27\n    SecondaryDamage: 300.0\n    SecondaryDamageRadius: 54\n    AttackRange: 99999\n    DamageType: PARTICLE_BEAM\n    DeathType: LASERED\n    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS\n    FireFX: TDFX:ANIM_ION_CANNON\n");
+        weapons.Append($"  TD_Weapon_NukeBlast:\n    PrimaryDamage: 100.0\n    PrimaryDamageRadius: {F(CellUnits * 3.5f)}\n    AttackRange: 99999\n    DamageType: FLAME\n    DeathType: BURNED\n    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS\n    FireFX: TDFX:ANIM_ATOM_BLAST\n");
+
+        // The buildings' repair button (TdStructureRepair) and the transports' command set.
+        buttons.Append("  Command_TdIonCannon:\n    Command: SPECIAL_POWER\n    SpecialPower: TD_SuperweaponIonCannon\n    Options: NEED_TARGET_POS CONTEXTMODE_COMMAND\n    TextLabel: Ion Cannon\n    ButtonImage: TDCAMEO:ION\n    ButtonBorderType: ACTION\n    DescriptLabel: Fire the Ion Cannon\n    InvalidCursorName: GenericInvalid\n");
+        buttons.Append("  Command_TdNuke:\n    Command: SPECIAL_POWER\n    SpecialPower: TD_SuperweaponNuke\n    Options: NEED_TARGET_POS CONTEXTMODE_COMMAND\n    TextLabel: Nuclear Strike\n    ButtonImage: TDCAMEO:ATOM\n    ButtonBorderType: ACTION\n    DescriptLabel: Launch the nuclear missile\n    InvalidCursorName: GenericInvalid\n");
+        buttons.Append("  Command_TdRepair:\n    Command: TD_REPAIR\n    TextLabel: Repair\n    ButtonImage: SSRepair\n    ButtonBorderType: ACTION\n    DescriptLabel: Repair this building (costs money as it mends)\n");
         var armor = new StringBuilder("Armor:\n");
         var factions = new StringBuilder("PlayerTemplates:\n");
 
@@ -142,6 +178,12 @@ public static class TdFactionExporter
             weapons.Append($"    AntiGround: {(antiGround ? "Yes" : "No")}\n");
             weapons.Append($"    AntiAirborneVehicle: {(antiAir ? "Yes" : "No")}\n");
             weapons.Append($"    AntiAirborneInfantry: {(antiAir ? "Yes" : "No")}\n");
+            // Its sound (WeaponTypeClass Sound), TD's own .AUD from SOUNDS.MIX.
+            if (VocFiles.TryGetValue(w.Sound, out var voc))
+            {
+                weapons.Append($"    FireSound: TdSnd_{voc}\n");
+                usedSounds.Add(voc);
+            }
             weapons.Append($"    TdFireAnim: {w.Anim}\n");
             weapons.Append($"    TdExplosion: {bullet.Explosion}\n");
             // TD's own muzzle flash and explosion, drawn by the client as TD animations ("TDFX:" names).
@@ -176,6 +218,16 @@ public static class TdFactionExporter
             string proj = $"TD_Projectile_{bullet.IniName}_{bullet.Type.ToString()["BULLET_".Length..]}";
             projectiles.Append($"  {proj}:\n");
             projectiles.Append("    DisplayName: TD projectile\n    EditorSorting: SYSTEM\n    VisionRange: 0.0\n");
+            // OpenRA's contrails (its C&C mod's weapons): missiles 8 ticks, the MLRS's 227mm rockets 10, the artillery shell 30.
+            int contrail = bullet.Type switch
+            {
+                BulletType.BULLET_TOW or BulletType.BULLET_SSM or BulletType.BULLET_SAM or BulletType.BULLET_HONEST_JOHN => 8,
+                BulletType.BULLET_SSM2 => 10,
+                BulletType.BULLET_HE => 30,
+                _ => 0,
+            };
+            if (contrail > 0)
+                projectiles.Append($"    TdContrailLength: {contrail}\n");
             projectiles.Append(bullet.IsHoming ? "    KindOf: PROJECTILE SMALL_MISSILE\n" : "    KindOf: PROJECTILE\n");
             if (bullet.IsHoming)
                 projectiles.Append($"    Locomotor: SET_NORMAL {proj}Locomotor\n");
@@ -200,6 +252,8 @@ public static class TdFactionExporter
             }
             projectiles.Append("      ModuleTag_05:\n        Module: Behavior\n        Class: PhysicsBehavior\n        Mass: 0.01\n");
         }
+
+        commandSets.Append("  TDTransportCommandSet:\n    1: Command_TransportExit\n    2: Command_TransportExit\n    3: Command_TransportExit\n    4: Command_TransportExit\n    5: Command_TransportExit\n    9: Command_Evacuate\n    11: Command_AttackMove\n    13: Command_Guard\n    14: Command_Stop\n");
 
         // ---- The two sides ----
         foreach (var side in Sides)
@@ -271,6 +325,7 @@ public static class TdFactionExporter
                 var list = built.Select(Button).ToList();
                 if (b.ToBuild != RTTIType.RTTI_BUILDINGTYPE)
                     list.Add("Command_SetRallyPoint");
+                list.Add("Command_TdRepair");
                 list.Add("Command_Sell");
                 CommandSet(setName, list);
                 return setName;
@@ -279,13 +334,13 @@ public static class TdFactionExporter
             // ---- Structures ----
             foreach (var b in structs)
             {
-                float w = b.Width() * CellUnits, h = b.Height() * CellUnits;
+                float w = b.Width() * SizeUnits, h = b.Height() * SizeUnits;
                 // TD blocks only the Occupy cells (a refinery's bottom row is a drivable apron where the
                 // harvester docks); placing also needs the bib. The object stands at the middle of its
                 // occupied cells, so points on the art are given relative to that (see CellBox).
                 var occupy = CellBox(b, b.Occupy_List(types, types.Special));
                 var footprint = CellBox(b, b.Occupy_List(types, types.Special, placement: true));
-                (float X, float Y) Art(float col, float row) => ((col - b.Width() / 2f) * CellUnits - occupy.X, -(row - b.Height() / 2f) * CellUnits - occupy.Y);
+                (float X, float Y) Art(float col, float row) => ((col - b.Width() / 2f) * SizeUnits - occupy.X, -(row - b.Height() / 2f) * SizeUnits - occupy.Y);
                 objects.Append($"  {N(b)}:\n");
                 objects.Append($"    DisplayName: {text.Name(b)}\n    Side: {side.SideName}\n    EditorSorting: STRUCTURE\n    ButtonImage: TDCAMEO:{CameoName(b)}\n    SelectPortrait: TDCAMEO:{CameoName(b)}\n");
                 objects.Append($"    BuildCost: {b.Cost}\n    BuildTime: {F(BuildSeconds(b.Cost))}\n");
@@ -312,11 +367,16 @@ public static class TdFactionExporter
                     case RTTIType.RTTI_AIRCRAFTTYPE: kinds.AddRange(["FS_FACTORY", "FS_AIRFIELD"]); break;
                 }
                 if (b.Type == StructType.STRUCT_REFINERY)
-                    kinds.AddRange(["FS_SUPPLY_CENTER", "CASH_GENERATOR", "CANNOT_BUILD_NEAR_SUPPLIES"]);
+                    kinds.AddRange(["FS_SUPPLY_CENTER", "CASH_GENERATOR"]); // TD refineries go right by their fields
                 if (b.Primary != WeaponType.WEAPON_NONE)
                     kinds.AddRange(["CAN_ATTACK", "FS_BASE_DEFENSE"]);
                 if (b.Type is StructType.STRUCT_RADAR or StructType.STRUCT_EYE)
                     kinds.Add("FS_TECHNOLOGY");
+                if (b.Type == StructType.STRUCT_REPAIR)
+                    kinds.Add("REPAIR_PAD");
+                // Room for harvested Tiberium (refinery 1000, silo 1500).
+                if (b.Capacity > 0)
+                    objects.Append($"    TdStorage: {b.Capacity}\n");
                 objects.Append($"    KindOf: {string.Join(' ', kinds)}\n");
                 objects.Append($"    Geometry: BOX\n    GeometryMajorRadius: {F(occupy.HalfX)}\n    GeometryMinorRadius: {F(occupy.HalfY)}\n    GeometryHeight: {F(Math.Min(w, h) / 2)}\n    GeometryIsSmall: No\n");
                 // Where the art's centre is, and the placement footprint (centre X Y, half sizes X Y), from the object's position.
@@ -333,7 +393,13 @@ public static class TdFactionExporter
                     objects.Append($"    CommandSet: {FactoryCommandSet(b)}\n");
                 else
                 {
-                    CommandSet($"{N(b)}CommandSet", ["Command_Sell"]);
+                    var entries = new List<string>();
+                    if (b.Type == StructType.STRUCT_EYE)
+                        entries.Add("Command_TdIonCannon");
+                    if (b.Type == StructType.STRUCT_TEMPLE)
+                        entries.Add("Command_TdNuke");
+                    entries.AddRange(["Command_TdRepair", "Command_Sell"]);
+                    CommandSet($"{N(b)}CommandSet", entries);
                     objects.Append($"    CommandSet: {N(b)}CommandSet\n");
                 }
 
@@ -342,6 +408,13 @@ public static class TdFactionExporter
                 objects.Append($"      ModuleTag_02:\n        Module: Body\n        Class: StructureBody\n        MaxHealth: {b.MaxStrength}.0\n        InitialHealth: {b.MaxStrength}.0\n");
                 objects.Append("      ModuleTag_03:\n        Module: Behavior\n        Class: DestroyDie\n");
                 objects.Append("      ModuleTag_04:\n        Module: Behavior\n        Class: CreateObjectDie\n        CreationList: OCL_SmallStructureDebris\n        ExemptStatus: UNDER_CONSTRUCTION\n");
+                objects.Append("      ModuleTag_12:\n        Module: Behavior\n        Class: TdStructureRepair\n");
+                if (b.Type == StructType.STRUCT_EYE)
+                    objects.Append("      ModuleTag_13:\n        Module: Behavior\n        Class: OCLSpecialPower\n        SpecialPowerTemplate: TD_SuperweaponIonCannon\n        OCL: OCL_TD_IonCannon\n        CreateLocation: CREATE_AT_LOCATION\n");
+                if (b.Type == StructType.STRUCT_HELIPAD)
+                    objects.Append("      ModuleTag_14:\n        Module: Behavior\n        Class: TdHelipad\n");
+                if (b.Type == StructType.STRUCT_TEMPLE)
+                    objects.Append("      ModuleTag_13:\n        Module: Behavior\n        Class: OCLSpecialPower\n        SpecialPowerTemplate: TD_SuperweaponNuke\n        OCL: OCL_TD_Nuke\n        CreateLocation: CREATE_AT_LOCATION\n");
                 if (b.Primary != WeaponType.WEAPON_NONE)
                 {
                     objects.Append("      ModuleTag_05:\n        Module: Behavior\n        Class: AIUpdateInterface\n        AutoAcquireEnemiesWhenIdle: Yes\n");
@@ -380,6 +453,8 @@ public static class TdFactionExporter
             // ---- Mobile units ----
             void Mobile(TechnoTypeClass t, string kind, string locomotor, float radius, float height)
             {
+                radius *= SizeScale;
+                height *= SizeScale;
                 objects.Append($"  {N(t)}:\n");
                 objects.Append($"    DisplayName: {text.Name(t)}\n    Side: {side.SideName}\n    EditorSorting: {(kind == "Infantry" ? "INFANTRY" : "VEHICLE")}\n    ButtonImage: TDCAMEO:{CameoName(t)}\n    SelectPortrait: TDCAMEO:{CameoName(t)}\n");
                 objects.Append($"    BuildCost: {t.Cost}\n    BuildTime: {F(BuildSeconds(t.Cost))}\n");
@@ -402,7 +477,7 @@ public static class TdFactionExporter
                 objects.Append($"    Locomotor: SET_NORMAL {locomotor}\n");
                 objects.Append($"    Geometry: {(kind == "Infantry" ? "CYLINDER" : "BOX")}\n    GeometryMajorRadius: {F(radius)}\n    GeometryMinorRadius: {F(radius)}\n    GeometryHeight: {F(height)}\n    GeometryIsSmall: Yes\n");
                 if (kind == "Infantry")
-                    objects.Append("    CrushableLevel: 0\n");
+                    objects.Append("    CrushableLevel: 0\n    TransportSlotCount: 1\n");
                 else if (t is UnitTypeClass u)
                     objects.Append($"    CrusherLevel: {(u.IsCrusher ? 2 : 1)}\n    CrushableLevel: 2\n");
                 objects.Append(Prerequisites(t));
@@ -414,11 +489,13 @@ public static class TdFactionExporter
                     slots.Add($"SECONDARY {sw}");
                 if (slots.Count > 0)
                     objects.Append($"    WeaponSet:\n      Conditions: None\n      Weapon: [{string.Join(", ", slots)}]\n");
-                objects.Append("    CommandSet: GenericCommandSet\n");
+                bool transport = t.IsTransporter;
+                objects.Append(transport ? "    CommandSet: TDTransportCommandSet\n" : "    CommandSet: GenericCommandSet\n");
                 objects.Append("    Modules:\n");
                 string tdType = t switch { UnitTypeClass x => x.Type.ToString(), InfantryTypeClass x => x.Type.ToString(), AircraftTypeClass x => x.Type.ToString(), _ => "" };
                 objects.Append($"      ModuleTag_01:\n        Module: Draw\n        Class: TDSpriteDraw\n        Shape: {t.IniName}\n        TdKind: {kind}\n        TdType: {tdType}\n");
-                objects.Append($"      ModuleTag_02:\n        Module: Body\n        Class: ActiveBody\n        MaxHealth: {t.MaxStrength}.0\n        InitialHealth: {t.MaxStrength}.0\n");
+                int health = (int)MathF.Round(t.MaxStrength * UnitStrengthFactor);
+                objects.Append($"      ModuleTag_02:\n        Module: Body\n        Class: ActiveBody\n        MaxHealth: {health}.0\n        InitialHealth: {health}.0\n");
                 if (t is UnitTypeClass { IsToHarvest: true })
                 {
                     // TD's harvester holds 700 credits of Tiberium (28 bails of 25).
@@ -426,7 +503,7 @@ public static class TdFactionExporter
                 }
                 else
                 {
-                    objects.Append("      ModuleTag_03:\n        Module: Behavior\n        Class: AIUpdateInterface\n        AutoAcquireEnemiesWhenIdle: Yes\n");
+                    objects.Append($"      ModuleTag_03:\n        Module: Behavior\n        Class: {(transport ? "TransportAIUpdate" : "AIUpdateInterface")}\n        AutoAcquireEnemiesWhenIdle: Yes\n");
                     if (t.IsTurretEquipped)
                         objects.Append($"        Turret:\n          TurretTurnRate: {F(Math.Max(Rot(t) * 2, 180))}\n          ControlledWeaponSlots: PRIMARY\n");
                 }
@@ -439,6 +516,20 @@ public static class TdFactionExporter
                     objects.Append($"      ModuleTag_06:\n        Module: Behavior\n        Class: TdDeployToStructure\n        Structure: {side.Prefix}FACT\n");
                 if (kind == "Aircraft")
                     objects.Append("      ModuleTag_07:\n        Module: Behavior\n        Class: ProductionUpdate\n        MaxQueueEntries: 1\n");
+                // Armed aircraft carry limited ammo and rearm at a Helipad.
+                if (t is AircraftTypeClass { MaxAmmo: > 0 } armed && slots.Count > 0)
+                    objects.Append($"      ModuleTag_11:\n        Module: Behavior\n        Class: TdAircraftAmmo\n        MaxAmmo: {armed.MaxAmmo}\n");
+                // The engineer captures buildings (used up doing it); the commando blows them up with C4 and walks away.
+                if (t is InfantryTypeClass { Type: InfantryType.INFANTRY_E7 })
+                    objects.Append("      ModuleTag_10:\n        Module: Behavior\n        Class: TdInfiltrate\n        Mode: Capture\n");
+                if (t is InfantryTypeClass { Type: InfantryType.INFANTRY_RAMBO })
+                    objects.Append("      ModuleTag_10:\n        Module: Behavior\n        Class: TdInfiltrate\n        Mode: Demolish\n        Consumed: No\n");
+                // TD's APC and Chinook carry five soldiers (TechnoTypeClass::Max_Passengers).
+                if (transport)
+                    objects.Append($"      ModuleTag_08:\n        Module: Behavior\n        Class: TransportContain\n        Slots: {t.Max_Passengers()}\n        AllowInsideKindOf: INFANTRY\n        ExitDelay: 250\n        NumberOfExitPaths: 1\n        GoAggressiveOnExit: Yes\n        DamagePercentToUnits: 100%\n");
+                // The Stealth Tank cloaks when it isn't firing (UnitClass's cloaking).
+                if (t is UnitTypeClass { IsCloakable: true })
+                    objects.Append("      ModuleTag_09:\n        Module: Behavior\n        Class: StealthUpdate\n        StealthDelay: 2000\n        StealthForbiddenConditions: ATTACKING FIRING_PRIMARY\n        InnateStealth: Yes\n        OrderIdleEnemiesToAttackMeUponReveal: No\n");
             }
 
             foreach (var u in units)
@@ -453,7 +544,7 @@ public static class TdFactionExporter
             foreach (var i in infantry)
             {
                 string loco = $"{N(i)}Locomotor";
-                // Soldiers walk 1.5 times their TD speed: at 15 TD frames a second they would crawl next to
+                // Soldiers walk twice their TD speed: at 15 TD frames a second they would crawl next to
                 // Zero Hour's infantry (a Minigunner 17 units a second, a Ranger 20); TD's skirmish ran faster.
                 float infantrySpeed = Speed(i.MaxSpeed) * InfantrySpeedFactor;
                 locomotors.Append($"  {loco}:\n    Surfaces: GROUND RUBBLE\n    Speed: {F(infantrySpeed)}\n    SpeedDamaged: {F(infantrySpeed)}\n");
@@ -486,13 +577,16 @@ public static class TdFactionExporter
         var scenery = new StringBuilder("Objects:\n");
         foreach (var t in types.AllTerrains)
         {
-            float w = Math.Max(1, t.Occupy.Count(o => o != TdMath.RefreshEol)) > 1 ? CellUnits : CellUnits * 0.6f;
+            float w = Math.Max(1, t.Occupy.Count(o => o != TdMath.RefreshEol)) > 1 ? SizeUnits : SizeUnits * 0.6f;
             scenery.Append($"  TD_Terrain_{t.IniName}:\n    DisplayName: {t.IniName}\n    EditorSorting: MISC_NATURAL\n    KindOf: IMMOBILE TD_OBJECT {(t.IsImmune ? "" : "")}\n");
             scenery.Append($"    Geometry: CYLINDER\n    GeometryMajorRadius: {F(w / 2)}\n    GeometryMinorRadius: {F(w / 2)}\n    GeometryHeight: 30\n    GeometryIsSmall: No\n");
             scenery.Append("    ArmorSet:\n      Conditions: None\n      Armor: TD_ArmorWood\n");
             scenery.Append($"    Modules:\n      ModuleTag_01:\n        Module: Draw\n        Class: TDSpriteDraw\n        Shape: {t.IniName}\n        TdKind: Terrain\n        TdType: {t.Type}\n");
             scenery.Append($"      ModuleTag_02:\n        Module: Body\n        Class: ActiveBody\n        MaxHealth: {Math.Max(t.MaxStrength, 1)}.0\n        InitialHealth: {Math.Max(t.MaxStrength, 1)}.0\n");
             scenery.Append("      ModuleTag_03:\n        Module: Behavior\n        Class: DestroyDie\n");
+            // Blossom trees seed Tiberium round them.
+            if (t.IsTiberiumSpawn)
+                scenery.Append("      ModuleTag_04:\n        Module: Behavior\n        Class: TdTiberium\n        Mode: Spawner\n");
         }
         // One Tiberium cell: a small supply pile (boxes of 75 credits) that disappears when harvested out.
         for (int stage = 0; stage < 12; stage++)
@@ -506,10 +600,14 @@ public static class TdFactionExporter
             scenery.Append("      ModuleTag_02:\n        Module: Body\n        Class: ActiveBody\n        MaxHealth: 1.0\n        InitialHealth: 1.0\n");
             scenery.Append("      ModuleTag_03:\n        Module: Behavior\n        Class: SupplyWarehouseCreate\n");
             scenery.Append($"      ModuleTag_04:\n        Module: Behavior\n        Class: SupplyWarehouseDockUpdate\n        StartingBoxes: {boxes}\n        DeleteWhenEmpty: Yes\n        AllowsPassthrough: Yes\n        NumberApproachPositions: -1\n");
+            // It grows, spreads and hurts infantry (TdTiberium: MapClass::Logic and InfantryClass's poisoning).
+            scenery.Append("      ModuleTag_05:\n        Module: Behavior\n        Class: TdTiberium\n        Mode: Tiberium\n");
         }
 
         const string header = "# GENERATED by 'OpenGZH.Tools export-td-factions' from Tiberian Dawn's rules (mods/tiberiandawn/rules).\n" +
                               "# Tiberian Dawn's GDI and Nod as Zero Hour engine factions. Edit freely, or re-export.\n";
+        File.WriteAllText(Path.Combine(output, "sound-effects.yaml"), header + "AudioEvents:\n" + string.Concat(usedSounds.Order().Select(v =>
+            $"  TdSnd_{v}:\n    Sounds: /{v}.AUD\n    Control: interrupt\n    Priority: normal\n    Limit: 3\n    Volume: 80\n    Type: world shrouded everyone\n")));
         File.WriteAllText(Path.Combine(output, "factions.yaml"), header + factions);
         File.WriteAllText(Path.Combine(output, "objects.yaml"), header + objects);
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), header + projectiles);
@@ -519,6 +617,8 @@ public static class TdFactionExporter
         File.WriteAllText(Path.Combine(output, "armor.yaml"), header + armor);
         File.WriteAllText(Path.Combine(output, "command-sets.yaml"), header + commandSets);
         File.WriteAllText(Path.Combine(output, "command-buttons.yaml"), header + buttons);
+        File.WriteAllText(Path.Combine(output, "special-powers.yaml"), header + powers);
+        File.WriteAllText(Path.Combine(output, "object-creation-lists.yaml"), header + ocls);
         Console.WriteLine($"Wrote TD factions to {output}");
         return 0;
     }
@@ -560,8 +660,8 @@ public static class TdFactionExporter
         if (minCol == int.MaxValue)
             (minCol, maxCol, minRow, maxRow) = (0, b.Width() - 1, 0, b.Height() - 1);
         float cx = (minCol + maxCol + 1) / 2f, cy = (minRow + maxRow + 1) / 2f;
-        return ((cx - b.Width() / 2f) * CellUnits, -(cy - b.Height() / 2f) * CellUnits,
-            (maxCol - minCol + 1) * CellUnits / 2, (maxRow - minRow + 1) * CellUnits / 2);
+        return ((cx - b.Width() / 2f) * SizeUnits, -(cy - b.Height() / 2f) * SizeUnits,
+            (maxCol - minCol + 1) * SizeUnits / 2, (maxRow - minRow + 1) * SizeUnits / 2);
     }
 
     /// <summary>Cameo names: infantry use the first four letters of their name (%.4sICNH).</summary>

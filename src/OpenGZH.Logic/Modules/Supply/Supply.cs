@@ -117,7 +117,22 @@ public sealed class SupplyCenterDockUpdate : DockUpdate
         while (truck.LoseOneBox())
             value += owner.SupplyBoxValue;
         value += truck.UpgradedSupplyBoost;
-        if (value > 0)
+        if (value > 0 && Owner.Template.Rules.TryGet("TdStorage", out _))
+        {
+            // A Tiberian Dawn / Dune 2000 refinery: the harvest needs room in the player's refineries and silos.
+            int capacity = Game.ObjectsOwnedBy(owner).Where(o => !o.IsEffectivelyDead && !o.IsUnderConstruction)
+                .Sum(o => OpenGZH.Core.Rules.RuleValue.Int(o.Template.Rules.GetString("TdStorage")));
+            int stored = owner.Money.DepositHarvested(value, capacity);
+            if (stored < value)
+                Game.Events.Eva("TdSilosNeeded", owner);
+            value = stored;
+            if (value > 0)
+            {
+                owner.Score.AddMoneyEarned(value);
+                Game.Events.MoneyEarned(docker, value);
+            }
+        }
+        else if (value > 0)
         {
             owner.Money.Deposit(value);
             owner.Score.AddMoneyEarned(value);
@@ -254,7 +269,7 @@ public sealed class SupplyGatherer
     float RelativeCost(GameObject dest, out float distanceSquared)
     {
         distanceSquared = float.MaxValue;
-        if (!CanTransferSuppliesAt(dest) || dest.FindModule<DockUpdate>() is not { } dock || !dock.IsClearToApproach(Owner))
+        if (Avoided(dest) || !CanTransferSuppliesAt(dest) || dest.FindModule<DockUpdate>() is not { } dock || !dock.IsClearToApproach(Owner))
             return float.MaxValue;
         distanceSquared = Vector3.DistanceSquared(Owner.Position, dest.Position);
         return distanceSquared;
@@ -301,8 +316,68 @@ public sealed class SupplyGatherer
 
     // ---- The state machine ----
 
+    // OpenGZH: a gatherer that can't reach its dock (a pile hemmed in by rocks or buildings) gives it up for a while.
+    const int StuckFrames = 8 * LogicTime.FramesPerSecond, AvoidFrames = 60 * LogicTime.FramesPerSecond;
+    Vector3 stuckAt;
+    float stuckDistance = float.MaxValue;
+    int stuckBoxes = -1, stuckSince;
+    readonly Dictionary<uint, int> avoidUntil = new();
+
+    /// <summary>Docks given up as out of reach (diagnostics).</summary>
+    public static int GiveUps;
+    public int StuckFramesSoFar => Game.Frame - stuckSince;
+    public string ResetReason { get; private set; } = "";
+
+    bool Avoided(GameObject dock) => avoidUntil.TryGetValue(dock.Id, out int until) && Game.Frame < until;
+
+    uint lastDock;
+
+    void CheckStuck()
+    {
+        if (ai.DockTargetId != 0)
+            lastDock = ai.DockTargetId;
+        // A player's truck told to wait (Busy, or left idle) is left alone; a computer's idle truck goes back to work.
+        bool computer = Owner.Owner.IsComputer;
+        if (!computer && State is StateId.Busy or StateId.Idle || ForceBusy)
+        {
+            ResetReason = $"wait computer={computer} state={State} forceBusy={ForceBusy}";
+            stuckAt = Owner.Position;
+            stuckBoxes = Boxes;
+            stuckSince = Game.Frame;
+            return;
+        }
+        // Progress over a window of StuckFrames: a load gained or lost, or closer to where it is going (the dock it
+        // heads for, else anywhere 40 units on: a docker held up is jostled about, which isn't progress).
+        var goal = Game.FindObject(lastDock)?.Position;
+        float distance = goal is { } g ? MathUtil.Distance2D(Owner.Position, g) : 0;
+        bool closer = goal != null ? distance < stuckDistance - 16 : MathUtil.DistanceSquared2D(Owner.Position, stuckAt) > 40 * 40;
+        if (Boxes != stuckBoxes || closer)
+        {
+            ResetReason = $"progress boxes {stuckBoxes}->{Boxes} distance {stuckDistance:0}->{distance:0}";
+            stuckDistance = goal != null ? distance : float.MaxValue;
+            stuckAt = Owner.Position;
+            stuckBoxes = Boxes;
+            stuckSince = Game.Frame;
+            return;
+        }
+        if (Game.Frame - stuckSince < StuckFrames)
+            return;
+        // None for a while: the pile it keeps going for is out of reach; another one.
+        GiveUps++;
+        if (lastDock != 0 && Game.FindObject(lastDock)?.FindModule<SupplyWarehouseDockUpdate>() != null)
+            avoidUntil[lastDock] = Game.Frame + AvoidFrames;
+        lastDock = 0;
+        PreferredDockId = 0;
+        stuckDistance = float.MaxValue;
+        stuckAt = Owner.Position;
+        stuckSince = Game.Frame;
+        ai.Stop(CommandSource.AI);
+        ForceWanting = true;
+    }
+
     public void Update()
     {
+        CheckStuck();
         // Transitions out of the current state are checked first, in the original's order.
         var next = CheckConditions();
         if (next != null)
@@ -421,7 +496,9 @@ public class SupplyTruckAIUpdate : AIUpdateInterface
     public override int Update()
     {
         Gatherer.Update();
-        return base.Update();
+        int sleep = base.Update();
+        // (Awake now and then while docking, to notice a dock it can't reach.)
+        return Gatherer.State == SupplyGatherer.StateId.Docking ? Math.Min(sleep, LogicTime.FramesPerSecond / 2) : sleep;
     }
 }
 

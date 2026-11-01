@@ -23,6 +23,8 @@ public sealed class Weapon
     public int NextShotFrame { get; private set; }
     public int LastFireFrame { get; private set; } = -1000;
     public int ShotsFiredThisBarrel { get; private set; }
+    /// <summary>Every shot this weapon has fired (TD aircraft count their ammo from it).</summary>
+    public int ShotsFired { get; private set; }
 
     /// <summary>The barrel the next shot leaves from; each fires ShotsPerBarrel shots in turn.</summary>
     int currentBarrel;
@@ -70,6 +72,8 @@ public sealed class Weapon
         var bonus = WeaponBonus.None;
         Game.WeaponBonuses.Append(Owner.WeaponBonusFlags, ref bonus);
         Template.ExtraBonuses.Append(Owner.WeaponBonusFlags, ref bonus);
+        bonus.Damage *= Owner.Owner.FirepowerBias;
+        bonus.RateOfFire *= Owner.Owner.RateOfFireBias;
         return bonus;
     }
 
@@ -316,6 +320,7 @@ public sealed class Weapon
     {
         LastFireFrame = Game.Frame;
         ShotsFiredThisBarrel++;
+        ShotsFired++;
         if (Template.ClipSize > 0)
             AmmoInClip--;
 
@@ -359,6 +364,9 @@ public sealed class Weapon
             NextShotFrame = Game.Frame;
         }
     }
+
+    /// <summary>Empties the weapon until <see cref="Reload"/> (a TD aircraft out of ammo).</summary>
+    public void Empty() => AmmoInClip = 0;
 
     /// <summary>Instantly refills the clip (e.g. after docking at an airfield).</summary>
     public void Reload()

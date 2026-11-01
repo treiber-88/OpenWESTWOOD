@@ -42,6 +42,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 30
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -79,6 +80,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 8
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL TD_Projectile_DRAGON_SSMLocomotor
     Geometry: Sphere
@@ -118,6 +120,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 10
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL TD_Projectile_DRAGON_SSM2Locomotor
     Geometry: Sphere
@@ -157,6 +160,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 8
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL TD_Projectile_MISSILE_SAMLocomotor
     Geometry: Sphere
@@ -196,6 +200,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 8
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL TD_Projectile_DRAGON_TOWLocomotor
     Geometry: Sphere
@@ -383,6 +388,7 @@ Objects:
     DisplayName: TD projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    TdContrailLength: 8
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes

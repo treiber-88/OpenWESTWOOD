@@ -171,6 +171,8 @@ public sealed class Drawable
     }
 
     /// <summary>Seconds since any of its weapons last fired (sprite art shows recoil and firing frames).</summary>
+    /// <summary>Seconds this drawable has been animating (its clock).</summary>
+    public float Clock => clock;
     public float SecondsSinceFired => clock - Math.Max(lastFireTime[0], Math.Max(lastFireTime[1], lastFireTime[2]));
 
     public void OnWeaponFired(int slot)

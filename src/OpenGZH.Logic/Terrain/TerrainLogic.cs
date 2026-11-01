@@ -130,11 +130,13 @@ public sealed class TerrainLogic
     }
 
     readonly bool[] cliffCells;
+    readonly bool[]? sandCells;
 
     public TerrainLogic(MapFile map)
     {
         Heights = map.HeightMap;
         Tiles = map.BlendTiles;
+        sandCells = map.SandCells;
         var playable = Heights.Boundaries.Count > 0 ? Heights.Boundaries[0] : (Heights.Width - 2 * Border, Heights.Height - 2 * Border);
         WorldWidth = playable.Item1 * MapFile.CellSize;
         WorldHeight = playable.Item2 * MapFile.CellSize;
@@ -302,6 +304,17 @@ public sealed class TerrainLogic
     }
 
     // ---- Cliffs and water ----
+
+    /// <summary>Whether a point is open sand (Dune 2000 maps; sandworms keep to it).</summary>
+    public bool IsSand(float worldX, float worldY)
+    {
+        if (sandCells == null)
+            return false;
+        var (x, y) = CellAt(worldX, worldY);
+        return IsInsideGrid(x, y) && sandCells[y * CellsX + x];
+    }
+
+    public bool HasSand => sandCells != null;
 
     public bool IsCliffCell(int cellX, int cellY) =>
         IsInsideGrid(cellX, cellY) && cliffCells[cellY * CellsX + cellX];

@@ -158,6 +158,9 @@ public sealed class SpawnBehavior : Module, IUpdateModule, IDieModule, IDamageMo
         }
         newSpawn.ProducerId = parent.Id;
         newSpawn.FindModule<ISlavedUpdate>()?.OnEnslave(parent);
+        // OpenGZH (Yuri's slaves): a gathering spawn heads off to gather, as a supply center's new truck does.
+        if (SlavesHaveFreeWill && Supply.SupplyGatherer.Of(newSpawn) is { } gatherer)
+            gatherer.ForceWanting = true;
         spawnIds.Add(newSpawn.Id);
         if (!reclaimed)
         {

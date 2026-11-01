@@ -20,6 +20,8 @@ public sealed class TextureCache : IDisposable
 
     public Texture White { get; }
 
+    public VirtualFileSystem FileSystem => fileSystem;
+
     public TextureCache(GL gl, VirtualFileSystem fileSystem)
     {
         this.gl = gl;
@@ -75,6 +77,8 @@ public sealed class TextureCache : IDisposable
     /// </summary>
     public Texture? GetHouseColored(string name, uint rgb)
     {
+        if (name.StartsWith(OpenGZH.Formats.Sage.SageW3d.TextureFolder, StringComparison.OrdinalIgnoreCase))
+            return GetKwHouseColored(name, rgb);
         if (name.Length < 4 || !name.StartsWith("ZHC", StringComparison.OrdinalIgnoreCase))
             return Get(name);
 
@@ -132,6 +136,49 @@ public sealed class TextureCache : IDisposable
             image.Pixels[at + 1] = newPalette[index * 3 + 1];
             image.Pixels[at + 2] = newPalette[index * 3 + 2];
         }
+    }
+
+    /// <summary>
+    /// Kane's Wrath: a texture's spec map ("..._SPM") marks house color in its blue channel; there the texture takes the
+    /// player's color, keeping its shading.
+    /// </summary>
+    Texture? GetKwHouseColored(string name, uint rgb)
+    {
+        string spm = name[..name.LastIndexOf('.')] + "_SPM.dds";
+        string key = $"{name}#{rgb:X6}";
+        if (textures.TryGetValue(key, out var cached))
+            return cached;
+        if (Resolve(spm) is not { } spmPath || Resolve(name) is not { } path)
+            return Get(name);
+        Texture? texture = null;
+        try
+        {
+            var image = Image.Load(fileSystem.ReadAllBytes(path), path);
+            var mask = Image.Load(fileSystem.ReadAllBytes(spmPath), spmPath);
+            float r = (rgb >> 16 & 0xFF) / 255f, g = (rgb >> 8 & 0xFF) / 255f, b = (rgb & 0xFF) / 255f;
+            for (int y = 0; y < image.Height; y++)
+                for (int x = 0; x < image.Width; x++)
+                {
+                    int at = (y * image.Width + x) * 4;
+                    int my = y * mask.Height / image.Height, mx = x * mask.Width / image.Width;
+                    float house = mask.Pixels[(my * mask.Width + mx) * 4 + 2] / 255f;
+                    if (house <= 0.02f)
+                        continue;
+                    float luma = (image.Pixels[at] * 0.3f + image.Pixels[at + 1] * 0.59f + image.Pixels[at + 2] * 0.11f) / 255f;
+                    float shade = Math.Min(1, luma * 1.8f);
+                    image.Pixels[at] = (byte)(255 * (house * r * shade + (1 - house) * image.Pixels[at] / 255f));
+                    image.Pixels[at + 1] = (byte)(255 * (house * g * shade + (1 - house) * image.Pixels[at + 1] / 255f));
+                    image.Pixels[at + 2] = (byte)(255 * (house * b * shade + (1 - house) * image.Pixels[at + 2] / 255f));
+                }
+            texture = new Texture(gl, image);
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine($"Could not house-color {name}: {e.Message}");
+            return Get(name);
+        }
+        textures[key] = texture;
+        return texture;
     }
 
     static void RecolorAlpha(Image image, uint rgb)

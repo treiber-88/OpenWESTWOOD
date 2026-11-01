@@ -41,6 +41,12 @@ public sealed class BuildAssistant
         if (tdStructure ? !IsNextToOwnBase(building, position, angle, player) : !IsWithinCommandCenterRange(building, position, player))
             return BuildLocation.TooFarFromCommandCenter;
 
+        // Dune 2000 buildings stand on rock or concrete, never sand (D2kBuilding TerrainTypes).
+        if (tdStructure && terrain.HasSand && RuleValue.Bool(building.Rules.GetString("TdRockOnly")))
+            foreach (var cell in Modules.Behaviors.D2kConcreteLayer.CellsOf(building, position))
+                if (terrain.IsSand(cell.X, cell.Y))
+                    return BuildLocation.RestrictedTerrain;
+
         bool shipyard = building.Is("SHIPYARD");
         int landCells = 0, waterCells = 0, totalCells = 0;
         float lowest = float.MaxValue, highest = float.MinValue;
@@ -120,14 +126,15 @@ public sealed class BuildAssistant
     /// <summary>
     /// Tiberian Dawn's adjacency rule (BuildingTypeClass::Legal_Placement / MapClass::Passes_Proximity_Check):
     /// a structure must touch, within one TD cell, a structure the player already owns. TD measures this on
-    /// the footprint plus a one-cell border, so here: the boxes (grown by one TD cell = 36 units) overlap.
+    /// the footprint plus a one-cell border, so here: the boxes (grown by one TD cell, TdScale.Cell) overlap.
     /// A Construction Yard (COMMANDCENTER) comes from an MCV and is exempt.
     /// </summary>
     bool IsNextToOwnBase(ObjectTemplate building, Vector3 position, float angle, Player player)
     {
         if (building.Is("COMMANDCENTER"))
             return true;
-        const float TdCell = 36;
+        // Red Alert's Adjacent= (cells; its shipyards may stand 8 cells off the base): TdAdjacent.
+        float TdCell = Modules.Behaviors.TdScale.Cell * Math.Max(1, RuleValue.Int(building.Rules.GetString("TdAdjacent"), 1));
         var mine = TdFootprint(building, position, angle);
         foreach (var obj in game.ObjectsInRadius(position, Math.Max(mine.HalfX, mine.HalfY) + TdCell + 200))
         {
@@ -164,6 +171,9 @@ public sealed class BuildAssistant
     /// </summary>
     public static bool TdBlocks(GameObject other, bool deploying)
     {
+        // TD builds over Tiberium, which goes (see ClearSceneryFor).
+        if (IsTdTiberium(other))
+            return false;
         if (other.IsKindOf(Kind.Structure))
             return true;
         if (!other.IsKindOf(Kind.Immobile) || other.Body == null)
@@ -173,13 +183,18 @@ public sealed class BuildAssistant
         return !deploying;
     }
 
-    /// <summary>Removes the scenery (immobile, not a building, with a body) under a structure that is going up.</summary>
+    /// <summary>A Tiberium patch of a TD map (a supply pile drawn as TD's Tiberium).</summary>
+    static bool IsTdTiberium(GameObject obj) => obj.IsKindOf(Kind.SupplySource) && obj.IsKindOf("TD_OBJECT");
+
+    /// <summary>Removes the scenery (immobile, not a building, with a body) and TD Tiberium under a structure that is going up.</summary>
     public void ClearSceneryFor(ObjectTemplate building, Vector3 position, float angle, GameObject? except = null)
     {
         var area = TdFootprint(building, position, angle);
         foreach (var other in game.ObjectsInRadius(area.Center, Math.Max(area.HalfX, area.HalfY) + 40).ToList())
         {
-            if (other == except || other.IsEffectivelyDead || other.IsKindOf(Kind.Structure) || !other.IsKindOf(Kind.Immobile) || other.Body == null)
+            if (other == except || other.IsEffectivelyDead)
+                continue;
+            if (!IsTdTiberium(other) && (other.IsKindOf(Kind.Structure) || !other.IsKindOf(Kind.Immobile) || other.Body == null))
                 continue;
             if (RectsOverlap(area.Center, angle, area.HalfX, area.HalfY, other.Position, other.Orientation, other.Radius, other.Radius))
                 game.DestroyObject(other);

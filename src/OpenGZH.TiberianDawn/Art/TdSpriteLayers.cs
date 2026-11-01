@@ -23,6 +23,9 @@ public readonly record struct TdSpriteState
     public int Altitude { get; init; }
     /// <summary>Missiles left (the MSAM / SAM site art shows them).</summary>
     public int Ammo { get; init; }
+    /// <summary>A Red Alert object (BUILDING.CPP differs from TD's: damage at or below ConditionYellow, WEAP2's
+    /// damaged frames +4, SAM +35, Chronosphere +29, the Tesla Coil's charge frames).</summary>
+    public bool RedAlert { get; init; }
 }
 
 /// <summary>
@@ -52,29 +55,45 @@ public static class TdSpriteLayers
         var active = b.Anim(BStateType.BSTATE_ACTIVE);
         int shapenum = idle.Start + (idle.Count > 1 ? Stage(s, idle.Rate) % idle.Count : 0);
 
-        if (b.Type == StructType.STRUCT_OBELISK)
+        if (b.Type == StructType.STRUCT_OBELISK || s.RedAlert && b.IniName == "TSLA")
             shapenum = s.Firing ? 3 : 0;
+        // Red Alert: damaged at or below ConditionYellow (half), TD below half.
+        bool damaged = s.RedAlert ? s.HealthRatio <= 0x0080 : s.HealthRatio < 0x0080;
+        bool weap = b.Type == StructType.STRUCT_WEAP || s.RedAlert && b.IniName == "WEAF";
 
         if (b.IsTurretEquipped)
         {
             shapenum = TdMath.BodyShape[TdMath.Facing32[s.TurretDir]];
-            if (b.Type == StructType.STRUCT_SAM)
-                shapenum += 16; // raised and ready (TD lowers it when idle; ZH has no such state)
-            else if (s.Firing)
-                shapenum += 32;
-            if (s.HealthRatio < 0x0080)
-                shapenum += 64;
+            if (s.RedAlert && b.IniName == "SAM")
+            {
+                // Red Alert's SAM site turns its whole body; its damaged frames follow 35 later.
+                if (damaged)
+                    shapenum += 35;
+            }
+            else
+            {
+                if (b.Type == StructType.STRUCT_SAM && !s.RedAlert)
+                    shapenum += 16; // raised and ready (TD lowers it when idle; ZH has no such state)
+                else if (s.Firing)
+                    shapenum += 32;
+                if (damaged)
+                    shapenum += 64;
+            }
         }
-        else if (b.Type == StructType.STRUCT_WEAP)
+        else if (weap)
         {
-            shapenum = s.HealthRatio < 0x0080 ? 1 : 0;
+            shapenum = damaged ? 1 : 0;
         }
-        else if (b.Type == StructType.STRUCT_STORAGE)
+        else if (b.Type == StructType.STRUCT_STORAGE && !s.RedAlert || s.RedAlert && b.IniName == "SILO")
         {
-            if (s.HealthRatio < 0x0080)
+            if (damaged)
                 shapenum += 5;
         }
-        else if (s.HealthRatio < 0x0080)
+        else if (damaged && s.RedAlert && b.IniName == "PDOX")
+        {
+            shapenum += 29;
+        }
+        else if (damaged)
         {
             if (!b.IsSimpleDamage)
             {
@@ -93,8 +112,8 @@ public static class TdSpriteLayers
         layers.Add(new TdShapeLayer(null, shapenum, 0, 0));
 
         // The war factory's door and roof (WEAP2) go over the body.
-        if (b.Type == StructType.STRUCT_WEAP)
-            layers.Add(new TdShapeLayer("WEAP2", s.HealthRatio < 0x0080 ? 10 : 0, 0, 0));
+        if (weap)
+            layers.Add(new TdShapeLayer("WEAP2", damaged ? (s.RedAlert ? 4 : 10) : 0, 0, 0));
     }
 
     static readonly int[] HarvestStage = [0, 1, 2, 3, 2, 1];
@@ -148,7 +167,7 @@ public static class TdSpriteLayers
     {
         var doit = s.Dying ? DoType.DO_GUN_DEATH : s.Firing ? DoType.DO_FIRE_WEAPON : s.Moving ? DoType.DO_WALK : DoType.DO_STAND_READY;
         // INFANTRY.CPP's MasterDoControls rates (TD ticks a frame).
-        int rate = doit switch { DoType.DO_WALK => 2, DoType.DO_FIRE_WEAPON => 1, DoType.DO_GUN_DEATH => 2, _ => 0 };
+        int rate = doit switch { DoType.DO_WALK => 1, /* TD walks a frame every 2 ticks; soldiers move twice as fast here, so the legs keep up */ DoType.DO_FIRE_WEAPON => 1, DoType.DO_GUN_DEATH => 2, _ => 0 };
         var control = cls.DoControl(doit);
         int count = Math.Max(control.Count, 1);
         int stage = Stage(s, rate);

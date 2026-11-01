@@ -33,8 +33,9 @@ public sealed class TdContent : IDisposable
     public RuleNode? TemplateById(int id)
     {
         templatesById ??= Rules.Section("Templates").Entries
-            .Where(e => int.TryParse(e.Value.GetString("Id"), out _))
-            .GroupBy(e => int.Parse(e.Value.GetString("Id")))
+            .Select(e => (e.Key, Value: e.Value, Id: e.Value.GetString("Id") is { Length: > 0 } id ? id : e.Value.GetString("ID"))) // RA: "ID"
+            .Where(e => int.TryParse(e.Id, out _))
+            .GroupBy(e => int.Parse(e.Id))
             .ToDictionary(g => g.Key, g => g.First().Value);
         return templatesById.GetValueOrDefault(id);
     }

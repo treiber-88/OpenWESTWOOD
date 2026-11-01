@@ -42,6 +42,9 @@ public sealed class MapCache
 
     public MapMetaData? Find(string mapPath) => maps.GetValueOrDefault(Key(mapPath));
 
+    /// <summary>Adds (or replaces) a map that isn't in MapCache.ini (OpenGZH: e.g. Tiberian Dawn's maps).</summary>
+    public void Add(MapMetaData map) => maps[map.FileName] = map;
+
     public static MapCache Load(VirtualFileSystem fileSystem)
     {
         var cache = new MapCache();

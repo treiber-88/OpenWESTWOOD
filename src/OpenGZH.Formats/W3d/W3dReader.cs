@@ -436,7 +436,7 @@ public static class W3dReader
     }
 
     /// <summary>Filter table used by adaptive-delta animation compression (same values as the original encoder).</summary>
-    static readonly float[] AdaptiveDeltaFilter = BuildAdaptiveDeltaFilter();
+    internal static readonly float[] AdaptiveDeltaFilter = BuildAdaptiveDeltaFilter();
 
     static float[] BuildAdaptiveDeltaFilter()
     {

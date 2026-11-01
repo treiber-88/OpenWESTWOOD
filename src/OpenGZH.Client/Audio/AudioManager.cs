@@ -875,7 +875,8 @@ public sealed unsafe class AudioManager : IDisposable
             return null;
         try
         {
-            var pcm = WavFile.Decode(files.ReadAllBytes(path));
+            var bytes = files.ReadAllBytes(path);
+            var pcm = Formats.Audio.AudFile.IsAud(bytes) ? Formats.Audio.AudFile.Decode(bytes) : WavFile.Decode(bytes); // Westwood .AUD (TD, Dune 2000) or .wav
             uint buffer = al.GenBuffer();
             var format = pcm.Channels == 2 ? BufferFormat.Stereo16 : BufferFormat.Mono16;
             fixed (short* data = pcm.Samples)

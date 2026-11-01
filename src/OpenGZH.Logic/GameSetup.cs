@@ -181,7 +181,24 @@ public static class GameSetup
         var game = FromMap(map, rules, info.Seed, slots: null, info.StartingCash, Difficulty.Normal, models, readFile,
             random => info.ToPlayerSlots(random, rules, meta, locked.Contains));
         game.SuperweaponRestriction = info.SuperweaponRestriction ? 1 : 0;
+        ApplyVisibility(game, info.ExploredMap, info.NoFogOfWar);
         return game;
+    }
+
+    /// <summary>
+    /// The match's map options: an explored map (the shroud lifted for every player at the start, fog
+    /// still over what nobody sees) and no fog of war (every player sees the whole map all game).
+    /// </summary>
+    public static void ApplyVisibility(GameLogic game, bool exploredMap, bool noFogOfWar)
+    {
+        foreach (var player in game.Players.All.Where(p => !p.IsNeutral))
+        {
+            if (noFogOfWar)
+                game.Shroud.RevealMapForPlayerPermanently(player);
+            else if (exploredMap)
+                game.Shroud.RevealMapForPlayer(player);
+        }
+        game.Shroud.Update();
     }
 
     static int CountTeams(IReadOnlyList<PlayerSlot> slots)
@@ -430,6 +447,8 @@ public static class GameSetup
             obj.AI.Attitude = (Attitude)attitude;
         if (properties.TryGetValue("objectRecruitableAI", out var recruitable) && recruitable is false && obj.AI != null)
             obj.AI.IsRecruitable = false;
+        if (properties.TryGetValue("objectMapData", out var mapData) && mapData is string data)
+            obj.MapData = data;
     }
 
     /// <summary>

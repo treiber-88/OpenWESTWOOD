@@ -182,6 +182,16 @@ public sealed class Radar : IDisposable
             int gx = Math.Clamp((int)MathF.Floor(p.X / Formats.Maps.MapFile.CellSize) + heights.BorderSize, 0, heights.Width - 1);
             int gy = Math.Clamp((int)MathF.Floor(p.Y / Formats.Maps.MapFile.CellSize) + heights.BorderSize, 0, heights.Height - 1);
             int index = gy * heights.Width + gx;
+            if (map.GroundImage is { } ground)
+            {
+                // A ground picture (a Tiberian Dawn map): its colour there; the top row is the north edge.
+                float spanX = (heights.Width - 1 - 2 * heights.BorderSize) * Formats.Maps.MapFile.CellSize;
+                float spanY = (heights.Height - 1 - 2 * heights.BorderSize) * Formats.Maps.MapFile.CellSize;
+                int px = Math.Clamp((int)(p.X / spanX * ground.Width), 0, ground.Width - 1);
+                int py = Math.Clamp((int)((1 - p.Y / spanY) * ground.Height), 0, ground.Height - 1);
+                int o = (py * ground.Width + px) * 4;
+                return new Vector3(ground.Pixels[o], ground.Pixels[o + 1], ground.Pixels[o + 2]) / 255f;
+            }
             if (map.BlendTiles == null || index >= map.BlendTiles.TileIndices.Length)
                 return Vector3.Zero;
             return atlas.TileAverageColor(map.BlendTiles.TileIndices[index]);

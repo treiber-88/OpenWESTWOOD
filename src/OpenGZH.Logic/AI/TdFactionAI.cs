@@ -31,7 +31,7 @@ public sealed class TdFactionAI : AIPlayer
     const int RefineryRatio = 0x28, BarracksRatio = 0x28, WarRatio = 0x19, DefenseRatio = 0x66, AARatio = 0x24, HelipadRatio = 0x1E, AirstripRatio = 0x1E;
     const int RefineryLimit = 4, BarracksLimit = 2, WarLimit = 2, DefenseLimit = 40, AALimit = 10, HelipadLimit = 5, AirstripLimit = 5;
     const int ThinkFrames = LogicTime.FramesPerSecond; // AI_Building returns TICKS_PER_SECOND
-    const float TdCell = 36;
+    const float TdCell = TdScale.Cell;
 
     enum Urgency { None, Low, Medium, High, Critical }
 
@@ -44,19 +44,34 @@ public sealed class TdFactionAI : AIPlayer
         nextAttackFrame = game.Frame + AttackDelayMinutes * 60 * LogicTime.FramesPerSecond;
     }
 
+    /// <summary>Seconds before the first attack (five minutes; the shell battle's houses go sooner).</summary>
+    public float AttackDelaySeconds
+    {
+        get => AttackDelayMinutes * 60;
+        // (Each computer player a little later than the one before, so they don't all march on the same frame.)
+        set => nextAttackFrame = game.Frame + (int)(value * LogicTime.FramesPerSecond) + player.Index * 2 * LogicTime.FramesPerSecond;
+    }
+
+    /// <summary>Seconds between attacks (three minutes).</summary>
+    public float AttackIntervalSeconds { get; set; } = AttackIntervalMinutes * 60;
+
     public override bool IsSkirmishAI => true;
 
     /// <summary>A Tiberian Dawn object type name (STRUCT_POWER, UNIT_MTANK...) from the exported Draw module, or "".</summary>
     public static string TdTypeOf(ObjectTemplate template)
     {
+        // Red Alert's objects name their role (their RA type: STRUCT_POWER, UNIT_HARVESTER...).
+        if (template.Rules.GetString("TdRole") is { Length: > 0 } role)
+            return role;
         foreach (var module in template.Modules)
-            if (module.ClassName.Equals("TDSpriteDraw", StringComparison.OrdinalIgnoreCase))
+            if (module.ClassName.Equals("TDSpriteDraw", StringComparison.OrdinalIgnoreCase) || module.ClassName.Equals("D2KSpriteDraw", StringComparison.OrdinalIgnoreCase))
                 return module.Settings.GetString("TdType");
         return "";
     }
 
     public override void Update()
     {
+        IssuePendingOrder();
         if (game.Frame < nextThinkFrame)
             return;
         nextThinkFrame = game.Frame + ThinkFrames;
@@ -65,8 +80,11 @@ public sealed class TdFactionAI : AIPlayer
         DeployMcv(mine);
         PlaceReadyStructures(mine);
         BuildStructure(mine);
+        ResearchUpgrades(mine);
         BuildUnits(mine);
+        UsePowers(mine);
         Attack(mine);
+        SpreadOut(mine);
     }
 
     public override void NewMap() => ComputeBase();
@@ -122,14 +140,28 @@ public sealed class TdFactionAI : AIPlayer
 
         var buildable = CommandSets.BuildableObjects(game.Catalog, yard.CommandSetName, "UNIT_BUILD")
             .Select(n => game.Templates.Find(n)).OfType<ObjectTemplate>()
-            .ToDictionary(t => TdTypeOf(t), StringComparer.OrdinalIgnoreCase);
+            .Where(t => TdTypeOf(t).Length > 0)
+            .GroupBy(t => TdTypeOf(t), StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(g => g.Key, g => g.ToList(), StringComparer.OrdinalIgnoreCase);
         int money = player.Money.Amount;
         int buildings = mine.Count(o => o.IsKindOf(Kind.Structure));
         bool hasIncome = Count(mine, "STRUCT_REFINERY") > 0 && Count(mine, "UNIT_HARVESTER") > 0;
         var choices = new List<(Urgency Urgency, ObjectTemplate Template)>();
 
-        bool CanBuild(string type, out ObjectTemplate template) =>
-            buildable.TryGetValue(type, out template!) && production.CanQueueUnit(template) is null or "NotEnoughMoney" && player.CanBuild(template);
+        // Several structures may fill one role (Dune 2000's light and heavy factory): the one owned fewest of first.
+        bool CanBuild(string type, out ObjectTemplate template)
+        {
+            template = null!;
+            if (!buildable.TryGetValue(type, out var options))
+                return false;
+            foreach (var t in options.OrderBy(t => mine.Count(o => o.Template == t)))
+                if (production.CanQueueUnit(t) is null or "NotEnoughMoney" && player.CanBuild(t))
+                {
+                    template = t;
+                    return true;
+                }
+            return false;
+        }
         bool Affordable(ObjectTemplate t) => t.BuildCost < money || hasIncome;
         void Choose(Urgency urgency, ObjectTemplate template) => choices.Add((urgency, template));
 
@@ -157,19 +189,22 @@ public sealed class TdFactionAI : AIPlayer
             Choose(factories > 0 ? Urgency.Low : Urgency.Medium, weap);
 
         // TD's AI only knows the Obelisk and the Nod turret; GDI's towers stand in for them here.
-        int defenses = Count(mine, "STRUCT_TURRET", "STRUCT_OBELISK", "STRUCT_GTOWER", "STRUCT_ATOWER");
+        // Red Alert's (by its AI's preference, strongest first): the Tesla coil, flame tower, turret, pillboxes.
+        string[] defenseRoles = ["STRUCT_OBELISK", "STRUCT_TESLA", "STRUCT_TURRET", "STRUCT_FLAME_TURRET", "STRUCT_ATOWER", "STRUCT_GTOWER", "STRUCT_PILLBOX", "STRUCT_CAMOPILLBOX"];
+        int defenses = Count(mine, defenseRoles);
+        ObjectTemplate defense = null!;
         if (defenses < Wanted(DefenseRatio, buildings) && defenses < DefenseLimit
-            && (CanBuild("STRUCT_OBELISK", out var defense) || CanBuild("STRUCT_TURRET", out defense)
-                || CanBuild("STRUCT_ATOWER", out defense) || CanBuild("STRUCT_GTOWER", out defense)) && Affordable(defense))
+            && defenseRoles.Any(role => CanBuild(role, out defense)) && Affordable(defense))
             Choose(Urgency.Medium, defense);
 
-        int sams = Count(mine, "STRUCT_SAM");
+        // Anti-aircraft: TD's SAM site; Red Alert's SAM (Soviet) and AA gun (Allies).
+        int sams = Count(mine, "STRUCT_SAM", "STRUCT_AAGUN");
         int enemyAircraft = game.Players.Active.Where(IsEnemy).Sum(p => game.ObjectsOwnedBy(p).Count(o => o.IsKindOf(Kind.Aircraft)));
         if (sams < Wanted(AARatio, buildings) && sams < AALimit && enemyAircraft > 0)
         {
             if (Count(mine, "STRUCT_RADAR") == 0 && CanBuild("STRUCT_RADAR", out var radar) && Affordable(radar))
                 Choose(Urgency.High, radar);
-            if (CanBuild("STRUCT_SAM", out var sam) && Affordable(sam))
+            if ((CanBuild("STRUCT_SAM", out var sam) || CanBuild("STRUCT_AAGUN", out sam)) && Affordable(sam))
                 Choose(sams < enemyAircraft ? Urgency.High : Urgency.Medium, sam);
         }
 
@@ -182,11 +217,29 @@ public sealed class TdFactionAI : AIPlayer
         if (airstrips < Wanted(AirstripRatio, buildings) && airstrips < AirstripLimit && CanBuild("STRUCT_AIRSTRIP", out var strip) && Affordable(strip))
             Choose(ownAircraft < enemyAircraft ? Urgency.High : Urgency.Medium, strip);
 
+        // Red Alert 2's tech (AIBuildThis: Battle Labs, superweapons, ...): one of each, once the base is up and
+        // there is money to spare; a radar first, which they all need.
+        if (factories > 0 && refineries > 0 && buildable.TryGetValue("STRUCT_TECH", out var techs))
+        {
+            if (Count(mine, "STRUCT_RADAR") == 0 && CanBuild("STRUCT_RADAR", out var techRadar) && Affordable(techRadar))
+                Choose(refineries >= 2 ? Urgency.High : Urgency.Low, techRadar);
+            foreach (var t in techs.Where(t => mine.All(o => o.Template != t)).OrderBy(t => t.BuildCost))
+                if (production.CanQueueUnit(t) is null && player.CanBuild(t) && (t.BuildCost < money || hasIncome))
+                {
+                    Choose(Count(mine, "STRUCT_RADAR") > 0 ? Urgency.Medium : Urgency.Low, t);
+                    break;
+                }
+        }
+
         // The most urgent choice (the first one, on a tie).
         var best = choices.Where(c => c.Urgency != Urgency.None).OrderByDescending(c => c.Urgency).Select(c => c.Template).FirstOrDefault();
-        if (best != null)
-            production.QueueUnit(best);
+        // A structure it can't pay for yet: the factories wait (but for harvesters) until the money is there, as
+        // HouseClass's AI holds back unit production for its base (else cheap units would take every credit).
+        savingFor = best != null && production.QueueUnit(best) == null && production.CanQueueUnit(best) == "NotEnoughMoney" ? best : null;
     }
+
+    /// <summary>The structure the construction yard is saving up for (null: none).</summary>
+    ObjectTemplate? savingFor;
 
     /// <summary>A finished structure goes next to the base: the nearest legal spot to the base centre (Find_Build_Location).</summary>
     void PlaceReadyStructures(List<GameObject> mine)
@@ -232,10 +285,40 @@ public sealed class TdFactionAI : AIPlayer
     // ---- Units ----
 
     /// <summary>AI_Unit / AI_Infantry / AI_Aircraft: each idle factory gets something to make.</summary>
+    /// <summary>
+    /// Building upgrades (Dune 2000's; the d2k AI wants each once): researched at an idle building when there's
+    /// money to spare for it and a reserve.
+    /// </summary>
+    void ResearchUpgrades(List<GameObject> mine)
+    {
+        foreach (var building in mine)
+        {
+            if (building.IsUnderConstruction || building.FindModule<ProductionUpdate>() is not { } production || production.Queue.Count > 0)
+                continue;
+            foreach (var (_, button) in CommandSets.Buttons(game.Catalog, building.CommandSetName))
+            {
+                if (button.CommandType != "PLAYER_UPGRADE" || button.Upgrade.Length == 0 || player.HasUpgrade(button.Upgrade)
+                    || mine.Any(o => o.FindModule<ProductionUpdate>()?.Queue.Any(e => e.Upgrade == button.Upgrade) == true))
+                    continue;
+                int cost = RuleValue.Int(game.Catalog.Upgrade(button.Upgrade)?.GetString("BuildCost") ?? "0");
+                if (player.Money.Amount >= cost + 1500)
+                    production.QueueUpgrade(button.Upgrade);
+                break;
+            }
+        }
+    }
+
     void BuildUnits(List<GameObject> mine)
     {
         int harvesters = Count(mine, "UNIT_HARVESTER");
         int refineries = Count(mine, "STRUCT_REFINERY");
+        // Infantry is cheap and a barracks never waits, so it would spend everything: once foot soldiers clearly
+        // outnumber vehicles, the barracks leaves the money to a war factory (TD and RA's AIs balance their teams).
+        bool HasArms(GameObject o) => o.Template.Rules.TryGet("WeaponSet", out _);
+        int infantry = mine.Count(o => o.IsKindOf(Kind.Infantry) && HasArms(o) && !o.IsEffectivelyDead);
+        int vehicles = mine.Count(o => o.IsKindOf(Kind.Vehicle) && HasArms(o) && !o.IsEffectivelyDead && TdTypeOf(o.Template) is not ("UNIT_HARVESTER" or "UNIT_MCV"));
+        bool hasWarFactory = mine.Any(o => !o.IsUnderConstruction && o.IsKindOf("FS_WARFACTORY"));
+        bool saveForVehicles = hasWarFactory && infantry > vehicles * 2 + 4;
         foreach (var factory in mine)
         {
             if (factory.IsUnderConstruction || factory.FindModule<ProductionUpdate>() is not { PlacesStructures: false } production || production.Queue.Count > 0)
@@ -244,6 +327,10 @@ public sealed class TdFactionAI : AIPlayer
                 .Select(n => game.Templates.Find(n)).OfType<ObjectTemplate>()
                 .Where(t => production.CanQueueUnit(t) == null && player.CanBuild(t)).ToList();
             if (options.Count == 0)
+                continue;
+            if (saveForVehicles && factory.IsKindOf("FS_BARRACKS") && !factory.IsKindOf("FS_WARFACTORY"))
+                continue;
+            if (savingFor != null && player.Money.Amount < savingFor.BuildCost && (refineries <= harvesters || options.All(t => TdTypeOf(t) != "UNIT_HARVESTER")))
                 continue;
 
             // A harvester for each refinery first.
@@ -273,6 +360,83 @@ public sealed class TdFactionAI : AIPlayer
         }
     }
 
+    // ---- Superweapons (HouseClass::Special_Weapon_AI) ----
+
+    /// <summary>
+    /// A ready power is used: a targeted one (Ion Cannon, nuke, Death Hand) on the enemy structure with the
+    /// most other enemy structures round it (TD aims at the enemy's best building); a summoning one at once.
+    /// </summary>
+    void UsePowers(List<GameObject> mine)
+    {
+        foreach (var obj in mine)
+        {
+            if (obj.IsUnderConstruction)
+                continue;
+            foreach (var power in obj.FindModules<Modules.SpecialPowers.OCLSpecialPower>())
+            {
+                if (!power.IsReady || power.Power is not { } template)
+                    continue;
+                if (template.RadiusCursorRadius <= 0)
+                {
+                    power.DoSpecialPower(0);
+                    continue;
+                }
+                var enemyStructures = game.Players.Active.Where(IsEnemy).SelectMany(p => game.ObjectsOwnedBy(p))
+                    .Where(o => !o.IsEffectivelyDead && o.IsKindOf(Kind.Structure)).ToList();
+                var best = enemyStructures.OrderByDescending(o => enemyStructures.Count(n => MathUtil.Distance2D(n.Position, o.Position) < template.RadiusCursorRadius * 1.5f)).FirstOrDefault();
+                if (best != null)
+                    power.DoSpecialPowerAtLocation(best.Position, float.NaN, 0);
+            }
+            // Red Alert's: the GPS at once; the Iron Curtain on its strongest vehicle when an enemy is near it.
+            // (The Chronosphere is left to players.)
+            foreach (var weapon in obj.FindModules<Modules.Behaviors.RaSuperweapon>())
+            {
+                if (!weapon.IsReady)
+                    continue;
+                if (weapon.Mode == "GPS")
+                    weapon.DoSpecialPower(0);
+                else if (weapon.Mode == "IronCurtain"
+                    && mine.Where(o => !o.IsEffectivelyDead && o.IsMobile && o.IsKindOf(Kind.Vehicle) && o.AI is { IsInAttackState: true })
+                        .OrderByDescending(o => o.MaxHealth).FirstOrDefault() is { } tank)
+                    weapon.DoSpecialPowerAtObject(tank, 0);
+            }
+            // Red Alert 2's: storms and the Dominator on the enemy's densest base spot, the Mutator on its densest
+            // infantry, the Iron Curtain on its own attacking tanks, the Force Shield over its base when hit.
+            // (The Chronosphere is left to players.)
+            foreach (var weapon in obj.FindModules<Modules.Behaviors.Ra2Superweapon>())
+            {
+                if (!weapon.IsReady)
+                    continue;
+                List<GameObject> Enemy(Func<GameObject, bool> which) => game.Players.Active.Where(IsEnemy).SelectMany(p => game.ObjectsOwnedBy(p))
+                    .Where(o => !o.IsEffectivelyDead && which(o)).ToList();
+                GameObject? Densest(List<GameObject> targets, float radius) =>
+                    targets.OrderByDescending(o => targets.Count(n => MathUtil.Distance2D(n.Position, o.Position) < radius)).FirstOrDefault();
+                switch (weapon.Mode)
+                {
+                    case "LightningStorm" or "PsychicDominator":
+                        if (Densest(Enemy(o => o.IsKindOf(Kind.Structure) || o.IsMobile), TdScale.Cell * 4) is { } spot)
+                            weapon.DoSpecialPowerAtLocation(spot.Position, float.NaN, 0);
+                        break;
+                    case "GeneticConverter":
+                        var infantry = Enemy(o => o.IsKindOf(Kind.Infantry));
+                        if (infantry.Count >= 4 && Densest(infantry, TdScale.Cell * 2.5f) is { } crowd)
+                            weapon.DoSpecialPowerAtLocation(crowd.Position, float.NaN, 0);
+                        break;
+                    case "IronCurtain":
+                        if (mine.Where(o => !o.IsEffectivelyDead && o.IsMobile && o.IsKindOf(Kind.Vehicle) && o.AI is { IsInAttackState: true })
+                                .OrderByDescending(o => o.MaxHealth).FirstOrDefault() is { } tank)
+                            weapon.DoSpecialPowerAtLocation(tank.Position, float.NaN, 0);
+                        break;
+                    case "ForceShield":
+                        if (mine.Where(o => o.IsKindOf(Kind.Structure) && !o.IsEffectivelyDead && o.Body is { } body && game.Frame - body.LastDamageFrame < LogicTime.FramesPerSecond * 2)
+                                .FirstOrDefault() is { } hit)
+                            weapon.DoSpecialPowerAtLocation(hit.Position, float.NaN, 0);
+                        break;
+                }
+            }
+        }
+    }
+
     // ---- Attacks ----
 
     bool IsEnemy(Player other) => other != player && !other.IsNeutral && player.RelationshipTo(other) == Relationship.Enemies;
@@ -281,7 +445,7 @@ public sealed class TdFactionAI : AIPlayer
     {
         if (game.Frame < nextAttackFrame)
             return;
-        nextAttackFrame = game.Frame + AttackIntervalMinutes * 60 * LogicTime.FramesPerSecond;
+        nextAttackFrame = game.Frame + (int)(AttackIntervalSeconds * LogicTime.FramesPerSecond);
 
         var army = mine.Where(o => o.IsMobile && o.AI is { IsIdle: true } && o.Template.Rules.TryGet("WeaponSet", out _)
             && TdTypeOf(o.Template) is not ("UNIT_HARVESTER" or "UNIT_MCV")).ToList();
@@ -293,7 +457,66 @@ public sealed class TdFactionAI : AIPlayer
             .OrderBy(o => o.IsKindOf(Kind.Structure) ? 0 : 1).ThenBy(o => MathUtil.Distance2D(o.Position, from)).FirstOrDefault();
         if (target == null)
             return;
-        foreach (var unit in army)
-            unit.AI!.AttackMoveTo(target.Position, Commands.CommandSource.AI);
+        // Each unit its own spot round the target (rings of six, twelve, ...), so the army arrives spread out
+        // rather than piled onto one point (TD's teams move in formation). The orders go out one a frame: each
+        // finds its own path, and a whole army doing so at once stalls the game.
+        for (int i = 0; i < army.Count; i++)
+            pendingOrders.Enqueue((army[i].Id, target.Position + SpreadOffset(i, Math.Max(18, army[i].Radius * 2.2f))));
+    }
+
+    readonly Queue<(uint Unit, Vector3 To)> pendingOrders = new();
+
+    void IssuePendingOrder()
+    {
+        while (pendingOrders.Count > 0)
+        {
+            var (id, to) = pendingOrders.Dequeue();
+            if (game.FindObject(id) is { IsEffectivelyDead: false, AI: { } ai })
+            {
+                ai.AttackMoveTo(to, Commands.CommandSource.AI);
+                return;
+            }
+        }
+    }
+
+    /// <summary>The i-th spot of a spread: the middle, then rings of 6, 12, 18 ... spots, spacing apart.</summary>
+    static Vector3 SpreadOffset(int i, float spacing)
+    {
+        if (i == 0)
+            return Vector3.Zero;
+        int ring = 1, first = 1;
+        while (i >= first + 6 * ring)
+        {
+            first += 6 * ring;
+            ring++;
+        }
+        float angle = (i - first) / (6f * ring) * MathF.Tau + ring * 0.5f;
+        return new Vector3(MathF.Cos(angle), MathF.Sin(angle), 0) * spacing * ring;
+    }
+
+    /// <summary>
+    /// Idle units standing on top of each other (left there by a fight, or by a factory's rally point) step apart, so
+    /// ten units never look like one.
+    /// </summary>
+    void SpreadOut(List<GameObject> mine)
+    {
+        var idle = mine.Where(o => o.IsMobile && !o.IsKindOf(Kind.Aircraft) && o.AI is { IsIdle: true } && !o.IsEffectivelyDead && !o.IsContained).ToList();
+        for (int i = 0; i < idle.Count; i++)
+            for (int j = i + 1; j < idle.Count; j++)
+            {
+                var a = idle[i];
+                var b = idle[j];
+                float apart = MathUtil.Distance2D(a.Position, b.Position), want = (a.Radius + b.Radius) * 0.8f;
+                if (apart >= want)
+                    continue;
+                // The later one steps away (a random way if they are on the very same spot).
+                var away = (b.Position - a.Position) with { Z = 0 };
+                if (away.LengthSquared() < 0.01f)
+                    away = new Vector3(MathF.Cos(j * 2.4f), MathF.Sin(j * 2.4f), 0);
+                var to = b.Position + Vector3.Normalize(away) * (want - apart + Math.Max(8, b.Radius));
+                if (game.Pathfinder.NearestPassable(to, b.AI!.Surfaces, 2) is { } spot)
+                    b.AI.MoveTo(spot, Commands.CommandSource.AI);
+                break;
+            }
     }
 }

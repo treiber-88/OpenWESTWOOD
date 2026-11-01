@@ -123,12 +123,14 @@ window.Run((gl, input, osWindow) =>
 
     // A quick skirmish against the computer: --skirmish "Maps/<name>/<name>.map" [--faction FactionAmerica] [--enemy FactionChina]
     string skirmishMap = options.Get("skirmish") ?? "Maps/Tournament Desert/Tournament Desert.map";
-    var map = OpenGZH.Formats.Maps.MapFile.Read(content.FileSystem.ReadAllBytes(skirmishMap));
+    var map = OpenGZH.Client.TiberianDawn.TdMaps.Read(content.FileSystem, skirmishMap); // also "td:SCM01EA"
     var game = OpenGZH.Logic.GameSetup.FromMap(map, content.Rules, (ulong)Environment.TickCount64,
     [
         new OpenGZH.Logic.PlayerSlot("Player", options.Get("faction") ?? "FactionAmerica", IsHuman: true, StartPosition: 1, Color: 0x2050FF),
         new OpenGZH.Logic.PlayerSlot("Enemy", options.Get("enemy") ?? "FactionChina", IsHuman: false, StartPosition: 2, Color: 0xE02020),
     ], models: content.Models, readFile: p => content.FileSystem.Exists(p) ? content.FileSystem.ReadAllBytes(p) : null);
+    // The lobby's map options: --explored (the map starts explored), --nofog (no fog of war).
+    OpenGZH.Logic.GameSetup.ApplyVisibility(game, options.Has("explored"), options.Has("nofog"));
     if (options.Has("reveal"))
         foreach (var player in game.Players.All)
             game.Shroud.RevealMapForPlayerPermanently(player);

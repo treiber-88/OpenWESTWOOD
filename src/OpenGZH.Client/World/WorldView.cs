@@ -52,6 +52,11 @@ public sealed class WorldView : IDisposable
 
     /// <summary>The FX name prefix of a Tiberian Dawn animation (TD weapons' FireFX and ProjectileDetonationFX).</summary>
     public const string TdFxPrefix = "TDFX:";
+    /// <summary>Red Alert effects: its animations by INI name ("RAFX:GUNFIRE|FBALL1").</summary>
+    public const string RaFxPrefix = "RAFX:";
+
+    /// <summary>The FX name prefix of a Dune 2000 animation ("D2KFX:image/sequence").</summary>
+    public const string D2kFxPrefix = "D2KFX:";
 
     /// <summary>Tiberian Dawn objects' sprites (made when the first one appears).</summary>
     TiberianDawn.TdSpriteRenderer? tdSprites;
@@ -134,14 +139,91 @@ public sealed class WorldView : IDisposable
         SelectionFlashSaturation = Core.Rules.RuleValue.Float(game.Catalog.GameData.Get("SelectionFlashSaturationFactor"), 0.5f);
         game.Events.OnFlashAsSelected += FlashAsSelected;
         // Tiberian Dawn weapons name their muzzle flash and explosion "TDFX:<TD animation>".
+        // A TD or Dune 2000 building that falls leaves craters (and fires) over its cells.
+        game.Events.OnObjectDied += (obj, _) =>
+        {
+            if (tdSprites == null || !Core.Rules.RuleValue.Bool(obj.Template.Rules.GetString("TdBuiltByYard")) || !IsVisibleToViewer(obj))
+                return;
+            var d2kCells = Logic.Modules.Behaviors.D2kConcreteLayer.CellsOf(obj.Template, obj.Position).ToList();
+            if (d2kCells.Count > 0)
+            {
+                tdSprites.BuildingDestroyed(d2kCells.Select(c => c with { Z = Game.Terrain.GroundHeight(c) + 1 }), d2kBuilding: true);
+                return;
+            }
+            var words = Core.Rules.RuleValue.Words(obj.Template.Rules.GetString("TdFootprint"));
+            if (words.Length != 4)
+                return;
+            const float cell = Logic.Modules.Behaviors.TdScale.Cell;
+            var center = obj.Position + new Vector3(Core.Rules.RuleValue.Float(words[0]), Core.Rules.RuleValue.Float(words[1]), 0);
+            float hx = Core.Rules.RuleValue.Float(words[2]), hy = Core.Rules.RuleValue.Float(words[3]);
+            var cells = new List<Vector3>();
+            for (float x = -hx + cell / 2; x < hx; x += cell)
+                for (float y = -hy + cell / 2; y < hy; y += cell)
+                {
+                    var c = center + new Vector3(x, y, 0);
+                    cells.Add(c with { Z = Game.Terrain.GroundHeight(c) + 1 });
+                }
+            tdSprites.BuildingDestroyed(cells, d2kBuilding: false);
+        };
         game.Events.OnFx += fx =>
         {
             if (fx.Name.StartsWith(TdFxPrefix, StringComparison.OrdinalIgnoreCase))
                 foreach (string anim in fx.Name[TdFxPrefix.Length..].Split('|'))
                     tdSprites?.PlayAnim(anim, fx.Position);
+            else if (fx.Name.StartsWith(D2kFxPrefix, StringComparison.OrdinalIgnoreCase))
+                foreach (string anim in fx.Name[D2kFxPrefix.Length..].Split('|'))
+                    tdSprites?.PlayD2kAnim(anim, fx.Position);
+            else if (fx.Name.StartsWith("RA2FX:", StringComparison.OrdinalIgnoreCase) || fx.Name.StartsWith("TSFX:", StringComparison.OrdinalIgnoreCase))
+            {
+                // Red Alert 2's (RA2FX:) or Tiberian Sun's (TSFX:) animations.
+                bool ts = fx.Name.StartsWith("TSFX:", StringComparison.OrdinalIgnoreCase);
+                foreach (string anim in fx.Name[(fx.Name.IndexOf(':') + 1)..].Split('|'))
+                    if (anim.Length > 0)
+                        tdSprites?.PlayRa2Anim(anim, fx.Position, ts);
+            }
+            else if (fx.Name.StartsWith(RaFxPrefix, StringComparison.OrdinalIgnoreCase))
+                foreach (string anim in fx.Name[RaFxPrefix.Length..].Split('|'))
+                    if (anim.Length > 0)
+                        tdSprites?.PlayRaAnim(anim, fx.Position);
         };
         game.Events.OnWeaponFireFx += fx =>
         {
+            if (fx.Name.StartsWith(D2kFxPrefix, StringComparison.OrdinalIgnoreCase) && tdSprites != null && IsVisibleToViewer(fx.Shooter))
+            {
+                // Dune 2000 instant hits: "muzzle|explosion", the explosion where the shot lands.
+                var d2kParts = fx.Name[D2kFxPrefix.Length..].Split('|');
+                for (int i = 1; i < d2kParts.Length; i++)
+                    tdSprites.PlayD2kAnim(d2kParts[i], fx.Target with { Z = Game.Terrain.GroundHeight(fx.Target) + 4 });
+                return;
+            }
+            if ((fx.Name.StartsWith("RA2FX:", StringComparison.OrdinalIgnoreCase) || fx.Name.StartsWith("TSFX:", StringComparison.OrdinalIgnoreCase))
+                && tdSprites != null && IsVisibleToViewer(fx.Shooter))
+            {
+                // Red Alert 2 / Tiberian Sun instant hits: "|explosion" where the shot lands; "ZAP|..." an electric bolt (IsElectricBolt).
+                bool ts = fx.Name.StartsWith("TSFX:", StringComparison.OrdinalIgnoreCase);
+                string wwParts = fx.Name[(fx.Name.IndexOf(':') + 1)..];
+                if (wwParts.StartsWith("ZAP|", StringComparison.OrdinalIgnoreCase))
+                    Effects.Zap(Muzzle(fx), fx.Target with { Z = Game.Terrain.GroundHeight(fx.Target) + 6 }, new Vector3(0.35f, 0.55f, 1f));
+                foreach (string ra2Anim in wwParts.Split('|').Skip(1))
+                    if (ra2Anim.Length > 0)
+                        tdSprites.PlayRa2Anim(ra2Anim, fx.Target with { Z = Game.Terrain.GroundHeight(fx.Target) + 4 }, ts);
+                return;
+            }
+            if (fx.Name.StartsWith(RaFxPrefix, StringComparison.OrdinalIgnoreCase) && tdSprites != null && IsVisibleToViewer(fx.Shooter))
+            {
+                // Red Alert: "muzzle|explosion" (Anim= at the muzzle, Combat_Anim where the shot lands).
+                var raParts = fx.Name[RaFxPrefix.Length..].Split('|');
+                var raFrom = fx.Shooter.Position;
+                float raTowards = MathF.Atan2(fx.Target.Y - raFrom.Y, fx.Target.X - raFrom.X);
+                // "ZAP": the Tesla Coil's and Tesla Tank's bolt (TECHNO.CPP Electric_Zap).
+                if (raParts[0].Equals("ZAP", StringComparison.OrdinalIgnoreCase))
+                    Effects.Zap(Muzzle(fx), fx.Target with { Z = Game.Terrain.GroundHeight(fx.Target) + 6 }, new Vector3(0.4f, 0.6f, 1f));
+                else if (raParts[0].Length > 0)
+                    tdSprites.PlayRaAnim(raParts[0], raFrom + new Vector3(MathF.Cos(raTowards), MathF.Sin(raTowards), 0) * fx.Shooter.Radius + new Vector3(0, 0, fx.Shooter.Height / 2));
+                if (raParts.Length > 1 && raParts[1].Length > 0)
+                    tdSprites.PlayRaAnim(raParts[1], fx.Target with { Z = Game.Terrain.GroundHeight(fx.Target) + 4 });
+                return;
+            }
             if (!fx.Name.StartsWith(TdFxPrefix, StringComparison.OrdinalIgnoreCase) || tdSprites == null || !IsVisibleToViewer(fx.Shooter))
                 return;
             var from = fx.Shooter.Position;
@@ -165,6 +247,14 @@ public sealed class WorldView : IDisposable
         Camera.FarPlane = 6000;
     }
 
+    /// <summary>Where a shot leaves the shooter: out from its middle towards the target, at its top half.</summary>
+    static Vector3 Muzzle(WeaponFireFx fx)
+    {
+        var from = fx.Shooter.Position;
+        float towards = MathF.Atan2(fx.Target.Y - from.Y, fx.Target.X - from.X);
+        return from + new Vector3(MathF.Cos(towards), MathF.Sin(towards), 0) * fx.Shooter.Radius * 0.6f + new Vector3(0, 0, Math.Max(6, fx.Shooter.Height * 0.7f));
+    }
+
     float stealthFriendlyOpacity = 0.5f;
 
     /// <summary>SelectionFlashSaturationFactor from the game data.</summary>
@@ -186,7 +276,12 @@ public sealed class WorldView : IDisposable
                 tdSpritesTried = true;
                 tdSprites = TiberianDawn.TdSpriteRenderer.TryCreate(gl);
                 if (tdSprites != null)
+                {
                     tdSprites.Shroud = viewer != null ? shroud : null;
+                    tdSprites.IsSand = p => Game.Terrain.IsSand(p.X, p.Y);
+                    var spiceSprites = tdSprites;
+                    Effects.GroundLayers = r => spiceSprites.RenderSpice(r, Game);
+                }
             }
             tdSprites?.OnCreated(obj, atStart);
         }
@@ -280,6 +375,7 @@ public sealed class WorldView : IDisposable
             }
         }
         visibleInstances.AddRange(bridges.Instances());
+        tdSprites?.AddD2kConcrete(Logic.Modules.Behaviors.D2kConcreteLayer.Cells(Game), Camera);
         tdSprites?.AddAnims(seconds, Camera);
         tdSprites?.Draw(viewProjection, Camera);
         modelRenderer.Draw(visibleInstances, viewProjection, Camera.Position, ObjectLighting, Camera.View);
@@ -325,9 +421,13 @@ public sealed class WorldView : IDisposable
         return null;
     }
 
-    /// <summary>The object under a screen pixel, if any (closest to the camera).</summary>
-    public GameObject? ObjectAt(Vector2 pixel, Vector2 viewport, Func<GameObject, bool>? filter = null)
+    /// <summary>
+    /// The object under a screen pixel, if any (closest to the camera). With <paramref name="rank"/>, a lower
+    /// rank wins over a closer one (a soldier standing in front of a building's sprite is picked, not the building).
+    /// </summary>
+    public GameObject? ObjectAt(Vector2 pixel, Vector2 viewport, Func<GameObject, bool>? filter = null, Func<GameObject, int>? rank = null)
     {
+        int bestRank = int.MaxValue;
         var (origin, direction) = Camera.ScreenRay(pixel, viewport);
         GameObject? best = null;
         float bestDistance = float.MaxValue;
@@ -345,8 +445,10 @@ public sealed class WorldView : IDisposable
             if (along < 0)
                 continue;
             float missSquared = toCenter.LengthSquared() - along * along;
-            if (missSquared <= radius * radius && along < bestDistance)
+            int r = rank?.Invoke(obj) ?? 0;
+            if (missSquared <= radius * radius && (r < bestRank || r == bestRank && along < bestDistance))
             {
+                bestRank = r;
                 bestDistance = along;
                 best = obj;
             }

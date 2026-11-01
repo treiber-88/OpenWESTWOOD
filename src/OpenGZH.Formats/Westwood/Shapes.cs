@@ -104,21 +104,26 @@ public sealed class WestwoodPalette
 public sealed class IconSet
 {
     readonly byte[] data;
-    readonly int icons, map, transFlags;
+    readonly int icons, map, transFlags, colorMap;
 
     public int IconWidth { get; }
     public int IconHeight { get; }
     public int Count { get; }
 
-    public IconSet(byte[] data)
+    /// <param name="redAlert">Red Alert's layout (COMPAT.H IControl_Type): MapWidth and MapHeight after Allocated,
+    /// and a ColorMap (each cell's land: rock, water, road...) before the Map.</param>
+    public IconSet(byte[] data, bool redAlert = false)
     {
         this.data = data;
         IconWidth = BinaryPrimitives.ReadInt16LittleEndian(data);
         IconHeight = BinaryPrimitives.ReadInt16LittleEndian(data.AsSpan(2));
         Count = BinaryPrimitives.ReadInt16LittleEndian(data.AsSpan(4));
-        icons = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(12));
-        transFlags = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(24));
-        map = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(28));
+        int o = redAlert ? 4 : 0;
+        icons = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(12 + o));
+        transFlags = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(24 + o));
+        if (redAlert)
+            colorMap = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(32));
+        map = BinaryPrimitives.ReadInt32LittleEndian(data.AsSpan(28 + o + (redAlert ? 4 : 0)));
         if (IconWidth <= 0 || IconHeight <= 0 || Count <= 0 || icons <= 0 || icons >= data.Length)
             throw new InvalidDataException("not an icon set");
     }
@@ -137,6 +142,9 @@ public sealed class IconSet
 
     /// <summary>Palette-index pixels of an icon.</summary>
     public ReadOnlySpan<byte> Icon(int icon) => data.AsSpan(icons + icon * IconWidth * IconHeight, IconWidth * IconHeight);
+
+    /// <summary>Red Alert: a template cell's land code (TemplateTypeClass::Land_Type's table index), or -1.</summary>
+    public int Control(int cell) => colorMap > 0 && colorMap + cell < data.Length ? data[colorMap + cell] : -1;
 
     /// <summary>Whether an icon has see-through (colour 0) pixels.</summary>
     public bool IsTransparent(int icon) => transFlags > 0 && transFlags + icon < data.Length && data[transFlags + icon] != 0;

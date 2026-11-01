@@ -34,6 +34,8 @@ public sealed class GameContent : IDisposable
 
         var mod = FindMod(modId ?? "zh");
         var fileSystem = mod.MountPackages(root, FindMod);
+        // Kane's Wrath's compiled art.
+        OpenGZH.Formats.Sage.SageArtPackage.MountIfPresent(fileSystem, root);
         var rules = RuleSet.Load(mod, FindMod);
         return new GameContent(root, mod, fileSystem, rules);
     }

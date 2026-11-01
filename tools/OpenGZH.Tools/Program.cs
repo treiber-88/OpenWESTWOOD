@@ -17,6 +17,22 @@ string[] rest = args.Skip(1).ToArray();
 if (command == "import-td-rules")
     return TdRulesImporter.Run(rest);
 // Tiberian Dawn's GDI and Nod as Zero Hour engine factions (mods/zh/rules/td).
+if (command == "export-d2k-factions")
+    return D2kFactionExporter.Run(root);
+
+// Red Alert's Allies and Soviets as Zero Hour engine factions (mods/zh/rules/ra).
+// Red Alert 2 / Yuri's Revenge's Allies, Soviets and Yuri (mods/zh/rules/ra2).
+if (command == "export-ra2-factions")
+    return Ra2FactionExporter.Run(root);
+if (command == "export-ts-factions")
+    return Ra2FactionExporter.RunTiberianSun(root);
+if (command == "export-ra-factions")
+    return RaFactionExporter.Run(root);
+
+// Kane's Wrath's GDI, Nod and Scrin with their sub-factions (mods/zh/rules/kw), from EA's source XML.
+if (command == "export-kw-factions")
+    return KwFactionExporter.Run(root);
+
 if (command == "export-td-factions")
     return TdFactionExporter.Run(root);
 

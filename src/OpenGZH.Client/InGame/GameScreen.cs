@@ -405,7 +405,7 @@ public sealed class GameScreen : IScreen
 
         if (Vector2.Distance(start, mouse) < 6)
         {
-            var clicked = world.ObjectAt(mouse, Viewport, IsSelectable);
+            var clicked = world.ObjectAt(mouse, Viewport, IsSelectable, SelectionRank);
             if (clicked != null && !selection.Contains(clicked))
             {
                 selection.Add(clicked);
@@ -415,14 +415,16 @@ public sealed class GameScreen : IScreen
             return;
         }
 
-        // Box selection: own mobile units inside the rectangle.
+        // Box selection: of the player's things in the rectangle, the combat units; if there are none, the
+        // other units (engineers, harvesters...); only if there are no units at all, the buildings.
         float x0 = Math.Min(start.X, mouse.X), x1 = Math.Max(start.X, mouse.X);
         float y0 = Math.Min(start.Y, mouse.Y), y1 = Math.Max(start.Y, mouse.Y);
-        foreach (var obj in world.Drawables.Keys)
+        var inBox = world.Drawables.Keys.Where(obj => obj.Owner == player && IsSelectable(obj) && !selection.Contains(obj)
+            && world.ToScreen(obj.Position, Viewport) is { } p && p.X >= x0 && p.X <= x1 && p.Y >= y0 && p.Y <= y1).ToList();
+        if (inBox.Count > 0)
         {
-            if (obj.Owner != player || !IsSelectable(obj) || obj.IsKindOf(Kind.Structure))
-                continue;
-            if (world.ToScreen(obj.Position, Viewport) is { } p && p.X >= x0 && p.X <= x1 && p.Y >= y0 && p.Y <= y1 && !selection.Contains(obj))
+            int best = inBox.Min(SelectionRank);
+            foreach (var obj in inBox.Where(o => SelectionRank(o) == best))
             {
                 selection.Add(obj);
                 world.FlashAsSelected(obj);
@@ -441,6 +443,11 @@ public sealed class GameScreen : IScreen
         if (voice.Length > 0)
             audio.PlayUiSound(voice, unit);
     }
+
+    /// <summary>Which kinds of thing a selection prefers: 0 combat units, 1 other units, 2 buildings.</summary>
+    static int SelectionRank(GameObject obj) =>
+        obj.IsKindOf(Kind.Structure) || !obj.IsMobile && obj.AI == null ? 2
+        : obj.IsKindOf("CAN_ATTACK") || obj.Template.Rules.TryGet("WeaponSet", out _) ? 0 : 1;
 
     static bool IsSelectable(GameObject obj) =>
         obj.IsKindOf(Kind.Selectable) && !obj.HasStatus(Status.Unselectable) && !obj.IsEffectivelyDead;
@@ -505,9 +512,13 @@ public sealed class GameScreen : IScreen
     /// <summary>Tiberian Dawn: the selected MCVs unfold into Construction Yards (D, or clicking a selected MCV).</summary>
     bool DeploySelectedMcvs()
     {
+        // Dune 2000 thumpers deploy (and pack up) the same way.
+        var thumpers = selection.Where(o => o.Owner == player && o.FindModule<Logic.Modules.Behaviors.D2kThumper>() != null).Select(o => o.Id).ToArray();
+        if (thumpers.Length > 0)
+            Game.Commands.Enqueue(new DeployCommand(player.Index, thumpers));
         var mcvs = selection.Where(o => o.Owner == player && o.FindModule<Logic.Modules.Behaviors.TdDeployToStructure>() != null).ToList();
         if (mcvs.Count == 0)
-            return false;
+            return thumpers.Length > 0;
         if (!mcvs.Any(o => o.FindModule<Logic.Modules.Behaviors.TdDeployToStructure>()!.CanDeploy()))
         {
             ShowMessage("Cannot deploy here.");
@@ -616,6 +627,14 @@ public sealed class GameScreen : IScreen
                 foreach (var factory in factories)
                     Game.Commands.Enqueue(new SetRallyPointCommand(player.Index, factory.Id, rally));
             });
+        }
+
+        // Tiberian Dawn / Dune 2000: engineers capture a building, saboteurs and commandos blow it up.
+        if (target != null && mine.Where(o => o.FindModule<Logic.Modules.Behaviors.TdInfiltrate>() is { } job && job.CanTarget(target)).ToList() is { Count: > 0 } agents2)
+        {
+            bool capture = agents2.Any(o => o.FindModule<Logic.Modules.Behaviors.TdInfiltrate>()!.Captures);
+            var agentIds = agents2.Select(o => o.Id).ToArray();
+            return new(capture ? "CaptureBuilding" : "PlaceTimedCharge", () => Game.Commands.Enqueue(new TdInfiltrateCommand(player.Index, agentIds, target.Id)));
         }
 
         if (target != null && target.Owner.IsEnemyOf(player) && !target.IsKindOf(Kind.Prop) && !target.IsKindOf(Kind.Shrubbery))
@@ -771,6 +790,10 @@ public sealed class GameScreen : IScreen
                 break;
             case "UNIT_BUILD":
                 Game.Commands.Enqueue(new ProduceUnitCommand(player.Index, source.Id, button.Object));
+                break;
+            case "TD_REPAIR":
+                foreach (var building in selection.Where(o => o.Owner == player && o.FindModule<Logic.Modules.Behaviors.TdStructureRepair>() != null).DefaultIfEmpty(source))
+                    Game.Commands.Enqueue(new ToggleTdRepairCommand(player.Index, building.Id));
                 break;
             case "PLAYER_UPGRADE":
             case "OBJECT_UPGRADE":
@@ -956,14 +979,14 @@ public sealed class GameScreen : IScreen
             Core.Rules.RuleValue.Float(words[2]), Core.Rules.RuleValue.Float(words[3]));
     }
 
-    /// <summary>Where the building would go: the ground under the mouse; TD structures snap to TD's 36-unit cells.</summary>
+    /// <summary>Where the building would go: the ground under the mouse; TD structures snap to TD's cells (TdScale.Cell).</summary>
     Vector3? PlacementPoint()
     {
         if (world.GroundPointAt(mouse, Viewport) is not { } point || placing == null)
             return null;
         if (TdFootprint(placing) is not { } td)
             return point;
-        const float Cell = 36;
+        const float Cell = Logic.Modules.Behaviors.TdScale.Cell;
         var corner = point + td.Offset - new Vector3(td.HalfX, td.HalfY, 0);
         var snapped = new Vector3(MathF.Round(corner.X / Cell) * Cell, MathF.Round(corner.Y / Cell) * Cell, 0);
         var result = snapped + new Vector3(td.HalfX, td.HalfY, 0) - td.Offset;

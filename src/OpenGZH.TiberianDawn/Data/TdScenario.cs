@@ -6,17 +6,27 @@ namespace OpenGZH.TiberianDawn.Data;
 /// A Tiberian Dawn scenario as stored on disc: SCxnnDV.INI (rules, objects, triggers, teams) and
 /// SCxnnDV.BIN (the 64x64 map of template type and icon per cell, MapClass::Read_Binary). Object
 /// lines are kept in the original's field order (IOOBJ.CPP and the Read_INI functions).
+/// Red Alert's scenarios are read too: one INI, a 128x128 map, its cells in [MapPack] and its overlays in
+/// [OverlayPack] (base64 text of LCW blocks, as CELL.CPP / MAP.CPP write them).
 /// </summary>
 public sealed class TdScenario
 {
     public const int MapCellWidth = 64, MapCellHeight = 64;
     public const byte TemplateNone = 255;
 
+    /// <summary>A Red Alert scenario (128x128 cells, 16-bit template numbers; 0xFFFF is no template).</summary>
+    public bool IsRedAlert { get; }
+    /// <summary>Cells across (and down) the whole map: 64 in TD, 128 in Red Alert.</summary>
+    public int MapWidth { get; }
+
+    /// <summary>Whether a cell has no template (it shows the clear ground).</summary>
+    public bool IsEmpty(ushort template) => template == 0xFFFF || !IsRedAlert && template == TemplateNone;
+
     public string Name { get; }
     public TdIni Ini { get; }
 
     /// <summary>Template type and icon of every cell (row by row, cell = y * 64 + x).</summary>
-    public (byte Template, byte Icon)[] Cells { get; } = new (byte, byte)[MapCellWidth * MapCellHeight];
+    public (ushort Template, byte Icon)[] Cells { get; }
 
     public string Theater { get; }
     /// <summary>The playable part of the 64x64 map ([MAP] X, Y, Width, Height in cells).</summary>
@@ -37,19 +47,34 @@ public sealed class TdScenario
     public List<(int Cell, string Type, int Data)> Smudges { get; } = new();
     public Dictionary<int, int> Waypoints { get; } = new();
 
-    public TdScenario(string name, string iniText, byte[]? bin)
+    public TdScenario(string name, string iniText, byte[]? bin, IReadOnlyList<string>? overlayNames = null)
     {
         Name = name;
         Ini = new TdIni(iniText);
+        IsRedAlert = Ini.Section("MapPack").Any();
+        MapWidth = IsRedAlert ? 128 : MapCellWidth;
+        Cells = new (ushort, byte)[MapWidth * MapWidth];
         Theater = Ini.Get("MAP", "Theater", "TEMPERATE").ToUpperInvariant();
         X = Ini.GetInt("MAP", "X");
         Y = Ini.GetInt("MAP", "Y");
-        Width = Ini.GetInt("MAP", "Width", MapCellWidth);
-        Height = Ini.GetInt("MAP", "Height", MapCellHeight);
+        Width = Ini.GetInt("MAP", "Width", MapWidth);
+        Height = Ini.GetInt("MAP", "Height", MapWidth);
 
         for (int i = 0; i < Cells.Length; i++)
-            Cells[i] = (TemplateNone, 0);
-        if (bin != null)
+            Cells[i] = (IsRedAlert ? (ushort)0xFFFF : TemplateNone, 0);
+        if (IsRedAlert)
+        {
+            // [MapPack]: every cell's template (16 bits), then every cell's icon (8 bits).
+            var pack = Unpack("MapPack", Cells.Length * 3);
+            for (int i = 0; i < Cells.Length; i++)
+                Cells[i] = ((ushort)(pack[i * 2] | pack[i * 2 + 1] << 8), pack[Cells.Length * 2 + i]);
+            // [OverlayPack]: an overlay number per cell (0xFF: none), named by the overlay table's order.
+            var overlays = Unpack("OverlayPack", Cells.Length);
+            for (int i = 0; i < Cells.Length; i++)
+                if (overlays[i] != 0xFF && overlayNames != null && overlays[i] < overlayNames.Count)
+                    Overlay.Add((i, overlayNames[overlays[i]]));
+        }
+        else if (bin != null)
             for (int i = 0; i < Cells.Length && i * 2 + 1 < bin.Length; i++)
                 Cells[i] = (bin[i * 2], bin[i * 2 + 1]);
 
@@ -81,16 +106,43 @@ public sealed class TdScenario
 
     static string[] Split(string value) => value.Split(',').Select(v => v.Trim()).ToArray();
 
+    /// <summary>
+    /// A packed section: its numbered lines joined and base64-decoded, then blocks of (uint16 compressed size,
+    /// uint16 size) and LCW data (LCWStraw), unpacked into <paramref name="size"/> bytes.
+    /// </summary>
+    byte[] Unpack(string section, int size)
+    {
+        var result = new byte[size];
+        string text = string.Concat(Ini.Section(section).OrderBy(e => int.TryParse(e.Key, out int n) ? n : 0).Select(e => e.Value.Trim()));
+        if (text.Length == 0)
+            return result;
+        byte[] data = System.Convert.FromBase64String(text);
+        int pos = 0, outPos = 0;
+        while (pos + 4 <= data.Length && outPos < size)
+        {
+            int compressed = data[pos] | data[pos + 1] << 8, length = data[pos + 2] | data[pos + 3] << 8;
+            pos += 4;
+            if (compressed == 0 || pos + compressed > data.Length)
+                break;
+            var block = new byte[length];
+            Formats.Westwood.WestwoodCompression.LcwUncompress(data.AsSpan(pos, compressed), block);
+            Array.Copy(block, 0, result, outPos, Math.Min(length, size - outPos));
+            outPos += length;
+            pos += compressed;
+        }
+        return result;
+    }
+
     static int Int(string text) => int.TryParse(text, out int v) ? v : 0;
 
     /// <summary>Loads a scenario by its root name (e.g. "SCG01EA"); null if its .INI is missing.</summary>
-    public static TdScenario? Load(VirtualFileSystem files, string root)
+    public static TdScenario? Load(VirtualFileSystem files, string root, IReadOnlyList<string>? overlayNames = null)
     {
         string ini = root + ".INI", bin = root + ".BIN";
         if (!files.Exists(ini))
             return null;
         return new TdScenario(root.ToUpperInvariant(), System.Text.Encoding.Latin1.GetString(files.ReadAllBytes(ini)),
-            files.Exists(bin) ? files.ReadAllBytes(bin) : null);
+            files.Exists(bin) ? files.ReadAllBytes(bin) : null, overlayNames);
     }
 
     /// <summary>Every scenario the file system holds (an .INI named SC + side + number + direction + variant).</summary>
@@ -104,6 +156,9 @@ public sealed class TdScenario
     {
         "DESERT" => (".DES", "DESERT.PAL"),
         "WINTER" => (".WIN", "WINTER.PAL"),
+        // Red Alert's theaters.
+        "SNOW" => (".SNO", "SNOW.PAL"),
+        "INTERIOR" => (".INT", "INTERIOR.PAL"),
         _ => (".TEM", "TEMPERAT.PAL"),
     };
 }

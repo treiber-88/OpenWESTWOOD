@@ -15,12 +15,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE COMMANDCENTER FS_FACTORY AUTO_RALLYPOINT FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 54 54
+    TdFootprint: 0 -16.2 48.6 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -50,6 +50,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -69,12 +72,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_WARFACTORY AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 48.6
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
-    TdFootprint: 0 -18 54 54
+    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
+    TdFootprint: 0 -16.2 48.6 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -106,6 +109,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -113,8 +119,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
   TDGDI_GTWR:
     DisplayName: Guard Tower
     Side: TDGDI
@@ -129,12 +135,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -169,6 +175,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_05:
         Module: Behavior
         Class: AIUpdateInterface
@@ -187,12 +196,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -227,6 +236,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_05:
         Module: Behavior
         Class: AIUpdateInterface
@@ -245,12 +257,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -282,6 +294,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_PROC:
     DisplayName: Tiberium Refinery
     Side: TDGDI
@@ -294,14 +309,15 @@ Objects:
     VisionRange: 144
     ShroudClearingRange: 144
     RadarPriority: STRUCTURE
-    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR CANNOT_BUILD_NEAR_SUPPLIES
+    TdStorage: 1000
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 48.6
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
-    TdFootprint: 0 -36 54 72
+    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
+    TdFootprint: 0 -32.4 48.6 64.8
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -333,6 +349,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_08:
         Module: Behavior
         Class: SupplyCenterCreate
@@ -341,9 +360,9 @@ Objects:
         Class: SupplyCenterDockUpdate
         AllowsPassthrough: No
         NumberApproachPositions: -1
-        DockActionOffset: 'X: 0 Y: -54 Z:0.0'
-        DockStartOffset: 'X: 0 Y: -90 Z:0.0'
-        DockEndOffset: 'X: 0 Y: -90 Z:0.0'
+        DockActionOffset: 'X: 0 Y: -48.6 Z:0.0'
+        DockStartOffset: 'X: 0 Y: -81 Z:0.0'
+        DockEndOffset: 'X: 0 Y: -81 Z:0.0'
       ModuleTag_10:
         Module: Behavior
         Class: TdFreeUnitOnBuilt
@@ -360,14 +379,15 @@ Objects:
     VisionRange: 72
     ShroudClearingRange: 72
     RadarPriority: STRUCTURE
+    TdStorage: 1500
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 36
+    TdFootprint: 0 -16.2 32.4 32.4
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -399,6 +419,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_HPAD:
     DisplayName: Helipad
     Side: TDGDI
@@ -413,12 +436,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_AIRFIELD
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -450,6 +473,12 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+      ModuleTag_14:
+        Module: Behavior
+        Class: TdHelipad
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -457,8 +486,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
   TDGDI_NUKE:
     DisplayName: Power Plant
     Side: TDGDI
@@ -473,12 +502,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -508,6 +537,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_NUK2:
     DisplayName: Advanced Power Plant
     Side: TDGDI
@@ -522,12 +554,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -559,6 +591,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_PYLE:
     DisplayName: Barracks
     Side: TDGDI
@@ -573,12 +608,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_BARRACKS AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 18
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 32.4
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
-    TdFootprint: 0 -36 36 54
+    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
+    TdFootprint: 0 -32.4 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -610,6 +645,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -617,8 +655,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -45 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -90 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -40.5 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -81 Z:0.0'
   TDGDI_FIX:
     DisplayName: Repair Facility
     Side: TDGDI
@@ -631,14 +669,14 @@ Objects:
     VisionRange: 108
     ShroudClearingRange: 108
     RadarPriority: STRUCTURE
-    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE REPAIR_PAD
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 54
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 48.6
+    GeometryHeight: 48.6
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 54 72
+    TdFootprint: 0 -16.2 48.6 64.8
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -670,6 +708,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_11:
         Module: Behavior
         Class: RepairDockUpdate
@@ -689,12 +730,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -726,6 +767,15 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+      ModuleTag_13:
+        Module: Behavior
+        Class: OCLSpecialPower
+        SpecialPowerTemplate: TD_SuperweaponIonCannon
+        OCL: OCL_TD_IonCannon
+        CreateLocation: CREATE_AT_LOCATION
   TDGDI_SBAG:
     DisplayName: Sandbag Wall
     Side: TDGDI
@@ -739,12 +789,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -774,6 +824,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_CYCL:
     DisplayName: Chain Link Fence
     Side: TDGDI
@@ -787,12 +840,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -822,6 +875,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_BRIK:
     DisplayName: Concrete Wall
     Side: TDGDI
@@ -835,12 +891,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -870,6 +926,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDGDI_HTNK:
     DisplayName: Mammoth Tank
     Side: TDGDI
@@ -885,9 +944,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_HTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 17
-    GeometryMinorRadius: 17
-    GeometryHeight: 12
+    GeometryMajorRadius: 15.3
+    GeometryMinorRadius: 15.3
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -911,8 +970,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 600.0
-        InitialHealth: 600.0
+        MaxHealth: 840.0
+        InitialHealth: 840.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -945,9 +1004,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_MTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -969,8 +1028,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 400.0
-        InitialHealth: 400.0
+        MaxHealth: 560.0
+        InitialHealth: 560.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1003,9 +1062,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_APCLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1018,7 +1077,7 @@ Objects:
     WeaponSet:
       Conditions: None
       Weapon: [PRIMARY TD_Weapon_M60MG]
-    CommandSet: GenericCommandSet
+    CommandSet: TDTransportCommandSet
     Modules:
       ModuleTag_01:
         Module: Draw
@@ -1029,11 +1088,11 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 200.0
-        InitialHealth: 200.0
+        MaxHealth: 280.0
+        InitialHealth: 280.0
       ModuleTag_03:
         Module: Behavior
-        Class: AIUpdateInterface
+        Class: TransportAIUpdate
         AutoAcquireEnemiesWhenIdle: Yes
       ModuleTag_04:
         Module: Behavior
@@ -1045,6 +1104,15 @@ Objects:
         DeathTypes: ALL
         DestructionDelay: 100
         FX: FINAL FX_GenericTankDeathExplosion
+      ModuleTag_08:
+        Module: Behavior
+        Class: TransportContain
+        Slots: 5
+        AllowInsideKindOf: INFANTRY
+        ExitDelay: 250
+        NumberOfExitPaths: 1
+        GoAggressiveOnExit: Yes
+        DamagePercentToUnits: 100%
   TDGDI_MSAM:
     DisplayName: Rocket Launcher
     Side: TDGDI
@@ -1060,9 +1128,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_MSAMLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -1086,8 +1154,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 100.0
-        InitialHealth: 100.0
+        MaxHealth: 140.0
+        InitialHealth: 140.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1120,9 +1188,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_JEEPLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -1144,8 +1212,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 150.0
-        InitialHealth: 150.0
+        MaxHealth: 210.0
+        InitialHealth: 210.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1178,9 +1246,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE HARVESTER
     Locomotor: SET_NORMAL TDGDI_HARVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 17
-    GeometryMinorRadius: 17
-    GeometryHeight: 12
+    GeometryMajorRadius: 15.3
+    GeometryMinorRadius: 15.3
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1201,8 +1269,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 600.0
-        InitialHealth: 600.0
+        MaxHealth: 840.0
+        InitialHealth: 840.0
       ModuleTag_03:
         Module: Behavior
         Class: SupplyTruckAIUpdate
@@ -1235,9 +1303,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE TD_MCV
     Locomotor: SET_NORMAL TDGDI_MCVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 17
-    GeometryMinorRadius: 17
-    GeometryHeight: 12
+    GeometryMajorRadius: 15.3
+    GeometryMinorRadius: 15.3
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1258,8 +1326,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 600.0
-        InitialHealth: 600.0
+        MaxHealth: 840.0
+        InitialHealth: 840.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1293,11 +1361,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E1Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -1316,8 +1385,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 50.0
-        InitialHealth: 50.0
+        MaxHealth: 70.0
+        InitialHealth: 70.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1346,11 +1415,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E2Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -1369,8 +1439,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 50.0
-        InitialHealth: 50.0
+        MaxHealth: 70.0
+        InitialHealth: 70.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1399,11 +1469,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E3Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -1422,8 +1493,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 25.0
-        InitialHealth: 25.0
+        MaxHealth: 35.0
+        InitialHealth: 35.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1452,11 +1523,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDGDI_E6Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -1472,8 +1544,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 25.0
-        InitialHealth: 25.0
+        MaxHealth: 35.0
+        InitialHealth: 35.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1487,6 +1559,10 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 1000
+      ModuleTag_10:
+        Module: Behavior
+        Class: TdInfiltrate
+        Mode: Capture
   TDGDI_RMBO:
     DisplayName: Commando
     Side: TDGDI
@@ -1502,11 +1578,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_RMBOLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites:
       Object:
       - TDGDI_EYE
@@ -1527,8 +1604,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 80.0
-        InitialHealth: 80.0
+        MaxHealth: 112.0
+        InitialHealth: 112.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1542,6 +1619,11 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 1000
+      ModuleTag_10:
+        Module: Behavior
+        Class: TdInfiltrate
+        Mode: Demolish
+        Consumed: No
   TDGDI_TRAN:
     DisplayName: Chinook Transport
     Side: TDGDI
@@ -1557,9 +1639,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDGDI_TRANLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 14
-    GeometryMinorRadius: 14
-    GeometryHeight: 10
+    GeometryMajorRadius: 12.6
+    GeometryMinorRadius: 12.6
+    GeometryHeight: 9
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -1567,7 +1649,7 @@ Objects:
     ArmorSet:
       Conditions: None
       Armor: TD_ArmorAluminum
-    CommandSet: GenericCommandSet
+    CommandSet: TDTransportCommandSet
     Modules:
       ModuleTag_01:
         Module: Draw
@@ -1578,11 +1660,11 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 90.0
-        InitialHealth: 90.0
+        MaxHealth: 126.0
+        InitialHealth: 126.0
       ModuleTag_03:
         Module: Behavior
-        Class: AIUpdateInterface
+        Class: TransportAIUpdate
         AutoAcquireEnemiesWhenIdle: Yes
       ModuleTag_04:
         Module: Behavior
@@ -1598,6 +1680,15 @@ Objects:
         Module: Behavior
         Class: ProductionUpdate
         MaxQueueEntries: 1
+      ModuleTag_08:
+        Module: Behavior
+        Class: TransportContain
+        Slots: 5
+        AllowInsideKindOf: INFANTRY
+        ExitDelay: 250
+        NumberOfExitPaths: 1
+        GoAggressiveOnExit: Yes
+        DamagePercentToUnits: 100%
   TDGDI_ORCA:
     DisplayName: Orca
     Side: TDGDI
@@ -1613,9 +1704,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDGDI_ORCALocomotor
     Geometry: BOX
-    GeometryMajorRadius: 14
-    GeometryMinorRadius: 14
-    GeometryHeight: 10
+    GeometryMajorRadius: 12.6
+    GeometryMinorRadius: 12.6
+    GeometryHeight: 9
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -1637,8 +1728,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 125.0
-        InitialHealth: 125.0
+        MaxHealth: 175.0
+        InitialHealth: 175.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1657,6 +1748,10 @@ Objects:
         Module: Behavior
         Class: ProductionUpdate
         MaxQueueEntries: 1
+      ModuleTag_11:
+        Module: Behavior
+        Class: TdAircraftAmmo
+        MaxAmmo: 6
   TDNOD_FACT:
     DisplayName: Construction Yard
     Side: TDNod
@@ -1671,12 +1766,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE COMMANDCENTER FS_FACTORY AUTO_RALLYPOINT FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 54 54
+    TdFootprint: 0 -16.2 48.6 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1706,6 +1801,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -1725,12 +1823,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1765,6 +1863,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_05:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1783,12 +1884,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1820,6 +1921,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_GUN:
     DisplayName: Gun Turret
     Side: TDNod
@@ -1834,12 +1938,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1874,6 +1978,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_05:
         Module: Behavior
         Class: AIUpdateInterface
@@ -1893,14 +2000,15 @@ Objects:
     VisionRange: 144
     ShroudClearingRange: 144
     RadarPriority: STRUCTURE
-    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR CANNOT_BUILD_NEAR_SUPPLIES
+    TdStorage: 1000
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 48.6
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
-    TdFootprint: 0 -36 54 72
+    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
+    TdFootprint: 0 -32.4 48.6 64.8
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1932,6 +2040,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_08:
         Module: Behavior
         Class: SupplyCenterCreate
@@ -1940,9 +2051,9 @@ Objects:
         Class: SupplyCenterDockUpdate
         AllowsPassthrough: No
         NumberApproachPositions: -1
-        DockActionOffset: 'X: 0 Y: -54 Z:0.0'
-        DockStartOffset: 'X: 0 Y: -90 Z:0.0'
-        DockEndOffset: 'X: 0 Y: -90 Z:0.0'
+        DockActionOffset: 'X: 0 Y: -48.6 Z:0.0'
+        DockStartOffset: 'X: 0 Y: -81 Z:0.0'
+        DockEndOffset: 'X: 0 Y: -81 Z:0.0'
       ModuleTag_10:
         Module: Behavior
         Class: TdFreeUnitOnBuilt
@@ -1959,14 +2070,15 @@ Objects:
     VisionRange: 72
     ShroudClearingRange: 72
     RadarPriority: STRUCTURE
+    TdStorage: 1500
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 36
+    TdFootprint: 0 -16.2 32.4 32.4
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1998,6 +2110,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_HPAD:
     DisplayName: Helipad
     Side: TDNod
@@ -2012,12 +2127,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_AIRFIELD
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2049,6 +2164,12 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+      ModuleTag_14:
+        Module: Behavior
+        Class: TdHelipad
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -2056,8 +2177,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
   TDNOD_SAM:
     DisplayName: SAM Site
     Side: TDNod
@@ -2072,12 +2193,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 36 18
+    TdFootprint: 0 0 32.4 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2112,6 +2233,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_05:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2133,12 +2257,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_WARFACTORY AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 72
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 64.8
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 72 54
+    TdFootprint: 0 -16.2 64.8 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2170,6 +2294,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -2177,8 +2304,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
   TDNOD_NUKE:
     DisplayName: Power Plant
     Side: TDNod
@@ -2193,12 +2320,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2228,6 +2355,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_NUK2:
     DisplayName: Advanced Power Plant
     Side: TDNod
@@ -2242,12 +2372,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2279,6 +2409,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_FIX:
     DisplayName: Repair Facility
     Side: TDNod
@@ -2291,14 +2424,14 @@ Objects:
     VisionRange: 108
     ShroudClearingRange: 108
     RadarPriority: STRUCTURE
-    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE REPAIR_PAD
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 54
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 48.6
+    GeometryHeight: 48.6
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -18 54 72
+    TdFootprint: 0 -16.2 48.6 64.8
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2330,6 +2463,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_11:
         Module: Behavior
         Class: RepairDockUpdate
@@ -2349,12 +2485,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_BARRACKS AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 36
-    GeometryMinorRadius: 36
-    GeometryHeight: 36
+    GeometryMajorRadius: 32.4
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 32.4
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
-    TdFootprint: 0 -18 36 54
+    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
+    TdFootprint: 0 -16.2 32.4 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2386,6 +2522,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
       ModuleTag_06:
         Module: Behavior
         Class: ProductionUpdate
@@ -2393,8 +2532,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
   TDNOD_TMPL:
     DisplayName: Temple of Nod
     Side: TDNod
@@ -2409,12 +2548,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 54
-    GeometryMinorRadius: 36
-    GeometryHeight: 54
+    GeometryMajorRadius: 48.6
+    GeometryMinorRadius: 32.4
+    GeometryHeight: 48.6
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
-    TdFootprint: 0 -18 54 54
+    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
+    TdFootprint: 0 -16.2 48.6 48.6
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2446,6 +2585,15 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+      ModuleTag_13:
+        Module: Behavior
+        Class: OCLSpecialPower
+        SpecialPowerTemplate: TD_SuperweaponNuke
+        OCL: OCL_TD_Nuke
+        CreateLocation: CREATE_AT_LOCATION
   TDNOD_SBAG:
     DisplayName: Sandbag Wall
     Side: TDNod
@@ -2459,12 +2607,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2494,6 +2642,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_CYCL:
     DisplayName: Chain Link Fence
     Side: TDNod
@@ -2507,12 +2658,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2542,6 +2693,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_BRIK:
     DisplayName: Concrete Wall
     Side: TDNod
@@ -2555,12 +2709,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 18
-    GeometryMinorRadius: 18
-    GeometryHeight: 18
+    GeometryMajorRadius: 16.2
+    GeometryMinorRadius: 16.2
+    GeometryHeight: 16.2
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 18 18
+    TdFootprint: 0 0 16.2 16.2
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2590,6 +2744,9 @@ Objects:
         Class: CreateObjectDie
         CreationList: OCL_SmallStructureDebris
         ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
   TDNOD_LTNK:
     DisplayName: Light Tank
     Side: TDNod
@@ -2605,9 +2762,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_LTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2629,8 +2786,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 300.0
-        InitialHealth: 300.0
+        MaxHealth: 420.0
+        InitialHealth: 420.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2663,9 +2820,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_STNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2689,8 +2846,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 110.0
-        InitialHealth: 110.0
+        MaxHealth: 154.0
+        InitialHealth: 154.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2705,6 +2862,13 @@ Objects:
         DeathTypes: ALL
         DestructionDelay: 100
         FX: FINAL FX_GenericTankDeathExplosion
+      ModuleTag_09:
+        Module: Behavior
+        Class: StealthUpdate
+        StealthDelay: 2000
+        StealthForbiddenConditions: ATTACKING FIRING_PRIMARY
+        InnateStealth: Yes
+        OrderIdleEnemiesToAttackMeUponReveal: No
   TDNOD_FTNK:
     DisplayName: Flame Tank
     Side: TDNod
@@ -2720,9 +2884,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_FTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2746,8 +2910,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 300.0
-        InitialHealth: 300.0
+        MaxHealth: 420.0
+        InitialHealth: 420.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2777,9 +2941,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_APCLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2792,7 +2956,7 @@ Objects:
     WeaponSet:
       Conditions: None
       Weapon: [PRIMARY TD_Weapon_M60MG]
-    CommandSet: GenericCommandSet
+    CommandSet: TDTransportCommandSet
     Modules:
       ModuleTag_01:
         Module: Draw
@@ -2803,11 +2967,11 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 200.0
-        InitialHealth: 200.0
+        MaxHealth: 280.0
+        InitialHealth: 280.0
       ModuleTag_03:
         Module: Behavior
-        Class: AIUpdateInterface
+        Class: TransportAIUpdate
         AutoAcquireEnemiesWhenIdle: Yes
       ModuleTag_04:
         Module: Behavior
@@ -2819,6 +2983,15 @@ Objects:
         DeathTypes: ALL
         DestructionDelay: 100
         FX: FINAL FX_GenericTankDeathExplosion
+      ModuleTag_08:
+        Module: Behavior
+        Class: TransportContain
+        Slots: 5
+        AllowInsideKindOf: INFANTRY
+        ExitDelay: 250
+        NumberOfExitPaths: 1
+        GoAggressiveOnExit: Yes
+        DamagePercentToUnits: 100%
   TDNOD_MSAM:
     DisplayName: Rocket Launcher
     Side: TDNod
@@ -2834,9 +3007,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_MSAMLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -2860,8 +3033,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 100.0
-        InitialHealth: 100.0
+        MaxHealth: 140.0
+        InitialHealth: 140.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2894,9 +3067,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_BGGYLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -2918,8 +3091,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 140.0
-        InitialHealth: 140.0
+        MaxHealth: 196.0
+        InitialHealth: 196.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -2952,9 +3125,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE HARVESTER
     Locomotor: SET_NORMAL TDNOD_HARVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 17
-    GeometryMinorRadius: 17
-    GeometryHeight: 12
+    GeometryMajorRadius: 15.3
+    GeometryMinorRadius: 15.3
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2975,8 +3148,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 600.0
-        InitialHealth: 600.0
+        MaxHealth: 840.0
+        InitialHealth: 840.0
       ModuleTag_03:
         Module: Behavior
         Class: SupplyTruckAIUpdate
@@ -3009,9 +3182,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_ARTYLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3033,8 +3206,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 75.0
-        InitialHealth: 75.0
+        MaxHealth: 105.0
+        InitialHealth: 105.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3064,9 +3237,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_MLRSLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3090,8 +3263,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 120.0
-        InitialHealth: 120.0
+        MaxHealth: 168.0
+        InitialHealth: 168.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3124,9 +3297,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE TD_MCV
     Locomotor: SET_NORMAL TDNOD_MCVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 17
-    GeometryMinorRadius: 17
-    GeometryHeight: 12
+    GeometryMajorRadius: 15.3
+    GeometryMinorRadius: 15.3
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -3147,8 +3320,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 600.0
-        InitialHealth: 600.0
+        MaxHealth: 840.0
+        InitialHealth: 840.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3182,9 +3355,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_BIKELocomotor
     Geometry: BOX
-    GeometryMajorRadius: 13
-    GeometryMinorRadius: 13
-    GeometryHeight: 12
+    GeometryMajorRadius: 11.7
+    GeometryMinorRadius: 11.7
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3206,8 +3379,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 160.0
-        InitialHealth: 160.0
+        MaxHealth: 224.0
+        InitialHealth: 224.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3237,11 +3410,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E1Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -3260,8 +3434,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 50.0
-        InitialHealth: 50.0
+        MaxHealth: 70.0
+        InitialHealth: 70.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3290,11 +3464,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E3Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -3313,8 +3488,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 25.0
-        InitialHealth: 25.0
+        MaxHealth: 35.0
+        InitialHealth: 35.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3343,11 +3518,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E4Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -3366,8 +3542,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 70.0
-        InitialHealth: 70.0
+        MaxHealth: 98.0
+        InitialHealth: 98.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3396,11 +3572,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E5Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites:
       Object:
       - TDNOD_TMPL
@@ -3421,8 +3598,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 70.0
-        InitialHealth: 70.0
+        MaxHealth: 98.0
+        InitialHealth: 98.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3451,11 +3628,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDNOD_E6Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites: {}
     ArmorSet:
       Conditions: None
@@ -3471,8 +3649,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 25.0
-        InitialHealth: 25.0
+        MaxHealth: 35.0
+        InitialHealth: 35.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3486,6 +3664,10 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 1000
+      ModuleTag_10:
+        Module: Behavior
+        Class: TdInfiltrate
+        Mode: Capture
   TDNOD_RMBO:
     DisplayName: Commando
     Side: TDNod
@@ -3501,11 +3683,12 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_RMBOLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 5
-    GeometryMinorRadius: 5
-    GeometryHeight: 12
+    GeometryMajorRadius: 4.5
+    GeometryMinorRadius: 4.5
+    GeometryHeight: 10.8
     GeometryIsSmall: Yes
     CrushableLevel: 0
+    TransportSlotCount: 1
     Prerequisites:
       Object:
       - TDNOD_TMPL
@@ -3526,8 +3709,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 80.0
-        InitialHealth: 80.0
+        MaxHealth: 112.0
+        InitialHealth: 112.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3541,6 +3724,11 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 1000
+      ModuleTag_10:
+        Module: Behavior
+        Class: TdInfiltrate
+        Mode: Demolish
+        Consumed: No
   TDNOD_TRAN:
     DisplayName: Chinook Transport
     Side: TDNod
@@ -3556,9 +3744,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDNOD_TRANLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 14
-    GeometryMinorRadius: 14
-    GeometryHeight: 10
+    GeometryMajorRadius: 12.6
+    GeometryMinorRadius: 12.6
+    GeometryHeight: 9
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -3566,7 +3754,7 @@ Objects:
     ArmorSet:
       Conditions: None
       Armor: TD_ArmorAluminum
-    CommandSet: GenericCommandSet
+    CommandSet: TDTransportCommandSet
     Modules:
       ModuleTag_01:
         Module: Draw
@@ -3577,11 +3765,11 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 90.0
-        InitialHealth: 90.0
+        MaxHealth: 126.0
+        InitialHealth: 126.0
       ModuleTag_03:
         Module: Behavior
-        Class: AIUpdateInterface
+        Class: TransportAIUpdate
         AutoAcquireEnemiesWhenIdle: Yes
       ModuleTag_04:
         Module: Behavior
@@ -3597,6 +3785,15 @@ Objects:
         Module: Behavior
         Class: ProductionUpdate
         MaxQueueEntries: 1
+      ModuleTag_08:
+        Module: Behavior
+        Class: TransportContain
+        Slots: 5
+        AllowInsideKindOf: INFANTRY
+        ExitDelay: 250
+        NumberOfExitPaths: 1
+        GoAggressiveOnExit: Yes
+        DamagePercentToUnits: 100%
   TDNOD_HELI:
     DisplayName: Apache
     Side: TDNod
@@ -3612,9 +3809,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDNOD_HELILocomotor
     Geometry: BOX
-    GeometryMajorRadius: 14
-    GeometryMinorRadius: 14
-    GeometryHeight: 10
+    GeometryMajorRadius: 12.6
+    GeometryMinorRadius: 12.6
+    GeometryHeight: 9
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -3636,8 +3833,8 @@ Objects:
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
-        MaxHealth: 125.0
-        InitialHealth: 125.0
+        MaxHealth: 175.0
+        InitialHealth: 175.0
       ModuleTag_03:
         Module: Behavior
         Class: AIUpdateInterface
@@ -3656,3 +3853,7 @@ Objects:
         Module: Behavior
         Class: ProductionUpdate
         MaxQueueEntries: 1
+      ModuleTag_11:
+        Module: Behavior
+        Class: TdAircraftAmmo
+        MaxAmmo: 15

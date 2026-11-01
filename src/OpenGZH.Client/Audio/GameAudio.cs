@@ -26,7 +26,7 @@ public sealed class GameAudio
         this.audio = audio;
         this.game = game;
         this.world = world;
-        eva = new Eva(audio, game.Catalog.Rules.Section("EvaEvents"));
+        eva = new Eva(audio, game.Catalog.Rules.Section("EvaEvents"), game.Catalog.Rules.Section("SideEvaSounds"));
         audio.LocalPlayerIndex = localPlayer?.Index ?? -1;
         audio.ObjectPosition = id => game.FindObject(id) is { IsDestroyed: false } o ? o.Position : null;
         audio.ObjectOwnerIndex = id => game.FindObject(id)?.Owner.Index;
@@ -158,7 +158,7 @@ public sealed class Eva
     public Player? LocalPlayer { get; set; }
     public bool Enabled { get; set; } = true;
 
-    public Eva(AudioManager audio, RuleNode events)
+    public Eva(AudioManager audio, RuleNode events, RuleNode? sideSounds = null)
     {
         this.audio = audio;
         foreach (var (name, node) in events.Entries)
@@ -175,6 +175,23 @@ public sealed class Eva
                     info.SideSounds[side.GetString("Side")] = RuleValue.Words(side.GetString("Sounds"));
             infos[name] = info;
         }
+        // OpenGZH: more sides' announcers (SideEvaSounds: Event: Side: Sound), for these events or new ones
+        // (the Tiberian Dawn and Dune 2000 houses).
+        if (sideSounds != null)
+            foreach (var (name, sides) in sideSounds.Entries)
+            {
+                if (!infos.TryGetValue(name, out var info))
+                    infos[name] = info = new Info
+                    {
+                        Name = name,
+                        Priority = RuleValue.Int(sides.GetString("Priority"), 1),
+                        FramesBetweenChecks = (int)MathF.Ceiling(RuleValue.Float(sides.GetString("TimeBetweenChecksMS"), 3000) * 30 / 1000f),
+                        FramesToExpire = (int)MathF.Ceiling(RuleValue.Float(sides.GetString("ExpirationTimeMS"), 5000) * 30 / 1000f),
+                    };
+                foreach (var (side, sound) in sides.Entries)
+                    if (side is not ("Priority" or "TimeBetweenChecksMS" or "ExpirationTimeMS") && sound.Value is { Length: > 0 } words)
+                        info.SideSounds[side] = RuleValue.Words(words);
+            }
     }
 
     public void SetShouldPlay(string message) => shouldPlay.Add(message);

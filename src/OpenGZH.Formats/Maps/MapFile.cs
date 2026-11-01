@@ -16,6 +16,18 @@ public sealed class MapFile
 
     public HeightMap HeightMap { get; set; } = new();
     public BlendTileData? BlendTiles { get; set; }
+
+    /// <summary>
+    /// OpenGZH: a picture of the whole ground, draped over the terrain instead of blended tiles (maps made
+    /// from other games, such as Tiberian Dawn's). Its top row is the map's north edge (highest Y).
+    /// </summary>
+    public Images.Image? GroundImage { get; set; }
+
+    /// <summary>
+    /// OpenGZH: which grid cells are open sand (Dune 2000 maps: where sandworms go), row by row over the
+    /// height map's cells; null on other maps.
+    /// </summary>
+    public bool[]? SandCells { get; set; }
     public MapLighting Lighting { get; set; } = new();
     public List<MapObject> Objects { get; } = new();
     public Dictionary<string, object> WorldInfo { get; set; } = new(StringComparer.OrdinalIgnoreCase);

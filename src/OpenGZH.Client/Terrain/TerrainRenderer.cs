@@ -91,7 +91,8 @@ public sealed class TerrainRenderer : IDisposable
         Atlas = atlas;
         this.gl = gl;
         shader = new ShaderProgram(gl, VertexSource, FragmentSource);
-        atlasTexture = new Texture(gl, atlas.Image, repeat: false);
+        // A map with a ground picture (made from another game's map) shows that instead of tiles.
+        atlasTexture = map.GroundImage != null ? new Texture(gl, map.GroundImage, repeat: false) : new Texture(gl, atlas.Image, repeat: false);
 
         var heights = map.HeightMap;
         var blendTiles = map.BlendTiles;
@@ -136,6 +137,18 @@ public sealed class TerrainRenderer : IDisposable
                 }
 
                 int cell = y * heights.Width + x;
+                if (map.GroundImage != null)
+                {
+                    // The picture spans the playable area; its top row is the north (high Y) edge.
+                    float spanX = (heights.Width - 1 - 2 * heights.BorderSize) * MapFile.CellSize;
+                    float spanY = (heights.Height - 1 - 2 * heights.BorderSize) * MapFile.CellSize;
+                    for (int i = 0; i < 4; i++)
+                        uv[i] = new Vector2(corners[i].X / spanX, 1 - corners[i].Y / spanY);
+                    alpha.Fill(1);
+                    AppendCell(baseVertices, corners, normals, uv, alpha);
+                    baseFlips.Add(false);
+                    continue;
+                }
                 if (blendTiles == null || cell >= blendTiles.TileIndices.Length)
                 {
                     uv.Clear();

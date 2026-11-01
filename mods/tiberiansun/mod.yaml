@@ -1,0 +1,42 @@
+# OpenGZH: Command & Conquer: Tiberian Sun and Firestorm (Westwood, 1999-2000).
+#
+# The game files are the user's install's original .mix archives (not its CnCNet additions: expand02/expand03.mix),
+# copied into content/tiberiansun. Their entries are named by CRC-32 ids; most sit inside others ("OUTER.MIX>INNER.MIX").
+# Used by OpenGZH for the Tiberian Sun factions in Zero Hour engine matches.
+
+Id: tiberiansun
+Title: "Command & Conquer: Tiberian Sun - Firestorm"
+Version: "2.03"
+Game: TiberianSun
+
+MixHash: Crc32
+MixNames: "{mod}/filenames.txt;mods/redalert2/filenames.txt"
+
+Packages:
+  - "{mod}/assets?"
+  - content/tiberiansun/PATCH.MIX?
+  - content/tiberiansun/EXPAND01.MIX?
+  - content/tiberiansun/EXPAND01.MIX>ECACHE01.MIX?
+  - content/tiberiansun/EXPAND01.MIX>ISOTEMP.MIX?
+  - content/tiberiansun/EXPAND01.MIX>SNOW.MIX?
+  - content/tiberiansun/EXPAND01.MIX>TEMPERAT.MIX?
+  - content/tiberiansun/EXPAND01.MIX>SOUNDS01.MIX?
+  - content/tiberiansun/EXPAND01.MIX>E01VOX01.MIX?
+  - content/tiberiansun/EXPAND01.MIX>E01VOX02.MIX?
+  - content/tiberiansun/TIBSUN.MIX>LOCAL.MIX
+  - content/tiberiansun/TIBSUN.MIX>CACHE.MIX
+  - content/tiberiansun/TIBSUN.MIX>CONQUER.MIX
+  - content/tiberiansun/TIBSUN.MIX>ISOTEMP.MIX
+  - content/tiberiansun/TIBSUN.MIX>ISOSNOW.MIX
+  - content/tiberiansun/TIBSUN.MIX>TEMPERAT.MIX
+  - content/tiberiansun/TIBSUN.MIX>SNOW.MIX
+  - content/tiberiansun/TIBSUN.MIX>SOUNDS.MIX
+  - content/tiberiansun/TIBSUN.MIX>SPEECH01.MIX
+  - content/tiberiansun/TIBSUN.MIX>SPEECH02.MIX
+  - content/tiberiansun/TIBSUN.MIX>SIDEC01.MIX
+  - content/tiberiansun/TIBSUN.MIX>SIDEC02.MIX
+  - content/tiberiansun/TIBSUN.MIX
+  - content/tiberiansun/MULTI.MIX?
+
+Rules:
+  - rules/*.yaml

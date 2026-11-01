@@ -47,6 +47,32 @@ Packages:
   - content/generals/Textures.big
   - content/generals/W3D.big
   - content/generals/Window.big
+  # Tiberian Dawn's and Dune 2000's sounds and speech, for their houses (optional).
+  - content/tiberiandawn/speech.mix?
+  - content/tiberiandawn/sounds.mix?
+  - content/dune2000/data/GAMESFX?@D2KSFX
+  - content/dune2000/data/SOUND.RS?
+  - content/dune2000/mod/bits?
+  - content/redalert/EXPAND2.MIX?@RASFX
+  - content/redalert/EXPAND.MIX?@RASFX
+  - content/redalert/MAIN1.MIX>SOUNDS.MIX?@RASFX
+  - content/redalert/REDALERT.MIX>SPEECH.MIX?@RASFX
+  # Red Alert 2 / Yuri's Revenge's sounds and EVA (AUDIO.BAG sounds as .WAV files), Yuri's Revenge's first.
+  - crc32:content/redalert2/langmd.mix>AUDIOMD.MIX>AUDIO.BAG?@RA2SFX
+  - crc32:content/redalert2/language.mix>AUDIO.MIX>AUDIO.BAG?@RA2SFX
+  # (The announcer's lines are files in those archives themselves.)
+  - crc32:content/redalert2/langmd.mix>AUDIOMD.MIX?@RA2SFX
+  - crc32:content/redalert2/language.mix>AUDIO.MIX?@RA2SFX
+  # Tiberian Sun / Firestorm's sounds and unit voices (.AUD), Firestorm's first.
+  - crc32:content/tiberiansun/EXPAND01.MIX>SOUNDS01.MIX?@TSSFX
+  - crc32:content/tiberiansun/EXPAND01.MIX>E01VOX01.MIX?@TSSFX
+  - crc32:content/tiberiansun/EXPAND01.MIX>E01VOX02.MIX?@TSSFX
+  - crc32:content/tiberiansun/TIBSUN.MIX>SOUNDS.MIX?@TSSFX
+  - crc32:content/tiberiansun/TIBSUN.MIX>SPEECH01.MIX?@TSSFX
+  - crc32:content/tiberiansun/TIBSUN.MIX>SPEECH02.MIX?@TSSFX
+
+# The names in Tiberian Dawn's .mix archives (they keep only hashes).
+MixNames: mods/tiberiandawn/filenames.txt;mods/redalert/filenames.txt;mods/redalert2/audio-names.txt;mods/tiberiansun/filenames.txt
 
 # Rules are YAML files in rules/. Each file is named after what it defines.
 # The base set is generated from the original INI data by:  OpenGZH.Tools import-rules

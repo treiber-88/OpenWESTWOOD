@@ -54,6 +54,10 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
         State = AIState.Busy;
     }
     /// <summary>The original's isMoving: not idle, and either steering somewhere or still sliding.</summary>
+    /// <summary>Visibly moving this frame (has a goal and actual speed): what the walk animations show.</summary>
+    public bool IsWalking { get; private set; }
+    Vector3 lastWalkPosition;
+    int walkGraceFrames;
     public bool IsMoving => !IsIdle && (goalType != LocomotorGoal.None || (Physics?.VelocityMagnitude ?? 0) > 0.001f);
 
     /// <summary>Turrets defined in the module (most units have at most one).</summary>
@@ -1571,8 +1575,19 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
 
     void UpdateMovingCondition()
     {
-        bool moving = goalType != LocomotorGoal.None && blockedFrames <= LogicTime.FramesPerSecond / 4;
+        // Walking is covering ground: a unit with a goal that is held up (blocked, queued behind others, waiting in
+        // range, pushing against something) stands still rather than walking in place, while one being jostled
+        // along in a crowd (blocked, yet moving) keeps walking. A few frames' grace keeps the stride from flickering.
+        float stepSquared = MathUtil.DistanceSquared2D(Owner.Position, lastWalkPosition);
+        lastWalkPosition = Owner.Position;
+        if (goalType != LocomotorGoal.None && stepSquared > 0.02f * 0.02f && stepSquared < 40 * 40)
+            walkGraceFrames = 4;
+        else if (walkGraceFrames > 0)
+            walkGraceFrames--;
+        bool moving = goalType != LocomotorGoal.None && walkGraceFrames > 0;
+        IsWalking = moving;
         Owner.SetCondition(Condition.Moving, moving);
+        UpdateWeaponConditions(moving);
         if (State == AIState.Idle)
         {
             moveOutOfWayId = 0;
@@ -1583,6 +1598,35 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
                 if (scriptMode == ScriptMode.None)
                     AttackMoveTo(Destination, LastCommandSource);
             }
+        }
+    }
+
+    static readonly char[] SlotLetters = ['A', 'B', 'C'];
+
+    /// <summary>
+    /// The original's Object::adjustModelConditionForWeaponStatus: the current weapon's state shown as model
+    /// conditions for its slot (A primary, B secondary, C tertiary): USING_WEAPON while attacking with it,
+    /// PREATTACK while it waits to fire (a PreAttackDelay weapon ready to shoot), FIRING the moment it fires,
+    /// BETWEEN_FIRING_SHOTS until it can fire again, RELOADING while its clip refills. The other slots' are cleared.
+    /// </summary>
+    void UpdateWeaponConditions(bool moving)
+    {
+        var current = Owner.Weapons.Current;
+        int currentSlot = (int)Owner.Weapons.CurrentSlot;
+        // (In the attack's firing phase: not while closing in, as AIAttackFireWeaponState sets them.)
+        bool attacking = current != null && IsInAttackState && !moving && !Owner.IsEffectivelyDead;
+        for (int i = 0; i < SlotLetters.Length; i++)
+        {
+            char letter = SlotLetters[i];
+            bool mine = attacking && i == currentSlot;
+            var weapon = mine ? current : null;
+            bool firing = weapon != null && Frame - weapon.LastFireFrame <= 1;
+            var status = weapon?.Status ?? WeaponStatus.ReadyToFire;
+            Owner.SetCondition(Condition.UsingWeapon(letter), mine);
+            Owner.SetCondition(Condition.FiringA(letter), firing);
+            Owner.SetCondition(Condition.BetweenShots(letter), mine && !firing && status == WeaponStatus.BetweenShots);
+            Owner.SetCondition(Condition.ReloadingA(letter), mine && !firing && status == WeaponStatus.Reloading);
+            Owner.SetCondition(Condition.PreAttack(letter), mine && !firing && status == WeaponStatus.ReadyToFire && weapon!.Template.PreAttackDelay > 0);
         }
     }
 

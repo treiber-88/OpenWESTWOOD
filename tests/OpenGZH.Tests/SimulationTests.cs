@@ -26,6 +26,7 @@ public sealed class BaseGameFixture : IDisposable
 
         var manifest = ModManifest.Load(Path.Combine(dir, "mods", "zh", "mod.yaml"));
         FileSystem = manifest.MountPackages(dir);
+        Formats.Sage.SageArtPackage.MountIfPresent(FileSystem, dir);
         Rules = RuleSet.Load(manifest);
         Models = new Formats.W3d.W3dLibrary(FileSystem);
     }

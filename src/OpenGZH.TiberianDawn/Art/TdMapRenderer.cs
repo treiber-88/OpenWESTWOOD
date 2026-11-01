@@ -42,13 +42,16 @@ public sealed class TdMapRenderer
         return shapes[file] = shape;
     }
 
-    IconSet? Icons(string file)
+    /// <summary>Red Alert's scenarios use its icon set layout.</summary>
+    bool redAlert;
+
+    public IconSet? Icons(string file)
     {
         if (iconSets.TryGetValue(file, out var set))
             return set;
         try
         {
-            set = content.Files.Exists(file) ? new IconSet(content.Files.ReadAllBytes(file)) : null;
+            set = content.Files.Exists(file) ? new IconSet(content.Files.ReadAllBytes(file), redAlert) : null;
         }
         catch (InvalidDataException)
         {
@@ -126,17 +129,23 @@ public sealed class TdMapRenderer
         return values.Length == 256 ? values : null;
     }
 
-    /// <summary>The playable area of the scenario (or the whole 64x64 map) as an image.</summary>
-    public Image Render(TdScenario scenario, bool wholeMap = false, int seed = 1)
+    /// <summary>
+    /// The playable area of the scenario (or the whole 64x64 map) as an image. <paramref name="groundOnly"/>
+    /// leaves out what another engine makes into objects (Tiberium, trees, units): the ground, smudges, walls
+    /// and buildings remain.
+    /// </summary>
+    public Image Render(TdScenario scenario, bool wholeMap = false, int seed = 1, bool groundOnly = false)
     {
+        redAlert = scenario.IsRedAlert;
+        int mapWidth = scenario.MapWidth;
         var (ext, paletteFile) = TdScenario.TheaterFiles(scenario.Theater);
         var palette = new WestwoodPalette(content.Files.ReadAllBytes(paletteFile));
         int originX = wholeMap ? 0 : scenario.X, originY = wholeMap ? 0 : scenario.Y;
-        int cellsW = wholeMap ? TdScenario.MapCellWidth : scenario.Width, cellsH = wholeMap ? TdScenario.MapCellHeight : scenario.Height;
+        int cellsW = wholeMap ? mapWidth : scenario.Width, cellsH = wholeMap ? mapWidth : scenario.Height;
         var canvas = new Canvas(cellsW * CellPixels, cellsH * CellPixels, palette);
         var random = new Random(seed);
 
-        (int X, int Y) Pixel(int cell) => (((cell % 64) - originX) * CellPixels, ((cell / 64) - originY) * CellPixels);
+        (int X, int Y) Pixel(int cell) => (((cell % mapWidth) - originX) * CellPixels, ((cell / mapWidth) - originY) * CellPixels);
 
         // Terrain templates; an empty cell shows the clear template's icon for its position (Clear_Icon).
         var clear = Icons("CLEAR1" + ext);
@@ -148,17 +157,21 @@ public sealed class TdMapRenderer
             var (type, icon) = scenario.Cells[cell];
             IconSet? set = null;
             int iconIndex = -1;
-            if (type != TdScenario.TemplateNone && content.TemplateById(type) is { } template)
+            if (!scenario.IsEmpty(type) && content.TemplateById(type) is { } template)
             {
                 set = Icons(template.GetString("IniName") + ext);
+                // (Red Alert's tables leave the size to the icon set.)
                 int cellsInTemplate = RuleValue.Int(template.GetString("Width"), 1) * RuleValue.Int(template.GetString("Height"), 1);
+                if (cellsInTemplate <= 0)
+                    cellsInTemplate = 256;
                 if (set != null && icon < cellsInTemplate)
                     iconIndex = set.IconForCell(icon);
             }
             if (set == null || iconIndex < 0)
             {
                 set = clear;
-                iconIndex = set?.IconForCell((cell & 0x03) | ((cell >> 4) & 0x0C)) ?? -1;
+                // Clear_Icon: the cell's position within a 4x4 block.
+                iconIndex = set?.IconForCell((cell & 0x03) | (((cell / mapWidth) & 0x03) << 2)) ?? -1;
             }
             if (set != null && iconIndex >= 0 && iconIndex < set.Count)
                 canvas.Stamp(set.Icon(iconIndex), set.IconWidth, set.IconHeight, px, py, transparent: false);
@@ -174,7 +187,7 @@ public sealed class TdMapRenderer
 
         // Overlays: walls join their neighbours; Tiberium picks a random look and a density from its neighbours.
         var overlayAt = scenario.Overlay.GroupBy(o => o.Cell).ToDictionary(g => g.Key, g => g.Last().Type);
-        string? OverlayAt(int c) => c >= 0 && c < 4096 ? overlayAt.GetValueOrDefault(c) : null;
+        string? OverlayAt(int c) => c >= 0 && c < scenario.Cells.Length ? overlayAt.GetValueOrDefault(c) : null;
         bool IsTiberium(string? type) => type != null && content.Find("Overlays", type)?.GetString("Land") == "LAND_TIBERIUM";
         foreach (var (cell, rawType) in overlayAt)
         {
@@ -183,17 +196,21 @@ public sealed class TdMapRenderer
             int frame = 0;
             if (overlay != null && IsTrue(overlay.GetString("IsWall")))
             {
-                int[] neighbours = [cell - 64, cell + 1, cell + 64, cell - 1]; // N, E, S, W
+                int[] neighbours = [cell - mapWidth, cell + 1, cell + mapWidth, cell - 1]; // N, E, S, W
                 for (int i = 0; i < 4; i++)
                     if (OverlayAt(neighbours[i]) == type)
                         frame |= 1 << i;
             }
             else if (IsTiberium(type))
             {
-                type = $"TI{random.Next(1, 13)}";
+                if (groundOnly)
+                    continue;
+                // (Red Alert's ore and gems keep their own art.)
+                if (!scenario.IsRedAlert)
+                    type = $"TI{random.Next(1, 13)}";
                 int[] adjacentTable = [0, 1, 3, 4, 6, 7, 8, 10, 11];
                 int count = 0;
-                foreach (int d in new[] { -64, -63, 1, 65, 64, 63, -1, -65 })
+                foreach (int d in new[] { -mapWidth, -mapWidth + 1, 1, mapWidth + 1, mapWidth, mapWidth - 1, -1, -mapWidth - 1 })
                     if (IsTiberium(OverlayAt(cell + d)))
                         count++;
                 frame = adjacentTable[count];
@@ -208,7 +225,7 @@ public sealed class TdMapRenderer
 
         // Objects, back to front.
         var draws = new List<(int SortY, Action Draw)>();
-        foreach (var (cell, type, _) in scenario.Terrain)
+        foreach (var (cell, type, _) in groundOnly ? [] : scenario.Terrain)
             if (ArtFor(type, ext) is { } shape)
             {
                 var (px, py) = Pixel(cell);
@@ -228,7 +245,7 @@ public sealed class TdMapRenderer
                     frame = shape.FrameCount / 2;
                 draws.Add((py + shape.Height, () => canvas.Stamp(shape.Frame(Math.Min(frame, shape.FrameCount - 1)), shape.Width, shape.Height, px, py, remap)));
             }
-        foreach (var (objects, section) in new[] { (scenario.Units, "Vehicles"), (scenario.Aircraft, "Aircraft") })
+        foreach (var (objects, section) in groundOnly ? [] : new[] { (scenario.Units, "Vehicles"), (scenario.Aircraft, "Aircraft") })
             foreach (var u in objects)
                 if (ArtFor(u.Type, ".SHP") is { } shape)
                 {
@@ -245,7 +262,7 @@ public sealed class TdMapRenderer
                             canvas.Stamp(shape.Frame(32 + frame), shape.Width, shape.Height, cx, cy, remap);
                     }));
                 }
-        foreach (var i in scenario.Infantry)
+        foreach (var i in groundOnly ? [] : scenario.Infantry)
             if (ArtFor(i.Type, ".SHP") is { } shape)
             {
                 var (px, py) = Pixel(i.Cell);

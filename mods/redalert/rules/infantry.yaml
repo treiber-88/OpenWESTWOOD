@@ -1,0 +1,2890 @@
+# GENERATED from Tiberian Dawn's IDATA.CPP (EA's GPL source release) by 'OpenGZH.Tools import-td-rules'.
+# Each key is the class member the original constructor argument sets.
+# This file is now the source of truth for these rules: edit it freely.
+Infantry:
+  DOG:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 10
+    FullName: 416
+    IniName: DOG
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 21
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_DOG
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [104, 14, 14]
+    - [0, 0, 0]
+    - [56, 6, 6]
+    - [0, 0, 0]
+    - [104, 14, 14]
+    - [216, 18, 0]
+    - [216, 18, 0]
+    - [235, 7, 0]
+    - [242, 9, 0]
+    - [242, 9, 0]
+    - [242, 9, 0]
+    - [251, 14, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [106, 12, 14]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [104, 14, 14]
+    - [0, 0, 0]
+    - [56, 6, 6]
+    - [0, 0, 0]
+    - [104, 14, 14]
+    - [216, 18, 0]
+    - [216, 18, 0]
+    - [235, 7, 0]
+    - [242, 9, 0]
+    - [242, 9, 0]
+    - [242, 9, 0]
+    - [251, 14, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [106, 12, 14]
+    FireLaunch: 1
+    ProneLaunch: 1
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: Dog
+  E1:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 0
+    FullName: 72
+    IniName: E1
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_E1
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [192, 1, 8]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 6, 8]
+    - [256, 16, 0]
+    - [272, 16, 0]
+    - [288, 8, 0]
+    - [304, 8, 0]
+    - [304, 8, 0]
+    - [312, 12, 0]
+    - [324, 18, 0]
+    - [342, 3, 3]
+    - [366, 3, 3]
+    - [390, 3, 3]
+    - [414, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [192, 1, 8]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 6, 8]
+    - [256, 16, 0]
+    - [272, 16, 0]
+    - [382, 8, 0]
+    - [398, 8, 0]
+    - [398, 8, 0]
+    - [406, 12, 0]
+    - [418, 18, 0]
+    - [436, 3, 3]
+    - [460, 3, 3]
+    - [484, 3, 3]
+    - [508, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 2
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E1
+  E2:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 1
+    FullName: 73
+    IniName: E2
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_E2
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [288, 1, 12]
+    - [16, 6, 6]
+    - [64, 20, 20]
+    - [224, 2, 2]
+    - [240, 4, 4]
+    - [272, 2, 2]
+    - [288, 8, 12]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [416, 8, 0]
+    - [432, 8, 0]
+    - [432, 8, 0]
+    - [440, 12, 0]
+    - [452, 18, 0]
+    - [470, 3, 3]
+    - [494, 3, 3]
+    - [518, 3, 3]
+    - [542, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [288, 1, 12]
+    - [16, 6, 6]
+    - [64, 20, 20]
+    - [224, 2, 2]
+    - [240, 4, 4]
+    - [272, 2, 2]
+    - [288, 8, 12]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [510, 8, 0]
+    - [526, 8, 0]
+    - [526, 8, 0]
+    - [534, 12, 0]
+    - [546, 18, 0]
+    - [564, 3, 3]
+    - [588, 3, 3]
+    - [612, 3, 3]
+    - [636, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 14
+    ProneLaunch: 6
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E2
+  E3:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 2
+    FullName: 74
+    IniName: E3
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_E3
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [192, 1, 10]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 10, 10]
+    - [272, 16, 0]
+    - [288, 16, 0]
+    - [304, 8, 0]
+    - [320, 8, 0]
+    - [320, 8, 0]
+    - [328, 12, 0]
+    - [340, 18, 0]
+    - [358, 3, 3]
+    - [382, 3, 3]
+    - [406, 3, 3]
+    - [430, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [192, 1, 10]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 10, 10]
+    - [272, 16, 0]
+    - [288, 16, 0]
+    - [398, 8, 0]
+    - [414, 8, 0]
+    - [414, 8, 0]
+    - [422, 12, 0]
+    - [434, 18, 0]
+    - [452, 3, 3]
+    - [476, 3, 3]
+    - [500, 3, 3]
+    - [524, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 3
+    ProneLaunch: 3
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E3
+  E4:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 3
+    FullName: 75
+    IniName: E4
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_E4
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [256, 1, 16]
+    - [16, 6, 6]
+    - [64, 16, 16]
+    - [192, 2, 2]
+    - [208, 4, 4]
+    - [240, 2, 2]
+    - [256, 16, 16]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [416, 8, 0]
+    - [432, 8, 0]
+    - [432, 8, 0]
+    - [440, 12, 0]
+    - [452, 18, 0]
+    - [470, 3, 3]
+    - [494, 3, 3]
+    - [518, 3, 3]
+    - [542, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [256, 1, 16]
+    - [16, 6, 6]
+    - [64, 16, 16]
+    - [192, 2, 2]
+    - [208, 4, 4]
+    - [240, 2, 2]
+    - [256, 16, 16]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [510, 8, 0]
+    - [526, 8, 0]
+    - [526, 8, 0]
+    - [534, 12, 0]
+    - [546, 18, 0]
+    - [564, 3, 3]
+    - [588, 3, 3]
+    - [612, 3, 3]
+    - [636, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E4
+  E6:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 4
+    FullName: 288
+    IniName: E6
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_RENOVATOR
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [82, 1, 4]
+    - [16, 6, 6]
+    - [0, 0, 0]
+    - [67, 2, 2]
+    - [82, 4, 4]
+    - [114, 2, 2]
+    - [0, 0, 0]
+    - [130, 16, 0]
+    - [130, 16, 0]
+    - [146, 8, 0]
+    - [154, 8, 0]
+    - [162, 8, 0]
+    - [170, 12, 0]
+    - [182, 18, 0]
+    - [200, 3, 3]
+    - [224, 3, 3]
+    - [200, 3, 3]
+    - [224, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [82, 1, 4]
+    - [16, 6, 6]
+    - [0, 0, 0]
+    - [67, 2, 2]
+    - [82, 4, 4]
+    - [114, 2, 2]
+    - [0, 0, 0]
+    - [130, 16, 0]
+    - [130, 16, 0]
+    - [146, 8, 0]
+    - [154, 8, 0]
+    - [162, 8, 0]
+    - [170, 12, 0]
+    - [182, 18, 0]
+    - [200, 3, 3]
+    - [224, 3, 3]
+    - [200, 3, 3]
+    - [224, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 3
+    ProneLaunch: 3
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E6
+  SPY:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 6
+    FullName: 289
+    IniName: SPY
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_SPY
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [144, 1, 4]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 8, 8]
+    - [256, 14, 0]
+    - [270, 18, 0]
+    - [288, 8, 0]
+    - [296, 8, 0]
+    - [304, 8, 0]
+    - [312, 12, 0]
+    - [324, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [144, 1, 4]
+    - [16, 6, 6]
+    - [64, 8, 8]
+    - [128, 2, 2]
+    - [144, 4, 4]
+    - [176, 2, 2]
+    - [192, 8, 8]
+    - [256, 14, 0]
+    - [270, 18, 0]
+    - [288, 8, 0]
+    - [296, 8, 0]
+    - [304, 8, 0]
+    - [312, 12, 0]
+    - [324, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 3
+    ProneLaunch: 3
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E8
+  THF:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 7
+    FullName: 363
+    IniName: THF
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_THIEF
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [72, 1, 4]
+    - [8, 6, 6]
+    - [0, 0, 0]
+    - [56, 2, 2]
+    - [72, 4, 4]
+    - [108, 2, 2]
+    - [0, 0, 0]
+    - [120, 19, 0]
+    - [120, 19, 0]
+    - [139, 8, 0]
+    - [147, 8, 0]
+    - [155, 8, 0]
+    - [163, 12, 0]
+    - [175, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [72, 1, 4]
+    - [8, 6, 6]
+    - [0, 0, 0]
+    - [56, 2, 2]
+    - [72, 4, 4]
+    - [108, 2, 2]
+    - [0, 0, 0]
+    - [120, 19, 0]
+    - [120, 19, 0]
+    - [139, 8, 0]
+    - [147, 8, 0]
+    - [155, 8, 0]
+    - [163, 12, 0]
+    - [175, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 3
+    ProneLaunch: 3
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E9
+  E7:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 5
+    FullName: 407
+    IniName: E7
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_TANYA
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_COMMANDO
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [128, 1, 4]
+    - [8, 6, 6]
+    - [56, 7, 7]
+    - [113, 2, 2]
+    - [128, 4, 4]
+    - [161, 2, 2]
+    - [176, 7, 7]
+    - [232, 17, 0]
+    - [249, 13, 0]
+    - [262, 8, 0]
+    - [270, 8, 0]
+    - [278, 8, 0]
+    - [286, 12, 0]
+    - [298, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [128, 1, 4]
+    - [8, 6, 6]
+    - [56, 7, 7]
+    - [113, 2, 2]
+    - [128, 4, 4]
+    - [161, 2, 2]
+    - [176, 7, 7]
+    - [232, 17, 0]
+    - [249, 13, 0]
+    - [262, 8, 0]
+    - [270, 8, 0]
+    - [278, 8, 0]
+    - [286, 12, 0]
+    - [298, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 2
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: E7
+  MEDI:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 8
+    FullName: 404
+    IniName: MEDI
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_MEDIC
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [130, 1, 4]
+    - [8, 6, 6]
+    - [56, 28, 0]
+    - [114, 2, 2]
+    - [130, 4, 4]
+    - [162, 2, 2]
+    - [56, 28, 0]
+    - [178, 15, 0]
+    - [178, 15, 0]
+    - [193, 8, 0]
+    - [210, 8, 0]
+    - [202, 8, 0]
+    - [217, 12, 0]
+    - [229, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [130, 1, 4]
+    - [8, 6, 6]
+    - [56, 28, 0]
+    - [114, 2, 2]
+    - [130, 4, 4]
+    - [162, 2, 2]
+    - [56, 28, 0]
+    - [178, 15, 0]
+    - [178, 15, 0]
+    - [193, 8, 0]
+    - [210, 8, 0]
+    - [202, 8, 0]
+    - [217, 12, 0]
+    - [229, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 25
+    ProneLaunch: 25
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: Medic
+  GNRL:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 9
+    FullName: 406
+    IniName: GNRL
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_GENERAL
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [104, 1, 4]
+    - [8, 6, 6]
+    - [56, 4, 4]
+    - [88, 2, 2]
+    - [104, 4, 4]
+    - [136, 2, 2]
+    - [152, 4, 4]
+    - [184, 26, 0]
+    - [184, 26, 0]
+    - [210, 8, 0]
+    - [226, 8, 0]
+    - [218, 8, 0]
+    - [234, 12, 0]
+    - [246, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [104, 1, 4]
+    - [8, 6, 6]
+    - [56, 4, 4]
+    - [88, 2, 2]
+    - [104, 4, 4]
+    - [136, 2, 2]
+    - [152, 4, 4]
+    - [184, 26, 0]
+    - [184, 26, 0]
+    - [210, 8, 0]
+    - [226, 8, 0]
+    - [218, 8, 0]
+    - [234, 12, 0]
+    - [246, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 2
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: General
+  C1:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 11
+    FullName: 161
+    IniName: C1
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C1
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 0
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C1
+  C2:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 12
+    FullName: 162
+    IniName: C2
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C2
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv2
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C2
+  C3:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 13
+    FullName: 163
+    IniName: C3
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C3
+    IsFemale: 1
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 0
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C3
+  C4:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 14
+    FullName: 164
+    IniName: C4
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C4
+    IsFemale: 1
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv4
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C4
+  C5:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 15
+    FullName: 165
+    IniName: C5
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C5
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv5
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C5
+  C6:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 16
+    FullName: 166
+    IniName: C6
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C6
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv6
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C6
+  C7:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 17
+    FullName: 167
+    IniName: C7
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C7
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv7
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C7
+  C8:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 18
+    FullName: 168
+    IniName: C8
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C8
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv8
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C8
+  C9:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 19
+    FullName: 169
+    IniName: C9
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C9
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_CIVILIAN
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv9
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C9
+  C10:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 20
+    FullName: 300
+    IniName: C10
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_C10
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 1
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: RemapCiv10
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: C10
+  EINSTEIN:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 21
+    FullName: 170
+    IniName: EINSTEIN
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_EINSTEIN
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [113, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [0, 0, 0]
+    - [104, 16, 0]
+    - [104, 16, 0]
+    - [120, 8, 0]
+    - [128, 8, 0]
+    - [136, 12, 0]
+    - [136, 12, 0]
+    - [148, 17, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [113, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [0, 0, 0]
+    - [104, 16, 0]
+    - [104, 16, 0]
+    - [120, 8, 0]
+    - [128, 8, 0]
+    - [136, 12, 0]
+    - [136, 12, 0]
+    - [148, 17, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 0
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: Einstein
+  DELPHI:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 22
+    FullName: 308
+    IniName: DELPHI
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_DELPHI
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [120, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [120, 4, 4]
+    - [104, 10, 0]
+    - [114, 6, 0]
+    - [152, 8, 0]
+    - [160, 8, 0]
+    - [160, 8, 0]
+    - [168, 12, 0]
+    - [180, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [205, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [205, 4, 4]
+    - [189, 10, 0]
+    - [199, 6, 0]
+    - [329, 8, 0]
+    - [337, 8, 0]
+    - [337, 8, 0]
+    - [345, 12, 0]
+    - [357, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: Delphi
+  CHAN:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 23
+    FullName: 323
+    IniName: CHAN
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 1
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_CHAN
+    IsFemale: 0
+    IsCrawling: 0
+    IsCivilian: 1
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [113, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [0, 0, 0]
+    - [104, 16, 0]
+    - [104, 16, 0]
+    - [120, 8, 0]
+    - [128, 8, 0]
+    - [136, 12, 0]
+    - [136, 12, 0]
+    - [148, 17, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [56, 6, 6]
+    - [113, 4, 4]
+    - [0, 1, 1]
+    - [8, 6, 6]
+    - [0, 1, 1]
+    - [0, 0, 0]
+    - [104, 16, 0]
+    - [104, 16, 0]
+    - [120, 8, 0]
+    - [128, 8, 0]
+    - [136, 12, 0]
+    - [136, 12, 0]
+    - [148, 17, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: DrChan
+  SHOK:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 24
+    FullName: 539
+    IniName: SHOK
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: -16
+    PrimaryOffset: 56
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: 24
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_SHOCK
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_FULL
+    DoControls:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [256, 1, 16]
+    - [16, 6, 6]
+    - [64, 16, 16]
+    - [192, 2, 2]
+    - [208, 4, 4]
+    - [240, 2, 2]
+    - [256, 16, 16]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [416, 8, 0]
+    - [432, 8, 0]
+    - [432, 8, 0]
+    - [440, 12, 0]
+    - [452, 18, 0]
+    - [470, 3, 3]
+    - [494, 3, 3]
+    - [518, 3, 3]
+    - [542, 3, 3]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [8, 1, 1]
+    - [256, 1, 16]
+    - [16, 6, 6]
+    - [64, 16, 16]
+    - [192, 2, 2]
+    - [208, 4, 4]
+    - [240, 2, 2]
+    - [256, 16, 16]
+    - [384, 16, 0]
+    - [400, 16, 0]
+    - [416, 8, 0]
+    - [432, 8, 0]
+    - [432, 8, 0]
+    - [440, 12, 0]
+    - [452, 18, 0]
+    - [470, 3, 3]
+    - [494, 3, 3]
+    - [518, 3, 3]
+    - [542, 3, 3]
+    - [0, 0, 0]
+    FireLaunch: 2
+    ProneLaunch: 0
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: ShockTrooper
+  MECH:
+    RTTI: RTTI_INFANTRYTYPE
+    ID: 25
+    FullName: 540
+    IniName: MECH
+    IsSentient: 1
+    IsStealthy: 1
+    IsSelectable: 1
+    IsLegalTarget: 1
+    IsInsignificant: 0
+    IsImmune: 0
+    IsFootprint: 1
+    Armor: ARMOR_NONE
+    MaxStrength: 0
+    ImageData: 0
+    RadarIcon: 0
+    Remap: REMAP_NORMAL
+    VerticalOffset: 53
+    PrimaryOffset: 16
+    PrimaryLateral: 0
+    SecondaryOffset: 0
+    SecondaryLateral: 0
+    IsNominal: 0
+    IsTheater: 0
+    IsTurretEquipped: 0
+    IsRemappable: 1
+    Rotation: 8
+    Speed: SPEED_FOOT
+    HorizontalOffset: horizontaloffset
+    IsDoubleOwned: 0
+    IsInvisible: 0
+    IsLeader: 0
+    IsCloakable: 0
+    IsSelfHealing: 0
+    IsExploding: 0
+    MZone: MZONE_NORMAL
+    ThreatRange: 0
+    MaxPassengers: 0
+    SightRange: 0
+    Cost: 0
+    Level: -1
+    Prerequisite: 0
+    Risk: 0
+    Reward: 0
+    MaxSpeed: MPH_IMMOBILE
+    MaxAmmo: -1
+    Ownable: 0
+    ROT: 0
+    Points: 0
+    Type: INFANTRY_MECHANIC
+    IsFemale: 0
+    IsCrawling: 1
+    IsCivilian: 0
+    IsRemapOverride: 0
+    Pip: PIP_ENGINEER
+    DoControls:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [130, 1, 4]
+    - [8, 6, 6]
+    - [56, 28, 0]
+    - [114, 2, 2]
+    - [130, 4, 4]
+    - [162, 2, 2]
+    - [56, 28, 0]
+    - [178, 15, 0]
+    - [178, 15, 0]
+    - [193, 8, 0]
+    - [210, 8, 0]
+    - [202, 8, 0]
+    - [217, 12, 0]
+    - [229, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    DoControlsVirtual:
+    - [0, 1, 1]
+    - [0, 1, 1]
+    - [130, 1, 4]
+    - [8, 6, 6]
+    - [56, 28, 0]
+    - [114, 2, 2]
+    - [130, 4, 4]
+    - [162, 2, 2]
+    - [56, 28, 0]
+    - [178, 15, 0]
+    - [178, 15, 0]
+    - [193, 8, 0]
+    - [210, 8, 0]
+    - [202, 8, 0]
+    - [217, 12, 0]
+    - [229, 18, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 1, 0]
+    - [0, 0, 0]
+    FireLaunch: 25
+    ProneLaunch: 25
+    OverrideRemap: 0
+    IsCapture: 0
+    IsFraidyCat: 0
+    IsBomber: 0
+    IsDog: 0
+    IsCrushable: 1
+    IsScanner: 1
+    IsRepairable: 0
+    IsCrew: 0
+    SourceName: Mechanic

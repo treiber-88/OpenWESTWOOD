@@ -100,7 +100,8 @@ public sealed class Locomotor
     static bool Penalized(GameObject obj) =>
         (obj.Body?.DamageState ?? BodyDamageState.Pristine) >= BodyDamageState.ReallyDamaged; // MovementPenaltyDamageState
 
-    public float MaxSpeedFor(GameObject obj) => Math.Min(Penalized(obj) ? Template.SpeedDamaged : Template.Speed, maxSpeed);
+    public float MaxSpeedFor(GameObject obj) =>
+        Math.Min(Penalized(obj) ? Template.SpeedDamaged : Template.Speed, maxSpeed) * (Template.IsAirborne ? 1 : obj.Owner.SpeedBias);
 
     public float MaxTurnRateFor(GameObject obj)
     {

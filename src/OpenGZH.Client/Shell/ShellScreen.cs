@@ -135,10 +135,23 @@ public sealed class ShellScreen : IScreen
             shellGame = null;
             director = null;
             shellAudio = null;
+            pendingBattle = null;
+            duneBattle = false;
             return;
         }
-        if (shellGame != null)
+        if (shellGame != null || pendingBattle != null)
             return;
+        // OpenGZH: a battle for Dune (GameData OpenGZHShellMap), set up and played ahead in the background while
+        // its theme starts.
+        if (DuneShellBattle.MapName(Ui.Content.Rules) != null)
+        {
+            string music = Ui.Content.Rules.Section("GameData").GetString("OpenGZHShellMusic");
+            if (music.Length > 0)
+                Ui.Audio.ChangeMusic(music, fadeOut: false, 0);
+            int seed = Environment.TickCount;
+            pendingBattle = Task.Run(() => DuneShellBattle.Create(Ui.Content, seed));
+            return;
+        }
         string map = ui.Content.Rules.Section("GameData").GetString("ShellMapName").Replace('\\', '/');
         if (map.Length == 0 || !Ui.Content.FileSystem.Exists(map))
             return;
@@ -208,7 +221,17 @@ public sealed class ShellScreen : IScreen
     public Logic.Multiplayer.GameInfo? SkirmishGameInfo { get; set; }
 
     Logic.Multiplayer.MapCache? mapCache;
-    public Logic.Multiplayer.MapCache MapCache => mapCache ??= Logic.Multiplayer.MapCache.Load(Ui.Content.FileSystem);
+    public Logic.Multiplayer.MapCache MapCache => mapCache ??= LoadMapCache();
+
+    /// <summary>The official maps, and (OpenGZH) Tiberian Dawn's multiplayer maps when its files are installed.</summary>
+    Logic.Multiplayer.MapCache LoadMapCache()
+    {
+        var cache = Logic.Multiplayer.MapCache.Load(Ui.Content.FileSystem);
+        TiberianDawn.TdMaps.AddTo(cache);
+        Dune2000.D2kMaps.AddTo(cache);
+        RedAlert2.Ra2Maps.AddTo(cache);
+        return cache;
+    }
 
     readonly Dictionary<string, Graphics.Texture?> previews = new(StringComparer.OrdinalIgnoreCase);
 
@@ -217,7 +240,23 @@ public sealed class ShellScreen : IScreen
     {
         if (map.Length == 0)
             return null;
-        if (!previews.TryGetValue(map, out var texture))
+        if (!previews.TryGetValue(map, out var texture) && RedAlert2.Ra2Maps.IsRa2Map(map))
+        {
+            texture = Ui.Textures.GetOrCreate("preview:" + map, () => RedAlert2.Ra2Maps.Preview(map));
+            previews[map] = texture;
+        }
+        else if (!previews.TryGetValue(map, out texture) && Dune2000.D2kMaps.IsD2kMap(map))
+        {
+            texture = Ui.Textures.GetOrCreate("preview:" + map, () => Dune2000.D2kMaps.Preview(map));
+            previews[map] = texture;
+        }
+        else if (!previews.TryGetValue(map, out texture) && TiberianDawn.TdMaps.IsTdMap(map))
+        {
+            // A Tiberian Dawn map's picture: its whole ground with Tiberium and trees.
+            texture = Ui.Textures.GetOrCreate("preview:" + map, () => TiberianDawn.TdMaps.Preview(map));
+            previews[map] = texture;
+        }
+        else if (!previews.TryGetValue(map, out texture))
         {
             string tga = Path.ChangeExtension(map.Replace('\\', '/'), ".tga");
             texture = Ui.Content.FileSystem.Exists(tga) ? Ui.Textures.Get(tga, repeat: false) : null;
@@ -338,8 +377,91 @@ public sealed class ShellScreen : IScreen
         Transitions.ScreenSize = new Vector2(width, height);
     }
 
+    // ---- The Dune shell battle ----
+
+    Task<(GameLogic Game, Formats.Maps.MapFile Map)?>? pendingBattle;
+    bool duneBattle;
+    Vector3 cameraGoal;
+    float nextCameraPick, nextOutcomeCheck;
+    int baseTurn;
+
+    /// <summary>The battle, once set up: shown behind the menus, watched by its observer.</summary>
+    void ShowDuneBattle()
+    {
+        if (pendingBattle is not { IsCompleted: true } task)
+            return;
+        pendingBattle = null;
+        if (task.IsFaulted || task.Result is not { } battle)
+        {
+            Console.Error.WriteLine($"Shell battle failed to start: {task.Exception?.InnerException?.Message}");
+            return;
+        }
+        shellGame = battle.Game;
+        var viewer = shellGame.Players.Local ?? shellGame.Players.All.First(p => !p.IsNeutral);
+        // An observer's view: everything visible, no shroud drawn (Viewer null).
+        shellWorld = new WorldView(gl, Ui.Content, shellGame, battle.Map, Ui.Textures) { Viewer = null };
+        shellAudio = new Audio.GameAudio(Ui.Audio, shellGame, shellWorld, viewer);
+        cameraGoal = DuneShellBattle.Fighting(shellGame) ?? DuneShellBattle.Base(shellGame, baseTurn++)
+            ?? new Vector3(shellGame.Terrain.WorldWidth / 2, shellGame.Terrain.WorldHeight / 2, 0);
+        shellWorld.Camera.Distance = DuneShellBattle.Number(Ui.Content.Rules, "OpenGZHShellCameraDistance", 800);
+        shellWorld.LookAt(cameraGoal);
+        duneBattle = true;
+        nextCameraPick = 6;
+        nextOutcomeCheck = 10;
+    }
+
+    /// <summary>The camera drifts to where the fighting is; a battle down to one house starts over.</summary>
+    void DirectDuneBattle(float seconds)
+    {
+        if (!duneBattle || shellGame == null || shellWorld == null)
+            return;
+        var camera = shellWorld.Camera;
+        var target = camera.Target;
+        // Kept far enough inside the map that the wide view doesn't look past its edges.
+        // (The camera looks north: the far, wider edge of the view is the top.)
+        float w = shellGame.Terrain.WorldWidth, h = shellGame.Terrain.WorldHeight;
+        float marginX = Math.Min(camera.Distance * 0.9f, w / 2), marginTop = Math.Min(camera.Distance * 1.1f, h / 2), marginBottom = Math.Min(camera.Distance * 0.45f, h / 2);
+        Vector3 Inside(Vector3 p) => new(Math.Clamp(p.X, marginX, w - marginX), Math.Clamp(p.Y, marginBottom, Math.Max(marginBottom, h - marginTop)), target.Z);
+        var goal = Inside(cameraGoal);
+        // Once it has arrived (where it can get to), the camera stays a while, then moves on: to the fighting, or,
+        // if that is where it already is, the next house's base, so it keeps touring.
+        bool arrived = Vector2.Distance(new Vector2(target.X, target.Y), new Vector2(goal.X, goal.Y)) < 30;
+        if (arrived)
+            nextCameraPick -= seconds;
+        if (nextCameraPick <= 0)
+        {
+            nextCameraPick = DuneShellBattle.Number(Ui.Content.Rules, "OpenGZHShellCameraHold", 10);
+            var next = DuneShellBattle.Fighting(shellGame);
+            if (next == null || Vector2.Distance(new Vector2(Inside(next.Value).X, Inside(next.Value).Y), new Vector2(target.X, target.Y)) < 300)
+                next = DuneShellBattle.Base(shellGame, baseTurn++);
+            if (next is { } chosen)
+                cameraGoal = chosen;
+            goal = Inside(cameraGoal);
+        }
+        // A steady glide (easing only over the last stretch), not a dash that crawls to a stop.
+        var toGoal = goal - target;
+        float remaining = toGoal.Length();
+        if (remaining > 0.5f)
+        {
+            float speed = DuneShellBattle.Number(Ui.Content.Rules, "OpenGZHShellCameraSpeed", 220) * Math.Clamp(remaining / 150f, 0.25f, 1f);
+            camera.Target = target + toGoal / remaining * Math.Min(remaining, speed * seconds);
+        }
+        nextOutcomeCheck -= seconds;
+        if (nextOutcomeCheck <= 0)
+        {
+            nextOutcomeCheck = 10;
+            if (DuneShellBattle.HousesLeft(shellGame) < 2)
+            {
+                ShowShellMap(false);
+                ShowShellMap(true);
+            }
+        }
+    }
+
     public void Update(float seconds)
     {
+        ShowDuneBattle();
+        DirectDuneBattle(seconds);
         if (shellWorld != null)
         {
             shellWorld.ViewportSize = new Vector2(width, height);

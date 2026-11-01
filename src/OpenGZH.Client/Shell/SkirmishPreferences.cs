@@ -71,6 +71,8 @@ public sealed class SkirmishPreferences
         }
     }
 
+    public bool ExploredMap => values.TryGetValue("ExploredMap", out var v) && v.Equals("yes", StringComparison.OrdinalIgnoreCase);
+    public bool NoFogOfWar => values.TryGetValue("NoFogOfWar", out var v) && v.Equals("yes", StringComparison.OrdinalIgnoreCase);
     public bool SuperweaponRestricted => values.TryGetValue("SuperweaponRestrict", out var v) && v.Equals("yes", StringComparison.OrdinalIgnoreCase);
 
     public int StartingCash =>
@@ -135,6 +137,8 @@ public sealed class SkirmishPreferences
                 $"UserName = {slot0.Name}",
                 $"StartingCash = {info.StartingCash}",
                 $"SuperweaponRestrict = {(info.SuperweaponRestriction ? "Yes" : "No")}",
+                $"ExploredMap = {(info.ExploredMap ? "Yes" : "No")}",
+                $"NoFogOfWar = {(info.NoFogOfWar ? "Yes" : "No")}",
                 $"SlotList = {slots}",
                 $"FPS = {fps}",
             ]);
