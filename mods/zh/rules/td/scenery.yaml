@@ -6,8 +6,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -33,8 +33,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -60,8 +60,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -87,8 +87,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -114,8 +114,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -141,8 +141,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -168,8 +168,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -195,8 +195,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -222,8 +222,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -249,8 +249,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -276,8 +276,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -303,8 +303,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -330,8 +330,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -357,8 +357,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -384,8 +384,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -411,8 +411,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -438,8 +438,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -465,8 +465,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -492,8 +492,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -523,8 +523,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -554,8 +554,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -581,8 +581,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -608,8 +608,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -635,8 +635,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -662,8 +662,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -689,8 +689,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -716,8 +716,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -743,8 +743,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -770,8 +770,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -797,8 +797,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 9.72
-    GeometryMinorRadius: 9.72
+    GeometryMajorRadius: 10.8
+    GeometryMinorRadius: 10.8
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -824,8 +824,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:
@@ -851,8 +851,8 @@ Objects:
     EditorSorting: MISC_NATURAL
     KindOf: IMMOBILE TD_OBJECT 
     Geometry: CYLINDER
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
     GeometryHeight: 30
     GeometryIsSmall: No
     ArmorSet:

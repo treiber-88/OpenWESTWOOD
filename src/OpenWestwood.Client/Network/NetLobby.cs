@@ -84,6 +84,7 @@ public sealed class NetLobby
         w.Write(info.SuperweaponRestriction);
         w.Write(info.ExploredMap);
         w.Write(info.NoFogOfWar);
+        w.Write((byte)info.GameSpeed);
         w.Write(info.Seed);
         foreach (var slot in info.Slots)
         {
@@ -105,6 +106,7 @@ public sealed class NetLobby
             SuperweaponRestriction = r.ReadBoolean(),
             ExploredMap = r.ReadBoolean(),
             NoFogOfWar = r.ReadBoolean(),
+            GameSpeed = r.ReadByte(),
             Seed = r.ReadUInt64(),
         };
         foreach (var slot in info.Slots)

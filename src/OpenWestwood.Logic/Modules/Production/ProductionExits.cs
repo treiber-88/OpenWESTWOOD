@@ -83,7 +83,70 @@ public sealed class SupplyCenterProductionExitUpdate : DefaultProductionExitUpda
     }
 }
 
-/// <summary>Units appear at named bones of the building's model (e.g. GLA tunnels, spawn points).</summary>
+/// <summary>
+/// Units appear on the building's numbered SpawnPointBoneName bones (SpawnPoint01, 02...) and stay there for good
+/// (the original's SpawnPointProductionExitUpdate: the Stinger Site's soldiers stand in its pits, DISABLED_HELD;
+/// they still turn and shoot). Each bone holds one occupant; a dead one frees it.
+/// </summary>
 public sealed class SpawnPointProductionExitUpdate : DefaultProductionExitUpdate
 {
+    const int MaxSpawnPoints = 10;
+
+    bool bonesInitialized;
+    readonly List<(Vector3 Position, float Angle)> spawnPoints = new();
+    readonly uint[] occupiers = new uint[MaxSpawnPoints];
+
+    void InitializeBonePositions()
+    {
+        if (!Game.Bones.HasArt)
+            return;
+        // (Pristine bones, read as the building stands now; buildings don't move.)
+        foreach (var bone in Game.Bones.NumberedBones(Owner, Setting("SpawnPointBoneName", "SpawnPoint"), MaxSpawnPoints))
+        {
+            var forward = Vector3.TransformNormal(Vector3.UnitX, bone);
+            spawnPoints.Add((bone.Translation, DMath.Atan2(forward.Y, forward.X)));
+        }
+        bonesInitialized = true;
+    }
+
+    void RevalidateOccupiers()
+    {
+        for (int i = 0; i < spawnPoints.Count; i++)
+            if (occupiers[i] != 0 && Game.FindObject(occupiers[i]) is not { IsEffectivelyDead: false })
+                occupiers[i] = 0;
+    }
+
+    int FreeSpot()
+    {
+        if (!bonesInitialized)
+            InitializeBonePositions();
+        RevalidateOccupiers();
+        for (int i = 0; i < spawnPoints.Count; i++)
+            if (occupiers[i] == 0)
+                return i;
+        return -1;
+    }
+
+    public override bool CanExitNow => !bonesInitialized || FreeSpot() >= 0 || spawnPoints.Count == 0;
+
+    public override void Exit(GameObject unit)
+    {
+        int spot = FreeSpot();
+        if (spot < 0)
+        {
+            // No model bones (no art loaded): the plain exit.
+            base.Exit(unit);
+            return;
+        }
+        var (position, angle) = spawnPoints[spot];
+        occupiers[spot] = unit.Id;
+        var at = position with { Z = Game.Terrain.LayerHeight(position.X, position.Y) };
+        if (unit.AI != null)
+            unit.AI.Teleport(at);
+        else
+            unit.SetPosition(at);
+        unit.SetOrientation(angle);
+        // You are stuck here, little man.
+        unit.SetDisabled("DISABLED_HELD");
+    }
 }

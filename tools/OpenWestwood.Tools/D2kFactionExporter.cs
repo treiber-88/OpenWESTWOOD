@@ -12,7 +12,7 @@ namespace OpenWestwood.Tools;
 /// unfolds into a Construction Yard, which builds structures that are then placed next to the base.
 /// Conversions (a Dune 2000 cell is 1024 rule units; the game runs 25 ticks a second):
 /// <list type="bullet">
-/// <item>distances: cells x 36 world units (as TD); sizes: TdScale.Cell (32.4) a cell, the art 32 pixels a cell;</item>
+/// <item>distances: cells x 36 world units (as TD); sizes: TdScale.Cell (36) a cell, the art 32 pixels a cell;</item>
 /// <item>speeds: units a tick / 1024 x 36 x 25; reload and build times: ticks x 40 ms;</item>
 /// <item>health and damage: the rules' values / 100;</item>
 /// <item>damage against armour: each warhead's Versus table, its damage type chosen by what it is good against.</item>
@@ -21,7 +21,7 @@ namespace OpenWestwood.Tools;
 /// </summary>
 static class D2kFactionExporter
 {
-    const float CellUnits = 36f, SizeUnits = 32.4f, TicksPerSecond = 25f;
+    const float CellUnits = 36f, SizeUnits = 36f, TicksPerSecond = 25f;
 
     sealed record Side(string Name, string Faction, string Prefix, string BaseSide, string Color, string DisplayName, string ScoreImage, string LoadImage);
 

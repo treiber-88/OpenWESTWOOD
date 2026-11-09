@@ -1,0 +1,291 @@
+# OpenWESTWOOD: the other games' radar buildings give their owner the radar (the mini-map), as Zero Hour's
+# command centers do: the finished building grants itself Upgrade_OWRadar, which turns on a RadarUpgrade (it needs
+# power, like the originals' radar). Merged into the factions' own object definitions.
+Upgrades:
+  Upgrade_OWRadar:
+    Type: OBJECT
+    BuildTime: 0.0
+    BuildCost: 0
+Objects:
+  # Tiberian Dawn: the Communications Center and the Advanced Communications Center
+  TDGDI_HQ:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  TDNOD_HQ:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  TDGDI_EYE:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Red Alert: the Radar Dome
+  RAALL_DOME:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  RASOV_DOME:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Dune 2000: the Outpost
+  D2KATR_OUTPOST:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  D2KHAR_OUTPOST:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  D2KORD_OUTPOST:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Tiberian Sun: the Radar (RULES.INI Radar=yes)
+  TSGDI_GARADR:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  TSNOD_NARADR:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Red Alert 2 / Yuri's Revenge: the buildings with Radar=yes in RULESMD.INI
+  RA2ALL_GAAIRC:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  RA2ALL_AMRADR:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  RA2ALL_GASPYSAT:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  RA2SOV_NARADR:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  RA2YUR_NAPSIS:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Kane's Wrath: the Command Post, Operations Center and Nerve Center
+  KW_GDICommandPost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_ZOCOMCommandPost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_SteelTalonsCommandPost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_NODOperationsCenter:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_BlackHandOperationsCenter:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_MarkedOfKaneOperationsCenter:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  KW_AlienControlCenter:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  # Emperor: the Outpost
+  EM_ATOutpost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  EM_HKOutpost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar
+  EM_OROutpost:
+    Modules:
+      ModuleTag_OWRadarGrant:
+        Module: Behavior
+        Class: GrantUpgradeCreate
+        UpgradeToGrant: Upgrade_OWRadar
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_OWRadar:
+        Module: Behavior
+        Class: RadarUpgrade
+        TriggeredBy: Upgrade_OWRadar

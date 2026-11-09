@@ -99,6 +99,8 @@ public sealed class SkirmishPreferences
     public int StartingCash =>
         values.TryGetValue("StartingCash", out var v) && int.TryParse(v, out int cash) ? cash : DefaultStartingMoney(rules);
 
+    public int GameSpeed => values.TryGetValue("GameSpeed", out var v) && int.TryParse(v, out int speed) ? Math.Clamp(speed, 0, GameInfo.GameSpeeds.Length - 1) : 0;
+
     public int Fps => values.TryGetValue("FPS", out var v) && int.TryParse(v, out int fps) ? fps : 30;
 
     /// <summary>The MultiplayerStartingMoneyChoice values, in order.</summary>
@@ -160,6 +162,7 @@ public sealed class SkirmishPreferences
                 $"SuperweaponRestrict = {(info.SuperweaponRestriction ? "Yes" : "No")}",
                 $"ExploredMap = {(info.ExploredMap ? "Yes" : "No")}",
                 $"NoFogOfWar = {(info.NoFogOfWar ? "Yes" : "No")}",
+                $"GameSpeed = {info.GameSpeed}",
                 $"SlotList = {slots}",
                 $"FPS = {fps}",
             ]);

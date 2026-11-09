@@ -37,6 +37,7 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
     readonly List<(string Name, uint Rgb, string TooltipName)> colors;
     GuiComboBox? comboStartingCash;
     GuiCheckBox? checkLimitSuperweapons, checkExploredMap, checkNoFog;
+    GuiComboBox? comboGameSpeed;
     GuiTextEntry? textEntryPlayerName;
     GuiWindow? textMapDisplay, mapWindow, staticTextGameSpeed;
     GuiSlider? sliderGameSpeed;
@@ -119,6 +120,7 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
         info.SuperweaponRestriction = prefs.SuperweaponRestricted;
         info.ExploredMap = prefs.ExploredMap;
         info.NoFogOfWar = prefs.NoFogOfWar;
+        info.GameSpeed = prefs.GameSpeed;
         info.Map = prefs.PreferredMap;
         if (sliderGameSpeed != null)
             sliderGameSpeed.Value = Math.Clamp(prefs.Fps, 15, 61);
@@ -137,26 +139,6 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
     }
 
     /// <summary>A new check box like <paramref name="like"/>, <paramref name="row"/> rows below it.</summary>
-    static GuiCheckBox CopyCheckBox(GuiCheckBox like, string name, string text, int row)
-    {
-        var d = like.Definition;
-        var copy = new Formats.Wnd.WndWindow
-        {
-            Type = d.Type, Name = $"{d.Name.Split(':')[0]}:{name}", X = d.X, Y = d.Y + row * (d.Height + 4), Width = d.Width, Height = d.Height,
-            CreationWidth = d.CreationWidth, CreationHeight = d.CreationHeight, FontName = d.FontName, FontSize = d.FontSize, FontBold = d.FontBold,
-            Text = text, TextEnabled = d.TextEnabled, TextEnabledBorder = d.TextEnabledBorder, TextDisabled = d.TextDisabled,
-            TextDisabledBorder = d.TextDisabledBorder, TextHilite = d.TextHilite, TextHiliteBorder = d.TextHiliteBorder,
-        };
-        copy.Status.UnionWith(d.Status);
-        copy.Style.UnionWith(d.Style);
-        copy.Enabled.AddRange(d.Enabled);
-        copy.Disabled.AddRange(d.Disabled);
-        copy.Hilite.AddRange(d.Hilite);
-        var box = new GuiCheckBox(copy);
-        like.Parent?.AddChild(box);
-        return box;
-    }
-
     void InitGadgets()
     {
         comboStartingCash = Layout.Find<GuiComboBox>($"{LayoutName}:ComboBoxStartingCash");
@@ -179,11 +161,27 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
         if (checkLimitSuperweapons != null)
         {
             checkLimitSuperweapons.Clicked += _ => { Info.SuperweaponRestriction = checkLimitSuperweapons.Checked; Edited(); };
-            // OpenWESTWOOD's map options, under the superweapon box and drawn like it.
-            checkExploredMap = CopyCheckBox(checkLimitSuperweapons, "CheckboxExploredMap", "Explored map", 1);
-            checkNoFog = CopyCheckBox(checkLimitSuperweapons, "CheckboxNoFogOfWar", "No fog of war", 2);
+        }
+        // OpenWESTWOOD's options (added to the layout as it loads: UI/Gui/LayoutAdditions).
+        checkExploredMap = Layout.Find<GuiCheckBox>($"{LayoutName}:{LayoutAdditions.ExploredMapBox}");
+        checkNoFog = Layout.Find<GuiCheckBox>($"{LayoutName}:{LayoutAdditions.NoFogBox}");
+        comboGameSpeed = Layout.Find<GuiComboBox>($"{LayoutName}:{LayoutAdditions.GameSpeedList}");
+        if (checkExploredMap != null)
             checkExploredMap.Clicked += _ => { Info.ExploredMap = checkExploredMap.Checked; Edited(); };
+        if (checkNoFog != null)
             checkNoFog.Clicked += _ => { Info.NoFogOfWar = checkNoFog.Checked; Edited(); };
+        if (comboGameSpeed != null)
+        {
+            comboGameSpeed.Reset();
+            for (int i = 0; i < GameInfo.GameSpeedNames.Length; i++)
+                comboGameSpeed.AddEntry(GameInfo.GameSpeedNames[i], comboGameSpeed.Definition.TextEnabled, i);
+            comboGameSpeed.SetSelectedPos(0);
+            comboGameSpeed.SelectionChanged += c =>
+            {
+                if (c.SelectedData is int speed)
+                    Info.GameSpeed = speed;
+                Edited();
+            };
         }
         if (mapWindow != null)
             mapWindow.CustomDraw = DrawMapPreview;
@@ -433,6 +431,8 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
                 checkExploredMap.Enabled = net.IsHost;
             if (checkNoFog != null)
                 checkNoFog.Enabled = net.IsHost;
+            if (comboGameSpeed != null)
+                comboGameSpeed.Enabled = net.IsHost;
         }
     }
 
@@ -466,6 +466,7 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
             checkExploredMap.Checked = Info.ExploredMap;
         if (checkNoFog != null)
             checkNoFog.Checked = Info.NoFogOfWar;
+        comboGameSpeed?.SetSelectedPos(Math.Clamp(Info.GameSpeed, 0, GameInfo.GameSpeeds.Length - 1));
         if (comboStartingCash != null)
             comboStartingCash.SetSelectedPos(Math.Max(0, comboStartingCash.IndexOfData(Info.StartingCash)));
         UpdateSlotList();

@@ -75,3 +75,8 @@ MultiplayerStartingMoneyChoice:
   Default: Yes
 - Value: 20000
 - Value: 50000
+# OpenWESTWOOD: more money (user request).
+- Value: 75000
+- Value: 100000
+- Value: 150000
+- Value: 200000

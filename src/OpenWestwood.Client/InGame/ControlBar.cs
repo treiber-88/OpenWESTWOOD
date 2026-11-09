@@ -29,10 +29,16 @@ public sealed class ControlBar
     readonly GuiPushButton?[] slots = new GuiPushButton?[15];
     readonly GuiPushButton?[] queueButtons = new GuiPushButton?[10];
 
+    /// <summary>The passenger each EXIT_CONTAINER slot shows (the original's m_containData), 0 = empty.</summary>
+    readonly uint[] slotPassengers = new uint[15];
+
     GameObject? shownObject;
 
     /// <summary>A command button was clicked (the game screen decides what it means).</summary>
     public event Action<CommandButton, GameObject>? CommandClicked;
+
+    /// <summary>A passenger's portrait was clicked: that one gets out.</summary>
+    public event Action<GameObject>? PassengerExitClicked;
 
     /// <summary>A production queue entry was clicked (to cancel it).</summary>
     public event Action<GameObject, ProductionUpdate.Entry>? QueueEntryClicked;
@@ -67,8 +73,15 @@ public sealed class ControlBar
                 slots[i] = button;
                 button.Clicked += _ =>
                 {
-                    if (slotButtons[slot] is { } command && shownObject != null)
-                        CommandClicked?.Invoke(command, shownObject);
+                    if (slotButtons[slot] is not { } command || shownObject == null)
+                        return;
+                    if (IsExitButton(command))
+                    {
+                        if (game.FindObject(slotPassengers[slot]) is { } passenger)
+                            PassengerExitClicked?.Invoke(passenger);
+                        return;
+                    }
+                    CommandClicked?.Invoke(command, shownObject);
                 };
                 button.CustomDraw = (w, context) => DrawSlot(slot, w, context);
             }
@@ -164,12 +177,13 @@ public sealed class ControlBar
                 if (slot >= 1 && slot <= 14)
                     slotButtons[slot] = button;
         }
+        FillPassengerSlots(selected);
         for (int i = 1; i <= 14; i++)
         {
             if (slots[i] == null)
                 continue;
-            slots[i]!.Hidden = slotButtons[i] is not { } shown || IsHidden(shown);
-            slots[i]!.Enabled = slotButtons[i] is { } b && IsAvailable(b, selected!);
+            slots[i]!.Hidden = slotButtons[i] is not { } shown || IsHidden(shown) || IsExitButton(shown) && slotPassengers[i] == uint.MaxValue;
+            slots[i]!.Enabled = slotButtons[i] is { } b && (IsExitButton(b) ? slotPassengers[i] is not (0 or uint.MaxValue) && !selected!.IsDisabledBy("DISABLED_SUBDUED") : IsAvailable(b, selected!));
         }
 
         var queue = selected?.FindModule<ProductionUpdate>()?.Queue;
@@ -195,6 +209,33 @@ public sealed class ControlBar
 
     /// <summary>Objects may switch command sets with upgrades (CommandSetUpgrade); the template's set is the default.</summary>
     static string CurrentCommandSet(GameObject obj) => obj.CommandSetOverride ?? obj.Template.CommandSet;
+
+    static bool IsExitButton(CommandButton button) => button.Command.Equals("EXIT_CONTAINER", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The original's populateButtonsForContainer: the EXIT_CONTAINER slots, in order, show who is inside; slots
+    /// beyond what the container holds are hidden (uint.MaxValue), empty ones stay greyed (0). An unmanned
+    /// vehicle shows none.
+    /// </summary>
+    void FillPassengerSlots(GameObject? selected)
+    {
+        Array.Clear(slotPassengers);
+        if (selected?.Contain is not { } contain)
+            return;
+        var passengers = contain.Passengers.Where(p => !p.IsEffectivelyDead).ToList();
+        int max = contain.ContainMax > 0 ? contain.ContainMax : int.MaxValue;
+        int index = 0;
+        for (int i = 1; i <= 14; i++)
+        {
+            if (slotButtons[i] is not { } button || !IsExitButton(button))
+                continue;
+            if (index >= max || selected.IsDisabledBy("DISABLED_UNMANNED"))
+                slotPassengers[i] = uint.MaxValue;
+            else if (index < passengers.Count)
+                slotPassengers[i] = passengers[index].Id;
+            index++;
+        }
+    }
 
     static bool IsPowerButton(CommandButton button) =>
         button.Command.ToUpperInvariant() is "SPECIAL_POWER" or "SPECIAL_POWER_FROM_COMMAND_CENTER" or "SPECIAL_POWER_FROM_SHORTCUT";
@@ -257,7 +298,9 @@ public sealed class ControlBar
         if (slotButtons[slot] is not { } button)
             return;
         var r = window.ScreenRect;
-        ui.Images.Draw(context.Batch, button.ButtonImage, r, window.IsEnabled ? Vector4.One : new Vector4(0.45f, 0.45f, 0.45f, 1));
+        // A passenger's slot shows the passenger (the original's populateInvDataCallback).
+        string image = IsExitButton(button) && game.FindObject(slotPassengers[slot]) is { } passenger ? passenger.Template.ButtonImage : button.ButtonImage;
+        ui.Images.Draw(context.Batch, image, r, window.IsEnabled ? Vector4.One : new Vector4(0.45f, 0.45f, 0.45f, 1));
 
         // Button border colour by kind, from the scheme.
         string borderKey = button.Command.ToUpperInvariant() switch

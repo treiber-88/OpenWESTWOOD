@@ -25,7 +25,7 @@ namespace OpenWestwood.Tools;
 public static class TdFactionExporter
 {
     const float CellUnits = 36f;                 // one TD cell in ZH world units (distances: speeds, ranges, sight)
-    const float SizeScale = 0.9f;                // TD objects are drawn and built 10% smaller than a cell's 36 units
+    const float SizeScale = 1f;                  // TD objects at their original size: a cell's 36 units (must match TdScale.Size)
     const float SizeUnits = CellUnits * SizeScale; // one TD cell of an object's size (footprints, bodies, art)
     const float InfantrySpeedFactor = 2.3f;      // TD soldiers walk this much faster (see the infantry locomotors)
     const float UnitStrengthFactor = 1.4f;       // TD units (not buildings) have this much more health

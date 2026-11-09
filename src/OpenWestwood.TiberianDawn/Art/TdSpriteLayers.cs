@@ -19,6 +19,22 @@ public readonly record struct TdSpriteState
     public bool Firing { get; init; }
     public bool Harvesting { get; init; }
     public bool Dying { get; init; }
+
+    /// <summary>How a dying soldier dies (InfantryClass::Take_Damage picks it by the killing warhead).</summary>
+    public DoType? Death { get; init; }
+
+    /// <summary>
+    /// The death for a killing blow of this Zero Hour damage type, as TD's warheads choose (Take_Damage): fire,
+    /// laser and particle beam burn; explosions blow over; armour piercing is the grenade death; fists and feet punch
+    /// and kick; bullets and the rest are the gunshot death.
+    /// </summary>
+    public static DoType DeathFor(string? damageType) => (damageType ?? "").ToUpperInvariant() switch
+    {
+        "FLAME" or "LASER" or "PARTICLE_BEAM" => DoType.DO_FIRE_DEATH,
+        "EXPLOSION" => DoType.DO_EXPLOSION_DEATH,
+        "ARMOR_PIERCING" => DoType.DO_GRENADE_DEATH,
+        _ => DoType.DO_GUN_DEATH,
+    };
     /// <summary>Height above the ground in TD pixels (aircraft).</summary>
     public int Altitude { get; init; }
     /// <summary>Missiles left (the MSAM / SAM site art shows them).</summary>
@@ -165,10 +181,13 @@ public static class TdSpriteLayers
     /// <summary>A soldier: InfantryClass::Shape_Number with the DoControls of what it is doing.</summary>
     public static void Infantry(InfantryTypeClass cls, TdSpriteState s, List<TdShapeLayer> layers)
     {
-        var doit = s.Dying ? DoType.DO_GUN_DEATH : s.Firing ? DoType.DO_FIRE_WEAPON : s.Moving ? DoType.DO_WALK : DoType.DO_STAND_READY;
+        var doit = s.Dying ? s.Death ?? DoType.DO_GUN_DEATH : s.Firing ? DoType.DO_FIRE_WEAPON : s.Moving ? DoType.DO_WALK : DoType.DO_STAND_READY;
         // INFANTRY.CPP's MasterDoControls rates (TD ticks a frame).
-        int rate = doit switch { DoType.DO_WALK => 1, /* TD walks a frame every 2 ticks; soldiers move twice as fast here, so the legs keep up */ DoType.DO_FIRE_WEAPON => 1, DoType.DO_GUN_DEATH => 2, _ => 0 };
+        int rate = doit switch { DoType.DO_WALK => 1, /* TD walks a frame every 2 ticks; soldiers move twice as fast here, so the legs keep up */ DoType.DO_FIRE_WEAPON => 1, _ when s.Dying => 2, _ => 0 };
         var control = cls.DoControl(doit);
+        // (A soldier without frames for this death falls the usual way.)
+        if (s.Dying && control == (0, 1, 0))
+            control = cls.DoControl(DoType.DO_GUN_DEATH);
         int count = Math.Max(control.Count, 1);
         int stage = Stage(s, rate);
         int shapenum = s.Dying ? Math.Min(stage, count - 1) : stage % count;

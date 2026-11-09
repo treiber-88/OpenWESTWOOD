@@ -189,6 +189,34 @@ CommandButtons:
     ButtonImage: EMCAMEO:AT_Factory.tga
     ButtonBorderType: BUILD
     DescriptLabel: Factory
+  Command_EM_EM_FRCamp:
+    Command: UNIT_BUILD
+    Object: EM_FRCamp
+    TextLabel: Fremen Camp
+    ButtonImage: EMCAMEO:FR_Camp.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Fremen Camp
+  Command_EM_EM_IMBarracks:
+    Command: UNIT_BUILD
+    Object: EM_IMBarracks
+    TextLabel: Imperial Barracks
+    ButtonImage: EMCAMEO:IM_Barracks.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Imperial Barracks
+  Command_EM_EM_IXResCentre:
+    Command: UNIT_BUILD
+    Object: EM_IXResCentre
+    TextLabel: Ix Research Facility
+    ButtonImage: EMCAMEO:IX_ResCentre.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Ix Research Facility
+  Command_EM_EM_TLFleshVat:
+    Command: UNIT_BUILD
+    Object: EM_TLFleshVat
+    TextLabel: Tleilaxu Flesh Vat
+    ButtonImage: EMCAMEO:TL_FleshVat.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Tleilaxu Flesh Vat
   Command_EM_EM_ATRocketTurret:
     Command: UNIT_BUILD
     Object: EM_ATRocketTurret
@@ -196,6 +224,13 @@ CommandButtons:
     ButtonImage: EMCAMEO:AT_RocketTurret.tga
     ButtonBorderType: BUILD
     DescriptLabel: Rocket Turret
+  Command_EM_EM_GUPalace:
+    Command: UNIT_BUILD
+    Object: EM_GUPalace
+    TextLabel: Guild Palace
+    ButtonImage: EMCAMEO:GU_Palace.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Guild Palace
   Command_EM_EM_ATHelipad:
     Command: UNIT_BUILD
     Object: EM_ATHelipad
@@ -231,6 +266,111 @@ CommandButtons:
     ButtonImage: EMCAMEO:ico2_acy.tga
     ButtonBorderType: UPGRADE
     DescriptLabel: Upgrade the Con Yard
+  Command_EM_EM_FRFremen:
+    Command: UNIT_BUILD
+    Object: EM_FRFremen
+    TextLabel: Fremen Warrior
+    ButtonImage: EMCAMEO:FR_Fremen.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Fremen Warrior
+  Command_EM_EM_FRADVFremen:
+    Command: UNIT_BUILD
+    Object: EM_FRADVFremen
+    TextLabel: Fedaykin
+    ButtonImage: EMCAMEO:FR_ADVFremen.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Fedaykin
+  Command_EM_EM_FRCamp_Upgrade:
+    Command: PLAYER_UPGRADE
+    Upgrade: Upgrade_EM_FRCamp
+    TextLabel: Upgrade
+    ButtonImage: EMCAMEO:FR_Camp.tga
+    ButtonBorderType: UPGRADE
+    DescriptLabel: Upgrade the Fremen Camp
+  Command_EM_EM_IMSardaukar:
+    Command: UNIT_BUILD
+    Object: EM_IMSardaukar
+    TextLabel: Sardaukar
+    ButtonImage: EMCAMEO:IM_Sardaukar.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Sardaukar
+  Command_EM_EM_IMADVSardaukar:
+    Command: UNIT_BUILD
+    Object: EM_IMADVSardaukar
+    TextLabel: Sardaukar Elite
+    ButtonImage: EMCAMEO:IM_ADVSardaukar.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Sardaukar Elite
+  Command_EM_EM_IMBarracks_Upgrade:
+    Command: PLAYER_UPGRADE
+    Upgrade: Upgrade_EM_IMBarracks
+    TextLabel: Upgrade
+    ButtonImage: EMCAMEO:IM_Barracks.tga
+    ButtonBorderType: UPGRADE
+    DescriptLabel: Upgrade the Imperial Barracks
+  Command_EM_EM_IXInfiltrator:
+    Command: UNIT_BUILD
+    Object: EM_IXInfiltrator
+    TextLabel: Infiltrator
+    ButtonImage: EMCAMEO:IX_Infiltrator.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Infiltrator
+  Command_EM_EM_IXProjector:
+    Command: UNIT_BUILD
+    Object: EM_IXProjector
+    TextLabel: Projector
+    ButtonImage: EMCAMEO:IX_Radar.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Projector
+  Command_EM_EM_IXResCentre_Upgrade:
+    Command: PLAYER_UPGRADE
+    Upgrade: Upgrade_EM_IXResCentre
+    TextLabel: Upgrade
+    ButtonImage: EMCAMEO:IX_ResCentre.tga
+    ButtonBorderType: UPGRADE
+    DescriptLabel: Upgrade the Ix Research Facility
+  Command_EM_EM_TLContaminator:
+    Command: UNIT_BUILD
+    Object: EM_TLContaminator
+    TextLabel: Contaminator
+    ButtonImage: EMCAMEO:TL_Contaminator.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Contaminator
+  Command_EM_EM_TLLeech:
+    Command: UNIT_BUILD
+    Object: EM_TLLeech
+    TextLabel: Leech
+    ButtonImage: EMCAMEO:TL_Leech.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Leech
+  Command_EM_EM_TLFleshVat_Upgrade:
+    Command: PLAYER_UPGRADE
+    Upgrade: Upgrade_EM_TLFleshVat
+    TextLabel: Upgrade
+    ButtonImage: EMCAMEO:TL_FleshVat.tga
+    ButtonBorderType: UPGRADE
+    DescriptLabel: Upgrade the Tleilaxu Flesh Vat
+  Command_EM_EM_GUMaker:
+    Command: UNIT_BUILD
+    Object: EM_GUMaker
+    TextLabel: Maker
+    ButtonImage: EMCAMEO:GU_Maker.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: Maker
+  Command_EM_EM_GUNIABTank:
+    Command: UNIT_BUILD
+    Object: EM_GUNIABTank
+    TextLabel: NIAB Tank
+    ButtonImage: EMCAMEO:GU_NIABTank.tga
+    ButtonBorderType: BUILD
+    DescriptLabel: NIAB Tank
+  Command_EM_EM_GUPalace_Upgrade:
+    Command: PLAYER_UPGRADE
+    Upgrade: Upgrade_EM_GUPalace
+    TextLabel: Upgrade
+    ButtonImage: EMCAMEO:GU_Palace.tga
+    ButtonBorderType: UPGRADE
+    DescriptLabel: Upgrade the Guild Palace
   Command_EM_EM_HKScout:
     Command: UNIT_BUILD
     Object: EM_HKScout

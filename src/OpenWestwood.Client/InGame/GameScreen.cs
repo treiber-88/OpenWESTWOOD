@@ -76,6 +76,7 @@ public sealed partial class GameScreen : IScreen
         player = game.Players.Local ?? game.Players.All.First(p => !p.IsNeutral);
         world = new WorldView(gl, ui.Content, game, map, ui.Textures);
         world.Viewer = player;
+        world.Speed = game.GameSpeed;
         audio = new Audio.GameAudio(ui.Audio, game, world, player);
         controlBar = new ControlBar(ui, game, player);
         promotions = new GeneralsPromotions(ui, game, player);
@@ -109,6 +110,7 @@ public sealed partial class GameScreen : IScreen
                 world.LookAt(obj.Position);
         };
         controlBar.CommandClicked += OnCommand;
+        controlBar.PassengerExitClicked += passenger => Game.Commands.Enqueue(new ExitContainerCommand(player.Index, passenger.Id));
         controlBar.QueueEntryClicked += (factory, entry) => Game.Commands.Enqueue(new CancelProductionCommand(player.Index, factory.Id, entry.Id));
         game.Events.OnMessage += (text, who) => { if (who == null || who == player) ShowMessage(text); };
         game.Events.OnEva += (eva, who) => { if (who == player && eva == "InsufficientFunds") ShowMessage(ui.Strings.Get("GUI:NotEnoughMoneyToBuild")); };

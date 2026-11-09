@@ -15,12 +15,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE COMMANDCENTER FS_FACTORY AUTO_RALLYPOINT FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 48.6
+    TdFootprint: 0 -18 54 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -72,12 +72,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_WARFACTORY AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 54
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 48.6
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 -18 54 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -119,8 +119,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
   TDGDI_GTWR:
     DisplayName: Guard Tower
     Side: TDGDI
@@ -135,12 +135,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -196,12 +196,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -257,12 +257,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -312,12 +312,12 @@ Objects:
     TdStorage: 1000
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 54
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
-    TdFootprint: 0 -32.4 48.6 64.8
+    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
+    TdFootprint: 0 -36 54 72
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -360,9 +360,9 @@ Objects:
         Class: SupplyCenterDockUpdate
         AllowsPassthrough: No
         NumberApproachPositions: -1
-        DockActionOffset: 'X: 0 Y: -48.6 Z:0.0'
-        DockStartOffset: 'X: 0 Y: -81 Z:0.0'
-        DockEndOffset: 'X: 0 Y: -81 Z:0.0'
+        DockActionOffset: 'X: 0 Y: -54 Z:0.0'
+        DockStartOffset: 'X: 0 Y: -90 Z:0.0'
+        DockEndOffset: 'X: 0 Y: -90 Z:0.0'
       ModuleTag_10:
         Module: Behavior
         Class: TdFreeUnitOnBuilt
@@ -382,12 +382,12 @@ Objects:
     TdStorage: 1500
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 32.4
+    TdFootprint: 0 -18 36 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -436,12 +436,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_AIRFIELD
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -486,8 +486,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
   TDGDI_NUKE:
     DisplayName: Power Plant
     Side: TDGDI
@@ -502,12 +502,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -554,12 +554,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -608,12 +608,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_BARRACKS AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
-    TdFootprint: 0 -32.4 32.4 48.6
+    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
+    TdFootprint: 0 -36 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -655,8 +655,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -40.5 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -81 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -45 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -90 Z:0.0'
   TDGDI_FIX:
     DisplayName: Repair Facility
     Side: TDGDI
@@ -671,12 +671,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE REPAIR_PAD
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 48.6
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 54
+    GeometryHeight: 54
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 64.8
+    TdFootprint: 0 -18 54 72
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -730,12 +730,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -789,12 +789,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -840,12 +840,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -891,12 +891,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -944,9 +944,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_HTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 15.3
-    GeometryMinorRadius: 15.3
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 17
+    GeometryMinorRadius: 17
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1004,9 +1004,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_MTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1062,9 +1062,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_APCLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1128,9 +1128,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_MSAMLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -1188,9 +1188,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDGDI_JEEPLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -1246,9 +1246,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE HARVESTER
     Locomotor: SET_NORMAL TDGDI_HARVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 15.3
-    GeometryMinorRadius: 15.3
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 17
+    GeometryMinorRadius: 17
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1303,9 +1303,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE TD_MCV
     Locomotor: SET_NORMAL TDGDI_MCVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 15.3
-    GeometryMinorRadius: 15.3
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 17
+    GeometryMinorRadius: 17
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -1361,9 +1361,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E1Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -1415,9 +1415,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E2Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -1469,9 +1469,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_E3Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -1523,9 +1523,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDGDI_E6Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -1578,9 +1578,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDGDI_RMBOLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -1639,9 +1639,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDGDI_TRANLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -1704,9 +1704,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDGDI_ORCALocomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -1766,12 +1766,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE COMMANDCENTER FS_FACTORY AUTO_RALLYPOINT FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 48.6
+    TdFootprint: 0 -18 54 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1823,12 +1823,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1884,12 +1884,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_TECHNOLOGY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -1938,12 +1938,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2003,12 +2003,12 @@ Objects:
     TdStorage: 1000
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER FS_SUPPLY_CENTER CASH_GENERATOR
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 54
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: -16.2 Z:0.0'
-    TdFootprint: 0 -32.4 48.6 64.8
+    TdArtOffset: 'X: -0 Y: -18 Z:0.0'
+    TdFootprint: 0 -36 54 72
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2051,9 +2051,9 @@ Objects:
         Class: SupplyCenterDockUpdate
         AllowsPassthrough: No
         NumberApproachPositions: -1
-        DockActionOffset: 'X: 0 Y: -48.6 Z:0.0'
-        DockStartOffset: 'X: 0 Y: -81 Z:0.0'
-        DockEndOffset: 'X: 0 Y: -81 Z:0.0'
+        DockActionOffset: 'X: 0 Y: -54 Z:0.0'
+        DockStartOffset: 'X: 0 Y: -90 Z:0.0'
+        DockEndOffset: 'X: 0 Y: -90 Z:0.0'
       ModuleTag_10:
         Module: Behavior
         Class: TdFreeUnitOnBuilt
@@ -2073,12 +2073,12 @@ Objects:
     TdStorage: 1500
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 32.4
+    TdFootprint: 0 -18 36 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2127,12 +2127,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_AIRFIELD
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2177,8 +2177,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
   TDNOD_SAM:
     DisplayName: SAM Site
     Side: TDNod
@@ -2193,12 +2193,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAN_ATTACK FS_BASE_DEFENSE
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2257,12 +2257,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_WARFACTORY AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 64.8
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 72
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 64.8 48.6
+    TdFootprint: 0 -18 72 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2304,8 +2304,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
   TDNOD_NUKE:
     DisplayName: Power Plant
     Side: TDNod
@@ -2320,12 +2320,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2372,12 +2372,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_POWER
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2426,12 +2426,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE REPAIR_PAD
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 48.6
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 54
+    GeometryHeight: 54
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 64.8
+    TdFootprint: 0 -18 54 72
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2485,12 +2485,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE FS_FACTORY FS_BARRACKS AUTO_RALLYPOINT
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2532,8 +2532,8 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: DefaultProductionExitUpdate
-        UnitCreatePoint: 'X: 0 Y: -24.3 Z:0.0'
-        NaturalRallyPoint: 'X: 0 Y: -64.8 Z:0.0'
+        UnitCreatePoint: 'X: 0 Y: -27 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -72 Z:0.0'
   TDNOD_TMPL:
     DisplayName: Temple of Nod
     Side: TDNod
@@ -2548,12 +2548,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 48.6
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 54
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 48.6
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 -18 54 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2607,12 +2607,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2658,12 +2658,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2709,12 +2709,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -2762,9 +2762,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_LTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2820,9 +2820,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_STNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2884,9 +2884,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_FTNKLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -2941,9 +2941,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_APCLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -3007,9 +3007,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_MSAMLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3067,9 +3067,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_BGGYLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3125,9 +3125,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE HARVESTER
     Locomotor: SET_NORMAL TDNOD_HARVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 15.3
-    GeometryMinorRadius: 15.3
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 17
+    GeometryMinorRadius: 17
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -3182,9 +3182,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_ARTYLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3237,9 +3237,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_MLRSLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3297,9 +3297,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE TD_MCV
     Locomotor: SET_NORMAL TDNOD_MCVLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 15.3
-    GeometryMinorRadius: 15.3
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 17
+    GeometryMinorRadius: 17
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -3355,9 +3355,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDNOD_BIKELocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -3410,9 +3410,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E1Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3464,9 +3464,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E3Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3518,9 +3518,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E4Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3572,9 +3572,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_E5Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3628,9 +3628,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDNOD_E6Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3683,9 +3683,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDNOD_RMBOLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -3744,9 +3744,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDNOD_TRANLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -3809,9 +3809,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDNOD_HELILocomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites:
       Object:
@@ -3872,12 +3872,12 @@ Objects:
     TdStorage: 100
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -3923,12 +3923,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -3976,12 +3976,12 @@ Objects:
     TdStorage: 100
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 32.4 48.6
+    TdFootprint: 0 -18 36 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4029,12 +4029,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY CAPTURABLE
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 -16.2 48.6 48.6
+    TdFootprint: 0 -18 54 54
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4080,12 +4080,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4131,12 +4131,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4182,12 +4182,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 32.4
+    TdFootprint: 0 0 36 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4233,12 +4233,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4284,12 +4284,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4335,12 +4335,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4386,12 +4386,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4437,12 +4437,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4488,12 +4488,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4539,12 +4539,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4590,12 +4590,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4641,12 +4641,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4692,12 +4692,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4743,12 +4743,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4794,12 +4794,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4845,12 +4845,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4896,12 +4896,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4947,12 +4947,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -4998,12 +4998,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5049,12 +5049,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5100,12 +5100,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 32.4
+    TdFootprint: 0 0 36 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5151,12 +5151,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5202,12 +5202,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5253,12 +5253,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -0 Y: 16.2 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdArtOffset: 'X: -0 Y: 18 Z:0.0'
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5304,12 +5304,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 32.4
+    TdFootprint: 0 0 36 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5355,12 +5355,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5406,12 +5406,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5457,12 +5457,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5508,12 +5508,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5559,12 +5559,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5610,12 +5610,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5661,12 +5661,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5712,12 +5712,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 32.4
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 36
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 32.4 16.2
+    TdFootprint: 0 0 36 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5763,12 +5763,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5814,12 +5814,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5865,12 +5865,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5916,12 +5916,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY
     Geometry: BOX
-    GeometryMajorRadius: 48.6
-    GeometryMinorRadius: 32.4
-    GeometryHeight: 32.4
+    GeometryMajorRadius: 54
+    GeometryMinorRadius: 36
+    GeometryHeight: 36
     GeometryIsSmall: No
-    TdArtOffset: 'X: -16.2 Y: 0 Z:0.0'
-    TdFootprint: 0 0 48.6 32.4
+    TdArtOffset: 'X: -18 Y: 0 Z:0.0'
+    TdFootprint: 0 0 54 36
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -5967,12 +5967,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -6018,12 +6018,12 @@ Objects:
     RadarPriority: STRUCTURE
     KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT WALK_ON_TOP_OF_WALL
     Geometry: BOX
-    GeometryMajorRadius: 16.2
-    GeometryMinorRadius: 16.2
-    GeometryHeight: 16.2
+    GeometryMajorRadius: 18
+    GeometryMinorRadius: 18
+    GeometryHeight: 18
     GeometryIsSmall: No
     TdArtOffset: 'X: -0 Y: 0 Z:0.0'
-    TdFootprint: 0 0 16.2 16.2
+    TdFootprint: 0 0 18 18
     BuildCompletion: PLACED_BY_PLAYER
     PlacementViewAngle: 0
     TdBuiltByYard: Yes
@@ -6071,9 +6071,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_VICELocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -6126,9 +6126,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE
     Locomotor: SET_NORMAL TDCIV_LSTLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -6187,9 +6187,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE
     Locomotor: SET_NORMAL TDCIV_MHQLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -6239,9 +6239,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_BOATLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -6297,9 +6297,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_TRICLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -6352,9 +6352,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_TREXLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -6407,9 +6407,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_RAPTLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 1
     CrushableLevel: 2
@@ -6462,9 +6462,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK VEHICLE
     Locomotor: SET_NORMAL TDCIV_STEGLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 11.7
-    GeometryMinorRadius: 11.7
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 13
+    GeometryMinorRadius: 13
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrusherLevel: 2
     CrushableLevel: 2
@@ -6517,9 +6517,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDCIV_C1Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6571,9 +6571,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C2Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6622,9 +6622,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C3Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6673,9 +6673,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C4Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6724,9 +6724,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C5Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6775,9 +6775,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C6Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6826,9 +6826,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDCIV_C7Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6880,9 +6880,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C8Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6931,9 +6931,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C9Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -6982,9 +6982,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_C10Locomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -7033,9 +7033,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_MOEBIUSLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -7084,9 +7084,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK INFANTRY
     Locomotor: SET_NORMAL TDCIV_DELPHILocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -7138,9 +7138,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY
     Locomotor: SET_NORMAL TDCIV_CHANLocomotor
     Geometry: CYLINDER
-    GeometryMajorRadius: 4.5
-    GeometryMinorRadius: 4.5
-    GeometryHeight: 10.8
+    GeometryMajorRadius: 5
+    GeometryMinorRadius: 5
+    GeometryHeight: 12
     GeometryIsSmall: Yes
     CrushableLevel: 0
     TransportSlotCount: 1
@@ -7189,9 +7189,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT CAN_ATTACK AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDCIV_A10Locomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites: {}
     ArmorSet:
@@ -7250,9 +7250,9 @@ Objects:
     KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT AIRCRAFT VTOL
     Locomotor: SET_NORMAL TDCIV_C17Locomotor
     Geometry: BOX
-    GeometryMajorRadius: 12.6
-    GeometryMinorRadius: 12.6
-    GeometryHeight: 9
+    GeometryMajorRadius: 14
+    GeometryMinorRadius: 14
+    GeometryHeight: 10
     GeometryIsSmall: Yes
     Prerequisites: {}
     ArmorSet:

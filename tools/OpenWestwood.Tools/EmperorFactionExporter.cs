@@ -21,14 +21,36 @@ namespace OpenWestwood.Tools;
 /// Zero Hour one) - a choice: how often Emperor moves its units isn't in the data;</item>
 /// <item>damage against armour: each warhead is its own damage type (EM_x) with its table of percentages.</item>
 /// </list>
-/// Left for later: the sub-houses (Fremen, Sardaukar, Ix, Tleilaxu, Guild), the palaces' powers, the Starport's
-/// market, walls, refinery docks, sounds.
+/// The sub-houses (Rules.txt's SubHouse houses: Fremen, Imperial - House Corrino's Sardaukar -, Ix, Tleilaxu, Guild)
+/// are open to all three: each one's building (the Fremen Camp, the Imperial Barracks, the Ix Research Centre, the
+/// Tleilaxu Flesh Vat, the Guild Palace) is built from any Construction Yard, needing any house's Barracks or Factory,
+/// and trains the sub-house's units; written once and shared. A player allies with at most two of them (the engine's
+/// EmperorSubHouse rule, as in the game).
+/// Left for later: the palaces' powers, the Starport's market, walls, refinery docks, sounds.
 /// </summary>
 static class EmperorFactionExporter
 {
     const float TileUnits = 32 * XbfToW3d.Scale, TicksPerSecond = 20, HealthScale = 5, SpeedUnits = 4;
 
     sealed record House(string Name, string Code, string Faction, string Side, string BaseSide, string Color, string ScoreImage, string LoadImage);
+
+    /// <summary>The sub-houses' buildings a house's Construction Yard can build (the ones it allies through).</summary>
+    static readonly string[] SubHouseBuildings = ["FRCamp", "IMBarracks", "IXResCentre", "TLFleshVat", "GUPalace"];
+
+    static readonly Dictionary<string, string> SubHouseDisplayNames = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["FRCamp"] = "Fremen Camp", ["IMBarracks"] = "Imperial Barracks", ["IXResCentre"] = "Ix Research Facility",
+        ["TLFleshVat"] = "Tleilaxu Flesh Vat", ["GUPalace"] = "Guild Palace",
+        ["FRFremen"] = "Fremen Warrior", ["FRADVFremen"] = "Fedaykin", ["IMSardaukar"] = "Sardaukar", ["IMADVSardaukar"] = "Sardaukar Elite",
+        ["IXInfiltrator"] = "Infiltrator", ["IXProjector"] = "Projector", ["TLContaminator"] = "Contaminator", ["TLLeech"] = "Leech",
+        ["GUMaker"] = "Maker", ["GUNIABTank"] = "NIAB Tank",
+    };
+
+    /// <summary>Rules.txt's names for the sub-houses, and what OpenWESTWOOD calls them ("Imperial": House Corrino).</summary>
+    static readonly Dictionary<string, string> SubHouseNames = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Fremen"] = "Fremen", ["Imperial"] = "Corrino", ["Ix"] = "Ix", ["Tleilaxu"] = "Tleilaxu", ["Guild"] = "Guild",
+    };
 
     // Colours: ArtIni's Recolor for sides 0-2.
     static readonly House[] Houses =
@@ -112,6 +134,14 @@ static class EmperorFactionExporter
         }
         using var art = new EmperorArtPackage(data);
         string Text(string path) => Encoding.Latin1.GetString(art.ReadAllBytes(EmperorArtPackage.Folder + path)).Replace("\r", "");
+        // Debug: EM_DUMP=folder writes the files read here (and any listed in EM_DUMP_FILES) there, and stops.
+        if (Environment.GetEnvironmentVariable("EM_DUMP") is { Length: > 0 } dump)
+        {
+            Directory.CreateDirectory(dump);
+            foreach (string f in new[] { "Rules.txt", "ArtIni.txt" }.Concat((Environment.GetEnvironmentVariable("EM_DUMP_FILES") ?? "").Split(';', StringSplitOptions.RemoveEmptyEntries)))
+                File.WriteAllBytes(Path.Combine(dump, Path.GetFileName(f)), art.ReadAllBytes(EmperorArtPackage.Folder + f));
+            return 0;
+        }
         var rules = new EmpIni(Text("Rules.txt"));
         var artIni = new EmpIni(Text("ArtIni.txt"));
         string output = Path.Combine(root, "mods", "zh", "rules", "emperor");
@@ -169,6 +199,9 @@ static class EmperorFactionExporter
         }
         string Display(string key)
         {
+            // (Emperor's own names are in a string table not read yet; the sub-houses' are written out here.)
+            if (SubHouseDisplayNames.TryGetValue(key, out var known))
+                return known;
             string name = key;
             foreach (var h in Houses)
                 if (name.StartsWith(h.Code, StringComparison.Ordinal) && name.Length > 2 && char.IsUpper(name[2]))
@@ -201,6 +234,7 @@ static class EmperorFactionExporter
 
         // ---- Weapons: a unit's turret chain (TurretAttach, TurretNextJoint) gives the bullet and the reload ----
         var weaponDone = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
+        var buttonsDone = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         (string? Weapon, bool Yaw, bool Pitch, float TurnRate) Turret(string attach)
         {
             string? bullet = null;
@@ -344,15 +378,19 @@ static class EmperorFactionExporter
                 .Where(b => rules.Get(b, "House").Equals(house.Name, StringComparison.OrdinalIgnoreCase)
                     && (ListOf(rules.Get(b, "PrimaryBuilding")).Contains(yard, StringComparer.OrdinalIgnoreCase) || b.Equals(yard, StringComparison.OrdinalIgnoreCase))
                     && !rules.True(b, "Wall") && !b.Contains("Dock") && !b.Contains("Frigate") && Model(b, true) != null)
+                .Concat(SubHouseBuildings.Where(b => rules.Has(b) && Model(b, true) != null))
                 .ToList();
             var buildingSet = buildings.ToHashSet(StringComparer.OrdinalIgnoreCase);
             // Units: built at one of this house's buildings (shared ones - the harvester, MCV, carryall - too).
             var units = rules.List("UnitTypes").Distinct(StringComparer.OrdinalIgnoreCase)
-                .Where(u => (rules.Get(u, "House").Equals(house.Name, StringComparison.OrdinalIgnoreCase) || rules.Get(u, "House").Length == 0)
+                .Where(u => (rules.Get(u, "House").Equals(house.Name, StringComparison.OrdinalIgnoreCase) || rules.Get(u, "House").Length == 0 || IsSub(u))
                     && ListOf(rules.Get(u, "PrimaryBuilding")).Any(buildingSet.Contains)
                     && !rules.True(u, "HawkWeapon") && !rules.True(u, "DeathHand") && !rules.True(u, "BeamWeapon") && Model(u, false) != null)
                 .ToList();
             bool Shared(string key) => rules.Get(key, "House").Length == 0;
+            // A sub-house's building or unit: one object for all three houses, written with the first.
+            bool IsSub(string key) => SubHouseNames.ContainsKey(rules.Get(key, "House"));
+            bool WriteHere(string key) => !IsSub(key) || house == Houses[0];
             string N(string key) => Shared(key) ? $"EM_{house.Code}_{key}" : "EM_" + key;
             string FactoryOf(string unit) => ListOf(rules.Get(unit, "PrimaryBuilding")).First(buildingSet.Contains);
             string Upgrade(string building) => "Upgrade_EM_" + building;
@@ -361,7 +399,8 @@ static class EmperorFactionExporter
             string Prerequisites(string key, bool unit)
             {
                 var objectsNeeded = new List<string>();
-                var secondary = ListOf(rules.Get(key, "SecondaryBuilding")).Where(buildingSet.Contains).Select(N).ToList();
+                var secondary = ListOf(rules.Get(key, "SecondaryBuilding"))
+                    .Where(b => IsSub(key) ? rules.Has(b) && Model(b, true) != null : buildingSet.Contains(b)).Select(N).Distinct().ToList();
                 if (secondary.Count > 0)
                     objectsNeeded.Add(string.Join(' ', secondary));
                 var ups = new List<string>();
@@ -382,6 +421,9 @@ static class EmperorFactionExporter
             string Role(string key)
             {
                 if (rules.True(key, "ConYard")) return "STRUCT_CONST";
+                // The sub-houses' buildings train their units: soldiers (Fremen, Sardaukar) or vehicles (Ix, Tleilaxu, Guild).
+                if (SubHouseBuildings.Contains(key, StringComparer.OrdinalIgnoreCase))
+                    return key is "FRCamp" or "IMBarracks" ? "STRUCT_BARRACKS" : "STRUCT_WEAP";
                 if (rules.Get(key, "Group").Equals("SmWindtrap", StringComparison.OrdinalIgnoreCase) || rules.Num(key, "PowerGenerated") > 0) return "STRUCT_POWER";
                 if (rules.True(key, "Refinery")) return "STRUCT_REFINERY";
                 if (rules.True(key, "Barracks")) return "STRUCT_BARRACKS";
@@ -396,12 +438,12 @@ static class EmperorFactionExporter
             bool IsFactory(string key) => Role(key) is "STRUCT_CONST" or "STRUCT_BARRACKS" or "STRUCT_WEAP" or "STRUCT_HELIPAD";
 
             // ---- Upgrades (UpgradeCost): researched at the building, a player upgrade ----
-            foreach (string b in buildings.Where(b => rules.Num(b, "UpgradeCost") > 0))
+            foreach (string b in buildings.Where(b => rules.Num(b, "UpgradeCost") > 0 && WriteHere(b)))
                 upgrades.Append($"  {Upgrade(b)}:\n    DisplayName: {Display(b)} upgrade\n    Type: PLAYER\n    BuildTime: {F(Math.Max(rules.Num(b, "UpgradeBuildTime", rules.Num(b, "BuildTime", 600)), 20) / TicksPerSecond)}\n" +
                     $"    BuildCost: {(int)rules.Num(b, "UpgradeCost")}\n    ResearchSound: NoSound\n");
 
             // ---- Command sets: what each factory builds ----
-            foreach (string factory in buildings.Where(IsFactory))
+            foreach (string factory in buildings.Where(b => IsFactory(b) && WriteHere(b)))
             {
                 var items = factory.Equals(yard, StringComparison.OrdinalIgnoreCase)
                     ? buildings.Where(b => !b.Equals(yard, StringComparison.OrdinalIgnoreCase)).OrderBy(b => rules.Num(b, "TechLevel")).ThenBy(b => rules.Num(b, "Cost")).ToList()
@@ -411,7 +453,8 @@ static class EmperorFactionExporter
                 foreach (string item in items)
                 {
                     string button = $"Command_EM_{N(item)}";
-                    buttons.Append($"  {button}:\n    Command: UNIT_BUILD\n    Object: {N(item)}\n    TextLabel: {Display(item)}\n    ButtonImage: {Icon(item)}\n    ButtonBorderType: BUILD\n    DescriptLabel: {Display(item)}\n");
+                    if (buttonsDone.Add(button))
+                        buttons.Append($"  {button}:\n    Command: UNIT_BUILD\n    Object: {N(item)}\n    TextLabel: {Display(item)}\n    ButtonImage: {Icon(item)}\n    ButtonBorderType: BUILD\n    DescriptLabel: {Display(item)}\n");
                     commandSets.Append($"    {slot++}: {button}\n");
                 }
                 if (rules.Num(factory, "UpgradeCost") > 0)
@@ -426,7 +469,7 @@ static class EmperorFactionExporter
             }
 
             // ---- Buildings ----
-            foreach (string key in buildings)
+            foreach (string key in buildings.Where(WriteHere))
             {
                 string model = Model(key, true)!;
                 string damaged = Model(key, true, "_H1") ?? "", reallyDamaged = Model(key, true, "_H2") ?? "";
@@ -452,6 +495,8 @@ static class EmperorFactionExporter
                 if (energy != 0)
                     objects.Append($"    EnergyProduction: {energy}\n");
                 objects.Append(Prerequisites(key, unit: false));
+                if (IsSub(key))
+                    objects.Append($"    EmperorSubHouse: {SubHouseNames[rules.Get(key, "House")]}\n");
                 objects.Append($"    ArmorSet:\n      Conditions: None\n      Armor: EM_Armor_{ListOf(rules.Get(key, "Armour", "Building")).FirstOrDefault() ?? "Building"}\n");
                 if (weapon != null)
                     objects.Append($"    WeaponSet:\n      Conditions: None\n      Weapon: PRIMARY {weapon}\n");
@@ -493,7 +538,7 @@ static class EmperorFactionExporter
             }
 
             // ---- Units ----
-            foreach (string key in units)
+            foreach (string key in units.Where(WriteHere))
             {
                 string model = Model(key, false)!;
                 bool infantry = rules.True(key, "Infantry");

@@ -22,7 +22,7 @@ namespace OpenWestwood.Tools;
 public static class RaFactionExporter
 {
     const float CellUnits = 36f;
-    const float SizeUnits = CellUnits * 0.9f;    // objects drawn and built 10% smaller than a cell, as TD's
+    const float SizeUnits = CellUnits;           // objects at their original size, a whole cell (as TD's: TdScale.Size)
     const float LeptonUnits = CellUnits / 256f;
     const float TicksPerSecond = 15f;
     const float InfantrySpeedFactor = 2f;        // soldiers at Zero Hour's pace, as TD's (before TD's own +15%)

@@ -637,8 +637,10 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
         Game.FindObject(Owner.ContainedById)?.Contain is { } container && container.IsPassengerAllowedToFire(Owner);
 
     /// <summary>Disabled for attacking purposes (held inside a container that lets it shoot doesn't count).</summary>
+    // (Being held doesn't stop a unit shooting, as Object::isAbleToAttack: a garrison firing out of its building, a
+    // Stinger Site's soldiers in their pits. Riders that may not fire out are stopped in Update.)
     bool IsDisabledForAttack =>
-        Owner.IsDisabled && !(Owner.IsContained && CanFireFromContainer && Owner.DisabledFlags.HasAll(DisabledMask.Held) && Owner.DisabledFlags.Count == 1);
+        Owner.IsDisabled && !(Owner.DisabledFlags.HasAll(DisabledMask.Held) && Owner.DisabledFlags.Count == 1);
 
     /// <summary>Walks up to an object (e.g. a hacker to its target). Ends idle when close.</summary>
     public void MoveToObject(GameObject target, CommandSource source = CommandSource.Player) => MoveTo(target.Position, source);

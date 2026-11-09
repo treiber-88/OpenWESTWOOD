@@ -299,6 +299,7 @@ public class ContainModule : Module, IUpdateModule, IDieModule, ICreateModule, I
             bool canFall = physics?.AllowToFall ?? false;
             if (physics != null)
                 physics.AllowToFall = false;
+            end = Spatial.ExitDestinations.Adjust(Game, rider, ai.Surfaces, end);
             var route = new List<Vector3> { end, end };
             if (rallyPoint is { } rally)
                 route.Add(rally);

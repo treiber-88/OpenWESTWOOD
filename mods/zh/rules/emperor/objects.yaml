@@ -907,6 +907,405 @@ Objects:
         Class: ProductionUpdate
         MaxQueueEntries: 5
         PlacesStructures: Yes
+  EM_FRCamp:
+    DisplayName: Fremen Camp
+    Side: EMATR
+    EditorSorting: STRUCTURE
+    ButtonImage: EMCAMEO:FR_Camp.tga
+    SelectPortrait: EMCAMEO:FR_Camp.tga
+    TdRole: STRUCT_BARRACKS
+    BuildCost: 600
+    BuildTime: 27
+    VisionRange: 128
+    ShroudClearingRange: 128
+    Prerequisites:
+      Object:
+      - EM_ORBarracks EM_HKBarracks EM_ATBarracks
+    EmperorSubHouse: Fremen
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Building
+    RadarPriority: STRUCTURE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_FACTORY AUTO_RALLYPOINT CAPTURABLE
+    Geometry: BOX
+    GeometryMajorRadius: 38.4
+    GeometryMinorRadius: 38.4
+    GeometryHeight: 40
+    GeometryIsSmall: No
+    BuildCompletion: PLACED_BY_PLAYER
+    PlacementViewAngle: 0
+    TdBuiltByYard: Yes
+    TdAdjacentDistance: 76.8
+    TdFootprint: 0 -19.2 38.4 38.4
+    TdRockOnly: Yes
+    CommandSet: EM_FRCampCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EMB_FR_Camp_H0
+          Animation: EMB_FR_Camp_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          DAMAGED:
+            Model: EMB_FR_CAMP_H1
+            Animation: EMB_FR_CAMP_H1.Stationary
+            AnimationMode: LOOP
+          REALLYDAMAGED:
+            Model: EMB_FR_CAMP_H2
+            Animation: EMB_FR_CAMP_H2.Stationary
+            AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: StructureBody
+        MaxHealth: 400
+        InitialHealth: 400
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: CreateObjectDie
+        CreationList: OCL_SmallStructureDebris
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+        RepairStep: 40
+        RepairPercent: 25
+      ModuleTag_06:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 5
+      ModuleTag_07:
+        Module: Behavior
+        Class: DefaultProductionExitUpdate
+        UnitCreatePoint: 'X: 0 Y: -53.6 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -87.6 Z:0.0'
+  EM_IMBarracks:
+    DisplayName: Imperial Barracks
+    Side: EMATR
+    EditorSorting: STRUCTURE
+    ButtonImage: EMCAMEO:IM_Barracks.tga
+    SelectPortrait: EMCAMEO:IM_Barracks.tga
+    TdRole: STRUCT_BARRACKS
+    BuildCost: 700
+    BuildTime: 27
+    VisionRange: 128
+    ShroudClearingRange: 128
+    EnergyProduction: -30
+    Prerequisites:
+      Object:
+      - EM_ORBarracks EM_HKBarracks EM_ATBarracks
+    EmperorSubHouse: Corrino
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Building
+    RadarPriority: STRUCTURE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_FACTORY AUTO_RALLYPOINT CAPTURABLE
+    Geometry: BOX
+    GeometryMajorRadius: 19.2
+    GeometryMinorRadius: 32
+    GeometryHeight: 32
+    GeometryIsSmall: No
+    BuildCompletion: PLACED_BY_PLAYER
+    PlacementViewAngle: 0
+    TdBuiltByYard: Yes
+    TdAdjacentDistance: 76.8
+    TdFootprint: 0 -19.2 19.2 32
+    TdRockOnly: Yes
+    CommandSet: EM_IMBarracksCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EMB_IM_Barracks_H0
+          Animation: EMB_IM_Barracks_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          DAMAGED:
+            Model: EMB_IM_BARRACKS_H1
+            Animation: EMB_IM_BARRACKS_H1.Stationary
+            AnimationMode: LOOP
+          REALLYDAMAGED:
+            Model: EMB_IM_BARRACKS_H2
+            Animation: EMB_IM_BARRACKS_H2.Stationary
+            AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: StructureBody
+        MaxHealth: 640
+        InitialHealth: 640
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: CreateObjectDie
+        CreationList: OCL_SmallStructureDebris
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+        RepairStep: 64
+        RepairPercent: 25
+      ModuleTag_06:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 5
+      ModuleTag_07:
+        Module: Behavior
+        Class: DefaultProductionExitUpdate
+        UnitCreatePoint: 'X: 0 Y: -47.2 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -81.2 Z:0.0'
+  EM_IXResCentre:
+    DisplayName: Ix Research Facility
+    Side: EMATR
+    EditorSorting: STRUCTURE
+    ButtonImage: EMCAMEO:IX_ResCentre.tga
+    SelectPortrait: EMCAMEO:IX_ResCentre.tga
+    TdRole: STRUCT_WEAP
+    BuildCost: 1000
+    BuildTime: 43.2
+    VisionRange: 128
+    ShroudClearingRange: 128
+    EnergyProduction: -60
+    Prerequisites:
+      Object:
+      - EM_ORFactory EM_HKFactory EM_ATFactory
+    EmperorSubHouse: Ix
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Building
+    RadarPriority: STRUCTURE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_FACTORY AUTO_RALLYPOINT CAPTURABLE
+    Geometry: BOX
+    GeometryMajorRadius: 44.8
+    GeometryMinorRadius: 44.8
+    GeometryHeight: 72
+    GeometryIsSmall: No
+    BuildCompletion: PLACED_BY_PLAYER
+    PlacementViewAngle: 0
+    TdBuiltByYard: Yes
+    TdAdjacentDistance: 76.8
+    TdFootprint: 0 -19.2 44.8 44.8
+    TdRockOnly: Yes
+    CommandSet: EM_IXResCentreCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EMB_IX_ResCentre_H0
+          Animation: EMB_IX_ResCentre_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          DAMAGED:
+            Model: EMB_IX_RESCENTRE_H1
+            Animation: EMB_IX_RESCENTRE_H1.Stationary
+            AnimationMode: LOOP
+          REALLYDAMAGED:
+            Model: EMB_IX_RESCENTRE_H2
+            Animation: EMB_IX_RESCENTRE_H2.Stationary
+            AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: StructureBody
+        MaxHealth: 800
+        InitialHealth: 800
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: CreateObjectDie
+        CreationList: OCL_SmallStructureDebris
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+        RepairStep: 80
+        RepairPercent: 25
+      ModuleTag_06:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 5
+      ModuleTag_07:
+        Module: Behavior
+        Class: DefaultProductionExitUpdate
+        UnitCreatePoint: 'X: 0 Y: -60 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -94 Z:0.0'
+  EM_TLFleshVat:
+    DisplayName: Tleilaxu Flesh Vat
+    Side: EMATR
+    EditorSorting: STRUCTURE
+    ButtonImage: EMCAMEO:TL_FleshVat.tga
+    SelectPortrait: EMCAMEO:TL_FleshVat.tga
+    TdRole: STRUCT_WEAP
+    BuildCost: 1000
+    BuildTime: 43.2
+    VisionRange: 128
+    ShroudClearingRange: 128
+    EnergyProduction: -60
+    Prerequisites:
+      Object:
+      - EM_ORFactory EM_HKFactory EM_ATFactory
+    EmperorSubHouse: Tleilaxu
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Building
+    RadarPriority: STRUCTURE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_FACTORY AUTO_RALLYPOINT CAPTURABLE
+    Geometry: BOX
+    GeometryMajorRadius: 19.2
+    GeometryMinorRadius: 38.4
+    GeometryHeight: 48
+    GeometryIsSmall: No
+    BuildCompletion: PLACED_BY_PLAYER
+    PlacementViewAngle: 0
+    TdBuiltByYard: Yes
+    TdAdjacentDistance: 76.8
+    TdFootprint: 0 -19.2 19.2 38.4
+    TdRockOnly: Yes
+    CommandSet: EM_TLFleshVatCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EMB_TL_Fleshvat_H0
+          Animation: EMB_TL_Fleshvat_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          DAMAGED:
+            Model: EMB_TL_FLESHVAT_H1
+            Animation: EMB_TL_FLESHVAT_H1.Stationary
+            AnimationMode: LOOP
+          REALLYDAMAGED:
+            Model: EMB_TL_FLESHVAT_H2
+            Animation: EMB_TL_FLESHVAT_H2.Stationary
+            AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: StructureBody
+        MaxHealth: 800
+        InitialHealth: 800
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: CreateObjectDie
+        CreationList: OCL_SmallStructureDebris
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+        RepairStep: 80
+        RepairPercent: 25
+      ModuleTag_06:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 5
+      ModuleTag_07:
+        Module: Behavior
+        Class: DefaultProductionExitUpdate
+        UnitCreatePoint: 'X: 0 Y: -53.6 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -87.6 Z:0.0'
+  EM_GUPalace:
+    DisplayName: Guild Palace
+    Side: EMATR
+    EditorSorting: STRUCTURE
+    ButtonImage: EMCAMEO:GU_Palace.tga
+    SelectPortrait: EMCAMEO:GU_Palace.tga
+    TdRole: STRUCT_WEAP
+    BuildCost: 2000
+    BuildTime: 54
+    VisionRange: 128
+    ShroudClearingRange: 128
+    EnergyProduction: -180
+    Prerequisites:
+      Object:
+      - EM_ORFactory EM_HKFactory EM_ATFactory
+    EmperorSubHouse: Guild
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_CY
+    RadarPriority: STRUCTURE
+    KindOf: PRELOAD STRUCTURE SELECTABLE IMMOBILE SCORE TD_OBJECT MP_COUNT_FOR_VICTORY FS_FACTORY AUTO_RALLYPOINT CAPTURABLE
+    Geometry: BOX
+    GeometryMajorRadius: 44.8
+    GeometryMinorRadius: 89.6
+    GeometryHeight: 104
+    GeometryIsSmall: No
+    BuildCompletion: PLACED_BY_PLAYER
+    PlacementViewAngle: 0
+    TdBuiltByYard: Yes
+    TdAdjacentDistance: 76.8
+    TdFootprint: 0 -12.8 44.8 89.6
+    TdRockOnly: Yes
+    CommandSet: EM_GUPalaceCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EMB_Gu_palace_H0
+          Animation: EMB_Gu_palace_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          DAMAGED:
+            Model: EMB_GU_PALACE_H1
+            Animation: EMB_GU_PALACE_H1.Stationary
+            AnimationMode: LOOP
+          REALLYDAMAGED:
+            Model: EMB_GU_PALACE_H2
+            Animation: EMB_GU_PALACE_H2.Stationary
+            AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: StructureBody
+        MaxHealth: 1000
+        InitialHealth: 1000
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: CreateObjectDie
+        CreationList: OCL_SmallStructureDebris
+        ExemptStatus: UNDER_CONSTRUCTION
+      ModuleTag_12:
+        Module: Behavior
+        Class: TdStructureRepair
+        RepairStep: 100
+        RepairPercent: 25
+      ModuleTag_06:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 5
+      ModuleTag_07:
+        Module: Behavior
+        Class: DefaultProductionExitUpdate
+        UnitCreatePoint: 'X: 0 Y: -98.4 Z:0.0'
+        NaturalRallyPoint: 'X: 0 Y: -132.4 Z:0.0'
   EM_ATScout:
     DisplayName: Scout
     Side: EMATR
@@ -2236,6 +2635,791 @@ Objects:
         Class: D2kCarryall
         BeforeLoadDelay: 0.5
         BeforeUnloadDelay: 0.7
+  EM_IXInfiltrator:
+    DisplayName: Infiltrator
+    Side: EMATR
+    EditorSorting: VEHICLE
+    ButtonImage: EMCAMEO:IX_Infiltrator.tga
+    SelectPortrait: EMCAMEO:IX_Infiltrator.tga
+    TdRole: UNIT_EM
+    BuildCost: 500
+    BuildTime: 21.6
+    VisionRange: 51.2
+    ShroudClearingRange: 51.2
+    Prerequisites: {}
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Light
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE
+    Locomotor: SET_NORMAL EM_IXInfiltratorLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 11.52
+    GeometryMinorRadius: 11.52
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 2
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_IX_Infiltrator_H0
+          Animation: EM_IX_Infiltrator_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_IX_Infiltrator_H0
+            Animation: EM_IX_Infiltrator_H0.Move
+            AnimationMode: LOOP
+          DYING:
+            Model: EM_IX_Infiltrator_H0
+            Animation: EM_IX_Infiltrator_H0.Explode
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 160
+        InitialHealth: 160
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 600
+        FX: FINAL FX_GenericTankDeathExplosion
+  EM_IXProjector:
+    DisplayName: Projector
+    Side: EMATR
+    EditorSorting: VEHICLE
+    ButtonImage: EMCAMEO:IX_Radar.tga
+    SelectPortrait: EMCAMEO:IX_Radar.tga
+    TdRole: UNIT_EM
+    BuildCost: 1500
+    BuildTime: 29.45
+    VisionRange: 51.2
+    ShroudClearingRange: 51.2
+    Prerequisites:
+      Upgrade:
+      - Upgrade_EM_IXResCentre
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Light
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_LMG_B_30
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE CAN_ATTACK
+    Locomotor: SET_NORMAL EM_IXProjectorLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 17.28
+    GeometryMinorRadius: 17.28
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 2
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_IX_Radar_H0
+          Animation: EM_IX_Radar_H0.Stationary
+          AnimationMode: LOOP
+          TurretPitch: TURRETPITCH
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_IX_Radar_H0
+            Animation: EM_IX_Radar_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_IX_Radar_H0
+            Animation: EM_IX_Radar_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_IX_Radar_H0
+            Animation: EM_IX_Radar_H0.Stationary
+            AnimationMode: LOOP
+          DYING:
+            Model: EM_IX_Radar_H0
+            Animation: EM_IX_Radar_H0.Explode
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 200
+        InitialHealth: 200
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 600
+        FX: FINAL FX_GenericTankDeathExplosion
+  EM_TLContaminator:
+    DisplayName: Contaminator
+    Side: EMATR
+    EditorSorting: INFANTRY
+    ButtonImage: EMCAMEO:TL_Contaminator.tga
+    SelectPortrait: EMCAMEO:TL_Contaminator.tga
+    TdRole: INFANTRY_EM
+    BuildCost: 300
+    BuildTime: 21.6
+    VisionRange: 153.6
+    ShroudClearingRange: 153.6
+    Prerequisites: {}
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_None
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_Contaminator_B_30
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY CAN_ATTACK
+    Locomotor: SET_NORMAL EM_TLContaminatorLocomotor
+    Geometry: CYLINDER
+    GeometryMajorRadius: 4
+    GeometryMinorRadius: 4
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 0
+    TransportSlotCount: 1
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_TL_Contaminator_H0
+          Animation: EM_TL_Contaminator_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_TL_Contaminator_H0
+            Animation: EM_TL_Contaminator_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_TL_Contaminator_H0
+            Animation: EM_TL_Contaminator_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_TL_Contaminator_H0
+            Animation: EM_TL_Contaminator_H0.Fire0
+            AnimationMode: ONCE
+          DYING:
+            Model: EM_TL_Contaminator_H0
+            Animation: EM_TL_Contaminator_H0.Shot1
+            AnimationMode: ONCE
+          DYING BURNED:
+            Model: EM_TL_Contaminator_H0
+            Animation: EM_TL_Contaminator_H0.Burnt1
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 200
+        InitialHealth: 200
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2500
+  EM_TLLeech:
+    DisplayName: Leech
+    Side: EMATR
+    EditorSorting: VEHICLE
+    ButtonImage: EMCAMEO:TL_Leech.tga
+    SelectPortrait: EMCAMEO:TL_Leech.tga
+    TdRole: UNIT_EM
+    BuildCost: 800
+    BuildTime: 29.45
+    VisionRange: 51.2
+    ShroudClearingRange: 51.2
+    Prerequisites:
+      Upgrade:
+      - Upgrade_EM_TLFleshVat
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Light
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_Leech_B_30
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE CAN_ATTACK
+    Locomotor: SET_NORMAL EM_TLLeechLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 11.52
+    GeometryMinorRadius: 11.52
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 2
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_TL_Leech_H0
+          Animation: EM_TL_Leech_H0.Stationary
+          AnimationMode: LOOP
+          TurretPitch: TURRETPITCH
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_TL_Leech_H0
+            Animation: EM_TL_Leech_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_TL_Leech_H0
+            Animation: EM_TL_Leech_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_TL_Leech_H0
+            Animation: EM_TL_Leech_H0.Stationary
+            AnimationMode: LOOP
+          DYING:
+            Model: EM_TL_Leech_H0
+            Animation: EM_TL_Leech_H0.Explode
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 200
+        InitialHealth: 200
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 600
+        FX: FINAL FX_GenericTankDeathExplosion
+  EM_IMSardaukar:
+    DisplayName: Sardaukar
+    Side: EMATR
+    EditorSorting: INFANTRY
+    ButtonImage: EMCAMEO:IM_Sardaukar.tga
+    SelectPortrait: EMCAMEO:IM_Sardaukar.tga
+    TdRole: INFANTRY_EM
+    BuildCost: 300
+    BuildTime: 21.6
+    VisionRange: 153.6
+    ShroudClearingRange: 153.6
+    Prerequisites: {}
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_BPV
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_HMG_B_20
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY CAN_ATTACK
+    Locomotor: SET_NORMAL EM_IMSardaukarLocomotor
+    Geometry: CYLINDER
+    GeometryMajorRadius: 4
+    GeometryMinorRadius: 4
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 0
+    TransportSlotCount: 1
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_IM_Sardaukar_H0
+          Animation: EM_IM_Sardaukar_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_IM_Sardaukar_H0
+            Animation: EM_IM_Sardaukar_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_IM_Sardaukar_H0
+            Animation: EM_IM_Sardaukar_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_IM_Sardaukar_H0
+            Animation: EM_IM_Sardaukar_H0.Fire0
+            AnimationMode: ONCE
+          DYING:
+            Model: EM_IM_Sardaukar_H0
+            Animation: EM_IM_Sardaukar_H0.Shot1
+            AnimationMode: ONCE
+          DYING BURNED:
+            Model: EM_IM_Sardaukar_H0
+            Animation: EM_IM_Sardaukar_H0.Burnt1
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 180
+        InitialHealth: 180
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2500
+  EM_IMADVSardaukar:
+    DisplayName: Sardaukar Elite
+    Side: EMATR
+    EditorSorting: INFANTRY
+    ButtonImage: EMCAMEO:IM_ADVSardaukar.tga
+    SelectPortrait: EMCAMEO:IM_ADVSardaukar.tga
+    TdRole: INFANTRY_EM
+    BuildCost: 350
+    BuildTime: 34.45
+    VisionRange: 153.6
+    ShroudClearingRange: 153.6
+    Prerequisites:
+      Upgrade:
+      - Upgrade_EM_IMBarracks
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_BPV
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_InfLaser_B_50
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY CAN_ATTACK
+    Locomotor: SET_NORMAL EM_IMADVSardaukarLocomotor
+    Geometry: CYLINDER
+    GeometryMajorRadius: 4
+    GeometryMinorRadius: 4
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 0
+    TransportSlotCount: 1
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_IM_ADVSardaukar_H0
+          Animation: EM_IM_ADVSardaukar_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_IM_ADVSardaukar_H0
+            Animation: EM_IM_ADVSardaukar_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_IM_ADVSardaukar_H0
+            Animation: EM_IM_ADVSardaukar_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_IM_ADVSardaukar_H0
+            Animation: EM_IM_ADVSardaukar_H0.Fire0
+            AnimationMode: ONCE
+          DYING:
+            Model: EM_IM_ADVSardaukar_H0
+            Animation: EM_IM_ADVSardaukar_H0.Shot1
+            AnimationMode: ONCE
+          DYING BURNED:
+            Model: EM_IM_ADVSardaukar_H0
+            Animation: EM_IM_ADVSardaukar_H0.Burnt1
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 360
+        InitialHealth: 360
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2500
+  EM_FRFremen:
+    DisplayName: Fremen Warrior
+    Side: EMATR
+    EditorSorting: INFANTRY
+    ButtonImage: EMCAMEO:FR_Fremen.tga
+    SelectPortrait: EMCAMEO:FR_Fremen.tga
+    TdRole: INFANTRY_EM
+    BuildCost: 150
+    BuildTime: 21.6
+    VisionRange: 153.6
+    ShroudClearingRange: 153.6
+    Prerequisites: {}
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Earplugs
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_cal50_b_40
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY CAN_ATTACK
+    Locomotor: SET_NORMAL EM_FRFremenLocomotor
+    Geometry: CYLINDER
+    GeometryMajorRadius: 4
+    GeometryMinorRadius: 4
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 0
+    TransportSlotCount: 1
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_FR_Fremen_H0
+          Animation: EM_FR_Fremen_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_FR_Fremen_H0
+            Animation: EM_FR_Fremen_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_FR_Fremen_H0
+            Animation: EM_FR_Fremen_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_FR_Fremen_H0
+            Animation: EM_FR_Fremen_H0.Fire0
+            AnimationMode: ONCE
+          DYING:
+            Model: EM_FR_Fremen_H0
+            Animation: EM_FR_Fremen_H0.Shot1
+            AnimationMode: ONCE
+          DYING BURNED:
+            Model: EM_FR_Fremen_H0
+            Animation: EM_FR_Fremen_H0.Burnt1
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 160
+        InitialHealth: 160
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2500
+  EM_FRADVFremen:
+    DisplayName: Fedaykin
+    Side: EMATR
+    EditorSorting: INFANTRY
+    ButtonImage: EMCAMEO:FR_ADVFremen.tga
+    SelectPortrait: EMCAMEO:FR_ADVFremen.tga
+    TdRole: INFANTRY_EM
+    BuildCost: 250
+    BuildTime: 29.45
+    VisionRange: 153.6
+    ShroudClearingRange: 153.6
+    Prerequisites:
+      Upgrade:
+      - Upgrade_EM_FRCamp
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Earplugs
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_SoundInf_B_40
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT INFANTRY CAN_ATTACK
+    Locomotor: SET_NORMAL EM_FRADVFremenLocomotor
+    Geometry: CYLINDER
+    GeometryMajorRadius: 4
+    GeometryMinorRadius: 4
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 0
+    TransportSlotCount: 1
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_FR_ADVFremen_H0
+          Animation: EM_FR_ADVFremen_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_FR_ADVFremen_H0
+            Animation: EM_FR_ADVFremen_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_FR_ADVFremen_H0
+            Animation: EM_FR_ADVFremen_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_FR_ADVFremen_H0
+            Animation: EM_FR_ADVFremen_H0.Fire0
+            AnimationMode: ONCE
+          DYING:
+            Model: EM_FR_ADVFremen_H0
+            Animation: EM_FR_ADVFremen_H0.Shot1
+            AnimationMode: ONCE
+          DYING BURNED:
+            Model: EM_FR_ADVFremen_H0
+            Animation: EM_FR_ADVFremen_H0.Burnt1
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 200
+        InitialHealth: 200
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2500
+  EM_GUMaker:
+    DisplayName: Maker
+    Side: EMATR
+    EditorSorting: VEHICLE
+    ButtonImage: EMCAMEO:GU_Maker.tga
+    SelectPortrait: EMCAMEO:GU_Maker.tga
+    TdRole: UNIT_EM
+    BuildCost: 1000
+    BuildTime: 29.45
+    VisionRange: 51.2
+    ShroudClearingRange: 51.2
+    Prerequisites: {}
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Medium
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_MakerBullet_B_30
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE CAN_ATTACK
+    Locomotor: SET_NORMAL EM_GUMakerLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 11.52
+    GeometryMinorRadius: 11.52
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 2
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_GU_Maker_H0
+          Animation: EM_GU_Maker_H0.Stationary
+          AnimationMode: LOOP
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_GU_Maker_H0
+            Animation: EM_GU_Maker_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_GU_Maker_H0
+            Animation: EM_GU_Maker_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_GU_Maker_H0
+            Animation: EM_GU_Maker_H0.Stationary
+            AnimationMode: LOOP
+          DYING:
+            Model: EM_GU_Maker_H0
+            Animation: EM_GU_Maker_H0.Explode
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 200
+        InitialHealth: 200
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 600
+        FX: FINAL FX_GenericTankDeathExplosion
+  EM_GUNIABTank:
+    DisplayName: NIAB Tank
+    Side: EMATR
+    EditorSorting: VEHICLE
+    ButtonImage: EMCAMEO:GU_NIABTank.tga
+    SelectPortrait: EMCAMEO:GU_NIABTank.tga
+    TdRole: UNIT_EM
+    BuildCost: 2000
+    BuildTime: 36
+    VisionRange: 51.2
+    ShroudClearingRange: 51.2
+    Prerequisites:
+      Upgrade:
+      - Upgrade_EM_GUPalace
+    ArmorSet:
+      Conditions: None
+      Armor: EM_Armor_Medium
+    WeaponSet:
+      Conditions: None
+      Weapon: PRIMARY EM_Weapon_NiabBullet_B_100
+    IsTrainable: Yes
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE SCORE TD_OBJECT VEHICLE CAN_ATTACK
+    Locomotor: SET_NORMAL EM_GUNIABTankLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 11.52
+    GeometryMinorRadius: 11.52
+    GeometryHeight: 12
+    GeometryIsSmall: Yes
+    CrushableLevel: 2
+    CommandSet: GenericCommandSet
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        OkToChangeModelColor: Yes
+        DefaultConditionState:
+          Model: EM_GU_NIABTank_H0
+          Animation: EM_GU_NIABTank_H0.Stationary
+          AnimationMode: LOOP
+          Turret: TURRET
+          WeaponLaunchBone: PRIMARY MUZZLE
+          WeaponFireFXBone: PRIMARY MUZZLE
+        ConditionState:
+          MOVING:
+            Model: EM_GU_NIABTank_H0
+            Animation: EM_GU_NIABTank_H0.Move
+            AnimationMode: LOOP
+          FIRING_A:
+            Model: EM_GU_NIABTank_H0
+            Animation: EM_GU_NIABTank_H0.Fire0
+            AnimationMode: ONCE
+          BETWEEN_FIRING_SHOTS_A:
+            Model: EM_GU_NIABTank_H0
+            Animation: EM_GU_NIABTank_H0.Stationary
+            AnimationMode: LOOP
+          DYING:
+            Model: EM_GU_NIABTank_H0
+            Animation: EM_GU_NIABTank_H0.Explode
+            AnimationMode: ONCE
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 600
+        InitialHealth: 600
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+        Turret:
+          TurretTurnRate: 90
+          ControlledWeaponSlots: PRIMARY
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 5.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 600
+        FX: FINAL FX_GenericTankDeathExplosion
   EM_HKSmWindtrap:
     DisplayName: Sm Windtrap
     Side: EMHAR

@@ -835,7 +835,7 @@ public class GarrisonContain : ContainModule
         exiter.SetOrientation(angle);
         if (exiter.AI is { } ai)
         {
-            var end = Game.Pathfinder.NearestPassable(start, ai.Surfaces) ?? start;
+            var end = Spatial.ExitDestinations.Adjust(Game, exiter, ai.Surfaces, start);
             ai.FollowWaypoints([end], CommandSource.AI);
         }
         RecalcApparentControllingPlayer();

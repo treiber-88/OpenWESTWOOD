@@ -449,6 +449,245 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
+  EM_FX_BloodSplat:
+    DisplayName: Explosion
+    EditorSorting: SYSTEM
+    KindOf: NO_COLLIDE IMMOBILE UNATTACKABLE INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_BloodSplat
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 1500
+        MaxLifetime: 1500
+  EM_Projectile_Contaminator_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_Leech_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 60
+        SecondHeight: 60
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_InfLaser_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_cal50_b:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_SoundInf_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_lsonic
+          Animation: EM_lsonic.All
+          AnimationMode: LOOP
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_MakerBullet_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  EM_Projectile_NiabBullet_B:
+    DisplayName: Emperor projectile
+    EditorSorting: SYSTEM
+    VisionRange: 0.0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 2
+        SecondHeight: 2
+        FirstPercentIndent: 30%
+        SecondPercentIndent: 70%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
   EM_Projectile_FlameTurret_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM

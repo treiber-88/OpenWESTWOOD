@@ -83,7 +83,8 @@ public sealed class TdSidebarPanel
     {
         float scale = height / 720f;
         float w = CameoW * 2 + Gap * 3;
-        float top = 8 * scale, bottom = height - 225 * scale;
+        // (Down to just above the control bar's power bar: the room under the radar's height was going unused.)
+        float top = 8 * scale, bottom = height - 150 * scale;
         Area = new Rect(width - w - 4, top, w, Math.Max(CameoH + Gap * 2, bottom - top));
     }
 
@@ -115,7 +116,9 @@ public sealed class TdSidebarPanel
             }
         }
         var list = items.Values.ToList();
-        if (column == 1)
+        // Upgrades (Dune 2000's factory upgrades) go in the structures strip, as in Dune 2000, not at the bottom of
+        // the long units list, where they were out of sight (and the units they unlock never appeared).
+        if (column == 0)
             foreach (var factory in Factories(true).Concat(Factories(false)))
                 foreach (var (_, button) in CommandSets.Buttons(game.Catalog, factory.CommandSetName))
                     if (button.CommandType == "PLAYER_UPGRADE" && button.Upgrade.Length > 0 && !player.HasUpgrade(button.Upgrade)

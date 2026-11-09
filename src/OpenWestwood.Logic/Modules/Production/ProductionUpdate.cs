@@ -359,6 +359,17 @@ public static class Prerequisites
                     return false;
         }
 
+        // OpenWESTWOOD (Emperor): a player allies with at most two sub-houses (Fremen, Corrino, Ix, Tleilaxu, Guild):
+        // with buildings of two standing (or going up), the other sub-houses' buildings can't be built.
+        if (definition.GetString("EmperorSubHouse") is { Length: > 0 } subHouse)
+        {
+            var allied = game.ObjectsOwnedBy(player).Where(o => !o.IsEffectivelyDead)
+                .Select(o => o.Template.Rules.GetString("EmperorSubHouse")).Where(h => h.Length > 0)
+                .Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            if (allied.Count >= 2 && !allied.Contains(subHouse, StringComparer.OrdinalIgnoreCase))
+                return false;
+        }
+
         // OpenWESTWOOD: only these factions (Red Alert 2's country units: the Sniper for Great Britain...).
         if (prerequisites.TryGet("Faction", out var factionLines))
             foreach (var line in factionLines.AsList())

@@ -95,6 +95,13 @@ public sealed class GameLogic
     /// <summary>The highest general's rank scripts allow (PLAYER_SET_RANKLEVELLIMIT).</summary>
     public int RankLevelLimit { get; set; } = 1000;
 
+    /// <summary>How fast the game runs (1 normal; chosen in the game setup; not part of the simulation itself).</summary>
+    public float GameSpeed { get; set; } = 1;
+
+    /// <summary>Where units just let out of containers are heading, and until when (see Spatial.ExitDestinations).</summary>
+    public Dictionary<uint, System.Numerics.Vector3> ExitGoals { get; } = new();
+    public Dictionary<uint, int> ExitGoalsUntil { get; } = new();
+
     /// <summary>Frames a hulk lasts, when a script overrides it (-1 = the object's own lifetime).</summary>
     public int HulkMaxLifetimeOverride { get; set; } = -1;
 

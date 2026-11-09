@@ -185,6 +185,7 @@ public static class GameSetup
             random => info.ToPlayerSlots(random, rules, meta, locked.Contains));
         game.SuperweaponRestriction = info.SuperweaponRestriction ? 1 : 0;
         ApplyVisibility(game, info.ExploredMap, info.NoFogOfWar);
+        game.GameSpeed = Multiplayer.GameInfo.GameSpeeds[Math.Clamp(info.GameSpeed, 0, Multiplayer.GameInfo.GameSpeeds.Length - 1)];
         return game;
     }
 

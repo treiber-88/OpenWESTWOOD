@@ -239,6 +239,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
             Harvesting = obj.AI is Logic.Modules.Supply.SupplyTruckAIUpdate { IsDocking: true } truck
                 && obj.Game.FindObject(truck.DockTargetId)?.FindModule<Logic.Modules.Supply.SupplyWarehouseDockUpdate>() != null,
             Dying = obj.IsEffectivelyDead,
+            Death = TdSpriteState.DeathFor(obj.Body?.LastDamage?.DamageType),
             Altitude = (int)(Math.Max(0, obj.HeightAboveTerrain) / UnitsPerPixel),
             Ammo = 2,
             RedAlert = info.Kind.StartsWith("RA:"),
@@ -268,6 +269,14 @@ public sealed partial class TdSpriteRenderer : IDisposable
                 TdSpriteLayers.Unit(u, state, layers);
                 break;
             case InfantryTypeClass i:
+                // Red Alert: a tesla kill (InfantryClass::Take_Damage, InfantryDeath 5) swaps the soldier for the
+                // ELECTRO animation (ELECTDOG for a dog).
+                if (state.Dying && state.RedAlert && IsTeslaKill(obj))
+                {
+                    if (electrocuted.Add(obj.Id))
+                        PlayRaAnim(i.IniName.Equals("DOG", StringComparison.OrdinalIgnoreCase) ? "ELECTDOG" : "ELECTRO", obj.Position);
+                    return;
+                }
                 TdSpriteLayers.Infantry(i, state, layers);
                 break;
             case AircraftTypeClass a:
@@ -400,7 +409,15 @@ public sealed partial class TdSpriteRenderer : IDisposable
             }
             case "Infantry":
             {
-                var seq = obj.IsEffectivelyDead ? Seq("die1", "die-crushed", "stand") : firing ? Seq("shoot", "stand") : moving ? Seq("run", "stand") : Seq("stand", "idle");
+                // (Dune 2000's WithDeathAnimation: die1 explosion, die2 sound, die3 small explosion, die4 bullet.)
+                string death = (obj.Body?.LastDamage?.DamageType ?? "").ToUpperInvariant() switch
+                {
+                    "SMALL_ARMS" or "SNIPER" or "GATTLING" or "COMANCHE_VULCAN" => "die4",
+                    "SONIC" or "MICROWAVE" => "die2",
+                    "ARMOR_PIERCING" or "INFANTRY_MISSILE" or "STEALTHJET_MISSILES" => "die3",
+                    _ => "die1",
+                };
+                var seq = obj.IsEffectivelyDead ? Seq(death, "die1", "die-crushed", "stand") : firing ? Seq("shoot", "stand") : moving ? Seq("run", "stand") : Seq("stand", "idle");
                 if (seq != null)
                     d2kLayers.Add((seq, facing, obj.IsEffectivelyDead ? Math.Min(Step(seq, age), seq.Length - 1) : moving || firing ? Step(seq, age) : 0));
                 break;

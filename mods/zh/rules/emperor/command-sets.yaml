@@ -40,14 +40,54 @@ CommandSets:
     4: Command_EM_EM_ATRefinery
     5: Command_EM_EM_ATPillbox
     6: Command_EM_EM_ATFactory
-    7: Command_EM_EM_ATRocketTurret
-    8: Command_EM_EM_ATHelipad
-    9: Command_EM_EM_ATHanger
-    10: Command_EM_EM_ATStarport
-    11: Command_EM_EM_ATPalace
-    12: Command_EM_EM_ATConYard_Upgrade
-    13: Command_EmRepair
-    14: Command_Sell
+    7: Command_EM_EM_FRCamp
+    8: Command_EM_EM_IMBarracks
+    9: Command_EM_EM_IXResCentre
+    10: Command_EM_EM_TLFleshVat
+    11: Command_EM_EM_ATRocketTurret
+    12: Command_EM_EM_GUPalace
+    13: Command_EM_EM_ATHelipad
+    14: Command_EM_EM_ATHanger
+    15: Command_EM_EM_ATStarport
+    16: Command_EM_EM_ATPalace
+    17: Command_EM_EM_ATConYard_Upgrade
+    18: Command_EmRepair
+    19: Command_Sell
+  EM_FRCampCommandSet:
+    1: Command_EM_EM_FRFremen
+    2: Command_EM_EM_FRADVFremen
+    3: Command_EM_EM_FRCamp_Upgrade
+    4: Command_SetRallyPoint
+    5: Command_EmRepair
+    6: Command_Sell
+  EM_IMBarracksCommandSet:
+    1: Command_EM_EM_IMSardaukar
+    2: Command_EM_EM_IMADVSardaukar
+    3: Command_EM_EM_IMBarracks_Upgrade
+    4: Command_SetRallyPoint
+    5: Command_EmRepair
+    6: Command_Sell
+  EM_IXResCentreCommandSet:
+    1: Command_EM_EM_IXInfiltrator
+    2: Command_EM_EM_IXProjector
+    3: Command_EM_EM_IXResCentre_Upgrade
+    4: Command_SetRallyPoint
+    5: Command_EmRepair
+    6: Command_Sell
+  EM_TLFleshVatCommandSet:
+    1: Command_EM_EM_TLContaminator
+    2: Command_EM_EM_TLLeech
+    3: Command_EM_EM_TLFleshVat_Upgrade
+    4: Command_SetRallyPoint
+    5: Command_EmRepair
+    6: Command_Sell
+  EM_GUPalaceCommandSet:
+    1: Command_EM_EM_GUMaker
+    2: Command_EM_EM_GUNIABTank
+    3: Command_EM_EM_GUPalace_Upgrade
+    4: Command_SetRallyPoint
+    5: Command_EmRepair
+    6: Command_Sell
   EM_HKBarracksCommandSet:
     1: Command_EM_EM_HKScout
     2: Command_EM_EM_HKLightInf
@@ -87,14 +127,19 @@ CommandSets:
     4: Command_EM_EM_HKRefinery
     5: Command_EM_EM_HKFlameTurret
     6: Command_EM_EM_HKFactory
-    7: Command_EM_EM_HKGunTurret
-    8: Command_EM_EM_HKHelipad
-    9: Command_EM_EM_HKHanger
-    10: Command_EM_EM_HKStarport
-    11: Command_EM_EM_HKPalace
-    12: Command_EM_EM_HKConYard_Upgrade
-    13: Command_EmRepair
-    14: Command_Sell
+    7: Command_EM_EM_FRCamp
+    8: Command_EM_EM_IMBarracks
+    9: Command_EM_EM_IXResCentre
+    10: Command_EM_EM_TLFleshVat
+    11: Command_EM_EM_HKGunTurret
+    12: Command_EM_EM_GUPalace
+    13: Command_EM_EM_HKHelipad
+    14: Command_EM_EM_HKHanger
+    15: Command_EM_EM_HKStarport
+    16: Command_EM_EM_HKPalace
+    17: Command_EM_EM_HKConYard_Upgrade
+    18: Command_EmRepair
+    19: Command_Sell
   EM_ORBarracksCommandSet:
     1: Command_EM_EM_ORScout
     2: Command_EM_EM_ORChemical
@@ -134,13 +179,18 @@ CommandSets:
     4: Command_EM_EM_ORRefinery
     5: Command_EM_EM_ORGasTurret
     6: Command_EM_EM_ORFactory
-    7: Command_EM_EM_ORPopUpTurret
-    8: Command_EM_EM_ORHanger
-    9: Command_EM_EM_ORStarport
-    10: Command_EM_EM_ORPalace
-    11: Command_EM_EM_ORConYard_Upgrade
-    12: Command_EmRepair
-    13: Command_Sell
+    7: Command_EM_EM_FRCamp
+    8: Command_EM_EM_IMBarracks
+    9: Command_EM_EM_IXResCentre
+    10: Command_EM_EM_TLFleshVat
+    11: Command_EM_EM_ORPopUpTurret
+    12: Command_EM_EM_GUPalace
+    13: Command_EM_EM_ORHanger
+    14: Command_EM_EM_ORStarport
+    15: Command_EM_EM_ORPalace
+    16: Command_EM_EM_ORConYard_Upgrade
+    17: Command_EmRepair
+    18: Command_Sell
   EMStructureCommandSet:
     1: Command_EmRepair
     2: Command_Sell

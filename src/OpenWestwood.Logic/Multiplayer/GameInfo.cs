@@ -67,6 +67,11 @@ public sealed class GameInfo
     public bool ExploredMap { get; set; }
     /// <summary>OpenWESTWOOD: no fog of war: everyone sees everything, all game long.</summary>
     public bool NoFogOfWar { get; set; }
+    /// <summary>OpenWESTWOOD: 0 normal, 1 fast (1.5x), 2 very fast (2x); the host's choice for everyone.</summary>
+    public int GameSpeed { get; set; }
+
+    public static readonly float[] GameSpeeds = [1f, 1.5f, 2f];
+    public static readonly string[] GameSpeedNames = ["Normal", "Fast", "Very fast"];
     public ulong Seed { get; set; }
     public int LocalSlot { get; set; }
 

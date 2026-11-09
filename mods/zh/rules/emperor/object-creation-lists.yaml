@@ -21,6 +21,11 @@ ObjectCreationLists:
     - Type: CreateObject
       ObjectNames: EM_FX_ShellHit
       Disposition: LIKE_EXISTING
+  OCL_EM_FX_BloodSplat:
+    Nuggets:
+    - Type: CreateObject
+      ObjectNames: EM_FX_BloodSplat
+      Disposition: LIKE_EXISTING
   OCL_EM_FX_InkVineExplosion:
     Nuggets:
     - Type: CreateObject

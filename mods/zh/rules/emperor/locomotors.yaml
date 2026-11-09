@@ -287,6 +287,136 @@ Locomotors:
     Apply2DFrictionWhenAirborne: Yes
     AirborneTargetingHeight: 30
     LocomotorWorksWhenDead: Yes
+  EM_IXInfiltratorLocomotor:
+    Surfaces: GROUND
+    Speed: 28
+    SpeedDamaged: 22.4
+    TurnRate: 114.592
+    TurnRateDamaged: 114.592
+    Acceleration: 1000
+    AccelerationDamaged: 1000
+    Braking: 1000
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TREADS
+  EM_IXProjectorLocomotor:
+    Surfaces: GROUND
+    Speed: 56
+    SpeedDamaged: 44.8
+    TurnRate: 114.592
+    TurnRateDamaged: 114.592
+    Acceleration: 1000
+    AccelerationDamaged: 1000
+    Braking: 1000
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TREADS
+  EM_TLContaminatorLocomotor:
+    Surfaces: GROUND RUBBLE
+    Speed: 14
+    SpeedDamaged: 14
+    TurnRate: 500
+    TurnRateDamaged: 500
+    Acceleration: 100
+    AccelerationDamaged: 100
+    Braking: 100
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TWO_LEGS
+    StickToGround: Yes
+    GroupMovementPriority: MOVES_FRONT
+  EM_TLLeechLocomotor:
+    Surfaces: GROUND
+    Speed: 56
+    SpeedDamaged: 44.8
+    TurnRate: 343.775
+    TurnRateDamaged: 343.775
+    Acceleration: 1000
+    AccelerationDamaged: 1000
+    Braking: 1000
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TREADS
+  EM_IMSardaukarLocomotor:
+    Surfaces: GROUND RUBBLE
+    Speed: 24
+    SpeedDamaged: 24
+    TurnRate: 500
+    TurnRateDamaged: 500
+    Acceleration: 100
+    AccelerationDamaged: 100
+    Braking: 100
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TWO_LEGS
+    StickToGround: Yes
+    GroupMovementPriority: MOVES_FRONT
+  EM_IMADVSardaukarLocomotor:
+    Surfaces: GROUND RUBBLE
+    Speed: 28
+    SpeedDamaged: 28
+    TurnRate: 500
+    TurnRateDamaged: 500
+    Acceleration: 100
+    AccelerationDamaged: 100
+    Braking: 100
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TWO_LEGS
+    StickToGround: Yes
+    GroupMovementPriority: MOVES_FRONT
+  EM_FRFremenLocomotor:
+    Surfaces: GROUND RUBBLE
+    Speed: 24
+    SpeedDamaged: 24
+    TurnRate: 500
+    TurnRateDamaged: 500
+    Acceleration: 100
+    AccelerationDamaged: 100
+    Braking: 100
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TWO_LEGS
+    StickToGround: Yes
+    GroupMovementPriority: MOVES_FRONT
+  EM_FRADVFremenLocomotor:
+    Surfaces: GROUND RUBBLE
+    Speed: 24
+    SpeedDamaged: 24
+    TurnRate: 500
+    TurnRateDamaged: 500
+    Acceleration: 100
+    AccelerationDamaged: 100
+    Braking: 100
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TWO_LEGS
+    StickToGround: Yes
+    GroupMovementPriority: MOVES_FRONT
+  EM_GUMakerLocomotor:
+    Surfaces: GROUND
+    Speed: 16
+    SpeedDamaged: 12.8
+    TurnRate: 343.775
+    TurnRateDamaged: 343.775
+    Acceleration: 1000
+    AccelerationDamaged: 1000
+    Braking: 1000
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TREADS
+  EM_GUNIABTankLocomotor:
+    Surfaces: GROUND
+    Speed: 48
+    SpeedDamaged: 38.4
+    TurnRate: 343.775
+    TurnRateDamaged: 343.775
+    Acceleration: 1000
+    AccelerationDamaged: 1000
+    Braking: 1000
+    MinTurnSpeed: 0
+    ZAxisBehavior: NO_Z_MOTIVE_FORCE
+    Appearance: TREADS
   EM_HKScoutLocomotor:
     Surfaces: GROUND RUBBLE
     Speed: 24

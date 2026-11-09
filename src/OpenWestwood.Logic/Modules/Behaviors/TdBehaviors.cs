@@ -81,8 +81,9 @@ public sealed class TdFreeUnitOnBuilt : Module, IUpdateModule
 /// <summary>Sizes of Tiberian Dawn objects in Zero Hour matches (must agree with OpenWestwood.Tools' TdFactionExporter).</summary>
 public static class TdScale
 {
-    /// <summary>TD objects are 10% smaller than a 36-unit TD cell (the cell still sets speeds, ranges and sight).</summary>
-    public const float Size = 0.9f;
+    /// <summary>TD objects at their original size: a whole 36-unit TD cell (it also sets speeds, ranges and sight).
+    /// (They were drawn 10% smaller for a while; the user asked for the original size back on 2026-11-09.)</summary>
+    public const float Size = 1f;
 
     /// <summary>One TD cell of building footprint: the placement grid and the "next to the base" distance.</summary>
     public const float Cell = 36f * Size;

@@ -20,20 +20,17 @@ public sealed partial class TdSpriteRenderer
     /// <summary>World units a pixel of a voxel picture (a voxel is about one shape pixel).</summary>
     static float VoxelUnitsPerPixel(Ra2Art art) => UnitsPerPixel2(art) / Ra2Art.PixelsPerVoxel;
 
-    /// <summary>
-    /// The game is on a Zero Hour (or Kane's Wrath) map, not one converted from a Westwood game. (Tiberian Sun's
-    /// infantry, at their own cell scale, stand taller than Zero Hour's soldiers there, so they are drawn a little smaller.)
-    /// </summary>
+    /// <summary>The game is on a Zero Hour (or Kane's Wrath) map, not one converted from a Westwood game.</summary>
     public static bool OnSageMap { get; set; }
-    const float TsInfantryOnSageMap = 0.8f;
-    /// <summary>(Red Alert 2's units, vehicles and soldiers alike, likewise stand far bigger than Zero Hour's there.)</summary>
-    const float Ra2UnitsOnSageMap = 0.7f;
 
-    static float SageMapScale(Ra2Art art, bool infantry) =>
-        !OnSageMap ? 1 : art.IsTiberianSun ? (infantry ? TsInfantryOnSageMap : 1) : Ra2UnitsOnSageMap;
+    /// <summary>
+    /// Tiberian Sun and Red Alert 2 objects are drawn at their original size everywhere. (On Zero Hour maps they were
+    /// drawn smaller for a while, TS infantry at 0.8 and RA2 units at 0.7; the user asked for the original size back.)
+    /// </summary>
+    static float SageMapScale(Ra2Art art, bool infantry) => 1;
 
     readonly Dictionary<(object Source, int Frame, uint Team, int Mode), Texture?> ra2Textures = new();
-    readonly List<(Ra2Art Art, TsShape Shape, Vector3 Position, float Seconds, int Frames)> ra2Anims = new();
+    readonly List<(Ra2Art Art, TsShape Shape, Vector3 Position, float Seconds, int Frames, string Name)> ra2Anims = new();
 
     static bool IsRa2(GameObject obj) =>
         obj.Template.ModulesOfType("Draw").Any(m => m.ClassName.Equals("RA2SpriteDraw", StringComparison.OrdinalIgnoreCase));
@@ -68,6 +65,34 @@ public sealed partial class TdSpriteRenderer
         int Int(int i) => i < values.Length && int.TryParse(values[i], out int v) ? v : 0;
         return values.Length >= 2 ? (Int(0), Math.Max(1, Int(1)), Int(2)) : (0, 1, 1);
     }
+
+    /// <summary>
+    /// A soldier burning to death (the rules' [AudioVisual] FlamingInfantry, FLAMEGUY, played for a fire death,
+    /// InfDeath=4): its running frames (8 facings of the art's RunningFrames) flail for a moment, then the rest of the
+    /// frames burn it down, the last one held. (The second half of the file is the shadow frames.)
+    /// </summary>
+    static (TsShape Shape, int Frame)? FlamingInfantry(Ra2Art art, float seconds, float facing)
+    {
+        string name = art.Rules.Get("AudioVisual", "FlamingInfantry", "FLAMEGUY");
+        if (art.Shape(name) is not { } shape)
+            return null;
+        int frames = shape.FrameCount / 2;
+        int running = Math.Max(1, (int)art.Art.Num(name, "RunningFrames", 6));
+        if (frames <= 8 * running)
+            return null;
+        const float Fps = 12, RunSeconds = 1.5f;
+        int frame = seconds < RunSeconds
+            ? (((int)MathF.Round(facing / (MathF.Tau / 8)) % 8 + 8) % 8) * running + (int)(seconds * Fps) % running
+            : 8 * running + Math.Min((int)((seconds - RunSeconds) * Fps), Math.Min(frames - 8 * running, 60) - 1);
+        return (shape, frame);
+    }
+
+    /// <summary>Soldiers already given their electrocution animation.</summary>
+    readonly HashSet<uint> electrocuted = new();
+
+    /// <summary>Killed by a tesla weapon (Red Alert's "Super" warhead, Red Alert 2's electric ones: exported as PARTICLE_BEAM).</summary>
+    static bool IsTeslaKill(GameObject obj) =>
+        string.Equals(obj.Body?.LastDamage?.DamageType, "PARTICLE_BEAM", StringComparison.OrdinalIgnoreCase);
 
     void AddRa2(GameObject obj, Drawable drawable, Camera camera)
     {
@@ -126,6 +151,21 @@ public sealed partial class TdSpriteRenderer
                 if (art.Shape(image) is not { } shape)
                     return;
                 string sequence = draw.Settings.GetString("Sequence");
+                // A tesla kill (Red Alert 2's InfDeath=5: the electric warheads, PARTICLE_BEAM here): the soldier gives way to
+                // the crackling ELECTRO animation.
+                if (obj.IsEffectivelyDead && IsTeslaKill(obj))
+                {
+                    if (electrocuted.Add(obj.Id))
+                        PlayRa2Anim("ELECTRO", obj.Position, art.IsTiberianSun);
+                    return;
+                }
+                if (obj.IsEffectivelyDead && OpenWestwood.TiberianDawn.Art.TdSpriteState.DeathFor(obj.Body?.LastDamage?.DamageType) == OpenWestwood.TiberianDawn.Logic.DoType.DO_FIRE_DEATH
+                    && FlamingInfantry(art, drawable.Clock, apparent) is { } burning)
+                {
+                    if (Ra2Texture(art, burning.Shape, burning.Frame, 0xFFFFFFFF, art.AnimPalette, false) is { } flame)
+                        Quad(flame, burning.Shape.Width, burning.Shape.Height, unitsPerPixel * SageMapScale(art, true), 0);
+                    return;
+                }
                 bool moving = obj.AI?.IsWalking ?? false, firing = drawable.SecondsSinceFired < 0.4f;
                 var (start, count, step) = obj.IsEffectivelyDead ? Sequence(art, sequence, "Die1")
                     : firing ? Sequence(art, sequence, "FireUp") : moving ? Sequence(art, sequence, "Walk") : Sequence(art, sequence, "Ready");
@@ -230,7 +270,26 @@ public sealed partial class TdSpriteRenderer
     public void PlayRa2Anim(string name, Vector3 position, bool tiberianSun = false)
     {
         if (Ra2Art.For(tiberianSun ? "TS" : "") is { } art && art.Shape(name) is { } shape)
-            ra2Anims.Add((art, shape, position, 0, Math.Max(1, art.Art.Bool(name, "Shadow") ? shape.FrameCount / 2 : shape.FrameCount)));
+            ra2Anims.Add((art, shape, position, 0, Math.Max(1, art.Art.Bool(name, "Shadow") ? shape.FrameCount / 2 : shape.FrameCount), name));
+    }
+
+    /// <summary>
+    /// An animation's frame after this many steps, with its art's loop (LoopStart..LoopEnd shown LoopCount times, then
+    /// the rest: ELECTRO's sparks crackle five times before the soldier falls). -1 once it is over.
+    /// </summary>
+    static int AnimFrame(Ra2Art art, string name, int frames, int step)
+    {
+        int loopStart = Math.Clamp((int)art.Art.Num(name, "LoopStart", 0), 0, frames);
+        int loopEnd = Math.Clamp((int)art.Art.Num(name, "LoopEnd", frames), loopStart, frames);
+        int loopCount = Math.Max(1, (int)art.Art.Num(name, "LoopCount", 1));
+        int loopLength = loopEnd - loopStart;
+        if (step < loopStart)
+            return step;
+        step -= loopStart;
+        if (step < loopLength * loopCount)
+            return loopStart + step % Math.Max(1, loopLength);
+        step -= loopLength * loopCount;
+        return loopEnd + step < frames ? loopEnd + step : -1;
     }
 
     void AddRa2Anims(float seconds, Camera camera)
@@ -239,15 +298,15 @@ public sealed partial class TdSpriteRenderer
         var up = new Vector3(view.M12, view.M22, view.M32);
         for (int i = ra2Anims.Count - 1; i >= 0; i--)
         {
-            var (art, shape, position, t, frames) = ra2Anims[i];
+            var (art, shape, position, t, frames, name) = ra2Anims[i];
             t += seconds;
-            int frame = (int)(t * 15);
-            if (frame >= frames)
+            int frame = AnimFrame(art, name, frames, (int)(t * 15));
+            if (frame < 0)
             {
                 ra2Anims.RemoveAt(i);
                 continue;
             }
-            ra2Anims[i] = (art, shape, position, t, frames);
+            ra2Anims[i] = (art, shape, position, t, frames, name);
             if (Ra2Texture(art, shape, frame, 0xFFFFFFFF, art.AnimPalette, false) is not { } texture)
                 continue;
             float upp = UnitsPerPixel2(art);

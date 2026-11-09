@@ -25,6 +25,36 @@ Upgrades:
     BuildTime: 30
     BuildCost: 600
     ResearchSound: NoSound
+  Upgrade_EM_FRCamp:
+    DisplayName: Fremen Camp upgrade
+    Type: PLAYER
+    BuildTime: 27
+    BuildCost: 1000
+    ResearchSound: NoSound
+  Upgrade_EM_IMBarracks:
+    DisplayName: Imperial Barracks upgrade
+    Type: PLAYER
+    BuildTime: 27
+    BuildCost: 1000
+    ResearchSound: NoSound
+  Upgrade_EM_IXResCentre:
+    DisplayName: Ix Research Facility upgrade
+    Type: PLAYER
+    BuildTime: 43.2
+    BuildCost: 1500
+    ResearchSound: NoSound
+  Upgrade_EM_TLFleshVat:
+    DisplayName: Tleilaxu Flesh Vat upgrade
+    Type: PLAYER
+    BuildTime: 43.2
+    BuildCost: 1500
+    ResearchSound: NoSound
+  Upgrade_EM_GUPalace:
+    DisplayName: Guild Palace upgrade
+    Type: PLAYER
+    BuildTime: 54
+    BuildCost: 1600
+    ResearchSound: NoSound
   Upgrade_EM_HKBarracks:
     DisplayName: Barracks upgrade
     Type: PLAYER

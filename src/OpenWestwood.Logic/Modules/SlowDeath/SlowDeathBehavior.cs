@@ -119,6 +119,20 @@ public class SlowDeathBehavior : DieModule, IUpdateModule, IDelaysDestruction
         return new Vector3(DMath.Cos(angle) * DMath.Cos(pitch), DMath.Sin(angle) * DMath.Cos(pitch), DMath.Sin(pitch)) * mag;
     }
 
+    /// <summary>
+    /// OpenWESTWOOD: a soldier of the 2D games (TD_OBJECT) killed by fire, laser or particle beam burns to death on
+    /// screen (Tiberian Dawn's DO_FIRE_DEATH, Tiberian Sun / Red Alert 2's FLAMEGUY), which takes longer than the
+    /// one second its corpse is otherwise kept: it stays until that is over.
+    /// </summary>
+    static int BurningSoldierFrames(GameObject obj, DamageInfo killingBlow)
+    {
+        if (!obj.IsKindOf("TD_OBJECT") || !obj.IsKindOf(Kind.Infantry)
+            || killingBlow.DamageType.ToUpperInvariant() is not ("FLAME" or "LASER" or "PARTICLE_BEAM"))
+            return 0;
+        bool flameGuy = obj.Template.ModulesOfType("Draw").Any(m => m.ClassName.Equals("RA2SpriteDraw", StringComparison.OrdinalIgnoreCase));
+        return LogicTime.Frames(flameGuy ? 6500 : 2600);
+    }
+
     public virtual void BeginSlowDeath(DamageInfo killingBlow)
     {
         if (activated)
@@ -134,6 +148,7 @@ public class SlowDeathBehavior : DieModule, IUpdateModule, IDelaysDestruction
         {
             SinkFrame = sinkDelay + Game.Random.Int(0, sinkDelayVariance);
             DestructionFrame = destructionDelay + Game.Random.Int(0, destructionDelayVariance);
+            DestructionFrame = Math.Max(DestructionFrame, BurningSoldierFrames(obj, killingBlow));
             MidpointFrame = Game.Random.Int((int)(BeginMidpointRatio * DestructionFrame), (int)(EndMidpointRatio * DestructionFrame));
         }
 
