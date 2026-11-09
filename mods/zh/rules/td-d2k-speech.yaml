@@ -1,4 +1,4 @@
-# OpenGZH: the announcers of the Tiberian Dawn and Dune 2000 houses (TD's SPEECH.MIX, Dune 2000's GAMESFX).
+# OpenWESTWOOD: the announcers of the Tiberian Dawn and Dune 2000 houses (TD's SPEECH.MIX, Dune 2000's GAMESFX).
 # "/NAME" files are found at the file system's root (see mods/zh/mod.yaml). Edit freely.
 DialogEvents:
   D2kEva_AI_ATACK:

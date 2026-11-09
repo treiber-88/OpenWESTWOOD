@@ -1,4 +1,4 @@
-# OpenGZH ADDITIONS to GameData (hand-written, not converted from the original data).
+# OpenWESTWOOD ADDITIONS to GameData (hand-written, not converted from the original data).
 # These merge into the GameData entry from game-data.yaml.
 GameData:
   # Human players may only place buildings within this distance (world units; 10 per terrain cell)

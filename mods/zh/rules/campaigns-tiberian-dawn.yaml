@@ -1,0 +1,57 @@
+# OpenWESTWOOD: Tiberian Dawn's campaigns (its scenario files, run by the game logic's TdMission).
+# The GDI campaign takes each mission's first version (A); TD's map screens chose between the others.
+Campaigns:
+  TD_GDI:
+    CampaignNameLabel: GDI
+    FirstMission: Mission01
+    Mission:
+      Mission01:
+        Map: td:SCG01EA
+        NextMission: Mission02
+      Mission02:
+        Map: td:SCG02EA
+        NextMission: Mission03
+      Mission03:
+        Map: td:SCG03EA
+        NextMission: Mission04
+      Mission04:
+        Map: td:SCG04EA
+        NextMission: Mission05
+      Mission05:
+        Map: td:SCG05EA
+        NextMission: Mission06
+      Mission06:
+        Map: td:SCG06EA
+        NextMission: Mission07
+      Mission07:
+        Map: td:SCG07EA
+        NextMission: Mission08
+      Mission08:
+        Map: td:SCG08EA
+        NextMission: Mission09
+      Mission09:
+        Map: td:SCG09EA
+        NextMission: Mission10
+      Mission10:
+        Map: td:SCG10EA
+        NextMission: Mission11
+      Mission11:
+        Map: td:SCG11EA
+        NextMission: Mission12
+      Mission12:
+        Map: td:SCG12EA
+        NextMission: Mission13
+      Mission13:
+        Map: td:SCG13EA
+        NextMission: Mission14
+      Mission14:
+        Map: td:SCG14EA
+        NextMission: Mission15
+      Mission15:
+        Map: td:SCG15EA
+  TD_NOD:
+    CampaignNameLabel: Nod
+    FirstMission: Mission01
+    Mission:
+      Mission01:
+        Map: td:SCB01EA

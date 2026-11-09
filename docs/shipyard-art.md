@@ -1,6 +1,6 @@
 # Shipyard artwork: what the engine expects
 
-The shipyard is the one OpenGZH building with no original art. The engine side is done: every
+The shipyard is the one OpenWESTWOOD building with no original art. The engine side is done: every
 faction's dozer or worker can build a shipyard on the water next to the shore, and the shipyard builds that
 faction's ships. Until the new art exists, the shipyards use the original concrete pier
 `PMDock01` as a stand-in. This document lists what to make so the real art can replace it.
@@ -81,7 +81,7 @@ These are separate from the model, and currently also use stand-ins:
 The ships could use their own cameos too (the battleship and carrier already have original
 ones): `SAPTBoat`, `SNPatrolJunk`, `SNGunboat`, `SUArmedTrawler`, `SUBombBoat` (56 × 48 each).
 
-Save each image as its own `.tga` file in `mods/zh/assets/Art/Textures/`; OpenGZH does not need
+Save each image as its own `.tga` file in `mods/zh/assets/Art/Textures/`; OpenWESTWOOD does not need
 them packed into the original atlas pages.
 
 ## When the art is ready

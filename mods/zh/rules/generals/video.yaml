@@ -1,0 +1,90 @@
+# GENERATED from the original Generals INI data (INI.big) by 'OpenWestwood.Tools import-generals-missions'.
+# Only what Zero Hour's own data does not define: Generals' campaigns and their mission speech and movies.
+Videos:
+  USACampaign1:
+    Filename: USA01_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign2:
+    Filename: USA02_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign3:
+    Filename: USA03_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign4:
+    Filename: USA04_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign5:
+    Filename: USA06_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign6:
+    Filename: USA07_Final_00s
+    Comment: This is the EA logo screen
+  USACampaign7:
+    Filename: USA08_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign1:
+    Filename: China01_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign2:
+    Filename: China02_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign3:
+    Filename: China03_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign4:
+    Filename: China04_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign5:
+    Filename: China05_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign6:
+    Filename: China06_Final_00s
+    Comment: This is the EA logo screen
+  ChinaCampaign7:
+    Filename: China07_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign1:
+    Filename: GLA01_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign2:
+    Filename: GLA02_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign3:
+    Filename: GLA03_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign4:
+    Filename: GLA04_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign5:
+    Filename: GLA05_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign6:
+    Filename: GLA06_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign7:
+    Filename: GLA07_Final_00s
+    Comment: This is the EA logo screen
+  GLACampaign8:
+    Filename: GLA08_Final_00s
+    Comment: This is the EA logo screen
+  TrainingCampaign:
+    Filename: Training_Final_00s
+    Comment: This is the EA logo screen
+  USACampaignVictory:
+    Filename: USA_end
+    Comment: This is the USA campaign victory movie
+  GLACampaignVictory:
+    Filename: GLA_end
+    Comment: This is the GLA campaign victory movie
+  ChinaCampaignVictory:
+    Filename: CHINA_end
+    Comment: This is the China campaign victory movie
+  USACampaignVictory640:
+    Filename: USA_end640
+    Comment: This is the USA campaign victory movie
+  GLACampaignVictory640:
+    Filename: GLA_end640
+    Comment: This is the GLA campaign victory movie
+  ChinaCampaignVictory640:
+    Filename: CHINA_end640
+    Comment: This is the China campaign victory movie

@@ -1,0 +1,8 @@
+# GENERATED from the original Generals INI data (INI.big) by 'OpenWestwood.Tools import-generals-missions'.
+# Only what Zero Hour's own data does not define: Generals' campaigns and their mission speech and movies.
+AudioEvents:
+  RebelVoiceUpgradeCamoflage:
+    Sounds: irebu2
+    Control: random
+    Volume: 90
+    Type: ui voice player

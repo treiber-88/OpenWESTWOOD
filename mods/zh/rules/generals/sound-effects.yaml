@@ -1,0 +1,11 @@
+# GENERATED from the original Generals INI data (INI.big) by 'OpenWestwood.Tools import-generals-missions'.
+# Only what Zero Hour's own data does not define: Generals' campaigns and their mission speech and movies.
+AudioEvents:
+  NukeAirRaidSiren:
+    Sounds: gairraid
+    Volume: 85
+    MinVolume: 50
+    Priority: critical
+    MinRange: 700
+    MaxRange: 5000
+    Type: world everyone

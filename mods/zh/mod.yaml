@@ -1,4 +1,4 @@
-# OpenGZH base game: Command & Conquer Generals Zero Hour.
+# OpenWESTWOOD base game: Command & Conquer Generals Zero Hour.
 #
 # To make your own mod, copy this file to mods/<yourmod>/mod.yaml, set "Inherits: zh",
 # and list only your own packages and rules. Your files override the base game's.
@@ -12,7 +12,7 @@ Version: "1.04"
 # archives (alphabetically), then the original Generals archives (alphabetically).
 # "{mod}" is this mod's folder. "folder@Prefix" mounts a folder under a virtual path.
 Packages:
-  - "{mod}/assets?"                       # OpenGZH additions (e.g. new shipyard art). "?" = optional
+  - "{mod}/assets?"                       # OpenWESTWOOD additions (e.g. new shipyard art). "?" = optional
   - content/zerohour/Data@Data
   - content/zerohour/AudioEnglishZH.big
   - content/zerohour/AudioZH.big
@@ -75,7 +75,7 @@ Packages:
 MixNames: mods/tiberiandawn/filenames.txt;mods/redalert/filenames.txt;mods/redalert2/audio-names.txt;mods/tiberiansun/filenames.txt
 
 # Rules are YAML files in rules/. Each file is named after what it defines.
-# The base set is generated from the original INI data by:  OpenGZH.Tools import-rules
+# The base set is generated from the original INI data by:  OpenWestwood.Tools import-rules
 # Patterns: "*" matches within a folder, "**/" matches any depth. A file matched twice loads once.
 Rules:
   - rules/defaults/*.yaml     # base values every definition starts from

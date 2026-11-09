@@ -1,4 +1,4 @@
-# GENERATED from the original Zero Hour INI data by 'OpenGZH.Tools import-rules'.
+# GENERATED from the original Zero Hour INI data by 'OpenWestwood.Tools import-rules'.
 # This file is now the source of truth for these rules: edit it freely.
 # To make a separate mod instead, override definitions from your own mod's rules files.
 Objects:
@@ -2150,84 +2150,67 @@ Objects:
         DeathTypes: NONE +CRUSHED +SPLATTED
     SourceFile: Data/INI/Object/AmericaVehicle.ini
   AmericaTankPaladin:
-    SelectPortrait: [SAPaladin_L, SAsentry_L]
-    ButtonImage: [SAPaladin, SAsentry]
-    UpgradeCameo1: [Upgrade_AmericaBattleDrone, Upgrade_AmericaSentryDroneGun]
-    UpgradeCameo2: [Upgrade_AmericaScoutDrone, Upgrade_AmericaDroneArmor]
+    SelectPortrait: SAPaladin_L
+    ButtonImage: SAPaladin
+    UpgradeCameo1: Upgrade_AmericaBattleDrone
+    UpgradeCameo2: Upgrade_AmericaScoutDrone
     UpgradeCameo3: Upgrade_AmericaHellfireDrone
     UpgradeCameo4: Upgrade_AmericaAdvancedTraining
     UpgradeCameo5: Upgrade_AmericaCompositeArmor
-    DisplayName: ['OBJECT:Paladin', 'OBJECT:SentryDrone']
-    Side: [America, America]
-    EditorSorting: [VEHICLE, VEHICLE]
-    TransportSlotCount: [3, 1]
-    BuildCost: [1100, 800]
-    BuildTime: [12.0, 10.0]
-    VisionRange: [150, 200]
-    ShroudClearingRange: [300, 350]
-    ExperienceValue: [100 100 200 400, 50 50 100 150]
-    ExperienceRequired: [0 200 300 600, 0 100 150 300]
-    IsTrainable: [Yes, No]
-    CrusherLevel: [2, 0]
-    CrushableLevel: [2, 2]
-    CommandSet: [AmericaTankPaladinCommandSet, AmericaVehicleSentryDroneCommandSet]
-    VoiceSelect: [PaladinTankVoiceSelect, SentryDroneVoiceSelect]
-    VoiceMove: [PaladinTankVoiceMove, SentryDroneVoiceMove]
-    VoiceGuard: [PaladinTankVoiceMove, SentryDroneVoiceMove]
-    VoiceAttack: [PaladinTankVoiceAttack, SentryDroneVoiceMove]
-    SoundMoveStart: [PaladinTankMoveStart, SentryDroneMoveStart]
-    SoundMoveStartDamaged: [PaladinTankMoveStart, NoSound]
-    RadarPriority: [UNIT, UNIT]
-    KindOf:
-    - PRELOAD SELECTABLE CAN_ATTACK ATTACK_NEEDS_LINE_OF_SIGHT CAN_CAST_REFLECTIONS VEHICLE SCORE
-    - PRELOAD SELECTABLE CAN_ATTACK CAN_CAST_REFLECTIONS VEHICLE SCORE ATTACK_NEEDS_LINE_OF_SIGHT DRONE
-    Locomotor: [SET_NORMAL CrusaderLocomotor, SET_NORMAL SentryLocomotor]
-    Object: AmericaVehicleSentryDrone
+    DisplayName: OBJECT:Paladin
+    Side: America
+    EditorSorting: VEHICLE
+    TransportSlotCount: 3
+    BuildCost: 1100
+    BuildTime: 12.0
+    VisionRange: 150
+    ShroudClearingRange: 300
+    ExperienceValue: 100 100 200 400
+    ExperienceRequired: 0 200 300 600
+    IsTrainable: Yes
+    CrusherLevel: 2
+    CrushableLevel: 2
+    CommandSet: AmericaTankPaladinCommandSet
+    VoiceSelect: PaladinTankVoiceSelect
+    VoiceMove: PaladinTankVoiceMove
+    VoiceGuard: PaladinTankVoiceMove
+    VoiceAttack: PaladinTankVoiceAttack
+    SoundMoveStart: PaladinTankMoveStart
+    SoundMoveStartDamaged: PaladinTankMoveStart
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE CAN_ATTACK ATTACK_NEEDS_LINE_OF_SIGHT CAN_CAST_REFLECTIONS VEHICLE SCORE
+    Locomotor: SET_NORMAL CrusaderLocomotor
     Geometry: BOX
-    GeometryMajorRadius: 9.0
-    GeometryMinorRadius: 7.0
-    GeometryHeight: 11.5
+    GeometryMajorRadius: 15.0
+    GeometryMinorRadius: 10.0
+    GeometryHeight: 10.0
     GeometryIsSmall: Yes
     Shadow: SHADOW_VOLUME
     ShadowSizeX: 45
     WeaponSet:
-    - Conditions: None
+      Conditions: None
       Weapon: PRIMARY PaladinTankGun
-    - Conditions: None
-      Weapon: PRIMARY None
-    - Conditions: PLAYER_UPGRADE
-      Weapon: PRIMARY SentryDroneGun
     ArmorSet:
-    - Conditions: None
+      Conditions: None
       Armor: TankArmor
       DamageFX: TankDamageFX
-    - Conditions: None
-      Armor: SentryDroneArmor
-      DamageFX: TruckDamageFX
     Prerequisites:
-    - Object: AmericaWarFactory
+      Object: AmericaWarFactory
       Science: SCIENCE_PaladinTank
-    - Object: AmericaWarFactory
     UnitSpecificSounds:
-    - VoiceCreate: PaladinTankVoiceCreate
+      VoiceCreate: PaladinTankVoiceCreate
       TurretMoveLoop: TurretMoveLoop
       SoundEject: PilotSoundEject
       VoiceEject: PilotVoiceEject
       VoiceCrush: PaladinTankVoiceCrush
       VoiceEnter: PaladinTankVoiceMove
-    - VoiceCreate: NoSound
-      TurretMoveStart: NoSound
-      TurretMoveLoop: NoSound
-      VoiceEnter: NoSound
-      Deploy: NoSound
-      Undeploy: NoSound
     Modules:
       ModuleTag_01:
         Module: Draw
         Class: W3DTankDraw
         ExtraPublicBone: Laser
         TrackMarks: EXTnkTrack.tga
-        TreadAnimationRate: 4.0
+        TreadAnimationRate: 2.0
         TreadDriveSpeedFraction: 0.3
         TreadPivotSpeedFraction: 0.6
         OkToChangeModelColor: Yes
@@ -2240,22 +2223,219 @@ Objects:
             WeaponMuzzleFlash: PRIMARY TurretFX
             WeaponLaunchBone: PRIMARY TurretMS
           REALLYDAMAGED:
-            Model: AVSENTRY_D
-            Turret: TURRET01
-            WeaponFireFXBone: PRIMARY TurretMS
-            WeaponRecoilBone: PRIMARY Barrel
-            WeaponMuzzleFlash: PRIMARY TurretFX
-            WeaponLaunchBone: PRIMARY TurretMS
-            Animation: AVSENTRY_D.AVSENTRY_D
-            AnimationMode: LOOP
-            HideSubObject: TURRETUP09
-          RUBBLE:
-            Model: AVSENTRY_D1
+            Model: AVPaladin_D
             Turret: Turret01
             WeaponFireFXBone: PRIMARY TurretMS
             WeaponRecoilBone: PRIMARY Barrel
             WeaponMuzzleFlash: PRIMARY TurretFX
             WeaponLaunchBone: PRIMARY TurretMS
+          RUBBLE:
+            Model: AVPaladin_D
+            Turret: Turret01
+            WeaponFireFXBone: PRIMARY TurretMS
+            WeaponRecoilBone: PRIMARY Barrel
+            WeaponMuzzleFlash: PRIMARY TurretFX
+            WeaponLaunchBone: PRIMARY TurretMS
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 500.0
+        InitialHealth: 500.0
+        SubdualDamageCap: 1000
+        SubdualDamageHealRate: 500
+        SubdualDamageHealAmount: 50
+      ModuleTag_03:
+        Module: Behavior
+        Class: AIUpdateInterface
+        AutoAcquireEnemiesWhenIdle: Yes
+        Turret:
+          TurretTurnRate: 180
+          ControlledWeaponSlots: PRIMARY
+      ModuleTag_04:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 50.0
+      ModuleTag_05:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL -CRUSHED -SPLATTED
+        ProbabilityModifier: 50
+        DestructionDelay: 500
+        DestructionDelayVariance: 100
+        FX: [INITIAL FX_GenericTankDeathEffect, FINAL FX_GenericTankDeathExplosion]
+        OCL: FINAL OCL_PaladinTankDeathEffect
+      ModuleTag_06:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL -CRUSHED -SPLATTED
+        ProbabilityModifier: 50
+        DestructionDelay: 2000
+        DestructionDelayVariance: 300
+        FX: [INITIAL FX_CrusaderCatchFire, FINAL FX_GenericTankDeathExplosion]
+        OCL: FINAL OCL_PaladinTankDeathEffect
+      ModuleTag_07:
+        Module: Behavior
+        Class: PointDefenseLaserUpdate
+        WeaponTemplate: PaladinPointDefenseLaser
+        PrimaryTargetTypes: BALLISTIC_MISSILE SMALL_MISSILE
+        SecondaryTargetTypes: INFANTRY
+        ScanRate: 500
+        ScanRange: 120.0
+        PredictTargetVelocityFactor: 3.0
+      ModuleTag_08:
+        Module: Behavior
+        Class: ObjectCreationUpgrade
+        UpgradeObject: OCL_AmericanBattleDrone
+        TriggeredBy: Upgrade_AmericaBattleDrone
+        ConflictsWith: Upgrade_AmericaScoutDrone Upgrade_AmericaHellfireDrone
+      ModuleTag_09:
+        Module: Behavior
+        Class: ObjectCreationUpgrade
+        UpgradeObject: OCL_AmericanScoutDrone
+        TriggeredBy: Upgrade_AmericaScoutDrone
+        ConflictsWith: Upgrade_AmericaBattleDrone Upgrade_AmericaHellfireDrone
+      ModuleTag_19:
+        Module: Behavior
+        Class: ObjectCreationUpgrade
+        UpgradeObject: OCL_AmericanHellfireDrone
+        TriggeredBy: Upgrade_AmericaHellfireDrone
+        ConflictsWith: Upgrade_AmericaBattleDrone Upgrade_AmericaScoutDrone
+      ModuleTag_10:
+        Module: Behavior
+        Class: ProductionUpdate
+        MaxQueueEntries: 1
+      ModuleTag_11:
+        Module: Behavior
+        Class: ExperienceScalarUpgrade
+        TriggeredBy: Upgrade_AmericaAdvancedTraining
+        AddXPScalar: 1.0
+      ModuleTag_12:
+        Module: Behavior
+        Class: TransitionDamageFX
+        ReallyDamagedParticleSystem1: Bone:Smoke RandomBone:Yes PSys:SmokeSmallContinuous01
+        ReallyDamagedFXList1: 'Loc: X:0 Y:0 Z:0 FXList:FX_BattleMasterDamageTransition'
+      ModuleTag_13:
+        Module: Behavior
+        Class: FXListDie
+        DeathTypes: NONE +CRUSHED +SPLATTED
+        DeathFX: FX_CarCrush
+      ModuleTag_14:
+        Module: Behavior
+        Class: CreateObjectDie
+        DeathTypes: NONE +CRUSHED +SPLATTED
+        CreationList: OCL_CrusaderTank_CrushEffect
+      ModuleTag_15:
+        Module: Behavior
+        Class: DestroyDie
+        DeathTypes: NONE +CRUSHED +SPLATTED
+      ModuleTag_16:
+        Module: Behavior
+        Class: CreateCrateDie
+        CrateData: SalvageCrateData
+      ModuleTag_17:
+        Module: Behavior
+        Class: EjectPilotDie
+        DeathTypes: ALL -CRUSHED -SPLATTED
+        ExemptStatus: HIJACKED
+        GroundCreationList: OCL_EjectPilotOnGround
+        AirCreationList: OCL_EjectPilotViaParachute
+        VeterancyLevels: ALL -REGULAR
+      ModuleTag_18:
+        Module: Behavior
+        Class: MaxHealthUpgrade
+        TriggeredBy: Upgrade_AmericaCompositeArmor
+        AddMaxHealth: 100.0
+        ChangeType: ADD_CURRENT_HEALTH_TOO
+      ModuleTag_21:
+        Module: Behavior
+        Class: FlammableUpdate
+        AflameDuration: 5000
+        AflameDamageAmount: 3
+        AflameDamageDelay: 500
+    SourceFile: Data/INI/Object/AmericaVehicle.ini
+  AmericaVehicleSentryDrone:
+    SelectPortrait: SAsentry_L
+    ButtonImage: SAsentry
+    UpgradeCameo1: Upgrade_AmericaSentryDroneGun
+    UpgradeCameo2: Upgrade_AmericaDroneArmor
+    DisplayName: OBJECT:SentryDrone
+    Side: America
+    EditorSorting: VEHICLE
+    TransportSlotCount: 1
+    BuildCost: 800
+    BuildTime: 10.0
+    VisionRange: 200
+    ShroudClearingRange: 350
+    ExperienceValue: 50 50 100 150
+    ExperienceRequired: 0 100 150 300
+    IsTrainable: No
+    CrusherLevel: 0
+    CrushableLevel: 2
+    CommandSet: AmericaVehicleSentryDroneCommandSet
+    VoiceSelect: SentryDroneVoiceSelect
+    VoiceMove: SentryDroneVoiceMove
+    VoiceGuard: SentryDroneVoiceMove
+    VoiceAttack: SentryDroneVoiceMove
+    SoundMoveStart: SentryDroneMoveStart
+    SoundMoveStartDamaged: NoSound
+    RadarPriority: UNIT
+    KindOf: PRELOAD SELECTABLE CAN_ATTACK CAN_CAST_REFLECTIONS VEHICLE SCORE ATTACK_NEEDS_LINE_OF_SIGHT DRONE
+    Locomotor: SET_NORMAL SentryLocomotor
+    Geometry: BOX
+    GeometryMajorRadius: 9.0
+    GeometryMinorRadius: 7.0
+    GeometryHeight: 11.5
+    GeometryIsSmall: Yes
+    Shadow: SHADOW_VOLUME
+    ShadowSizeX: 45
+    WeaponSet:
+    - Conditions: None
+      Weapon: PRIMARY None
+    - Conditions: PLAYER_UPGRADE
+      Weapon: PRIMARY SentryDroneGun
+    ArmorSet:
+      Conditions: None
+      Armor: SentryDroneArmor
+      DamageFX: TruckDamageFX
+    Prerequisites:
+      Object: AmericaWarFactory
+    UnitSpecificSounds:
+      VoiceCreate: NoSound
+      TurretMoveStart: NoSound
+      TurretMoveLoop: NoSound
+      VoiceEnter: NoSound
+      Deploy: NoSound
+      Undeploy: NoSound
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DTankDraw
+        InitialRecoilSpeed: 10
+        MaxRecoilDistance: 1.5
+        RecoilSettleSpeed: 3
+        OkToChangeModelColor: Yes
+        TrackMarks: EXTnkTrack.tga
+        TreadDebrisLeft: SentryDroneTrackDebrisDirtLeft
+        TreadDebrisRight: SentryDroneTrackDebrisDirtRight
+        TreadAnimationRate: 4.0
+        DefaultConditionState:
+          Model: AVSENTRY
+          Animation: AVSENTRY.AVSENTRY
+          AnimationMode: LOOP
+          Turret: TURRET01
+          HideSubObject: TURRETUP09
+          WeaponFireFXBone: PRIMARY TurretFX
+          WeaponMuzzleFlash: PRIMARY TurretFX
+          WeaponRecoilBone: PRIMARY TurretUp
+        ConditionState:
+          REALLYDAMAGED:
+            Turret: TURRET01
+            Model: AVSENTRY_D
+            Animation: AVSENTRY_D.AVSENTRY_D
+            AnimationMode: LOOP
+            HideSubObject: TURRETUP09
+          RUBBLE:
+            Model: AVSENTRY_D1
             HideSubObject: TURRETUP09
             Aliases: [RUBBLE WEAPONSET_PLAYER_UPGRADE]
           WEAPONSET_PLAYER_UPGRADE:
@@ -2268,20 +2448,10 @@ Objects:
             Animation: AVSENTRY_D.AVSENTRY_D
             AnimationMode: LOOP
             ShowSubObject: TURRETUP09
-        InitialRecoilSpeed: 10
-        MaxRecoilDistance: 1.5
-        RecoilSettleSpeed: 3
-        TreadDebrisLeft: SentryDroneTrackDebrisDirtLeft
-        TreadDebrisRight: SentryDroneTrackDebrisDirtRight
-        DefaultConditionState:
-          Model: AVSENTRY
-          Animation: AVSENTRY.AVSENTRY
-          AnimationMode: LOOP
-          Turret: TURRET01
-          HideSubObject: TURRETUP09
-          WeaponFireFXBone: PRIMARY TurretFX
-          WeaponMuzzleFlash: PRIMARY TurretFX
-          WeaponRecoilBone: PRIMARY TurretUp
+      ModuleTag_03:
+        Module: Behavior
+        Class: WeaponSetUpgrade
+        TriggeredBy: Upgrade_AmericaSentryDroneGun
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -2290,18 +2460,15 @@ Objects:
         SubdualDamageCap: 480
         SubdualDamageHealRate: 500
         SubdualDamageHealAmount: 50
-      ModuleTag_03:
+      ModuleTag_99:
         Module: Behavior
-        Class: WeaponSetUpgrade
-        AutoAcquireEnemiesWhenIdle: Yes
-        Turret:
-          TurretTurnRate: 180
-          ControlledWeaponSlots: PRIMARY
-        TriggeredBy: Upgrade_AmericaSentryDroneGun
+        Class: MaxHealthUpgrade
+        TriggeredBy: Upgrade_AmericaDroneArmor
+        AddMaxHealth: 75.0
+        ChangeType: ADD_CURRENT_HEALTH_TOO
       ModuleTag_04:
         Module: Behavior
         Class: DeployStyleAIUpdate
-        Mass: 50.0
         AutoAcquireEnemiesWhenIdle: Yes
         PackTime: 1000
         UnpackTime: 1000
@@ -2323,22 +2490,10 @@ Objects:
       ModuleTag_05:
         Module: Behavior
         Class: PhysicsBehavior
-        DeathTypes: ALL -CRUSHED -SPLATTED
-        ProbabilityModifier: 50
-        DestructionDelay: 500
-        DestructionDelayVariance: 100
-        FX: [INITIAL FX_GenericTankDeathEffect, FINAL FX_GenericTankDeathExplosion]
-        OCL: FINAL OCL_PaladinTankDeathEffect
         Mass: 50.0
       ModuleTag_06:
         Module: Behavior
         Class: StealthUpdate
-        DeathTypes: ALL -CRUSHED -SPLATTED
-        ProbabilityModifier: 50
-        DestructionDelay: 2000
-        DestructionDelayVariance: 300
-        FX: [INITIAL FX_CrusaderCatchFire, FINAL FX_GenericTankDeathExplosion]
-        OCL: FINAL OCL_PaladinTankDeathEffect
         StealthDelay: 2000
         StealthForbiddenConditions: FIRING_PRIMARY MOVING
         HintDetectableConditions: IS_FIRING_WEAPON
@@ -2349,12 +2504,6 @@ Objects:
       ModuleTag_07:
         Module: Behavior
         Class: SlowDeathBehavior
-        WeaponTemplate: PaladinPointDefenseLaser
-        PrimaryTargetTypes: BALLISTIC_MISSILE SMALL_MISSILE
-        SecondaryTargetTypes: INFANTRY
-        ScanRate: 500
-        ScanRange: 120.0
-        PredictTargetVelocityFactor: 3.0
         DeathTypes: ALL -CRUSHED -SPLATTED
         DestructionDelay: 500
         DestructionDelayVariance: 100
@@ -2363,91 +2512,12 @@ Objects:
       ModuleTag_08:
         Module: Behavior
         Class: DestroyDie
-        UpgradeObject: OCL_AmericanBattleDrone
-        TriggeredBy: Upgrade_AmericaBattleDrone
-        ConflictsWith: Upgrade_AmericaScoutDrone Upgrade_AmericaHellfireDrone
         DeathTypes: NONE +CRUSHED +SPLATTED
       ModuleTag_09:
         Module: Behavior
         Class: FXListDie
-        UpgradeObject: OCL_AmericanScoutDrone
-        TriggeredBy: Upgrade_AmericaScoutDrone
-        ConflictsWith: Upgrade_AmericaBattleDrone Upgrade_AmericaHellfireDrone
         DeathTypes: NONE +CRUSHED +SPLATTED
         DeathFX: FX_CarCrush
-      ModuleTag_19:
-        Module: Behavior
-        Class: ObjectCreationUpgrade
-        UpgradeObject: OCL_AmericanHellfireDrone
-        TriggeredBy: Upgrade_AmericaHellfireDrone
-        ConflictsWith: Upgrade_AmericaBattleDrone Upgrade_AmericaScoutDrone
-        End: Upgrade_AmericaHallfireDrone
-        Geometry: BOX
-        GeometryMajorRadius: 15.0
-        GeometryMinorRadius: 10.0
-        GeometryHeight: 10.0
-        GeometryIsSmall: Yes
-        Shadow: SHADOW_VOLUME
-        ShadowSizeX: 45
-        Modules:
-          ModuleTag_10:
-            Module: Behavior
-            Class: ProductionUpdate
-            MaxQueueEntries: 1
-          ModuleTag_11:
-            Module: Behavior
-            Class: ExperienceScalarUpgrade
-            TriggeredBy: Upgrade_AmericaAdvancedTraining
-            AddXPScalar: 1.0
-          ModuleTag_12:
-            Module: Behavior
-            Class: TransitionDamageFX
-            ReallyDamagedParticleSystem1: Bone:Smoke RandomBone:Yes PSys:SmokeSmallContinuous01
-            ReallyDamagedFXList1: 'Loc: X:0 Y:0 Z:0 FXList:FX_BattleMasterDamageTransition'
-          ModuleTag_13:
-            Module: Behavior
-            Class: FXListDie
-            DeathTypes: NONE +CRUSHED +SPLATTED
-            DeathFX: FX_CarCrush
-          ModuleTag_14:
-            Module: Behavior
-            Class: CreateObjectDie
-            DeathTypes: NONE +CRUSHED +SPLATTED
-            CreationList: OCL_CrusaderTank_CrushEffect
-          ModuleTag_15:
-            Module: Behavior
-            Class: DestroyDie
-            DeathTypes: NONE +CRUSHED +SPLATTED
-          ModuleTag_16:
-            Module: Behavior
-            Class: CreateCrateDie
-            CrateData: SalvageCrateData
-          ModuleTag_17:
-            Module: Behavior
-            Class: EjectPilotDie
-            DeathTypes: ALL -CRUSHED -SPLATTED
-            ExemptStatus: HIJACKED
-            GroundCreationList: OCL_EjectPilotOnGround
-            AirCreationList: OCL_EjectPilotViaParachute
-            VeterancyLevels: ALL -REGULAR
-          ModuleTag_18:
-            Module: Behavior
-            Class: MaxHealthUpgrade
-            TriggeredBy: Upgrade_AmericaCompositeArmor
-            AddMaxHealth: 100.0
-            ChangeType: ADD_CURRENT_HEALTH_TOO
-          ModuleTag_21:
-            Module: Behavior
-            Class: FlammableUpdate
-            AflameDuration: 5000
-            AflameDamageAmount: 3
-            AflameDamageDelay: 500
-      ModuleTag_99:
-        Module: Behavior
-        Class: MaxHealthUpgrade
-        TriggeredBy: Upgrade_AmericaDroneArmor
-        AddMaxHealth: 75.0
-        ChangeType: ADD_CURRENT_HEALTH_TOO
       ModuleTag_CratesChange:
         Module: Behavior
         Class: CreateCrateDie

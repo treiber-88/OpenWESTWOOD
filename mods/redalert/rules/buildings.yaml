@@ -1,4 +1,4 @@
-# GENERATED from Tiberian Dawn's BDATA.CPP (EA's GPL source release) by 'OpenGZH.Tools import-td-rules'.
+# GENERATED from Tiberian Dawn's BDATA.CPP (EA's GPL source release) by 'OpenWestwood.Tools import-td-rules'.
 # Each key is the class member the original constructor argument sets.
 # This file is now the source of truth for these rules: edit it freely.
 Buildings:

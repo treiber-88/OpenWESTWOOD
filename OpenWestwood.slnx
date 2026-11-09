@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/OpenWestwood.Client/OpenWestwood.Client.csproj" />
+    <Project Path="src/OpenWestwood.Core/OpenWestwood.Core.csproj" />
+    <Project Path="src/OpenWestwood.Editor/OpenWestwood.Editor.csproj" />
+    <Project Path="src/OpenWestwood.Formats/OpenWestwood.Formats.csproj" />
+    <Project Path="src/OpenWestwood.Game/OpenWestwood.Game.csproj" />
+    <Project Path="src/OpenWestwood.Logic/OpenWestwood.Logic.csproj" />
+    <Project Path="src/OpenWestwood.TiberianDawn/OpenWestwood.TiberianDawn.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/OpenWestwood.Tests/OpenWestwood.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/OpenWestwood.Tools/OpenWestwood.Tools.csproj" />
+  </Folder>
+</Solution>

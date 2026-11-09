@@ -1,8 +1,8 @@
-# OpenGZH: Command & Conquer: Tiberian Sun and Firestorm (Westwood, 1999-2000).
+# OpenWESTWOOD: Command & Conquer: Tiberian Sun and Firestorm (Westwood, 1999-2000).
 #
 # The game files are the user's install's original .mix archives (not its CnCNet additions: expand02/expand03.mix),
 # copied into content/tiberiansun. Their entries are named by CRC-32 ids; most sit inside others ("OUTER.MIX>INNER.MIX").
-# Used by OpenGZH for the Tiberian Sun factions in Zero Hour engine matches.
+# Used by OpenWESTWOOD for the Tiberian Sun factions in Zero Hour engine matches.
 
 Id: tiberiansun
 Title: "Command & Conquer: Tiberian Sun - Firestorm"
@@ -23,6 +23,9 @@ Packages:
   - content/tiberiansun/EXPAND01.MIX>SOUNDS01.MIX?
   - content/tiberiansun/EXPAND01.MIX>E01VOX01.MIX?
   - content/tiberiansun/EXPAND01.MIX>E01VOX02.MIX?
+  # Firestorm's sidebar build icons (the Limpet Drone's, the Mobile War Factory's...).
+  - content/tiberiansun/EXPAND01.MIX>E01SC01.MIX?
+  - content/tiberiansun/EXPAND01.MIX>E01SC02.MIX?
   - content/tiberiansun/TIBSUN.MIX>LOCAL.MIX
   - content/tiberiansun/TIBSUN.MIX>CACHE.MIX
   - content/tiberiansun/TIBSUN.MIX>CONQUER.MIX

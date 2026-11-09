@@ -1,6 +1,6 @@
 Create a totally new engine for Command and Conquer Generals Zero Hour. This is a total engine remake; none of the original engine should be used, though it can and must be learned from.
 
-The game should exist in here: C:\Users\mk-ki\Desktop\OpenGZH\OpenGZH
+The game should exist in here: C:\Users\mk-ki\Desktop\OpenWESTWOOD\OpenWESTWOOD
 
 The original engine is mostly made in C++, it may be a good idea to do the same, you judge.
 
@@ -18,7 +18,7 @@ Make sure that all missions from GZH are added.
 
 Tell me when you are at the point where you can start on the shipyard artwork.
 
-This game is called OpenGZH.
+This game is called OpenWestwood.
 
 All game assets for Generals Zero Hour are here: "C:\Program Files (x86)\Origin Games\Command and Conquer Generals Zero Hour"
 

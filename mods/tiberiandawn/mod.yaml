@@ -1,8 +1,8 @@
-# OpenGZH: Command & Conquer (Tiberian Dawn), Westwood's 1995 original.
+# OpenWESTWOOD: Command & Conquer (Tiberian Dawn), Westwood's 1995 original.
 #
 # The game files are the freeware release's .mix archives, copied into content/tiberiandawn.
 # Its rules (rules/*.yaml) were converted from the type tables in EA's released source code
-# (the C++ ...DATA.CPP files) by 'OpenGZH.Tools import-td-rules', and can be edited freely.
+# (the C++ ...DATA.CPP files) by 'OpenWestwood.Tools import-td-rules', and can be edited freely.
 
 Id: tiberiandawn
 Title: "Command & Conquer: Tiberian Dawn"

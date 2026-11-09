@@ -1,0 +1,13 @@
+# OpenWESTWOOD: text for buttons the original games don't have (the shipyards and their ships), in the style of the
+# game's own labels ("&" marks the hotkey letter). Mods can add or replace any label of the string table here.
+Strings:
+  CONTROLBAR:ConstructAmericaShipyard: "Shi&pyard"
+  CONTROLBAR:ConstructAmericaShipPTBoat: "&PT Boat"
+  CONTROLBAR:ConstructAmericaShipBattleship: "&Battleship"
+  CONTROLBAR:ConstructAmericaShipAircraftCarrier: "Aircraft &Carrier"
+  CONTROLBAR:ConstructChinaShipyard: "Shi&pyard"
+  CONTROLBAR:ConstructChinaShipGunboat: "&Gunboat"
+  CONTROLBAR:ConstructChinaShipPatrolJunk: "Patrol &Junk"
+  CONTROLBAR:ConstructGLAShipyard: "Shi&pyard"
+  CONTROLBAR:ConstructGLAShipArmedTrawler: "Armed &Trawler"
+  CONTROLBAR:ConstructGLAShipBombBoat: "&Bomb Boat"

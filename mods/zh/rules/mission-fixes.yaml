@@ -1,0 +1,22 @@
+# OpenWESTWOOD: scripts added to a mission whose original scripts don't play out in this engine yet. Each fix is used only
+# on a map that has the script named in RequiresScript, and its scripts run as the player named in Side. Remove an entry
+# once the engine plays the mission as the original does.
+#
+# Script fields: Name, Flag (run when this flag is set; none = at once), Actions (one per line: NAME|parameter|...; whole
+# numbers are numbers, anything else is text). Each script runs once.
+MissionFixes:
+  # GLA mission 2 ("Hidden Agenda"): in the intro, Kassad's three RPG troopers walk into the American depot to blow up its
+  # fuel barrels. Here the depot's Rangers and Crusaders shoot them on the way in, the team dies, its scripted orders end,
+  # "INTRO - base attacks done" is never set and the cinematic never ends. The depot holds fire (passive: it still fights
+  # back) until the barrels are done; then it fights as normal.
+  MD_GLA02_IntroDepotHoldsFire:
+    RequiresScript: SUB SEQ - sneak team orders
+    Side: example
+    Scripts:
+    - Name: OpenWESTWOOD fix - intro depot holds fire
+      Actions:
+      - TEAM_SET_ATTITUDE|teamexample|-1
+    - Name: OpenWESTWOOD fix - intro depot fights again
+      Flag: INTRO - base attacks done
+      Actions:
+      - TEAM_SET_ATTITUDE|teamexample|0

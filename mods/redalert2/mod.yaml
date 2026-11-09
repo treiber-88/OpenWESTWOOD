@@ -1,9 +1,9 @@
-# OpenGZH: Command & Conquer: Red Alert 2 and Yuri's Revenge (Westwood, 2000-2001).
+# OpenWESTWOOD: Command & Conquer: Red Alert 2 and Yuri's Revenge (Westwood, 2000-2001).
 #
 # The game files are the user's install's original .mix archives (not its CnCNet / Ares additions),
 # copied into content/redalert2. Their entries are named by CRC-32 ids (Tiberian Sun's scheme) and their
 # headers encrypted as Red Alert's; most sit inside others ("OUTER.MIX>INNER.MIX").
-# Used by OpenGZH for the Red Alert 2 factions in Zero Hour engine matches.
+# Used by OpenWESTWOOD for the Red Alert 2 factions in Zero Hour engine matches.
 
 Id: redalert2
 Title: "Command & Conquer: Red Alert 2 - Yuri's Revenge"

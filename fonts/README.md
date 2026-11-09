@@ -1,7 +1,7 @@
 # Fonts
 
 The original game draws its interface with Windows system fonts ("Arial", "Times New Roman",
-"Placard MT Condensed" and "Generals"). OpenGZH uses the system's own copies when they exist
+"Placard MT Condensed" and "Generals"). OpenWESTWOOD uses the system's own copies when they exist
 (Windows has Arial and Times New Roman) and falls back to these freely licensed fonts, which work
 on every platform:
 

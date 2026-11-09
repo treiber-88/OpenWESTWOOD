@@ -1,19 +1,19 @@
-# OpenGZH: the shell map behind the menus is a battle for Dune (see DuneShellBattle): the houses' bases on a
+# OpenWESTWOOD: the shell map behind the menus is a battle for Dune (see DuneShellBattle): the houses' bases on a
 # Dune 2000 map, run by the computer, their armies fighting each other, with House Harkonnen's theme playing.
 GameData:
-  OpenGZHShellMap: d2k:tenaya
+  OpenWestwoodShellMap: d2k:tenaya
   # One house a start point (up to seven), every one against every other.
-  OpenGZHShellHouses: FactionD2KAtreides FactionD2KHarkonnen FactionD2KOrdos FactionTDGDI FactionTDNod FactionRA2Russians FactionTSNod
-  OpenGZHShellCash: 40000
+  OpenWestwoodShellHouses: FactionD2KAtreides FactionD2KHarkonnen FactionD2KOrdos FactionTDGDI FactionTDNod FactionRA2Russians FactionTSNod
+  OpenWestwoodShellCash: 40000
   # Seconds played ahead before the menus show it, and the houses' first attack and attacks after that.
-  OpenGZHShellPreroll: 150
-  OpenGZHShellFirstAttack: 20
-  OpenGZHShellAttackInterval: 25
+  OpenWestwoodShellPreroll: 60
+  OpenWestwoodShellFirstAttack: 20
+  OpenWestwoodShellAttackInterval: 25
   # The camera: how far back it sits, how long it stays on a spot once there, and its gliding speed (world units a second).
-  OpenGZHShellCameraDistance: 800
-  OpenGZHShellCameraHold: 10
-  OpenGZHShellCameraSpeed: 220
-  OpenGZHShellMusic: ShellDune
+  OpenWestwoodShellCameraDistance: 800
+  OpenWestwoodShellCameraHold: 10
+  OpenWestwoodShellCameraSpeed: 220
+  OpenWestwoodShellMusic: ShellDune
 
 MusicTracks:
   ShellDune:

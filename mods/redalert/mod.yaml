@@ -1,8 +1,8 @@
-# OpenGZH: Command & Conquer: Red Alert (1996), Westwood's original.
+# OpenWESTWOOD: Command & Conquer: Red Alert (1996), Westwood's original.
 #
 # The game files are the user's RA95 install's .mix archives, copied into content/redalert. Their headers
 # are encrypted (read as MIXFILE.CPP does), and most archives sit inside others ("OUTER.MIX>INNER.MIX").
-# Used by OpenGZH for its Red Alert factions in Zero Hour engine matches.
+# Used by OpenWESTWOOD for its Red Alert factions in Zero Hour engine matches.
 
 Id: redalert
 Title: "Command & Conquer: Red Alert"
