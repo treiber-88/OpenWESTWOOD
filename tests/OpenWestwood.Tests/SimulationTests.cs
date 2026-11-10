@@ -26,9 +26,9 @@ public sealed class BaseGameFixture : IDisposable
 
         var manifest = ModManifest.Load(Path.Combine(dir, "mods", "zh", "mod.yaml"));
         FileSystem = manifest.MountPackages(dir);
-        // The tests use the copy of Kane's Wrath kept in content/ as if it were the player's install.
-        Core.Installs.GameInstalls.Override(kanesWrath: Path.Combine(dir, "content", "kaneswrath"));
-        string? kw = Core.Installs.GameInstalls.Has(Core.Installs.OriginalGame.KanesWrath) ? Core.Installs.GameInstalls.KanesWrathFolder : null;
+        // Kane's Wrath from OpenWESTWOOD's installed copy (content/kaneswrath), as the game reads it.
+        Core.Installs.GameInstalls.ContentRoot = dir;
+        string? kw = Core.Installs.GameInstalls.ContentFolder(Core.Installs.OriginalGame.KanesWrath);
         Formats.Sage.SageArtPackage.MountIfPresent(FileSystem, kw);
         Formats.Sage.SageAudioPackage.MountIfPresent(FileSystem, kw);
         Rules = RuleSet.Load(manifest);

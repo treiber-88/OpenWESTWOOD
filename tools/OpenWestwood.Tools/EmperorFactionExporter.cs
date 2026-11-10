@@ -32,6 +32,15 @@ static class EmperorFactionExporter
 {
     const float TileUnits = 32 * XbfToW3d.Scale, TicksPerSecond = 20, HealthScale = 5, SpeedUnits = 4;
 
+    /// <summary>The user's choice (2026-11-09): buildings and units take 40% less time to build than Rules.txt says.</summary>
+    const float BuildTimeScale = 0.6f;
+
+    /// <summary>
+    /// Projectiles are drawn this much bigger: Emperor's are half Zero Hour's size beside the units, and the camera is
+    /// further off, so at their own size they could hardly be seen.
+    /// </summary>
+    const float ProjectileDrawScale = 2f;
+
     sealed record House(string Name, string Code, string Faction, string Side, string BaseSide, string Color, string ScoreImage, string LoadImage);
 
     /// <summary>The sub-houses' buildings a house's Construction Yard can build (the ones it allies through).</summary>
@@ -281,9 +290,12 @@ static class EmperorFactionExporter
             bool air = rules.True(bullet, "AntiAircraft");
             bool ground = rules.Get(bullet, "AntiGround").Length == 0 || rules.True(bullet, "AntiGround");
             weapons.Append($"    AntiGround: {(ground ? "Yes" : "No")}\n    AntiAirborneVehicle: {(air ? "Yes" : "No")}\n    AntiAirborneInfantry: {(air ? "Yes" : "No")}\n");
-            // Every shot is a projectile (an instant one flies at once), so its explosion plays where it lands.
+            // Every shot is a projectile, so its explosion plays where it lands. Emperor's "conceptual" bullets (Speed -1:
+            // tank shells, machine-gun tracers, lasers) hit at once there but still show their model (ArtIni's Xaf): here they
+            // fly fast enough to look instant (as Zero Hour's shells), and lobbed shells at a pace their arc shows.
             float speed = rules.Num(bullet, "Speed", -1);
-            float unitsPerSecond = speed > 0 ? speed * XbfToW3d.Scale * TicksPerSecond : 3000;
+            bool lobbed = rules.True(bullet, "Trajectory");
+            float unitsPerSecond = speed > 0 ? speed * XbfToW3d.Scale * TicksPerSecond : lobbed ? 220 : 600;
             string projectile = "EM_Projectile_" + bullet;
             weapons.Append($"    ProjectileObject: {projectile}\n    WeaponSpeed: {F(unitsPerSecond)}\n");
             if (Explosion(rules.Get(bullet, "ExplosionType")) is { } ocl)
@@ -291,8 +303,8 @@ static class EmperorFactionExporter
             if (!effects.ToString().Contains($"  {projectile}:\n"))
             {
                 bool homing = rules.True(bullet, "Homing");
-                string? model = speed > 0 ? Model(bullet, building: false, suffix: "") : null;
-                effects.Append($"  {projectile}:\n    DisplayName: Emperor projectile\n    EditorSorting: SYSTEM\n    VisionRange: 0.0\n");
+                string? model = Model(bullet, building: false, suffix: "");
+                effects.Append($"  {projectile}:\n    DisplayName: Emperor projectile\n    EditorSorting: SYSTEM\n    VisionRange: 0.0\n    DrawScale: {F(ProjectileDrawScale)}\n");
                 effects.Append(homing ? "    KindOf: PROJECTILE SMALL_MISSILE\n" : "    KindOf: PROJECTILE\n");
                 if (homing)
                     effects.Append($"    Locomotor: SET_NORMAL {projectile}Locomotor\n");
@@ -313,7 +325,7 @@ static class EmperorFactionExporter
                 }
                 else
                 {
-                    float arc = rules.True(bullet, "Trajectory") ? 60 : 2;
+                    float arc = lobbed ? 60 : 2;
                     effects.Append($"      ModuleTag_04:\n        Module: Behavior\n        Class: DumbProjectileBehavior\n        FirstHeight: {F(arc)}\n        SecondHeight: {F(arc)}\n        FirstPercentIndent: 30%\n        SecondPercentIndent: 70%\n        FlightPathAdjustDistPerSecond: 100\n");
                 }
                 effects.Append("      ModuleTag_05:\n        Module: Behavior\n        Class: PhysicsBehavior\n        Mass: 0.01\n");
@@ -489,7 +501,7 @@ static class EmperorFactionExporter
 
                 objects.Append($"  {N(key)}:\n    DisplayName: {Display(key)}\n    Side: {house.Side}\n    EditorSorting: STRUCTURE\n");
                 objects.Append($"    ButtonImage: {Icon(key)}\n    SelectPortrait: {Icon(key)}\n    TdRole: {role}\n");
-                objects.Append($"    BuildCost: {(int)rules.Num(key, "Cost")}\n    BuildTime: {F(Math.Max(rules.Num(key, "BuildTime", 400), 10) / TicksPerSecond)}\n");
+                objects.Append($"    BuildCost: {(int)rules.Num(key, "Cost")}\n    BuildTime: {F(Math.Max(rules.Num(key, "BuildTime", 400), 10) / TicksPerSecond * BuildTimeScale)}\n");
                 objects.Append($"    VisionRange: {F(sight)}\n    ShroudClearingRange: {F(sight)}\n");
                 int energy = (int)(rules.Num(key, "PowerGenerated") - rules.Num(key, "PowerUsed"));
                 if (energy != 0)
@@ -564,7 +576,7 @@ static class EmperorFactionExporter
                 float radius = infantry ? 4 : Math.Max(rules.Num(key, "Size", 2), 1) * TileUnits * 0.45f;
                 objects.Append($"  {N(key)}:\n    DisplayName: {Display(key)}\n    Side: {house.Side}\n    EditorSorting: {(infantry ? "INFANTRY" : "VEHICLE")}\n");
                 objects.Append($"    ButtonImage: {Icon(key)}\n    SelectPortrait: {Icon(key)}\n    TdRole: {role}\n");
-                objects.Append($"    BuildCost: {(int)rules.Num(key, "Cost")}\n    BuildTime: {F(Math.Max(rules.Num(key, "BuildTime", 300), 10) / TicksPerSecond)}\n");
+                objects.Append($"    BuildCost: {(int)rules.Num(key, "Cost")}\n    BuildTime: {F(Math.Max(rules.Num(key, "BuildTime", 300), 10) / TicksPerSecond * BuildTimeScale)}\n");
                 objects.Append($"    VisionRange: {F(sight)}\n    ShroudClearingRange: {F(sight)}\n");
                 objects.Append(Prerequisites(key, unit: true));
                 objects.Append($"    ArmorSet:\n      Conditions: None\n      Armor: EM_Armor_{ListOf(rules.Get(key, "Armour", "None")).FirstOrDefault() ?? "None"}\n");

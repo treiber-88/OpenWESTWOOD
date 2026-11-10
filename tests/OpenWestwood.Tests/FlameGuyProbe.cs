@@ -12,6 +12,12 @@ public class FlameGuyProbe(BaseGameFixture content, ITestOutputHelper output) : 
         if (Environment.GetEnvironmentVariable("FLAME_PROBE") == null || !content.Available) return;
         foreach (var art in new[] { Ra2Art.Get(), Ra2Art.GetTiberianSun() })
         {
+            if (art != null && Environment.GetEnvironmentVariable("RA2_SECTIONS") is { } sections)
+            {
+                foreach (string sec in sections.Split(','))
+                    output.WriteLine($"[{sec}] TS={art.IsTiberianSun} " + string.Join("; ", art.Rules.Section(sec).Select(e => e.Key + "=" + e.Value)));
+                continue;
+            }
             if (art != null && Environment.GetEnvironmentVariable("FLAME_PROBE") == "radar")
             {
                 foreach (string b in art.Rules.TypeList("BuildingTypes"))

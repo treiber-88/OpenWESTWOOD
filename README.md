@@ -2,21 +2,31 @@
 
 ## The original games it needs
 
-OpenWESTWOOD plays the factions of many Westwood and EA games. Two of them must be installed on the computer
-from your own copy:
+OpenWESTWOOD plays the factions of many Westwood and EA games. Two of them come from your own copy of the game:
 
-- **Command & Conquer Generals Zero Hour**: its USA, China and GLA (and their generals), maps and missions.
+- **Command & Conquer Generals Zero Hour**: its USA, China and GLA (and their generals), maps and missions, and the
+  menus themselves. OpenWESTWOOD can't start without it.
 - **Command & Conquer 3: Kane's Wrath**: its GDI, Nod and Scrin (and their sub-factions) and maps.
 
 Both are in the Command & Conquer Ultimate Collection, on [Steam](https://store.steampowered.com/bundle/39394/)
 or the [EA app](https://www.ea.com/games/command-and-conquer/command-and-conquer-the-ultimate-collection).
-If one is missing, a message at the main menu says so (with those links), its factions, maps and missions are
-locked, and every other faction can still be played.
 
-OpenWESTWOOD finds the games by itself: from the EA app, Origin, retail and Steam installs (the registry, every
-Steam library, the usual install folders on each drive), Proton, Wine, Lutris, Bottles, Heroic, CrossOver and
-Whisky prefixes, and Windows drives mounted on Linux or macOS. A folder counts only if the game's files are
-really in it. If yours is somewhere else, tell it where:
+**Installing their artwork.** OpenWESTWOOD only needs your copy of the game to be somewhere on the computer: an EA
+app, Origin, Steam or retail install, a copy on another drive or USB stick, or the game's disc (or a mounted disc
+image). The first time it starts, it looks for Zero Hour and offers to install its artwork; this copies the original
+files it uses into its `content` folder (about 2.8 GB for Zero Hour, 3 GB for Kane's Wrath). After that the original
+isn't needed: the disc can go back in its box, and the drive can be unplugged. Kane's Wrath is installed the same way
+from the message at the main menu (its Install button). Until it is, its factions, maps and missions are locked and
+every other faction can still be played.
+
+Only the games' original files are copied: each is checked against `mods/zh/original-files.txt` (its size and
+SHA-256). A file changed by a community patch is not copied; if every copy found has it changed, the installer says
+which files, and the game's disc or a fresh install has the originals.
+
+It looks in: the EA app, Origin, retail and Steam installs (the registry, every Steam library, the usual install
+folders on each drive), Proton, Wine, Lutris, Bottles, Heroic, CrossOver and Whisky prefixes, Windows drives mounted on
+Linux or macOS, and every drive's folders (discs, USB sticks and network drives more deeply). If yours is somewhere
+else, tell it where:
 
 - start it with `--zh-path "<folder>"` or `--kw-path "<folder>"`, or
 - write the folders into `installs.ini` in the settings folder (`%APPDATA%\OpenWESTWOOD` on Windows,
@@ -25,8 +35,9 @@ really in it. If yours is somewhere else, tell it where:
       ZeroHour = D:\Games\Command and Conquer Generals Zero Hour
       KanesWrath = D:\Games\Command Conquer 3 Kanes Wrath
 
-`OpenWESTWOOD --detect-installs` lists where it looked and what it found. `--pretend-missing zh,kw` (or `all`)
-starts the game as if the games were not installed.
+`OpenWESTWOOD --detect-installs` lists where it looked, what it found and what is still to copy;
+`OpenWESTWOOD --install zh` (or `kw`) installs from the command line. `--pretend-missing zh,kw` (or `all`) starts the
+game as if they were not installed.
 
 ## Running it
 

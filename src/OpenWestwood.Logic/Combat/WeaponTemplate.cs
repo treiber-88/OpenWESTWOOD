@@ -44,6 +44,21 @@ public sealed class WeaponTemplate
 
     // What it can hit
     public bool AntiGround { get; }
+
+    /// <summary>OpenWESTWOOD (Red Alert 2): only objects of one of these kinds can be targeted (an attack dog's teeth: INFANTRY).</summary>
+    public FlagSet OnlyAgainstKindOf { get; }
+
+    /// <summary>
+    /// OpenWESTWOOD (Red Alert 2's LimboLaunch): the firer leaps along with its shot (a dog's pounce, a terror drone's jump),
+    /// out of sight while it flies, and lands where it hits.
+    /// </summary>
+    public bool LimboLaunch { get; }
+
+    /// <summary>
+    /// OpenWESTWOOD (Red Alert 2's Parasite warheads): a hit infantryman dies at once (the dog's bite); a hit vehicle gets
+    /// the firer inside it (the terror drone), which does this weapon's damage every DelayBetweenShots until it dies.
+    /// </summary>
+    public bool Parasite { get; }
     public bool AntiAirborneVehicle { get; }
     public bool AntiAirborneInfantry { get; }
     public bool AntiProjectile { get; }
@@ -194,6 +209,9 @@ public sealed class WeaponTemplate
         ScatterTargets = scatterTargets;
 
         AntiGround = B("AntiGround", true);
+        OnlyAgainstKindOf = Flags.KindOf.Parse(S("OnlyAgainstKindOf"));
+        LimboLaunch = B("LimboLaunch");
+        Parasite = B("Parasite");
         AntiAirborneVehicle = B("AntiAirborneVehicle");
         AntiAirborneInfantry = B("AntiAirborneInfantry");
         AntiProjectile = B("AntiProjectile");
@@ -275,6 +293,8 @@ public sealed class WeaponTemplate
     /// <summary>Can this weapon shoot at an object (ground vs. air vs. projectile rules)?</summary>
     public bool CanTarget(Objects.GameObject target)
     {
+        if (!OnlyAgainstKindOf.IsEmpty && !target.KindOf.HasAny(OnlyAgainstKindOf))
+            return false;
         if (target.IsKindOf(Kind.Projectile))
             return AntiProjectile || AntiSmallMissile && target.Template.Is("SMALL_MISSILE") || AntiBallisticMissile && target.Template.Is("BALLISTIC_MISSILE");
         if (target.Template.Is("MINE"))

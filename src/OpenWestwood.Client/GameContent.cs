@@ -35,8 +35,10 @@ public sealed class GameContent : IDisposable
 
         var mod = FindMod(modId ?? "zh");
         var fileSystem = mod.MountPackages(root, FindMod);
-        // Kane's Wrath's compiled art and sounds, from the player's own install (none if it is not installed).
-        string? kw = GameInstalls.Has(OriginalGame.KanesWrath) ? GameInstalls.KanesWrathFolder : null;
+        // Kane's Wrath's compiled art and sounds, from OpenWESTWOOD's copy (content/kaneswrath, put there by the installer
+        // from the player's own game; none if it is not installed).
+        GameInstalls.ContentRoot = root;
+        string? kw = GameInstalls.ContentFolder(OriginalGame.KanesWrath);
         OpenWestwood.Formats.Sage.SageArtPackage.MountIfPresent(fileSystem, kw);
         OpenWestwood.Formats.Sage.SageAudioPackage.MountIfPresent(fileSystem, kw);
         // Emperor: Battle for Dune's archives (content/emperor), under "emperor/", and its models as "EM_<name>".

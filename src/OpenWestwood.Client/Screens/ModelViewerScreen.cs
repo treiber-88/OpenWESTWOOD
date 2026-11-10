@@ -49,6 +49,9 @@ public sealed class ModelViewerScreen : IScreen
         camera.Frame(model.BoundsMin, model.BoundsMax);
         camera.Pitch = 0.45f;
         camera.Yaw = MathF.PI * 1.25f;
+        // Debug: OW_VIEW_YAW (degrees) looks from that side (0: from +X, the way models face).
+        if (float.TryParse(Environment.GetEnvironmentVariable("OW_VIEW_YAW"), System.Globalization.CultureInfo.InvariantCulture, out float viewYaw))
+            camera.Yaw = viewYaw * MathF.PI / 180;
         Console.WriteLine($"{modelName}: {model.Meshes.Count} meshes, {model.Hierarchy?.Pivots.Count ?? 0} bones, bounds {model.BoundsMin} - {model.BoundsMax}");
 
         foreach (var mouse in input.Mice)

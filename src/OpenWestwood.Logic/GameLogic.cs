@@ -40,6 +40,9 @@ public sealed class GameLogic
     public Commands.CommandQueue Commands { get; }
     public Pathfinder Pathfinder { get; }
     public DamageSystem Damage { get; }
+
+    /// <summary>Red Alert 2's leaping dogs and terror drones inside their victims.</summary>
+    public ParasiteSystem Parasites { get; }
     public ObjectCreationSystem ObjectCreation { get; }
     public PayloadDelivery PayloadDelivery { get; }
     public CrateSystem Crates { get; }
@@ -140,6 +143,7 @@ public sealed class GameLogic
         Commands = new Commands.CommandQueue(this);
         Pathfinder = new Pathfinder(terrain);
         Damage = new DamageSystem(this);
+        Parasites = new ParasiteSystem(this);
         ObjectCreation = new ObjectCreationSystem(this);
         Shroud = new Vision.ShroudManager(this);
         Effects = new Effects.EffectRegistry(this);
@@ -414,6 +418,7 @@ public sealed class GameLogic
                     obj.RunUpdates(phase);
 
         Locomotion.CrowdSeparation.Update(this);
+        Parasites.Update();
         Building.Update();
         Terrain.Update(Frame);
         foreach (var player in Players.All)

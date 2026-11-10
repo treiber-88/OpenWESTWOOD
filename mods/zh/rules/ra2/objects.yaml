@@ -2565,7 +2565,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_DefuseKit, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_DefuseKit]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -3297,7 +3297,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_GoodTeeth, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_GoodTeeth]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -5197,7 +5197,7 @@ Objects:
       Armor: RA2_Armor_special_1
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_DroneJump, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_DroneJump]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -6189,7 +6189,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_BadTeeth, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_BadTeeth]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -6584,7 +6584,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_DefuseKit, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_DefuseKit]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -8186,7 +8186,7 @@ Objects:
       Armor: RA2_Armor_light
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_ChaosAttack, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_ChaosAttack]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -8846,7 +8846,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_DefuseKit, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_DefuseKit]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -9103,7 +9103,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_BadTeeth, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_BadTeeth]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:
@@ -9166,7 +9166,7 @@ Objects:
       Armor: RA2_Armor_none
     WeaponSet:
       Conditions: None
-      Weapon: [PRIMARY RA2_Weapon_GoodTeeth, SECONDARY RA2_Weapon_VirtualScanner]
+      Weapon: [PRIMARY RA2_Weapon_GoodTeeth]
     CommandSet: GenericCommandSet
     Modules:
       ModuleTag_01:

@@ -118,6 +118,9 @@ public sealed class Weapon
     {
         if (!IsReady)
             return false;
+        // (A dog in mid-pounce, a terror drone inside a vehicle: busy.)
+        if (Game.Parasites.IsBusy(Owner))
+            return false;
 
         // Mine-clearing weapons defuse mines, booby traps and demo traps instead of damaging them.
         if (Template.DamageType == "DISARM" && target != null)
@@ -316,6 +319,8 @@ public sealed class Weapon
         }
         projectile.Pitch = pitch;
         projectile.ProducerId = Owner.Id;
+        if (Template.LimboLaunch)
+            Game.Parasites.BeginLeap(Owner, projectile, target, Template);
         NewProjectileFired(projectile, target, impact);
         if (projectile.FindModule<IProjectile>() is { } flight)
         {

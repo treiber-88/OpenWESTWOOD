@@ -303,20 +303,6 @@ Weapons:
     AntiGround: Yes
     AntiAirborneVehicle: Yes
     AntiAirborneInfantry: Yes
-  RA2_Weapon_VirtualScanner:
-    PrimaryDamage: 1
-    PrimaryDamageRadius: 7.2
-    AttackRange: 180
-    DamageType: SMALL_ARMS
-    DeathType: NORMAL
-    DelayBetweenShots: 1000
-    ClipSize: 0
-    ClipReloadTime: 0
-    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
-    AntiGround: Yes
-    AntiAirborneVehicle: Yes
-    AntiAirborneInfantry: Yes
-    FireFX: RA2FX:|PIFFPIFF
   RA2_Weapon_20mm:
     PrimaryDamage: 25
     PrimaryDamageRadius: 7.2
@@ -503,6 +489,9 @@ Weapons:
     AntiGround: Yes
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
+    LimboLaunch: Yes
+    Parasite: Yes
+    OnlyAgainstKindOf: INFANTRY
     ProjectileObject: RA2_Projectile_ADOGJUMP_ADOGP
     WeaponSpeed: 162
   RA2_Weapon_MissileLauncher:
@@ -710,6 +699,9 @@ Weapons:
     AntiGround: Yes
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
+    LimboLaunch: Yes
+    Parasite: Yes
+    OnlyAgainstKindOf: VEHICLE
     ProjectileObject: RA2_Projectile_JUMP_DRONP
     WeaponSpeed: 162
   RA2_Weapon_FlakTrackGun:
@@ -792,6 +784,9 @@ Weapons:
     AntiGround: Yes
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
+    LimboLaunch: Yes
+    Parasite: Yes
+    OnlyAgainstKindOf: VEHICLE
   RA2_Weapon_SquidPunch:
     PrimaryDamage: 100
     PrimaryDamageRadius: 18
@@ -941,6 +936,9 @@ Weapons:
     AntiGround: Yes
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
+    LimboLaunch: Yes
+    Parasite: Yes
+    OnlyAgainstKindOf: INFANTRY
     ProjectileObject: RA2_Projectile_DOGJUMP_DOGP
     WeaponSpeed: 162
   RA2_Weapon_FlakGuyGun:

@@ -15,7 +15,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_HMG_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_Rocket_B_45:
     PrimaryDamage: 50
@@ -47,7 +47,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_LMG_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_cal50_B_76:
     PrimaryDamage: 120
@@ -63,7 +63,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_cal50_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_SniperHit
   EM_Weapon_Pistol_B_50:
     PrimaryDamage: 20
@@ -79,7 +79,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Pistol_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_MMG_B_50:
     PrimaryDamage: 70
@@ -95,7 +95,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_MMG_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_HEAT_B_30:
     PrimaryDamage: 85
@@ -127,7 +127,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_KobraHowitzer_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 220
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_Sound_B_45:
     PrimaryDamage: 180
@@ -190,7 +190,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Contaminator_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_BloodSplat
   EM_Weapon_Leech_B_30:
     PrimaryDamage: 20
@@ -206,7 +206,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Leech_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 220
     ProjectileDetonationOCL: OCL_EM_FX_BloodSplat
   EM_Weapon_HMG_B_20:
     PrimaryDamage: 120
@@ -222,7 +222,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_HMG_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_InfLaser_B_50:
     PrimaryDamage: 60
@@ -238,7 +238,7 @@ Weapons:
     AntiAirborneVehicle: Yes
     AntiAirborneInfantry: Yes
     ProjectileObject: EM_Projectile_InfLaser_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_cal50_b_40:
     PrimaryDamage: 120
@@ -254,7 +254,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_cal50_b
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_SniperHit
   EM_Weapon_SoundInf_B_40:
     PrimaryDamage: 47.6
@@ -285,7 +285,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_MakerBullet_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
   EM_Weapon_NiabBullet_B_100:
     PrimaryDamage: 250
     PrimaryDamageRadius: 3
@@ -300,7 +300,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_NiabBullet_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
   EM_Weapon_FlameTurret_B_30:
     PrimaryDamage: 100
     PrimaryDamageRadius: 12.8
@@ -330,7 +330,7 @@ Weapons:
     AntiAirborneVehicle: Yes
     AntiAirborneInfantry: Yes
     ProjectileObject: EM_Projectile_HKGunTurret_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_HEATInf_B_100:
     PrimaryDamage: 75
@@ -362,7 +362,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Pistol_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_Flame_B_30:
     PrimaryDamage: 50
@@ -393,7 +393,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_MMG_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_mm80_B_30:
     PrimaryDamage: 100
@@ -409,7 +409,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_mm80_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_FlameTank_B_60:
     PrimaryDamage: 25
@@ -440,7 +440,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_InkVine_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 220
     ProjectileDetonationOCL: OCL_EM_FX_InkVineExplosion
   EM_Weapon_HEAT_B_180:
     PrimaryDamage: 85
@@ -504,7 +504,7 @@ Weapons:
     AntiAirborneVehicle: Yes
     AntiAirborneInfantry: Yes
     ProjectileObject: EM_Projectile_HKADP_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_mgHit
   EM_Weapon_Gas_B_75:
     PrimaryDamage: 100
@@ -520,7 +520,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Gas_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 220
     ProjectileDetonationOCL: OCL_EM_FX_DeviateHit
   EM_Weapon_PopUp_B_60:
     PrimaryDamage: 110
@@ -536,7 +536,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_PopUp_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_GasInf_B_40:
     PrimaryDamage: 50
@@ -583,7 +583,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Laser_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_HeatAPC_B_50:
     PrimaryDamage: 40
@@ -615,7 +615,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: EM_Projectile_Howitzer_B
-    WeaponSpeed: 3000
+    WeaponSpeed: 600
     ProjectileDetonationOCL: OCL_EM_FX_ShellHit
   EM_Weapon_Deviate_B_150:
     PrimaryDamage: 50

@@ -86,6 +86,13 @@ public sealed class EmperorArtPackage : IPackage, IW3dProvider
     /// <summary>How far a building's model turns (degrees, anticlockwise from above): Emperor's +z (north) to the map's +y.</summary>
     public static float BuildingYaw = 90;
 
+    /// <summary>
+    /// How far a unit's (or projectile's) model turns: Emperor's units face its -z, which the conversion makes -x, while
+    /// the engine moves things along +x; turned round, soldiers and vehicles face the way they go and missiles fly nose
+    /// first (checked in the model viewer: OW_VIEW_YAW=0 shows a model's front).
+    /// </summary>
+    public static float UnitYaw = 180;
+
     /// <summary>The XBF's path (emperor/Units/AT_inf_H0.xbf) for a model name (AT_inf_H0), or null.</summary>
     public string? XbfPath(string name) => xbfByName.GetValueOrDefault(name);
 
@@ -107,7 +114,7 @@ public sealed class EmperorArtPackage : IPackage, IW3dProvider
                 return cached;
         W3dFile? file = null;
         if (XbfPath(name[(building ? BuildingPrefix : ModelPrefix).Length..]) is { } path)
-            file = XbfToW3d.Convert(XbfFile.Read(ReadAllBytes(path)), name, building ? BuildingYaw : 0, ResolveTexture);
+            file = XbfToW3d.Convert(XbfFile.Read(ReadAllBytes(path)), name, building ? BuildingYaw : UnitYaw, ResolveTexture);
         lock (models)
             models[name] = file;
         return file;

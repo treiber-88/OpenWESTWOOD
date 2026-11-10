@@ -156,6 +156,9 @@ public sealed partial class GameObject
         KindOf = Flags.KindOf.Parse(template.Rules.GetString("KindOf"));
         ShroudClearingRange = template.ShroudClearingRange;
         Weapons = new WeaponSet(this);
+        // OpenWESTWOOD: a template's DrawScale draws it bigger or smaller (Emperor's projectiles, too small to see as they are).
+        if (template.Rules.GetString("DrawScale") is { Length: > 0 } scale)
+            DrawScale = OpenWestwood.Core.Rules.RuleValue.Float(scale, 1);
     }
 
     /// <summary>Creates the modules described by the template. Called once by <see cref="GameLogic"/>.</summary>

@@ -43,8 +43,8 @@ public static class KwMaps
                 if (archives != null)
                     return archives;
                 archives = new List<BigArchive>();
-                // Only from the player's Kane's Wrath install.
-                if (!GameInstalls.Has(OriginalGame.KanesWrath) || GameInstalls.KanesWrathFolder is not { } kw)
+                // Only from OpenWESTWOOD's copy of the player's Kane's Wrath (content/kaneswrath, by the installer).
+                if (GameInstalls.ContentFolder(OriginalGame.KanesWrath) is not { } kw)
                     return archives;
                 foreach (string big in new[] { "Meta/1.2/patch2.big", "Meta/1.1/patch1.big", "Meta/1.0/maps.big" })
                 {
@@ -97,7 +97,7 @@ public static class KwMaps
     static Dictionary<string, string> LoadStrings()
     {
         var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        if (GameInstalls.KanesWrathFolder is not { } kw)
+        if (GameInstalls.ContentFolder(OriginalGame.KanesWrath) is not { } kw)
             return result;
         foreach (string big in new[] { "Lang-english/1.0/English.big", "Lang-english/1.1/patch1.big", "Lang-english/1.2/patch2.big" })
         {

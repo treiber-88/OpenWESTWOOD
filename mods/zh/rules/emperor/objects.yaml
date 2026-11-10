@@ -9,7 +9,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Windtrap.tga
     TdRole: STRUCT_POWER
     BuildCost: 225
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: 100
@@ -77,7 +77,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Barracks.tga
     TdRole: STRUCT_BARRACKS
     BuildCost: 225
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -20
@@ -156,7 +156,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Refinery.tga
     TdRole: STRUCT_REFINERY
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -241,7 +241,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Factory.tga
     TdRole: STRUCT_WEAP
     BuildCost: 1000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -320,7 +320,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Outpost.tga
     TdRole: STRUCT_RADAR
     BuildCost: 400
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -60
@@ -390,7 +390,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Pillbox.tga
     TdRole: STRUCT_TURRET
     BuildCost: 550
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites:
@@ -470,7 +470,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_RocketTurret.tga
     TdRole: STRUCT_OBELISK
     BuildCost: 1200
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     EnergyProduction: -75
@@ -554,7 +554,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Hanger.tga
     TdRole: STRUCT_HELIPAD
     BuildCost: 1300
-    BuildTime: 27
+    BuildTime: 16.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -50
@@ -633,7 +633,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Helipad.tga
     TdRole: STRUCT_EM
     BuildCost: 800
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -30
@@ -703,7 +703,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_StarPort.tga
     TdRole: STRUCT_AIRSTRIP
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -100
@@ -773,7 +773,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Palace.tga
     TdRole: STRUCT_TEMPLE
     BuildCost: 1600
-    BuildTime: 54
+    BuildTime: 32.4
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -150
@@ -843,7 +843,7 @@ Objects:
     SelectPortrait: EMCAMEO:ico2_acy.tga
     TdRole: STRUCT_CONST
     BuildCost: 2000
-    BuildTime: 20
+    BuildTime: 12
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites: {}
@@ -915,7 +915,7 @@ Objects:
     SelectPortrait: EMCAMEO:FR_Camp.tga
     TdRole: STRUCT_BARRACKS
     BuildCost: 600
-    BuildTime: 27
+    BuildTime: 16.2
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites:
@@ -994,7 +994,7 @@ Objects:
     SelectPortrait: EMCAMEO:IM_Barracks.tga
     TdRole: STRUCT_BARRACKS
     BuildCost: 700
-    BuildTime: 27
+    BuildTime: 16.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -30
@@ -1074,7 +1074,7 @@ Objects:
     SelectPortrait: EMCAMEO:IX_ResCentre.tga
     TdRole: STRUCT_WEAP
     BuildCost: 1000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -60
@@ -1154,7 +1154,7 @@ Objects:
     SelectPortrait: EMCAMEO:TL_FleshVat.tga
     TdRole: STRUCT_WEAP
     BuildCost: 1000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -60
@@ -1234,7 +1234,7 @@ Objects:
     SelectPortrait: EMCAMEO:GU_Palace.tga
     TdRole: STRUCT_WEAP
     BuildCost: 2000
-    BuildTime: 54
+    BuildTime: 32.4
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -180
@@ -1314,7 +1314,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Scout.tga
     TdRole: INFANTRY_EM
     BuildCost: 30
-    BuildTime: 3.25
+    BuildTime: 1.95
     VisionRange: 256
     ShroudClearingRange: 256
     Prerequisites: {}
@@ -1398,7 +1398,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Inf.tga
     TdRole: INFANTRY_EM
     BuildCost: 60
-    BuildTime: 4.35
+    BuildTime: 2.61
     VisionRange: 89.6
     ShroudClearingRange: 89.6
     Prerequisites: {}
@@ -1478,7 +1478,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Sniper.tga
     TdRole: INFANTRY_EM
     BuildCost: 150
-    BuildTime: 4.95
+    BuildTime: 2.97
     VisionRange: 192
     ShroudClearingRange: 192
     Prerequisites: {}
@@ -1565,7 +1565,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Engineer.tga
     TdRole: INFANTRY_EM
     BuildCost: 400
-    BuildTime: 17.5
+    BuildTime: 10.5
     VisionRange: 76.8
     ShroudClearingRange: 76.8
     Prerequisites:
@@ -1640,7 +1640,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_DeployInf.tga
     TdRole: INFANTRY_EM
     BuildCost: 150
-    BuildTime: 7.2
+    BuildTime: 4.32
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites:
@@ -1722,7 +1722,7 @@ Objects:
     SelectPortrait: EMCAMEO:At_Trike.tga
     TdRole: UNIT_EM
     BuildCost: 300
-    BuildTime: 7.5
+    BuildTime: 4.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -1798,7 +1798,7 @@ Objects:
     SelectPortrait: EMCAMEO:At_Mongoose.tga
     TdRole: UNIT_EM
     BuildCost: 800
-    BuildTime: 23
+    BuildTime: 13.8
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -1879,7 +1879,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_APC.tga
     TdRole: UNIT_EM
     BuildCost: 600
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -1970,7 +1970,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Repair.tga
     TdRole: UNIT_EM
     BuildCost: 650
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2046,7 +2046,7 @@ Objects:
     SelectPortrait: EMCAMEO:At_Minotaurus.tga
     TdRole: UNIT_EM
     BuildCost: 1300
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2130,7 +2130,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_SonicTank.tga
     TdRole: UNIT_EM
     BuildCost: 1400
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2209,7 +2209,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Ornithopter.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1000
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2291,7 +2291,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_ADVCarryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1800
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2358,7 +2358,7 @@ Objects:
     SelectPortrait: EMCAMEO:AT_Drone.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 800
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites: {}
@@ -2430,7 +2430,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Harvester.tga
     TdRole: UNIT_HARVESTER
     BuildCost: 1000
-    BuildTime: 25.2
+    BuildTime: 15.12
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -2503,7 +2503,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_MCV.tga
     TdRole: UNIT_MCV
     BuildCost: 2000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -2573,7 +2573,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Carryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1100
-    BuildTime: 22.5
+    BuildTime: 13.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -2643,7 +2643,7 @@ Objects:
     SelectPortrait: EMCAMEO:IX_Infiltrator.tga
     TdRole: UNIT_EM
     BuildCost: 500
-    BuildTime: 21.6
+    BuildTime: 12.96
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -2708,7 +2708,7 @@ Objects:
     SelectPortrait: EMCAMEO:IX_Radar.tga
     TdRole: UNIT_EM
     BuildCost: 1500
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2787,7 +2787,7 @@ Objects:
     SelectPortrait: EMCAMEO:TL_Contaminator.tga
     TdRole: INFANTRY_EM
     BuildCost: 300
-    BuildTime: 21.6
+    BuildTime: 12.96
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -2867,7 +2867,7 @@ Objects:
     SelectPortrait: EMCAMEO:TL_Leech.tga
     TdRole: UNIT_EM
     BuildCost: 800
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -2946,7 +2946,7 @@ Objects:
     SelectPortrait: EMCAMEO:IM_Sardaukar.tga
     TdRole: INFANTRY_EM
     BuildCost: 300
-    BuildTime: 21.6
+    BuildTime: 12.96
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -3026,7 +3026,7 @@ Objects:
     SelectPortrait: EMCAMEO:IM_ADVSardaukar.tga
     TdRole: INFANTRY_EM
     BuildCost: 350
-    BuildTime: 34.45
+    BuildTime: 20.67
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites:
@@ -3108,7 +3108,7 @@ Objects:
     SelectPortrait: EMCAMEO:FR_Fremen.tga
     TdRole: INFANTRY_EM
     BuildCost: 150
-    BuildTime: 21.6
+    BuildTime: 12.96
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -3188,7 +3188,7 @@ Objects:
     SelectPortrait: EMCAMEO:FR_ADVFremen.tga
     TdRole: INFANTRY_EM
     BuildCost: 250
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites:
@@ -3270,7 +3270,7 @@ Objects:
     SelectPortrait: EMCAMEO:GU_Maker.tga
     TdRole: UNIT_EM
     BuildCost: 1000
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -3346,7 +3346,7 @@ Objects:
     SelectPortrait: EMCAMEO:GU_NIABTank.tga
     TdRole: UNIT_EM
     BuildCost: 2000
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -3428,7 +3428,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Windtrap.tga
     TdRole: STRUCT_POWER
     BuildCost: 225
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: 100
@@ -3496,7 +3496,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Barraks.tga
     TdRole: STRUCT_BARRACKS
     BuildCost: 225
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -20
@@ -3575,7 +3575,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Refinery.tga
     TdRole: STRUCT_REFINERY
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -3660,7 +3660,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Factory.tga
     TdRole: STRUCT_WEAP
     BuildCost: 1000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -3739,7 +3739,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Outpost.tga
     TdRole: STRUCT_RADAR
     BuildCost: 400
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -60
@@ -3809,7 +3809,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_FlameTurret.tga
     TdRole: STRUCT_TURRET
     BuildCost: 550
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites:
@@ -3889,7 +3889,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_GunTurret.tga
     TdRole: STRUCT_OBELISK
     BuildCost: 1200
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -75
@@ -3973,7 +3973,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Hang_ico.tga
     TdRole: STRUCT_HELIPAD
     BuildCost: 1300
-    BuildTime: 27
+    BuildTime: 16.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -50
@@ -4052,7 +4052,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Helipad.tga
     TdRole: STRUCT_EM
     BuildCost: 800
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -30
@@ -4122,7 +4122,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_StarPort.tga
     TdRole: STRUCT_AIRSTRIP
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -100
@@ -4192,7 +4192,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Palace.tga
     TdRole: STRUCT_TEMPLE
     BuildCost: 1600
-    BuildTime: 54
+    BuildTime: 32.4
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -150
@@ -4262,7 +4262,7 @@ Objects:
     SelectPortrait: EMCAMEO:ico2_hcy.tga
     TdRole: STRUCT_CONST
     BuildCost: 2000
-    BuildTime: 20
+    BuildTime: 12
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites: {}
@@ -4334,7 +4334,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Scout.tga
     TdRole: INFANTRY_EM
     BuildCost: 30
-    BuildTime: 4.3
+    BuildTime: 2.58
     VisionRange: 256
     ShroudClearingRange: 256
     Prerequisites: {}
@@ -4410,7 +4410,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_LightInf.tga
     TdRole: INFANTRY_EM
     BuildCost: 50
-    BuildTime: 4.35
+    BuildTime: 2.61
     VisionRange: 76.8
     ShroudClearingRange: 76.8
     Prerequisites: {}
@@ -4490,7 +4490,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Trooper.tga
     TdRole: INFANTRY_EM
     BuildCost: 90
-    BuildTime: 4.95
+    BuildTime: 2.97
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -4570,7 +4570,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Engineer.tga
     TdRole: INFANTRY_EM
     BuildCost: 400
-    BuildTime: 17.5
+    BuildTime: 10.5
     VisionRange: 76.8
     ShroudClearingRange: 76.8
     Prerequisites:
@@ -4656,7 +4656,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Flamer.tga
     TdRole: INFANTRY_EM
     BuildCost: 150
-    BuildTime: 7.2
+    BuildTime: 4.32
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites:
@@ -4738,7 +4738,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_BuzzSaw.tga
     TdRole: UNIT_EM
     BuildCost: 350
-    BuildTime: 9
+    BuildTime: 5.4
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -4819,7 +4819,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_AsTank.tga
     TdRole: UNIT_EM
     BuildCost: 900
-    BuildTime: 24.6
+    BuildTime: 14.76
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -4897,7 +4897,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_FlameTank.tga
     TdRole: UNIT_EM
     BuildCost: 900
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -4980,7 +4980,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_InkVine.tga
     TdRole: UNIT_EM
     BuildCost: 1000
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -5064,7 +5064,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_MissileTank.tga
     TdRole: UNIT_EM
     BuildCost: 1200
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -5143,7 +5143,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Devestator.tga
     TdRole: UNIT_EM
     BuildCost: 1750
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -5222,7 +5222,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Gunship.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1000
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -5304,7 +5304,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_ADVCarryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1800
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -5371,7 +5371,7 @@ Objects:
     SelectPortrait: EMCAMEO:HK_Airgun.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1500
-    BuildTime: 37.5
+    BuildTime: 22.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -5444,7 +5444,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Harvester.tga
     TdRole: UNIT_HARVESTER
     BuildCost: 1000
-    BuildTime: 25.2
+    BuildTime: 15.12
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -5517,7 +5517,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_MCV.tga
     TdRole: UNIT_MCV
     BuildCost: 2000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -5587,7 +5587,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Carryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1100
-    BuildTime: 22.5
+    BuildTime: 13.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -5657,7 +5657,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Windtrap.tga
     TdRole: STRUCT_POWER
     BuildCost: 225
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: 100
@@ -5725,7 +5725,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Barracks.tga
     TdRole: STRUCT_BARRACKS
     BuildCost: 225
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -20
@@ -5804,7 +5804,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Refinery.tga
     TdRole: STRUCT_REFINERY
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -5889,7 +5889,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Factory.tga
     TdRole: STRUCT_WEAP
     BuildCost: 1000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -40
@@ -5968,7 +5968,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Outpost.tga
     TdRole: STRUCT_RADAR
     BuildCost: 400
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -60
@@ -6038,7 +6038,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_gasturret.tga
     TdRole: STRUCT_TURRET
     BuildCost: 550
-    BuildTime: 12
+    BuildTime: 7.2
     VisionRange: 179.2
     ShroudClearingRange: 179.2
     Prerequisites:
@@ -6119,7 +6119,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_popupturret.tga
     TdRole: STRUCT_OBELISK
     BuildCost: 1200
-    BuildTime: 15.45
+    BuildTime: 9.27
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -75
@@ -6202,7 +6202,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Hanger.tga
     TdRole: STRUCT_HELIPAD
     BuildCost: 1300
-    BuildTime: 27
+    BuildTime: 16.2
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -50
@@ -6281,7 +6281,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_StarPort.tga
     TdRole: STRUCT_AIRSTRIP
     BuildCost: 1500
-    BuildTime: 36
+    BuildTime: 21.6
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -100
@@ -6351,7 +6351,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Palace.tga
     TdRole: STRUCT_TEMPLE
     BuildCost: 1600
-    BuildTime: 54
+    BuildTime: 32.4
     VisionRange: 128
     ShroudClearingRange: 128
     EnergyProduction: -150
@@ -6421,7 +6421,7 @@ Objects:
     SelectPortrait: EMCAMEO:ORico2_acy.tga
     TdRole: STRUCT_CONST
     BuildCost: 2000
-    BuildTime: 20
+    BuildTime: 12
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites: {}
@@ -6493,7 +6493,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Scout.tga
     TdRole: INFANTRY_EM
     BuildCost: 30
-    BuildTime: 3.25
+    BuildTime: 1.95
     VisionRange: 256
     ShroudClearingRange: 256
     Prerequisites: {}
@@ -6569,7 +6569,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Chemical.tga
     TdRole: INFANTRY_EM
     BuildCost: 50
-    BuildTime: 4.35
+    BuildTime: 2.61
     VisionRange: 102.4
     ShroudClearingRange: 102.4
     Prerequisites: {}
@@ -6649,7 +6649,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_AATrooper.tga
     TdRole: INFANTRY_EM
     BuildCost: 100
-    BuildTime: 4.95
+    BuildTime: 2.97
     VisionRange: 102.4
     ShroudClearingRange: 102.4
     Prerequisites: {}
@@ -6729,7 +6729,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Engineer.tga
     TdRole: INFANTRY_EM
     BuildCost: 400
-    BuildTime: 17.5
+    BuildTime: 10.5
     VisionRange: 76.8
     ShroudClearingRange: 76.8
     Prerequisites:
@@ -6804,7 +6804,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_mortar.tga
     TdRole: INFANTRY_EM
     BuildCost: 100
-    BuildTime: 7.2
+    BuildTime: 4.32
     VisionRange: 102.4
     ShroudClearingRange: 102.4
     Prerequisites:
@@ -6886,7 +6886,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Saboteur.tga
     TdRole: INFANTRY_EM
     BuildCost: 150
-    BuildTime: 13
+    BuildTime: 7.8
     VisionRange: 102.4
     ShroudClearingRange: 102.4
     Prerequisites:
@@ -6962,7 +6962,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_DustScout.tga
     TdRole: UNIT_EM
     BuildCost: 350
-    BuildTime: 7.5
+    BuildTime: 4.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -7038,7 +7038,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_LaserTank.tga
     TdRole: UNIT_EM
     BuildCost: 700
-    BuildTime: 21.6
+    BuildTime: 12.96
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -7118,7 +7118,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_APC.tga
     TdRole: UNIT_EM
     BuildCost: 900
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -7200,7 +7200,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Kobra.tga
     TdRole: UNIT_EM
     BuildCost: 1200
-    BuildTime: 29.45
+    BuildTime: 17.67
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -7279,7 +7279,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_Deviator.tga
     TdRole: UNIT_EM
     BuildCost: 950
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -7361,7 +7361,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_EITS.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 2000
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -7428,7 +7428,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_ADVCarryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1800
-    BuildTime: 32.4
+    BuildTime: 19.44
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites:
@@ -7495,7 +7495,7 @@ Objects:
     SelectPortrait: EMCAMEO:OR_ADD.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 600
-    BuildTime: 24.95
+    BuildTime: 14.97
     VisionRange: 128
     ShroudClearingRange: 128
     Prerequisites: {}
@@ -7554,7 +7554,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Harvester.tga
     TdRole: UNIT_HARVESTER
     BuildCost: 1000
-    BuildTime: 25.2
+    BuildTime: 15.12
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}
@@ -7627,7 +7627,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_MCV.tga
     TdRole: UNIT_MCV
     BuildCost: 2000
-    BuildTime: 43.2
+    BuildTime: 25.92
     VisionRange: 153.6
     ShroudClearingRange: 153.6
     Prerequisites: {}
@@ -7697,7 +7697,7 @@ Objects:
     SelectPortrait: EMCAMEO:G_Carryall.tga
     TdRole: AIRCRAFT_EM
     BuildCost: 1100
-    BuildTime: 22.5
+    BuildTime: 13.5
     VisionRange: 51.2
     ShroudClearingRange: 51.2
     Prerequisites: {}

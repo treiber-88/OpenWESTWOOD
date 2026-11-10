@@ -313,16 +313,56 @@ public sealed class ShellScreen : IScreen
         string names = string.Join(" and ", missing.Select(Core.Installs.GameInstalls.DisplayName));
         string them = missing.Count > 1 ? "their" : "its";
         string message =
-            $"{names} {(missing.Count > 1 ? "are" : "is")} not installed on this computer, so {them} factions, maps and missions are locked. " +
+            $"{names}'s artwork {(missing.Count > 1 ? "are" : "is")} not installed in OpenWESTWOOD, so {them} factions, maps and missions are locked. " +
             "You can still play every other game's factions. " +
-            $"Get {(missing.Count > 1 ? "them" : "it")} in the Command & Conquer Ultimate Collection on Steam or the EA app, then restart OpenWESTWOOD.";
+            $"If you have the game (installed, on another drive or on its disc), press Install to copy {them} artwork into OpenWESTWOOD. " +
+            $"If not, get {(missing.Count > 1 ? "them" : "it")} in the Command & Conquer Ultimate Collection on Steam or the EA app.";
         var box = GuiLayout.Load(Ui.Content.FileSystem, "Window/Menus/MessageBox.wnd");
         if (box.Find("MessageBox.wnd:StaticTextTitle") is { } t)
             t.Text = "Games not installed";
         if (box.Find("MessageBox.wnd:StaticTextMessage") is { } m)
             m.Text = message;
-        if (box.Find("MessageBox.wnd:ButtonYes") is { } yes)
-            yes.Hidden = true;
+        var messageText = box.Find("MessageBox.wnd:StaticTextMessage");
+        if (box.Find<GuiPushButton>("MessageBox.wnd:ButtonYes") is { } yes)
+        {
+            // Install: finds the player's copy, copies the artwork in the background, and shows how far it is.
+            yes.Hidden = false;
+            yes.Text = "Install";
+            bool running = false, finished = false;
+            string status = "";
+            yes.Clicked += _ =>
+            {
+                if (finished)
+                {
+                    Screens.InstallScreen.Restart();
+                    return;
+                }
+                if (running)
+                    return;
+                running = true;
+                status = "Looking for your copy of the game...";
+                Task.Run(() =>
+                {
+                    var lines = new List<string>();
+                    Core.Installs.GameInstalls.Rescan();
+                    foreach (var game in missing)
+                    {
+                        var result = Core.Installs.ContentInstaller.Install(game, (done, total, file) =>
+                            status = $"Installing {Core.Installs.GameInstalls.DisplayName(game)}: {done / 1e9:0.0} of {total / 1e9:0.0} GB ({file})");
+                        lines.Add(result.Message);
+                    }
+                    finished = missing.All(Core.Installs.GameInstalls.Has);
+                    status = string.Join(" ", lines) + (finished ? " Press Restart to use it." : "");
+                    running = false;
+                });
+            };
+            perFrame = () =>
+            {
+                if (status.Length > 0 && messageText != null)
+                    messageText.Text = status;
+                yes.Text = finished ? "Restart" : running ? "Installing" : "Install";
+            };
+        }
         // The bottom row: OK, No and Cancel, side by side.
         void Setup(string name, string text, Action click)
         {
@@ -334,7 +374,7 @@ public sealed class ShellScreen : IScreen
         }
         Setup("ButtonOk", "Steam", () => OpenUrl(Core.Installs.GameInstalls.SteamUrl));
         Setup("ButtonNo", "EA app", () => OpenUrl(Core.Installs.GameInstalls.EaUrl));
-        Setup("ButtonCancel", "Close", () => Gui.Remove(box));
+        Setup("ButtonCancel", "Close", () => { perFrame = null; Gui.Remove(box); });
         Gui.Push(box);
         box.Layout(Ui.Gui.Scale);
         // The layout's OK and No buttons touch (they are never shown together in the original): space the three evenly.
@@ -673,8 +713,12 @@ public sealed class ShellScreen : IScreen
         }
     }
 
+    /// <summary>Runs every frame while set (the install message's progress).</summary>
+    Action? perFrame;
+
     public void Update(float seconds)
     {
+        perFrame?.Invoke();
         ShowDuneBattle();
         DirectDuneBattle(seconds);
         if (shellWorld != null)

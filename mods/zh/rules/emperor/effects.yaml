@@ -22,6 +22,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -29,6 +30,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_Conceptual
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -70,6 +76,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_Rocket_BLocomotor
     Geometry: Sphere
@@ -110,6 +117,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -117,6 +125,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_mgbullet
+          Animation: EM_mgbullet.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -156,6 +171,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -187,6 +203,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -218,6 +235,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -225,6 +243,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_mgbullet
+          Animation: EM_mgbullet.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -249,6 +274,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HEAT_BLocomotor
     Geometry: Sphere
@@ -306,6 +332,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -313,6 +340,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_shell
+          Animation: EM_shell.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -337,6 +371,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -375,6 +410,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_TrailMissile_BLocomotor
     Geometry: Sphere
@@ -415,6 +451,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_ATHEATADP_BLocomotor
     Geometry: Sphere
@@ -468,6 +505,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -499,6 +537,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -506,6 +545,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_LeechBullet
+          Animation: EM_LeechBullet.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -530,6 +576,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -537,6 +584,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_Conceptual
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -561,6 +613,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -592,6 +645,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -630,6 +684,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -661,6 +716,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -692,6 +748,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -728,6 +785,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -735,6 +793,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_Conceptual
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -759,6 +822,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HEATInf_BLocomotor
     Geometry: Sphere
@@ -799,6 +863,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -830,6 +895,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -837,6 +903,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_shell
+          Animation: EM_shell.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -861,6 +934,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -914,6 +988,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -921,6 +996,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_InkvineBullet
+          Animation: EM_InkvineBullet.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -945,6 +1027,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -983,6 +1066,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_Gunship_BLocomotor
     Geometry: Sphere
@@ -1023,6 +1107,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1030,6 +1115,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_Conceptual
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1071,6 +1161,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1078,6 +1169,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_GasGrenade
+          Animation: EM_GasGrenade.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1102,6 +1200,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1109,6 +1208,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_gplasbolt
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1133,6 +1237,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1169,6 +1274,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1176,6 +1282,11 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_Conceptual
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1200,6 +1311,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HeatAPC_BLocomotor
     Geometry: Sphere
@@ -1240,6 +1352,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1247,6 +1360,13 @@ Objects:
     ArmorSet:
       Armor: ProjectileArmor
     Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        DefaultConditionState:
+          Model: EM_shell
+          Animation: EM_shell.All
+          AnimationMode: LOOP
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1271,6 +1391,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
+    DrawScale: 2
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes

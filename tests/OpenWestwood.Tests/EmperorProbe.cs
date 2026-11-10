@@ -148,6 +148,32 @@ public class EmperorModelProbe(ITestOutputHelper output)
         output.WriteLine(f == null ? "null" : $"{f.Meshes.Count} meshes, {f.Hierarchy?.Pivots.Count} pivots, anims {string.Join(",", f.Animations.Select(a => a.Name + ":" + a.FrameCount))}");
         foreach (var t in f?.Meshes.SelectMany(m => m.Textures).Select(t => t.Name).Distinct() ?? [])
             output.WriteLine($"  texture {t}: {(t.Length == 0 ? "none" : content.FileSystem.Exists(t) ? "ok" : "MISSING")}");
+        // Which way it faces: the bones' rest positions (muzzles out front) and the meshes' extent.
+        if (f?.Hierarchy is { } h)
+        {
+            var world = new System.Numerics.Matrix4x4[h.Pivots.Count];
+            for (int i = 0; i < h.Pivots.Count; i++)
+            {
+                var p = h.Pivots[i];
+                var local = System.Numerics.Matrix4x4.CreateFromQuaternion(p.Rotation) * System.Numerics.Matrix4x4.CreateTranslation(p.Translation);
+                world[i] = p.ParentIndex >= 0 && p.ParentIndex < i ? local * world[p.ParentIndex] : local;
+                if (!p.HiddenAtRest)
+                    output.WriteLine($"  bone {p.Name} at {world[i].Translation}");
+            }
+        }
+        if ((f?.Meshes.FirstOrDefault(m => m.Positions.Length > 50 && m.Name.Contains("pose0")) ?? f?.Meshes.OrderByDescending(m => m.Positions.Length).FirstOrDefault()) is { } body)
+        {
+            float zMin = body.Positions.Min(v => v.Z), zMax = body.Positions.Max(v => v.Z);
+            for (int band = 0; band < 6; band++)
+            {
+                float lo = zMin + (zMax - zMin) * band / 6, hi = zMin + (zMax - zMin) * (band + 1) / 6;
+                var vs = body.Positions.Where(v => v.Z >= lo && v.Z < hi).ToList();
+                if (vs.Count > 0)
+                    output.WriteLine($"  {body.Name} height {band}: x {vs.Min(v => v.X):0.0}..{vs.Max(v => v.X):0.0} (mean {vs.Average(v => v.X):0.00}) y {vs.Min(v => v.Y):0.0}..{vs.Max(v => v.Y):0.0}");
+            }
+        }
+        foreach (var m in f?.Meshes.Where(m => m.Positions.Length > 0).Take(3) ?? [])
+            output.WriteLine($"  mesh {m.FullName}: x {m.Positions.Min(v => v.X):0.0}..{m.Positions.Max(v => v.X):0.0} y {m.Positions.Min(v => v.Y):0.0}..{m.Positions.Max(v => v.Y):0.0} z {m.Positions.Min(v => v.Z):0.0}..{m.Positions.Max(v => v.Z):0.0}");
     }
 }
 

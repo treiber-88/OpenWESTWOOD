@@ -43,13 +43,57 @@ AppDomain.CurrentDomain.UnhandledException += (_, e) =>
 // Which original games the player has: --zh-path / --kw-path give a folder, --pretend-missing zh,kw tries the game
 // without them, --detect-installs prints what was found and where it looked.
 OpenWestwood.Core.Installs.GameInstalls.Configure(args);
+// Debug: --content-root DIR uses another OpenWESTWOOD folder's content (to try a fresh copy's first start).
+if (options.Get("content-root") is { } contentRootOption)
+    OpenWestwood.Core.Installs.GameInstalls.ContentRoot = Path.GetFullPath(contentRootOption);
 if (options.Has("detect-installs"))
 {
     OpenWestwood.Core.Installs.GameInstalls.Detect();
     foreach (string line in OpenWestwood.Core.Installs.GameInstalls.Log)
         Console.WriteLine(line);
     foreach (var game in Enum.GetValues<OpenWestwood.Core.Installs.OriginalGame>())
-        Console.WriteLine($"{OpenWestwood.Core.Installs.GameInstalls.DisplayName(game)}: {(OpenWestwood.Core.Installs.GameInstalls.Has(game) ? "INSTALLED" : "NOT INSTALLED")}");
+    {
+        var (copy, unavailable) = OpenWestwood.Core.Installs.ContentInstaller.Plan(game);
+        Console.WriteLine($"{OpenWestwood.Core.Installs.GameInstalls.DisplayName(game)}: {(OpenWestwood.Core.Installs.GameInstalls.Has(game) ? "INSTALLED" : "NOT INSTALLED")}"
+            + $" (files still to copy: {copy.Count}, not available in any copy found: {unavailable.Count})");
+    }
+    return;
+}
+// --install zh|kw: installs a game's artwork from the player's copy, in the console.
+if (options.Get("install") is { } installWhat)
+{
+    var game = installWhat.StartsWith("k", StringComparison.OrdinalIgnoreCase) ? OpenWestwood.Core.Installs.OriginalGame.KanesWrath : OpenWestwood.Core.Installs.OriginalGame.ZeroHour;
+    int lastPercent = -1;
+    var installed = OpenWestwood.Core.Installs.ContentInstaller.Install(game, (done, total, file) =>
+    {
+        int percent = total > 0 ? (int)(done * 100 / total) : 100;
+        if (percent != lastPercent)
+            Console.WriteLine($"{percent,3}%  {file}");
+        lastPercent = percent;
+    });
+    Console.WriteLine(installed.Message);
+    foreach (string problem in installed.Problems)
+        Console.WriteLine("  " + problem);
+    Environment.ExitCode = installed.Success ? 0 : 1;
+    return;
+}
+
+// Without Zero Hour's artwork nothing else can run (the menus are made of it): the install screen comes first.
+// (The files themselves: --pretend-missing zh still starts the menus, with Zero Hour's factions locked.)
+if (!OpenWestwood.Core.Installs.ContentInstaller.IsInstalled(OpenWestwood.Core.Installs.OriginalGame.ZeroHour))
+{
+    if (options.Has("hidden") || options.Has("audit") || options.Has("net-test") || options.Has("ai-census"))
+    {
+        Console.Error.WriteLine("Zero Hour's artwork is not installed. Run OpenWESTWOOD (or OpenWESTWOOD --install zh) to install it from your copy of the game.");
+        Environment.ExitCode = 1;
+        return;
+    }
+    var installWindow = new GameWindow("OpenWESTWOOD", 1280, 720, visible: true, fullscreen: false)
+    {
+        ScreenshotPath = options.Get("screenshot"),
+        ScreenshotAfterFrames = int.TryParse(options.Get("screenshot-frames"), out int installShotFrames) ? installShotFrames : 5,
+    };
+    installWindow.Run((gl, input, osWindow) => new OpenWestwood.Client.Screens.InstallScreen(gl, input, osWindow, OpenWestwood.Core.Installs.GameInstalls.ContentRoot));
     return;
 }
 
@@ -216,8 +260,11 @@ window.Run((gl, input, osWindow) =>
         {
             var a = middle + new System.Numerics.Vector3(-70, (i - 1) * 40, 0);
             var b = middle + new System.Numerics.Vector3(70, (i - 1) * 40, 0);
-            game.CreateObject(mineName.Trim(), game.Players.Find("Player")!, a with { Z = game.Terrain.GroundHeight(a) });
+            var mine = game.CreateObject(mineName.Trim(), game.Players.Find("Player")!, a with { Z = game.Terrain.GroundHeight(a) });
             game.CreateObject(theirsName.Trim(), game.Players.Find("Enemy")!, b with { Z = game.Terrain.GroundHeight(b) });
+            // Debug: --fight-walk sends the player's ones walking off across the screen (to see units on the move).
+            if (options.Has("fight-walk") && mine != null)
+                new OpenWestwood.Logic.Commands.MoveCommand(game.Players.Find("Player")!.Index, [mine.Id], a + new System.Numerics.Vector3(-600, 300, 0)).Execute(game);
         }
         fightAt = middle;
     }

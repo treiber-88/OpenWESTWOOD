@@ -244,6 +244,9 @@ public static class Ra2FactionExporter
         {
             if (raName.Length == 0 || !rules.Has(raName))
                 return null;
+            // NeverUse: a weapon the game never fires (the dogs' and terror drone's VirtualScanner, a detector).
+            if (rules.Bool(raName, "NeverUse"))
+                return null;
             if (weaponNames.TryGetValue(raName, out var done))
                 return done;
             string name = "RA2_Weapon_" + raName.Replace('-', '_').Replace(' ', '_');
@@ -291,6 +294,18 @@ public static class Ra2FactionExporter
             weapons.Append(dt == "HEALING" ? "    RadiusDamageAffects: ALLIES SELF\n" : "    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS\n");
             bool antiAir = rules.Bool(projectile, "AA"), antiGround = rules.Bool(projectile, "AG", true);
             weapons.Append($"    AntiGround: {(antiGround ? "Yes" : "No")}\n    AntiAirborneVehicle: {(antiAir ? "Yes" : "No")}\n    AntiAirborneInfantry: {(antiAir ? "Yes" : "No")}\n");
+            // LimboLaunch: the firer leaps with its shot (a dog's pounce, a terror drone's jump). A Parasite warhead's hit
+            // kills a soldier outright or gets the firer inside a vehicle. Its Verses say what it can take on: no damage to
+            // the vehicles' armours (light, medium, heavy) is the dogs' (infantry only); the drones go for vehicles only
+            // (RA2 never lets a parasite onto infantry unless that is all it can hurt).
+            if (rules.Bool(raName, "LimboLaunch"))
+                weapons.Append("    LimboLaunch: Yes\n");
+            if (rules.Bool(warhead, "Parasite"))
+            {
+                var verses = rules.List(warhead, "Verses");
+                bool hurtsVehicles = verses.Length > 5 && verses.Skip(3).Take(3).Any(v => v.Trim().TrimEnd('%') is var n && float.TryParse(n, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float pct) && pct > 0);
+                weapons.Append($"    Parasite: Yes\n    OnlyAgainstKindOf: {(hurtsVehicles ? "VEHICLE" : "INFANTRY")}\n");
+            }
             // Its explosion: the warhead's first AnimList animation (an RA2 shape in the animation palette).
             string blast = rules.List(warhead, "AnimList").FirstOrDefault() ?? "";
             string image = rules.Get(projectile, "Image");

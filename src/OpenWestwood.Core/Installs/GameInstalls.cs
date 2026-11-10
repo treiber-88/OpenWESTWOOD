@@ -12,7 +12,9 @@ public enum OriginalGame
 }
 
 /// <summary>
-/// Finds the player's installs of Command &amp; Conquer Generals Zero Hour and Kane's Wrath.
+/// Whether OpenWESTWOOD has Zero Hour's and Kane's Wrath's artwork (<see cref="Has"/>: their files are in its own content
+/// folder, put there by <see cref="ContentInstaller"/>), and where the player's copies of the games are to install it
+/// from (<see cref="ZeroHourSources"/>...: any copy will do, an install, a copy on another drive, a disc).
 ///
 /// A folder counts only if the game's own data files are really in it: registry entries are often stale (a game
 /// moved, a drive unplugged, an uninstall that left keys behind), so every place they name is checked on disk.
@@ -35,6 +37,33 @@ public static class GameInstalls
     /// <summary>Kane's Wrath's folder (Core/1.0/StaticStream.big...).</summary>
     public static string? KanesWrathFolder { get; private set; }
 
+    /// <summary>Every Zero Hour / Generals / Kane's Wrath data folder found (the installer takes each file from the first one with it unmodified).</summary>
+    public static IReadOnlyList<string> ZeroHourSources { get; private set; } = [];
+    public static IReadOnlyList<string> GeneralsSources { get; private set; } = [];
+    public static IReadOnlyList<string> KanesWrathSources { get; private set; } = [];
+
+    static string? contentRoot;
+
+    /// <summary>The OpenWESTWOOD folder (the nearest parent of the program, or the current folder, with mods/zh/mod.yaml).</summary>
+    public static string ContentRoot
+    {
+        get
+        {
+            if (contentRoot != null)
+                return contentRoot;
+            foreach (string start in new[] { AppContext.BaseDirectory, Directory.GetCurrentDirectory() })
+                for (string? dir = start; dir != null; dir = Path.GetDirectoryName(dir))
+                    if (File.Exists(Path.Combine(dir, "mods", "zh", "mod.yaml")))
+                        return contentRoot = dir;
+            return contentRoot = Directory.GetCurrentDirectory();
+        }
+        set => contentRoot = value;
+    }
+
+    /// <summary>OpenWESTWOOD's copy of a game's files (content/kaneswrath...), once installed.</summary>
+    public static string? ContentFolder(OriginalGame game) =>
+        Has(game) ? ContentInstaller.ContentFolder(ContentInstaller.FoldersOf(game)[0]) : null;
+
     /// <summary>What was checked and why, for --detect-installs.</summary>
     public static IReadOnlyList<string> Log => log;
 
@@ -46,18 +75,8 @@ public static class GameInstalls
     public const string SteamUrl = "https://store.steampowered.com/bundle/39394/";
     public const string EaUrl = "https://www.ea.com/games/command-and-conquer/command-and-conquer-the-ultimate-collection";
 
-    public static bool Has(OriginalGame game)
-    {
-        Detect();
-        if (pretendMissing.Contains(game))
-            return false;
-        return game switch
-        {
-            OriginalGame.ZeroHour => ZeroHourFolder != null && GeneralsFolder != null,
-            OriginalGame.KanesWrath => KanesWrathFolder != null,
-            _ => false,
-        };
-    }
+    /// <summary>The game's artwork is installed in OpenWESTWOOD's content folder (it unlocks the game's factions, maps...).</summary>
+    public static bool Has(OriginalGame game) => !pretendMissing.Contains(game) && ContentInstaller.IsInstalled(game);
 
     public static string DisplayName(OriginalGame game) => game switch
     {
@@ -108,14 +127,29 @@ public static class GameInstalls
 
     static string? overrideZh, overrideKw;
 
+    /// <summary>Back to searching for both games.</summary>
+    public static void ClearOverrides()
+    {
+        overrideZh = overrideKw = null;
+        Reset();
+    }
+
     static void Reset()
     {
         lock (log)
         {
             detected = false;
             ZeroHourFolder = GeneralsFolder = KanesWrathFolder = null;
+            ZeroHourSources = GeneralsSources = KanesWrathSources = [];
             log.Clear();
         }
+    }
+
+    /// <summary>Searches again (a disc put in, a drive plugged in).</summary>
+    public static void Rescan()
+    {
+        Reset();
+        Detect();
     }
 
     /// <summary>Searches once (later calls return at once).</summary>
@@ -258,20 +292,31 @@ public static class GameInstalls
             foreach (string folder in StoreFolders(Path.Combine(prefix, "drive_c")))
                 Add(folder, "Wine prefix");
 
+        // 5. Any copy anywhere: a disc, a USB stick, a mounted image, a copy on another drive. Disc, removable and
+        // network drives are looked through deeper; a hard drive down to its first two levels of folders.
+        var deep = new List<string>();
+        foreach (var (root, removable) in AllDriveRoots())
+            if (removable)
+                deep.Add(root);
+            else
+                Add(root, "drive");
+
         if (zhSetting != null)
-        {
             log.Add($"Zero Hour folder set by the player: {zhSetting}");
-            ZeroHourFolder = FindBelow([zhSetting], IsZeroHourFolder, 2);
-            GeneralsFolder = ZeroHourFolder == null ? null : FindGenerals(ZeroHourFolder, [zhSetting]);
-        }
-        else
-        {
-            ZeroHourFolder = FindBelow(candidates, IsZeroHourFolder, 2);
-            GeneralsFolder = ZeroHourFolder == null ? null : FindGenerals(ZeroHourFolder, candidates);
-        }
-        KanesWrathFolder = kwSetting != null
-            ? FindBelow([kwSetting], IsKanesWrathFolder, 2)
-            : FindBelow(candidates, IsKanesWrathFolder, 2);
+        var zhPlaces = zhSetting != null ? new List<string> { zhSetting } : candidates;
+        ZeroHourSources = FindAllBelow(zhPlaces, IsZeroHourFolder, 2).Concat(FindAllBelow(deep, IsZeroHourFolder, 4)).Select(Path.TrimEndingDirectorySeparator).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        var generals = new List<string>();
+        foreach (string zh in ZeroHourSources)
+            if (FindGenerals(zh, zhPlaces) is { } g)
+                generals.Add(g);
+        GeneralsSources = generals.Concat(FindAllBelow(zhPlaces, IsGeneralsFolder, 2)).Concat(FindAllBelow(deep, IsGeneralsFolder, 4)).Select(Path.TrimEndingDirectorySeparator).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        KanesWrathSources = (kwSetting != null ? FindAllBelow([kwSetting], IsKanesWrathFolder, 2) : FindAllBelow(candidates, IsKanesWrathFolder, 2))
+            .Concat(FindAllBelow(deep, IsKanesWrathFolder, 4)).Select(Path.TrimEndingDirectorySeparator).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        ZeroHourFolder = ZeroHourSources.FirstOrDefault();
+        GeneralsFolder = GeneralsSources.FirstOrDefault();
+        KanesWrathFolder = KanesWrathSources.FirstOrDefault();
+        foreach (string f in ZeroHourSources.Skip(1).Concat(GeneralsSources.Skip(1)).Concat(KanesWrathSources.Skip(1)))
+            log.Add($"another copy: {f}");
 
         log.Add($"Zero Hour: {ZeroHourFolder ?? "not found"}");
         log.Add($"Generals (for Zero Hour): {GeneralsFolder ?? "not found"}");
@@ -285,6 +330,59 @@ public static class GameInstalls
         if (Path.GetDirectoryName(Path.TrimEndingDirectorySeparator(zeroHour)) is { } parent)
             near.Add(parent);
         return FindBelow(near, IsGeneralsFolder, 1) ?? FindBelow(candidates, IsGeneralsFolder, 2);
+    }
+
+    /// <summary>Every folder (each candidate, then its sub-folders down to a depth) that passes the test.</summary>
+    static List<string> FindAllBelow(IEnumerable<string> roots, Func<string, bool> test, int depth)
+    {
+        var found = new List<string>();
+        foreach (string root in roots)
+        {
+            if (!Directory.Exists(root))
+                continue;
+            var level = new List<string> { root };
+            for (int d = 0; d <= depth && level.Count > 0; d++)
+            {
+                var next = new List<string>();
+                foreach (string dir in level)
+                {
+                    if (test(dir))
+                    {
+                        string clean = Path.TrimEndingDirectorySeparator(dir);
+                        if (!found.Contains(clean, StringComparer.OrdinalIgnoreCase))
+                            found.Add(clean);
+                        continue;
+                    }
+                    next.AddRange(SafeDirectories(dir).Where(sub => !SkippedFolders.Contains(Path.GetFileName(sub))));
+                }
+                level = next;
+            }
+        }
+        return found;
+    }
+
+    /// <summary>System folders not worth looking through for a game.</summary>
+    static readonly HashSet<string> SkippedFolders = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Windows", "$Recycle.Bin", "System Volume Information", "ProgramData", "Recovery", "$WinREAgent", "proc", "sys", "dev",
+        "node_modules", ".git",
+    };
+
+    /// <summary>Every drive: its root, and whether it is a disc, removable or network drive (looked through deeper).</summary>
+    static IEnumerable<(string Root, bool Removable)> AllDriveRoots()
+    {
+        if (!OperatingSystem.IsWindows())
+            return DriveRoots().Select(r => (r, true));
+        try
+        {
+            return DriveInfo.GetDrives().Where(d => d.IsReady)
+                .Select(d => (d.RootDirectory.FullName, d.DriveType is DriveType.CDRom or DriveType.Removable or DriveType.Network))
+                .ToList();
+        }
+        catch (Exception)
+        {
+            return [];
+        }
     }
 
     /// <summary>The first folder (each candidate, then its sub-folders down to a depth) that passes the test.</summary>
