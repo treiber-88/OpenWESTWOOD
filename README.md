@@ -1,5 +1,7 @@
 # OpenWESTWOOD
 
+## This game is totally playable without Generals and Kane's Wrath, but you have to have Generals' and KW for the Generals and KW factions to be playable.
+
 ## The original games it needs
 
 OpenWESTWOOD plays the factions of many Westwood and EA games. Two of them come from your own copy of the game:
