@@ -693,7 +693,7 @@ public static class RaFactionExporter
         File.WriteAllText(Path.Combine(output, "object-creation-lists.yaml"), header + ocls);
         File.WriteAllText(Path.Combine(output, "scenery.yaml"), header + scenery);
         File.WriteAllText(Path.Combine(output, "factions.yaml"), header + factions);
-        File.WriteAllText(Path.Combine(output, "objects.yaml"), header + objects);
+        File.WriteAllText(Path.Combine(output, "objects.yaml"), WestwoodHusks.Add(header + objects.ToString()));
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), header + projectiles);
         File.WriteAllText(Path.Combine(output, "weapons.yaml"), header + weapons);
         File.WriteAllText(Path.Combine(output, "locomotors.yaml"), header + locomotors);

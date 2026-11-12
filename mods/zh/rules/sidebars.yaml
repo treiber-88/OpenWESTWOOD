@@ -1,0 +1,437 @@
+# OpenWESTWOOD: the Westwood games' own sidebars, from their original art (see TiberianDawn/SidebarSkin.cs for the
+# fields). Positions are in the original screen's pixels, from the sidebar's top left; the sidebar is drawn to the
+# screen's height at its right edge.
+#
+# Red Alert (the Windows hi-res sidebar, 640 x 400: SIDEBAR.CPP, RADAR.CPP, POWER.CPP, TAB.CPP): the side pieces
+# SIDE1/2/3 (NA Allied, US Soviet), the strips STRIPNA/STRIPUS, the credits tab (TABS frame 6), the power bar.
+#
+# Tiberian Sun (each side's sidebar archive: GDI's SIDEC01.MIX, Nod's SIDEC02.MIX, in its SIDEBAR.PAL): the credits tab
+# TABS, the radar RADAR (its first frame the side's emblem), the ADDON under it with the Repair / Sell / Power buttons,
+# the strips' top SIDE1, a SIDE2 for each row of cameos and SIDE3 under them with the R-UP / R-DN scroll buttons.
+#
+# Red Alert 2 / Yuri's Revenge (SIDEC01.MIX the Allies', SIDEC02.MIX the Soviets', in their SIDEBAR.PAL): TOP, the
+# CREDITS bar, the RADAR (its first frame the side's emblem), SIDE1 with the Repair / Sell buttons and the four tabs
+# TAB00-03, a SIDE2 for each row of cameos (the power column at its right), SIDE3 with R-UP / R-DN, and the GCLOCK2 build
+# clock. (Yuri's Revenge has no Yuri sidebar archive among the game's files here: Yuri uses the Soviets'.)
+#
+# Dune 2000 (its interface art, content/dune2000/mod/uibits/chrome.png): the credits bar, the radar's frame (the house
+# insignia in it until there is a radar), the dark-slotted panel for each row of icons, the bottom bar, and the Repair /
+# Sell / Power buttons (up and down, "a|b").
+Sidebars:
+  D2KATR:
+    Sides: D2KATR
+    Width: 226
+    Height: 600
+    Pieces:
+    - Image: "D2KCHROME:0,0,226,27"
+      X: 0
+      Y: 0
+    - Image: "D2KCHROME:0,27,226,245"
+      X: 0
+      Y: 27
+    Radar: 10 35 206 208
+    RadarOff: "D2KCHROME:227,26,100,100"
+    Credits: 120 5
+    CreditsColor: 255 220 150
+    Columns: 50 120
+    ColumnY: 272
+    CameoY: 9
+    Cameo: 60 48
+    RowPiece: "D2KCHROME:0,272,226,74"
+    RowHeight: 74
+    BottomPiece: "D2KCHROME:0,468,226,44"
+    BottomHeight: 44
+    Repair: "D2KCHROME:236,358,32,32|D2KCHROME:236,438,32,32"
+    RepairAt: 48 238
+    Sell: "D2KCHROME:276,358,32,32|D2KCHROME:276,438,32,32"
+    SellAt: 97 238
+    Map: "D2KCHROME:396,358,32,32|D2KCHROME:396,438,32,32"
+    MapAt: 146 238
+    PowerBar: 22 280 8 220
+  D2KHAR:
+    Sides: D2KHAR
+    Width: 226
+    Height: 600
+    Pieces:
+    - Image: "D2KCHROME:0,0,226,27"
+      X: 0
+      Y: 0
+    - Image: "D2KCHROME:0,27,226,245"
+      X: 0
+      Y: 27
+    Radar: 10 35 206 208
+    RadarOff: "D2KCHROME:227,127,100,90"
+    Credits: 120 5
+    CreditsColor: 255 220 150
+    Columns: 50 120
+    ColumnY: 272
+    CameoY: 9
+    Cameo: 60 48
+    RowPiece: "D2KCHROME:0,272,226,74"
+    RowHeight: 74
+    BottomPiece: "D2KCHROME:0,468,226,44"
+    BottomHeight: 44
+    Repair: "D2KCHROME:236,358,32,32|D2KCHROME:236,438,32,32"
+    RepairAt: 48 238
+    Sell: "D2KCHROME:276,358,32,32|D2KCHROME:276,438,32,32"
+    SellAt: 97 238
+    Map: "D2KCHROME:396,358,32,32|D2KCHROME:396,438,32,32"
+    MapAt: 146 238
+    PowerBar: 22 280 8 220
+  D2KORD:
+    Sides: D2KORD
+    Width: 226
+    Height: 600
+    Pieces:
+    - Image: "D2KCHROME:0,0,226,27"
+      X: 0
+      Y: 0
+    - Image: "D2KCHROME:0,27,226,245"
+      X: 0
+      Y: 27
+    Radar: 10 35 206 208
+    RadarOff: "D2KCHROME:328,26,100,100"
+    Credits: 120 5
+    CreditsColor: 255 220 150
+    Columns: 50 120
+    ColumnY: 272
+    CameoY: 9
+    Cameo: 60 48
+    RowPiece: "D2KCHROME:0,272,226,74"
+    RowHeight: 74
+    BottomPiece: "D2KCHROME:0,468,226,44"
+    BottomHeight: 44
+    Repair: "D2KCHROME:236,358,32,32|D2KCHROME:236,438,32,32"
+    RepairAt: 48 238
+    Sell: "D2KCHROME:276,358,32,32|D2KCHROME:276,438,32,32"
+    SellAt: 97 238
+    Map: "D2KCHROME:396,358,32,32|D2KCHROME:396,438,32,32"
+    MapAt: 146 238
+    PowerBar: 22 280 8 220
+  RA2Allies:
+    Sides: RA2Allies
+    Width: 168
+    Height: 600
+    Pieces:
+    - Image: "WWSIDE:RA2:SIDEC01:TOP:0"
+      X: 0
+      Y: 0
+    - Image: "WWSIDE:RA2:SIDEC01:CREDITS:0"
+      X: 0
+      Y: 32
+    - Image: "WWSIDE:RA2:SIDEC01:SIDE1:0"
+      X: 0
+      Y: 158
+    - Image: "WWSIDE:RA2:SIDEC01:TAB00:0"
+      X: 26
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC01:TAB01:0"
+      X: 55
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC01:TAB02:0"
+      X: 85
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC01:TAB03:0"
+      X: 114
+      Y: 199
+    Radar: 0 48 168 110
+    RadarInset: 11 2
+    RadarOff: "WWSIDE:RA2:SIDEC01:RADAR:0"
+    Credits: 84 33
+    CreditsColor: 140 210 255
+    Columns: 22 86
+    ColumnY: 227
+    CameoY: 1
+    Cameo: 60 48
+    RowPiece: "WWSIDE:RA2:SIDEC01:SIDE2:0"
+    RowHeight: 50
+    BottomPiece: "WWSIDE:RA2:SIDEC01:SIDE3:0"
+    BottomHeight: 26
+    Clock: "WWSIDE:RA2:SIDEC01:GCLOCK2"
+    ClockFrames: 54
+    ScrollShared: Yes
+    ScrollUp: "WWSIDE:RA2:SIDEC01:R-UP"
+    ScrollUpAt: 30 0
+    ScrollDown: "WWSIDE:RA2:SIDEC01:R-DN"
+    ScrollDownAt: 92 0
+    Repair: "WWSIDE:RA2:SIDEC01:REPAIR"
+    RepairAt: 18 160
+    Sell: "WWSIDE:RA2:SIDEC01:SELL"
+    SellAt: 86 160
+    PowerBar: 152 229 7 200
+  RA2Soviet:
+    Sides: RA2Soviet
+    Width: 168
+    Height: 600
+    Pieces:
+    - Image: "WWSIDE:RA2:SIDEC02:TOP:0"
+      X: 0
+      Y: 0
+    - Image: "WWSIDE:RA2:SIDEC02:CREDITS:0"
+      X: 0
+      Y: 32
+    - Image: "WWSIDE:RA2:SIDEC02:SIDE1:0"
+      X: 0
+      Y: 158
+    - Image: "WWSIDE:RA2:SIDEC02:TAB00:0"
+      X: 26
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB01:0"
+      X: 55
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB02:0"
+      X: 85
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB03:0"
+      X: 114
+      Y: 199
+    Radar: 0 48 168 110
+    RadarInset: 11 2
+    RadarOff: "WWSIDE:RA2:SIDEC02:RADAR:0"
+    Credits: 84 33
+    CreditsColor: 140 210 255
+    Columns: 22 86
+    ColumnY: 227
+    CameoY: 1
+    Cameo: 60 48
+    RowPiece: "WWSIDE:RA2:SIDEC02:SIDE2:0"
+    RowHeight: 50
+    BottomPiece: "WWSIDE:RA2:SIDEC02:SIDE3:0"
+    BottomHeight: 26
+    Clock: "WWSIDE:RA2:SIDEC02:GCLOCK2"
+    ClockFrames: 54
+    ScrollShared: Yes
+    ScrollUp: "WWSIDE:RA2:SIDEC02:R-UP"
+    ScrollUpAt: 30 0
+    ScrollDown: "WWSIDE:RA2:SIDEC02:R-DN"
+    ScrollDownAt: 92 0
+    Repair: "WWSIDE:RA2:SIDEC02:REPAIR"
+    RepairAt: 18 160
+    Sell: "WWSIDE:RA2:SIDEC02:SELL"
+    SellAt: 86 160
+    PowerBar: 152 229 7 200
+  RA2Yuri:
+    Sides: RA2Yuri
+    Width: 168
+    Height: 600
+    Pieces:
+    - Image: "WWSIDE:RA2:SIDEC02:TOP:0"
+      X: 0
+      Y: 0
+    - Image: "WWSIDE:RA2:SIDEC02:CREDITS:0"
+      X: 0
+      Y: 32
+    - Image: "WWSIDE:RA2:SIDEC02:SIDE1:0"
+      X: 0
+      Y: 158
+    - Image: "WWSIDE:RA2:SIDEC02:TAB00:0"
+      X: 26
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB01:0"
+      X: 55
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB02:0"
+      X: 85
+      Y: 199
+    - Image: "WWSIDE:RA2:SIDEC02:TAB03:0"
+      X: 114
+      Y: 199
+    Radar: 0 48 168 110
+    RadarInset: 11 2
+    RadarOff: "WWSIDE:RA2:SIDEC02:RADAR:0"
+    Credits: 84 33
+    CreditsColor: 140 210 255
+    Columns: 22 86
+    ColumnY: 227
+    CameoY: 1
+    Cameo: 60 48
+    RowPiece: "WWSIDE:RA2:SIDEC02:SIDE2:0"
+    RowHeight: 50
+    BottomPiece: "WWSIDE:RA2:SIDEC02:SIDE3:0"
+    BottomHeight: 26
+    Clock: "WWSIDE:RA2:SIDEC02:GCLOCK2"
+    ClockFrames: 54
+    ScrollShared: Yes
+    ScrollUp: "WWSIDE:RA2:SIDEC02:R-UP"
+    ScrollUpAt: 30 0
+    ScrollDown: "WWSIDE:RA2:SIDEC02:R-DN"
+    ScrollDownAt: 92 0
+    Repair: "WWSIDE:RA2:SIDEC02:REPAIR"
+    RepairAt: 18 160
+    Sell: "WWSIDE:RA2:SIDEC02:SELL"
+    SellAt: 86 160
+    PowerBar: 152 229 7 200
+  TSGDI:
+    Sides: TSGDI
+    Width: 168
+    Height: 480
+    Pieces:
+    - Image: "WWSIDE:TS:SIDEC01:TABS:0"
+      X: 0
+      Y: 0
+    - Image: "WWSIDE:TS:SIDEC01:ADDON:0"
+      X: 0
+      Y: 150
+    - Image: "WWSIDE:TS:SIDEC01:SIDE1:0"
+      X: 0
+      Y: 213
+    Radar: 0 16 168 134
+    RadarInset: 15 11
+    RadarOff: "WWSIDE:TS:SIDEC01:RADAR:0"
+    Credits: 84 2
+    CreditsColor: 255 230 140
+    Columns: 23 89
+    ColumnY: 238
+    CameoY: 1
+    Cameo: 64 48
+    RowPiece: "WWSIDE:TS:SIDEC01:SIDE2:0"
+    RowHeight: 51
+    BottomPiece: "WWSIDE:TS:SIDEC01:SIDE3:0"
+    BottomHeight: 21
+    ScrollShared: Yes
+    ScrollUp: "WWSIDE:TS:SIDEC01:R-UP"
+    ScrollUpAt: 40 -1
+    ScrollDown: "WWSIDE:TS:SIDEC01:R-DN"
+    ScrollDownAt: 98 -1
+    Repair: "WWSIDE:TS:SIDEC01:REPAIR"
+    RepairAt: 14 176
+    Sell: "WWSIDE:TS:SIDEC01:SELL"
+    SellAt: 127 176
+    Map: "WWSIDE:TS:SIDEC01:POWER"
+    MapAt: 70 180
+    PowerBar: 7 240 6 190
+  TSNod:
+    Sides: TSNod
+    Width: 168
+    Height: 480
+    Pieces:
+    - Image: "WWSIDE:TS:SIDEC02:TABS:0"
+      X: 0
+      Y: 0
+    - Image: "WWSIDE:TS:SIDEC02:ADDON:0"
+      X: 0
+      Y: 150
+    - Image: "WWSIDE:TS:SIDEC02:SIDE1:0"
+      X: 0
+      Y: 213
+    Radar: 0 16 168 134
+    RadarInset: 15 11
+    RadarOff: "WWSIDE:TS:SIDEC02:RADAR:0"
+    Credits: 84 2
+    CreditsColor: 255 230 140
+    Columns: 23 89
+    ColumnY: 238
+    CameoY: 1
+    Cameo: 64 48
+    RowPiece: "WWSIDE:TS:SIDEC02:SIDE2:0"
+    RowHeight: 51
+    BottomPiece: "WWSIDE:TS:SIDEC02:SIDE3:0"
+    BottomHeight: 21
+    ScrollShared: Yes
+    ScrollUp: "WWSIDE:TS:SIDEC02:R-UP"
+    ScrollUpAt: 40 -1
+    ScrollDown: "WWSIDE:TS:SIDEC02:R-DN"
+    ScrollDownAt: 98 -1
+    Repair: "WWSIDE:TS:SIDEC02:REPAIR"
+    RepairAt: 14 176
+    Sell: "WWSIDE:TS:SIDEC02:SELL"
+    SellAt: 127 176
+    Map: "WWSIDE:TS:SIDEC02:POWER"
+    MapAt: 70 180
+    PowerBar: 7 240 6 190
+  RAAllies:
+    Sides: RAAllies
+    Width: 160
+    Height: 400
+    Pieces:
+    - Image: "RASHAPE:TABS:6"
+      X: 0
+      Y: 0
+    - Image: "RASHAPE:SIDE1NA:0"
+      X: 0
+      Y: 16
+    - Image: "RASHAPE:SIDE2NA:0"
+      X: 0
+      Y: 176
+    - Image: "RASHAPE:SIDE3NA:0"
+      X: 0
+      Y: 276
+    - Image: "RASHAPE:POWERBAR:0"
+      X: 0
+      Y: 176
+    - Image: "RASHAPE:POWERBAR:1"
+      X: 0
+      Y: 288
+    Radar: 0 14 160 141
+    RadarInset: 6 7
+    RadarOff: "RASHAPE:NATORADR:0"
+    Credits: 80 1
+    CreditsColor: 255 255 255
+    Strip: "RASHAPE:STRIPNA:{column}"
+    StripX: 4
+    Columns: 16 86
+    ColumnY: 180
+    Cameo: 64 48
+    Rows: 4
+    Clock: "RASHAPE:CLOCK"
+    ClockFrames: 54
+    ScrollUp: "RASHAPE:STRIPUP"
+    ScrollUpAt: 4 195
+    ScrollDown: "RASHAPE:STRIPDN"
+    ScrollDownAt: 36 195
+    Repair: "RASHAPE:REPAIR"
+    RepairAt: 4 158
+    Sell: "RASHAPE:SELL"
+    SellAt: 72 158
+    Map: "RASHAPE:MAP"
+    MapAt: 116 158
+    PowerBar: 2 180 8 220
+    PowerMark: "RASHAPE:POWER:0"
+  RASoviet:
+    Sides: RASoviet
+    Width: 160
+    Height: 400
+    Pieces:
+    - Image: "RASHAPE:TABS:6"
+      X: 0
+      Y: 0
+    - Image: "RASHAPE:SIDE1US:0"
+      X: 0
+      Y: 16
+    - Image: "RASHAPE:SIDE2US:0"
+      X: 0
+      Y: 176
+    - Image: "RASHAPE:SIDE3US:0"
+      X: 0
+      Y: 276
+    - Image: "RASHAPE:POWERBAR:0"
+      X: 0
+      Y: 176
+    - Image: "RASHAPE:POWERBAR:1"
+      X: 0
+      Y: 288
+    Radar: 0 14 160 141
+    RadarInset: 6 7
+    RadarOff: "RASHAPE:USSRRADR:0"
+    Credits: 80 1
+    CreditsColor: 255 255 255
+    Strip: "RASHAPE:STRIPUS:{column}"
+    StripX: 4
+    Columns: 16 86
+    ColumnY: 180
+    Cameo: 64 48
+    Rows: 4
+    Clock: "RASHAPE:CLOCK"
+    ClockFrames: 54
+    ScrollUp: "RASHAPE:STRIPUP"
+    ScrollUpAt: 4 195
+    ScrollDown: "RASHAPE:STRIPDN"
+    ScrollDownAt: 36 195
+    Repair: "RASHAPE:REPAIR"
+    RepairAt: 4 158
+    Sell: "RASHAPE:SELL"
+    SellAt: 72 158
+    Map: "RASHAPE:MAP"
+    MapAt: 116 158
+    PowerBar: 2 180 8 220
+    PowerMark: "RASHAPE:POWER:0"

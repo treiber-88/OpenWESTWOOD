@@ -288,7 +288,17 @@ public sealed partial class ScriptEngine
         }
     }
 
-    bool EvaluateCondition(ScriptCondition c) => c.Name switch
+    bool EvaluateCondition(ScriptCondition c)
+    {
+        if (!GameProfiler.Enabled)
+            return EvaluateConditionUntimed(c);
+        long t0 = System.Diagnostics.Stopwatch.GetTimestamp();
+        bool result = EvaluateConditionUntimed(c);
+        GameProfiler.Add("script if " + c.Name, t0);
+        return result;
+    }
+
+    bool EvaluateConditionUntimed(ScriptCondition c) => c.Name switch
     {
         "CONDITION_FALSE" => false,
         "CONDITION_TRUE" => true,
@@ -530,8 +540,12 @@ public sealed partial class ScriptEngine
     public ObjectTypes? GetObjectTypes(string listName) => objectTypeLists.FirstOrDefault(l => l.ListName == listName);
 
     /// <summary>OBJECTLIST_ADDOBJECTTYPE / OBJECTLIST_REMOVEOBJECTTYPE.</summary>
+    /// <summary>Changes whenever an object type list does (conditions cache the templates a list names).</summary>
+    public int ObjectTypeListsVersion { get; private set; }
+
     public void DoObjectTypeListMaintenance(string listName, string type, bool add)
     {
+        ObjectTypeListsVersion++;
         var list = GetObjectTypes(listName);
         if (list == null)
         {

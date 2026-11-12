@@ -72,12 +72,44 @@ public sealed class TdFactionAI : AIPlayer
         return "";
     }
 
+    bool difficultyApplied;
+
+    /// <summary>
+    /// OpenWESTWOOD: the lobby's difficulty (Easy Army / Hard Army; it made no difference to these factions before): an
+    /// easy computer builds at 60% speed, keeps a small army (12), attacks later and with smaller waves; a hard one builds faster and attacks
+    /// sooner with bigger ones. Medium is as it was.
+    /// </summary>
+    void ApplyDifficulty()
+    {
+        difficultyApplied = true;
+        switch (AIDifficulty)
+        {
+            case Scripting.Difficulty.Easy:
+                player.BuildSpeed = 0.6f;
+                AttackDelaySeconds = 8 * 60;
+                AttackIntervalSeconds = 4.5f * 60;
+                MinimumWave = 5;
+                WaveGrowth = 1;
+                ArmyLimit = 12;
+                break;
+            case Scripting.Difficulty.Hard:
+                player.BuildSpeed = 1.25f;
+                AttackDelaySeconds = 4 * 60;
+                AttackIntervalSeconds = 2.5f * 60;
+                MinimumWave = 10;
+                WaveGrowth = 4;
+                break;
+        }
+    }
+
     public override void Update()
     {
         IssuePendingOrder();
         if (game.Frame < nextThinkFrame)
             return;
         nextThinkFrame = game.Frame + ThinkFrames;
+        if (!difficultyApplied)
+            ApplyDifficulty();
 
         var mine = game.ObjectsOwnedBy(player).Where(o => !o.IsEffectivelyDead).ToList();
         Expand(mine);
@@ -87,8 +119,11 @@ public sealed class TdFactionAI : AIPlayer
         BuildStructure(mine);
         ResearchUpgrades(mine);
         BuildUnits(mine);
-        UsePowers(mine);
+        // (An easy computer leaves its superweapons alone.)
+        if (AIDifficulty != Scripting.Difficulty.Easy)
+            UsePowers(mine);
         Attack(mine);
+        Muster(mine);
         SpreadOut(mine);
     }
 
@@ -314,20 +349,120 @@ public sealed class TdFactionAI : AIPlayer
             if (field != null)
                 center += Vector3.Normalize((field.Position - center) with { Z = 0 } + new Vector3(0.001f, 0, 0)) * 100;
         }
-        float start = game.Random.Float(0, MathF.Tau);
-        for (float r = 0; r <= TdCell * 16; r += TdCell / 2)
+        // OpenWESTWOOD: defences stand on the base's edge toward the enemy (spread along it), not by the yard.
+        bool defense = DefenseRoles.Contains(TdTypeOf(template));
+        if (defense && TowardEnemy(center) is { } toward)
         {
-            int steps = Math.Max(1, (int)(r * MathF.Tau / (TdCell / 2)));
-            for (int i = 0; i < steps; i++)
+            var side = new Vector3(-toward.Y, toward.X, 0);
+            center += toward * (BaseReach(center, toward) + TdCell * 2) + side * game.Random.Float(-TdCell * 5, TdCell * 5);
+        }
+        // OpenWESTWOOD: first a spot that leaves room round the other buildings (a lane for units between them); a
+        // packed-in one only if there is none.
+        float start = game.Random.Float(0, MathF.Tau);
+        for (int pass = 0; pass < 2; pass++)
+            for (float r = 0; r <= TdCell * 16; r += TdCell / 2)
             {
-                float a = start + i * MathF.Tau / steps;
-                var p = center + new Vector3(DMath.Cos(a), DMath.Sin(a), 0) * r;
-                p.Z = game.Terrain.GroundHeight(p);
-                if (game.Building.CheckLocation(template, p, 0, player) == BuildLocation.Ok)
-                    return p;
+                int steps = Math.Max(1, (int)(r * MathF.Tau / (TdCell / 2)));
+                for (int i = 0; i < steps; i++)
+                {
+                    float a = start + i * MathF.Tau / steps;
+                    var p = center + new Vector3(DMath.Cos(a), DMath.Sin(a), 0) * r;
+                    p.Z = game.Terrain.GroundHeight(p);
+                    if ((pass == 1 || defense || HasRoom(template, p)) && game.Building.CheckLocation(template, p, 0, player) == BuildLocation.Ok)
+                        return p;
+                }
+            }
+        return null;
+    }
+
+    static readonly HashSet<string> DefenseRoles = ["STRUCT_OBELISK", "STRUCT_TESLA", "STRUCT_TURRET", "STRUCT_FLAME_TURRET", "STRUCT_ATOWER",
+        "STRUCT_GTOWER", "STRUCT_PILLBOX", "STRUCT_CAMOPILLBOX", "STRUCT_SAM", "STRUCT_AAGUN"];
+
+    /// <summary>No building of its own (walls and defences aside) closer than a cell's gap to this one's footprint.</summary>
+    bool HasRoom(ObjectTemplate template, Vector3 p)
+    {
+        float radius = Math.Max(template.GeometryMajorRadius, template.GeometryMinorRadius);
+        foreach (var other in game.ObjectsInRadius(p, radius + TdCell * 4))
+        {
+            if (other.Owner != player || !other.IsKindOf(Kind.Structure) || other.IsEffectivelyDead || DefenseRoles.Contains(TdTypeOf(other.Template))
+                || other.IsKindOf("WALK_ON_TOP_OF_WALL") || TdTypeOf(other.Template).Contains("WALL"))
+                continue;
+            float otherRadius = Math.Max(other.Template.GeometryMajorRadius, other.Template.GeometryMinorRadius);
+            if (MathUtil.Distance2D(other.Position, p) < radius + otherRadius + TdCell)
+                return false;
+        }
+        return true;
+    }
+
+    /// <summary>The way to the nearest enemy (its buildings, else its start), level; null if none is known.</summary>
+    Vector3? TowardEnemy(Vector3 from)
+    {
+        Vector3? nearest = null;
+        float best = float.MaxValue;
+        foreach (var enemy in game.Players.Active.Where(IsEnemy))
+        {
+            var spots = game.ObjectsOwnedBy(enemy).Where(o => o.IsKindOf(Kind.Structure) && !o.IsEffectivelyDead).Select(o => o.Position).ToList();
+            if (spots.Count == 0 && enemy.StartPosition is { } start)
+                spots.Add(start);
+            foreach (var spot in spots)
+            {
+                float d = MathUtil.Distance2D(spot, from);
+                if (d < best && d > 1)
+                {
+                    best = d;
+                    nearest = spot;
+                }
             }
         }
-        return null;
+        return nearest is { } n ? Vector3.Normalize((n - from) with { Z = 0 }) : null;
+    }
+
+    /// <summary>How far the base reaches from its centre that way (its farthest building's reach along it).</summary>
+    float BaseReach(Vector3 center, Vector3 toward)
+    {
+        float reach = TdCell * 3;
+        foreach (var o in game.ObjectsOwnedBy(player))
+            if (o.IsKindOf(Kind.Structure) && !o.IsEffectivelyDead && MathUtil.Distance2D(o.Position, center) < TdCell * 14)
+                reach = Math.Max(reach, Vector3.Dot((o.Position - center) with { Z = 0 }, toward) + o.Radius);
+        return reach;
+    }
+
+    int nextMusterFrame;
+
+    /// <summary>
+    /// OpenWESTWOOD: the army at home doesn't stand in a clump where it was made: every few seconds the idle units in
+    /// the base form up, spread out (a ring formation, a little over a cell apart), on the base's edge toward the
+    /// enemy, between it and the base. (Harvesters, MCVs and units out in the field are left alone.)
+    /// </summary>
+    void Muster(List<GameObject> mine)
+    {
+        if (game.Frame < nextMusterFrame || !baseCenterSet)
+            return;
+        nextMusterFrame = game.Frame + 8 * LogicTime.FramesPerSecond;
+        if (TowardEnemy(baseCenter) is not { } toward)
+            return;
+        float reach = BaseReach(baseCenter, toward);
+        var point = baseCenter + toward * (reach + TdCell * 4);
+        var army = mine.Where(o => o.IsMobile && !o.IsKindOf(Kind.Aircraft) && o.AI is { IsIdle: true } && !o.IsContained && !o.IsEffectivelyDead
+                && o.Template.Rules.TryGet("WeaponSet", out _) && TdTypeOf(o.Template) is not ("UNIT_HARVESTER" or "UNIT_MCV")
+                && !travelling.ContainsKey(o.Id) && MathUtil.Distance2D(o.Position, baseCenter) < reach + TdCell * 10)
+            .OrderBy(o => o.IsKindOf(Kind.Infantry) ? 1 : 0).ThenBy(o => o.Id).ToList();
+        // Each unit takes the nearest free spot (so those already in place stay when others come or fall).
+        var slots = Enumerable.Range(0, army.Count).Select(i => point + SpreadOffset(i, TdCell * 1.4f)).ToList();
+        foreach (var unit in army)
+        {
+            int nearest = 0;
+            for (int i = 1; i < slots.Count; i++)
+                if (MathUtil.Distance2D(unit.Position, slots[i]) < MathUtil.Distance2D(unit.Position, slots[nearest]))
+                    nearest = i;
+            var slot = slots[nearest];
+            slots.RemoveAt(nearest);
+            if (MathUtil.Distance2D(unit.Position, slot) < TdCell)
+                continue;
+            slot.Z = game.Terrain.GroundHeight(slot);
+            if (game.Pathfinder.NearestPassable(slot, unit.AI!.Surfaces, 3) is { } spot)
+                unit.AI!.MoveTo(spot, Commands.CommandSource.AI);
+        }
     }
 
     // ---- Units ----
@@ -395,6 +530,9 @@ public sealed class TdFactionAI : AIPlayer
                 continue;
             }
 
+            // (An easy computer keeps a small army.)
+            if (infantry + vehicles >= ArmyLimit)
+                continue;
             // Then a weighted random pick: armed units 20, others 1 (never a harvester or an MCV).
             var weighted = options.Where(t => TdTypeOf(t) is not ("UNIT_HARVESTER" or "UNIT_MCV"))
                 .Select(t => (Template: t, Weight: t.Rules.TryGet("WeaponSet", out _) ? 20 : 1)).ToList();
@@ -549,6 +687,8 @@ public sealed class TdFactionAI : AIPlayer
 
     /// <summary>The smallest attack (8; the shell battle's houses attack with 4) and how much each next one grows.</summary>
     public int MinimumWave { get; set; } = 8;
+    /// <summary>The most armed units it keeps (an easy computer's is small; no limit otherwise).</summary>
+    public int ArmyLimit { get; set; } = int.MaxValue;
     public int WaveGrowth { get; set; } = 3;
 
     // ---- Out of money (OpenWESTWOOD) ----

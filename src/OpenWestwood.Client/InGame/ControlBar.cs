@@ -249,7 +249,7 @@ public sealed class ControlBar
     /// How charged a power button's power is, 0..1 (null: not a power, or nothing of ours has it): the selected
     /// object's own module, else the best of ours (a general's power shared through the command centers).
     /// </summary>
-    float? PowerCharge(CommandButton button, GameObject? selected)
+    public float? PowerCharge(CommandButton button, GameObject? selected)
     {
         if (!IsPowerButton(button) || game.Catalog.SpecialPower(button.SpecialPower) is not { } power)
             return null;

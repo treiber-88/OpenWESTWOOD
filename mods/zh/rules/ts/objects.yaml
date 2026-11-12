@@ -1626,6 +1626,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -1690,6 +1695,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_HARV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -1754,6 +1764,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: TSTransportCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_APC_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -1826,6 +1841,12 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_120mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_MMCH_Husk
+        TurretPiece: TSGDI_MMCH_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -1893,6 +1914,12 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_SonicZap]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_SONIC_Husk
+        TurretPiece: TSGDI_SONIC_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -1960,6 +1987,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_MammothTusk, SECONDARY TS_Weapon_MechRailgun]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_HMEC_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2023,6 +2055,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_AssaultCannon]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_SMECH_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2087,6 +2124,12 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_HoverMissile]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_HVR_Husk
+        TurretPiece: TSGDI_HVR_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2151,6 +2194,11 @@ Objects:
       Armor: TS_Armor_wood
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_LPST_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2215,6 +2263,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_Jugg90mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_JUGG_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2276,6 +2329,11 @@ Objects:
       Armor: TS_Armor_none
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_LIMPET_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2337,6 +2395,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_MOBILEMP_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -2398,6 +2461,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSGDI_MOBWARG_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -3033,7 +3101,7 @@ Objects:
       ModuleTag_04:
         Module: Behavior
         Class: TsHunterSeekerUpdate
-        Speed: 135
+        Speed: 87.75
         FlightHeight: 56.25
         DetonateProximity: 21.094
         Weapon: TS_Weapon_SuicideBomb
@@ -4472,6 +4540,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4536,6 +4609,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_HARV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4602,6 +4680,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_BikeMissile]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_BIKE_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4663,6 +4746,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: TSTransportCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_SAPC_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4736,6 +4824,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_Dragon]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_STNK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4807,6 +4900,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_155mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_ART2_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4870,6 +4968,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_90mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_TTNK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4931,6 +5034,11 @@ Objects:
       Armor: TS_Armor_wood
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_LPST_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -4994,6 +5102,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_RepairBullet]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_REPAIR_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5058,6 +5171,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_FireballLauncher]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_SUBTANK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5121,6 +5239,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_RaiderCannon]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_BGGY_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5182,6 +5305,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_WEED_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5246,6 +5374,11 @@ Objects:
       Weapon: [PRIMARY TS_Weapon_QuadLauncher, SECONDARY TS_Weapon_WebLauncher]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_REAPER_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5307,6 +5440,11 @@ Objects:
       Armor: TS_Armor_none
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_LIMPET_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5368,6 +5506,11 @@ Objects:
       Armor: TS_Armor_light
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_SGEN_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5429,6 +5572,11 @@ Objects:
       Armor: TS_Armor_heavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: TSNOD_MOBWARN_Husk
       ModuleTag_01:
         Module: Draw
         Class: RA2SpriteDraw
@@ -5998,7 +6146,826 @@ Objects:
       ModuleTag_04:
         Module: Behavior
         Class: TsHunterSeekerUpdate
-        Speed: 135
+        Speed: 87.75
         FlightHeight: 56.25
         DetonateProximity: 21.094
         Weapon: TS_Weapon_SuicideBomb
+  # The vehicles' husks (OpenWESTWOOD, see WestwoodHusks).
+  TSNOD_MOBWARN_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MWAR_NOD
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_SGEN_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SGEN
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_LIMPET_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: LIMPED
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_REAPER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: REAPER
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_WEED_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: WEED
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_BGGY_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: BGGY
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_SUBTANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SUBTANK
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_REPAIR_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: REPAIR
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_LPST_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: LPST
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_TTNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: TTNK
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_ART2_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: ART2
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_STNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: STNK
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_SAPC_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SAPC
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_BIKE_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: BIKE
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_HARV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: HARV
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSNOD_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MCV
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_MOBWARG_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MWAR_NOD
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_MOBILEMP_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: M_EMP
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_LIMPET_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: LIMPED
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_JUGG_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: JUGGER
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_LPST_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: LPST
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_HVR_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: HVR
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_HVR_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: HVR
+        Kind: Unit
+        Voxel: Yes
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  TSGDI_SMECH_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SMECH
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_HMEC_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: HMEC
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_SONIC_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SONIC
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_SONIC_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: SONIC
+        Kind: Unit
+        Voxel: Yes
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  TSGDI_MMCH_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MMCH
+        Kind: Unit
+        Voxel: No
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_MMCH_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MMCH
+        Kind: Unit
+        Voxel: No
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  TSGDI_APC_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: APC
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_HARV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: HARV
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  TSGDI_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RA2SpriteDraw
+        Game: TS
+        Image: MCV
+        Kind: Unit
+        Voxel: Yes
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk

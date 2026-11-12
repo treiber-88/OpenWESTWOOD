@@ -19,6 +19,7 @@ using OpenWestwood.Client.Screens;
 //   --perf                                    print frame timings and the slowest logic parts every 5 s
 //   --screenshot <file.png>                   render a few frames, save a screenshot and quit
 //   --screenshot-frames <n>                   ... after n rendered frames instead of 5
+//   --screenshot-burst <n>                    ... and the n frames after it (file-0.png, file-1.png, ...)
 //   --reveal                                  (skirmish) no shroud
 //   --look-at <x,y>                           (skirmish) start the camera over this map point
 //   --demo-fx <FXList>                        (skirmish) keep playing an FX list at the screen centre
@@ -119,6 +120,7 @@ if (options.Get("ai-census") is { } censusFactions)
 {
     int censusMinutes = int.TryParse(options.Get("minutes"), out int cm) ? cm : 12;
     string censusMap = options.Get("map") ?? "Maps/Tournament Desert/Tournament Desert.map";
+    OpenWestwood.Logic.GameProfiler.Enabled = options.Has("perf");
     foreach (string faction in censusFactions.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
     {
         var mapFile = OpenWestwood.Client.TiberianDawn.TdMaps.Read(content.FileSystem, censusMap);
@@ -126,7 +128,9 @@ if (options.Get("ai-census") is { } censusFactions)
         [
             // --enemy Faction: a computer opponent (the scripts of Zero Hour's AI react to what the enemy does); else an idle one.
             new OpenWestwood.Logic.PlayerSlot("Idle", options.Get("enemy") ?? "FactionTDGDI", IsHuman: options.Get("enemy") == null, StartPosition: 1, Color: 0x0000FF),
-            new OpenWestwood.Logic.PlayerSlot("Bob", faction, IsHuman: false, StartPosition: 2, Color: 0xFF0000),
+            // --difficulty easy|hard: the computer player's (Medium by default).
+            new OpenWestwood.Logic.PlayerSlot("Bob", faction, IsHuman: false, StartPosition: 2, Color: 0xFF0000,
+                Difficulty: Enum.TryParse<OpenWestwood.Logic.Scripting.Difficulty>(options.Get("difficulty") ?? "Normal", ignoreCase: true, out var censusDifficulty) ? censusDifficulty : OpenWestwood.Logic.Scripting.Difficulty.Normal),
         ], models: content.Models, readFile: p => content.FileSystem.Exists(p) ? content.FileSystem.ReadAllBytes(p) : null);
         var bob = game.Players.Find("Bob")!;
         var start = bob.StartPosition ?? System.Numerics.Vector3.Zero;
@@ -152,7 +156,14 @@ if (options.Get("ai-census") is { } censusFactions)
                     && OpenWestwood.Logic.AI.TdFactionAI.TdTypeOf(o.Template) != "UNIT_MCV" && !o.IsKindOf("DOZER")).ToList();
                 float reach = structures.Count == 0 ? 0 : structures.Max(o => OpenWestwood.Logic.Core.MathUtil.Distance2D(o.Position, start));
                 Console.WriteLine($"{i / fps / 60,3} min: ${bob.Money.Amount,6}  structures {structures.Count,3}  army {army.Count,3}  gatherers {mine.Count(IsGatherer),2}  "
-                    + $"yards {structures.Count(o => o.IsKindOf("COMMANDCENTER"))}  reach {reach,5:F0}  earned {bob.Score.TotalMoneyEarned}  ({watch.Elapsed.TotalSeconds:F0}s)");
+                    + $"yards {structures.Count(o => o.IsKindOf("COMMANDCENTER"))}  reach {reach,5:F0}  earned {bob.Score.TotalMoneyEarned}  objects {game.Objects.Count()}  ({watch.Elapsed.TotalSeconds:F0}s)");
+                // --perf: the slowest logic parts over those three minutes (ms per game second).
+                if (options.Has("perf") && i > 0)
+                {
+                    foreach (var (name, ms) in OpenWestwood.Logic.GameProfiler.Report().Take(25))
+                        Console.WriteLine($"   [perf] {name,-50} {ms / 180:F2} ms/s");
+                    OpenWestwood.Logic.GameProfiler.Reset();
+                }
                 if (i == censusMinutes * 60 * fps)
                 {
                     Console.WriteLine("   structures: " + string.Join(", ", structures.GroupBy(o => o.Template.Name).Select(g => $"{g.Key} x{g.Count()}")));
@@ -184,6 +195,7 @@ var window = new GameWindow("OpenWESTWOOD", fullscreen ? 1920 : 1280, fullscreen
 {
     ScreenshotPath = options.Get("screenshot"),
     ScreenshotAfterFrames = int.TryParse(options.Get("screenshot-frames"), out int shotFrames) ? shotFrames : 5,
+    ScreenshotBurst = int.TryParse(options.Get("screenshot-burst"), out int shotBurst) ? shotBurst : 0,
     PerfReport = options.Has("perf"),
 };
 OpenWestwood.Logic.GameProfiler.Enabled = options.Has("perf");
@@ -241,6 +253,9 @@ window.Run((gl, input, osWindow) =>
         new OpenWestwood.Logic.PlayerSlot("Player", options.Get("faction") ?? "FactionAmerica", IsHuman: true, StartPosition: 1, Color: 0x2050FF),
         new OpenWestwood.Logic.PlayerSlot("Enemy", options.Get("enemy") ?? "FactionChina", IsHuman: false, StartPosition: 2, Color: 0xE02020),
     ], models: content.Models, readFile: p => content.FileSystem.Exists(p) ? content.FileSystem.ReadAllBytes(p) : null);
+    // --game-speed 2: the lobby's game speed (1, 1.5 or 2).
+    if (float.TryParse(options.Get("game-speed"), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float gameSpeed))
+        game.GameSpeed = gameSpeed;
     // The lobby's map options: --explored (the map starts explored), --nofog (no fog of war).
     OpenWestwood.Logic.GameSetup.ApplyVisibility(game, options.Has("explored"), options.Has("nofog"));
     if (options.Has("reveal"))
@@ -256,12 +271,21 @@ window.Run((gl, input, osWindow) =>
     if (options.Get("fight") is { } fight && fight.Split(',') is [var mineName, var theirsName])
     {
         var middle = new System.Numerics.Vector3(game.Terrain.WorldWidth / 2, game.Terrain.WorldHeight / 2, 0);
-        for (int i = 0; i < 3; i++)
+        // --fight-count N: N a side (3 by default), in columns of ten.
+        int fightCount = int.TryParse(options.Get("fight-count"), out int fc) ? fc : 3;
+        for (int i = 0; i < fightCount; i++)
         {
-            var a = middle + new System.Numerics.Vector3(-70, (i - 1) * 40, 0);
-            var b = middle + new System.Numerics.Vector3(70, (i - 1) * 40, 0);
+            var a = middle + new System.Numerics.Vector3(-70 - i / 10 * 40, (i % 10 - 1) * 40, 0);
+            var b = middle + new System.Numerics.Vector3(70 + i / 10 * 40, (i % 10 - 1) * 40, 0);
             var mine = game.CreateObject(mineName.Trim(), game.Players.Find("Player")!, a with { Z = game.Terrain.GroundHeight(a) });
-            game.CreateObject(theirsName.Trim(), game.Players.Find("Enemy")!, b with { Z = game.Terrain.GroundHeight(b) });
+            var theirs = game.CreateObject(theirsName.Trim(), game.Players.Find("Enemy")!, b with { Z = game.Terrain.GroundHeight(b) });
+            // Debug: --fight-still stuns the enemy's ones (to watch the player's shots without return fire).
+            if (options.Has("fight-still") && theirs != null)
+            {
+                theirs.SetDisabled("DISABLED_EMP");
+                if (mine != null)
+                    new OpenWestwood.Logic.Commands.AttackObjectCommand(game.Players.Find("Player")!.Index, [mine.Id], theirs.Id).Execute(game);
+            }
             // Debug: --fight-walk sends the player's ones walking off across the screen (to see units on the move).
             if (options.Has("fight-walk") && mine != null)
                 new OpenWestwood.Logic.Commands.MoveCommand(game.Players.Find("Player")!.Index, [mine.Id], a + new System.Numerics.Vector3(-600, 300, 0)).Execute(game);
@@ -286,10 +310,31 @@ window.Run((gl, input, osWindow) =>
     if (int.TryParse(options.Get("fast"), out int fastSeconds))
         for (int i = 0; i < fastSeconds * OpenWestwood.Logic.Core.LogicTime.FramesPerSecond; i++)
             game.Update();
+    // Debug: --game-click "ButtonGeneral@3;ButtonExit@5" clicks interface windows during the game.
+    foreach (var gameClick in (options.Get("game-click") ?? "").Split(';', StringSplitOptions.RemoveEmptyEntries))
+        if (gameClick.LastIndexOf('@') is int clickAt and > 0 && float.TryParse(gameClick[(clickAt + 1)..], System.Globalization.CultureInfo.InvariantCulture, out float clickWhen))
+            OpenWestwood.Client.InGame.GameScreen.DebugClicks.Enqueue((gameClick[..clickAt], clickWhen));
     var ui = new OpenWestwood.Client.UI.UiResources(gl, content);
     var screen = new OpenWestwood.Client.InGame.GameScreen(gl, input, ui, game, map);
     if (fightAt is { } fightPoint)
+    {
         screen.LookAt(fightPoint);
+        // Debug: --fight-kill destroys the enemy's ones two seconds in (to see how vehicles die and what they leave).
+        if (options.Has("fight-kill") && options.Get("fight") is { } killNames && killNames.Split(',') is [_, var killName])
+        {
+            float shown = 0;
+            bool killed = false;
+            screen.Tick = dt =>
+            {
+                shown += dt;
+                if (killed || shown < 2)
+                    return;
+                killed = true;
+                foreach (var victim in game.Objects.Where(o => o.Template.Name == killName.Trim() && !o.IsEffectivelyDead).ToList())
+                    victim.Kill();
+            };
+        }
+    }
     if (options.Get("look-at") is "player" or "enemy")
     {
         var who = game.Players.Find(options.Get("look-at") == "player" ? "Player" : "Enemy");
@@ -308,9 +353,9 @@ window.Run((gl, input, osWindow) =>
     if (options.Get("demo-drive") is { } demoDrive)
     {
         var player = game.Players.Find("Player")!;
-        var home = game.Objects.First(o => o.Owner == player && o.IsKindOf("COMMANDCENTER")).Position;
+        var home = (game.Objects.FirstOrDefault(o => o.Owner == player && o.IsKindOf("COMMANDCENTER")) ?? game.Objects.First(o => o.Owner == player)).Position;
         var units = demoDrive.Split(',').Select((name, i) =>
-            game.CreateObject(name.Trim(), player, home + new System.Numerics.Vector3(-120 + i * 45, -140, 0))).OfType<OpenWestwood.Logic.Objects.GameObject>().ToList();
+            game.CreateObject(name.Trim(), player, home + new System.Numerics.Vector3(-120 + i % 8 * 45, -140 + i / 8 * 45, 0))).OfType<OpenWestwood.Logic.Objects.GameObject>().ToList();
         foreach (var unit in units)
             unit.AI?.MoveTo(unit.Position + new System.Numerics.Vector3(0, -900, 0));
         screen.LookAt(home + new System.Numerics.Vector3(0, -260, 0));

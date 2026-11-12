@@ -107,8 +107,12 @@ public sealed class ObjectTemplate
     /// <summary>The same object, or a reskin of it (the original's isEquivalentTo).</summary>
     public bool IsEquivalentTo(ObjectTemplate other) =>
         Name.Equals(other.Name, StringComparison.OrdinalIgnoreCase)
-        || Rules.GetString("ReskinOf").Equals(other.Name, StringComparison.OrdinalIgnoreCase)
-        || other.Rules.GetString("ReskinOf").Equals(Name, StringComparison.OrdinalIgnoreCase);
+        || ReskinOf.Equals(other.Name, StringComparison.OrdinalIgnoreCase)
+        || other.ReskinOf.Equals(Name, StringComparison.OrdinalIgnoreCase);
+
+    string? reskinOf;
+    /// <summary>The object this one is a reskin of ("" if none).</summary>
+    public string ReskinOf => reskinOf ??= Rules.GetString("ReskinOf");
 
     public IEnumerable<ModuleDefinition> ModulesOfType(string moduleType) =>
         Modules.Where(m => m.ModuleType.Equals(moduleType, StringComparison.OrdinalIgnoreCase));

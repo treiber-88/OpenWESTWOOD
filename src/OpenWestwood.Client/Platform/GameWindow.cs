@@ -40,6 +40,9 @@ public sealed class GameWindow
     /// <summary>When set, the window renders a few frames, saves a screenshot here and closes.</summary>
     public string? ScreenshotPath { get; set; }
     public int ScreenshotAfterFrames { get; set; } = 5;
+
+    /// <summary>Debug: save this many frames in a row (name-0.png, name-1.png, ...) instead of one.</summary>
+    public int ScreenshotBurst { get; set; }
     int renderedFrames;
 
     /// <param name="fullscreen">The whole screen (at <paramref name="width"/> x <paramref name="height"/>).</param>
@@ -160,7 +163,14 @@ public sealed class GameWindow
             ReportPerf(dt);
         }
         renderedFrames++;
-        if (ScreenshotPath != null && renderedFrames == ScreenshotAfterFrames)
+        if (ScreenshotPath != null && ScreenshotBurst > 0 && renderedFrames >= ScreenshotAfterFrames)
+        {
+            int n = renderedFrames - ScreenshotAfterFrames;
+            SaveScreenshot(Path.ChangeExtension(ScreenshotPath, null) + "-" + n + ".png");
+            if (n + 1 >= ScreenshotBurst)
+                window.Close();
+        }
+        else if (ScreenshotPath != null && renderedFrames == ScreenshotAfterFrames)
         {
             SaveScreenshot(ScreenshotPath);
             window.Close();

@@ -7,11 +7,14 @@ public sealed class Ra2Ini
     readonly Dictionary<string, List<string>> order = new(StringComparer.OrdinalIgnoreCase);
     // Every value a section was given, in the order read (across files): a type list's entries by name.
     readonly Dictionary<string, List<string>> listed = new(StringComparer.OrdinalIgnoreCase);
+    // (The same values as a set, to skip repeats quickly: searching the list made a map's big data sections slow.)
+    readonly Dictionary<string, HashSet<string>> listedSet = new(StringComparer.OrdinalIgnoreCase);
 
     public void Read(string text)
     {
         Dictionary<string, string>? current = null;
         List<string>? keys = null, values = null;
+        HashSet<string>? valueSet = null;
         foreach (string raw in text.Split('\n'))
         {
             string line = raw.Split(';')[0].Trim();
@@ -22,6 +25,8 @@ public sealed class Ra2Ini
                 string name = line[1..line.IndexOf(']')].Trim();
                 if (!listed.TryGetValue(name, out values))
                     listed[name] = values = new();
+                if (!listedSet.TryGetValue(name, out valueSet))
+                    listedSet[name] = valueSet = new(StringComparer.OrdinalIgnoreCase);
                 if (!sections.TryGetValue(name, out current))
                 {
                     sections[name] = current = new(StringComparer.OrdinalIgnoreCase);
@@ -39,7 +44,7 @@ public sealed class Ra2Ini
                     keys!.Add(key);
                 string value = line[(eq + 1)..].Trim();
                 current[key] = value;
-                if (value.Length > 0 && values != null && values.Count < 4096 && !values.Contains(value, StringComparer.OrdinalIgnoreCase))
+                if (value.Length > 0 && values != null && values.Count < 4096 && valueSet!.Add(value))
                     values.Add(value);
             }
         }

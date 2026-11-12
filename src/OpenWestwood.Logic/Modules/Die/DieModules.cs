@@ -197,3 +197,67 @@ public sealed class CrushDie : DieModule
         return result;
     }
 }
+
+/// <summary>
+/// OpenWESTWOOD: the burnt-out husk a Westwood game's vehicle (Tiberian Dawn, Red Alert, Dune 2000, Tiberian Sun, Red
+/// Alert 2) leaves where it died, as Zero Hour's tanks leave theirs: the Husk object (the vehicle's own art, drawn burnt,
+/// on fire; it fades away after a while), facing the way the vehicle did. A tank's turret is often blown off
+/// (TurretOffChance, 50% by default): it is thrown clear as its own burnt piece (TurretPiece). None for one dying in the
+/// air, on water, or inside something (a terror drone in its victim).
+/// </summary>
+public sealed class WestwoodHuskDie : DieModule
+{
+    protected override void Die(DamageInfo killingBlow)
+    {
+        if (Owner.IsKindOf(Kind.Aircraft) || Owner.ContainedById != 0 || Owner.IsOffMap)
+            return;
+        var p = Owner.Position;
+        if (Game.Terrain.IsUnderwater(p.X, p.Y, out _) || p.Z > Game.Terrain.GroundHeight(p) + 10)
+            return;
+        // (The neutral player's, so it never counts as anyone's unit.)
+        var husk = Game.CreateObject(Setting("Husk"), Game.Players.Neutral, p, Owner.Orientation);
+        if (husk == null || Setting("TurretPiece") is not { Length: > 0 } piece)
+            return;
+        float chance = Definition.Settings.Has("TurretOffChance") ? RuleValue.Float(Setting("TurretOffChance")) / 100f : 0.5f;
+        if (!Game.Random.Chance(chance))
+            return;
+        float turretAngle = Owner.Orientation + (Owner.AI is { Turrets.Count: > 0 } ai ? ai.Turrets[0].Angle : 0);
+        if (Game.CreateObject(piece, Game.Players.Neutral, p + new Vector3(0, 0, 8), turretAngle) is not { } turret)
+            return;
+        if (husk.FindModule<WestwoodHusk>() is { } body)
+            body.TurretGone = true;
+        // Thrown up and off to one side, tumbling.
+        if (turret.FindModule<Updates.PhysicsBehavior>() is { } physics)
+        {
+            physics.AllowBouncing = true;
+            // (Gravity is about 0.075 a frame each frame: a hop of 15 to 25 units, landing 20 to 40 away.)
+            float away = Game.Random.Float(0, MathF.Tau), push = Game.Random.Float(0.4f, 0.8f);
+            physics.ApplyForce(new Vector3(MathF.Cos(away) * push, MathF.Sin(away) * push, Game.Random.Float(1.5f, 1.9f)));
+            physics.YawRate = Game.Random.Float(-0.15f, 0.15f);
+        }
+    }
+}
+
+/// <summary>
+/// OpenWESTWOOD: a Westwood vehicle's husk (or its blown-off turret): it burns (FireParticleSystem, SmolderingFire by
+/// default; "None" for none) until its time is up, and remembers whether its turret was blown off (then drawn without).
+/// </summary>
+public sealed class WestwoodHusk : Module, ICreateModule, IDieModule
+{
+    public bool TurretGone;
+    uint fire;
+
+    public void OnCreate()
+    {
+        string system = Definition.Settings.Has("FireParticleSystem") ? Setting("FireParticleSystem") : "SmolderingFire";
+        if (system.Length > 0 && !system.Equals("None", StringComparison.OrdinalIgnoreCase))
+            fire = Game.Events.AttachParticleSystem(system, new Vector3(0, 0, 4), Owner);
+    }
+
+    public void OnDie(DamageInfo killingBlow)
+    {
+        if (fire != 0)
+            Game.Events.StopParticleSystem(fire);
+        fire = 0;
+    }
+}

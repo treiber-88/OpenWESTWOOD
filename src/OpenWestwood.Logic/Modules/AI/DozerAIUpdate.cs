@@ -118,7 +118,7 @@ public class DozerAIUpdate : AIUpdateInterface
                 return;
             }
             target.SetCondition(Condition.ActivelyBeingConstructed);
-            float frames = Math.Max(1, LogicTime.FramesFromSeconds(target.Template.BuildTimeSeconds / Math.Max(0.01f, Game.Catalog.GameData.StructureBuildSpeedRate)));
+            float frames = Math.Max(1, LogicTime.FramesFromSeconds(target.Template.BuildTimeSeconds / Math.Max(0.01f, Game.Catalog.GameData.StructureBuildSpeedRate * target.Owner.BuildSpeed)));
             Game.Building.AddConstructionProgress(target, 1f / frames);
             if (!target.IsUnderConstruction)
                 EndTask();

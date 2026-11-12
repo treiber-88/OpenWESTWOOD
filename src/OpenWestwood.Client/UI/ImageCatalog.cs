@@ -57,6 +57,17 @@ public sealed class ImageCatalog
         if (images.TryGetValue(name, out var image))
             return image;
 
+        // OpenWESTWOOD: "name#u0,v0,u1,v1" is part of an image (fractions of it: a logo out of a wider panel).
+        if (name.LastIndexOf('#') is int hash and > 0 && name[(hash + 1)..].Split(',') is { Length: 4 } part
+            && part.All(p => float.TryParse(p, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out _))
+            && Find(name[..hash]) is { Rotated: false } whole)
+        {
+            var f = part.Select(p => float.Parse(p, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            float du = whole.U1 - whole.U0, dv = whole.V1 - whole.V0;
+            return images[name] = new MappedImage(name, whole.TextureName, whole.U0 + du * f[0], whole.V0 + dv * f[1], whole.U0 + du * f[2], whole.V0 + dv * f[3],
+                whole.PixelWidth * (f[2] - f[0]), whole.PixelHeight * (f[3] - f[1]), false);
+        }
+
         // OpenWESTWOOD: "TDCAMEO:NAME" is a Tiberian Dawn sidebar cameo, from the original TD files.
         if (name.StartsWith(TiberianDawn.TdCameos.Prefix, StringComparison.OrdinalIgnoreCase))
         {
@@ -79,6 +90,38 @@ public sealed class ImageCatalog
             if (textures.GetOrCreate(name, () => RedAlert2.Ra2Art.Get()?.Cameo(name["RA2CAMEO:".Length..])) is not { } ra2Cameo)
                 return null;
             return images[name] = new MappedImage(name, name, 0, 0, 1, 1, ra2Cameo.Width, ra2Cameo.Height, false);
+        }
+
+        // OpenWESTWOOD: "WWSIDE:TS|RA2:archive:SHAPE:frame" is a frame of a Tiberian Sun / Red Alert 2 sidebar picture from
+        // that side's sidebar archive (GDI's SIDEC01.MIX, Nod's SIDEC02.MIX ...), in its own SIDEBAR.PAL (FactionEmblems).
+        if (name.StartsWith("WWSIDE:", StringComparison.OrdinalIgnoreCase) && name.Split(':') is [_, var sideGame, var sideMix, var sideShape, var sideFrame]
+            && int.TryParse(sideFrame, out int sideFrameNumber))
+        {
+            if (textures.GetOrCreate(name, () => FactionEmblems.SidebarShape(sideGame, sideMix, sideShape, sideFrameNumber)) is not { } sidePicture)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, sidePicture.Width, sidePicture.Height, false);
+        }
+
+        // OpenWESTWOOD: "TDLOGO:frame" and "TSEMBLEM:SIDEC0n" are Tiberian Dawn's and Tiberian Sun's GDI / Nod emblems (FactionEmblems).
+        if (name.StartsWith("TDLOGO:", StringComparison.OrdinalIgnoreCase) || name.StartsWith("TSEMBLEM:", StringComparison.OrdinalIgnoreCase))
+        {
+            string arg = name[(name.IndexOf(':') + 1)..];
+            if (textures.GetOrCreate(name, () => name.StartsWith("TD", StringComparison.OrdinalIgnoreCase)
+                    ? (int.TryParse(arg, out int logo) ? FactionEmblems.TdLogo(logo) : null)
+                    : FactionEmblems.TsEmblem(arg)) is not { } emblem)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, emblem.Width, emblem.Height, false);
+        }
+
+        // OpenWESTWOOD: "RA2PCX:NAME" is a Red Alert 2 / Yuri's Revenge interface picture (NAME.PCX: the countries' flags,
+        // USAI, RUSI...), its magenta see-through.
+        if (name.StartsWith("RA2PCX:", StringComparison.OrdinalIgnoreCase))
+        {
+            string file = name["RA2PCX:".Length..] + ".PCX";
+            if (textures.GetOrCreate(name, () => RedAlert2.Ra2Art.Get() is { } art && art.Content.Files.Exists(file)
+                    ? OpenWestwood.Formats.Images.PcxDecoder.Decode(art.Content.Files.ReadAllBytes(file), (255, 0, 255)) : null) is not { } pcx)
+                return null;
+            return images[name] = new MappedImage(name, name, 0, 0, 1, 1, pcx.Width, pcx.Height, false);
         }
 
         // OpenWESTWOOD: "RACAMEO:NAME" is a Red Alert build icon (NAMEICON.SHP), from the original RA files.

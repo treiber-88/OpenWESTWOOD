@@ -74,14 +74,50 @@ public sealed class ScriptConditions
     List<ObjectTemplate> TemplatesFrom(HashSet<string> types) =>
         types.Select(n => game.Templates.Find(n)).Where(t => t != null).Select(t => t!).ToList();
 
+    // The templates a type or type list names, kept until a list changes (the skirmish AI asks about the same lists
+    // every frame).
+    readonly Dictionary<string, List<ObjectTemplate>> templatesOf = new(StringComparer.Ordinal);
+    int templatesOfVersion = -1;
+
+    List<ObjectTemplate> TemplatesOf(ScriptParam p)
+    {
+        if (templatesOfVersion != engine.ObjectTypeListsVersion)
+        {
+            templatesOf.Clear();
+            templatesOfVersion = engine.ObjectTypeListsVersion;
+        }
+        if (!templatesOf.TryGetValue(p.String, out var list))
+            templatesOf[p.String] = list = TemplatesFrom(TypesFrom(p));
+        return list;
+    }
+
     static bool Cmp(int value, ScriptParam comparison, int against) => ScriptEngine.Compare(value, (Comparison)comparison.Int, against);
 
     /// <summary>The player's team members (the original iterates the player's teams).</summary>
     static IEnumerable<GameObject> MembersOf(Player player) => player.Teams.SelectMany(t => t.AllMembers);
 
     /// <summary>The original's countObjectsByThingTemplate: under-construction objects never count.</summary>
-    static int CountByTemplates(Player player, List<ObjectTemplate> templates, bool ignoreDead) =>
-        MembersOf(player).Count(o => templates.Any(t => o.Template.IsEquivalentTo(t)) && !(ignoreDead && o.IsEffectivelyDead) && !o.IsUnderConstruction);
+    static int CountByTemplates(Player player, List<ObjectTemplate> templates, bool ignoreDead)
+    {
+        if (templates.Count == 1)
+        {
+            var only = templates[0];
+            return MembersOf(player).Count(o => o.Template.IsEquivalentTo(only) && !(ignoreDead && o.IsEffectivelyDead) && !o.IsUnderConstruction);
+        }
+        // (IsEquivalentTo against each template, by name sets: an object is one of them, a reskin of one, or the
+        // original of a reskin among them.)
+        var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var namesAndOriginals = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var t in templates)
+        {
+            names.Add(t.Name);
+            namesAndOriginals.Add(t.Name);
+            if (t.ReskinOf.Length > 0)
+                namesAndOriginals.Add(t.ReskinOf);
+        }
+        return MembersOf(player).Count(o => (namesAndOriginals.Contains(o.Template.Name) || o.Template.ReskinOf.Length > 0 && names.Contains(o.Template.ReskinOf))
+            && !(ignoreDead && o.IsEffectivelyDead) && !o.IsUnderConstruction);
+    }
 
     static bool HasAnyObjects(Player p) => p.Teams.Any(t => t.HasAnyObjects());
     static bool HasAnyBuildFacility(Player p) => p.Teams.Any(t => t.HasAnyBuildFacility());
@@ -114,7 +150,7 @@ public sealed class ScriptConditions
         handlers["TEAM_ATTACKED_BY_PLAYER"] = c => TeamFrom(c[0]) is { } t && t.AllMembers.Any(o =>
             o.Body?.LastDamage is { } d && game.FindObject(d.SourceId) is { } attacker && attacker.Owner == PlayerFrom(c[1]));
         handlers["BUILT_BY_PLAYER"] = c => PlayerFrom(c[1]) is { } p && game.Templates.Find(c[0].String) != null
-            && TemplatesFrom(TypesFrom(c[0])) is { Count: > 0 } ts && CountByTemplates(p, ts, false) != 0;
+            && TemplatesOf(c[0]) is { Count: > 0 } ts && CountByTemplates(p, ts, false) != 0;
         handlers["NAMED_CREATED"] = c => UnitFrom(c[0]) != null;
         handlers["TEAM_CREATED"] = c => TeamFrom(c[0]) is { IsCreated: true };
         handlers["UNIT_HEALTH"] = c =>
@@ -171,7 +207,7 @@ public sealed class ScriptConditions
         handlers["MULTIPLAYER_PLAYER_DEFEAT"] = c => game.Victory.IsLocalDefeat && !game.Victory.IsLocalAlliedDefeat;
         handlers["CAMERA_MOVEMENT_FINISHED"] = c => game.IsCameraMovementFinished?.Invoke() ?? true;
         handlers["PLAYER_HAS_OBJECT_COMPARISON"] = c => PlayerFrom(c[0]) is { } p
-            && Cmp(TemplatesFrom(TypesFrom(c[3])) is { Count: > 0 } ts ? CountByTemplates(p, ts, false) : 0, c[1], c[2].Int);
+            && Cmp(TemplatesOf(c[3]) is { Count: > 0 } ts ? CountByTemplates(p, ts, false) : 0, c[1], c[2].Int);
         handlers["PLAYER_DESTROYED_N_BUILDINGS_PLAYER"] = c => false;
         handlers["UNIT_EMPTIED"] = UnitHasEmptied;
         handlers["PLAYER_POWER_COMPARE_PERCENT"] = c => PlayerFrom(c[0]) is { } p
@@ -463,7 +499,7 @@ public sealed class ScriptConditions
     {
         if (PlayerFrom(c[0]) is not { } p)
             return false;
-        var templates = TemplatesFrom(TypesFrom(c[1]));
+        var templates = TemplatesOf(c[1]);
         if (templates.Count == 0)
             return false;
         int sum = CountByTemplates(p, templates, true);

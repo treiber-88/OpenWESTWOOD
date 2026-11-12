@@ -27,7 +27,16 @@ public static class DuneShellBattle
     /// <summary>Sets the battle up (and plays it ahead), with the art its houses need read too. Null if the map can't be read.</summary>
     public static (GameLogic Game, MapFile Map)? Create(GameContent content, int seed)
     {
-        var battle = Create(content.Rules, content.FileSystem, content.Models, seed, game => ArtPreloader.PreloadFor(game, content, MapName(content.Rules)));
+        // The houses' art is read alongside (each game's on its own thread) while the battle is made and played ahead.
+        var sides = RuleValue.Words(content.Rules.Section("GameData").GetString("OpenWestwoodShellHouses"))
+            .Select(f => f.StartsWith("Faction", StringComparison.OrdinalIgnoreCase) ? f["Faction".Length..] : f).Distinct().ToList();
+        var total = System.Diagnostics.Stopwatch.StartNew();
+        var art = ArtPreloader.PreloadInParallel(sides, content, MapName(content.Rules));
+        var battle = Create(content.Rules, content.FileSystem, content.Models, seed);
+        art.Wait();
+        if (GameProfiler.Enabled) Console.WriteLine($"[shell] battle and art ready in {total.Elapsed.TotalSeconds:F1}s");
+        if (battle is { } made)
+            ArtPreloader.PreloadFor(made.Game, content, MapName(content.Rules));
         return battle;
     }
 
@@ -65,6 +74,7 @@ public static class DuneShellBattle
             return null;
         var sw = System.Diagnostics.Stopwatch.StartNew();
         var map = TiberianDawn.TdMaps.Read(files, mapName);
+        if (GameProfiler.Enabled) Console.WriteLine($"[shell] map read in {sw.Elapsed.TotalSeconds:F1}s");
         int starts = map.Objects.Count(o => o.IsWaypoint && (o.Get("waypointName") ?? "").EndsWith("_Start"));
         var houses = RuleValue.Words(rules.Section("GameData").GetString("OpenWestwoodShellHouses")).ToList();
         if (houses.Count == 0)
@@ -76,6 +86,7 @@ public static class DuneShellBattle
         var game = GameSetup.FromMap(map, rules, seed: (ulong)seed, slots, startingCash: (int)Number(rules, "OpenWestwoodShellCash", 20000f),
             models: models, readFile: p => files.Exists(p) ? files.ReadAllBytes(p) : null);
         game.IsShellGame = true;
+        if (GameProfiler.Enabled) Console.WriteLine($"[shell] game made in {sw.Elapsed.TotalSeconds:F1}s");
         // No shroud or fog for anyone: the observer sees the whole map, and the houses find each other.
         GameSetup.ApplyVisibility(game, exploredMap: true, noFogOfWar: true);
         // The houses attack early and often (a skirmish AI waits five minutes, then every three).
@@ -88,6 +99,10 @@ public static class DuneShellBattle
                 ai.MinimumWave = 4;
                 ai.WaveGrowth = 0;
             }
+        // ... and build quickly, so armies are out and fighting at each other's bases soon after the menus open.
+        foreach (var player in game.Players.Active)
+            if (player.AI != null)
+                player.BuildSpeed = Number(rules, "OpenWestwoodShellBuildSpeed", 1f);
         beforePreroll?.Invoke(game);
         if (GameProfiler.Enabled) Console.WriteLine($"[shell] set up in {sw.Elapsed.TotalSeconds:F1}s");
         int preroll = (int)(Number(rules, "OpenWestwoodShellPreroll", 150f) * LogicTime.FramesPerSecond);

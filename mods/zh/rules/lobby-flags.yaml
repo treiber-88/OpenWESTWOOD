@@ -1,0 +1,76 @@
+# OpenWESTWOOD: each faction's flag or emblem, shown by its name in the skirmish lobby's army lists (LobbyFlag, an image
+# name). Zero Hour's own factions use their SideIconImage. All from the original games' files:
+#   Red Alert 2: the countries' flags (RA2PCX: the lobby pictures USAI.PCX ...); Red Alert: the Allied and Soviet
+#   radar emblems (RASHAPE:NATORADR / USSRRADR); Tiberian Dawn: the score screen's GDI eagle and Nod scorpion (TDLOGO);
+#   Tiberian Sun: the sidebar radar's emblems (TSEMBLEM); Dune 2000: the sidebar's house insignia (D2KCHROME);
+#   Emperor: the houses' logos (EMCAMEO); Kane's Wrath: the factions' and sub-factions' logos (KWCAMEO).
+# ("#u0,v0,u1,v1" after a name takes part of the picture: the logo from the middle of a panel or a radar frame.)
+PlayerTemplates:
+  FactionRA2British:
+    LobbyFlag: "RA2PCX:GBRI"
+  FactionRA2French:
+    LobbyFlag: "RA2PCX:FRAI"
+  FactionRA2Germans:
+    LobbyFlag: "RA2PCX:GERI"
+  FactionRA2Americans:
+    LobbyFlag: "RA2PCX:USAI"
+  FactionRA2Alliance:
+    LobbyFlag: "RA2PCX:JAPI"
+  FactionRA2Russians:
+    LobbyFlag: "RA2PCX:RUSI"
+  FactionRA2Africans:
+    LobbyFlag: "RA2PCX:DJBI"
+  FactionRA2Confederation:
+    LobbyFlag: "RA2PCX:LATI"
+  FactionRA2Arabs:
+    LobbyFlag: "RA2PCX:ARBI"
+  FactionRA2YuriCountry:
+    LobbyFlag: "RA2PCX:YRII"
+  FactionRAEngland:
+    LobbyFlag: "RASHAPE:NATORADR:0#0.08,0.08,0.92,0.92"
+  FactionRAFrance:
+    LobbyFlag: "RASHAPE:NATORADR:0#0.08,0.08,0.92,0.92"
+  FactionRAGermany:
+    LobbyFlag: "RASHAPE:NATORADR:0#0.08,0.08,0.92,0.92"
+  FactionRARussia:
+    LobbyFlag: "RASHAPE:USSRRADR:0#0.08,0.08,0.92,0.92"
+  FactionRAUkraine:
+    LobbyFlag: "RASHAPE:USSRRADR:0#0.08,0.08,0.92,0.92"
+  FactionTDGDI:
+    LobbyFlag: "TDLOGO:0"
+  FactionTDNod:
+    LobbyFlag: "TDLOGO:1"
+  FactionTSGDI:
+    LobbyFlag: "TSEMBLEM:SIDEC01"
+  FactionTSNod:
+    LobbyFlag: "TSEMBLEM:SIDEC02"
+  FactionD2KAtreides:
+    LobbyFlag: "D2KCHROME:227,26,100,100"
+  FactionD2KOrdos:
+    LobbyFlag: "D2KCHROME:328,26,100,100"
+  FactionD2KHarkonnen:
+    LobbyFlag: "D2KCHROME:227,127,100,90"
+  FactionEMAtreides:
+    LobbyFlag: "EMCAMEO:ATlogo.tga"
+  FactionEMHarkonnen:
+    LobbyFlag: "EMCAMEO:HKlogo.tga"
+  FactionEMOrdos:
+    LobbyFlag: "EMCAMEO:ORlogo.tga"
+  FactionKWGDI:
+    LobbyFlag: "KWCAMEO:GDILogo#0.3,0.06,0.7,0.94"
+  FactionKWSteelTalons:
+    LobbyFlag: "KWCAMEO:STLogo#0.3,0.06,0.7,0.94"
+  FactionKWZOCOM:
+    LobbyFlag: "KWCAMEO:ZocomLogo#0.3,0.06,0.7,0.94"
+  FactionKWNod:
+    LobbyFlag: "KWCAMEO:NodLogo#0.3,0.06,0.7,0.94"
+  FactionKWBlackHand:
+    LobbyFlag: "KWCAMEO:BHLogo#0.3,0.06,0.7,0.94"
+  FactionKWMarkedOfKane:
+    LobbyFlag: "KWCAMEO:MKLogo#0.3,0.06,0.7,0.94"
+  FactionKWScrin:
+    LobbyFlag: "KWCAMEO:AlienLogo#0.3,0.06,0.7,0.94"
+  FactionKWReaper17:
+    LobbyFlag: "KWCAMEO:17Logo#0.3,0.06,0.7,0.94"
+  FactionKWTraveler59:
+    LobbyFlag: "KWCAMEO:59Logo#0.3,0.06,0.7,0.94"

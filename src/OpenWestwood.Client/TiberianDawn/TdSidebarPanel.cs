@@ -59,10 +59,40 @@ public sealed class TdSidebarPanel
     };
 
     /// <summary>One cameo: what it makes (an object, or a player upgrade) and the factory that makes it.</summary>
-    public sealed record Item(ObjectTemplate? Template, GameObject Factory, ProductionUpdate Production, string? Upgrade = null, string UpgradeImage = "", string UpgradeLabel = "")
+    public sealed record Item(ObjectTemplate? Template, GameObject Factory, ProductionUpdate Production, string? Upgrade = null, string UpgradeImage = "", string UpgradeLabel = "",
+        Logic.Templates.CommandButton? Power = null)
     {
-        public string Image => Template?.ButtonImage ?? UpgradeImage;
+        public string Image => Template?.ButtonImage ?? Power?.ButtonImage ?? UpgradeImage;
     }
+
+    // ---- The game's own sidebar (OpenWESTWOOD: SidebarSkin, from the rules' Sidebars) ----
+
+    readonly SidebarSkin? skin;
+    float scale = 1;
+
+    /// <summary>Draws the mini-map into a rectangle (the radar's own, from the game screen).</summary>
+    public Action<SpriteBatch, Rect>? RadarDrawer { get; set; }
+    /// <summary>Whether the player has a working radar now.</summary>
+    public Func<bool>? HasRadar { get; set; }
+    /// <summary>The player's powers (superweapons and the like): their buttons and buildings.</summary>
+    public Func<IEnumerable<(Logic.Templates.CommandButton Button, GameObject Source)>>? Powers { get; set; }
+    /// <summary>A power's charge (0..1), null if it doesn't charge.</summary>
+    public Func<Logic.Templates.CommandButton, GameObject, float?>? PowerCharge { get; set; }
+    /// <summary>A power's cameo was clicked.</summary>
+    public Action<Logic.Templates.CommandButton, GameObject>? UsePower { get; set; }
+
+    /// <summary>The sidebar's Repair / Sell buttons: the next click on one of the player's buildings repairs or sells it.</summary>
+    public enum ClickMode { None, Repair, Sell }
+    public ClickMode Mode { get; set; }
+
+    /// <summary>Whether this is the game's own sidebar (it takes the Zero Hour control bar's place).</summary>
+    public bool HasSkin => skin != null;
+
+    Rect P(float x, float y, float w, float h) => new(Area.X + x * scale, Area.Y + y * scale, w * scale, h * scale);
+
+    /// <summary>Where the mini-map is drawn on the skin's radar (null without one).</summary>
+    public Rect? RadarMapRect => skin?.Radar is { } r
+        ? P(r.X + skin.RadarInset.X, r.Y + skin.RadarInset.Y, r.Z - 2 * skin.RadarInset.X, r.W - 2 * skin.RadarInset.Y) : null;
 
     int CostOf(Item item) => item.Template != null ? game.Costs.BuildCost(player, item.Template)
         : Core.Rules.RuleValue.Int(game.Catalog.Upgrade(item.Upgrade!)?.GetString("BuildCost") ?? "0");
@@ -73,6 +103,7 @@ public sealed class TdSidebarPanel
         this.player = player;
         this.ui = ui;
         theme = ThemeFor(player.Side);
+        skin = SidebarSkin.For(game.Rules, player.Side);
     }
 
     /// <summary>Whether this player's faction is a Tiberian Dawn one.</summary>
@@ -81,17 +112,31 @@ public sealed class TdSidebarPanel
 
     public void Layout(int width, int height)
     {
-        float scale = height / 720f;
+        if (skin != null)
+        {
+            // The game's own sidebar, to the screen's height at its right edge.
+            scale = height / skin.Height;
+            Area = new Rect(width - skin.Width * scale, 0, skin.Width * scale, height);
+            return;
+        }
+        float uiScale = height / 720f;
         float w = CameoW * 2 + Gap * 3;
         // (Down to just above the control bar's power bar: the room under the radar's height was going unused.)
-        float top = 8 * scale, bottom = height - 150 * scale;
+        float top = 8 * uiScale, bottom = height - 150 * uiScale;
         Area = new Rect(width - w - 4, top, w, Math.Max(CameoH + Gap * 2, bottom - top));
     }
 
     public bool Contains(Vector2 point) =>
         point.X >= Area.X && point.X < Area.X + Area.Width && point.Y >= Area.Y && point.Y < Area.Y + Area.Height;
 
-    int VisibleRows => Math.Max(1, (int)((Area.Height - theme.Header - Gap * 2 - 12) / (CameoH + Gap)));
+    int VisibleRows => skin != null ? SkinRows(skin) : Math.Max(1, (int)((Area.Height - theme.Header - Gap * 2 - 12) / (CameoH + Gap)));
+
+    /// <summary>A skin's rows of cameos: fixed, or (repeated row pieces) as many as fit the screen's height.</summary>
+    int SkinRows(SidebarSkin s) => s.RowPiece != null && s.RowHeight > 0
+        ? Math.Max(1, (int)((Area.Height / scale - s.ColumnY - s.BottomHeight) / s.RowHeight)) : s.Rows;
+
+    /// <summary>Where a skin's bottom piece goes (under the last row).</summary>
+    float SkinBottomY(SidebarSkin s) => s.ColumnY + SkinRows(s) * (s.RowPiece != null ? s.RowHeight : s.Cameo.Y);
 
     // ---- What can be built ----
 
@@ -116,6 +161,9 @@ public sealed class TdSidebarPanel
             }
         }
         var list = items.Values.ToList();
+        // (The game's own sidebar: the powers first in the structures strip, as Westwood's special weapon cameos.)
+        if (column == 0 && skin != null && Powers != null)
+            list.InsertRange(0, Powers().Select(p => new Item(null, p.Source, null!, Power: p.Button)));
         // Upgrades (Dune 2000's factory upgrades) go in the structures strip, as in Dune 2000, not at the bottom of
         // the long units list, where they were out of sight (and the units they unlock never appeared).
         if (column == 0)
@@ -150,8 +198,68 @@ public sealed class TdSidebarPanel
         return null;
     }
 
-    Rect CameoRect(int column, int row) =>
-        new(Area.X + Gap + column * (CameoW + Gap), Area.Y + theme.Header + Gap + 6 + row * (CameoH + Gap), CameoW, CameoH);
+    Rect CameoRect(int column, int row) => skin != null
+        ? P(skin.Columns[Math.Min(column, skin.Columns.Length - 1)] + skin.StripX,
+            skin.ColumnY + skin.CameoY + row * (skin.RowPiece != null ? skin.RowHeight : skin.Cameo.Y), skin.Cameo.X, skin.Cameo.Y)
+        : new(Area.X + Gap + column * (CameoW + Gap), Area.Y + theme.Header + Gap + 6 + row * (CameoH + Gap), CameoW, CameoH);
+
+    /// <summary>A skin's button (image frame 0) at a spot, as a screen rectangle; null if the skin hasn't it.</summary>
+    /// <summary>A button's picture in a state (0 up, 1 down/on): "a|b" names each state's picture; otherwise the shape's
+    /// frame of that number ("image:frame").</summary>
+    static string StateImage(string image, int state) =>
+        image.Contains('|') ? image.Split('|')[Math.Min(state, image.Split('|').Length - 1)] : $"{image}:{state}";
+
+    Rect? ButtonRect(string? image, Vector2 at, float columnX = 0, float columnY = 0)
+    {
+        if (image == null || ui.Images.Find(StateImage(image, 0)) is not { } found)
+            return null;
+        return P(columnX + at.X, columnY + at.Y, found.PixelWidth, found.PixelHeight);
+    }
+
+    bool SkinButtonClick(Vector2 point)
+    {
+        if (skin == null)
+            return false;
+        if (skin.ScrollShared)
+        {
+            float bottom = SkinBottomY(skin);
+            int step = 0;
+            if (ButtonRect(skin.ScrollUp, skin.ScrollUpAt, 0, bottom) is { } sharedUp && sharedUp.Contains(point))
+                step = -1;
+            else if (ButtonRect(skin.ScrollDown, skin.ScrollDownAt, 0, bottom) is { } sharedDown && sharedDown.Contains(point))
+                step = 1;
+            if (step != 0)
+            {
+                for (int c = 0; c < 2; c++)
+                    scroll[c] = Math.Clamp(scroll[c] + step, 0, Math.Max(0, Column(c).Count - VisibleRows));
+                return true;
+            }
+        }
+        else for (int column = 0; column < Math.Min(2, skin.Columns.Length); column++)
+        {
+            if (ButtonRect(skin.ScrollUp, skin.ScrollUpAt, skin.Columns[column], skin.ColumnY) is { } up && up.Contains(point))
+            {
+                scroll[column] = Math.Max(0, scroll[column] - 1);
+                return true;
+            }
+            if (ButtonRect(skin.ScrollDown, skin.ScrollDownAt, skin.Columns[column], skin.ColumnY) is { } down && down.Contains(point))
+            {
+                scroll[column] = Math.Min(Math.Max(0, Column(column).Count - VisibleRows), scroll[column] + 1);
+                return true;
+            }
+        }
+        if (ButtonRect(skin.Repair, skin.RepairAt) is { } repair && repair.Contains(point))
+        {
+            Mode = Mode == ClickMode.Repair ? ClickMode.None : ClickMode.Repair;
+            return true;
+        }
+        if (ButtonRect(skin.Sell, skin.SellAt) is { } sell && sell.Contains(point))
+        {
+            Mode = Mode == ClickMode.Sell ? ClickMode.None : ClickMode.Sell;
+            return true;
+        }
+        return ButtonRect(skin.Map, skin.MapAt) is { } map && map.Contains(point);
+    }
 
     // ---- Input ----
 
@@ -162,9 +270,17 @@ public sealed class TdSidebarPanel
     public (ObjectTemplate Template, GameObject Factory, uint EntryId)? Click(Vector2 point, bool right, out string? message)
     {
         message = null;
+        if (!right && SkinButtonClick(point))
+            return null;
         if (ItemAt(point) is not { } hit)
             return null;
         var (column, item) = hit;
+        if (item.Power != null)
+        {
+            if (!right && (PowerCharge?.Invoke(item.Power, item.Factory) ?? 1f) >= 1f)
+                UsePower?.Invoke(item.Power, item.Factory);
+            return null;
+        }
         var entries = Entries(item, column).ToList();
         if (right)
         {
@@ -192,13 +308,9 @@ public sealed class TdSidebarPanel
         {
             if (entries.FirstOrDefault(e => e.Entry.ReadyToPlace) is { Entry: { } ready } done)
                 return (item.Template!, done.Factory, ready.Id);
-            // The yard makes one structure at a time.
-            if (Factories(true).All(f => f.FindModule<ProductionUpdate>()!.Queue.Count > 0))
-            {
-                message = "Unable to comply, building in progress.";
-                return null;
-            }
-            var yard = Factories(true).First(f => f.FindModule<ProductionUpdate>()!.Queue.Count == 0);
+            // OpenWESTWOOD (the user's choice): structures queue up, at the yard with the fewest on order; each is built in
+            // turn and waits to be placed. (The original made one at a time.)
+            var yard = Factories(true).OrderBy(f => f.FindModule<ProductionUpdate>()!.Queue.Count(e => e.Unit != null)).First();
             Produce(yard, item.Template!, out message);
             return null;
         }
@@ -227,12 +339,18 @@ public sealed class TdSidebarPanel
 
     /// <summary>The cameo's name under the mouse (for a tooltip), if any.</summary>
     public string? TooltipAt(Vector2 point) => ItemAt(point) is { } hit
-        ? $"{(hit.Item.Template != null ? ui.Strings.Get(hit.Item.Template.DisplayName) : hit.Item.UpgradeLabel)}  ${CostOf(hit.Item)}" : null;
+        ? hit.Item.Power != null ? ui.Strings.Get(hit.Item.Power.TextLabel)
+        : $"{(hit.Item.Template != null ? ui.Strings.Get(hit.Item.Template.DisplayName) : hit.Item.UpgradeLabel)}  ${CostOf(hit.Item)}" : null;
 
     // ---- Drawing ----
 
     public void Draw(SpriteBatch batch)
     {
+        if (skin != null)
+        {
+            DrawSkin(batch, skin);
+            return;
+        }
         batch.FillRect(Area, theme.Back);
         // The house's backdrop (Dune 2000: the sidebar's icon rows), its header and frame.
         if (theme.Backdrop != null)
@@ -294,6 +412,137 @@ public sealed class TdSidebarPanel
             if (list.Count - scroll[column] > VisibleRows)
                 ScrollMark(batch, theme.Down, new Rect(cx - 8, Area.Y + Area.Height - 10, 16, 8), up: false);
         }
+    }
+
+    void DrawImage(SpriteBatch batch, string? name, float x, float y, Vector4? tint = null)
+    {
+        if (name != null && ui.Images.Find(name) is { } image)
+            ui.Images.Draw(batch, image, P(x, y, image.PixelWidth, image.PixelHeight), tint);
+    }
+
+    /// <summary>The game's own sidebar: its pieces, radar, credits, power gauge, strips, cameos and buttons.</summary>
+    void DrawSkin(SpriteBatch batch, SidebarSkin s)
+    {
+        foreach (var piece in s.Pieces)
+            DrawImage(batch, piece.Image, piece.X, piece.Y);
+        // Repeated rows down to the bottom piece (Tiberian Sun, Red Alert 2), and under it whatever is left (the bottom
+        // piece's last line stretched, so the screen's edge shows no gap).
+        if (s.RowPiece != null && s.RowHeight > 0)
+        {
+            for (int row = 0; row < SkinRows(s); row++)
+                DrawImage(batch, s.RowPiece, 0, s.ColumnY + row * s.RowHeight);
+            float bottom = SkinBottomY(s);
+            if (s.BottomPiece != null && ui.Images.Find(s.BottomPiece) is { } end)
+            {
+                ui.Images.Draw(batch, end, P(0, bottom, end.PixelWidth, end.PixelHeight));
+                float below = Area.Height / scale - bottom - end.PixelHeight;
+                if (below > 0)
+                    batch.FillRect(P(0, bottom + end.PixelHeight, s.Width, below), new Vector4(0, 0, 0, 1));
+            }
+        }
+        if (s.Radar is { } radar)
+        {
+            if (HasRadar?.Invoke() == true && RadarDrawer != null && RadarMapRect is { } map)
+            {
+                batch.FillRect(map, new Vector4(0, 0, 0, 1));
+                RadarDrawer(batch, map);
+            }
+            else if (s.RadarOff != null && ui.Images.Find(s.RadarOff) is { } emblem)
+            {
+                // The side's emblem, in the middle of the radar (Dune 2000's insignia are smaller than its radar).
+                float ex = radar.X + Math.Max(0, (radar.Z - emblem.PixelWidth) / 2), ey = radar.Y + Math.Max(0, (radar.W - emblem.PixelHeight) / 2);
+                ui.Images.Draw(batch, emblem, P(ex, ey, Math.Min(emblem.PixelWidth, radar.Z), Math.Min(emblem.PixelHeight, radar.W)));
+            }
+        }
+        if (s.Credits is { } credits)
+        {
+            var creditFont = ui.Fonts.Get("Arial", Math.Max(8, (int)(10 * scale)), bold: true);
+            string money = player.Money.Amount.ToString();
+            float tw = creditFont.Measure(money);
+            creditFont.DrawWithShadow(batch, money, new Vector2(MathF.Round(Area.X + credits.X * scale - tw / 2), MathF.Round(Area.Y + credits.Y * scale)), s.CreditsColor, new Vector4(0, 0, 0, 1));
+        }
+        if (s.PowerBar is { } bar)
+        {
+            // The level made (green; yellow when nearly all used, red when short) and the drain's mark, out of a little
+            // more than the larger of the two.
+            float made = player.Energy.Production, used = player.Energy.Consumption;
+            float top = Math.Max(Math.Max(made, used), 100) * 1.1f;
+            float madeH = bar.W * made / top, usedH = bar.W * used / top;
+            var color = made <= 0 ? new Vector4(0.8f, 0.1f, 0.1f, 1) : used > made ? new Vector4(0.9f, 0.15f, 0.1f, 1)
+                : used > made * 0.8f ? new Vector4(0.95f, 0.8f, 0.1f, 1) : new Vector4(0.2f, 0.85f, 0.2f, 1);
+            batch.FillRect(P(bar.X, bar.Y + bar.W - madeH, bar.Z, madeH), color);
+            if (s.PowerMark != null && ui.Images.Find(s.PowerMark) is { } mark)
+                ui.Images.Draw(batch, mark, P(bar.X - 2, bar.Y + bar.W - usedH - mark.PixelHeight / 2, mark.PixelWidth, mark.PixelHeight));
+        }
+        var font = ui.Fonts.Get("Arial", Math.Max(8, (int)(9 * scale)), bold: true);
+        for (int column = 0; column < Math.Min(2, s.Columns.Length); column++)
+        {
+            float cx = s.Columns[column];
+            if (s.Strip != null)
+                DrawImage(batch, s.Strip.Replace("{column}", column.ToString()), cx + s.StripX, s.ColumnY);
+            var list = Column(column);
+            scroll[column] = Math.Clamp(scroll[column], 0, Math.Max(0, list.Count - VisibleRows));
+            for (int row = 0; row < VisibleRows; row++)
+            {
+                int index = row + scroll[column];
+                if (index >= list.Count)
+                    break;
+                var item = list[index];
+                var r = CameoRect(column, row);
+                if (item.Power != null)
+                {
+                    float charge = PowerCharge?.Invoke(item.Power, item.Factory) ?? 1f;
+                    ui.Images.Draw(batch, item.Image, r);
+                    if (charge < 1f)
+                        DrawClock(batch, s, r, charge);
+                    else
+                        Label(batch, font, "READY", r);
+                    continue;
+                }
+                bool affordable = player.Money.Amount >= CostOf(item);
+                ui.Images.Draw(batch, item.Image, r, affordable ? Vector4.One : new Vector4(0.6f, 0.6f, 0.6f, 1));
+                var entries = Entries(item, column).ToList();
+                if (entries.Count == 0)
+                    continue;
+                var first = entries[0].Entry;
+                if (first.ReadyToPlace)
+                    Label(batch, font, "READY", r);
+                else
+                    DrawClock(batch, s, r, Math.Clamp(first.Progress, 0, 1));
+                if (entries.Count > 1)
+                    font.DrawWithShadow(batch, entries.Count.ToString(), new Vector2(r.X + r.Width - 12 * scale, r.Y + 2), Vector4.One, new Vector4(0, 0, 0, 1));
+            }
+            if (!s.ScrollShared)
+            {
+                if (s.ScrollUp != null)
+                    DrawImage(batch, StateImage(s.ScrollUp, 0), cx + s.ScrollUpAt.X, s.ColumnY + s.ScrollUpAt.Y);
+                if (s.ScrollDown != null)
+                    DrawImage(batch, StateImage(s.ScrollDown, 0), cx + s.ScrollDownAt.X, s.ColumnY + s.ScrollDownAt.Y);
+            }
+        }
+        if (s.ScrollShared)
+        {
+            float bottom = SkinBottomY(s);
+            if (s.ScrollUp != null)
+                DrawImage(batch, StateImage(s.ScrollUp, 0), s.ScrollUpAt.X, bottom + s.ScrollUpAt.Y);
+            if (s.ScrollDown != null)
+                DrawImage(batch, StateImage(s.ScrollDown, 0), s.ScrollDownAt.X, bottom + s.ScrollDownAt.Y);
+        }
+        if (s.Repair != null)
+            DrawImage(batch, StateImage(s.Repair, Mode == ClickMode.Repair ? 1 : 0), s.RepairAt.X, s.RepairAt.Y);
+        if (s.Sell != null)
+            DrawImage(batch, StateImage(s.Sell, Mode == ClickMode.Sell ? 1 : 0), s.SellAt.X, s.SellAt.Y);
+        if (s.Map != null)
+            DrawImage(batch, StateImage(s.Map, 0), s.MapAt.X, s.MapAt.Y);
+    }
+
+    /// <summary>A cameo's build clock: the game's own (its clock frames, see-through) or the darkened part still to go.</summary>
+    void DrawClock(SpriteBatch batch, SidebarSkin s, Rect r, float progress)
+    {
+        if (s.Clock != null && s.ClockFrames > 0 && ui.Images.Find($"{s.Clock}:{1 + Math.Min(s.ClockFrames - 1, (int)(progress * s.ClockFrames))}") is { } clock)
+            ui.Images.Draw(batch, clock, r, new Vector4(1, 1, 1, 0.6f));
+        else
+            batch.FillRect(new Rect(r.X, r.Y + r.Height * progress, r.Width, r.Height * (1 - progress)), new Vector4(0, 0, 0, 0.55f));
     }
 
     void ScrollMark(SpriteBatch batch, string? image, Rect r, bool up)

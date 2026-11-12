@@ -7,6 +7,9 @@ namespace OpenWestwood.Client.Audio;
 /// <summary>
 /// Speech and music played as a stream: WAV speech is decoded whole into one buffer; MP3 music is
 /// decoded a little at a time into a queue of buffers, so long tracks never sit in memory decoded.
+/// The MP3 is opened and decoded on a worker thread, half a second ahead: opening a track (the decoder reads through
+/// the whole file) and decoding it on the game's thread stalled the game for a tenth of a second each time music
+/// started.
 /// </summary>
 public sealed unsafe class MusicStream
 {
@@ -14,20 +17,24 @@ public sealed unsafe class MusicStream
     const int SamplesPerBuffer = 44100 / 2 * 2; // about half a second of stereo
 
     readonly byte[] data;
-    NLayer.MpegFile? mp3;
+    readonly bool isMp3;
     PcmSound? wav;
     readonly uint[] buffers = new uint[BufferCount];
-    readonly float[] floatScratch = new float[SamplesPerBuffer];
-    readonly short[] shortScratch = new short[SamplesPerBuffer];
+    readonly Queue<uint> freeBuffers = new();
     bool endOfData;
     bool buffersCreated;
+
+    // The worker's side: the decoder (only touched by the one decoding task running at a time) and its format.
+    NLayer.MpegFile? mp3;
+    int channels = 2, sampleRate = 44100;
+    /// <summary>The next half second being decoded (null samples: the end of the track).</summary>
+    Task<short[]?>? decoding;
 
     MusicStream(byte[] data, bool isMp3)
     {
         this.data = data;
-        if (isMp3)
-            mp3 = new NLayer.MpegFile(new MemoryStream(data, writable: false));
-        else
+        this.isMp3 = isMp3;
+        if (!isMp3)
             wav = WavFile.Decode(data);
     }
 
@@ -37,7 +44,27 @@ public sealed unsafe class MusicStream
             return null;
         var bytes = files.ReadAllBytes(path);
         bool isMp3 = path.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase) || !(bytes.Length > 4 && bytes[0] == 'R' && bytes[1] == 'I');
-        return new MusicStream(bytes, isMp3);
+        var stream = new MusicStream(bytes, isMp3);
+        if (isMp3)
+            stream.StartDecoding();
+        return stream;
+    }
+
+    void StartDecoding() => decoding = Task.Run(DecodeNext);
+
+    short[]? DecodeNext()
+    {
+        mp3 ??= new NLayer.MpegFile(new MemoryStream(data, writable: false));
+        channels = mp3.Channels;
+        sampleRate = mp3.SampleRate;
+        var floats = new float[SamplesPerBuffer];
+        int read = mp3.ReadSamples(floats, 0, floats.Length);
+        if (read <= 0)
+            return null;
+        var samples = new short[read];
+        for (int i = 0; i < read; i++)
+            samples[i] = (short)Math.Clamp((int)(floats[i] * 32767f), short.MinValue, short.MaxValue);
+        return samples;
     }
 
     public void Start(AL al, uint source)
@@ -48,59 +75,68 @@ public sealed unsafe class MusicStream
                 buffers[i] = al.GenBuffer();
             buffersCreated = true;
         }
+        freeBuffers.Clear();
+        foreach (uint b in buffers)
+            freeBuffers.Enqueue(b);
         if (wav != null)
         {
             var format = wav.Channels == 2 ? BufferFormat.Stereo16 : BufferFormat.Mono16;
+            uint b = freeBuffers.Dequeue();
             fixed (short* p = wav.Samples)
-                al.BufferData(buffers[0], format, p, wav.Samples.Length * sizeof(short), wav.SampleRate);
-            uint b = buffers[0];
+                al.BufferData(b, format, p, wav.Samples.Length * sizeof(short), wav.SampleRate);
             al.SourceQueueBuffers(source, 1, &b);
             endOfData = true;
+            al.SourcePlay(source);
+            return;
         }
-        else
-        {
-            foreach (uint b in buffers)
-                if (!Fill(al, b))
-                    break;
-                else
-                {
-                    uint q = b;
-                    al.SourceQueueBuffers(source, 1, &q);
-                }
-        }
-        al.SourcePlay(source);
+        // (The first half second plays as soon as the worker has it; Pump queues it.)
+        Pump(al, source);
     }
 
-    bool Fill(AL al, uint buffer)
+    /// <summary>The next decoded half second, if the worker has it ready (and the worker set on the one after).</summary>
+    short[]? TakeDecoded()
     {
-        if (mp3 == null || endOfData)
-            return false;
-        int read = mp3.ReadSamples(floatScratch, 0, floatScratch.Length);
-        if (read <= 0)
+        if (endOfData || decoding == null || !decoding.IsCompleted)
+            return null;
+        short[]? samples;
+        try
         {
-            endOfData = true;
-            return false;
+            samples = decoding.Result;
         }
-        for (int i = 0; i < read; i++)
-            shortScratch[i] = (short)Math.Clamp((int)(floatScratch[i] * 32767f), short.MinValue, short.MaxValue);
-        var format = mp3.Channels == 2 ? BufferFormat.Stereo16 : BufferFormat.Mono16;
-        fixed (short* p = shortScratch)
-            al.BufferData(buffer, format, p, read * sizeof(short), mp3.SampleRate);
-        return true;
+        catch (AggregateException e)
+        {
+            Console.Error.WriteLine($"Music: {e.InnerException?.Message}");
+            samples = null;
+        }
+        if (samples == null)
+        {
+            decoding = null;
+            endOfData = true;
+            return null;
+        }
+        StartDecoding();
+        return samples;
     }
 
     /// <summary>Refills buffers the source has finished with; restarts the source if it ran dry.</summary>
     public void Pump(AL al, uint source)
     {
-        if (al == null || mp3 == null)
+        if (al == null || !isMp3)
             return;
         al.GetSourceProperty(source, GetSourceInteger.BuffersProcessed, out int processed);
         while (processed-- > 0)
         {
             uint b;
             al.SourceUnqueueBuffers(source, 1, &b);
-            if (Fill(al, b))
-                al.SourceQueueBuffers(source, 1, &b);
+            freeBuffers.Enqueue(b);
+        }
+        while (freeBuffers.Count > 0 && TakeDecoded() is { } samples)
+        {
+            uint b = freeBuffers.Dequeue();
+            var format = channels == 2 ? BufferFormat.Stereo16 : BufferFormat.Mono16;
+            fixed (short* p = samples)
+                al.BufferData(b, format, p, samples.Length * sizeof(short), sampleRate);
+            al.SourceQueueBuffers(source, 1, &b);
         }
         al.GetSourceProperty(source, GetSourceInteger.SourceState, out int state);
         al.GetSourceProperty(source, GetSourceInteger.BuffersQueued, out int queued);
@@ -129,9 +165,25 @@ public sealed unsafe class MusicStream
         al.SourceStop(source);
         al.SetSourceProperty(source, SourceInteger.Buffer, 0);
         endOfData = false;
-        if (mp3 != null)
-            mp3 = new NLayer.MpegFile(new MemoryStream(data, writable: false));
+        if (isMp3)
+        {
+            // (Let the worker finish its half second, then start the decoder again from the top.)
+            WaitForWorker();
+            mp3?.Dispose();
+            mp3 = null;
+            StartDecoding();
+        }
         Start(al, source);
+    }
+
+    void WaitForWorker()
+    {
+        try
+        {
+            decoding?.Wait();
+        }
+        catch (AggregateException) { }
+        decoding = null;
     }
 
     public void Dispose(AL al, uint source)
@@ -142,6 +194,8 @@ public sealed unsafe class MusicStream
             foreach (uint b in buffers)
                 al.DeleteBuffer(b);
         buffersCreated = false;
+        WaitForWorker();
         mp3?.Dispose();
+        mp3 = null;
     }
 }

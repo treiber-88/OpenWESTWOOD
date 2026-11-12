@@ -88,7 +88,35 @@ public sealed partial class TdSpriteRenderer : IDisposable
     float[] vertices = new float[FloatsPerVertex * 6 * 256];
 
     /// <summary>What the exported Draw module says the object is.</summary>
-    sealed record Info(string Kind, string Shape, object? Type, Vector3 ArtOffset);
+    sealed record Info(string Kind, string Shape, object? Type, Vector3 ArtOffset, HuskPart Husk = HuskPart.None);
+
+    /// <summary>A husk's part: its body (without the turret once that was blown off), or the blown-off turret alone.</summary>
+    enum HuskPart { None, Body, Turret }
+
+    // ---- Husks (OpenWESTWOOD: a Westwood vehicle's burnt-out wreck, its own art drawn dark; see WestwoodHuskDie) ----
+
+    static HuskPart IsHusk(Logic.Templates.ModuleDefinition draw) =>
+        draw.Settings.GetString("Husk") is var h && h.Equals("Turret", StringComparison.OrdinalIgnoreCase) ? HuskPart.Turret
+        : RuleValue.Bool(h) ? HuskPart.Body : HuskPart.None;
+
+    /// <summary>Whether this part of the object is drawn: a husk's turret only while it is on (or on the piece blown off).</summary>
+    static bool DrawsTurret(GameObject obj, HuskPart part) =>
+        part != HuskPart.Body || obj.FindModule<Logic.Modules.Die.WestwoodHusk>() is not { TurretGone: true };
+
+    /// <summary>When each husk's time ran out (logic frame): it fades away over two seconds from then.</summary>
+    readonly Dictionary<uint, int> huskFading = new();
+
+    /// <summary>A husk's colour: burnt dark, fading out once its time is up.</summary>
+    Vector4 HuskTint(GameObject obj, float opacity)
+    {
+        if (obj.IsEffectivelyDead)
+        {
+            if (!huskFading.TryGetValue(obj.Id, out int from))
+                huskFading[obj.Id] = from = obj.Game.Frame;
+            opacity *= Math.Clamp(1 - (obj.Game.Frame - from) / (2f * Logic.Core.LogicTime.FramesPerSecond), 0, 1);
+        }
+        return new Vector4(0.3f, 0.28f, 0.26f, opacity);
+    }
 
     public World.ShroudTexture? Shroud { get; set; }
 
@@ -147,6 +175,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
     {
         infos.Remove(obj);
         createdFrame.Remove(obj.Id);
+        huskFading.Remove(obj.Id);
     }
 
     Info? InfoFor(GameObject obj)
@@ -157,7 +186,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
         if (draw == null && obj.Template.ModulesOfType("Draw").FirstOrDefault(m => m.ClassName.Equals("D2KSpriteDraw", StringComparison.OrdinalIgnoreCase)) is { } d2kDraw)
         {
             var d2kOffset = obj.Template.Rules.GetString("TdArtOffset") is { Length: > 0 } od ? RuleValue.Coord(od) : Vector3.Zero;
-            info = new Info("D2K:" + d2kDraw.Settings.GetString("TdKind"), d2kDraw.Settings.GetString("Image"), d2kDraw.Settings.GetString("TdType"), d2kOffset with { Z = 0 });
+            info = new Info("D2K:" + d2kDraw.Settings.GetString("TdKind"), d2kDraw.Settings.GetString("Image"), d2kDraw.Settings.GetString("TdType"), d2kOffset with { Z = 0 }, IsHusk(d2kDraw));
             return infos[obj] = info;
         }
         if (draw == null && obj.Template.ModulesOfType("Draw").FirstOrDefault(m => m.ClassName.Equals("RASpriteDraw", StringComparison.OrdinalIgnoreCase)) is { } raDraw)
@@ -166,7 +195,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
             var raOffset = obj.Template.Rules.GetString("TdArtOffset") is { Length: > 0 } ro ? RuleValue.Coord(ro) : Vector3.Zero;
             string raKind = raDraw.Settings.GetString("TdKind");
             object? raType = raKind == "Tiberium" ? RuleValue.Int(raDraw.Settings.GetString("TdType")) : raTypes?.FromName(raDraw.Settings.GetString("TdType"));
-            info = new Info("RA:" + raKind, raDraw.Settings.GetString("Shape"), raType, raOffset with { Z = 0 });
+            info = new Info("RA:" + raKind, raDraw.Settings.GetString("Shape"), raType, raOffset with { Z = 0 }, IsHusk(raDraw));
             return infos[obj] = info;
         }
         if (draw != null && types != null)
@@ -184,7 +213,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
                 _ => null,
             };
             var offset = obj.Template.Rules.GetString("TdArtOffset") is { Length: > 0 } o ? RuleValue.Coord(o) : Vector3.Zero;
-            info = new Info(kind, draw.Settings.GetString("Shape"), type, offset with { Z = 0 });
+            info = new Info(kind, draw.Settings.GetString("Shape"), type, offset with { Z = 0 }, IsHusk(draw));
         }
         return infos[obj] = info;
     }
@@ -238,7 +267,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
             Firing = drawable.SecondsSinceFired < 0.3f,
             Harvesting = obj.AI is Logic.Modules.Supply.SupplyTruckAIUpdate { IsDocking: true } truck
                 && obj.Game.FindObject(truck.DockTargetId)?.FindModule<Logic.Modules.Supply.SupplyWarehouseDockUpdate>() != null,
-            Dying = obj.IsEffectivelyDead,
+            Dying = obj.IsEffectivelyDead && info.Husk == HuskPart.None,
             Death = TdSpriteState.DeathFor(obj.Body?.LastDamage?.DamageType),
             Altitude = (int)(Math.Max(0, obj.HeightAboveTerrain) / UnitsPerPixel),
             Ammo = 2,
@@ -314,6 +343,12 @@ public sealed partial class TdSpriteRenderer : IDisposable
         var anchor = obj.Position + info.ArtOffset;
         float distance = Vector3.DistanceSquared(camera.Position, anchor);
         float opacity = drawable.HiddenByStealth ? 0 : 1;
+        var tint = info.Husk != HuskPart.None ? HuskTint(obj, opacity) : new Vector4(1, 1, 1, opacity);
+        // A husk without its turret keeps the body (the first layer); the blown-off turret, the rest.
+        if (info.Husk == HuskPart.Turret && layers.Count > 1)
+            layers.RemoveAt(0);
+        else if (!DrawsTurret(obj, info.Husk) && layers.Count > 1)
+            layers.RemoveRange(1, layers.Count - 1);
         foreach (var layer in layers)
         {
             var shape = layer.File != null ? art.Shape(layer.File) : own;
@@ -329,7 +364,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
             bool ground = info.Type is int;
             var depthAt = ground ? anchor + Vector3.Normalize(anchor - camera.Position) * 40 : anchor;
             quads.Add((distance + (mode == 1 ? 1 : 0) + (ground ? 1e6f : 0), quads.Count, texture, center, depthAt, shape.Width * UnitsPerPixel / 2, shape.Height * UnitsPerPixel / 2,
-                new Vector4(1, 1, 1, opacity)));
+                mode == 1 ? new Vector4(1, 1, 1, tint.W) : tint));
         }
     }
 
@@ -492,6 +527,10 @@ public sealed partial class TdSpriteRenderer : IDisposable
         {
             var (seq, layerFacing, step) = d2kLayers[layerIndex];
             var extra = d2kOffsets.GetValueOrDefault(layerIndex);
+            // A husk's turret: drawn on its body until blown off, then only on the piece thrown clear.
+            bool isTurret = seq == Seq("turret");
+            if (info.Husk == HuskPart.Turret ? !isTurret : isTurret && !DrawsTurret(obj, info.Husk))
+                continue;
             if (d2k.SpriteFile(seq.File) is not { } file)
                 continue;
             int frameIndex = seq.FrameIndex(layerFacing, step);
@@ -505,7 +544,7 @@ public sealed partial class TdSpriteRenderer : IDisposable
             var center = anchor + right * (cx * D2kUnitsPerPixel) - up * (cy * D2kUnitsPerPixel);
             // Spice lies on the ground: everything stands on it.
             quads.Add((kind == "Spice" ? distance + 1e6f : distance, quads.Count, texture, center, anchor, frame.Width * D2kUnitsPerPixel / 2, frame.Height * D2kUnitsPerPixel / 2,
-                new Vector4(1, 1, 1, drawable.HiddenByStealth ? 0 : 1)));
+                info.Husk != HuskPart.None ? HuskTint(obj, drawable.HiddenByStealth ? 0 : 1) : new Vector4(1, 1, 1, drawable.HiddenByStealth ? 0 : 1)));
         }
     }
 

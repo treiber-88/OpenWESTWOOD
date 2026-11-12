@@ -34,12 +34,31 @@ public sealed class TemplateStore
     /// </summary>
     public bool IsBuildFacility(ObjectTemplate template)
     {
+        PrepareBuildFacilities();
+        return template.Is("COMMANDCENTER") || buildFacilities!.Contains(template.Name);
+    }
+
+    public void PrepareBuildFacilities()
+    {
         if (buildFacilities == null)
         {
             var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            // (Read straight from the rules, its own or its reskin parent's: making every game's templates to look took
+            // most of a second, a freeze the first time a computer player looked for its enemy's factories.)
             foreach (string name in ObjectNames)
             {
-                if (Find(name) is not { } t || !t.Rules.TryGet("Prerequisites", out var pre) || !pre.IsMapping || !pre.TryGet("Object", out var lines))
+                RuleNode? pre = null;
+                var own = rules.Get("Objects", name);
+                for (int depth = 0; own != null && depth < 16; depth++)
+                {
+                    if (own.TryGet("Prerequisites", out var p))
+                    {
+                        pre = p;
+                        break;
+                    }
+                    own = own.GetString("ReskinOf") is { Length: > 0 } parent ? rules.Get("Objects", parent) : null;
+                }
+                if (pre == null || !pre.IsMapping || !pre.TryGet("Object", out var lines))
                     continue;
                 foreach (var line in lines.AsList())
                     foreach (string w in RuleValue.Words(line.Value))
@@ -47,7 +66,6 @@ public sealed class TemplateStore
             }
             buildFacilities = set;
         }
-        return template.Is("COMMANDCENTER") || buildFacilities.Contains(template.Name);
     }
 
     public ObjectTemplate? Find(string name)

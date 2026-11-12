@@ -26,6 +26,56 @@ public static class LayoutAdditions
         else if (fileName.Equals("SkirmishGameOptionsMenu.wnd", StringComparison.OrdinalIgnoreCase)
             || fileName.Equals("LanGameOptionsMenu.wnd", StringComparison.OrdinalIgnoreCase))
             AddGameOptions(fileName, roots, text);
+        else if (fileName.Equals("OptionsMenu.wnd", StringComparison.OrdinalIgnoreCase))
+            AddViewOption(roots, text);
+    }
+
+    public const string WestwoodViewBox = "OptionsMenu.wnd:CheckBoxWestwoodView";
+
+    /// <summary>
+    /// The options popup: "Westwood view of TS/RA2 maps", a copy of its lowest check box, put under it (see
+    /// Shell/ViewPreferences). <see cref="WireViewOption"/> hooks it up.
+    /// </summary>
+    static void AddViewOption(List<WndWindow> roots, string text)
+    {
+        if (Find(roots, WestwoodViewBox) != null)
+            return;
+        var boxes = new List<WndWindow>();
+        void Collect(IEnumerable<WndWindow> windows)
+        {
+            foreach (var w in windows)
+            {
+                if (w.Type.Equals("CHECKBOX", StringComparison.OrdinalIgnoreCase) && !w.Status.Contains("HIDDEN"))
+                    boxes.Add(w);
+                Collect(w.Children);
+            }
+        }
+        Collect(roots);
+        if (boxes.Count == 0)
+            return;
+        // Zero Hour's: under Retaliation in the scrolling/controls panel, which has a free row; otherwise under the
+        // lowest box there is.
+        var lowest = boxes.FirstOrDefault(b => b.Name.Equals("OptionsMenu.wnd:Retaliation", StringComparison.OrdinalIgnoreCase))
+            ?? boxes.MaxBy(b => b.Y)!;
+        var parent = ParentOf(roots, lowest);
+        var copy = Find(WndFile.Parse(text), lowest.Name);
+        if (parent == null || copy == null)
+            return;
+        copy.Name = WestwoodViewBox;
+        copy.Text = "Westwood view of TS/RA2 maps";
+        copy.Tooltip = "";
+        copy.Y = lowest.Y + lowest.Height;
+        copy.Width = Math.Max(copy.Width, Math.Min(280, parent.X + parent.Width - copy.X - 4));
+        parent.Children.Add(copy);
+    }
+
+    /// <summary>Hooks up the options popup's view box (shell and in-game menus alike).</summary>
+    public static void WireViewOption(GuiLayout layout)
+    {
+        if (layout.Find<GuiCheckBox>(WestwoodViewBox) is not { } box)
+            return;
+        box.Checked = OpenWestwood.Client.Shell.ViewPreferences.WestwoodView;
+        box.Clicked += _ => OpenWestwood.Client.Shell.ViewPreferences.WestwoodView = box.Checked;
     }
 
     public const string ExploredMapBox = "CheckboxExploredMap", NoFogBox = "CheckboxNoFogOfWar", GameSpeedList = "ComboBoxGameSpeed";

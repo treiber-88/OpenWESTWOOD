@@ -14,6 +14,7 @@ public sealed class SageArtPackage : IPackage, IW3dProvider
     readonly Lazy<SageStream> stream;
     readonly HashSet<string> paths = new(PathUtil.Comparer);
     readonly Dictionary<string, string> textureOf = new(PathUtil.Comparer);
+    readonly Dictionary<string, string> onDemand = new(PathUtil.Comparer);
 
     public string Name { get; }
 
@@ -32,6 +33,18 @@ public sealed class SageArtPackage : IPackage, IW3dProvider
             string path = PathUtil.Normalize(SageW3d.TextureFolder + a.InstanceName + ".dds");
             paths.Add(path);
             textureOf[path] = a.InstanceName;
+        }
+        // On-demand textures (the interface's bigger pictures: the factions' logos...) keep their pixels in a .cdata file
+        // beside the stream ("data/<stream>/cdata/<type id>.<type hash>.<instance id>.<instance hash>.cdata").
+        var files = new HashSet<string>(archive.FilePaths, PathUtil.Comparer);
+        foreach (var a in manifest.Assets.Where(a => a.TypeName == "OnDemandTexture"))
+        {
+            string cdata = $"data/{streamName}/cdata/{a.TypeId:x8}.{a.TypeHash:x8}.{a.InstanceId:x8}.{a.InstanceHash:x8}.cdata";
+            if (!files.Contains(cdata))
+                continue;
+            string path = PathUtil.Normalize(SageW3d.TextureFolder + a.InstanceName + ".dds");
+            paths.Add(path);
+            onDemand[path] = cdata;
         }
         stream = new Lazy<SageStream>(() => binInArchive
             ? new SageStream(Read($"data/{streamName}.manifest"), (offset, count) => archive.ReadRange($"data/{streamName}.bin", offset, count),
@@ -58,6 +71,15 @@ public sealed class SageArtPackage : IPackage, IW3dProvider
         if (textureOf.TryGetValue(PathUtil.Normalize(path), out var name) && Stream.Find("Texture", name) is { } asset
             && SageW3d.TextureDds(Stream, asset) is { } dds)
             return new MemoryStream(dds, writable: false);
+        if (onDemand.TryGetValue(PathUtil.Normalize(path), out var cdata))
+        {
+            var data = Read(cdata);
+            if (data.Length > 1 && data[0] == 0x10 && data[1] == 0xFB)
+                data = SageManifest.Unpack(data);
+            // (A short header comes first: the picture is the DDS from its "DDS " on.)
+            int ddsAt = data.AsSpan(0, Math.Min(256, data.Length)).IndexOf("DDS "u8);
+            return new MemoryStream(data, Math.Max(0, ddsAt), data.Length - Math.Max(0, ddsAt), writable: false);
+        }
         throw new FileNotFoundException($"{path} is not in {Name}.");
     }
 
@@ -81,10 +103,11 @@ public sealed class SageArtPackage : IPackage, IW3dProvider
     /// </summary>
     public (string Texture, int Left, int Top, int Right, int Bottom, int Width, int Height)? PackedImage(string name)
     {
-        if (Stream.Find("PackedTextureImage", name) is not { } asset)
+        if ((Stream.Find("PackedTextureImage", name) ?? Stream.Find("OnDemandTextureImage", name)) is not { } asset)
             return null;
         var d = Stream.Data(asset).ToArray();
-        if (d.Length < 32 || Stream.Reference(asset, (int)BitConverter.ToUInt32(d, 4)) is not { TypeName: "Texture" } page)
+        // (An on-demand image, a faction's logo, has the same layout on its OnDemandTexture.)
+        if (d.Length < 32 || Stream.Reference(asset, (int)BitConverter.ToUInt32(d, 4)) is not { TypeName: "Texture" or "OnDemandTexture" } page)
             return null;
         int I(int at) => BitConverter.ToInt32(d, at);
         return (SageW3d.TextureFolder + page.InstanceName + ".dds", I(16), I(20), I(24), I(28), Math.Max(1, I(8)), Math.Max(1, I(12)));

@@ -75,6 +75,18 @@ public sealed partial class ScriptActions
 
     public void Execute(ScriptAction a)
     {
+        if (!GameProfiler.Enabled)
+        {
+            ExecuteUntimed(a);
+            return;
+        }
+        long t0 = System.Diagnostics.Stopwatch.GetTimestamp();
+        ExecuteUntimed(a);
+        GameProfiler.Add("script do " + a.Name, t0);
+    }
+
+    void ExecuteUntimed(ScriptAction a)
+    {
         switch (a.Name)
         {
             case "DEBUG_MESSAGE_BOX": engine.AppendDebugMessage(a[0].String, true); return;

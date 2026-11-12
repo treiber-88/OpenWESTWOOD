@@ -22,7 +22,9 @@ public sealed class Ra2Art
 
     public Ra2Ini Art { get; }
     public Ra2Ini Rules { get; }
-    public WestwoodPalette UnitPalette { get; }
+    /// <summary>The units' and buildings' palette: the theater's (UNITSNO.PAL on snow), else the temperate one.</summary>
+    public WestwoodPalette UnitPalette => Palette($"UNIT{TheaterOf(Theater).Extension}.PAL") ?? unitTemperate;
+    readonly WestwoodPalette unitTemperate;
     public WestwoodPalette AnimPalette { get; }
     public WestwoodPalette CameoPalette { get; }
     public Dictionary<string, string> Strings { get; }
@@ -84,7 +86,7 @@ public sealed class Ra2Art
             if (content.Files.Exists(f))
                 Rules.Read(System.Text.Encoding.Latin1.GetString(content.Files.ReadAllBytes(f)));
         WestwoodPalette Pal(params string[] names) => names.Where(content.Files.Exists).Select(n => new WestwoodPalette(content.Files.ReadAllBytes(n))).First();
-        UnitPalette = Pal("UNITTEM.PAL");
+        unitTemperate = Pal("UNITTEM.PAL");
         AnimPalette = Pal("ANIM.PAL", "UNITTEM.PAL");
         CameoPalette = Pal("CAMEO.PAL", "UNITTEM.PAL");
         Strings = csf.Length > 0 && content.Files.Exists(csf) ? CsfFile.Read(content.Files.ReadAllBytes(csf)) : new();
@@ -120,6 +122,16 @@ public sealed class Ra2Art
 
     /// <summary>The current theater's palette for its overlays and trees (TEMPERAT.PAL...).</summary>
     public WestwoodPalette TheaterPalette => Palette(TheaterOf(Theater).Palette) ?? UnitPalette;
+
+    /// <summary>
+    /// The theater's ground palette (ISOTEM.PAL...): Tiberian Sun's trees, and the buildings whose art says
+    /// TerrainPalette=true (the city blocks), are drawn in it.
+    /// </summary>
+    public WestwoodPalette IsoPalette => Palette(TheaterOf(Theater).IsoPalette) ?? UnitPalette;
+
+    /// <summary>A building's palette: the ground's for TerrainPalette=true, else the units'.</summary>
+    public WestwoodPalette BuildingPalette(string image) =>
+        Art.Get(image, "TerrainPalette").ToLowerInvariant() is "true" or "yes" or "1" ? IsoPalette : UnitPalette;
 
     /// <summary>A theater-specific shape (TREE01.TEM, TIB01.DES), else the plain one.</summary>
     public TsShape? TheaterShape(string name) => Shape($"{name}.{TheaterOf(Theater).Extension}") ?? Shape(name);
@@ -223,19 +235,26 @@ public sealed class Ra2Art
     /// from north as the facings of the other games' art), lit from above and the south-west, remapped to a team colour.
     /// </summary>
     /// <param name="pitch">Nose up (+) or down (-) in steps of <see cref="PitchStep"/> (a V3 rocket climbing or diving).</param>
-    public Image? VoxelImage(string image, int facing, int turretFacing, uint team, int pitch = 0)
+    /// <param name="parts">0: all of it; 1: the body alone; 2: the turret (and barrel) alone (a husk and its blown-off turret).</param>
+    public Image? VoxelImage(string image, int facing, int turretFacing, uint team, int pitch = 0, int parts = 0)
     {
-        var key = (image, facing | turretFacing << 8 | (pitch + 64) << 16, team);
+        var key = (image, facing | turretFacing << 8 | (pitch + 64) << 16 | parts << 24, team);
         if (voxelImages.TryGetValue(key, out var cached))
             return cached;
-        var parts = new List<(VoxelModel, HvaAnimation?, float Angle)>();
-        if (Voxel(image) is var (body, bodyHva))
-            parts.Add((body, bodyHva, facing));
-        if (Voxel(image + "TUR") is var (turret, turretHva))
-            parts.Add((turret, turretHva, turretFacing));
-        if (Voxel(image + "BARL") is var (barrel, barrelHva))
-            parts.Add((barrel, barrelHva, turretFacing));
-        Image? result = parts.Count == 0 ? null : Render(parts, team == 0xFFFFFFFF ? null : ((byte)(team >> 16), (byte)(team >> 8), (byte)team), pitch * PitchStep);
+        var drawn = new List<(VoxelModel, HvaAnimation?, float Angle)>();
+        if (parts != 2 && Voxel(image) is var (body, bodyHva))
+            drawn.Add((body, bodyHva, facing));
+        if (parts != 1)
+        {
+            if (Voxel(image + "TUR") is var (turret, turretHva))
+                drawn.Add((turret, turretHva, turretFacing));
+            if (Voxel(image + "BARL") is var (barrel, barrelHva))
+                drawn.Add((barrel, barrelHva, turretFacing));
+            // A building's voxel turret (TurretAnim=FLAKTUR) has its barrel beside it (FLAKBARL).
+            else if (image.EndsWith("TUR", StringComparison.OrdinalIgnoreCase) && Voxel(image[..^3] + "BARL") is var (gunBarrel, gunBarrelHva))
+                drawn.Add((gunBarrel, gunBarrelHva, turretFacing));
+        }
+        Image? result = drawn.Count == 0 ? null : Render(drawn, team == 0xFFFFFFFF ? null : ((byte)(team >> 16), (byte)(team >> 8), (byte)team), pitch * PitchStep);
         return voxelImages[key] = result;
     }
 

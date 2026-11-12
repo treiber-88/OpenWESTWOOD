@@ -167,6 +167,9 @@ public static class GameSetup
         game.Victory.CachePlayers();
         game.Shroud.Update();
         game.Players.NewMap();
+        // The list of factories, made now while the game loads rather than mid-game the first time a computer player
+        // looks at who still has one (a freeze of most of a tenth of a second).
+        game.Templates.PrepareBuildFacilities();
         return game;
     }
 
@@ -360,6 +363,14 @@ public static class GameSetup
         }
         else
             player.SetPlayerType(human: false, skirmish);
+        // (Every computer player's difficulty, also a Westwood faction's, which has no skirmish scripts: its TdFactionAI
+        // plays easier or harder by it.)
+        if (!isHuman && d.TryGetValue("skirmishDifficulty", out var slotDifficulty) && slotDifficulty is int sd)
+        {
+            player.Difficulty = (Difficulty)sd;
+            if (player.AI != null)
+                player.AI.AIDifficulty = (Difficulty)sd;
+        }
         player.MpStartIndex = d.TryGetValue("multiplayerStartIndex", out var start) && start is int si ? si : 0;
 
         if (skirmish && skirmishSides.FirstOrDefault(s => FactionSide(rules, s.Faction) == player.Side) is { } template)

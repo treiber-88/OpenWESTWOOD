@@ -123,7 +123,7 @@ public sealed class GameAudio
     public void Update()
     {
         var camera = world.Camera;
-        audio.SetCamera(camera.Target, camera.Position, camera.Yaw + MathF.PI / 2, game.Terrain.GroundHeight(camera.Target.X, camera.Target.Y));
+        audio.SetCamera(camera.Target, camera.EarPosition, camera.Yaw + MathF.PI / 2, game.Terrain.GroundHeight(camera.Target.X, camera.Target.Y));
         if (game.Frame == lastFrame)
             return;
         lastFrame = game.Frame;

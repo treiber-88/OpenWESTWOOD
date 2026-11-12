@@ -125,18 +125,27 @@ public sealed class WorldView : IDisposable
         this.textures = textures;
         Game = game;
         Map = map;
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+        void Step(string what) { if (GameProfiler.Enabled) Console.WriteLine($"[world] {what} {sw.ElapsedMilliseconds} ms"); sw.Restart(); }
         modelRenderer = new ModelRenderer(gl, textures);
         models = new ModelCache(gl, content.Models);
-        terrain = new TerrainRenderer(gl, map, new TerrainAtlas(map.BlendTiles!, content.Rules, content.FileSystem));
+        Step("models");
+        var atlas = new TerrainAtlas(map.BlendTiles!, content.Rules, content.FileSystem);
+        Step("atlas");
+        terrain = new TerrainRenderer(gl, map, atlas);
+        Step("terrain");
         water = new WaterRenderer(gl, map, content.Rules, textures);
         bridges = new BridgeView(gl, game);
         roads = new Terrain.RoadRenderer(gl, map, content.Rules, textures, game.Terrain);
         ApplyLighting(map.Lighting);
+        Step("water, bridges, roads");
 
         Effects = new Effects.EffectsView(gl, this, textures);
+        Step("effects");
 
         foreach (var obj in game.Objects)
             Add(obj, atStart: true);
+        Step("objects");
         game.Events.OnObjectCreated += obj => Add(obj, atStart: false);
         game.Events.OnObjectDestroyed += obj =>
         {
@@ -250,12 +259,32 @@ public sealed class WorldView : IDisposable
                 drawable.OnWeaponFired(slot);
         };
 
-        // (The Westwood games' maps are seen at their own game's angle, north up.)
+        // (The Westwood games' maps are seen at their own game's angle, north up; the isometric games' at the angle
+        // the player chose.)
         Camera.Pitch = TiberianDawn.TdMaps.ViewPitch ?? 0.95f;
         Camera.Yaw = -MathF.PI / 2;
+        if (TiberianDawn.TdMaps.IsometricMap)
+        {
+            ApplyIsometricView();
+            OpenWestwood.Client.Shell.ViewPreferences.Changed += ApplyIsometricView;
+        }
         Camera.Distance = 420;
         Camera.FarPlane = 6000;
     }
+
+    /// <summary>
+    /// A Tiberian Sun or Red Alert 2 map: the original Westwood view (30 degrees, no perspective: its ground picture,
+    /// stretched to twice its height, back to the original's 2:1) or the Generals camera on it.
+    /// </summary>
+    void ApplyIsometricView()
+    {
+        bool westwood = OpenWestwood.Client.Shell.ViewPreferences.WestwoodView;
+        Camera.Orthographic = westwood;
+        Camera.Pitch = westwood ? TiberianDawn.TdMaps.IsometricPitch : GeneralsPitch;
+    }
+
+    /// <summary>Zero Hour's own camera angle above the ground.</summary>
+    public const float GeneralsPitch = 0.95f;
 
     /// <summary>Where a shot leaves the shooter: out from its middle towards the target, at its top half.</summary>
     static Vector3 Muzzle(WeaponFireFx fx)
@@ -330,6 +359,9 @@ public sealed class WorldView : IDisposable
     /// <summary>How long the game has been waiting for other players' orders (0: it is running).</summary>
     public float StallSeconds { get; private set; }
 
+    /// <summary>The most logic time a drawn frame may take before the game lets itself fall behind.</summary>
+    const double LogicBudgetMilliseconds = 35;
+
     /// <summary>Advances the simulation (in whole logic frames) and the visuals.</summary>
     public void Update(float seconds)
     {
@@ -337,9 +369,18 @@ public sealed class WorldView : IDisposable
         {
             logicTimeAccumulator += seconds * Speed;
             int frames = 0;
-            bool stalled = false;
+            bool stalled = false, overBudget = false;
+            long budgetStart = System.Diagnostics.Stopwatch.GetTimestamp();
             while (logicTimeAccumulator >= LogicTime.SecondsPerFrame && frames++ < 5)
             {
+                // A drawn frame spends at most this long on the logic: past it, the game runs slower for a moment rather
+                // than catching up in bursts (at the faster game speeds a busy battle went choppy, several logic frames
+                // a picture). Network games keep catching up (every machine must reach the same frame).
+                if (frames > 1 && Lockstep == null && System.Diagnostics.Stopwatch.GetElapsedTime(budgetStart).TotalMilliseconds > LogicBudgetMilliseconds)
+                {
+                    overBudget = true;
+                    break;
+                }
                 // A network game: a frame runs only once every player's orders for it are in.
                 if (Lockstep != null)
                 {
@@ -356,8 +397,8 @@ public sealed class WorldView : IDisposable
                 Lockstep?.AfterStep();
                 logicTimeAccumulator -= LogicTime.SecondsPerFrame;
             }
-            if (frames >= 5)
-                logicTimeAccumulator = 0; // too slow to catch up: drop time rather than spiral
+            if (frames >= 5 || overBudget)
+                logicTimeAccumulator = Math.Min(logicTimeAccumulator, LogicTime.SecondsPerFrame); // too slow to catch up: drop time rather than spiral
             // Waiting on the network: time owed is kept (up to a quarter second, caught up a few frames at a time once
             // the orders come), and the wait is timed for the "waiting for players" note.
             if (stalled)
@@ -509,6 +550,7 @@ public sealed class WorldView : IDisposable
 
     public void Dispose()
     {
+        OpenWestwood.Client.Shell.ViewPreferences.Changed -= ApplyIsometricView;
         rain?.Dispose();
         Effects.Dispose();
         tdSprites?.Dispose();

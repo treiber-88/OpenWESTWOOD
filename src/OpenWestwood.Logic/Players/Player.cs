@@ -43,6 +43,9 @@ public sealed partial class Player
 
     public Money Money { get; } = new();
 
+    /// <summary>OpenWESTWOOD: how much faster than normal this player builds (the shell battle's houses: see DuneShellBattle).</summary>
+    public float BuildSpeed { get; set; } = 1;
+
     bool brownedOut;
 
     /// <summary>

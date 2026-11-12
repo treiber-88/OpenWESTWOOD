@@ -280,7 +280,9 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
             if (!seenSides.Add(side))
                 continue;
             // Tiberian Dawn factions have no entry in the game's string table: they show their DisplayName.
-            combo.AddEntry(GameInfo.IsTdFaction(rules) ? rules.GetString("DisplayName", name) : Text(side), RandomColor, index);
+            // (OpenWESTWOOD: each with its flag or emblem, the faction's LobbyFlag.)
+            combo.AddEntry(GameInfo.IsTdFaction(rules) ? rules.GetString("DisplayName", name) : Text(side), RandomColor, index,
+                rules.GetString("LobbyFlag") is { Length: > 0 } flag ? flag : rules.GetString("SideIconImage") is { Length: > 0 } icon ? icon : null);
         }
         combo.SetSelectedPos(0);
     }

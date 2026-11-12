@@ -1540,6 +1540,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_90mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_2TNK_Husk
+        TurretPiece: RAALL_2TNK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1601,6 +1607,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_75mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_1TNK_Husk
+        TurretPiece: RAALL_1TNK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1663,6 +1675,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_M60mg]
     CommandSet: RATransportCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_APC_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1728,6 +1745,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_MNLY_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1786,6 +1808,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_M60mg]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_JEEP_Husk
+        TurretPiece: RAALL_JEEP_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1845,6 +1873,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_HARV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1906,6 +1939,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_155mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_ARTY_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -1962,6 +2000,11 @@ Objects:
       Armor: RA_ArmorLight
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_MRJ_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2018,6 +2061,11 @@ Objects:
       Armor: RA_ArmorLight
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_MGG_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2074,6 +2122,11 @@ Objects:
       Armor: RA_ArmorLight
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2136,6 +2189,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_APTusk]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_CTNK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2194,6 +2252,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_Democharge]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_DTRK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2700,6 +2763,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_Stinger, SECONDARY RA_Weapon_DepthCharge]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_DD_Husk
+        TurretPiece: RAALL_DD_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2762,6 +2831,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_8Inch, SECONDARY RA_Weapon_8Inch]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_CA_Husk
+        TurretPiece: RAALL_CA_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2818,6 +2893,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: RATransportCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_LST_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -2885,6 +2965,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_2Inch, SECONDARY RA_Weapon_DepthCharge]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RAALL_PT_Husk
+        TurretPiece: RAALL_PT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4311,6 +4397,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_120mm, SECONDARY RA_Weapon_MammothTusk]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_4TNK_Husk
+        TurretPiece: RASOV_4TNK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4372,6 +4464,12 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_105mm, SECONDARY RA_Weapon_105mm]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_3TNK_Husk
+        TurretPiece: RASOV_3TNK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4431,6 +4529,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_MNLY_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4487,6 +4590,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_HARV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4546,6 +4654,11 @@ Objects:
       Armor: RA_ArmorLight
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4609,6 +4722,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_SCUD]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_V2RL_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4667,6 +4785,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_TTankZap]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_TTNK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4722,6 +4845,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_QTNK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -4780,6 +4908,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_Democharge]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_DTRK_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -5237,6 +5370,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_TorpTube]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_SS_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -5297,6 +5435,11 @@ Objects:
       Armor: RA_ArmorHeavy
     CommandSet: RATransportCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_LST_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -5364,6 +5507,11 @@ Objects:
       Weapon: [PRIMARY RA_Weapon_SubSCUD]
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: RASOV_MSUB_Husk
       ModuleTag_01:
         Module: Draw
         Class: RASpriteDraw
@@ -5638,3 +5786,916 @@ Objects:
         Module: Behavior
         Class: TdAircraftAmmo
         MaxAmmo: 12
+  # The vehicles' husks (OpenWESTWOOD, see WestwoodHusks).
+  RASOV_MSUB_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MSUB
+        TdKind: Vessel
+        TdType: MSUB
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_LST_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: LST
+        TdKind: Vessel
+        TdType: LST
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_SS_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: SS
+        TdKind: Vessel
+        TdType: SS
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_DTRK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: DTRK
+        TdKind: Unit
+        TdType: DTRK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_QTNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: QTNK
+        TdKind: Unit
+        TdType: QTNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_TTNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: TTNK
+        TdKind: Unit
+        TdType: TTNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_V2RL_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: V2RL
+        TdKind: Unit
+        TdType: V2RL
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MCV
+        TdKind: Unit
+        TdType: MCV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_HARV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: HARV
+        TdKind: Unit
+        TdType: HARV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_MNLY_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MNLY
+        TdKind: Unit
+        TdType: MNLY
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_3TNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 3TNK
+        TdKind: Unit
+        TdType: 3TNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_3TNK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 3TNK
+        TdKind: Unit
+        TdType: 3TNK
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RASOV_4TNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 4TNK
+        TdKind: Unit
+        TdType: 4TNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RASOV_4TNK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 4TNK
+        TdKind: Unit
+        TdType: 4TNK
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_PT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: PT
+        TdKind: Vessel
+        TdType: PT
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_PT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: PT
+        TdKind: Vessel
+        TdType: PT
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_LST_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: LST
+        TdKind: Vessel
+        TdType: LST
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_CA_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: CA
+        TdKind: Vessel
+        TdType: CA
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_CA_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: CA
+        TdKind: Vessel
+        TdType: CA
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_DD_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: DD
+        TdKind: Vessel
+        TdType: DD
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_DD_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: DD
+        TdKind: Vessel
+        TdType: DD
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_DTRK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: DTRK
+        TdKind: Unit
+        TdType: DTRK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_CTNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: CTNK
+        TdKind: Unit
+        TdType: CTNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MCV
+        TdKind: Unit
+        TdType: MCV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_MGG_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MGG
+        TdKind: Unit
+        TdType: MGG
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_MRJ_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MRJ
+        TdKind: Unit
+        TdType: MRJ
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_ARTY_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: ARTY
+        TdKind: Unit
+        TdType: ARTY
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_HARV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: HARV
+        TdKind: Unit
+        TdType: HARV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_JEEP_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: JEEP
+        TdKind: Unit
+        TdType: JEEP
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_JEEP_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: JEEP
+        TdKind: Unit
+        TdType: JEEP
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_MNLY_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: MNLY
+        TdKind: Unit
+        TdType: MNLY
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_APC_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: APC
+        TdKind: Unit
+        TdType: APC
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_1TNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 1TNK
+        TdKind: Unit
+        TdType: 1TNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_1TNK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 1TNK
+        TdKind: Unit
+        TdType: 1TNK
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  RAALL_2TNK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 2TNK
+        TdKind: Unit
+        TdType: 2TNK
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  RAALL_2TNK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: RASpriteDraw
+        Shape: 2TNK
+        TdKind: Unit
+        TdType: 2TNK
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes

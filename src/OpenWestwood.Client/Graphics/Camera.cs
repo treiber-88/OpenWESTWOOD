@@ -23,20 +23,35 @@ public sealed class Camera
     public float FarPlane = 6000f;
     public float AspectRatio = 16f / 9f;
 
-    public Vector3 Position
+    /// <summary>
+    /// OpenWESTWOOD: no perspective (the Westwood games' isometric view: things far up the screen are as big as near
+    /// ones). Distance still sets how much is seen, as the perspective view would at the target; the eye itself sits
+    /// <see cref="OrthographicEyeDistance"/> back so that sorting by distance from it is sorting by depth.
+    /// </summary>
+    public bool Orthographic;
+    public const float OrthographicEyeDistance = 4000;
+
+    Vector3 Offset => new(
+        MathF.Cos(Pitch) * MathF.Cos(Yaw),
+        MathF.Cos(Pitch) * MathF.Sin(Yaw),
+        MathF.Sin(Pitch));
+
+    public Vector3 Position => Target + Offset * (Orthographic ? OrthographicEyeDistance : Distance);
+
+    /// <summary>Where the listener is: Distance back from the target whatever the projection.</summary>
+    public Vector3 EarPosition => Target + Offset * Distance;
+
+    public Matrix4x4 View => Matrix4x4.CreateLookAt(Position, Target, Vector3.UnitZ);
+    public Matrix4x4 Projection
     {
         get
         {
-            var offset = new Vector3(
-                MathF.Cos(Pitch) * MathF.Cos(Yaw),
-                MathF.Cos(Pitch) * MathF.Sin(Yaw),
-                MathF.Sin(Pitch));
-            return Target + offset * Distance;
+            if (!Orthographic)
+                return Matrix4x4.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlane, FarPlane);
+            float height = 2 * Distance * MathF.Tan(FieldOfView / 2);
+            return Matrix4x4.CreateOrthographic(height * AspectRatio, height, NearPlane, FarPlane + OrthographicEyeDistance);
         }
     }
-
-    public Matrix4x4 View => Matrix4x4.CreateLookAt(Position, Target, Vector3.UnitZ);
-    public Matrix4x4 Projection => Matrix4x4.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlane, FarPlane);
     public Matrix4x4 ViewProjection => View * Projection;
 
     /// <summary>The ground-plane directions for screen-relative scrolling.</summary>

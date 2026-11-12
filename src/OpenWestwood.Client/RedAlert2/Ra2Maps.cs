@@ -46,8 +46,10 @@ public static class Ra2Maps
 
     static IsoMap? Load(IsoGame game, string name)
     {
-        if (loaded.TryGetValue(game.Prefix + name, out var map))
-            return map;
+        IsoMap? map;
+        lock (loaded)
+            if (loaded.TryGetValue(game.Prefix + name, out map))
+                return map;
         try
         {
             map = game.Art() is { } art && art.Content.Files.Exists(name) ? new IsoMap(Encoding.Latin1.GetString(art.Content.Files.ReadAllBytes(name))) : null;
@@ -56,7 +58,24 @@ public static class Ra2Maps
         {
             map = null;
         }
-        return loaded[game.Prefix + name] = map;
+        lock (loaded)
+            return loaded[game.Prefix + name] = map;
+    }
+
+    /// <summary>A map's header only (for the map list; not kept).</summary>
+    static IsoMap? LoadHeader(IsoGame game, string name)
+    {
+        lock (loaded)
+            if (loaded.TryGetValue(game.Prefix + name, out var map))
+                return map;
+        try
+        {
+            return game.Art() is { } art && art.Content.Files.Exists(name) ? new IsoMap(Encoding.Latin1.GetString(art.Content.Files.ReadAllBytes(name)), headerOnly: true) : null;
+        }
+        catch (Exception e) when (e is InvalidDataException or IndexOutOfRangeException or ArgumentException or FormatException)
+        {
+            return null;
+        }
     }
 
     static string Title(IsoMap m, string name) => m.Ini.Get("Basic", "Name") is { Length: > 0 } t ? t : Path.GetFileNameWithoutExtension(name);
@@ -263,7 +282,7 @@ public static class Ra2Maps
     {
         foreach (string name in MapNames(game))
         {
-            if (Load(game, name) is not { } m || Starts(m) is not { Count: >= 2 } starts || (game == Ra2 && m.Ini.Get("Header", "NumberStartingPoints").Length == 0))
+            if (LoadHeader(game, name) is not { } m || Starts(m) is not { Count: >= 2 } starts || (game == Ra2 && m.Ini.Get("Header", "NumberStartingPoints").Length == 0))
                 continue;
             var layout = new Layout(m, game);
             var meta = new MapMetaData

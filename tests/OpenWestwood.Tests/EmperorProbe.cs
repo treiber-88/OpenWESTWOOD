@@ -209,7 +209,7 @@ public class EmperorSizeProbe(ITestOutputHelper output)
         if (Environment.GetEnvironmentVariable("EMP_SIZE") is not { } filter) return;
         var data = Path.Combine(OpenWestwood.Client.GameContent.FindRoot(), "content", "emperor", "DATA");
         using var art = new EmperorArtPackage(data);
-        foreach (string path in art.FilePaths.Where(p => p.EndsWith("_H0.xbf", StringComparison.OrdinalIgnoreCase) && p.Contains(filter, StringComparison.OrdinalIgnoreCase)).Order())
+        foreach (string path in art.FilePaths.Where(p => p.EndsWith(".xbf", StringComparison.OrdinalIgnoreCase) && p.Contains(filter, StringComparison.OrdinalIgnoreCase)).Order())
         {
             var xbf = XbfFile.Read(art.ReadAllBytes(path));
             var min = new System.Numerics.Vector3(float.MaxValue); var max = new System.Numerics.Vector3(float.MinValue);
@@ -233,7 +233,7 @@ public class EmperorSizeProbe(ITestOutputHelper output)
                     var w = System.Numerics.Vector3.Transform(p, Ours(n));
                     min2 = System.Numerics.Vector3.Min(min2, w); max2 = System.Numerics.Vector3.Max(max2, w);
                 }
-            output.WriteLine($"{path}: true height {(max - min).Y:F0}, ours {(max2 - min2).Y:F0}");
+            output.WriteLine($"{path}: true height {(max - min).Y:F0}, ours {(max2 - min2).Y:F0}, extent {(max - min) * XbfToW3d.Scale} world, ours {(max2 - min2) * XbfToW3d.Scale}");
         }
     }
 }

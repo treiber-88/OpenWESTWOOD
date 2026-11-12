@@ -167,7 +167,7 @@ public sealed class ProductionUpdate : Module, IUpdateModule
 
     int CostOf(ObjectTemplate unit) => Game.Costs.BuildCost(Owner.Owner, unit);
 
-    int BuildFrames(float seconds) => Math.Max(1, LogicTime.FramesFromSeconds(seconds / Math.Max(0.01f, Game.Catalog.GameData.StructureBuildSpeedRate)));
+    int BuildFrames(float seconds) => Math.Max(1, LogicTime.FramesFromSeconds(seconds / Math.Max(0.01f, Game.Catalog.GameData.StructureBuildSpeedRate * Owner.Owner.BuildSpeed)));
 
     bool MaxSimultaneousReached(ObjectTemplate unit)
     {
@@ -191,16 +191,22 @@ public sealed class ProductionUpdate : Module, IUpdateModule
         if (Owner.IsUnderConstruction || Owner.IsDisabledBy("DISABLED_HACKED") || Owner.IsDisabledBy("DISABLED_EMP") || Owner.IsDisabledBy("DISABLED_SCRIPT_DISABLED"))
             return 5;
 
-        var entry = queue[0];
-        if (entry.ReadyToPlace)
-            return 15;   // the next item waits until this structure is placed
+        // OpenWESTWOOD (the user's choice): two lines at once, the first unit (or structure) in the queue and the first
+        // upgrade, so research goes on beside production. (The original made them one after the other.) A finished
+        // structure waiting to be placed holds up its line only: the next structure starts once it is down.
         float rate = Owner.Owner.Energy.HasSufficientPower ? 1f : Game.Catalog.GameData.LowEnergyPenaltyModifier;
-        if (entry.Progress < 1f)
-            entry.Progress = Math.Min(1f, entry.Progress + rate / entry.TotalFrames);
-
-        if (entry.Progress >= 1f)
-            Complete(entry);
-        return 0;
+        bool working = false;
+        foreach (var entry in new[] { queue.FirstOrDefault(e => e.Unit != null), queue.FirstOrDefault(e => e.Upgrade != null) })
+        {
+            if (entry == null || entry.ReadyToPlace)
+                continue;
+            working = true;
+            if (entry.Progress < 1f)
+                entry.Progress = Math.Min(1f, entry.Progress + rate / entry.TotalFrames);
+            if (entry.Progress >= 1f)
+                Complete(entry);
+        }
+        return working ? 0 : 15;
     }
 
     void Complete(Entry entry)

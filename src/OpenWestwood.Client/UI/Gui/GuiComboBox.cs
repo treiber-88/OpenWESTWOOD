@@ -11,7 +11,8 @@ namespace OpenWestwood.Client.UI.Gui;
 /// </summary>
 public sealed class GuiComboBox : GuiWindow
 {
-    public sealed record Entry(string Text, Vector4 Color, object? Data);
+    /// <param name="Icon">OpenWESTWOOD: a picture (an image name) shown before the text (the lobby's faction flags).</param>
+    public sealed record Entry(string Text, Vector4 Color, object? Data, string? Icon = null);
 
     public List<Entry> Entries { get; } = new();
     public int SelectedIndex { get; private set; } = -1;
@@ -38,9 +39,9 @@ public sealed class GuiComboBox : GuiWindow
         scrollOffset = 0;
     }
 
-    public int AddEntry(string text, Vector4 color, object? data = null)
+    public int AddEntry(string text, Vector4 color, object? data = null, string? icon = null)
     {
-        Entries.Add(new Entry(text, color, data));
+        Entries.Add(new Entry(text, color, data, icon));
         return Entries.Count - 1;
     }
 
@@ -99,9 +100,21 @@ public sealed class GuiComboBox : GuiWindow
             var color = IsEnabled ? entry.Color : d.TextDisabled;
             var previous = context.Batch.Clip;
             context.Batch.SetClip(box);
-            font.DrawWithShadow(context.Batch, entry.Text, new Vector2(MathF.Round(box.X + 4), MathF.Round(box.Y + (box.Height - font.LineHeight) / 2)), color, shadow);
+            float textX = box.X + 4 + DrawIcon(context, entry, box.X + 4, box.Y + (box.Height - font.LineHeight) / 2, font.LineHeight);
+            font.DrawWithShadow(context.Batch, entry.Text, new Vector2(MathF.Round(textX), MathF.Round(box.Y + (box.Height - font.LineHeight) / 2)), color, shadow);
             context.Batch.SetClip(previous);
         }
+    }
+
+    /// <summary>An entry's picture, as tall as a line of text and in its own proportions (at most twice as wide as
+    /// tall), at x/y; the width taken (with a gap after it), 0 if it has none.</summary>
+    static float DrawIcon(GuiContext context, Entry entry, float x, float y, float height)
+    {
+        if (entry.Icon is not { } icon || context.Images.Find(icon) is not { } image)
+            return 0;
+        float h = MathF.Round(height), w = MathF.Round(Math.Min(h * 2, image.PixelWidth * h / Math.Max(1, image.PixelHeight)));
+        context.Images.Draw(context.Batch, image, new Rect(MathF.Round(x), MathF.Round(y), w, h));
+        return w + 4;
     }
 
     static string? Image(WndDrawData? data) => data is { HasImage: true } ? data.Image : null;
@@ -134,7 +147,8 @@ public sealed class GuiComboBox : GuiWindow
                 else
                     context.Batch.FillRect(row, new Vector4(0.2f, 0.25f, 0.7f, i == hoverIndex ? 0.8f : 0.45f));
             }
-            font.DrawWithShadow(context.Batch, Entries[i].Text, new Vector2(MathF.Round(row.X + 4), MathF.Round(y + 1)), Entries[i].Color, d.TextEnabledBorder);
+            float textX = row.X + 4 + DrawIcon(context, Entries[i], row.X + 4, y + 1, font.LineHeight);
+            font.DrawWithShadow(context.Batch, Entries[i].Text, new Vector2(MathF.Round(textX), MathF.Round(y + 1)), Entries[i].Color, d.TextEnabledBorder);
             y += lineHeight;
         }
         context.Batch.SetClip(previous);

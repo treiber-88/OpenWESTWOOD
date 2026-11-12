@@ -36,10 +36,10 @@ static class EmperorFactionExporter
     const float BuildTimeScale = 0.6f;
 
     /// <summary>
-    /// Projectiles are drawn this much bigger: Emperor's are half Zero Hour's size beside the units, and the camera is
-    /// further off, so at their own size they could hardly be seen.
+    /// Projectiles are drawn at least this long (world units; a tank is about 30): at their own size Emperor's (a tank
+    /// shell is under 2) could hardly be seen from Zero Hour's camera, which is further off than Emperor's.
     /// </summary>
-    const float ProjectileDrawScale = 2f;
+    const float ProjectileMinLength = 8f;
 
     sealed record House(string Name, string Code, string Faction, string Side, string BaseSide, string Color, string ScoreImage, string LoadImage);
 
@@ -183,6 +183,28 @@ static class EmperorFactionExporter
                     return (building ? "EMB_" : EmperorArtPackage.ModelPrefix) + Path.GetFileNameWithoutExtension(path);
             return null;
         }
+        // A model's longest side in world units (0 when it has no geometry).
+        float ModelLength(string model)
+        {
+            if (art.XbfPath(model[(model.IndexOf('_') + 1)..]) is not { } path)
+                return 0;
+            var xbf = XbfFile.Read(art.ReadAllBytes(path));
+            var min = new System.Numerics.Vector3(float.MaxValue);
+            var max = new System.Numerics.Vector3(float.MinValue);
+            // (What the conversion draws: a bullet that is only '?' effect nodes draws those.)
+            bool effectsOnly = !xbf.AllNodes.Any(n => !XbfToW3d.IsHelper(n.Name) && n.Faces.Length > 0);
+            foreach (var n in xbf.AllNodes.Where(n => n.Faces.Length > 0 && (!XbfToW3d.IsHelper(n.Name) || effectsOnly && n.Name.StartsWith('?') && !n.Name.Contains('#'))))
+                foreach (var p in n.Positions)
+                {
+                    var w = System.Numerics.Vector3.Transform(p, n.ModelTransform);
+                    min = System.Numerics.Vector3.Min(min, w);
+                    max = System.Numerics.Vector3.Max(max, w);
+                }
+            if (min.X > max.X)
+                return 0;
+            var size = (max - min) * XbfToW3d.Scale;
+            return Math.Max(size.X, Math.Max(size.Y, size.Z));
+        }
         // The named animations of a model (from its XBF).
         var animationCache = new Dictionary<string, HashSet<string>>();
         HashSet<string> Animations(string model)
@@ -295,7 +317,24 @@ static class EmperorFactionExporter
             // fly fast enough to look instant (as Zero Hour's shells), and lobbed shells at a pace their arc shows.
             float speed = rules.Num(bullet, "Speed", -1);
             bool lobbed = rules.True(bullet, "Trajectory");
-            float unitsPerSecond = speed > 0 ? speed * XbfToW3d.Scale * TicksPerSecond : lobbed ? 220 : 600;
+            float unitsPerSecond = speed > 0 ? speed * XbfToW3d.Scale * TicksPerSecond : lobbed ? 220 : 350;
+            // A laser (IsLaser: the Ordos laser tank's and laser infantry's) is a beam the original drew
+            // itself from the muzzle to the victim; here Zero Hour's laser beam (W3DLaserDraw) with Emperor's own texture.
+            if (rules.True(bullet, "IsLaser"))
+            {
+                string laser = "EM_Laser_" + bullet;
+                weapons.Append($"    LaserName: {laser}\n    LaserBoneName: MUZZLE01\n");
+                if (!effects.ToString().Contains($"  {laser}:\n"))
+                {
+                    float width = Math.Max(rules.Num(bullet, "MissileTrailSize", 1), 0.5f);
+                    effects.Append($"  {laser}:\n    KindOf: IMMOBILE\n    Modules:\n      ModuleTag_01:\n        Module: Draw\n        Class: W3DLaserDraw\n" +
+                        $"        Texture: emperor/Textures/!%laser.tga\n        NumBeams: 2\n        InnerBeamWidth: {F(width)}\n        InnerColor: R:255 G:255 B:255 A:255\n" +
+                        $"        OuterBeamWidth: {F(width * 3)}\n        OuterColor: R:255 G:255 B:255 A:160\n        Segments: 1\n" +
+                        "      ModuleTag_02:\n        Module: ClientUpdate\n        Class: LaserUpdate\n" +
+                        "      ModuleTag_03:\n        Module: Behavior\n        Class: LifetimeUpdate\n        MinLifetime: 300\n        MaxLifetime: 300\n");
+                }
+                return name;
+            }
             string projectile = "EM_Projectile_" + bullet;
             weapons.Append($"    ProjectileObject: {projectile}\n    WeaponSpeed: {F(unitsPerSecond)}\n");
             if (Explosion(rules.Get(bullet, "ExplosionType")) is { } ocl)
@@ -304,7 +343,9 @@ static class EmperorFactionExporter
             {
                 bool homing = rules.True(bullet, "Homing");
                 string? model = Model(bullet, building: false, suffix: "");
-                effects.Append($"  {projectile}:\n    DisplayName: Emperor projectile\n    EditorSorting: SYSTEM\n    VisionRange: 0.0\n    DrawScale: {F(ProjectileDrawScale)}\n");
+                float length = model != null ? ModelLength(model) : 0;
+                float drawScale = length > 0 ? Math.Clamp(ProjectileMinLength / length, 1, 6) : 1;
+                effects.Append($"  {projectile}:\n    DisplayName: Emperor projectile\n    EditorSorting: SYSTEM\n    VisionRange: 0.0\n    DrawScale: {F(drawScale)}\n");
                 effects.Append(homing ? "    KindOf: PROJECTILE SMALL_MISSILE\n" : "    KindOf: PROJECTILE\n");
                 if (homing)
                     effects.Append($"    Locomotor: SET_NORMAL {projectile}Locomotor\n");

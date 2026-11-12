@@ -257,7 +257,11 @@ public sealed class IsoMap
     /// <summary>[Structures]: owner, type, health (of 256), cell, facing.</summary>
     public List<(string Owner, string Type, int Health, int X, int Y, int Facing)> Structures { get; } = new();
 
-    public IsoMap(string text)
+    public IsoMap(string text) : this(text, headerOnly: false) { }
+
+    /// <param name="headerOnly">Only the map's size, theater and waypoints (the map list's needs): its packed cells and
+    /// overlay are left unread, which is most of the work.</param>
+    public IsoMap(string text, bool headerOnly)
     {
         Ini.Read(text);
         Theater = Ini.Get("Map", "Theater", "TEMPERATE").ToUpperInvariant();
@@ -267,6 +271,13 @@ public sealed class IsoMap
         var local = Ini.Get("Map", "LocalSize").Split(',').Select(s => int.TryParse(s.Trim(), out int v) ? v : 0).ToArray();
         Local = local.Length > 3 ? (local[0], local[1], local[2], local[3]) : (0, 0, Width, Height);
 
+        if (headerOnly)
+        {
+            foreach (var (key, value) in Ini.Section("Waypoints"))
+                if (int.TryParse(key, out int n) && int.TryParse(value, out int pos))
+                    Waypoints[n] = (pos % 1000, pos / 1000);
+            return;
+        }
         var iso = Unpack("IsoMapPack5", lzo: true);
         for (int i = 0; i + 11 <= iso.Length; i += 11)
         {

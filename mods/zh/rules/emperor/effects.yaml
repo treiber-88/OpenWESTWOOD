@@ -22,7 +22,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -76,7 +76,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.849
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_Rocket_BLocomotor
     Geometry: Sphere
@@ -117,7 +117,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.969
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -171,7 +171,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -203,7 +203,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -235,7 +235,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.969
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -274,7 +274,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.849
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HEAT_BLocomotor
     Geometry: Sphere
@@ -332,7 +332,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -371,7 +371,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -410,7 +410,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.233
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_TrailMissile_BLocomotor
     Geometry: Sphere
@@ -451,7 +451,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.849
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_ATHEATADP_BLocomotor
     Geometry: Sphere
@@ -505,7 +505,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -537,7 +537,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -572,48 +572,32 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
-  EM_Projectile_InfLaser_B:
-    DisplayName: Emperor projectile
-    EditorSorting: SYSTEM
-    VisionRange: 0.0
-    DrawScale: 2
-    KindOf: PROJECTILE
-    Geometry: Sphere
-    GeometryIsSmall: Yes
-    GeometryMajorRadius: 1.0
-    ArmorSet:
-      Armor: ProjectileArmor
+  EM_Laser_InfLaser_B:
+    KindOf: IMMOBILE
     Modules:
       ModuleTag_01:
         Module: Draw
-        Class: W3DModelDraw
-        DefaultConditionState:
-          Model: EM_Conceptual
+        Class: W3DLaserDraw
+        Texture: emperor/Textures/!%laser.tga
+        NumBeams: 2
+        InnerBeamWidth: 1
+        InnerColor: R:255 G:255 B:255 A:255
+        OuterBeamWidth: 3
+        OuterColor: R:255 G:255 B:255 A:160
+        Segments: 1
       ModuleTag_02:
-        Module: Body
-        Class: ActiveBody
-        MaxHealth: 100.0
-        InitialHealth: 100.0
+        Module: ClientUpdate
+        Class: LaserUpdate
       ModuleTag_03:
         Module: Behavior
-        Class: DestroyDie
-      ModuleTag_04:
-        Module: Behavior
-        Class: DumbProjectileBehavior
-        FirstHeight: 2
-        SecondHeight: 2
-        FirstPercentIndent: 30%
-        SecondPercentIndent: 70%
-        FlightPathAdjustDistPerSecond: 100
-      ModuleTag_05:
-        Module: Behavior
-        Class: PhysicsBehavior
-        Mass: 0.01
+        Class: LifetimeUpdate
+        MinLifetime: 300
+        MaxLifetime: 300
   EM_Projectile_cal50_b:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -645,7 +629,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -684,7 +668,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -716,7 +700,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -748,7 +732,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -785,7 +769,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -822,7 +806,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.849
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HEATInf_BLocomotor
     Geometry: Sphere
@@ -863,7 +847,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -895,7 +879,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -934,7 +918,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -988,7 +972,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.833
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1027,7 +1011,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.474
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1066,7 +1050,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.233
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_Gunship_BLocomotor
     Geometry: Sphere
@@ -1107,7 +1091,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1161,7 +1145,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.519
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1200,7 +1184,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.474
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1237,7 +1221,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1270,48 +1254,32 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
-  EM_Projectile_Laser_B:
-    DisplayName: Emperor projectile
-    EditorSorting: SYSTEM
-    VisionRange: 0.0
-    DrawScale: 2
-    KindOf: PROJECTILE
-    Geometry: Sphere
-    GeometryIsSmall: Yes
-    GeometryMajorRadius: 1.0
-    ArmorSet:
-      Armor: ProjectileArmor
+  EM_Laser_Laser_B:
+    KindOf: IMMOBILE
     Modules:
       ModuleTag_01:
         Module: Draw
-        Class: W3DModelDraw
-        DefaultConditionState:
-          Model: EM_Conceptual
+        Class: W3DLaserDraw
+        Texture: emperor/Textures/!%laser.tga
+        NumBeams: 2
+        InnerBeamWidth: 1
+        InnerColor: R:255 G:255 B:255 A:255
+        OuterBeamWidth: 3
+        OuterColor: R:255 G:255 B:255 A:160
+        Segments: 1
       ModuleTag_02:
-        Module: Body
-        Class: ActiveBody
-        MaxHealth: 100.0
-        InitialHealth: 100.0
+        Module: ClientUpdate
+        Class: LaserUpdate
       ModuleTag_03:
         Module: Behavior
-        Class: DestroyDie
-      ModuleTag_04:
-        Module: Behavior
-        Class: DumbProjectileBehavior
-        FirstHeight: 2
-        SecondHeight: 2
-        FirstPercentIndent: 30%
-        SecondPercentIndent: 70%
-        FlightPathAdjustDistPerSecond: 100
-      ModuleTag_05:
-        Module: Behavior
-        Class: PhysicsBehavior
-        Mass: 0.01
+        Class: LifetimeUpdate
+        MinLifetime: 300
+        MaxLifetime: 300
   EM_Projectile_HeatAPC_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.849
     KindOf: PROJECTILE SMALL_MISSILE
     Locomotor: SET_NORMAL EM_Projectile_HeatAPC_BLocomotor
     Geometry: Sphere
@@ -1352,7 +1320,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes
@@ -1391,7 +1359,7 @@ Objects:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
     VisionRange: 0.0
-    DrawScale: 2
+    DrawScale: 1.541
     KindOf: PROJECTILE
     Geometry: Sphere
     GeometryIsSmall: Yes

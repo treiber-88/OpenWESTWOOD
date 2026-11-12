@@ -218,6 +218,9 @@ public static partial class TdMaps
     /// pictures stretched to twice the height, so a view squashing them back to half (sin 30 degrees) is the original 2:1 view.
     /// </summary>
     public static float? ViewPitch { get; private set; }
+
+    /// <summary>The map last read is an isometric game's (Tiberian Sun, Red Alert 2): its view is the player's choice.</summary>
+    public static bool IsometricMap { get; private set; }
     public const float TopDownPitch = 1.55f;
     public static readonly float IsometricPitch = MathF.Asin(0.5f);
 
@@ -225,6 +228,7 @@ public static partial class TdMaps
     public static MapFile Read(VirtualFileSystem files, string map)
     {
         TdSpriteRenderer.OnSageMap = !Dune2000.D2kMaps.IsD2kMap(map) && !RedAlert2.Ra2Maps.IsRa2Map(map) && !IsTdMap(map);
+        IsometricMap = RedAlert2.Ra2Maps.IsRa2Map(map);
         ViewPitch = RedAlert2.Ra2Maps.IsRa2Map(map) ? IsometricPitch : Dune2000.D2kMaps.IsD2kMap(map) || IsTdMap(map) ? TopDownPitch : null;
         if (Dune2000.D2kMaps.IsD2kMap(map))
             return Dune2000.D2kMaps.Convert(map, ZeroHourLighting(files));

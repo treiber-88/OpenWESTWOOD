@@ -232,6 +232,11 @@ public static class XbfToW3d
         // Vertex-animated poses: (node, pose index) -> its bone.
         var poseBones = new List<(XbfNode Node, int Pose, int Bone)>();
         var taken = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        // A '?' node only shows while an effect plays (a muzzle flash, the leech); a bullet's whole look is such nodes
+        // (?mgbullet, ?sonic), so a model with nothing else to draw draws those ('#' ones stay out: particle emitters).
+        bool drawEffects = !xbf.AllNodes.Any(n => !IsHelper(n.Name) && n.Faces.Length > 0);
+        bool Drawn(XbfNode node) => node.Faces.Length > 0 && (!IsHelper(node.Name) ||
+            drawEffects && node.Name.StartsWith('?') && !node.Name.Contains('#'));
 
         void AddNode(XbfNode node, int parent)
         {
@@ -239,7 +244,7 @@ public static class XbfToW3d
             int pivot = hierarchy.Pivots.Count;
             hierarchy.Pivots.Add(new W3dPivot { Name = BoneName(node.Name, taken), ParentIndex = parent, Rotation = rotation, Translation = translation });
             pivotOf[node] = pivot;
-            if (!IsHelper(node.Name) && node.Faces.Length > 0)
+            if (Drawn(node))
             {
                 bool animated = node.VertexAnimation is { Frames.Length: > 0 };
                 foreach (var mesh in Meshes(xbf, node, modelName, node.Name, node.Positions, node.Normals))

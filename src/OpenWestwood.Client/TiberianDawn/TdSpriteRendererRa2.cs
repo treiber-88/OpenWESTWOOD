@@ -48,12 +48,12 @@ public sealed partial class TdSpriteRenderer
         return ra2Textures[key] = t;
     }
 
-    Texture? Ra2VoxelTexture(Ra2Art art, string image, int facing, int turret, uint team, int pitch = 0)
+    Texture? Ra2VoxelTexture(Ra2Art art, string image, int facing, int turret, uint team, int pitch = 0, int parts = 0)
     {
-        var key = ((object)(art.IsTiberianSun ? "TS:" + image : image), facing | turret << 8 | (pitch + 64) << 16, team, 2);
+        var key = ((object)(art.IsTiberianSun ? "TS:" + image : image), facing | turret << 8 | (pitch + 64) << 16, team, 2 | parts << 4);
         if (ra2Textures.TryGetValue(key, out var t))
             return t;
-        var picture = art.VoxelImage(image, facing, turret, team, pitch);
+        var picture = art.VoxelImage(image, facing, turret, team, pitch, parts);
         t = picture != null ? new Texture(gl, picture, repeat: false, mipmaps: false, nearest: true) : null;
         return ra2Textures[key] = t;
     }
@@ -108,6 +108,10 @@ public sealed partial class TdSpriteRenderer
         var anchor = obj.Position;
         float distance = Vector3.DistanceSquared(camera.Position, anchor);
         float opacity = drawable.HiddenByStealth ? 0 : 1;
+        var husk = IsHusk(draw);
+        var tint = husk != HuskPart.None ? HuskTint(obj, opacity) : new Vector4(1, 1, 1, opacity);
+        // Which parts a husk shows: 0 all, 1 the body alone (its turret blown off), 2 the turret alone (the piece).
+        int parts = husk == HuskPart.Turret ? 2 : DrawsTurret(obj, husk) ? 0 : 1;
         float age = createdFrame.TryGetValue(obj.Id, out int born) ? Math.Max(0, obj.Game.Frame - born) / (float)Logic.Core.LogicTime.FramesPerSecond : 99;
         // Facings counter-clockwise from the screen's north: a voxel's from its heading on the ground (it is turned in 3D),
         // a shape's from the way it looks to be heading on screen (its frames are drawn in screen directions).
@@ -115,10 +119,11 @@ public sealed partial class TdSpriteRenderer
         float apparent = camera.ApparentAngle(obj.Orientation) - screenUp;
         int Facing(float angle, int steps) => ((int)MathF.Round(angle / (MathF.Tau / steps)) % steps + steps) % steps;
 
-        void Quad(Texture texture, float width, float height, float pixelUnits, float lift, float extraDistance = 0)
+        var right = new Vector3(view.M11, view.M21, view.M31);
+        void Quad(Texture texture, float width, float height, float pixelUnits, float lift, float extraDistance = 0, float across = 0)
         {
-            var center = anchor + up * (lift * pixelUnits);
-            quads.Add((distance + extraDistance, quads.Count, texture, center, anchor, width * pixelUnits / 2, height * pixelUnits / 2, new Vector4(1, 1, 1, opacity)));
+            var center = anchor + up * (lift * pixelUnits) + right * (across * pixelUnits);
+            quads.Add((distance + extraDistance, quads.Count, texture, center, anchor, width * pixelUnits / 2, height * pixelUnits / 2, tint));
         }
 
         if (draw.Settings.GetString("Voxel").Equals("Yes", StringComparison.OrdinalIgnoreCase))
@@ -126,7 +131,7 @@ public sealed partial class TdSpriteRenderer
             float turretAngle = obj.AI is { Turrets.Count: > 0 } ai ? obj.Orientation + ai.Turrets[0].Angle - screenUp : heading;
             // A rocket (a V3's, a Dreadnought's) is drawn nosing up as it climbs and down as it dives.
             int pitch = kind == "Bullet" ? Math.Clamp((int)MathF.Round(obj.Pitch / Ra2Art.PitchStep), -6, 6) : 0;
-            if (Ra2VoxelTexture(art, image, Facing(heading, 32), Facing(turretAngle, 32), team, pitch) is { } texture)
+            if (Ra2VoxelTexture(art, image, Facing(heading, 32), Facing(turretAngle, 32), team, pitch, parts) is { } texture)
                 Quad(texture, 160, 160, VoxelUnitsPerPixel(art) * SageMapScale(art, false), 160 * 0.1f);
             return;
         }
@@ -142,7 +147,8 @@ public sealed partial class TdSpriteRenderer
                 // A tree: the theater's art (TREE01.TEM), standing on its cell.
                 if (art.TheaterShape(image) is not { } tree)
                     return;
-                if (Ra2Texture(art, tree, 0, 0xFFFFFFFF, art.TheaterPalette, false) is { } texture)
+                // (Tiberian Sun draws its trees in the ground's palette; Red Alert 2 in the theater's.)
+                if (Ra2Texture(art, tree, 0, 0xFFFFFFFF, art.IsTiberianSun ? art.IsoPalette : art.TheaterPalette, false) is { } texture)
                     Quad(texture, tree.Width, tree.Height, unitsPerPixel, tree.Height * 0.3f);
                 return;
             }
@@ -185,13 +191,13 @@ public sealed partial class TdSpriteRenderer
                 if (age < 2.5f && art.Art.Get(image, "Buildup") is { Length: > 0 } buildupName && art.BuildingShape(buildupName) is { } buildup)
                 {
                     int frames = Math.Max(1, buildup.FrameCount / 2);
-                    if (Ra2Texture(art, buildup, Math.Min(frames - 1, (int)(age / 2.5f * frames)), team, art.UnitPalette, false) is { } b)
+                    if (Ra2Texture(art, buildup, Math.Min(frames - 1, (int)(age / 2.5f * frames)), team, art.BuildingPalette(image), false) is { } b)
                         Quad(b, buildup.Width, buildup.Height, unitsPerPixel, buildup.Height * 0.25f);
                     return;
                 }
                 bool damaged = obj.MaxHealth > 0 && obj.Health / obj.MaxHealth < 0.5f;
                 int frame = damaged && half > 1 ? 1 : 0;
-                if (Ra2Texture(art, shape, frame, team, art.UnitPalette, false) is { } texture)
+                if (Ra2Texture(art, shape, frame, team, art.BuildingPalette(image), false) is { } texture)
                     Quad(texture, shape.Width, shape.Height, unitsPerPixel, shape.Height * 0.25f);
                 // Its active animation: its own damaged one if it has one, else the anim's second half holds the damaged frames.
                 string animName = art.Art.Get(image, "ActiveAnim");
@@ -212,8 +218,79 @@ public sealed partial class TdSpriteRenderer
                     loopEnd = Math.Clamp(loopEnd, loopStart + 1, drawn);
                     float fps = 15f * Math.Max(1, art.Art.Num(animName, "Rate", 900)) / 900f;
                     int animFrame = loopStart + (int)(drawable.Clock * fps) % (loopEnd - loopStart) + damageOffset;
-                    if (Ra2Texture(art, anim, Math.Min(animFrame, drawn - 1), team, art.UnitPalette, false) is { } a)
+                    if (Ra2Texture(art, anim, Math.Min(animFrame, drawn - 1), team, art.BuildingPalette(image), false) is { } a)
                         Quad(a, anim.Width, anim.Height, unitsPerPixel, shape.Height * 0.25f, -1);
+                }
+                // A turret on top (a flak cannon's gun, a pillbox's): the rules' TurretAnim, a voxel (TurretAnimIsVoxel) or
+                // a shape of 32 facings, put TurretAnimX/TurretAnimY pixels from the building's centre.
+                string rulesName = obj.Template.Name.Contains('_') ? obj.Template.Name[(obj.Template.Name.IndexOf('_') + 1)..] : image;
+                if (art.Rules.Get(rulesName, "Turret").Equals("yes", StringComparison.OrdinalIgnoreCase)
+                    && art.Rules.Get(rulesName, "TurretAnim") is { Length: > 0 } turretAnim)
+                {
+                    float gunAngle = obj.AI is { Turrets.Count: > 0 } gunAi ? obj.Orientation + gunAi.Turrets[0].Angle - screenUp : heading;
+                    float dx = art.Rules.Num(rulesName, "TurretAnimX", 0), dy = art.Rules.Num(rulesName, "TurretAnimY", 0);
+                    float centre = shape.Height * 0.25f;
+                    if (art.Rules.Get(rulesName, "TurretAnimIsVoxel").Equals("true", StringComparison.OrdinalIgnoreCase)
+                        || art.Rules.Get(rulesName, "TurretAnimIsVoxel").Equals("yes", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int f = Facing(gunAngle, 32);
+                        if (Ra2VoxelTexture(art, turretAnim, f, f, team) is { } gun)
+                        {
+                            // (The voxel picture's origin is 16 pixels under its centre.)
+                            float voxelUnits = VoxelUnitsPerPixel(art);
+                            float k = unitsPerPixel / voxelUnits;
+                            Quad(gun, 160, 160, voxelUnits, (centre - dy) * k + 16, -2, dx * k);
+                        }
+                    }
+                    else if (art.BuildingShape(turretAnim) is { } gunShape)
+                    {
+                        int gunFrames = Math.Max(1, gunShape.FrameCount / 2);
+                        int f = gunFrames >= 32 ? (32 - Facing(gunAngle, 32)) % 32 : 0;
+                        if (Ra2Texture(art, gunShape, f, team, art.BuildingPalette(image), false) is { } gun)
+                            Quad(gun, gunShape.Width, gunShape.Height, unitsPerPixel, centre - dy, -2, dx);
+                    }
+                }
+                return;
+            }
+            case "Unit":
+            {
+                // A walker drawn as a shape (Tiberian Sun's Titan and Wolverine): its art gives the frame blocks, one run
+                // of frames per facing (Facings, StartWalkFrame/WalkFrames, StartStandFrame/StandingFrames,
+                // StartFiringFrame/FiringFrames), in the unit palette with its house's colours.
+                if (art.Shape(image) is not { } shape)
+                    return;
+                int facings = Math.Max(1, (int)art.Art.Num(image, "Facings", 8));
+                int walkFrames = Math.Max(1, (int)art.Art.Num(image, "WalkFrames", 1));
+                int startWalk = (int)art.Art.Num(image, "StartWalkFrame", 0);
+                int firingFrames = (int)art.Art.Num(image, "FiringFrames", 0);
+                // The file holds (then their shadows): the walk frames for each facing, a standing frame for each facing
+                // when there is room for one (the Wolverine's), the firing frames for each facing, and a turret's 32
+                // facings (the Titan's). A standing frame defaults to the first walk frame.
+                bool turreted = art.Rules.Get(obj.Template.Name.Contains('_') ? obj.Template.Name[(obj.Template.Name.IndexOf('_') + 1)..] : image, "Turret").Equals("yes", StringComparison.OrdinalIgnoreCase)
+                    || art.Rules.Get(image, "Turret").Equals("yes", StringComparison.OrdinalIgnoreCase);
+                int drawn = shape.FrameCount / 2;
+                int spare = drawn - startWalk - facings * walkFrames - facings * firingFrames - (turreted ? 32 : 0);
+                int standFrames = (int)art.Art.Num(image, "StandingFrames", spare >= facings ? spare / facings : 0);
+                int startStand = (int)art.Art.Num(image, "StartStandFrame", standFrames > 0 ? startWalk + facings * walkFrames : startWalk);
+                int startFiring = (int)art.Art.Num(image, "StartFiringFrame", startWalk + facings * (walkFrames + standFrames));
+                int startTurret = startFiring + facings * firingFrames;
+                // (A walker's facings run clockwise from north, unlike a soldier's: the Titan's turret frames show it.)
+                int Clockwise(float angle, int steps) => (steps - Facing(angle, steps)) % steps;
+                int facing = Clockwise(apparent, facings);
+                int stage = (int)(drawable.Clock * 12);
+                bool moving = obj.AI?.IsMoving ?? false, firing = drawable.SecondsSinceFired < 0.4f;
+                int frame = firing && firingFrames > 0 ? startFiring + facing * firingFrames + Math.Min((int)(drawable.SecondsSinceFired * 12), firingFrames - 1)
+                    : moving ? startWalk + facing * walkFrames + stage % walkFrames
+                    : standFrames > 0 ? startStand + facing * standFrames
+                    : startWalk + facing * walkFrames;
+                float scale = unitsPerPixel * SageMapScale(art, false);
+                if (parts != 2 && Ra2Texture(art, shape, Math.Clamp(frame, 0, shape.FrameCount - 1), team, art.UnitPalette, false) is { } texture)
+                    Quad(texture, shape.Width, shape.Height, scale, 0);
+                if (turreted && startTurret + 32 <= drawn && parts != 1)
+                {
+                    float turretAngle = obj.AI is { Turrets.Count: > 0 } ai ? camera.ApparentAngle(obj.Orientation + ai.Turrets[0].Angle) - screenUp : apparent;
+                    if (Ra2Texture(art, shape, startTurret + Clockwise(turretAngle, 32), team, art.UnitPalette, false) is { } top)
+                        Quad(top, shape.Width, shape.Height, scale, 0, -1);
                 }
                 return;
             }

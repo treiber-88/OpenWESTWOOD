@@ -207,6 +207,7 @@ public sealed class ShellScreen : IScreen
         if (optionsLayout == null)
         {
             optionsLayout = GuiLayout.Load(Ui.Content.FileSystem, "Window/Menus/OptionsMenu.wnd");
+            LayoutAdditions.WireViewOption(optionsLayout);
             foreach (string close in new[] { "ButtonBack", "ButtonAccept" })
                 if (optionsLayout.Find<GuiPushButton>(close) is { } button)
                     button.Clicked += _ =>
@@ -227,7 +228,10 @@ public sealed class ShellScreen : IScreen
     public Logic.Multiplayer.GameInfo? SkirmishGameInfo { get; set; }
 
     Logic.Multiplayer.MapCache? mapCache;
-    public Logic.Multiplayer.MapCache MapCache => mapCache ??= LoadMapCache();
+    /// <summary>The map list, read on a loading thread from when the menus open (reading every game's maps took seconds,
+    /// a freeze when Skirmish was clicked).</summary>
+    Task<Logic.Multiplayer.MapCache>? mapCacheLoading;
+    public Logic.Multiplayer.MapCache MapCache => mapCache ??= (mapCacheLoading ?? Task.FromResult(LoadMapCache())).GetAwaiter().GetResult();
 
     /// <summary>The official maps, and (OpenWESTWOOD) Tiberian Dawn's multiplayer maps when its files are installed.</summary>
     Logic.Multiplayer.MapCache LoadMapCache() => BuildMapCache(Ui.Content);
@@ -721,6 +725,12 @@ public sealed class ShellScreen : IScreen
         perFrame?.Invoke();
         ShowDuneBattle();
         DirectDuneBattle(seconds);
+        // (Once the shell battle is up, not alongside it: both at once slowed the battle's start.)
+        if (mapCache == null && mapCacheLoading == null && pendingBattle == null)
+        {
+            var content = Ui.Content;
+            mapCacheLoading = Task.Run(() => BuildMapCache(content));
+        }
         if (shellWorld != null)
         {
             shellWorld.ViewportSize = new Vector2(width, height);
@@ -754,7 +764,7 @@ public sealed class ShellScreen : IScreen
         {
             var (name, _) = DebugClicks.Dequeue();
             // Like a real mouse: press and release at the button's centre, so whatever is on top there gets the click.
-            if (Gui.Find(name) is GuiPushButton button)
+            if (Gui.Find(name) is GuiPushButton or GuiComboBox && Gui.Find(name) is { } button)
             {
                 var centre = new Vector2(button.ScreenRect.X + button.ScreenRect.Width / 2, button.ScreenRect.Y + button.ScreenRect.Height / 2);
                 var hit = Gui.HitTest(centre);

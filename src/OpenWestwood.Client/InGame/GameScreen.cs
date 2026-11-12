@@ -96,6 +96,20 @@ public sealed partial class GameScreen : IScreen
             radarWindow = leftHud;
             leftHud.CustomDraw = (w, context) => radar.Draw(context.Batch, w.ScreenRect, ui.Images);
         }
+        // OpenWESTWOOD: a Westwood faction with its game's own sidebar has that instead of the Zero Hour control bar:
+        // the sidebar holds the radar, the money, the power gauge, the powers (as cameos) and the Repair / Sell buttons.
+        if (tdSidebar is { HasSkin: true } sidebar)
+        {
+            controlBar.Layout.Hidden = true;
+            sidebar.RadarDrawer = (b, r) => radar.Draw(b, r, ui.Images);
+            sidebar.HasRadar = () => radar.IsActive;
+            sidebar.Powers = () => game.ObjectsOwnedBy(player).Where(o => !o.IsEffectivelyDead && !o.IsUnderConstruction)
+                .SelectMany(o => Logic.Templates.CommandSets.Buttons(game.Catalog, o.CommandSetName).Select(b => (b.Button, Source: o)))
+                .Where(p => p.Button.Command.StartsWith("SPECIAL_POWER", StringComparison.OrdinalIgnoreCase) && p.Button.SpecialPower.Length > 0)
+                .GroupBy(p => p.Button.SpecialPower, StringComparer.OrdinalIgnoreCase).Select(g => g.First()).ToList();
+            sidebar.PowerCharge = (b, source) => controlBar.PowerCharge(b, source);
+            sidebar.UsePower = (b, source) => OnCommand(b, source);
+        }
         director = new ScriptDirector(game, world, ui, player);
         director.MessageWindowRequested += ShowMessageWindow;
         game.IsNamedObjectSelected = name => selection.Any(o => o.Name == name);
@@ -160,12 +174,17 @@ public sealed partial class GameScreen : IScreen
         height = Math.Max(1, h);
         ui.Resize(width, height);
         controlBar.Layout.Layout(ui.Gui.Scale);
+        // (The promotions page too: left unsized it opened as nothing in the top corner, and the star button seemed dead.)
+        promotions.Layout.Layout(ui.Gui.Scale);
         messageWindow?.Layout(ui.Gui.Scale);
         tdSidebar?.Layout(width, height);
     }
 
     /// <summary>Debug: run the VICTORY or DEFEAT script action after this many seconds of play.</summary>
     public static (string Action, float At)? DebugEndGame { get; set; }
+
+    /// <summary>Debug: interface windows to click and when (seconds into the game), --game-click.</summary>
+    public static Queue<(string Window, float At)> DebugClicks { get; } = new();
     float debugClock;
 
     // ---- Update ----
@@ -222,6 +241,22 @@ public sealed partial class GameScreen : IScreen
             Game.Scripts.ExecuteActions([new Logic.Scripting.ScriptAction { Name = end.Action }]);
         }
         DebugSave();
+        // Debug: --game-click "ButtonGeneral@3": a left click on that interface window's middle (through the mouse path).
+        while (DebugClicks.Count > 0 && DebugClicks.Peek().At <= debugClock)
+        {
+            var (name, _) = DebugClicks.Dequeue();
+            EnsureUi();
+            if (uiManager.Find(name) is { } target)
+            {
+                var at = new Vector2(target.ScreenRect.X + target.ScreenRect.Width / 2, target.ScreenRect.Y + target.ScreenRect.Height / 2);
+                Console.WriteLine($"[debug] clicking {name} at {at} (hit: {uiManager.HitTest(at)?.Name ?? "nothing"}, enabled {target.IsEnabled}, hidden {target.Hidden})");
+                OnMouseMove(at);
+                OnMouseDown(MouseButton.Left);
+                OnMouseUp(MouseButton.Left);
+            }
+            else
+                Console.WriteLine($"[debug] no window {name}");
+        }
         world.ViewportSize = Viewport;
         world.Update(seconds);
         Tick?.Invoke(seconds);
@@ -356,9 +391,10 @@ public sealed partial class GameScreen : IScreen
     /// </summary>
     bool HandleRadarClick(MouseButton button)
     {
-        if (radarWindow == null || !radar.IsActive || !radarWindow.ScreenRect.Contains(mouse))
+        // (The radar is the game's own sidebar's, for a Westwood faction that has one.)
+        if ((tdSidebar?.RadarMapRect ?? radarWindow?.ScreenRect) is not { } radarRect || !radar.IsActive || !radarRect.Contains(mouse))
             return false;
-        if (radar.PixelToWorld(radarWindow.ScreenRect, mouse) is not { } point)
+        if (radar.PixelToWorld(radarRect, mouse) is not { } point)
             return true;
         var ids = SelectedIds();
         if (ids.Length == 0 || button == MouseButton.Right)
@@ -464,12 +500,16 @@ public sealed partial class GameScreen : IScreen
         }
         if (button == MouseButton.Right)
         {
-            // A right-click (not a drag) drops the selection.
+            // A right-click (not a drag) drops the selection (and the sidebar's Repair / Sell mode).
             bool clicked = rightAnchor != null && !rightScrolling;
             rightAnchor = null;
             rightScrolling = false;
             if (clicked)
+            {
                 selection.Clear();
+                if (tdSidebar != null)
+                    tdSidebar.Mode = TiberianDawn.TdSidebarPanel.ClickMode.None;
+            }
             return;
         }
         if (button != MouseButton.Left)
@@ -483,6 +523,19 @@ public sealed partial class GameScreen : IScreen
             return;
         dragStart = null;
 
+        // The sidebar's Repair / Sell buttons: a click on one of the player's buildings repairs or sells it (the mode stays
+        // on for more, as in the originals, until the button is pressed again or the right button is clicked).
+        if (tdSidebar is { Mode: not TiberianDawn.TdSidebarPanel.ClickMode.None } modeBar)
+        {
+            if (world.ObjectAt(mouse, Viewport, o => o.Owner == player && !o.IsEffectivelyDead && o.IsKindOf(Kind.Structure)) is { } building)
+            {
+                if (modeBar.Mode == TiberianDawn.TdSidebarPanel.ClickMode.Sell)
+                    Game.Commands.Enqueue(new SellCommand(player.Index, building.Id));
+                else if (building.FindModule<Logic.Modules.Behaviors.TdStructureRepair>() != null)
+                    Game.Commands.Enqueue(new ToggleTdRepairCommand(player.Index, building.Id));
+            }
+            return;
+        }
         bool additive = Held(Key.ShiftLeft) || Held(Key.ShiftRight);
         // TD: clicking the MCV you have selected deploys it.
         if (!additive && Vector2.Distance(start, mouse) < 6 && selection.Count == 1

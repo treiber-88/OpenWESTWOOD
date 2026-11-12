@@ -618,7 +618,7 @@ public static class TdFactionExporter
         File.WriteAllText(Path.Combine(output, "sound-effects.yaml"), header + "AudioEvents:\n" + string.Concat(usedSounds.Order().Select(v =>
             $"  TdSnd_{v}:\n    Sounds: /{v}.AUD\n    Control: interrupt\n    Priority: normal\n    Limit: 3\n    Volume: 80\n    Type: world shrouded everyone\n")));
         File.WriteAllText(Path.Combine(output, "factions.yaml"), header + factions);
-        File.WriteAllText(Path.Combine(output, "objects.yaml"), header + objects);
+        File.WriteAllText(Path.Combine(output, "objects.yaml"), WestwoodHusks.Add(header + objects.ToString()));
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), header + projectiles);
         File.WriteAllText(Path.Combine(output, "scenery.yaml"), header + scenery);
         File.WriteAllText(Path.Combine(output, "weapons.yaml"), header + weapons);

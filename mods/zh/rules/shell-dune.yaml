@@ -4,11 +4,13 @@ GameData:
   OpenWestwoodShellMap: d2k:tenaya
   # One house a start point (up to seven), every one against every other.
   OpenWestwoodShellHouses: FactionD2KAtreides FactionD2KHarkonnen FactionD2KOrdos FactionTDGDI FactionTDNod FactionRA2Russians FactionTSNod
-  OpenWestwoodShellCash: 40000
+  OpenWestwoodShellCash: 100000
   # Seconds played ahead before the menus show it, and the houses' first attack and attacks after that.
   OpenWestwoodShellPreroll: 60
   OpenWestwoodShellFirstAttack: 20
   OpenWestwoodShellAttackInterval: 25
+  # How much faster than normal the houses build (their armies are out and fighting soon after the menus open).
+  OpenWestwoodShellBuildSpeed: 3
   # The camera: how far back it sits, how long it stays on a spot once there, and its gliding speed (world units a second).
   OpenWestwoodShellCameraDistance: 800
   OpenWestwoodShellCameraHold: 10

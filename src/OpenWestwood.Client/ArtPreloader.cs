@@ -9,9 +9,18 @@ namespace OpenWestwood.Client;
 /// </summary>
 public static class ArtPreloader
 {
-    public static void PreloadFor(GameLogic game, GameContent content, string? mapName = null)
+    public static void PreloadFor(GameLogic game, GameContent content, string? mapName = null) =>
+        Preload(game.Players.All.Select(p => p.Side).ToList(), content, mapName);
+
+    /// <summary>
+    /// Starts reading the art of these sides' games (and the map's), each game's on its own thread, before the match is
+    /// even made (the shell battle: its four or five games' art took five seconds one after another).
+    /// </summary>
+    public static Task PreloadInParallel(IEnumerable<string> sides, GameContent content, string? mapName = null) =>
+        Task.WhenAll(sides.Append("").Select(side => Task.Run(() => Preload([side], content, side.Length == 0 ? mapName : null))));
+
+    static void Preload(List<string> sides, GameContent content, string? mapName)
     {
-        var sides = game.Players.All.Select(p => p.Side).ToList();
         bool Any(params string[] prefixes) => sides.Any(s => prefixes.Any(p => s.StartsWith(p, StringComparison.OrdinalIgnoreCase)));
         string map = mapName ?? "";
 

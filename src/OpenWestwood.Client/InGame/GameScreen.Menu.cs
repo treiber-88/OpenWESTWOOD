@@ -134,6 +134,7 @@ public sealed partial class GameScreen
         if (optionsMenu == null)
         {
             optionsMenu = GuiLayout.Load(ui.Content.FileSystem, "Window/Menus/OptionsMenu.wnd");
+            UI.Gui.LayoutAdditions.WireViewOption(optionsMenu);
             Wire(optionsMenu, "ButtonBack", () => Close(optionsMenu!));
             Wire(optionsMenu, "ButtonAccept", () => Close(optionsMenu!));
         }

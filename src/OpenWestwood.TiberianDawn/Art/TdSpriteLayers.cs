@@ -71,11 +71,13 @@ public static class TdSpriteLayers
         var active = b.Anim(BStateType.BSTATE_ACTIVE);
         int shapenum = idle.Start + (idle.Count > 1 ? Stage(s, idle.Rate) % idle.Count : 0);
 
-        if (b.Type == StructType.STRUCT_OBELISK || s.RedAlert && b.IniName == "TSLA")
+        if (!s.RedAlert && b.Type == StructType.STRUCT_OBELISK || s.RedAlert && b.IniName == "TSLA")
             shapenum = s.Firing ? 3 : 0;
         // Red Alert: damaged at or below ConditionYellow (half), TD below half.
         bool damaged = s.RedAlert ? s.HealthRatio <= 0x0080 : s.HealthRatio < 0x0080;
-        bool weap = b.Type == StructType.STRUCT_WEAP || s.RedAlert && b.IniName == "WEAF";
+        // (Red Alert's by name: its types missing from TD's list, such as the flame tower's STRUCT_FLAME_TURRET, read as
+        // TD's first, the war factory, and got its door drawn over them.)
+        bool weap = s.RedAlert ? b.IniName is "WEAP" or "WEAF" : b.Type == StructType.STRUCT_WEAP;
 
         if (b.IsTurretEquipped)
         {

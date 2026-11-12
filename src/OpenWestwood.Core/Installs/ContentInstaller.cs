@@ -62,9 +62,21 @@ public static class ContentInstaller
     /// <summary>All of a game's files are in OpenWESTWOOD's content folder (checked by size: quick enough for every start).</summary>
     public static bool IsInstalled(OriginalGame game)
     {
+        // (Remembered: the skirmish menu asks for every faction of every slot, and checking the files each time took
+        // seconds. An install forgets it.)
+        lock (installed)
+        {
+            if (installed.TryGetValue(game, out bool known))
+                return known;
+        }
         var files = FilesOf(game).ToList();
-        return files.Count > 0 && files.All(IsInPlace);
+        bool result = files.Count > 0 && files.All(IsInPlace);
+        lock (installed)
+            installed[game] = result;
+        return result;
     }
+
+    static readonly Dictionary<OriginalGame, bool> installed = new();
 
     /// <summary>Where the player's copies of a content folder's files are (found by <see cref="GameInstalls.Detect"/>).</summary>
     static IEnumerable<string> SourcesOf(string folder)
@@ -118,6 +130,8 @@ public static class ContentInstaller
     /// </summary>
     public static InstallResult Install(OriginalGame game, Action<long, long, string>? progress = null, CancellationToken cancel = default)
     {
+        lock (installed)
+            installed.Clear();
         var (plan, unavailable) = Plan(game);
         string name = GameInstalls.DisplayName(game);
         if (unavailable.Count > 0)
@@ -182,6 +196,8 @@ public static class ContentInstaller
                 problems.Add($"{file.Folder}/{file.Path}: no unmodified copy found");
         }
         bool ok = IsInstalled(game);
+        lock (installed)
+            installed.Clear();
         return new InstallResult(ok,
             ok ? $"{name}'s artwork is installed." : $"{name} could not be installed completely: some of its files are modified in every copy found (for example by a community patch). The game's disc or a fresh install has the originals.",
             problems);

@@ -375,6 +375,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -441,6 +446,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_HARVESTER_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -509,6 +519,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_TRIKE_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -574,6 +589,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_QUAD_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -639,6 +659,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_SIEGE_TANK_Husk
+        TurretPiece: D2KATR_SIEGE_TANK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -710,6 +736,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_MISSILE_TANK_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -776,6 +807,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_SONIC_TANK_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -841,6 +877,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_COMBAT_TANK_A_Husk
+        TurretPiece: D2KATR_COMBAT_TANK_A_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2133,6 +2175,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_MCV_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2195,6 +2242,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_HARVESTER_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2260,6 +2312,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_TRIKE_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2325,6 +2382,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_QUAD_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2390,6 +2452,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_SIEGE_TANK_STARPORT_Husk
+        TurretPiece: D2KATR_SIEGE_TANK_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2458,6 +2526,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_MISSILE_TANK_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -2523,6 +2596,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KATR_COMBAT_TANK_A_STARPORT_Husk
+        TurretPiece: D2KATR_COMBAT_TANK_A_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3119,6 +3198,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3185,6 +3269,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_HARVESTER_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3253,6 +3342,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_TRIKE_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3318,6 +3412,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_QUAD_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3383,6 +3482,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_SIEGE_TANK_Husk
+        TurretPiece: D2KHAR_SIEGE_TANK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3454,6 +3559,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_MISSILE_TANK_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3520,6 +3630,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_DEVASTATOR_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -3585,6 +3700,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_COMBAT_TANK_H_Husk
+        TurretPiece: D2KHAR_COMBAT_TANK_H_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -4871,6 +4992,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_MCV_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -4933,6 +5059,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_HARVESTER_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -4998,6 +5129,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_TRIKE_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5063,6 +5199,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_QUAD_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5128,6 +5269,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_SIEGE_TANK_STARPORT_Husk
+        TurretPiece: D2KHAR_SIEGE_TANK_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5196,6 +5343,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_MISSILE_TANK_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5261,6 +5413,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KHAR_COMBAT_TANK_H_STARPORT_Husk
+        TurretPiece: D2KHAR_COMBAT_TANK_H_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5737,6 +5895,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_MCV_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5803,6 +5966,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_HARVESTER_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5871,6 +6039,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_QUAD_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -5936,6 +6109,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_SIEGE_TANK_Husk
+        TurretPiece: D2KORD_SIEGE_TANK_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -6004,6 +6183,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_RAIDER_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -6072,6 +6256,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_STEALTH_RAIDER_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -6145,6 +6334,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_DEVIATOR_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -6210,6 +6404,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_COMBAT_TANK_O_Husk
+        TurretPiece: D2KORD_COMBAT_TANK_O_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7496,6 +7696,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_MCV_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7558,6 +7763,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_HARVESTER_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7623,6 +7833,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_TRIKE_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7688,6 +7903,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_QUAD_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7753,6 +7973,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_SIEGE_TANK_STARPORT_Husk
+        TurretPiece: D2KORD_SIEGE_TANK_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7821,6 +8047,11 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_MISSILE_TANK_STARPORT_Husk
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -7886,6 +8117,12 @@ Objects:
     CrushableLevel: 2
     CommandSet: GenericCommandSet
     Modules:
+      ModuleTag_Husk:
+        Module: Behavior
+        Class: WestwoodHuskDie
+        DeathTypes: ALL -CRUSHED
+        Husk: D2KORD_COMBAT_TANK_O_STARPORT_Husk
+        TurretPiece: D2KORD_COMBAT_TANK_O_STARPORT_HuskTurret
       ModuleTag_01:
         Module: Draw
         Class: D2KSpriteDraw
@@ -8154,3 +8391,1444 @@ Objects:
         DeathTypes: ALL
         DestructionDelay: 100
         FX: FINAL FX_GenericTankDeathExplosion
+  # The vehicles' husks (OpenWESTWOOD, see WestwoodHusks).
+  D2KORD_COMBAT_TANK_O_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_o
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_COMBAT_TANK_O_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_o
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KORD_MISSILE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: missile_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_SIEGE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_SIEGE_TANK_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KORD_QUAD_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_TRIKE_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: trike
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_HARVESTER_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_MCV_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_COMBAT_TANK_O_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_o
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_COMBAT_TANK_O_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_o
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KORD_DEVIATOR_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: deviator
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_STEALTH_RAIDER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: stealth_raider
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_RAIDER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: raider
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_SIEGE_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_SIEGE_TANK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KORD_QUAD_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_HARVESTER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_HARVESTER
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KORD_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_MCV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_COMBAT_TANK_H_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_h
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_COMBAT_TANK_H_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_h
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KHAR_MISSILE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: missile_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_SIEGE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_SIEGE_TANK_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KHAR_QUAD_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_TRIKE_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: trike
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_HARVESTER_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_MCV_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_COMBAT_TANK_H_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_h
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_COMBAT_TANK_H_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_h
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KHAR_DEVASTATOR_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: devastator
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_MISSILE_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: missile_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_SIEGE_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_SIEGE_TANK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KHAR_QUAD_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_TRIKE_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: trike
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_HARVESTER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_HARVESTER
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KHAR_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_MCV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_COMBAT_TANK_A_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_a
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_COMBAT_TANK_A_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_a
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KATR_MISSILE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: missile_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_SIEGE_TANK_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_SIEGE_TANK_STARPORT_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KATR_QUAD_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_TRIKE_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: trike
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_HARVESTER_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_MCV_STARPORT_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_COMBAT_TANK_A_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_a
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_COMBAT_TANK_A_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: combat_tank_a
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KATR_SONIC_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: sonic_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_MISSILE_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: missile_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_SIEGE_TANK_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_SIEGE_TANK_HuskTurret:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: siege_tank
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Turret
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+        FireParticleSystem: FireSmallContinuous
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 1.0
+        AllowBouncing: Yes
+  D2KATR_QUAD_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: quad
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_TRIKE_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: trike
+        TdKind: Unit
+        TdType: UNIT_D2K
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_HARVESTER_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: harvester
+        TdKind: Unit
+        TdType: UNIT_HARVESTER
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
+  D2KATR_MCV_Husk:
+    EditorSorting: DEBRIS
+    KindOf: NO_COLLIDE HULK INERT
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: D2KSpriteDraw
+        Image: mcv
+        TdKind: Unit
+        TdType: UNIT_MCV
+        Husk: Yes
+      ModuleTag_02:
+        Module: Behavior
+        Class: LifetimeUpdate
+        MinLifetime: 20000
+        MaxLifetime: 25000
+      ModuleTag_03:
+        Module: Behavior
+        Class: SlowDeathBehavior
+        DeathTypes: ALL
+        DestructionDelay: 2000
+      ModuleTag_04:
+        Module: Behavior
+        Class: WestwoodHusk
