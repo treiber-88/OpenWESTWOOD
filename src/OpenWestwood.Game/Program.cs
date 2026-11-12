@@ -185,7 +185,7 @@ if (options.Get("ai-census") is { } censusFactions)
 }
 
 // The shell map's battle is set up while the window opens and the menus load (only when the main menu will show).
-if (!options.Has("skirmish") && !options.Has("trailer") && !options.Has("view-model") && !options.Has("view-map")
+if (!options.Has("skirmish") && !options.Has("trailer") && !options.Has("view-model") && !options.Has("view-map") && !options.Has("sole-survivor")
     && !options.Has("demo-fx") && !options.Has("demo-drive") && !options.Has("select") && !options.Has("look-at"))
     OpenWestwood.Client.Shell.DuneShellBattle.StartEarly(content);
 
@@ -222,6 +222,26 @@ window.Run((gl, input, osWindow) =>
 
     if (options.Get("view-map") is { } mapPath)
         return new MapViewerScreen(gl, input, content, mapPath, options.Has("topdown"));
+
+    // Sole Survivor Remix: --sole-survivor setup (its setup screen) or --sole-survivor [--ssr-mode Freeplay|ZoneDefense|
+    // CaptureTheFlag|Classic] [--faction F] [--map M] [--computers N] (straight into a match).
+    if (options.Has("sole-survivor"))
+    {
+        var ssrUi = new OpenWestwood.Client.UI.UiResources(gl, content);
+        if (options.Get("sole-survivor") == "setup")
+            return new OpenWestwood.Client.SoleSurvivor.SsrSetupScreen(gl, input, osWindow, ssrUi, OpenWestwood.Client.Shell.ShellScreen.BuildMapCache(content));
+        var ssrSetup = new OpenWestwood.Client.SoleSurvivor.SsrMatchSetup
+        {
+            Mode = Enum.TryParse<OpenWestwood.Logic.SoleSurvivor.SsrMode>(options.Get("ssr-mode") ?? "Freeplay", true, out var ssrMode) ? ssrMode : OpenWestwood.Logic.SoleSurvivor.SsrMode.Freeplay,
+            Faction = options.Get("faction") ?? "FactionAmerica",
+            Map = options.Get("map") ?? "Maps/Tournament Desert/Tournament Desert.map",
+            MapPlayers = 4,
+            Computers = int.TryParse(options.Get("computers"), out int ssrComputers) ? ssrComputers : 3,
+            // Debug: --ssr-unit TEMPLATE goes in as that unit at once.
+            AutoUnit = options.Get("ssr-unit"),
+        };
+        return OpenWestwood.Client.SoleSurvivor.SsrSetupScreen.Play(gl, input, osWindow, ssrUi, ssrSetup);
+    }
 
     // Without a skirmish (or one of its debug options) the game starts at the main menu.
     if (!options.Has("skirmish") && !options.Has("demo-fx") && !options.Has("demo-drive") && !options.Has("select") && !options.Has("look-at"))

@@ -408,6 +408,76 @@ public sealed class Locomotor
         }
     }
 
+    /// <summary>
+    /// OpenWESTWOOD (Sole Survivor Remix): driven by the keys rather than to a point. Ground units go forward or back
+    /// along their facing (<paramref name="throttle"/> 1 / -1) and turn on the spot (<paramref name="turn"/> 1 left,
+    /// -1 right). Aircraft can't reverse: forward is full speed, back is their slowest, and they bank round to turn.
+    /// Returns false when there is nothing to do for an aircraft (so it hovers or circles as usual).
+    /// </summary>
+    public bool Drive(GameObject obj, float throttle, float turn)
+    {
+        Set(LocoFlag.MaintainPosIsValid, false);
+        if (obj.FindModule<PhysicsBehavior>() is not { } physics || physics.IsStunned)
+            return true;
+        bool air = (Template.Surfaces & Surfaces.Air) != 0 || Template.Appearance is Appearance.Thrust or Appearance.Wings;
+        if (air)
+        {
+            if (throttle == 0 && turn == 0)
+                return false;
+            float max = MaxSpeedFor(obj);
+            float speed = throttle > 0 ? max : throttle < 0 ? Math.Max(MinSpeed, max * 0.15f) : Math.Max(MinSpeed, max * 0.5f);
+            if (throttle == 0 && MinSpeed <= 0)
+            {
+                // Hovering craft just turn where they are.
+                MoveTowardsAngle(obj, obj.Orientation + turn * 0.6f);
+                return true;
+            }
+            var ahead = obj.Position + MathUtil.Forward(obj.Orientation + turn * 0.6f) * Math.Max(200, speed * LogicTime.FramesPerSecond * 2);
+            bool none = false;
+            MoveTowardsPosition(obj, ahead with { Z = obj.Position.Z }, 99999f, speed, ref none);
+            return true;
+        }
+
+        if (!game.Pathfinder.IsValidMovementTerrain(obj.Position, Template.Surfaces, obj.Layer) && !AllowInvalidPosition && FixInvalidPosition(obj, physics))
+            return true;
+        physics.ApplyMotiveForce(Vector3.Zero);
+
+        // Turning on the spot, at the unit's own rate (kept sensible for the very quick and the very slow).
+        float turnRate = Math.Clamp(MaxTurnRateFor(obj), 0.03f, 0.12f);
+        if (turn != 0)
+        {
+            obj.SetOrientation(MathUtil.NormalizeAngle(obj.Orientation + MathF.Sign(turn) * turnRate));
+            physics.Turning = turn > 0 ? Turning.Positive : Turning.Negative;
+        }
+        else
+        {
+            physics.Turning = Turning.None;
+        }
+
+        // Forward at full speed, backward a little slower; stopping short of ground it can't drive on.
+        float maxSpeed = MaxSpeedFor(obj);
+        float goal = throttle > 0 ? maxSpeed : throttle < 0 ? -maxSpeed * 0.6f : 0;
+        if (goal != 0)
+        {
+            var dir = MathUtil.Forward(obj.Orientation) * MathF.Sign(goal);
+            var next = obj.Position + dir * (obj.Geometry.MajorRadius + PathCell / 2);
+            if (!game.Pathfinder.IsValidMovementTerrain(next, Template.Surfaces, obj.Layer))
+                goal = 0;
+        }
+        float actual = physics.ForwardSpeed2D;
+        float delta = goal - actual;
+        if (MathF.Abs(delta) > 0.001f)
+        {
+            bool speedingUp = goal != 0 && MathF.Sign(goal) == MathF.Sign(delta) && MathF.Abs(goal) > MathF.Abs(actual);
+            float rate = speedingUp ? MaxAccelerationFor(obj) : Braking;
+            ApplySpeedForce(obj, physics, delta, MathF.Sign(delta) * rate);
+        }
+        Set(LocoFlag.IsBraking, false);
+        HandleBehaviorZ(obj, physics, obj.Position);
+        obj.SetStatus("IS_BRAKING", false);
+        return true;
+    }
+
     /// <summary>Applies a forward/backward force to reach goalSpeed, never more than needed.</summary>
     static void ApplySpeedForce(GameObject obj, PhysicsBehavior physics, float speedDelta, float acceleration)
     {

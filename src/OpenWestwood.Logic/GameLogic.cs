@@ -31,6 +31,9 @@ public sealed class GameLogic
 
     /// <summary>OpenWESTWOOD: a Tiberian Dawn campaign mission's triggers and teams (null in other games).</summary>
     public Missions.TdMission? TdMission { get; set; }
+
+    /// <summary>A game of Sole Survivor Remix being played (null otherwise).</summary>
+    public SoleSurvivor.SoleSurvivorMatch? SoleSurvivor { get; set; }
     public TerrainLogic Terrain { get; }
     public PartitionManager Partition { get; }
     public PlayerList Players { get; }
@@ -433,6 +436,7 @@ public sealed class GameLogic
         if (GameProfiler.Enabled) GameProfiler.Add("~Collisions", t0);
         RemoveDestroyedObjects();
         Victory.Update();
+        SoleSurvivor?.Update();
         Frame++;
     }
 

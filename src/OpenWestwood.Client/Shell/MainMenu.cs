@@ -117,6 +117,8 @@ public sealed class MainMenu : ShellMenu
             launchChallengeMenu = true;
         });
         OnClick("ButtonMoreCampaigns", OpenMoreCampaigns);
+        // OpenWESTWOOD: Sole Survivor Remix, its own game on the same engine and art.
+        OnClick("ButtonSoleSurvivor", () => Screen.OpenSoleSurvivor());
         OnClick("ButtonUSA", () => { if (!ZeroHourMissing()) ChooseCampaign("USA", "US", Show.Usa); });
         OnClick("ButtonGLA", () => { if (!ZeroHourMissing()) ChooseCampaign("GLA", "GLA", Show.Gla); });
         OnClick("ButtonChina", () => { if (!ZeroHourMissing()) ChooseCampaign("China", "China", Show.China); });

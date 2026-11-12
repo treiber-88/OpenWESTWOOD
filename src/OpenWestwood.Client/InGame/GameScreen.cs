@@ -192,6 +192,53 @@ public sealed partial class GameScreen : IScreen
     /// <summary>Called once the game is over and its end timer has run out (the shell takes over).</summary>
     public Action? GameEnded { get; set; }
 
+    // ---- Hooks for game versions that drive one unit directly (Sole Survivor Remix) ----
+
+    /// <summary>The player steers a unit directly: no box selection or click orders on the map, no camera scrolling
+    /// (the game version moves the camera); building placement, powers and the interface still work.</summary>
+    public bool DirectControl
+    {
+        get => directControl;
+        set
+        {
+            directControl = value;
+            // (The control bar and sidebar go too: the game version has its own interface.)
+            controlBar.Layout.Hidden = value;
+        }
+    }
+    bool directControl;
+    /// <summary>Sees each key press first; true if it used it.</summary>
+    public Func<Key, bool>? KeyFilter { get; set; }
+    /// <summary>Sees each mouse button press (true) and release (false) first; true if it used it.</summary>
+    public Func<MouseButton, bool, bool>? MouseFilter { get; set; }
+    /// <summary>Draws over everything (a game version's own interface).</summary>
+    public Action<SpriteBatch>? DrawOverlay { get; set; }
+    public Vector2 MousePosition => mouse;
+    public Vector2 ScreenSize => new(width, height);
+    public UiResources Ui => ui;
+    public bool IsHeld(Key key) => Held(key);
+    /// <summary>The ground point under the mouse, if any.</summary>
+    public Vector3? GroundUnderMouse() => world.GroundPointAt(mouse, Viewport);
+    /// <summary>The object under the mouse that passes the test, if any.</summary>
+    public GameObject? ObjectUnderMouse(Func<GameObject, bool> test) => world.ObjectAt(mouse, Viewport, test);
+    /// <summary>Where a world point is on the screen (null behind the camera).</summary>
+    public Vector2? WorldToScreen(Vector3 point)
+    {
+        var clip = Vector4.Transform(new Vector4(point, 1), world.Camera.ViewProjection);
+        if (clip.W <= 0.0001f)
+            return null;
+        return new Vector2((clip.X / clip.W * 0.5f + 0.5f) * width, (0.5f - clip.Y / clip.W * 0.5f) * height);
+    }
+    /// <summary>The ground directions of the screen's right and up (to steer by the keys as the screen shows them).</summary>
+    public (Vector3 Right, Vector3 Up) ScreenAxes => (world.Camera.ScreenRight, world.Camera.ScreenUp);
+    /// <summary>Glides the camera toward a point (a fraction of the way each call).</summary>
+    public void FollowCamera(Vector3 point, float fraction)
+    {
+        var target = world.Camera.Target;
+        var goal = point with { Z = Game.Terrain.GroundHeight(point) };
+        world.Camera.Target = target + (goal - target) * Math.Clamp(fraction, 0, 1);
+    }
+
     /// <summary>
     /// A network game's link (null when the game runs on this machine alone). Its orders go through the lockstep; it is
     /// closed when the game ends, which tells the others this player has gone.
@@ -269,7 +316,7 @@ public sealed partial class GameScreen : IScreen
         controlBar.Update(selection);
         promotions.Update();
         if (GameProfiler.Enabled) GameProfiler.Add("#client control bar", t0);
-        if (director.InputEnabled && !director.Camera.IsBusy && !Cinematic)
+        if (director.InputEnabled && !director.Camera.IsBusy && !Cinematic && !DirectControl)
             ScrollCamera(seconds);
         director.Update(seconds);
         cursors ??= ui.CursorsFor(input);
@@ -427,6 +474,8 @@ public sealed partial class GameScreen : IScreen
         }
         if (director.DismissPopup() || !director.InputEnabled)
             return;
+        if (MouseFilter?.Invoke(button, true) == true)
+            return;
         if (button is MouseButton.Left or MouseButton.Right && HandleRadarClick(button))
             return;
         if (button == MouseButton.Middle)
@@ -471,6 +520,8 @@ public sealed partial class GameScreen : IScreen
                 pendingPower = null;
                 return;
             }
+            if (DirectControl)
+                return;
             dragStart = mouse;
         }
         else if (button == MouseButton.Right)
@@ -483,7 +534,7 @@ public sealed partial class GameScreen : IScreen
                 pendingPower = null;
                 return;
             }
-            if (!uiManager.IsOverInterface(mouse))
+            if (!uiManager.IsOverInterface(mouse) && !DirectControl)
             {
                 rightAnchor = mouse;
                 rightScrolling = false;
@@ -493,6 +544,8 @@ public sealed partial class GameScreen : IScreen
 
     void OnMouseUp(MouseButton button)
     {
+        if (MouseFilter?.Invoke(button, false) == true)
+            return;
         if (button == MouseButton.Middle)
         {
             middleDragging = false;
@@ -638,6 +691,8 @@ public sealed partial class GameScreen : IScreen
     void OnKey(Key key)
     {
         if (MenuKey(key))
+            return;
+        if (KeyFilter?.Invoke(key) == true)
             return;
         if (!director.InputEnabled)
             return;
@@ -1120,12 +1175,14 @@ public sealed partial class GameScreen : IScreen
         if (!director.Letterbox)
         {
             uiManager.Draw(ui.Gui);
-            tdSidebar?.Draw(batch);
+            if (!DirectControl)
+                tdSidebar?.Draw(batch);
             DrawTooltip(batch);
         }
         director.Draw(batch, width, height);
         DrawSuperweaponTimers(batch);
         DrawMessage(batch);
+        DrawOverlay?.Invoke(batch);
         batch.End();
     }
 

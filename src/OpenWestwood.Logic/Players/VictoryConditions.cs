@@ -17,6 +17,9 @@ public sealed class VictoryConditions
     /// <summary>A multiplayer or skirmish game (the original checks the recorder's multiplayer flag).</summary>
     public bool IsMultiplayer { get; set; }
 
+    /// <summary>No one wins or loses by these rules (a Sole Survivor Remix arena decides its own winner).</summary>
+    public bool Suspended { get; set; }
+
     public int EndFrame { get; private set; }
     public bool AmIObserver => isObserver;
 
@@ -53,7 +56,7 @@ public sealed class VictoryConditions
     {
         if (!cached)
             CachePlayers();
-        if (!IsMultiplayer || (local == null && !isObserver))
+        if (Suspended || !IsMultiplayer || (local == null && !isObserver))
             return;
         if (!singleAllianceRemaining)
         {

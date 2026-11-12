@@ -91,7 +91,7 @@ public abstract class Body : Module, ICreateModule
             if (filter.Absorb(damage))
                 return;
 
-        float amount = Armor.AdjustDamage(damage.DamageType, damage.Amount) / Owner.Owner.ArmorBias;
+        float amount = Armor.AdjustDamage(damage.DamageType, damage.Amount) / Owner.Owner.ArmorBias / Owner.ArmorBonus;
 
         if (damage.DamageType.Equals("KILL_PILOT", StringComparison.OrdinalIgnoreCase))
         {

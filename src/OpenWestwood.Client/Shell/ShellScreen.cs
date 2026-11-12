@@ -196,6 +196,9 @@ public sealed class ShellScreen : IScreen
 
     public void Quit() => window.Close();
 
+    /// <summary>Leaves for Sole Survivor Remix's setup (OpenWESTWOOD).</summary>
+    public void OpenSoleSurvivor() => SwitchTo(new SoleSurvivor.SsrSetupScreen(gl, input, window, Ui, MapCache));
+
     /// <summary>The difficulty picked for the Generals Challenge.</summary>
     public Difficulty ChallengeDifficulty { get; set; } = Difficulty.Normal;
 

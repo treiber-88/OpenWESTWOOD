@@ -237,6 +237,9 @@ public sealed partial class GameObject
     public float RangeBonus { get; set; } = 1;
     public float SpeedBonus { get; set; } = 1;
 
+    /// <summary>Damage taken is divided by this (a Sole Survivor Remix armour upgrade; 1 normally).</summary>
+    public float ArmorBonus { get; set; } = 1;
+
     /// <summary>How far it sees (a hijacked vehicle takes on its hijacker's).</summary>
     public float VisionRange
     {

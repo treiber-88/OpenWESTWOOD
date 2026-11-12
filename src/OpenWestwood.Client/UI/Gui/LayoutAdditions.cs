@@ -12,11 +12,13 @@ namespace OpenWestwood.Client.UI.Gui;
 public static class LayoutAdditions
 {
     public const string MoreCampaignsButton = "MainMenu.wnd:ButtonMoreCampaigns";
+    public const string SoleSurvivorButton = "MainMenu.wnd:ButtonSoleSurvivor";
 
     /// <summary>Added window => the original window whose transitions it shares.</summary>
     public static readonly Dictionary<string, string> TransitionCopies = new(StringComparer.OrdinalIgnoreCase)
     {
         [MoreCampaignsButton] = "MainMenu.wnd:ButtonSkirmish",
+        [SoleSurvivorButton] = "MainMenu.wnd:ButtonSkirmish",
     };
 
     public static void Apply(string fileName, List<WndWindow> roots, string text)
@@ -179,6 +181,20 @@ public static class LayoutAdditions
             holder.Height += step;
         panel.Height += step;
         holder.Children.Insert(holder.Children.IndexOf(back) + 1, copy);
+
+        // OpenWESTWOOD: Sole Survivor Remix, another game on the same engine, under it.
+        if (Find(WndFile.Parse(text), "MainMenu.wnd:ButtonSkirmish") is { } survivor)
+        {
+            survivor.Name = SoleSurvivorButton;
+            survivor.Text = "SOLE SURVIVOR REMIX";
+            survivor.Tooltip = "";
+            survivor.Y = back.Y;
+            back.Y += step;
+            if (holder != panel)
+                holder.Height += step;
+            panel.Height += step;
+            holder.Children.Insert(holder.Children.IndexOf(back), survivor);
+        }
     }
 
     static WndWindow? ParentOf(IEnumerable<WndWindow> windows, WndWindow child)

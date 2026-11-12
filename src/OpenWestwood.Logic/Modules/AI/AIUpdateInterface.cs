@@ -528,6 +528,22 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
 
     public void SetDesiredSpeed(float speed) => desiredSpeed = speed;
 
+    /// <summary>
+    /// OpenWESTWOOD (Sole Survivor Remix): the unit is driven by a person's keys, not sent to places: forward/back
+    /// along its facing and turning on the spot (Locomotor.Drive). Orders' movement is ignored meanwhile.
+    /// </summary>
+    public bool DirectDrive { get; set; }
+    public float DriveThrottle { get; private set; }
+    public float DriveTurn { get; private set; }
+
+    public void Drive(float throttle, float turn)
+    {
+        DirectDrive = true;
+        DriveThrottle = throttle;
+        DriveTurn = turn;
+        Wake();
+    }
+
     public bool IsInRappel() => State == AIState.Rappelling;
 
     /// <summary>Attacking with an anti-mine weapon (whatever the target): mines don't go off under it.</summary>
@@ -1350,6 +1366,15 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
             return;
 
         locomotor.SetPhysicsOptions(Owner);
+        if (DirectDrive)
+        {
+            // Driven by the keys: whatever the AI meant to steer for is dropped.
+            goalType = LocomotorGoal.None;
+            path = null;
+            doFinalPosition = false;
+            if (!Owner.IsEffectivelyDead && locomotor.Drive(Owner, DriveThrottle, DriveTurn))
+                return;
+        }
         if (!(Owner.IsEffectivelyDead && !locomotor.Template.WorksWhenDead))
         {
             float maxSpeed = locomotor.MaxSpeedFor(Owner);
@@ -1602,11 +1627,12 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
         // along in a crowd (blocked, yet moving) keeps walking. A few frames' grace keeps the stride from flickering.
         float stepSquared = MathUtil.DistanceSquared2D(Owner.Position, lastWalkPosition);
         lastWalkPosition = Owner.Position;
-        if (goalType != LocomotorGoal.None && stepSquared > 0.02f * 0.02f && stepSquared < 40 * 40)
+        bool steering = DirectDrive ? DriveThrottle != 0 || DriveTurn != 0 : goalType != LocomotorGoal.None;
+        if (steering && stepSquared > 0.02f * 0.02f && stepSquared < 40 * 40)
             walkGraceFrames = 4;
         else if (walkGraceFrames > 0)
             walkGraceFrames--;
-        bool moving = goalType != LocomotorGoal.None && walkGraceFrames > 0;
+        bool moving = steering && walkGraceFrames > 0;
         IsWalking = moving;
         Owner.SetCondition(Condition.Moving, moving);
         UpdateWeaponConditions(moving);
