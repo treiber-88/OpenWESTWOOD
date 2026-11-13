@@ -533,6 +533,39 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
     /// along its facing and turning on the spot (Locomotor.Drive). Orders' movement is ignored meanwhile.
     /// </summary>
     public bool DirectDrive { get; set; }
+
+    /// <summary>OpenWESTWOOD (Sole Survivor Remix): the unit never picks a target or fights back by itself; it fires only
+    /// when its player fires.</summary>
+    public bool NoAutoAttack { get; set; }
+
+    bool looking;
+    float moveFacing;
+
+    /// <summary>
+    /// OpenWESTWOOD (Sole Survivor Remix): faces the body (as drawn and as it shoots) toward <paramref name="angle"/> until
+    /// the next AI update, which turns it back to the way it is moving before it steers: a unit firing on the move keeps
+    /// going its own way while it faces its target.
+    /// </summary>
+    public void LookAt(float angle)
+    {
+        if (!looking)
+        {
+            moveFacing = Owner.Orientation;
+            looking = true;
+        }
+        Owner.SetOrientation(angle);
+    }
+
+    /// <summary>The way the unit faces for moving (its body may be looking elsewhere, see LookAt).</summary>
+    public float MoveFacing => looking ? moveFacing : Owner.Orientation;
+
+    void EndLook()
+    {
+        if (!looking)
+            return;
+        looking = false;
+        Owner.SetOrientation(moveFacing);
+    }
     public float DriveThrottle { get; private set; }
     public float DriveTurn { get; private set; }
 
@@ -696,7 +729,7 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
     {
         if (State != AIState.Idle && State != AIState.Guarding)
             return;
-        if (Owner.IsKindOf("CANNOT_RETALIATE") || !Owner.Weapons.HasAnyWeapon || !Owner.Owner.IsEnemyOf(attacker.Owner))
+        if (NoAutoAttack || Owner.IsKindOf("CANNOT_RETALIATE") || !Owner.Weapons.HasAnyWeapon || !Owner.Owner.IsEnemyOf(attacker.Owner))
             return;
         if (Owner.Weapons.ChooseFor(attacker, CommandSource.AI) != null)
             AttackObject(attacker, CommandSource.AI);
@@ -706,6 +739,7 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
 
     public virtual int Update()
     {
+        EndLook();
         if (Owner.IsEffectivelyDead)
             return 1000;
 
@@ -1041,7 +1075,7 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
     /// <summary>Looks for the nearest enemy within range and attacks it. Returns true if a target was found.</summary>
     protected bool TryAutoAcquire(bool force, Vector3? around = null, float radius = 0)
     {
-        if (!Owner.Weapons.HasAnyWeapon || Owner.HasStatus(Core.Status.UnderConstruction) || IsDisabledForAttack)
+        if (NoAutoAttack || !Owner.Weapons.HasAnyWeapon || Owner.HasStatus(Core.Status.UnderConstruction) || IsDisabledForAttack)
             return false;
         if (!force && Frame < nextAutoAcquireFrame)
             return false;

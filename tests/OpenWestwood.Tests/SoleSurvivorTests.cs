@@ -117,6 +117,184 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Assert.Equal(0, me.Deaths);
     }
 
+    /// <summary>
+    /// Cover: trees between a shooter and its enemy take the shots (a rifle's instant ones and a tank's shells), the enemy
+    /// behind them none; with the trees gone the enemy is hit.
+    /// </summary>
+    [Theory]
+    [InlineData("AmericaInfantryRanger")]
+    [InlineData("AmericaTankCrusader")]
+    public void ObstaclesStopShots(string shooterTemplate)
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var them = match.Players.First(p => p.IsComputer);
+        them.RespawnFrame = int.MaxValue; // its own avatar stays out; the test places its unit
+        var shooter = match.Spawn(me, shooterTemplate)!;
+        var at = shooter.Position;
+        float ground(float x, float y) => game.Terrain.GroundHeight(x, y);
+        var enemyAt = new System.Numerics.Vector3(at.X + 120, at.Y, 0);
+        enemyAt.Z = ground(enemyAt.X, enemyAt.Y);
+        var enemy = game.CreateObject("AmericaTankCrusader", them.Player, enemyAt, MathF.PI)!;
+        // A row of trees across the way (a tank's shell leaves its barrel off to one side).
+        var trees = new[] { -21f, 0f, 21f }.Select(dy =>
+        {
+            var treeAt = new System.Numerics.Vector3(at.X + 60, at.Y + dy, 0);
+            treeAt.Z = ground(treeAt.X, treeAt.Y);
+            return game.CreateObject("TD_Terrain_T01", game.Players.Neutral, treeAt)!;
+        }).ToList();
+        float TreeHealth() => trees.Sum(t => t.IsEffectivelyDead ? 0 : t.Health);
+        shooter.SetOrientation(0);
+        var weapon = shooter.Weapons.Slots[0]!;
+        float enemyHealth = enemy.Health, treeHealth = TreeHealth();
+
+        int Shoot(int frames)
+        {
+            int shots = 0;
+            for (int f = 0; f < frames; f++)
+            {
+                if (weapon.IsReady && weapon.FireAt(enemy))
+                    shots++;
+                game.IsGameOver = false;
+                game.Update();
+            }
+            return shots;
+        }
+
+        int fired = Shoot(90);
+        output.WriteLine($"{shooterTemplate}: {fired} shots with the tree between: trees {treeHealth:0} -> {TreeHealth():0}, enemy {enemyHealth:0} -> {enemy.Health:0}");
+        Assert.True(fired > 0);
+        Assert.True(TreeHealth() < treeHealth, "the trees took the shots");
+        Assert.Equal(enemyHealth, enemy.Health);
+        Assert.NotNull(Logic.Combat.LineOfFire.FirstObstacle(game, Logic.Combat.LineOfFire.Muzzle(shooter), Logic.Combat.LineOfFire.AimPoint(enemy), shooter, enemy));
+
+        foreach (var tree in trees.Where(t => !t.IsDestroyed))
+            game.DestroyObject(tree);
+        game.Update();
+        Shoot(90);
+        output.WriteLine($"without the tree: enemy {enemyHealth:0} -> {enemy.Health:0}");
+        Assert.True(enemy.Health < enemyHealth || enemy.IsEffectivelyDead, "hit once the tree is gone");
+    }
+
+    /// <summary>Team Battle: the person's chosen number of computers with them, the chosen number against them, allies are
+    /// allies; the first team to the kill limit wins.</summary>
+    [Fact]
+    public void TeamBattleToKillLimit()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.TeamBattle, AlliedComputers = 2, EnemyComputers = 3, MapPlayers = 2, KillLimit = 4 };
+        var (game, _, match) = setup.Build(c);
+        Assert.Equal(3, match.Players.Count(p => p.Team == 0));
+        Assert.Equal(3, match.Players.Count(p => p.Team == 1));
+        var person = match.Players.First(p => !p.IsComputer);
+        Assert.Equal(0, person.Team);
+        foreach (var p in match.Players.Where(p => p != person))
+            Assert.Equal(p.Team == 0 ? Logic.Players.Relationship.Allies : Logic.Players.Relationship.Enemies, person.Player.RelationshipTo(p.Player));
+        int index = match.Players.IndexOf(person);
+        match.Players[index] = new SsrPlayer { Player = person.Player, Team = person.Team, IsComputer = true, Faction = person.Faction, RespawnFrame = game.Frame };
+        for (int f = 0; f < 6 * 60 * LogicTime.FramesPerSecond && match.WinningTeam == null; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+        }
+        output.WriteLine($"team kills {match.KillsOf(0)} / {match.KillsOf(1)}, winner {match.WinningTeam} at {game.Frame / LogicTime.FramesPerSecond} s");
+        Assert.NotNull(match.WinningTeam);
+        Assert.True(match.KillsOf(match.WinningTeam!.Value) >= 4);
+    }
+
+    /// <summary>A time limit: when it runs out, the player with the most kills wins.</summary>
+    [Fact]
+    public void TimeLimitMostKillsWins()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 5, MapPlayers = 2, TimeLimitMinutes = 1 };
+        var (game, _, match) = setup.Build(c);
+        Assert.NotNull(match.EndFrame);
+        int f = 0;
+        for (; f < 2 * 60 * LogicTime.FramesPerSecond && match.WinningTeam == null; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+        }
+        output.WriteLine($"ended at {f / LogicTime.FramesPerSecond} s; kills {string.Join(", ", match.Players.Select(p => p.Kills))}; winner side {match.WinningTeam}");
+        Assert.NotNull(match.WinningTeam);
+        Assert.InRange(f, 60 * LogicTime.FramesPerSecond - 2, 60 * LogicTime.FramesPerSecond + 2);
+        Assert.Equal(match.Players.Max(p => p.Kills), match.KillsOf(match.WinningTeam!.Value));
+    }
+
+    /// <summary>A soldier firing on the move faces its target while still walking its own way; standing, it turns to it.</summary>
+    [Fact]
+    public void FiringOnTheMoveFacesTheTarget()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        match.Players.First(p => p.IsComputer).RespawnFrame = int.MaxValue;
+        var mine = match.Spawn(me, "AmericaInfantryRanger")!;
+        // Find a heading with open ground ahead.
+        mine.SetOrientation(0);
+        var start = mine.Position;
+        var targetAt = start + new System.Numerics.Vector3(0, 150, 0);
+        targetAt.Z = game.Terrain.GroundHeight(targetAt.X, targetAt.Y);
+        var enemy = game.CreateObject("AmericaTankCrusader", match.Players.First(p => p.IsComputer).Player, targetAt)!;
+        void Frames(int n) { for (int i = 0; i < n; i++) { game.IsGameOver = false; game.Update(); } }
+        // Walking east (its facing), firing at the tank to the north.
+        me.Move = new System.Numerics.Vector2(0, 1);
+        me.AimTarget = enemy.Id;
+        me.FirePrimary = true;
+        Frames(45);
+        var moved = mine.Position - start;
+        float facing = mine.Orientation, way = mine.AI!.MoveFacing;
+        output.WriteLine($"moved {moved.X:0.0},{moved.Y:0.0}; body faces {facing:0.00} rad, walks along {way:0.00} rad");
+        Assert.True(MathF.Abs(MathUtil.AngleDifference(facing, MathF.PI / 2)) < 0.4f, "body faces the target (north)");
+        Assert.True(MathF.Abs(MathUtil.AngleDifference(way, 0)) < 0.2f, "still walks east");
+        Assert.True(moved.X > 20 && MathF.Abs(moved.Y) < moved.X * 0.4f, "moved east");
+        // Standing and firing: it turns to the target for good.
+        me.Move = System.Numerics.Vector2.Zero;
+        Frames(20);
+        me.FirePrimary = false;
+        Frames(5);
+        output.WriteLine($"standing: faces {mine.Orientation:0.00}");
+        Assert.True(MathF.Abs(MathUtil.AngleDifference(mine.Orientation, MathF.Atan2(enemy.Position.Y - mine.Position.Y, enemy.Position.X - mine.Position.X))) < 0.3f);
+    }
+
+    /// <summary>No autofire: a person's unit next to an enemy that is shooting it doesn't shoot back until fire is pressed.</summary>
+    [Fact]
+    public void UnitsDontFireByThemselves()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var them = match.Players.First(p => p.IsComputer);
+        them.RespawnFrame = int.MaxValue;
+        var mine = match.Spawn(me, "AmericaTankCrusader")!;
+        var at = mine.Position with { X = mine.Position.X + 90 };
+        at.Z = game.Terrain.GroundHeight(at.X, at.Y);
+        var enemy = game.CreateObject("AmericaTankCrusader", them.Player, at, MathF.PI)!;
+        float enemyHealth = enemy.Health, myHealth = mine.Health;
+        for (int f = 0; f < 120; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+        }
+        output.WriteLine($"after 4 s: mine {myHealth:0} -> {mine.Health:0}, enemy {enemyHealth:0} -> {enemy.Health:0}");
+        Assert.True(mine.Health < myHealth, "the enemy (an ordinary unit) shot");
+        Assert.Equal(enemyHealth, enemy.Health);
+        // Fire pressed: it shoots.
+        me.AimTarget = enemy.Id;
+        me.FirePrimary = true;
+        for (int f = 0; f < 60; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+        }
+        Assert.True(enemy.Health < enemyHealth || enemy.IsEffectivelyDead, "fires when told to");
+    }
+
     /// <summary>An infantry match: everyone plays infantry, and nobody takes an aircraft (unlike vehicle and naval matches).</summary>
     [Fact]
     public void InfantryMatchHasNoAircraft()

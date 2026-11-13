@@ -294,8 +294,11 @@ public sealed class SsrController
             Text(batch, notice, Size.X / 2, Size.Y * 0.18f, 14, Gold, center: true);
         if (match.WinningTeam is { } winner)
         {
-            bool won = match.Settings.Mode == SsrMode.Freeplay ? match.Players.First(p => !p.Out) == me : winner == me.Team;
-            Text(batch, won ? "VICTORY" : match.Settings.Mode == SsrMode.Freeplay ? "DEFEATED" : $"TEAM {winner + 1} WINS", Size.X / 2, Size.Y * 0.4f, 34, Gold, center: true);
+            // (Freeplay: each player is their own side.)
+            bool won = winner == me.Team;
+            string loser = match.Settings.Teams ? $"TEAM {winner + 1} WINS"
+                : match.Players.FirstOrDefault(p => p.Team == winner) is { } best ? $"{best.Player.DisplayName.ToUpperInvariant()} WINS" : "DEFEATED";
+            Text(batch, won ? "VICTORY" : loser, Size.X / 2, Size.Y * 0.4f, 34, Gold, center: true);
         }
     }
 
@@ -324,8 +327,11 @@ public sealed class SsrController
             SsrMode.ZoneDefense => $"ZONE DEFENSE   TEAM 1: {match.TeamScores[0]} / {match.Settings.ZoneScoreLimit}    TEAM 2: {match.TeamScores[1]}",
             SsrMode.CaptureTheFlag => $"CAPTURE THE FLAG   TEAM 1: {match.TeamScores[0]}    TEAM 2: {match.TeamScores[1]}   (to {match.Settings.FlagCaptureLimit})",
             SsrMode.Classic => "CLASSIC",
-            _ => "FREEPLAY",
+            SsrMode.TeamBattle => $"TEAM BATTLE   TEAM 1: {match.KillsOf(0)}    TEAM 2: {match.KillsOf(1)}" + (match.Settings.KillLimit > 0 ? $"   (to {match.Settings.KillLimit})" : ""),
+            _ => "FREEPLAY" + (match.Settings.KillLimit > 0 ? $"   FIRST TO {match.Settings.KillLimit} KILLS" : ""),
         };
+        if (match.SecondsLeft is { } left)
+            score += $"   {(int)left / 60}:{(int)left % 60:00}";
         Text(batch, score, Size.X / 2, 8 * s, 13, Gold, center: true);
     }
 
@@ -404,7 +410,7 @@ public sealed class SsrController
             batch.FillTriangle(p + new Vector2(0, -8), p + new Vector2(7, -5), p + new Vector2(0, -2), color);
             batch.DrawLine(p + new Vector2(0, -8), p, color, 1);
         }
-        bool teams = match.Settings.Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag;
+        bool teams = match.Settings.Teams;
         foreach (var p in match.Players)
         {
             if (match.UnitOf(p) is not { } unit)
@@ -441,7 +447,7 @@ public sealed class SsrController
         {
             float y = r.Y + (30 + row++ * 20) * s;
             var color = p == me ? Gold : Vector4.One;
-            string team = match.Settings.Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag ? $" (team {p.Team + 1})" : "";
+            string team = match.Settings.Teams ? $" (team {p.Team + 1})" : "";
             Text(batch, $"{p.Player.DisplayName}{team}", r.X + 12 * s, y, 10, color);
             Text(batch, p.Kills.ToString(), r.X + 270 * s, y, 10, color);
             Text(batch, p.Deaths.ToString(), r.X + 340 * s, y, 10, color);

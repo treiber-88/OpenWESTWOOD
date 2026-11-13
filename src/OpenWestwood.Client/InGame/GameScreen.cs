@@ -1195,7 +1195,7 @@ public sealed partial class GameScreen : IScreen
         {
             // Infantry are short: their bar goes a little higher, clear of the head (and of TD soldiers' sprites).
             float lift = obj.IsKindOf(Kind.Infantry) ? 16 : 6;
-            if (world.ToScreen(obj.Position + new Vector3(0, 0, obj.Height + lift), Viewport) is not { } top)
+            if (world.ToScreen(world.Shown(obj, obj.Position + new Vector3(0, 0, obj.Height + lift)), Viewport) is not { } top)
                 continue;
             float barWidth = Math.Clamp(obj.Radius * 1.4f, 20, 90) * world.Camera.FieldOfView / MathF.Max(0.3f, world.Camera.Distance / 420f);
             barWidth = Math.Clamp(barWidth, 18, 100);

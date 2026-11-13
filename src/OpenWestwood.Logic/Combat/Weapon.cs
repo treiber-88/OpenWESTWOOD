@@ -194,13 +194,25 @@ public sealed class Weapon
                 target = null;
         }
 
+        // OpenWESTWOOD (Sole Survivor Remix): an instant shot stops on the first building, tree or rock in its way and
+        // hurts that instead. (Flying shots stop on them as they go; contact weapons and blasts at the shooter don't care.)
+        bool blocked = false;
+        if (LineOfFire.Applies(Game) && Template.ProjectileObject.Length == 0 && !Template.DamageDealtAtSelfPosition
+            && !Template.IsContactWeapon && !Template.OrderSlavesToAttack && Owner.IsMobile
+            && LineOfFire.FirstObstacle(Game, LineOfFire.Muzzle(Owner), target != null ? LineOfFire.AimPoint(target) : impact, Owner, target) is var (wall, hit))
+        {
+            target = wall.Body != null && !wall.IsKindOf("UNATTACKABLE") ? wall : null;
+            impact = hit;
+            blocked = true;
+        }
+
         if (Template.DamageType == "DEPLOY" && Owner.AI is Modules.AI.AssaultTransportAIUpdate assault)
             assault.BeginAssault(target);
 
         Game.Events.WeaponFired(Owner, Template, (int)Slot);
         if (Template.FireFX[vet] is { Length: > 0 } fireFx)
         {
-            var fxTarget = target != null ? target.Position + new Vector3(0, 0, target.Height * 0.5f) : impact;
+            var fxTarget = target != null && !blocked ? target.Position + new Vector3(0, 0, target.Height * 0.5f) : impact;
             Game.Events.WeaponFired(new WeaponFireFx(fireFx, Owner, (int)Slot, currentBarrel, fxTarget, Template.WeaponSpeed,
                 Template.PrimaryDamageRadius, Template.IsContactWeapon, Template.PlayFxWhenStealthed));
         }

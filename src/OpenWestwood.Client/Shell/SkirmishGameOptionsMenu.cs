@@ -735,8 +735,9 @@ public sealed class SkirmishGameOptionsMenu : ShellMenu
             Transitions.SetGroup(networkLayout ? "LanGameOptionsFade" : "SkirmishGameOptionsMenuFade");
             stillNeedsToSetOptions = false;
         }
-        if (net == null && textEntryPlayerName != null && textEntryPlayerName.Text != Info.Slots[0].Name)
-            Info.Slots[0].Name = textEntryPlayerName.Text ?? "";
+        // (Back clears the game's setup at once while the menu still fades out: nothing more to copy into it then.)
+        if (net == null && textEntryPlayerName != null && Screen.SkirmishGameInfo is { } info && textEntryPlayerName.Text != info.Slots[0].Name)
+            info.Slots[0].Name = textEntryPlayerName.Text ?? "";
         if (sliderGameSpeed != null)
             SetFpsText(sliderGameSpeed.Value);
         PositionStartSpots();

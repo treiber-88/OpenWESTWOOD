@@ -271,6 +271,17 @@ public sealed class DumbProjectileBehavior : ProjectileModule
             Owner.Pitch += pitchRate;
             Owner.Roll += rollRate;
         }
+        // OpenWESTWOOD (Sole Survivor Remix): a fast shell can pass a tree or wall between one frame and the next; the
+        // way it went this frame is checked too, and it goes off on the first obstacle on it.
+        if (step > 0 && LineOfFire.Applies(Game)
+            && LineOfFire.FirstObstacle(Game, Owner.Position, position, Launcher, Target) is var (wall, hit)
+            && LineOfFire.StopsProjectile(Launcher, wall))
+        {
+            Owner.SetPosition(hit);
+            HandleCollision(wall);
+            if (Owner.IsDestroyed)
+                return 0;
+        }
         Owner.SetPosition(position);
 
         // Touching the ground (the original's physics reports this as a collision).

@@ -17,6 +17,8 @@ public enum SsrMode
     CaptureTheFlag,
     /// <summary>Everyone starts with a base too, builds and harvests (money only from harvesting); the last side standing wins.</summary>
     Classic,
+    /// <summary>Two teams fight (the person chooses how many computers are on each); kills score for the team.</summary>
+    TeamBattle,
 }
 
 /// <summary>A match's settings (sole-survivor.yaml's defaults, changed in the setup screen).</summary>
@@ -55,6 +57,16 @@ public sealed class SsrSettings
     public float WeaponStep { get; set; } = 0.12f;
     public float ArmorStep { get; set; } = 0.12f;
     public float SpeedStep { get; set; } = 0.08f;
+    /// <summary>Any mode: the match ends after this many minutes and whoever has the most kills wins (0: no limit).</summary>
+    public int TimeLimitMinutes { get; set; }
+    /// <summary>Freeplay and Team Battle: the first player (team) to this many kills wins (0: no limit).</summary>
+    public int KillLimit { get; set; }
+
+    /// <summary>Whether the mode is played in two teams.</summary>
+    public bool Teams => Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag or SsrMode.TeamBattle;
+
+    /// <summary>Whether the mode takes a kill limit.</summary>
+    public bool HasKillLimit => Mode is SsrMode.Freeplay or SsrMode.TeamBattle;
 }
 
 /// <summary>Each player's part in the match: their unit, upgrades, lives and score, and what they steer.</summary>
@@ -85,6 +97,8 @@ public sealed class SsrPlayer
     // What the player steers (SsrInputCommand) or the computer wants.
     public Vector2 Move { get; set; }
     public Vector3? Destination { get; set; }
+    /// <summary>Where the unit's body looks while it fires on the move (null: along its way).</summary>
+    public float? Look { get; set; }
     public Vector3 Aim { get; set; }
     public uint AimTarget { get; set; }
     public bool FirePrimary { get; set; }
@@ -115,6 +129,15 @@ public sealed class SoleSurvivorMatch
     public int? WinningTeam { get; private set; }
     public int[] TeamScores { get; } = new int[2];
 
+    /// <summary>The frame the time limit runs out (null: none).</summary>
+    public int? EndFrame { get; }
+
+    /// <summary>Seconds left on the time limit (null: none).</summary>
+    public float? SecondsLeft => EndFrame is { } end ? Math.Max(0, end - game.Frame) / (float)LogicTime.FramesPerSecond : null;
+
+    /// <summary>A side's kills: a team's together in the team modes, else the player's own.</summary>
+    public int KillsOf(int side) => Players.Where(p => p.Team == side).Sum(p => p.Kills);
+
     // Capture the Flag: each team's flag (its home, where it is, who carries it, when it was dropped).
     public sealed class Flag
     {
@@ -142,6 +165,8 @@ public sealed class SoleSurvivorMatch
         Settings = settings;
         Players.AddRange(players);
         game.Events.OnObjectDied += OnObjectDied;
+        if (settings.TimeLimitMinutes > 0)
+            EndFrame = game.Frame + settings.TimeLimitMinutes * 60 * LogicTime.FramesPerSecond;
         // Team bases: the first start point of each team's players (the map's start waypoints otherwise).
         for (int team = 0; team < 2; team++)
         {
@@ -224,6 +249,9 @@ public sealed class SoleSurvivorMatch
             else if (SpawnSpot(p, template) is var elsewhere)
                 unit.SetPosition(elsewhere with { Z = game.Terrain.GroundHeight(elsewhere) });
         }
+        // No firing by itself: the unit shoots only when its player (or the computer's brain) pulls the trigger.
+        if (unit.AI is { } brain)
+            brain.NoAutoAttack = true;
         unit.DamageBonus *= 1 + Settings.WeaponStep * p.WeaponLevel;
         unit.ArmorBonus *= 1 + Settings.ArmorStep * p.ArmorLevel;
         unit.SpeedBonus *= 1 + Settings.SpeedStep * p.SpeedLevel;
@@ -298,7 +326,7 @@ public sealed class SoleSurvivorMatch
             float a = game.Random.Float(0, MathF.Tau), r = game.Random.Float(0, 80);
             return start + new Vector3(MathF.Cos(a) * r, MathF.Sin(a) * r, 0);
         }
-        if (Settings.Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag)
+        if (Settings.Teams)
         {
             float a = game.Random.Float(0, MathF.Tau), r = game.Random.Float(40, 140);
             return TeamBases[p.Team] + new Vector3(MathF.Cos(a) * r, MathF.Sin(a) * r, 0);
@@ -386,6 +414,18 @@ public sealed class SoleSurvivorMatch
             if (standing.Count == 1 && Players.Count > 1)
                 WinningTeam = Settings.Mode == SsrMode.Freeplay ? Players.First(p => !p.Out).Team : standing[0];
         }
+        // Freeplay and Team Battle: the first to the kill limit wins (a player in Freeplay, whose "team" is their own).
+        if (WinningTeam == null && Settings.KillLimit > 0 && Settings.HasKillLimit)
+            foreach (int side in Players.Select(p => p.Team).Distinct())
+                if (KillsOf(side) >= Settings.KillLimit)
+                {
+                    WinningTeam = side;
+                    break;
+                }
+        // Time up: the most kills wins (a tie goes to the side that died less).
+        if (WinningTeam == null && EndFrame is { } end && game.Frame >= end && Players.Count > 0)
+            WinningTeam = Players.Select(p => p.Team).Distinct()
+                .OrderByDescending(KillsOf).ThenBy(side => Players.Where(p => p.Team == side).Sum(p => p.Deaths)).First();
     }
 
     /// <summary>Moves the unit as steered and fires its weapons at the aim.</summary>
@@ -422,9 +462,25 @@ public sealed class SoleSurvivorMatch
         float angle = MathF.Atan2(aim.Y - unit.Position.Y, aim.X - unit.Position.X);
         foreach (var turret in ai.Turrets)
             turret.AimAt(angle, unit.Orientation, 0.05f, game.Frame);
-        // A unit without a turret standing still swings round to shoot (not while it is being driven by the keys).
-        if (ai.Turrets.Count == 0 && goal == null && p.Move == Vector2.Zero && (p.FirePrimary || p.FireSecondary))
-            unit.SetOrientation(MathUtil.TurnTowards(unit.Orientation, angle, 0.25f));
+        // A unit without a turret turns to shoot: standing, it turns round for good; on the move, its body faces the shots
+        // while it keeps going its own way (back along its way once it stops firing). (Aircraft fly at what they shoot.)
+        bool firing = p.FirePrimary || p.FireSecondary;
+        bool moving = goal != null || p.Move != Vector2.Zero;
+        if (ai.Turrets.Count == 0 && firing && !unit.IsKindOf(Kind.Aircraft))
+        {
+            if (moving)
+            {
+                p.Look = MathUtil.TurnTowards(p.Look ?? unit.Orientation, angle, 0.35f);
+                ai.LookAt(p.Look.Value);
+            }
+            else
+            {
+                p.Look = null;
+                unit.SetOrientation(MathUtil.TurnTowards(unit.Orientation, angle, 0.35f));
+            }
+        }
+        else
+            p.Look = null;
         Fire(unit, p.FirePrimary ? Combat.WeaponSlot.Primary : null, target, aim);
         Fire(unit, p.FireSecondary ? Combat.WeaponSlot.Secondary : null, target, aim);
     }
@@ -483,16 +539,24 @@ public sealed class SoleSurvivorMatch
             return;
         p.NextThink = game.Frame + LogicTime.FramesPerSecond / 2;
         float range = unit.Weapons.All.Select(w => w.AttackRange).DefaultIfEmpty(100).Max();
-        // The nearest enemy it can see.
+        // The nearest enemy it can see: one hidden behind a building, tree or rock is out of sight (a flier sees over them).
         GameObject? enemy = null;
         float nearest = 700;
-        foreach (var o in game.ObjectsInRadius(unit.Position, 700))
-            if (!o.IsEffectivelyDead && o.Owner != p.Player && !o.Owner.IsNeutral && p.Player.RelationshipTo(o.Owner) == Relationship.Enemies
-                && (o.IsMobile || o.IsKindOf(Kind.Structure)) && !o.IsKindOf("UNATTACKABLE") && MathUtil.Distance2D(o.Position, unit.Position) is var d && d < nearest)
-            {
-                enemy = o;
-                nearest = d;
-            }
+        var muzzle = Combat.LineOfFire.Muzzle(unit);
+        int looked = 0;
+        foreach (var (o, d) in game.ObjectsInRadius(unit.Position, 700)
+            .Where(o => !o.IsEffectivelyDead && o.Owner != p.Player && !o.Owner.IsNeutral && p.Player.RelationshipTo(o.Owner) == Relationship.Enemies
+                && (o.IsMobile || o.IsKindOf(Kind.Structure)) && !o.IsKindOf("UNATTACKABLE"))
+            .Select(o => (o, MathUtil.Distance2D(o.Position, unit.Position))).OrderBy(e => e.Item2))
+        {
+            if (++looked > 6)
+                break;
+            if (Combat.LineOfFire.FirstObstacle(game, muzzle, Combat.LineOfFire.AimPoint(o), unit, o) != null)
+                continue;
+            enemy = o;
+            nearest = d;
+            break;
+        }
         p.FirePrimary = enemy != null && nearest <= range * 1.05f;
         p.FireSecondary = p.FirePrimary && unit.Weapons.Slots[(int)Combat.WeaponSlot.Secondary] != null;
         p.AimTarget = enemy?.Id ?? 0;
@@ -543,8 +607,8 @@ public sealed class SoleSurvivorMatch
                     return raid.Position;
                 return p.Player.StartPosition is { } home && MathUtil.Distance2D(home, unit.Position) > 500 ? home : null;
             default:
-                // Freeplay: toward the nearest other player's unit, wherever it is.
-                return Players.Where(o => o != p).Select(UnitOf).OfType<GameObject>().OrderBy(o => MathUtil.Distance2D(o.Position, unit.Position))
+                // Freeplay and Team Battle: toward the nearest enemy's unit (another team's), wherever it is.
+                return Players.Where(o => o != p && o.Team != p.Team).Select(UnitOf).OfType<GameObject>().OrderBy(o => MathUtil.Distance2D(o.Position, unit.Position))
                     .Select(o => (Vector3?)o.Position).FirstOrDefault();
         }
     }

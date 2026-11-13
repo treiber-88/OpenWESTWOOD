@@ -275,7 +275,54 @@ public sealed class WorldView : IDisposable
         }
         Camera.Distance = 420;
         Camera.FarPlane = 6000;
+        // A Westwood 2D game's map (Tiberian Dawn, Red Alert, Dune 2000) is seen from straight above; the 3D games' models
+        // on it lean instead (see Lean).
+        Leans = TiberianDawn.TdMaps.ViewPitch == TiberianDawn.TdMaps.TopDownPitch;
+        if (Leans)
+        {
+            // The land's height (water is lowered below it): the commonest height over the map.
+            var heights = new Dictionary<float, int>();
+            for (int i = 1; i < 16; i++)
+                for (int j = 1; j < 16; j++)
+                {
+                    float h = MathF.Round(Game.Terrain.GroundHeight(Game.Terrain.WorldWidth * i / 16, Game.Terrain.WorldHeight * j / 16), 1);
+                    heights[h] = heights.GetValueOrDefault(h) + 1;
+                }
+            leanGround = heights.Count > 0 ? heights.MaxBy(kv => kv.Value).Key : 0;
+        }
     }
+
+    /// <summary>
+    /// Whether the 3D games' models (and their effects) lean on this map: a 2D game's map is seen from straight above, which
+    /// would show them as flat roofs; instead, each point of them is drawn moved up the screen by its height above the land
+    /// (as the 2D games' own art shows height), as much as Zero Hour's own camera angle shows it. The camera, the ground and
+    /// the 2D games' sprites are left as they are.
+    /// </summary>
+    public bool Leans { get; }
+    float leanGround;
+    static readonly float LeanPerHeight = 1 / MathF.Tan(GeneralsPitch);
+
+    /// <summary>The lean as a world transform (identity on maps that don't lean).</summary>
+    public Matrix4x4 Lean
+    {
+        get
+        {
+            if (!Leans)
+                return Matrix4x4.Identity;
+            // Up the screen on the ground: away from the camera.
+            float kx = -MathF.Cos(Camera.Yaw) * LeanPerHeight, ky = -MathF.Sin(Camera.Yaw) * LeanPerHeight;
+            var m = Matrix4x4.Identity;
+            m.M31 = kx;
+            m.M32 = ky;
+            m.M41 = -kx * leanGround;
+            m.M42 = -ky * leanGround;
+            return m;
+        }
+    }
+
+    /// <summary>Where a point of an object is drawn: leaned if it is one of the 3D games' models on a 2D game's map.</summary>
+    public Vector3 Shown(GameObject obj, Vector3 point) =>
+        Leans && !(tdSprites != null && TiberianDawn.TdSpriteRenderer.Handles(obj)) ? Vector3.Transform(point, Lean) : point;
 
     /// <summary>
     /// A Tiberian Sun or Red Alert 2 map: the original Westwood view (30 degrees, no perspective: its ground picture,
@@ -463,9 +510,11 @@ public sealed class WorldView : IDisposable
         tdSprites?.AddD2kConcrete(Logic.Modules.Behaviors.D2kConcreteLayer.Cells(Game), Camera);
         tdSprites?.AddAnims(seconds, Camera);
         tdSprites?.Draw(viewProjection, Camera);
-        modelRenderer.Draw(visibleInstances, viewProjection, Camera.Position, ObjectLighting, Camera.View);
+        // (The 3D games' models and effects lean on a 2D game's map; the ground, water and sprites don't.)
+        var leaned = Leans ? Lean * viewProjection : viewProjection;
+        modelRenderer.Draw(visibleInstances, leaned, Camera.Position, ObjectLighting, Camera.View);
         water.Draw(viewProjection);
-        Effects.Render(viewProjection);
+        Effects.Render(leaned);
         if (Raining)
             (rain ??= new RainRenderer(gl, content.Rules, textures)).Draw(viewProjection, Camera, Game.Terrain.GroundHeight);
         Camera.Target = unshaken;
@@ -524,8 +573,8 @@ public sealed class WorldView : IDisposable
                 continue;
             if (!IsVisibleToViewer(obj))
                 continue;
-            // Test the ray against a sphere around the object's middle.
-            var center = obj.Position + new Vector3(0, 0, obj.Height / 2);
+            // Test the ray against a sphere around the object's middle (where it is drawn).
+            var center = Shown(obj, obj.Position + new Vector3(0, 0, obj.Height / 2));
             float radius = Math.Max(obj.Radius, obj.Height / 2) * 0.9f + 2;
             var toCenter = center - origin;
             float along = Vector3.Dot(toCenter, direction);

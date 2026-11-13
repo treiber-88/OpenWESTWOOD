@@ -19,6 +19,11 @@ public sealed class SsrMatchSetup
     public int MapPlayers { get; set; } = 2;
     public string Faction { get; set; } = "FactionAmerica";
     public int Computers { get; set; } = 3;
+    /// <summary>Team Battle: computers on the person's team, and on the other team (Computers isn't used then).</summary>
+    public int AlliedComputers { get; set; } = 1;
+    public int EnemyComputers { get; set; } = 2;
+    public int TimeLimitMinutes { get; set; }
+    public int KillLimit { get; set; }
     public int Lives { get; set; }
     public Logic.Scripting.Difficulty Difficulty { get; set; } = Logic.Scripting.Difficulty.Normal;
     /// <summary>The kind of unit everyone plays (aircraft allowed besides, except with infantry); null: any.</summary>
@@ -43,6 +48,8 @@ public sealed class SsrMatchSetup
             Mode = Mode,
             Lives = Lives,
             UnitType = UnitType,
+            TimeLimitMinutes = TimeLimitMinutes,
+            KillLimit = KillLimit,
             KillRewardPercent = (int)Core.Rules.RuleValue.Float(content.Rules.Section("SoleSurvivor").GetString("KillRewardPercent"), 40),
         };
         var all = SsrCatalog.Factions(content.Rules, new Logic.Templates.TemplateStore(content.Rules));
@@ -51,7 +58,10 @@ public sealed class SsrMatchSetup
         if (factions.Count == 0)
             factions = all.ToList();
         var random = new Random();
-        bool teams = Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag;
+        bool teams = settings.Teams;
+        bool battle = Mode == SsrMode.TeamBattle;
+        if (battle)
+            Computers = Math.Clamp(AlliedComputers, 0, MaxComputers) + Math.Clamp(EnemyComputers, 0, MaxComputers);
         int mapPlayers = Math.Max(1, MapPlayers);
         // Classic needs a start point a player; the others spread round the map anyway.
         int computers = Math.Clamp(Mode == SsrMode.Classic ? Math.Min(Computers, Math.Max(1, mapPlayers - 1)) : Computers, 0, MaxComputers);
@@ -64,7 +74,8 @@ public sealed class SsrMatchSetup
         {
             bool computer = i > 0;
             var faction = computer ? factions[random.Next(factions.Count)] : all.FirstOrDefault(f => f.Name == Faction) ?? factions[0];
-            int team = teams ? i % 2 : i;
+            // (Team Battle: the person's allies first, then the other team; the other team modes alternate.)
+            int team = battle ? (i <= Math.Clamp(AlliedComputers, 0, MaxComputers) ? 0 : 1) : teams ? i % 2 : i;
             int start;
             if (teams)
                 start = (team == 0 ? mine : others.Count > 0 ? others[0] : mine) + 1;

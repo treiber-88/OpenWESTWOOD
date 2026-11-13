@@ -82,6 +82,9 @@ public sealed class WeaponTemplate
             return true;
         if (launcher != null && (launcher == thing || launcher.ContainedById == thing.Id))
             return false;
+        // OpenWESTWOOD (Sole Survivor Remix): buildings, trees and rocks stop every shot that runs into them.
+        if (LineOfFire.StopsProjectile(launcher, thing))
+            return true;
         if ((DamageType == "FLAME" || DamageType == "PARTICLE_BEAM") && thing.HasStatus(Core.Status.Burned))
             return false;
         // Something using a sneaky targeting offset is momentarily immune to being hit.
