@@ -224,7 +224,8 @@ window.Run((gl, input, osWindow) =>
         return new MapViewerScreen(gl, input, content, mapPath, options.Has("topdown"));
 
     // Sole Survivor Remix: --sole-survivor setup (its setup screen) or --sole-survivor [--ssr-mode Freeplay|ZoneDefense|
-    // CaptureTheFlag|Classic] [--faction F] [--map M] [--computers N] (straight into a match).
+    // CaptureTheFlag|Classic] [--faction F] [--map M] [--computers N] [--ssr-type Vehicle|Infantry|Naval|Any]
+    // [--ssr-start N (1-based)] (straight into a match).
     if (options.Has("sole-survivor"))
     {
         var ssrUi = new OpenWestwood.Client.UI.UiResources(gl, content);
@@ -237,6 +238,10 @@ window.Run((gl, input, osWindow) =>
             Map = options.Get("map") ?? "Maps/Tournament Desert/Tournament Desert.map",
             MapPlayers = 4,
             Computers = int.TryParse(options.Get("computers"), out int ssrComputers) ? ssrComputers : 3,
+            UnitType = options.Get("ssr-type") is { } ssrType
+                ? Enum.TryParse<OpenWestwood.Logic.SoleSurvivor.SsrCategory>(ssrType, true, out var ssrKind) ? ssrKind : null
+                : OpenWestwood.Logic.SoleSurvivor.SsrCategory.Vehicle,
+            Start = int.TryParse(options.Get("ssr-start"), out int ssrStart) ? ssrStart - 1 : -1,
             // Debug: --ssr-unit TEMPLATE goes in as that unit at once.
             AutoUnit = options.Get("ssr-unit"),
         };

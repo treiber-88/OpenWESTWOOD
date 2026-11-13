@@ -138,7 +138,7 @@ Weapons:
     FireSound: RaSnd_TANK5
     FireFX: RAFX:GUNFIRE
     ProjectileObject: RA_Projectile_Ballistic_120MM
-    WeaponSpeed: 64.8
+    WeaponSpeed: 259.2
     ProjectileDetonationFX: RAFX:FBALL1
   RA_Weapon_APTusk:
     PrimaryDamage: 75
@@ -369,7 +369,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: RA_Projectile_Fireball_FB1
-    WeaponSpeed: 64.8
+    WeaponSpeed: 213.84
     ProjectileDetonationFX: RAFX:NAPALM2
   RA_Weapon_Nike:
     PrimaryDamage: 50
@@ -564,7 +564,7 @@ Weapons:
     AntiAirborneVehicle: No
     AntiAirborneInfantry: No
     ProjectileObject: RA_Projectile_Fireball_FB1
-    WeaponSpeed: 64.8
+    WeaponSpeed: 213.84
     ProjectileDetonationFX: RAFX:NAPALM1
   RA_Weapon_DogJaw:
     PrimaryDamage: 100

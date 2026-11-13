@@ -204,6 +204,8 @@ public sealed partial class GameScreen : IScreen
             directControl = value;
             // (The control bar and sidebar go too: the game version has its own interface.)
             controlBar.Layout.Hidden = value;
+            // The view rides on the unit, in the middle of its own gunfire: a nudge for the big blasts, not every shot.
+            world.Effects.ShakeScale = value ? 0.15f : 1;
         }
     }
     bool directControl;

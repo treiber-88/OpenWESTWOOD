@@ -50,6 +50,117 @@ public class SoleSurvivorTests(ITestOutputHelper output)
             Assert.True(match.TeamScores.Sum() > 0, "zone points scored");
         if (mode == SsrMode.CaptureTheFlag)
             Assert.True(match.FlagTakes > 0, "a flag was taken");
+        // Everyone kept to the match's unit type (vehicles here) or aircraft.
+        foreach (var p in match.Players.Where(p => p.Unit != null))
+        {
+            var kind = p.Faction!.Units.First(u => u.Template == p.Unit).Category;
+            Assert.True(kind is SsrCategory.Vehicle or SsrCategory.Aircraft, $"{p.Player.Name} played {p.Unit} ({kind})");
+        }
+    }
+
+    /// <summary>Zone Defense: three zones a team, out from the bases, and nobody comes in on one.</summary>
+    [Fact]
+    public void ZonesAreSpreadAndSpawnsKeepClear()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.ZoneDefense, Computers = 7, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        Assert.Equal(6, match.Zones.Count);
+        foreach (var (team, centre) in match.Zones)
+        {
+            output.WriteLine($"team {team} zone at {centre.X:0},{centre.Y:0}: {MathUtil.Distance2D(centre, match.TeamBases[team]):0} from its base");
+            Assert.True(MathUtil.Distance2D(centre, match.TeamBases[team]) > match.Settings.ZoneRadius + 150, "zone well out from its base");
+        }
+        var person = match.Players.First(p => !p.IsComputer);
+        int index = match.Players.IndexOf(person);
+        match.Players[index] = new SsrPlayer { Player = person.Player, Team = person.Team, IsComputer = true, Faction = person.Faction, RespawnFrame = game.Frame };
+        var spawnedAt = new Dictionary<uint, System.Numerics.Vector3>();
+        for (int f = 0; f < 90 * LogicTime.FramesPerSecond; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+            foreach (var p in match.Players)
+                if (match.UnitOf(p) is { } unit && !spawnedAt.ContainsKey(unit.Id))
+                    spawnedAt[unit.Id] = unit.Position;
+        }
+        output.WriteLine($"{spawnedAt.Count} units came in; scores {match.TeamScores[0]} / {match.TeamScores[1]}");
+        foreach (var at in spawnedAt.Values)
+            Assert.True(match.Zones.All(z => MathUtil.Distance2D(z.Center, at) > match.Settings.ZoneRadius), $"came in on a zone at {at.X:0},{at.Y:0}");
+    }
+
+    /// <summary>A person can change unit any time: the new one stands where the old one did, with its share of health, and
+    /// it is no death. The first unit comes in at the chosen start point.</summary>
+    [Fact]
+    public void SwitchingUnitsAndChosenStart()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2, Start = 1, Faction = "FactionTDGDI" };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var vehicles = me.Faction!.Units.Where(u => u.Category == SsrCategory.Vehicle).ToList();
+        var first = match.Spawn(me, vehicles[0].Template)!;
+        Assert.NotNull(me.Player.StartPosition);
+        output.WriteLine($"came in {MathUtil.Distance2D(first.Position, me.Player.StartPosition!.Value):0} from start 2");
+        Assert.True(MathUtil.Distance2D(first.Position, me.Player.StartPosition!.Value) < 200, "first unit at the chosen start");
+        for (int f = 0; f < 30; f++)
+            game.Update();
+        first.Body!.SetHealth(first.MaxHealth / 2);
+        var where = first.Position;
+        var second = match.Switch(me, vehicles[^1].Template)!;
+        for (int f = 0; f < 5; f++)
+            game.Update();
+        output.WriteLine($"switched {vehicles[0].Template} -> {vehicles[^1].Template}: {MathUtil.Distance2D(second.Position, where):0} away, health {second.Health / second.MaxHealth:0.00}");
+        Assert.True(first.IsEffectivelyDead || game.FindObject(first.Id) == null, "old unit gone");
+        Assert.Equal(second.Id, match.UnitOf(me)!.Id);
+        Assert.True(MathUtil.Distance2D(second.Position, where) < 30, "new unit where the old one stood");
+        Assert.InRange(second.Health / second.MaxHealth, 0.45f, 0.55f);
+        Assert.Equal(0, me.Deaths);
+    }
+
+    /// <summary>An infantry match: everyone plays infantry, and nobody takes an aircraft (unlike vehicle and naval matches).</summary>
+    [Fact]
+    public void InfantryMatchHasNoAircraft()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 12, MapPlayers = 2, UnitType = SsrCategory.Infantry };
+        var (game, _, match) = setup.Build(c);
+        Assert.False(match.Settings.KindAllowed(SsrCategory.Aircraft));
+        Assert.True(new SsrSettings { UnitType = SsrCategory.Vehicle }.KindAllowed(SsrCategory.Aircraft));
+        var played = new HashSet<string>();
+        for (int f = 0; f < 3 * 60 * LogicTime.FramesPerSecond; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+            foreach (var p in match.Players.Where(p => p.Unit != null))
+                played.Add($"{p.Faction!.Name}|{p.Unit}");
+        }
+        output.WriteLine(string.Join(", ", played));
+        foreach (var entry in played)
+        {
+            var (factionName, unit) = (entry.Split('|')[0], entry.Split('|')[1]);
+            var kind = match.Players.First(p => p.Faction!.Name == factionName).Faction!.Units.First(u => u.Template == unit).Category;
+            Assert.Equal(SsrCategory.Infantry, kind);
+        }
+    }
+
+    /// <summary>Eighty computer players: the match runs (a minute) with them all in.</summary>
+    [Fact]
+    public void EightyComputers()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 80, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        Assert.Equal(81, match.Players.Count);
+        var clock = System.Diagnostics.Stopwatch.StartNew();
+        int most = 0;
+        for (int f = 0; f < 60 * LogicTime.FramesPerSecond; f++)
+        {
+            game.IsGameOver = false;
+            game.Update();
+            most = Math.Max(most, match.Players.Count(p => match.UnitOf(p) != null));
+        }
+        output.WriteLine($"most units in at once {most}; a minute took {clock.Elapsed.TotalSeconds:0.0}s; kills {match.Players.Sum(p => p.Kills)}");
+        Assert.True(most >= 75, "the computers all came in");
     }
 
     /// <summary>The keys drive tank-style whichever way the unit faces: W forward along its facing, S back (still facing

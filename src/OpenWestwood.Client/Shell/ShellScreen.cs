@@ -260,34 +260,27 @@ public sealed class ShellScreen : IScreen
     {
         if (map.Length == 0)
             return null;
-        if (!previews.TryGetValue(map, out var texture) && RedAlert2.Ra2Maps.IsRa2Map(map))
-        {
-            texture = Ui.Textures.GetOrCreate("preview:" + map, () => RedAlert2.Ra2Maps.Preview(map));
-            previews[map] = texture;
-        }
-        else if (!previews.TryGetValue(map, out texture) && KanesWrath.KwMaps.IsKwMap(map))
-        {
-            texture = Ui.Textures.GetOrCreate("preview:" + map, () => KanesWrath.KwMaps.Preview(map));
-            previews[map] = texture;
-        }
-        else if (!previews.TryGetValue(map, out texture) && Dune2000.D2kMaps.IsD2kMap(map))
-        {
-            texture = Ui.Textures.GetOrCreate("preview:" + map, () => Dune2000.D2kMaps.Preview(map));
-            previews[map] = texture;
-        }
-        else if (!previews.TryGetValue(map, out texture) && TiberianDawn.TdMaps.IsTdMap(map))
-        {
-            // A Tiberian Dawn map's picture: its whole ground with Tiberium and trees.
-            texture = Ui.Textures.GetOrCreate("preview:" + map, () => TiberianDawn.TdMaps.Preview(map));
-            previews[map] = texture;
-        }
-        else if (!previews.TryGetValue(map, out texture))
-        {
-            string tga = Path.ChangeExtension(map.Replace('\\', '/'), ".tga");
-            texture = Ui.Content.FileSystem.Exists(tga) ? Ui.Textures.Get(tga, repeat: false) : null;
-            previews[map] = texture;
-        }
+        if (!previews.TryGetValue(map, out var texture))
+            previews[map] = texture = LoadMapPreview(Ui, map);
         return texture;
+    }
+
+    /// <summary>A map's picture, whichever game's map it is (null if it has none).</summary>
+    public static Graphics.Texture? LoadMapPreview(UI.UiResources ui, string map)
+    {
+        if (map.Length == 0)
+            return null;
+        if (RedAlert2.Ra2Maps.IsRa2Map(map))
+            return ui.Textures.GetOrCreate("preview:" + map, () => RedAlert2.Ra2Maps.Preview(map));
+        if (KanesWrath.KwMaps.IsKwMap(map))
+            return ui.Textures.GetOrCreate("preview:" + map, () => KanesWrath.KwMaps.Preview(map));
+        if (Dune2000.D2kMaps.IsD2kMap(map))
+            return ui.Textures.GetOrCreate("preview:" + map, () => Dune2000.D2kMaps.Preview(map));
+        // A Tiberian Dawn map's picture: its whole ground with Tiberium and trees.
+        if (TiberianDawn.TdMaps.IsTdMap(map))
+            return ui.Textures.GetOrCreate("preview:" + map, () => TiberianDawn.TdMaps.Preview(map));
+        string tga = Path.ChangeExtension(map.Replace('\\', '/'), ".tga");
+        return ui.Content.FileSystem.Exists(tga) ? ui.Textures.Get(tga, repeat: false) : null;
     }
 
     /// <summary>A message box with an OK button (the original's MessageBoxOk).</summary>

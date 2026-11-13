@@ -109,8 +109,29 @@ public sealed class Locomotor
         return UltraAccurate ? turn * 2 : turn; // monster turning ability
     }
 
-    public float MaxAccelerationFor(GameObject obj) => Math.Min(Penalized(obj) ? Template.AccelerationDamaged : Template.Acceleration, maxAccel);
-    public float Braking => Math.Min(Template.Braking, maxBraking);
+    /// <summary>(Classic motion: as quick as it likes, so it is at full speed or stopped from one frame to the next.)</summary>
+    const float ClassicInstant = 100000;
+
+    public float MaxAccelerationFor(GameObject obj) => Template.ClassicMotion ? ClassicInstant : Math.Min(Penalized(obj) ? Template.AccelerationDamaged : Template.Acceleration, maxAccel);
+    public float Braking => Template.ClassicMotion ? ClassicInstant : Math.Min(Template.Braking, maxBraking);
+
+    /// <summary>Classic motion: whatever it was carrying sideways is dropped, so it goes exactly the way it faces.</summary>
+    void KeepToFacing(GameObject obj, PhysicsBehavior physics)
+    {
+        if (!Template.ClassicMotion || obj.IsAboveTerrain)
+            return;
+        var v = physics.Velocity;
+        var f = MathUtil.Forward(obj.Orientation);
+        float along = v.X * f.X + v.Y * f.Y;
+        physics.Velocity = new Vector3(f.X * along, f.Y * along, v.Z);
+    }
+
+    /// <summary>Classic motion: nowhere to go, so it stands still at once (no coasting on).</summary>
+    public void HoldStill(GameObject obj)
+    {
+        if (Template.ClassicMotion && !obj.IsAboveTerrain && obj.FindModule<PhysicsBehavior>() is { } physics)
+            physics.Velocity = physics.Velocity with { X = 0, Y = 0 };
+    }
     public float MaxLiftFor(GameObject obj) => Math.Min(Penalized(obj) ? Template.LiftDamaged : Template.Lift, maxLift);
 
     public float MinTurnRadius(GameObject obj, out float timeToTravel)
@@ -381,6 +402,7 @@ public sealed class Locomotor
             }
         }
         HandleBehaviorZ(obj, physics, goalPos);
+        KeepToFacing(obj, physics);
         obj.SetStatus("IS_BRAKING", Get(LocoFlag.IsBraking));
 
         if (wasBraking)
@@ -474,6 +496,7 @@ public sealed class Locomotor
         }
         Set(LocoFlag.IsBraking, false);
         HandleBehaviorZ(obj, physics, obj.Position);
+        KeepToFacing(obj, physics);
         obj.SetStatus("IS_BRAKING", false);
         return true;
     }

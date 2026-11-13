@@ -28,7 +28,6 @@ CommandSets:
     3: Command_D2K_D2KATR_GRENADIER
     4: Command_D2K_D2KATR_ENGINEER
     5: Command_D2K_D2KATR_THUMPER
-    6: Command_D2K_D2KATR_CARRYALL_BOMBER
     7: Command_D2K_D2KATR_Upgrade_D2K_barracks
     8: Command_SetRallyPoint
     9: Command_D2kRepair
@@ -101,7 +100,6 @@ CommandSets:
     3: Command_D2K_D2KHAR_MPSARDAUKAR
     4: Command_D2K_D2KHAR_ENGINEER
     5: Command_D2K_D2KHAR_THUMPER
-    6: Command_D2K_D2KHAR_CARRYALL_BOMBER
     7: Command_D2K_D2KHAR_Upgrade_D2K_barracks
     8: Command_SetRallyPoint
     9: Command_D2kRepair
@@ -171,7 +169,6 @@ CommandSets:
     2: Command_D2K_D2KORD_TROOPER
     3: Command_D2K_D2KORD_ENGINEER
     4: Command_D2K_D2KORD_THUMPER
-    5: Command_D2K_D2KORD_CARRYALL_BOMBER
     6: Command_D2K_D2KORD_Upgrade_D2K_barracks
     7: Command_SetRallyPoint
     8: Command_D2kRepair

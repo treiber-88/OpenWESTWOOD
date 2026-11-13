@@ -185,6 +185,11 @@ public sealed class WorldView : IDisposable
         };
         game.Events.OnFx += fx =>
         {
+            // The classic games' blasts and craters sit on the ground: a shell bursting just over it (aimed at a unit's
+            // middle, or a miss after its target moved off) shows there, not hanging in the air. Ones high up (aircraft) stay.
+            float aboveGround = fx.Position.Z - Game.Terrain.GroundHeight(fx.Position);
+            if (aboveGround > 4 && aboveGround < 25)
+                fx = fx with { Position = fx.Position with { Z = Game.Terrain.GroundHeight(fx.Position) + 4 } };
             if (fx.Name.StartsWith(TdFxPrefix, StringComparison.OrdinalIgnoreCase))
                 foreach (string anim in fx.Name[TdFxPrefix.Length..].Split('|'))
                     tdSprites?.PlayAnim(anim, fx.Position);

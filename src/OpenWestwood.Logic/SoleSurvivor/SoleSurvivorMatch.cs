@@ -28,9 +28,23 @@ public sealed class SsrSettings
     public float RespawnSeconds { get; set; } = 3;
     /// <summary>A kill pays this share of what the victim cost.</summary>
     public int KillRewardPercent { get; set; } = 40;
-    /// <summary>Zone Defense: points to win (a point a second for each unit in the other team's zone).</summary>
+    /// <summary>Zone Defense: points to win (a point a second for each unit in one of the other team's zones).</summary>
     public int ZoneScoreLimit { get; set; } = 300;
-    public float ZoneRadius { get; set; } = 220;
+    public float ZoneRadius { get; set; } = 140;
+    /// <summary>Zone Defense: each team's zones, out from its base toward the middle (nobody comes in on one).</summary>
+    public int ZonesPerTeam { get; set; } = 3;
+    /// <summary>
+    /// The kind of unit everyone plays (chosen at the start): vehicles, infantry or naval; aircraft may be taken any time
+    /// besides, except in an infantry match (the user's rule: infantry and aircraft don't play together). Null: any kind.
+    /// </summary>
+    public SsrCategory? UnitType { get; set; }
+
+    /// <summary>Whether aircraft may be taken besides the match's unit type.</summary>
+    public bool AircraftAllowed => UnitType != SsrCategory.Infantry;
+
+    public bool Allowed(SsrUnit unit) => KindAllowed(unit.Category);
+
+    public bool KindAllowed(SsrCategory kind) => UnitType == null || kind == UnitType || kind == SsrCategory.Aircraft && AircraftAllowed;
     /// <summary>Capture the Flag: captures to win.</summary>
     public int FlagCaptureLimit { get; set; } = 3;
     /// <summary>A dropped flag goes home after this long.</summary>
@@ -65,6 +79,8 @@ public sealed class SsrPlayer
     /// <summary>Every life used.</summary>
     public bool Out { get; set; }
     public bool HasFlag { get; set; }
+    /// <summary>Units it has come in as (the first comes in at its start point).</summary>
+    public int Spawns { get; set; }
 
     // What the player steers (SsrInputCommand) or the computer wants.
     public Vector2 Move { get; set; }
@@ -114,8 +130,11 @@ public sealed class SoleSurvivorMatch
     /// <summary>How often a flag has been picked up by the other team (Capture the Flag).</summary>
     public int FlagTakes { get; private set; }
 
-    /// <summary>Each team's base (where its units start, its zone or flag).</summary>
+    /// <summary>Each team's base (where its units start, its flag).</summary>
     public Vector3[] TeamBases { get; } = new Vector3[2];
+
+    /// <summary>Zone Defense: the zones, each a team's to hold (the other team scores while in one).</summary>
+    public List<(int Team, Vector3 Center)> Zones { get; } = new();
 
     public SoleSurvivorMatch(GameLogic game, SsrSettings settings, IEnumerable<SsrPlayer> players)
     {
@@ -129,6 +148,8 @@ public sealed class SoleSurvivorMatch
             var start = Players.Where(p => p.Team == team).Select(p => p.Player.StartPosition).FirstOrDefault(s => s != null);
             TeamBases[team] = start ?? new Vector3(game.Terrain.WorldWidth * (team == 0 ? 0.2f : 0.8f), game.Terrain.WorldHeight / 2, 0);
         }
+        if (settings.Mode == SsrMode.ZoneDefense)
+            PlaceZones();
         if (settings.Mode == SsrMode.CaptureTheFlag)
             for (int team = 0; team < 2; team++)
             {
@@ -160,18 +181,49 @@ public sealed class SoleSurvivorMatch
     /// <summary>Seconds until the player may come in again (0 if they may).</summary>
     public float RespawnWait(SsrPlayer p) => Math.Max(0, (p.RespawnFrame - game.Frame) / (float)LogicTime.FramesPerSecond);
 
+    /// <summary>The kind of unit a template is in the player's faction (vehicle if not listed).</summary>
+    static SsrCategory CategoryOf(SsrPlayer p, string? template) =>
+        p.Faction?.Units.FirstOrDefault(u => u.Template == template)?.Category ?? SsrCategory.Vehicle;
+
     /// <summary>Brings the player in as this unit, at a spawn point, with their upgrades.</summary>
     public GameObject? Spawn(SsrPlayer p, string template)
     {
         if (!CanSpawn(p) || game.Templates.Find(template) is not { } t)
             return null;
-        // A spot with open ground round it (not a pocket boxed in by cliffs or water), if one turns up in a few tries.
-        var at = SpawnPoint(p);
-        for (int tries = 0; tries < 20 && !OpenGround(at); tries++)
-            at = SpawnPoint(p);
-        var unit = game.CreateObject(t, p.Player, at with { Z = game.Terrain.GroundHeight(at) }, game.Random.Float(0, MathF.Tau));
-        if (unit.AI is { } ai && game.Pathfinder.NearestPassable(unit.Position, ai.Surfaces, 8) is { } free)
-            unit.SetPosition(free with { Z = game.Terrain.GroundHeight(free) });
+        var unit = Place(p, t, template, SpawnSpot(p, template), game.Random.Float(0, MathF.Tau));
+        p.Spawns++;
+        return unit;
+    }
+
+    /// <summary>
+    /// Swaps the player's unit for another at once, where it stands (a person may change units any time): the new one has the
+    /// same share of its health, and the swap is no death. With no unit in, the same as <see cref="Spawn"/>.
+    /// </summary>
+    public GameObject? Switch(SsrPlayer p, string template)
+    {
+        if (UnitOf(p) is not { } old)
+            return Spawn(p, template);
+        if (WinningTeam != null || p.Out || game.Templates.Find(template) is not { } t)
+            return null;
+        float health = old.MaxHealth > 0 ? Math.Clamp(old.Health / old.MaxHealth, 0.05f, 1) : 1;
+        bool naval = CategoryOf(p, template) == SsrCategory.Naval;
+        var at = naval != (CategoryOf(p, p.Unit) == SsrCategory.Naval) ? WaterOrGround(p, old.Position, naval) : old.Position;
+        var unit = Place(p, t, template, at, old.Orientation);
+        unit.Body?.SetHealth(unit.MaxHealth * health);
+        game.DestroyObject(old);
+        return unit;
+    }
+
+    GameObject Place(SsrPlayer p, Templates.ObjectTemplate t, string template, Vector3 at, float facing)
+    {
+        var unit = game.CreateObject(t, p.Player, at with { Z = game.Terrain.GroundHeight(at) }, facing);
+        if (unit.AI is { } ai && !game.Pathfinder.IsValidMovementTerrain(unit.Position, ai.Surfaces))
+        {
+            if (game.Pathfinder.NearestPassable(unit.Position, ai.Surfaces, 8) is { } free)
+                unit.SetPosition(free with { Z = game.Terrain.GroundHeight(free) });
+            else if (SpawnSpot(p, template) is var elsewhere)
+                unit.SetPosition(elsewhere with { Z = game.Terrain.GroundHeight(elsewhere) });
+        }
         unit.DamageBonus *= 1 + Settings.WeaponStep * p.WeaponLevel;
         unit.ArmorBonus *= 1 + Settings.ArmorStep * p.ArmorLevel;
         unit.SpeedBonus *= 1 + Settings.SpeedStep * p.SpeedLevel;
@@ -183,23 +235,69 @@ public sealed class SoleSurvivorMatch
         return unit;
     }
 
+    /// <summary>Where a unit of this kind comes in: open ground (or open water for a boat) near the player's spawn point,
+    /// clear of the zones.</summary>
+    Vector3 SpawnSpot(SsrPlayer p, string template)
+    {
+        bool naval = CategoryOf(p, template) == SsrCategory.Naval;
+        var at = SpawnPoint(p);
+        if (naval)
+            return WaterOrGround(p, at, naval: true);
+        for (int tries = 0; tries < 30 && !(OpenGround(at) && ClearOfZones(at)); tries++)
+            at = SpawnPoint(p);
+        return at;
+    }
+
+    /// <summary>The nearest open water (a boat) or open ground to a point, clear of the zones.</summary>
+    Vector3 WaterOrGround(SsrPlayer p, Vector3 near, bool naval)
+    {
+        Vector3? best = null;
+        float bestDistance = float.MaxValue;
+        for (int i = 0; i < 400; i++)
+        {
+            float margin = 60;
+            var spot = new Vector3(game.Random.Float(margin, game.Terrain.WorldWidth - margin), game.Random.Float(margin, game.Terrain.WorldHeight - margin), 0);
+            if (!(naval ? OpenWater(spot) : OpenGround(spot)) || !ClearOfZones(spot))
+                continue;
+            float d = MathUtil.Distance2D(spot, near);
+            if (d < bestDistance)
+            {
+                bestDistance = d;
+                best = spot;
+            }
+        }
+        return best ?? near;
+    }
+
+    bool ClearOfZones(Vector3 spot) => Zones.All(z => MathUtil.Distance2D(z.Center, spot) > Settings.ZoneRadius + 120);
+
     /// <summary>Ground units can drive off this spot in most directions.</summary>
-    bool OpenGround(Vector3 spot)
+    bool OpenGround(Vector3 spot) => Open(spot, Locomotion.Surfaces.Ground);
+
+    /// <summary>Boats can sail off this spot in most directions.</summary>
+    bool OpenWater(Vector3 spot) => Open(spot, Locomotion.Surfaces.Water);
+
+    bool Open(Vector3 spot, Locomotion.Surfaces surfaces)
     {
         int open = 0;
         for (int k = 0; k < 8; k++)
         {
             var dir = MathUtil.Forward(k * MathF.PI / 4);
-            if (game.Pathfinder.IsValidMovementTerrain(spot + dir * 40, Locomotion.Surfaces.Ground)
-                && game.Pathfinder.IsValidMovementTerrain(spot + dir * 100, Locomotion.Surfaces.Ground))
+            if (game.Pathfinder.IsValidMovementTerrain(spot + dir * 40, surfaces) && game.Pathfinder.IsValidMovementTerrain(spot + dir * 100, surfaces))
                 open++;
         }
-        return open >= 6 && game.Pathfinder.IsValidMovementTerrain(spot, Locomotion.Surfaces.Ground);
+        return open >= 6 && game.Pathfinder.IsValidMovementTerrain(spot, surfaces);
     }
 
     Vector3 SpawnPoint(SsrPlayer p)
     {
-        // Teams: round their base. Freeplay: the place farthest from the others among a few tries.
+        // The first unit comes in at the player's start point (chosen in the setup); teams round their base; otherwise
+        // the place farthest from the others among a few tries.
+        if (Settings.Mode == SsrMode.Freeplay && p.Spawns == 0 && p.Player.StartPosition is { } start)
+        {
+            float a = game.Random.Float(0, MathF.Tau), r = game.Random.Float(0, 80);
+            return start + new Vector3(MathF.Cos(a) * r, MathF.Sin(a) * r, 0);
+        }
         if (Settings.Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag)
         {
             float a = game.Random.Float(0, MathF.Tau), r = game.Random.Float(40, 140);
@@ -358,9 +456,12 @@ public sealed class SoleSurvivorMatch
         // Better units as it earns: any it can afford (the cheaper ones free), and an upgrade now and then.
         int budget = 800 + p.Credits - p.Spent;
         // (Only units that can hurt other units: no hacker, sentry drone or mind-controller as a computer's fighter.)
-        var affordable = faction.Units.Where(u => u.Cost <= budget && u.Power > 0 && (u.Category != SsrCategory.Naval || HasWater)).ToList();
+        var allowed = faction.Units.Where(u => Settings.Allowed(u) && (u.Category != SsrCategory.Naval || HasWater)).ToList();
+        if (allowed.Count == 0)
+            return null;
+        var affordable = allowed.Where(u => u.Cost <= budget && u.Power > 0).ToList();
         if (affordable.Count == 0)
-            affordable = faction.Units.Where(u => u.Power > 0).OrderBy(u => u.Cost).Take(1).DefaultIfEmpty(faction.Units[0]).ToList();
+            affordable = allowed.Where(u => u.Power > 0).OrderBy(u => u.Cost).Take(1).DefaultIfEmpty(allowed[0]).ToList();
         affordable.Sort((a, b) => a.Power.CompareTo(b.Power));
         foreach (int i in Enumerable.Range(0, 3))
         {
@@ -402,7 +503,7 @@ public sealed class SoleSurvivorMatch
         // goes only after intruders.
         var goal = Goal(p, unit);
         bool objective = Settings.Mode is SsrMode.ZoneDefense or SsrMode.CaptureTheFlag;
-        if (enemy != null && (!objective || p.Defender && MathUtil.Distance2D(enemy.Position, TeamBases[p.Team]) < Settings.ZoneRadius * 1.6f)
+        if (enemy != null && (!objective || p.Defender && HomeDistance(p, enemy.Position) < Settings.ZoneRadius * 1.6f)
             && (goal == null || !objective || p.Defender))
             p.Destination = nearest > range * 0.8f ? enemy.Position : null;
         else
@@ -416,9 +517,14 @@ public sealed class SoleSurvivorMatch
         switch (Settings.Mode)
         {
             case SsrMode.ZoneDefense:
-                // A third stay home, the rest go for the other zone.
-                p.Defender = Players.Where(o => o.Team == p.Team).ToList().IndexOf(p) % 3 == 2;
-                return Near(p.Defender ? TeamBases[p.Team] : TeamBases[other], Settings.ZoneRadius * 0.5f, unit);
+            {
+                // A third hold their own zones, the rest go for the other team's, spread over them.
+                int k = Players.Where(o => o.Team == p.Team).ToList().IndexOf(p);
+                p.Defender = k % 3 == 2;
+                var zones = Zones.Where(z => z.Team == (p.Defender ? p.Team : other)).Select(z => z.Center).ToList();
+                var to = zones.Count > 0 ? zones[k % zones.Count] : TeamBases[p.Defender ? p.Team : other];
+                return Near(to, Settings.ZoneRadius * 0.5f, unit);
+            }
             case SsrMode.CaptureTheFlag:
                 p.Defender = Players.Where(o => o.Team == p.Team).ToList().IndexOf(p) % 3 == 2;
                 if (p.HasFlag)
@@ -446,9 +552,50 @@ public sealed class SoleSurvivorMatch
     Vector3 Near(Vector3 point, float spread, GameObject unit) =>
         MathUtil.Distance2D(point, unit.Position) < spread ? unit.Position : point;
 
+    /// <summary>How far a point is from what the player's team defends (its nearest zone, or its base).</summary>
+    float HomeDistance(SsrPlayer p, Vector3 point) =>
+        Zones.Where(z => z.Team == p.Team).Select(z => MathUtil.Distance2D(z.Center, point)).DefaultIfEmpty(MathUtil.Distance2D(TeamBases[p.Team], point)).Min();
+
     // ---- Zone Defense ----
 
     int nextZoneTick;
+
+    /// <summary>
+    /// Each team's zones: a row across the way from its base to the middle of the map, far enough out that nobody comes
+    /// in on one (spawns keep clear of them too), each moved onto open ground.
+    /// </summary>
+    void PlaceZones()
+    {
+        float r = Settings.ZoneRadius, w = game.Terrain.WorldWidth, h = game.Terrain.WorldHeight;
+        var center = new Vector3(w / 2, h / 2, 0);
+        for (int team = 0; team < 2; team++)
+        {
+            var home = TeamBases[team];
+            var toward = new Vector2(center.X - home.X, center.Y - home.Y);
+            float length = toward.Length();
+            var dir = length > 1 ? toward / length : new Vector2(team == 0 ? 1 : -1, 0);
+            var across = new Vector2(-dir.Y, dir.X);
+            float along = Math.Max(r + 320, length * 0.55f);
+            int n = Math.Max(1, Settings.ZonesPerTeam);
+            for (int k = 0; k < n; k++)
+            {
+                var flat = new Vector2(home.X, home.Y) + dir * along + across * ((k - (n - 1) / 2f) * r * 2.6f);
+                var spot = new Vector3(Math.Clamp(flat.X, r + 40, w - r - 40), Math.Clamp(flat.Y, r + 40, h - r - 40), 0);
+                // Onto open ground close by, if it isn't.
+                for (int tries = 0; tries < 60 && !OpenGround(spot); tries++)
+                {
+                    float a = tries * 2.4f, d = 20 + tries * 6;
+                    var moved = spot + new Vector3(MathF.Cos(a) * d, MathF.Sin(a) * d, 0);
+                    if (OpenGround(moved))
+                    {
+                        spot = moved;
+                        break;
+                    }
+                }
+                Zones.Add((team, spot with { Z = game.Terrain.GroundHeight(spot) }));
+            }
+        }
+    }
 
     void UpdateZones()
     {
@@ -456,7 +603,7 @@ public sealed class SoleSurvivorMatch
             return;
         nextZoneTick = game.Frame + LogicTime.FramesPerSecond;
         foreach (var p in Players)
-            if (UnitOf(p) is { } unit && MathUtil.Distance2D(unit.Position, TeamBases[1 - p.Team]) <= Settings.ZoneRadius)
+            if (UnitOf(p) is { } unit && Zones.Any(z => z.Team != p.Team && MathUtil.Distance2D(unit.Position, z.Center) <= Settings.ZoneRadius))
                 TeamScores[p.Team]++;
         for (int team = 0; team < 2; team++)
             if (TeamScores[team] >= Settings.ZoneScoreLimit)

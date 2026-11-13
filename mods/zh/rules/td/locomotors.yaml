@@ -47,6 +47,7 @@ Locomotors:
     CloseEnoughDist: 1
   TDGDI_HTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 105.469
@@ -59,6 +60,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_MTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -71,6 +73,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_APCLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 73.828
     SpeedDamaged: 55.371
     TurnRate: 105.469
@@ -83,6 +86,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_MSAMLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -95,6 +99,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_JEEPLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 63.281
     SpeedDamaged: 47.461
     TurnRate: 210.938
@@ -107,6 +112,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_HARVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 105.469
@@ -119,6 +125,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_MCVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 105.469
@@ -131,6 +138,7 @@ Locomotors:
     Appearance: TREADS
   TDGDI_E1Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 38.813
     SpeedDamaged: 38.813
     TurnRate: 500
@@ -145,6 +153,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDGDI_E2Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -159,6 +168,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDGDI_E3Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 29.109
     SpeedDamaged: 29.109
     TurnRate: 500
@@ -173,6 +183,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDGDI_E6Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 38.813
     SpeedDamaged: 38.813
     TurnRate: 500
@@ -187,6 +198,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDGDI_RMBOLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -239,6 +251,7 @@ Locomotors:
     LocomotorWorksWhenDead: Yes
   TDNOD_LTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -251,6 +264,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_STNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 63.281
     SpeedDamaged: 47.461
     TurnRate: 105.469
@@ -263,6 +277,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_FTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -275,6 +290,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_APCLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 73.828
     SpeedDamaged: 55.371
     TurnRate: 105.469
@@ -287,6 +303,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_MSAMLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -299,6 +316,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_BGGYLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 63.281
     SpeedDamaged: 47.461
     TurnRate: 210.938
@@ -311,6 +329,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDNOD_HARVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 105.469
@@ -323,6 +342,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_ARTYLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 42.188
@@ -335,6 +355,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_MLRSLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -347,6 +368,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_MCVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 25.313
     SpeedDamaged: 18.984
     TurnRate: 105.469
@@ -359,6 +381,7 @@ Locomotors:
     Appearance: TREADS
   TDNOD_BIKELocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 84.375
     SpeedDamaged: 63.281
     TurnRate: 210.938
@@ -371,6 +394,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDNOD_E1Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 38.813
     SpeedDamaged: 38.813
     TurnRate: 500
@@ -385,6 +409,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDNOD_E3Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 29.109
     SpeedDamaged: 29.109
     TurnRate: 500
@@ -399,6 +424,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDNOD_E4Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -413,6 +439,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDNOD_E5Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 38.813
     SpeedDamaged: 38.813
     TurnRate: 500
@@ -427,6 +454,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDNOD_E6Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 38.813
     SpeedDamaged: 38.813
     TurnRate: 500
@@ -441,6 +469,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDNOD_RMBOLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -493,6 +522,7 @@ Locomotors:
     LocomotorWorksWhenDead: Yes
   TDCIV_VICELocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -505,6 +535,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_LSTLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 63.281
     SpeedDamaged: 47.461
     TurnRate: 2678.906
@@ -517,6 +548,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_MHQLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -529,6 +561,7 @@ Locomotors:
     Appearance: TREADS
   TDCIV_BOATLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 16.875
     SpeedDamaged: 12.656
     TurnRate: 21.094
@@ -541,6 +574,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_TRICLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 16.875
     SpeedDamaged: 12.656
     TurnRate: 105.469
@@ -553,6 +587,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_TREXLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.969
     SpeedDamaged: 28.477
     TurnRate: 105.469
@@ -565,6 +600,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_RAPTLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 84.375
     SpeedDamaged: 63.281
     TurnRate: 105.469
@@ -577,6 +613,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_STEGLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 16.875
     SpeedDamaged: 12.656
     TurnRate: 105.469
@@ -589,6 +626,7 @@ Locomotors:
     Appearance: FOUR_WHEELS
   TDCIV_C1Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -603,6 +641,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C2Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -617,6 +656,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C3Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -631,6 +671,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C4Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -645,6 +686,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C5Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -659,6 +701,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C6Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -673,6 +716,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C7Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -687,6 +731,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C8Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -701,6 +746,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C9Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -715,6 +761,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_C10Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -729,6 +776,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_MOEBIUSLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -743,6 +791,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_DELPHILocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500
@@ -757,6 +806,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   TDCIV_CHANLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 48.516
     SpeedDamaged: 48.516
     TurnRate: 500

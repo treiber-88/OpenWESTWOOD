@@ -14,6 +14,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2ALL_AMCVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -26,6 +27,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_MTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.8
     SpeedDamaged: 28.35
     TurnRate: 105.469
@@ -38,6 +40,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_CARRIERLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 21.094
@@ -50,6 +53,7 @@ Locomotors:
     Appearance: HOVER
   RA2ALL_DESTLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -62,6 +66,7 @@ Locomotors:
     Appearance: HOVER
   RA2ALL_AEGISLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 21.094
@@ -85,6 +90,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2ALL_LCRFLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -97,6 +103,7 @@ Locomotors:
     Appearance: HOVER
   RA2ALL_SHADLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 75.6
     SpeedDamaged: 56.7
     TurnRate: 105.469
@@ -109,6 +116,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_DLPHLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 32.4
     TurnRate: 126.563
@@ -121,6 +129,7 @@ Locomotors:
     Appearance: HOVER
   RA2ALL_TNKDLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 27
     SpeedDamaged: 20.25
     TurnRate: 105.469
@@ -133,6 +142,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_CMINLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -145,6 +155,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_SREFLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -157,6 +168,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_MGTKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 37.8
     SpeedDamaged: 28.35
     TurnRate: 105.469
@@ -169,6 +181,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_FVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 40.5
     TurnRate: 105.469
@@ -192,6 +205,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2ALL_BFRTLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -204,6 +218,7 @@ Locomotors:
     Appearance: TREADS
   RA2ALL_ROBOLocomotor:
     Surfaces: GROUND WATER
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 40.5
     TurnRate: 105.469
@@ -216,6 +231,7 @@ Locomotors:
     Appearance: HOVER
   RA2ALL_E1Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -230,6 +246,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_ENGINEERLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -244,6 +261,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_JUMPJETLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 97.2
     SpeedDamaged: 97.2
     TurnRate: 500
@@ -258,6 +276,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_GHOSTLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -272,6 +291,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_YURILocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -286,6 +306,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_CLEGLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -300,6 +321,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_SPYLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -314,6 +336,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_CCOMANDLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -328,6 +351,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_PTROOPLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -342,6 +366,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_CIVANLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -356,6 +381,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_SNIPELocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -370,6 +396,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_TANYLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -384,6 +411,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2ALL_ADOGLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 86.4
     SpeedDamaged: 86.4
     TurnRate: 500
@@ -409,6 +437,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2ALL_GGILocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 32.4
     TurnRate: 500
@@ -472,6 +501,7 @@ Locomotors:
     LocomotorWorksWhenDead: Yes
   RA2SOV_HARVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -484,6 +514,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_APOCLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -496,6 +527,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_HTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -508,6 +540,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_SAPCLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -520,6 +553,7 @@ Locomotors:
     Appearance: HOVER
   RA2SOV_V3Locomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -532,6 +566,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_ZEPLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 27
     SpeedDamaged: 20.25
     TurnRate: 210.938
@@ -544,6 +579,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_DRONLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 40.5
     TurnRate: 843.75
@@ -567,6 +603,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2SOV_HTKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 32.4
     TurnRate: 105.469
@@ -579,6 +616,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_SUBLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 42.188
@@ -602,6 +640,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2SOV_DREDLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 21.094
@@ -614,6 +653,7 @@ Locomotors:
     Appearance: HOVER
   RA2SOV_SQDLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 32.4
     TurnRate: 843.75
@@ -626,6 +666,7 @@ Locomotors:
     Appearance: HOVER
   RA2SOV_SMCVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -638,6 +679,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_TTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -650,6 +692,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_HYDLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 32.4
     TurnRate: 126.563
@@ -662,6 +705,7 @@ Locomotors:
     Appearance: HOVER
   RA2SOV_DTRUCKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 27
     SpeedDamaged: 20.25
     TurnRate: 105.469
@@ -674,6 +718,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_SCHPLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 48.6
     TurnRate: 105.469
@@ -686,6 +731,7 @@ Locomotors:
     Appearance: TREADS
   RA2SOV_E2Locomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -700,6 +746,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_SHKLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -714,6 +761,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_YURILocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -728,6 +776,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_IVANLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -742,6 +791,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_DESOLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -756,6 +806,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_DOGLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 86.4
     SpeedDamaged: 86.4
     TurnRate: 500
@@ -781,6 +832,7 @@ Locomotors:
     CloseEnoughDist: 1
   RA2SOV_CCOMANDLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -795,6 +847,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_PTROOPLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -809,6 +862,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_CIVANLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -823,6 +877,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_FLAKTLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -837,6 +892,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_TERRORLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -851,6 +907,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_SENGINEERLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -865,6 +922,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2SOV_BORISLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -879,6 +937,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_YHVRLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 105.469
@@ -891,6 +950,7 @@ Locomotors:
     Appearance: HOVER
   RA2YUR_PCVLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -903,6 +963,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_SMINLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 16.2
     SpeedDamaged: 12.15
     TurnRate: 105.469
@@ -915,6 +976,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_YTNKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 24.3
     TurnRate: 210.938
@@ -927,6 +989,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_TELELocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 27
     SpeedDamaged: 20.25
     TurnRate: 105.469
@@ -939,6 +1002,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_CAOSLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 32.4
     TurnRate: 843.75
@@ -951,6 +1015,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_BSUBLocomotor:
     Surfaces: WATER
+    ClassicMotion: Yes
     Speed: 27
     SpeedDamaged: 20.25
     TurnRate: 42.188
@@ -963,6 +1028,7 @@ Locomotors:
     Appearance: HOVER
   RA2YUR_MINDLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 21.6
     SpeedDamaged: 16.2
     TurnRate: 105.469
@@ -975,6 +1041,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_DISKLocomotor:
     Surfaces: GROUND
+    ClassicMotion: Yes
     Speed: 81
     SpeedDamaged: 60.75
     TurnRate: 2109.375
@@ -987,6 +1054,7 @@ Locomotors:
     Appearance: TREADS
   RA2YUR_YURILocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -1001,6 +1069,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_CCOMANDLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -1015,6 +1084,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_PTROOPLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 54
     SpeedDamaged: 54
     TurnRate: 500
@@ -1029,6 +1099,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_CIVANLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -1043,6 +1114,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_YURIPRLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -1057,6 +1129,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_FLAKTLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -1071,6 +1144,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_YENGINEERLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -1085,6 +1159,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_INITLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -1099,6 +1174,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_BRUTELocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 64.8
     SpeedDamaged: 64.8
     TurnRate: 500
@@ -1113,6 +1189,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_VIRUSLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 43.2
     SpeedDamaged: 43.2
     TurnRate: 500
@@ -1127,6 +1204,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_YDOGLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 86.4
     SpeedDamaged: 86.4
     TurnRate: 500
@@ -1141,6 +1219,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_YADOGLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 86.4
     SpeedDamaged: 86.4
     TurnRate: 500
@@ -1155,6 +1234,7 @@ Locomotors:
     GroupMovementPriority: MOVES_FRONT
   RA2YUR_SLAVLocomotor:
     Surfaces: GROUND RUBBLE
+    ClassicMotion: Yes
     Speed: 32.4
     SpeedDamaged: 32.4
     TurnRate: 500

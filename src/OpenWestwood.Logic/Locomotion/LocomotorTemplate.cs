@@ -85,6 +85,11 @@ public sealed class LocomotorTemplate
     public float AirborneTargetingHeight { get; }
     public bool StickToGround { get; }
     public bool CanMoveBackwards { get; }
+    /// <summary>
+    /// OpenWESTWOOD: moves the way the classic 2D games' units did (Tiberian Dawn, Red Alert, Red Alert 2): full speed at
+    /// once and dead stops, always going the way it faces (no drifting through turns, no coasting after stopping).
+    /// </summary>
+    public bool ClassicMotion { get; }
     public bool HasSuspension { get; }
     public float FrontWheelTurnAngle { get; }
     public float MaximumWheelExtension { get; }
@@ -187,6 +192,7 @@ public sealed class LocomotorTemplate
         AirborneTargetingHeight = Has("AirborneTargetingHeight") ? RuleValue.Int(S("AirborneTargetingHeight")) : int.MaxValue;
         StickToGround = RuleValue.Bool(S("StickToGround"));
         CanMoveBackwards = RuleValue.Bool(S("CanMoveBackwards"));
+        ClassicMotion = RuleValue.Bool(S("ClassicMotion")) && (Surfaces & Surfaces.Air) == 0;
         HasSuspension = RuleValue.Bool(S("HasSuspension"));
         FrontWheelTurnAngle = Angle("FrontWheelTurnAngle");
         MaximumWheelExtension = F("MaximumWheelExtension");

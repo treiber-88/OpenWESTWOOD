@@ -197,25 +197,6 @@ Locomotors:
     MinTurnSpeed: 0
     ZAxisBehavior: NO_Z_MOTIVE_FORCE
     Appearance: TREADS
-  D2KATR_CARRYALL_BOMBERLocomotor:
-    Surfaces: AIR
-    Speed: 149.414
-    SpeedDamaged: 149.414
-    TurnRate: 140.625
-    TurnRateDamaged: 140.625
-    Acceleration: 60
-    AccelerationDamaged: 60
-    Lift: 120
-    LiftDamaged: 80
-    Braking: 240
-    MinTurnSpeed: 0
-    PreferredHeight: 40
-    AllowAirborneMotiveForce: Yes
-    ZAxisBehavior: SURFACE_RELATIVE_HEIGHT
-    Appearance: HOVER
-    Apply2DFrictionWhenAirborne: Yes
-    AirborneTargetingHeight: 30
-    LocomotorWorksWhenDead: Yes
   D2K_Projectile_TowerMissileLocomotor:
     Surfaces: AIR
     Speed: 253.125
@@ -548,25 +529,6 @@ Locomotors:
     MinTurnSpeed: 0
     ZAxisBehavior: NO_Z_MOTIVE_FORCE
     Appearance: TREADS
-  D2KHAR_CARRYALL_BOMBERLocomotor:
-    Surfaces: AIR
-    Speed: 149.414
-    SpeedDamaged: 149.414
-    TurnRate: 140.625
-    TurnRateDamaged: 140.625
-    Acceleration: 60
-    AccelerationDamaged: 60
-    Lift: 120
-    LiftDamaged: 80
-    Braking: 240
-    MinTurnSpeed: 0
-    PreferredHeight: 40
-    AllowAirborneMotiveForce: Yes
-    ZAxisBehavior: SURFACE_RELATIVE_HEIGHT
-    Appearance: HOVER
-    Apply2DFrictionWhenAirborne: Yes
-    AirborneTargetingHeight: 30
-    LocomotorWorksWhenDead: Yes
   D2KHAR_MCV_STARPORTLocomotor:
     Surfaces: GROUND
     Speed: 27.246
@@ -852,25 +814,6 @@ Locomotors:
     MinTurnSpeed: 0
     ZAxisBehavior: NO_Z_MOTIVE_FORCE
     Appearance: TREADS
-  D2KORD_CARRYALL_BOMBERLocomotor:
-    Surfaces: AIR
-    Speed: 149.414
-    SpeedDamaged: 149.414
-    TurnRate: 140.625
-    TurnRateDamaged: 140.625
-    Acceleration: 60
-    AccelerationDamaged: 60
-    Lift: 120
-    LiftDamaged: 80
-    Braking: 240
-    MinTurnSpeed: 0
-    PreferredHeight: 40
-    AllowAirborneMotiveForce: Yes
-    ZAxisBehavior: SURFACE_RELATIVE_HEIGHT
-    Appearance: HOVER
-    Apply2DFrictionWhenAirborne: Yes
-    AirborneTargetingHeight: 30
-    LocomotorWorksWhenDead: Yes
   D2KORD_MCV_STARPORTLocomotor:
     Surfaces: GROUND
     Speed: 27.246

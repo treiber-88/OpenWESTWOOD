@@ -59,7 +59,8 @@ static class D2kFactionExporter
 
     // Left out: concrete, the transports and the worm (not playable units), the fire turret and the flamer
     // (removed at the user's request; the flamer's "icon" is a plain soldier frame).
-    static readonly string[] Skipped = ["frigate", "sandworm_fremen", "fire_turret", "flamer_guy"];
+    // (carryall_bomber: removed at the user's request.)
+    static readonly string[] Skipped = ["frigate", "sandworm_fremen", "fire_turret", "flamer_guy", "carryall_bomber"];
 
     static string F(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
 

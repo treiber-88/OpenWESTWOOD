@@ -151,8 +151,14 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
 
     public void PlaySound(string name, Vector3? position, GameObject? source) => SoundSink?.Invoke(name, position, source);
 
+    /// <summary>How hard shakes move the view (1 as the original). OpenWESTWOOD's Sole Survivor Remix rides the view on the
+    /// player's own unit, at the heart of every shot it fires, so it shakes far less there.</summary>
+    public float ShakeScale { get; set; } = 1;
+
     public void Shake(Vector3 epicenter, string type)
     {
+        if (ShakeScale <= 0)
+            return;
         int index = type.ToUpperInvariant() switch
         {
             "SUBTLE" => 0,
@@ -170,7 +176,7 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
         float distance = Vector2.Distance(new Vector2(epicenter.X, epicenter.Y), new Vector2(camera.X, camera.Y));
         if (distance > maxShakeRange)
             return;
-        shakeIntensity += shakeIntensities[index] * (1f - distance / maxShakeRange);
+        shakeIntensity += shakeIntensities[index] * (1f - distance / maxShakeRange) * ShakeScale;
         // (The original caps at 3 once past MaxShakeIntensity.)
         if (shakeIntensity > maxShakeIntensity)
             shakeIntensity = 3;

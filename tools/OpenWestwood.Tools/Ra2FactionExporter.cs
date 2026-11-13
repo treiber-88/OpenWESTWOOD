@@ -25,8 +25,8 @@ public static class Ra2FactionExporter
     const float LeptonUnits = CellUnits / 256f;
     const float FramesPerSecond = 15f;
     const float InfantrySpeedFactor = 2f;
-    /// <summary>Tiberian Sun's ground and air units' speeds after the conversion (user request: 35% slower).</summary>
-    const float TsSpeedFactor = 0.65f;
+    /// <summary>Tiberian Sun's ground and air units' speeds after the conversion (user requests: 35% slower, then 15% faster again).</summary>
+    const float TsSpeedFactor = 0.65f * 1.15f;
     const int BuildLevel = 10;
 
     static readonly string[] ArmorNames = ["none", "flak", "plate", "light", "medium", "heavy", "wood", "steel", "concrete", "special_1", "special_2"];
@@ -883,7 +883,7 @@ public static class Ra2FactionExporter
                     objects.Append($"      ModuleTag_06:\n        Module: Behavior\n        Class: TdDeployToStructure\n        Structure: {N(into)}\n");
             }
 
-            // (Tiberian Sun's units move 35% slower than the straight conversion: the user found them too fast.)
+            // (Tiberian Sun's units move 35% slower than the straight conversion, then 15% faster: the user found them too fast, then a little slow.)
             float Speed(string t) => rules.Num(t, "Speed", 4) * 256 / 100f * FramesPerSecond * LeptonUnits * (game.Tag == "TS" ? TsSpeedFactor : 1);
             float Rot(string t) => Math.Max(rules.Num(t, "ROT", 5), 1) * FramesPerSecond * 360 / 256f;
             foreach (string v in vehicleTypes.Where(buildable.Contains).Append(mcv ?? "").Where(x => x.Length > 0).Distinct(StringComparer.OrdinalIgnoreCase))
@@ -1023,7 +1023,7 @@ public static class Ra2FactionExporter
         File.WriteAllText(Path.Combine(output, "objects.yaml"), Named(game, WestwoodHusks.Add(header + objects.ToString())));
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), Named(game, header + projectiles));
         File.WriteAllText(Path.Combine(output, "weapons.yaml"), Named(game, header + weapons));
-        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), Named(game, header + locomotors));
+        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), Named(game, game.Tag == "TS" ? header + locomotors : ClassicMotion.Add(header + locomotors)));
         File.WriteAllText(Path.Combine(output, "armor.yaml"), Named(game, header + armor));
         File.WriteAllText(Path.Combine(output, "command-sets.yaml"), Named(game, header + commandSets));
         File.WriteAllText(Path.Combine(output, "command-buttons.yaml"), Named(game, header + buttons));

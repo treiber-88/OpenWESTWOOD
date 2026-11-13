@@ -31,6 +31,11 @@ public class DefaultProductionExitUpdate : Module, IProductionExit
     public virtual void Exit(GameObject unit)
     {
         var start = ToWorld(CreatePoint);
+        // A door that opens onto ground the unit can't stand on (the building put at a cliff edge): it comes out at the
+        // nearest ground it can, else it could never walk off (every unit after it piling up there too).
+        if (unit.AI is { } walker && !Game.Pathfinder.IsValidMovementTerrain(start, walker.Surfaces)
+            && Game.Pathfinder.NearestPassable(start, walker.Surfaces, 12) is { } open)
+            start = open;
         unit.SetOrientation(Owner.Orientation);
         if (unit.AI != null)
             unit.AI.Teleport(start);
@@ -38,6 +43,11 @@ public class DefaultProductionExitUpdate : Module, IProductionExit
             unit.SetPosition(start with { Z = Game.Terrain.LayerHeight(start.X, start.Y) });
 
         var destination = RallyPoint ?? ToWorld(NaturalRallyPoint);
+        // A rally point on ground the unit can't stand on (a cliff, another building): the nearest it can, so the unit
+        // still walks out of the door instead of staying in it with every unit made after it.
+        if (unit.AI is { } ai && !Game.Pathfinder.IsValidMovementTerrain(destination, ai.Surfaces)
+            && Game.Pathfinder.NearestPassable(destination, ai.Surfaces, 8) is { } free)
+            destination = free;
         unit.AI?.MoveTo(destination, CommandSource.AI);
     }
 }

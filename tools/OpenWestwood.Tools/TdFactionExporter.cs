@@ -622,7 +622,7 @@ public static class TdFactionExporter
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), header + projectiles);
         File.WriteAllText(Path.Combine(output, "scenery.yaml"), header + scenery);
         File.WriteAllText(Path.Combine(output, "weapons.yaml"), header + weapons);
-        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), header + locomotors);
+        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), ClassicMotion.Add(header + locomotors));
         File.WriteAllText(Path.Combine(output, "armor.yaml"), header + armor);
         File.WriteAllText(Path.Combine(output, "command-sets.yaml"), header + commandSets);
         File.WriteAllText(Path.Combine(output, "command-buttons.yaml"), header + buttons);

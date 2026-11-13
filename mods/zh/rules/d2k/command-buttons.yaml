@@ -168,13 +168,6 @@ CommandButtons:
     ButtonImage: D2KCAMEO:thumper
     ButtonBorderType: BUILD
     DescriptLabel: Thumper Infantry
-  Command_D2K_D2KATR_CARRYALL_BOMBER:
-    Command: UNIT_BUILD
-    Object: D2KATR_CARRYALL_BOMBER
-    TextLabel: Carryall
-    ButtonImage: D2KCAMEO:carryall
-    ButtonBorderType: BUILD
-    DescriptLabel: Carryall
   Command_D2K_D2KATR_Upgrade_D2K_barracks:
     Command: PLAYER_UPGRADE
     Upgrade: Upgrade_D2K_barracks
@@ -499,13 +492,6 @@ CommandButtons:
     ButtonImage: D2KCAMEO:thumper
     ButtonBorderType: BUILD
     DescriptLabel: Thumper Infantry
-  Command_D2K_D2KHAR_CARRYALL_BOMBER:
-    Command: UNIT_BUILD
-    Object: D2KHAR_CARRYALL_BOMBER
-    TextLabel: Carryall
-    ButtonImage: D2KCAMEO:carryall
-    ButtonBorderType: BUILD
-    DescriptLabel: Carryall
   Command_D2K_D2KHAR_Upgrade_D2K_barracks:
     Command: PLAYER_UPGRADE
     Upgrade: Upgrade_D2K_barracks
@@ -808,13 +794,6 @@ CommandButtons:
     ButtonImage: D2KCAMEO:thumper
     ButtonBorderType: BUILD
     DescriptLabel: Thumper Infantry
-  Command_D2K_D2KORD_CARRYALL_BOMBER:
-    Command: UNIT_BUILD
-    Object: D2KORD_CARRYALL_BOMBER
-    TextLabel: Carryall
-    ButtonImage: D2KCAMEO:carryall
-    ButtonBorderType: BUILD
-    DescriptLabel: Carryall
   Command_D2K_D2KORD_Upgrade_D2K_barracks:
     Command: PLAYER_UPGRADE
     Upgrade: Upgrade_D2K_barracks

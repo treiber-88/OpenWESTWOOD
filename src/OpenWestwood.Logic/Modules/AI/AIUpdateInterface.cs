@@ -1450,6 +1450,8 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
                         }
                     }
                     locomotor.MaintainCurrentPosition(Owner);
+                    if (!doFinalPosition)
+                        locomotor.HoldStill(Owner);
                     break;
             }
         }

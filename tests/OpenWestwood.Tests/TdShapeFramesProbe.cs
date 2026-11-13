@@ -16,7 +16,7 @@ public class TdShapeFramesProbe(ITestOutputHelper output)
         {
             if (art.Shape(name) is not { } shape) { output.WriteLine($"{name}: none"); continue; }
             output.WriteLine($"{name}: {shape.FrameCount} frames {shape.Width}x{shape.Height}");
-            for (int f = 0; f < Math.Min(shape.FrameCount, 40); f++)
+            for (int f = 0; f < Math.Min(shape.FrameCount, int.TryParse(Environment.GetEnvironmentVariable("TD_FRAMES_MAX"), out int most) ? most : 40); f++)
                 if (art.Frame(shape, f, null) is { } img)
                     File.WriteAllBytes(Path.Combine(outDir, $"{name}_{f}_{img.Width}x{img.Height}.rgba"), img.Pixels);
         }

@@ -216,6 +216,8 @@ public static class RaFactionExporter
                     weapons.Append($"    FireFX: RAFX:{muzzle}\n");
                 string proj = $"RA_Projectile_{projectile}_{image}".Replace('-', '_');
                 float speed = Math.Max(ini.Num(raName, "Speed", 40) * 256 / 100f * TicksPerSecond * LeptonUnits, 60);
+                // (User request: the artillery shell and the flame weapons' fireballs crawled at the straight conversion.)
+                speed *= raName.ToUpperInvariant() switch { "155MM" => 4f, "FLAMER" or "FIREBALLLAUNCHER" => 3.3f, _ => 1f };
                 weapons.Append($"    ProjectileObject: {proj}\n    WeaponSpeed: {F(speed)}\n");
                 if (blast.Length > 0)
                     weapons.Append($"    ProjectileDetonationFX: RAFX:{blast}\n");
@@ -696,7 +698,7 @@ public static class RaFactionExporter
         File.WriteAllText(Path.Combine(output, "objects.yaml"), WestwoodHusks.Add(header + objects.ToString()));
         File.WriteAllText(Path.Combine(output, "projectiles.yaml"), header + projectiles);
         File.WriteAllText(Path.Combine(output, "weapons.yaml"), header + weapons);
-        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), header + locomotors);
+        File.WriteAllText(Path.Combine(output, "locomotors.yaml"), ClassicMotion.Add(header + locomotors));
         File.WriteAllText(Path.Combine(output, "armor.yaml"), header + armor);
         File.WriteAllText(Path.Combine(output, "command-sets.yaml"), header + commandSets);
         File.WriteAllText(Path.Combine(output, "command-buttons.yaml"), header + buttons);
