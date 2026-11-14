@@ -38,6 +38,9 @@ public sealed class SsrController
     float endTimer = -1;
     (float X, float Y, bool Fire1, bool Fire2, Vector3 Aim, uint Target) lastSent;
     int sentFrame = -100;
+    // (A unit order on its way: not sent again for a moment; the unit it brings is looked at when it comes.)
+    float orderWait;
+    uint lastUnitId;
 
     public SsrController(GameScreen screen, SoleSurvivorMatch match, SsrPlayer me, Action onEnd,
         Logic.Multiplayer.MapMetaData? mapInfo = null, Graphics.Texture? mapPicture = null)
@@ -95,6 +98,11 @@ public sealed class SsrController
             case Key.B:
                 pickerOpen = !pickerOpen || MyUnit == null;
                 return true;
+            case Key.E:
+                // Into the civilian vehicle beside the soldier, or out of the one they drive.
+                if (me.RiderId != 0 || match.VehicleNear(me) != null)
+                    screen.Game.Commands.Enqueue(new SsrVehicleCommand(me.Player.Index));
+                return true;
             case Key.Enter when pickerOpen && lastUnit != null:
                 TrySpawn(lastUnit);
                 return true;
@@ -113,12 +121,20 @@ public sealed class SsrController
 
     void Tick(float seconds)
     {
+        orderWait = Math.Max(0, orderWait - seconds);
+        // A new unit of mine (in or changed): the view goes to it.
+        if (MyUnit is { } mine && mine.Id != lastUnitId)
+        {
+            lastUnitId = mine.Id;
+            orderWait = 0;
+            screen.LookAt(mine.Position);
+        }
         var game = screen.Game;
         if (noticeTime > 0)
             noticeTime -= seconds;
         if (AutoUnit != null && MyUnit == null && match.CanSpawn(me))
             TrySpawn(AutoUnit);
-        if (MyUnit == null && !me.Out)
+        if (MyUnit == null && !me.Out && orderWait <= 0)
             pickerOpen = true;
         if (MyUnit is { } unit)
         {
@@ -165,17 +181,18 @@ public sealed class SsrController
 
     void TrySpawn(string template)
     {
-        if (!match.CanSpawn(me))
+        if (!match.CanSpawn(me) || orderWait > 0)
             return;
-        me.WeaponLevel = profile.WeaponLevel;
-        me.ArmorLevel = profile.ArmorLevel;
-        me.SpeedLevel = profile.SpeedLevel;
-        if (match.Spawn(me, template) is { } unit)
-        {
-            lastUnit = template;
-            pickerOpen = false;
-            screen.LookAt(unit.Position);
-        }
+        SendUnit(template);
+    }
+
+    /// <summary>Orders the unit (through the game's orders, so a network game's machines all make it).</summary>
+    void SendUnit(string template)
+    {
+        screen.Game.Commands.Enqueue(new SsrUnitCommand(me.Player.Index, template, profile.WeaponLevel, profile.ArmorLevel, profile.SpeedLevel));
+        orderWait = 1;
+        lastUnit = template;
+        pickerOpen = false;
     }
 
     /// <summary>Changes to another unit where the current one stands (with the upgrades bought since).</summary>
@@ -186,16 +203,10 @@ public sealed class SsrController
             pickerOpen = false;
             return;
         }
-        me.WeaponLevel = profile.WeaponLevel;
-        me.ArmorLevel = profile.ArmorLevel;
-        me.SpeedLevel = profile.SpeedLevel;
-        if (match.Switch(me, unit.Template) is { } now)
-        {
-            lastUnit = unit.Template;
-            pickerOpen = false;
-            screen.LookAt(now.Position);
-            Say($"Now: {ui.Strings.Get(unit.DisplayName)}");
-        }
+        if (orderWait > 0 || match.WinningTeam != null || me.Out)
+            return;
+        SendUnit(unit.Template);
+        Say($"Now: {ui.Strings.Get(unit.DisplayName)}");
     }
 
     // ---- The choice panel ----
@@ -321,6 +332,11 @@ public sealed class SsrController
         string lives = match.Settings.Lives > 0 ? $"   LIVES {Math.Max(0, match.Settings.Lives - me.Deaths)}" : "";
         Text(batch, $"KILLS {me.Kills}  DEATHS {me.Deaths}{lives}", x, y + 68 * s, 10, Dim);
         Text(batch, "WASD drive  SPACE/H fire  B units  TAB scores", x, y + 86 * s, 9, Dim);
+        // A civilian vehicle at hand (or being driven): how to get in or out.
+        if (me.RiderId != 0)
+            Text(batch, "E  GET OUT", Size.X / 2, Size.Y * 0.82f, 13, Gold, center: true);
+        else if (match.VehicleNear(me) is { } car)
+            Text(batch, $"E  GET IN THE {ui.Strings.Get(car.Template.DisplayName).ToUpperInvariant()}", Size.X / 2, Size.Y * 0.82f, 13, Gold, center: true);
         // The mode's score, top middle.
         string score = match.Settings.Mode switch
         {

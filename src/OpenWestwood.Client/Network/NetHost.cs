@@ -59,7 +59,7 @@ public sealed class NetHost : IDisposable
     public static string Fingerprint(GameContent content) =>
         $"{Protocol}/{Logic.Network.CommandCodec.Version:X8}/{RulesFingerprint(content):X8}";
 
-    public const int Protocol = 3;
+    public const int Protocol = 4;
 
     /// <param name="checkStart">The host's own check before starting (null: fine; else the reason not to).</param>
     /// <param name="resolveRandoms">Settles every random faction, colour and start position in the settings.</param>
@@ -326,7 +326,9 @@ public sealed class NetHost : IDisposable
                 var edited = NetLobby.ReadInfo(r);
                 var info = Lobby.Info;
                 bool changed = edited.Map != info.Map || edited.StartingCash != info.StartingCash || edited.SuperweaponRestriction != info.SuperweaponRestriction
-                    || edited.ExploredMap != info.ExploredMap || edited.NoFogOfWar != info.NoFogOfWar || edited.GameSpeed != info.GameSpeed;
+                    || edited.ExploredMap != info.ExploredMap || edited.NoFogOfWar != info.NoFogOfWar || edited.GameSpeed != info.GameSpeed
+                    || edited.Extra != info.Extra;
+                info.Extra = edited.Extra;
                 info.Map = edited.Map;
                 info.StartingCash = edited.StartingCash;
                 info.SuperweaponRestriction = edited.SuperweaponRestriction;

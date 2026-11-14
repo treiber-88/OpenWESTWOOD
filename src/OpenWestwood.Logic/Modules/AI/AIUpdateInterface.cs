@@ -542,6 +542,13 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
     float moveFacing;
 
     /// <summary>
+    /// OpenWESTWOOD (Sole Survivor Remix): the frame the unit's player last held the trigger. Firing by hand (not by an
+    /// attack order), the unit still takes its firing stance (ATTACKING, USING_WEAPON) for a moment after each pull.
+    /// </summary>
+    public int ManualFireFrame { get; set; } = -1000;
+    bool ManualFiring => Frame - ManualFireFrame <= 3;
+
+    /// <summary>
     /// OpenWESTWOOD (Sole Survivor Remix): faces the body (as drawn and as it shoots) toward <paramref name="angle"/> until
     /// the next AI update, which turns it back to the way it is moving before it steers: a unit firing on the move keeps
     /// going its own way while it faces its target.
@@ -1698,7 +1705,10 @@ public partial class AIUpdateInterface : Module, IUpdateModule, ICreateModule
         var current = Owner.Weapons.Current;
         int currentSlot = (int)Owner.Weapons.CurrentSlot;
         // (In the attack's firing phase: not while closing in, as AIAttackFireWeaponState sets them.)
-        bool attacking = current != null && IsInAttackState && !moving && !Owner.IsEffectivelyDead;
+        bool attacking = current != null && (IsInAttackState && !moving || ManualFiring) && !Owner.IsEffectivelyDead;
+        // (Firing by hand: the stance as an attack shows it; on the move, the conditions pick its running-and-firing one.)
+        if (!IsInAttackState)
+            Owner.SetCondition(Condition.Attacking, ManualFiring && !Owner.IsEffectivelyDead);
         for (int i = 0; i < SlotLetters.Length; i++)
         {
             char letter = SlotLetters[i];

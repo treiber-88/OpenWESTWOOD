@@ -97,6 +97,9 @@ public sealed class SsrPlayer
     // What the player steers (SsrInputCommand) or the computer wants.
     public Vector2 Move { get; set; }
     public Vector3? Destination { get; set; }
+    /// <summary>A soldier driving a civilian vehicle: the soldier (hidden inside; UnitId is the vehicle) and whose it was.</summary>
+    public uint RiderId { get; set; }
+    public Player? VehicleFormerOwner { get; set; }
     /// <summary>Where the unit's body looks while it fires on the move (null: along its way).</summary>
     public float? Look { get; set; }
     public Vector3 Aim { get; set; }
@@ -230,6 +233,13 @@ public sealed class SoleSurvivorMatch
             return Spawn(p, template);
         if (WinningTeam != null || p.Out || game.Templates.Find(template) is not { } t)
             return null;
+        // (Driving a civilian vehicle: out of it first; the soldier is what is swapped.)
+        if (p.RiderId != 0)
+        {
+            if (LeaveVehicle(p, old) is not { } soldier)
+                return Spawn(p, template);
+            old = soldier;
+        }
         float health = old.MaxHealth > 0 ? Math.Clamp(old.Health / old.MaxHealth, 0.05f, 1) : 1;
         bool naval = CategoryOf(p, template) == SsrCategory.Naval;
         var at = naval != (CategoryOf(p, p.Unit) == SsrCategory.Naval) ? WaterOrGround(p, old.Position, naval) : old.Position;
@@ -356,6 +366,12 @@ public sealed class SoleSurvivorMatch
     void OnObjectDied(GameObject obj, Combat.DamageInfo? blow)
     {
         var killer = blow is { SourceId: not 0 } b && game.FindObject(b.SourceId) is { } source ? Of(source.Owner) : null;
+        // A civilian vehicle shot from under its driver: the soldier jumps out (no death).
+        if (Players.FirstOrDefault(p => p.UnitId == obj.Id && p.RiderId != 0) is { } driver)
+        {
+            LeaveVehicle(driver, obj);
+            return;
+        }
         var victim = Players.FirstOrDefault(p => p.UnitId == obj.Id);
         // A kill of an enemy pays a share of what it cost.
         if (killer != null && obj.Owner != killer.Player && !obj.Owner.IsNeutral && obj.Template.BuildCost > 0
@@ -388,15 +404,24 @@ public sealed class SoleSurvivorMatch
 
     public void Update()
     {
+        bool profile = GameProfiler.Enabled;
         foreach (var p in Players)
         {
             if (p.IsComputer)
             {
+                long t = profile ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
                 if (CanSpawn(p) && ChooseComputerUnit(p) is { } choice)
+                {
                     Spawn(p, choice);
+                    if (profile) GameProfiler.Add("~SSR spawn", t);
+                }
+                t = profile ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
                 Think(p);
+                if (profile) GameProfiler.Add("~SSR think", t);
             }
+            long ts = profile ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
             Steer(p);
+            if (profile) GameProfiler.Add("~SSR steer", ts);
         }
         switch (Settings.Mode)
         {
@@ -456,6 +481,13 @@ public sealed class SoleSurvivorMatch
             ai.Stop(CommandSource.Player);
             p.LastOrder = null;
         }
+        // Driving a civilian vehicle: the soldier inside rides along and does the shooting.
+        var shooter = unit;
+        if (p.RiderId != 0 && game.FindObject(p.RiderId) is { IsEffectivelyDead: false } rider)
+        {
+            rider.SetPosition(unit.Position);
+            shooter = rider;
+        }
         // Aiming and firing.
         var target = p.AimTarget != 0 && game.FindObject(p.AimTarget) is { IsEffectivelyDead: false } t && t != unit ? t : null;
         var aim = target?.Position ?? p.Aim;
@@ -465,8 +497,11 @@ public sealed class SoleSurvivorMatch
         // A unit without a turret turns to shoot: standing, it turns round for good; on the move, its body faces the shots
         // while it keeps going its own way (back along its way once it stops firing). (Aircraft fly at what they shoot.)
         bool firing = p.FirePrimary || p.FireSecondary;
+        // (The firing stance while the trigger is held.)
+        if (firing && shooter.AI is { } gunner)
+            gunner.ManualFireFrame = game.Frame;
         bool moving = goal != null || p.Move != Vector2.Zero;
-        if (ai.Turrets.Count == 0 && firing && !unit.IsKindOf(Kind.Aircraft))
+        if (ai.Turrets.Count == 0 && firing && !unit.IsKindOf(Kind.Aircraft) && shooter == unit)
         {
             if (moving)
             {
@@ -481,8 +516,10 @@ public sealed class SoleSurvivorMatch
         }
         else
             p.Look = null;
-        Fire(unit, p.FirePrimary ? Combat.WeaponSlot.Primary : null, target, aim);
-        Fire(unit, p.FireSecondary ? Combat.WeaponSlot.Secondary : null, target, aim);
+        if (shooter != unit)
+            shooter.SetOrientation(angle);
+        Fire(shooter, p.FirePrimary ? Combat.WeaponSlot.Primary : null, target, aim);
+        Fire(shooter, p.FireSecondary ? Combat.WeaponSlot.Secondary : null, target, aim);
     }
 
     static void Fire(GameObject unit, Combat.WeaponSlot? slot, GameObject? target, Vector3 aim)
@@ -501,6 +538,75 @@ public sealed class SoleSurvivorMatch
             flat = Vector2.Normalize(flat) * range;
         var point = unit.Position + new Vector3(flat.X, flat.Y, 0);
         weapon.FireAtPosition(point with { Z = unit.Game.Terrain.GroundHeight(point) });
+    }
+
+    // ---- Civilian vehicles ----
+
+    /// <summary>
+    /// A civilian vehicle a soldier could get into: a working vehicle near them that belongs to nobody in the match (the
+    /// map's civilians) and isn't being driven.
+    /// </summary>
+    public GameObject? VehicleNear(SsrPlayer p)
+    {
+        if (p.RiderId != 0 || UnitOf(p) is not { } soldier || !soldier.IsKindOf(Kind.Infantry))
+            return null;
+        return game.ObjectsInRadius(soldier.Position, 90)
+            .Where(o => o != soldier && !o.IsEffectivelyDead && o.AI != null && o.IsKindOf("VEHICLE") && !o.IsKindOf(Kind.Aircraft)
+                && !o.IsKindOf(Kind.Structure) && Of(o.Owner) == null && !o.IsContained
+                // (Not trains, on their rails, nor boats.)
+                && !o.Template.Name.Contains("Train", StringComparison.OrdinalIgnoreCase) && !o.Template.Name.Contains("Boat", StringComparison.OrdinalIgnoreCase))
+            .OrderBy(o => MathUtil.Distance2D(o.Position, soldier.Position)).FirstOrDefault();
+    }
+
+    /// <summary>Gets the player's soldier into the civilian vehicle beside them, or out of the one they drive.</summary>
+    public bool ToggleVehicle(SsrPlayer p)
+    {
+        if (p.RiderId != 0)
+            return UnitOf(p) is { } car && LeaveVehicle(p, car) != null;
+        if (VehicleNear(p) is not { } vehicle || UnitOf(p) is not { } soldier)
+            return false;
+        p.VehicleFormerOwner = vehicle.Owner;
+        vehicle.SetOwner(p.Player);
+        vehicle.AI!.Stop(CommandSource.AI);
+        vehicle.AI.NoAutoAttack = true;
+        soldier.AI?.Stop(CommandSource.AI);
+        soldier.OnContainedBy(vehicle);
+        soldier.IsHiddenInContainer = true;
+        soldier.SetStatus(Core.Status.NoCollisions);
+        soldier.SetPosition(vehicle.Position);
+        p.RiderId = soldier.Id;
+        p.UnitId = vehicle.Id;
+        p.Look = null;
+        return true;
+    }
+
+    /// <summary>The soldier gets out beside the vehicle (left alone, it goes back to whose it was); returns the soldier.</summary>
+    GameObject? LeaveVehicle(SsrPlayer p, GameObject vehicle)
+    {
+        var soldier = game.FindObject(p.RiderId);
+        p.RiderId = 0;
+        if (!vehicle.IsEffectivelyDead)
+        {
+            vehicle.AI?.Stop(CommandSource.AI);
+            if (p.VehicleFormerOwner is { } owner)
+                vehicle.SetOwner(owner);
+        }
+        p.VehicleFormerOwner = null;
+        if (soldier == null || soldier.IsDestroyed)
+        {
+            p.UnitId = 0;
+            return null;
+        }
+        // Out on the driver's side (the nearest open ground there).
+        var side = vehicle.Position + new Vector3(MathF.Cos(vehicle.Orientation + MathF.PI / 2), MathF.Sin(vehicle.Orientation + MathF.PI / 2), 0) * (vehicle.Radius + 10);
+        if (soldier.AI is { } ai && !game.Pathfinder.IsValidMovementTerrain(side, ai.Surfaces) && game.Pathfinder.NearestPassable(side, ai.Surfaces, 8) is { } open)
+            side = open;
+        soldier.OnRemovedFrom(vehicle);
+        soldier.SetStatus(Core.Status.NoCollisions, false);
+        soldier.SetPosition(side with { Z = game.Terrain.GroundHeight(side) });
+        soldier.SetOrientation(vehicle.Orientation);
+        p.UnitId = soldier.Id;
+        return soldier;
     }
 
     // ---- The computer's players ----
@@ -545,7 +651,7 @@ public sealed class SoleSurvivorMatch
         var muzzle = Combat.LineOfFire.Muzzle(unit);
         int looked = 0;
         foreach (var (o, d) in game.ObjectsInRadius(unit.Position, 700)
-            .Where(o => !o.IsEffectivelyDead && o.Owner != p.Player && !o.Owner.IsNeutral && p.Player.RelationshipTo(o.Owner) == Relationship.Enemies
+            .Where(o => !o.IsEffectivelyDead && !o.IsContained && o.Owner != p.Player && !o.Owner.IsNeutral && p.Player.RelationshipTo(o.Owner) == Relationship.Enemies
                 && (o.IsMobile || o.IsKindOf(Kind.Structure)) && !o.IsKindOf("UNATTACKABLE"))
             .Select(o => (o, MathUtil.Distance2D(o.Position, unit.Position))).OrderBy(e => e.Item2))
         {
@@ -740,6 +846,38 @@ public sealed class SoleSurvivorMatch
 /// -1 back) along the unit's facing, where they aim
 /// (a point, and the object under the mouse if any) and which triggers are held (Space primary, H secondary).
 /// </summary>
+/// <summary>
+/// A person goes in as a unit of their faction (or changes to it where their unit stands), with the upgrades their profile
+/// has bought (each machine keeps its own player's profile; the levels travel with the order). The same on every machine.
+/// </summary>
+public sealed record SsrUnitCommand(int PlayerIndex, string Template, int WeaponLevel, int ArmorLevel, int SpeedLevel) : GameCommand(PlayerIndex)
+{
+    public override void Execute(GameLogic game)
+    {
+        if (game.SoleSurvivor is not { } match || match.Players.FirstOrDefault(p => p.Player.Index == PlayerIndex && !p.IsComputer) is not { } p)
+            return;
+        if (p.Faction?.Units.FirstOrDefault(u => u.Template == Template) is not { } unit || !match.Settings.Allowed(unit))
+            return;
+        p.WeaponLevel = Math.Clamp(WeaponLevel, 0, 5);
+        p.ArmorLevel = Math.Clamp(ArmorLevel, 0, 5);
+        p.SpeedLevel = Math.Clamp(SpeedLevel, 0, 5);
+        if (match.UnitOf(p) != null)
+            match.Switch(p, Template);
+        else if (match.CanSpawn(p))
+            match.Spawn(p, Template);
+    }
+}
+
+/// <summary>A person's soldier gets into the civilian vehicle beside them, or out of the one they drive.</summary>
+public sealed record SsrVehicleCommand(int PlayerIndex) : GameCommand(PlayerIndex)
+{
+    public override void Execute(GameLogic game)
+    {
+        if (game.SoleSurvivor is { } match && match.Players.FirstOrDefault(p => p.Player.Index == PlayerIndex && !p.IsComputer) is { } p)
+            match.ToggleVehicle(p);
+    }
+}
+
 public sealed record SsrInputCommand(int PlayerIndex, float MoveX, float MoveY, Vector3 Aim, uint AimTarget, bool FirePrimary, bool FireSecondary)
     : GameCommand(PlayerIndex)
 {

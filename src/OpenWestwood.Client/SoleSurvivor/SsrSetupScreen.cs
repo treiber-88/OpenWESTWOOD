@@ -188,6 +188,8 @@ public sealed class SsrSetupScreen : IScreen
     float Below => Top + RowCount * RowPitch;
     Rect StartButton => new(width / 2f - 290 * Scale, (Below + 6) * Scale, 290 * Scale, 44 * Scale);
     Rect BackButton => new(width / 2f - 600 * Scale, (Below + 6) * Scale, 290 * Scale, 44 * Scale);
+    Rect HostButton => new(width / 2f + 40 * Scale, (Below + 6) * Scale, 255 * Scale, 44 * Scale);
+    Rect JoinButton => new(width / 2f + 305 * Scale, (Below + 6) * Scale, 255 * Scale, 44 * Scale);
     Rect PreviewRect => new(width / 2f + 40 * Scale, Top * Scale, 520 * Scale, 390 * Scale);
 
     /// <summary>The map's start points on its picture (index, where).</summary>
@@ -221,6 +223,16 @@ public sealed class SsrSetupScreen : IScreen
         if (BackButton.Contains(point))
         {
             Back();
+            return;
+        }
+        if (HostButton.Contains(point))
+        {
+            HostOnline();
+            return;
+        }
+        if (JoinButton.Contains(point))
+        {
+            JoinOnline();
             return;
         }
         // A start point on the map: start there (clicked again: anywhere).
@@ -270,11 +282,27 @@ public sealed class SsrSetupScreen : IScreen
 
     void Start()
     {
+        if (CurrentSetup() is { } setup)
+            GameWindow.Current?.Switch(Play(gl, input, window, ui, setup));
+    }
+
+    /// <summary>Hosts this setup as a network game (the others join it from JOIN ONLINE).</summary>
+    void HostOnline()
+    {
+        if (CurrentSetup() is { } setup)
+            GameWindow.Current?.Switch(new SsrOnlineScreen(gl, input, window, ui, mapCache, setup));
+    }
+
+    void JoinOnline() => GameWindow.Current?.Switch(new SsrOnlineScreen(gl, input, window, ui, mapCache, null));
+
+    /// <summary>The match as set up here (and remembered for next time); null if it can't be played.</summary>
+    SsrMatchSetup? CurrentSetup()
+    {
         var chosen = GameFactions;
         if (maps.Count == 0 || chosen.Count == 0)
         {
             status = "No map or faction available.";
-            return;
+            return null;
         }
         var setup = new SsrMatchSetup
         {
@@ -307,20 +335,30 @@ public sealed class SsrSetupScreen : IScreen
         profile.Setup["Difficulty"] = difficulty.ToString();
         profile.Setup["Start"] = start.ToString();
         profile.Save();
-        GameWindow.Current?.Switch(Play(gl, input, window, ui, setup));
+        return setup;
     }
 
-    /// <summary>Makes the match and its game screen, with Sole Survivor's controls on it.</summary>
-    public static InGame.GameScreen Play(GL gl, IInputContext input, IWindow window, UiResources ui, SsrMatchSetup setup)
+    /// <summary>
+    /// Makes the match and its game screen, with Sole Survivor's controls on it. A network game: every machine makes the
+    /// same match from the host's settings; this machine plays the person named <paramref name="localName"/>.
+    /// </summary>
+    public static InGame.GameScreen Play(GL gl, IInputContext input, IWindow window, UiResources ui, SsrMatchSetup setup,
+        Network.NetSession? session = null, string? localName = null)
     {
         setup.MapInfo ??= ShellScreen.BuildMapCache(ui.Content).Find(setup.Map);
         if (setup.MapInfo is { NumPlayers: > 0 } info)
             setup.MapPlayers = info.NumPlayers;
         var (game, map, match) = setup.Build(ui.Content);
         ArtPreloader.PreloadFor(game, ui.Content, setup.Map);
+        var me = (localName != null ? match.Players.FirstOrDefault(p => !p.IsComputer && p.Player.DisplayName.Equals(localName, StringComparison.OrdinalIgnoreCase)) : null)
+            ?? match.Players.First(p => !p.IsComputer);
+        game.Players.Local = me.Player;
+        if (session != null)
+            session.Attach(game, me.Player, match.Players.Where(p => !p.IsComputer).Select(p => p.Player));
         var screen = new InGame.GameScreen(gl, input, ui, game, map);
+        if (session != null)
+            screen.Network = session;
         void ToMenu() => GameWindow.Current?.Switch(new ShellScreen(gl, input, window, ui));
-        var me = match.Players.First(p => !p.IsComputer);
         _ = new SsrController(screen, match, me, ToMenu, setup.MapInfo, ShellScreen.LoadMapPreview(ui, setup.Map)) { AutoUnit = setup.AutoUnit };
         // (Classic ends by the usual victory, the others by the match's own.)
         screen.GameEnded = ToMenu;
@@ -401,7 +439,7 @@ public sealed class SsrSetupScreen : IScreen
             }
         }
         DrawPreview(batch);
-        foreach (var (button, label) in new[] { (StartButton, "START"), (BackButton, "BACK") })
+        foreach (var (button, label) in new[] { (StartButton, "START"), (BackButton, "BACK"), (HostButton, "HOST ONLINE"), (JoinButton, "JOIN ONLINE") })
         {
             batch.FillRect(button, button.Contains(mouse) ? new Vector4(0.45f, 0.32f, 0.08f, 1) : new Vector4(0.2f, 0.15f, 0.05f, 1));
             batch.DrawRect(button, Frame, 2);

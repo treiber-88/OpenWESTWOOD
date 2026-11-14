@@ -73,6 +73,8 @@ public sealed class GameInfo
     public static readonly float[] GameSpeeds = [1f, 1.5f, 2f];
     public static readonly string[] GameSpeedNames = ["Normal", "Fast", "Very fast"];
     public ulong Seed { get; set; }
+    /// <summary>OpenWESTWOOD: another game version's own settings (Sole Survivor Remix's, "SSR;..."); empty for a skirmish.</summary>
+    public string Extra { get; set; } = "";
     public int LocalSlot { get; set; }
 
     public int NumPlayers => Slots.Count(s => s.IsOccupied);

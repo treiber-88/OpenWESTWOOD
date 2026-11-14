@@ -223,7 +223,7 @@ window.Run((gl, input, osWindow) =>
     if (options.Get("view-map") is { } mapPath)
         return new MapViewerScreen(gl, input, content, mapPath, options.Has("topdown"));
 
-    // Sole Survivor Remix: --sole-survivor setup (its setup screen) or --sole-survivor [--ssr-mode Freeplay|ZoneDefense|
+    // Sole Survivor Remix: --sole-survivor setup (its setup screen), join / host (its network game screen), or --sole-survivor [--ssr-mode Freeplay|ZoneDefense|
     // CaptureTheFlag|Classic] [--faction F] [--map M] [--computers N] [--ssr-type Vehicle|Infantry|Naval|Any]
     // [--ssr-start N (1-based)] (straight into a match).
     if (options.Has("sole-survivor"))
@@ -231,6 +231,10 @@ window.Run((gl, input, osWindow) =>
         var ssrUi = new OpenWestwood.Client.UI.UiResources(gl, content);
         if (options.Get("sole-survivor") == "setup")
             return new OpenWestwood.Client.SoleSurvivor.SsrSetupScreen(gl, input, osWindow, ssrUi, OpenWestwood.Client.Shell.ShellScreen.BuildMapCache(content));
+        // (--sole-survivor join: the network game screen, to join one; --sole-survivor host: hosts the default setup.)
+        if (options.Get("sole-survivor") is "join" or "host")
+            return new OpenWestwood.Client.SoleSurvivor.SsrOnlineScreen(gl, input, osWindow, ssrUi, OpenWestwood.Client.Shell.ShellScreen.BuildMapCache(content),
+                options.Get("sole-survivor") == "host" ? new OpenWestwood.Client.SoleSurvivor.SsrMatchSetup { Faction = options.Get("faction") ?? "FactionAmerica", Map = options.Get("map") ?? "Maps/Tournament Desert/Tournament Desert.map" } : null);
         var ssrSetup = new OpenWestwood.Client.SoleSurvivor.SsrMatchSetup
         {
             Mode = Enum.TryParse<OpenWestwood.Logic.SoleSurvivor.SsrMode>(options.Get("ssr-mode") ?? "Freeplay", true, out var ssrMode) ? ssrMode : OpenWestwood.Logic.SoleSurvivor.SsrMode.Freeplay,

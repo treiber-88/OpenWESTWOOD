@@ -86,6 +86,7 @@ public sealed class NetLobby
         w.Write(info.NoFogOfWar);
         w.Write((byte)info.GameSpeed);
         w.Write(info.Seed);
+        w.Write(info.Extra);
         foreach (var slot in info.Slots)
         {
             w.Write((byte)slot.State);
@@ -109,6 +110,7 @@ public sealed class NetLobby
             GameSpeed = r.ReadByte(),
             Seed = r.ReadUInt64(),
         };
+        info.Extra = r.ReadString();
         foreach (var slot in info.Slots)
         {
             var state = (SlotState)r.ReadByte();

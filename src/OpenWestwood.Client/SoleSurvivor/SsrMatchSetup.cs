@@ -35,6 +35,45 @@ public sealed class SsrMatchSetup
     /// <summary>Debug: the unit the person goes in as at once (no choice panel first).</summary>
     public string? AutoUnit { get; set; }
 
+    /// <summary>A person in the match (a network game's players; the host first).</summary>
+    public sealed record Human(string Name, string Faction, int Team);
+
+    /// <summary>Everyone at a keyboard (a network game); null: just this machine's "Player" on <see cref="Faction"/>.</summary>
+    public List<Human>? Humans { get; set; }
+
+    /// <summary>A network game's seed (the host's); null: any.</summary>
+    public ulong? Seed { get; set; }
+
+    /// <summary>The settings as a network game's lobby carries them (GameInfo.Extra).</summary>
+    public string Encode() => string.Join(";", "SSR", $"Mode={(int)Mode}", $"Unit={(UnitType is { } u ? (int)u : -1)}", $"Lives={Lives}",
+        $"Computers={Computers}", $"Allies={AlliedComputers}", $"Enemies={EnemyComputers}", $"Time={TimeLimitMinutes}", $"Kills={KillLimit}",
+        $"Skill={(int)Difficulty}", $"Start={Start}");
+
+    /// <summary>Whether a lobby's extra settings are a Sole Survivor Remix game's.</summary>
+    public static bool IsSsr(string extra) => extra.StartsWith("SSR;", StringComparison.Ordinal);
+
+    /// <summary>The settings from a lobby's extra settings (the map and the people come from the lobby itself).</summary>
+    public static SsrMatchSetup Decode(string extra)
+    {
+        var values = extra.Split(';').Skip(1).Select(kv => kv.Split('=', 2)).Where(kv => kv.Length == 2)
+            .ToDictionary(kv => kv[0], kv => int.TryParse(kv[1], out int v) ? v : 0);
+        int Get(string key, int fallback) => values.TryGetValue(key, out int v) ? v : fallback;
+        int unit = Get("Unit", 0);
+        return new SsrMatchSetup
+        {
+            Mode = (SsrMode)Math.Clamp(Get("Mode", 0), 0, Enum.GetValues<SsrMode>().Length - 1),
+            UnitType = unit < 0 ? null : (SsrCategory)unit,
+            Lives = Get("Lives", 0),
+            Computers = Math.Clamp(Get("Computers", 3), 0, MaxComputers),
+            AlliedComputers = Math.Clamp(Get("Allies", 1), 0, MaxComputers),
+            EnemyComputers = Math.Clamp(Get("Enemies", 2), 0, MaxComputers),
+            TimeLimitMinutes = Get("Time", 0),
+            KillLimit = Get("Kills", 0),
+            Difficulty = (Logic.Scripting.Difficulty)Get("Skill", 1),
+            Start = Get("Start", -1),
+        };
+    }
+
     /// <summary>Most computer players a match may have.</summary>
     public const int MaxComputers = 80;
 
@@ -57,36 +96,55 @@ public sealed class SsrMatchSetup
         var factions = all.Where(f => f.Units.Any(u => u.Power > 0 && u.Category != SsrCategory.Aircraft && settings.Allowed(u))).ToList();
         if (factions.Count == 0)
             factions = all.ToList();
-        var random = new Random();
+        // (A network game: every machine draws the same "random" choices, from the host's seed.)
+        var random = Seed is { } seed ? new Random((int)(seed ^ (seed >> 32))) : new Random();
         bool teams = settings.Teams;
         bool battle = Mode == SsrMode.TeamBattle;
+        var people = Humans is { Count: > 0 } humans ? humans : [new Human("Player", Faction, 0)];
+        int hostTeam = teams ? Math.Clamp(people[0].Team, 0, 1) : 0;
         if (battle)
             Computers = Math.Clamp(AlliedComputers, 0, MaxComputers) + Math.Clamp(EnemyComputers, 0, MaxComputers);
         int mapPlayers = Math.Max(1, MapPlayers);
         // Classic needs a start point a player; the others spread round the map anyway.
-        int computers = Math.Clamp(Mode == SsrMode.Classic ? Math.Min(Computers, Math.Max(1, mapPlayers - 1)) : Computers, 0, MaxComputers);
-        // Start points: the person's as chosen (or any), the other team's (or the other players') the rest, farthest first.
+        int computers = Math.Clamp(Mode == SsrMode.Classic ? Math.Min(Computers, Math.Max(0, mapPlayers - people.Count)) : Computers, 0, MaxComputers);
+        // Start points: the host's as chosen (or any); the other team's (or the other players') the rest, farthest first.
         int mine = Start >= 0 && Start < mapPlayers ? Start : random.Next(mapPlayers);
         var others = Enumerable.Range(0, mapPlayers).Where(i => i != mine)
             .OrderByDescending(i => MapInfo?.StartPosition(i) is { } p && MapInfo.StartPosition(mine) is { } m ? Vector2Distance(p, m) : 0).ToList();
+        int TeamStart(int team) => (team == hostTeam ? mine : others.Count > 0 ? others[0] : mine) + 1;
         var slots = new List<(PlayerSlot Slot, SsrFaction? Faction, bool Computer, int Team)>();
-        for (int i = 0; i <= computers; i++)
+        int[] teamSize = new int[2];
+        int nextStart = 0;
+        for (int i = 0; i < people.Count + computers; i++)
         {
-            bool computer = i > 0;
-            var faction = computer ? factions[random.Next(factions.Count)] : all.FirstOrDefault(f => f.Name == Faction) ?? factions[0];
-            // (Team Battle: the person's allies first, then the other team; the other team modes alternate.)
-            int team = battle ? (i <= Math.Clamp(AlliedComputers, 0, MaxComputers) ? 0 : 1) : teams ? i % 2 : i;
+            bool computer = i >= people.Count;
+            var person = computer ? null : people[i];
+            var faction = computer ? factions[random.Next(factions.Count)] : all.FirstOrDefault(f => f.Name == person!.Faction) ?? factions[0];
+            int team;
+            if (!teams)
+                team = i;
+            else if (!computer)
+                team = Math.Clamp(person!.Team, 0, 1);
+            else if (battle)
+                // Team Battle: the host's allies first, then the other team.
+                team = i - people.Count < Math.Clamp(AlliedComputers, 0, MaxComputers) ? hostTeam : 1 - hostTeam;
+            else
+                // The other team modes: each computer to the smaller team.
+                team = teamSize[0] <= teamSize[1] ? 0 : 1;
+            if (teams)
+                teamSize[team]++;
             int start;
             if (teams)
-                start = (team == 0 ? mine : others.Count > 0 ? others[0] : mine) + 1;
+                start = TeamStart(team);
             else if (i == 0)
                 start = mine + 1;
             else
-                start = i - 1 < others.Count ? others[i - 1] + 1 : -1;
-            slots.Add((new PlayerSlot(computer ? $"Computer {i}" : "Player", faction.Name, IsHuman: !computer, start, Colors[i % Colors.Length],
+                start = nextStart < others.Count ? others[nextStart++] + 1 : -1;
+            string name = computer ? $"Computer {i - people.Count + 1}" : person!.Name;
+            slots.Add((new PlayerSlot(name, faction.Name, IsHuman: !computer, start, Colors[i % Colors.Length],
                 Team: teams ? team : -1, Difficulty), faction, computer, team));
         }
-        var game = GameSetup.FromMap(map, content.Rules, (ulong)Environment.TickCount64, slots.Select(s => s.Slot).ToList(),
+        var game = GameSetup.FromMap(map, content.Rules, Seed ?? (ulong)Environment.TickCount64, slots.Select(s => s.Slot).ToList(),
             startingCash: Mode == SsrMode.Classic ? 10000 : 0, models: content.Models,
             readFile: p => content.FileSystem.Exists(p) ? content.FileSystem.ReadAllBytes(p) : null);
         var players = new List<SsrPlayer>();

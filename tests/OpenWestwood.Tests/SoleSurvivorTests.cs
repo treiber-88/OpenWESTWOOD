@@ -43,7 +43,8 @@ public class SoleSurvivorTests(ITestOutputHelper output)
             output.WriteLine($"{p.Player.Name}: unit {p.Unit} kills {p.Kills} deaths {p.Deaths} credits {p.Credits} upgrades {p.WeaponLevel}/{p.ArmorLevel}/{p.SpeedLevel}");
         output.WriteLine($"team scores {match.TeamScores[0]} / {match.TeamScores[1]}, winner {match.WinningTeam}");
         Assert.All(match.Players, p => Assert.NotNull(p.Unit));
-        if (mode != SsrMode.Classic)
+        // (A Zone Defense team can win on points before anyone is killed.)
+        if (mode != SsrMode.Classic && match.Players.Sum(p => p.Kills) > 0)
             Assert.True(match.Players.Sum(p => p.Credits) > 0, "kills paid credits");
         output.WriteLine($"flag pick-ups {match.FlagTakes}");
         if (mode == SsrMode.ZoneDefense)
@@ -259,6 +260,79 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Frames(5);
         output.WriteLine($"standing: faces {mine.Orientation:0.00}");
         Assert.True(MathF.Abs(MathUtil.AngleDifference(mine.Orientation, MathF.Atan2(enemy.Position.Y - mine.Position.Y, enemy.Position.X - mine.Position.X))) < 0.3f);
+    }
+
+    /// <summary>No Tanya and no snipers to pick (nor the commandos who play like them); ordinary riflemen are still there.</summary>
+    [Fact]
+    public void NoTanyaOrSnipers()
+    {
+        if (Content() is not { } c) return;
+        var units = SsrCatalog.Factions(c.Rules, new Logic.Templates.TemplateStore(c.Rules)).SelectMany(f => f.Units).ToList();
+        string[] gone = ["AmericaInfantryPathfinder", "GLAInfantryJarmenKell", "RAALL_E7", "RA2ALL_TANY", "RA2ALL_SNIPE", "TDGDI_RMBO", "KW_GDISniper", "EM_ATSniper"];
+        foreach (var name in gone)
+            Assert.DoesNotContain(units, u => u.Template.EndsWith(name, StringComparison.OrdinalIgnoreCase));
+        Assert.Contains(units, u => u.Template == "AmericaInfantryRanger");
+    }
+
+    /// <summary>
+    /// A soldier gets into a civilian car beside them (E), drives it, shoots from it, gets out; and jumps out unhurt (no
+    /// death) when the car is destroyed under them.
+    /// </summary>
+    [Fact]
+    public void InfantryDriveCivilianVehicles()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2 };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var them = match.Players.First(p => p.IsComputer);
+        them.RespawnFrame = int.MaxValue;
+        var soldier = match.Spawn(me, "AmericaInfantryRanger")!;
+        soldier.SetOrientation(0);
+        void Frames(int n) { for (int i = 0; i < n; i++) { game.IsGameOver = false; game.Update(); } }
+        System.Numerics.Vector3 Ground(float dx, float dy)
+        {
+            var v = soldier.Position + new System.Numerics.Vector3(dx, dy, 0);
+            v.Z = game.Terrain.GroundHeight(v.X, v.Y);
+            return v;
+        }
+        var car = game.CreateObject("CarSedan01", game.Players.Neutral, Ground(25, 0))!;
+        Assert.Same(car, match.VehicleNear(me));
+        new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
+        Assert.Equal(car.Id, match.UnitOf(me)!.Id);
+        Assert.True(soldier.IsHiddenInContainer);
+        // Drive.
+        var from = car.Position;
+        me.Move = new System.Numerics.Vector2(0, 1);
+        Frames(60);
+        me.Move = System.Numerics.Vector2.Zero;
+        float driven = MathUtil.Distance2D(from, car.Position);
+        output.WriteLine($"drove {driven:0}");
+        Assert.True(driven > 40, "the car drove");
+        Assert.True(MathUtil.Distance2D(soldier.Position, car.Position) < 1, "the soldier rides along");
+        // Shoot from it.
+        var enemy = game.CreateObject("AmericaInfantryRanger", them.Player, car.Position + new System.Numerics.Vector3(0, 80, 0) with { Z = game.Terrain.GroundHeight(car.Position.X, car.Position.Y + 80) })!;
+        float enemyHealth = enemy.Health;
+        me.AimTarget = enemy.Id;
+        me.FirePrimary = true;
+        Frames(60);
+        me.FirePrimary = false;
+        output.WriteLine($"enemy {enemyHealth:0} -> {enemy.Health:0}");
+        Assert.True(enemy.Health < enemyHealth || enemy.IsEffectivelyDead, "shot from the car");
+        // Out again.
+        new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
+        Assert.Equal(soldier.Id, match.UnitOf(me)!.Id);
+        Assert.False(soldier.IsHiddenInContainer);
+        Assert.Equal(game.Players.Neutral, car.Owner);
+        // In again, and the car destroyed: out unhurt, no death.
+        Frames(5);
+        new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
+        Assert.Equal(car.Id, match.UnitOf(me)!.Id);
+        car.Kill();
+        Frames(5);
+        Assert.Equal(soldier.Id, match.UnitOf(me)?.Id);
+        Assert.False(soldier.IsEffectivelyDead);
+        Assert.Equal(0, me.Deaths);
     }
 
     /// <summary>No autofire: a person's unit next to an enemy that is shooting it doesn't shoot back until fire is pressed.</summary>

@@ -89,6 +89,20 @@ public static class SsrCatalog
         return result;
     }
 
+    /// <summary>
+    /// Tanya and the snipers (and the heroes who kill a soldier a shot from far off like them), by the end of their name
+    /// (the generals' copies carry a prefix): Zero Hour's Pathfinder, Colonel Burton and Jarmen Kell; Red Alert's and Red
+    /// Alert 2's Tanya, Red Alert 2's Sniper and Navy SEAL, Yuri's Virus; Tiberian Dawn's Commando; Emperor's Atreides
+    /// Sniper; Kane's Wrath's Sniper Team and Commandos.
+    /// </summary>
+    static readonly string[] Snipers =
+    [
+        "InfantryPathfinder", "InfantryColonelBurton", "InfantryJarmenKell",
+        "RAALL_E7", "RASOV_E7", "RA2ALL_TANY", "RA2ALL_SNIPE", "RA2ALL_GHOST", "RA2YUR_VIRUS",
+        "TDGDI_RMBO", "TDNOD_RMBO", "EM_ATSniper",
+        "KW_GDISniper", "KW_GDICommando", "KW_ZOCOMCommando", "KW_NODCommando", "KW_BlackHandCommando", "KW_MarkedOfKaneCommando",
+    ];
+
     static readonly HashSet<string> HarmlessDamage = new(StringComparer.OrdinalIgnoreCase)
         { "MICROWAVE", "HACK", "STATUS", "SURRENDER", "KILL_PILOT", "DEPLOY", "PENALTY", "HEALING", "SUBDUAL_BUILDING", "SUBDUAL_VEHICLE", "DISARM", "HAZARD_CLEANUP", "KILL_GARRISONED" };
 
@@ -121,6 +135,9 @@ public static class SsrCatalog
                 || m.ClassName.Equals("SupplyTruckAIUpdate", StringComparison.OrdinalIgnoreCase)))
             return null;
         if (!t.Is("INFANTRY") && !t.Is("VEHICLE") && !t.Is("AIRCRAFT"))
+            return null;
+        // (The user's rule: no Tanya and no snipers in Sole Survivor; nor the heroes that pick soldiers off like them.)
+        if (Snipers.Any(n => t.Name.EndsWith(n, StringComparison.OrdinalIgnoreCase)))
             return null;
         var category = t.Is("AIRCRAFT") ? SsrCategory.Aircraft : t.Is("INFANTRY") ? SsrCategory.Infantry
             : IsNaval(t) ? SsrCategory.Naval : SsrCategory.Vehicle;

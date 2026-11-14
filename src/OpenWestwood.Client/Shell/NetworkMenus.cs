@@ -206,7 +206,7 @@ public sealed class LanLobbyMenu : ShellMenu
             return;
         refresh = 0.5f;
         string? selected = listGames.SelectedIndex >= 0 && listGames.SelectedIndex < games.Count ? $"{games[listGames.SelectedIndex].Address}:{games[listGames.SelectedIndex].Port}" : null;
-        games = listener.Games;
+        games = listener.Games.Where(g => !g.Name.StartsWith("[SSR]", StringComparison.Ordinal)).ToList(); // (Sole Survivor Remix games are joined from its own screen.)
         string mine = NetHost.Fingerprint(Screen.Ui.Content);
         listGames.Items.Clear();
         foreach (var g in games)
