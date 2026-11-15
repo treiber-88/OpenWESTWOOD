@@ -274,6 +274,25 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Assert.Contains(units, u => u.Template == "AmericaInfantryRanger");
     }
 
+    /// <summary>No unit that blows itself up on contact, and each unit once in its faction's list.</summary>
+    [Fact]
+    public void NoSuicideUnitsAndNoRepeats()
+    {
+        if (Content() is not { } c) return;
+        var factions = SsrCatalog.Factions(c.Rules, new Logic.Templates.TemplateStore(c.Rules));
+        var units = factions.SelectMany(f => f.Units).ToList();
+        string[] gone = ["GLAInfantryTerrorist", "GLAVehicleBombTruck", "RA2SOV_TERROR", "RA2SOV_DTRUCK", "RASOV_DTRK", "KW_NODFanatic", "EM_ORSaboteur"];
+        foreach (var name in gone)
+            Assert.DoesNotContain(units, u => u.Template.EndsWith(name, StringComparison.OrdinalIgnoreCase));
+        foreach (var f in factions)
+            Assert.True(f.Units.Select(u => u.DisplayName).Distinct().Count() == f.Units.Count,
+                $"{f.Name} repeats {string.Join(", ", f.Units.GroupBy(u => u.DisplayName).Where(g => g.Count() > 1).Select(g => g.Key))}");
+        // The plain copy stays: Kane's Wrath's GDI rifles, Dune 2000's factory trike, the Toxin general's own Bomb-less units.
+        Assert.Contains(units, u => u.Template == "KW_GDIRifleSoldier");
+        Assert.Contains(units, u => u.Template == "D2KATR_TRIKE");
+        Assert.DoesNotContain(units, u => u.Template.StartsWith("GC_Chem_GLAVehicleQuadCannon"));
+    }
+
     /// <summary>
     /// A soldier gets into a civilian car beside them (E), drives it, shoots from it, gets out; and jumps out unhurt (no
     /// death) when the car is destroyed under them.
@@ -333,6 +352,45 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Assert.Equal(soldier.Id, match.UnitOf(me)?.Id);
         Assert.False(soldier.IsEffectivelyDead);
         Assert.Equal(0, me.Deaths);
+    }
+
+    /// <summary>The cars a map has (Tournament City's) can be got into in an infantry match.</summary>
+    [Fact]
+    public void MapCarsCanBeDriven()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 4, UnitType = SsrCategory.Infantry,
+            Map = "Maps/Tournament City/Tournament City.map" };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var cars = game.Objects.Where(o => o.IsKindOf("VEHICLE") && o.AI != null && match.Of(o.Owner) == null).ToList();
+        output.WriteLine($"{cars.Count} cars; owners {string.Join(", ", cars.Select(o => $"{o.Owner.Name}/{o.Owner.IsNeutral}").Distinct())}; " +
+            $"all vehicle templates on the map: {string.Join(", ", game.Objects.Where(o => o.IsKindOf("VEHICLE")).Select(o => $"{o.Template.Name}({o.Owner.Name},ai {o.AI != null})").Distinct().Take(8))}");
+        Assert.NotEmpty(cars);
+        var soldier = match.Spawn(me, "AmericaInfantryRanger")!;
+        var car = cars[0];
+        soldier.AI!.Teleport(car.Position + new System.Numerics.Vector3(car.Radius + 15, 0, 0));
+        output.WriteLine($"car {car.Template.Name} at {car.Position}, radius {car.Radius}; soldier {MathUtil.Distance2D(soldier.Position, car.Position):0} away; near: {match.VehicleNear(me)?.Template.Name}");
+        Assert.NotNull(match.VehicleNear(me));
+        var nearest = match.VehicleNear(me)!;
+        new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
+        Assert.Equal(nearest.Id, match.UnitOf(me)?.Id);
+        Assert.Equal(soldier.Id, me.RiderId);
+    }
+
+    /// <summary>The orders a network game sends for Sole Survivor (unit picks, vehicles, steering) go through the
+    /// network's encoding unchanged.</summary>
+    [Fact]
+    public void SsrOrdersSurviveTheNetwork()
+    {
+        Logic.Commands.GameCommand[] orders =
+        [
+            new SsrUnitCommand(3, "AmericaInfantryRanger", 2, 1, 4),
+            new SsrVehicleCommand(3),
+            new SsrInputCommand(3, -1, 1, new System.Numerics.Vector3(10, 20, 30), 77, true, false),
+        ];
+        var back = Logic.Network.Lockstep.Decode(Logic.Network.Lockstep.Encode(orders));
+        Assert.Equal(orders, back);
     }
 
     /// <summary>No autofire: a person's unit next to an enemy that is shooting it doesn't shoot back until fire is pressed.</summary>

@@ -74,10 +74,16 @@ public static class SsrCatalog
                 foreach (string unit in CommandSets.BuildableObjects(catalog, set, "UNIT_BUILD"))
                     unitNames.Add(unit);
             }
-            var units = new List<SsrUnit>();
-            foreach (string unitName in unitNames)
-                if (templates.Find(unitName) is { } t && Unit(t, catalog) is { } unit)
-                    units.Add(unit);
+            // One of each unit: the General's Challenge copies (GC_), Dune 2000's Starport copies and Kane's Wrath's
+            // sub-factions' copies of the same unit share its name; the plainest (no GC_ / _STARPORT, shortest name) stays.
+            // (A GC_ copy goes even under a label of its own when its plain unit is there.)
+            unitNames.RemoveWhere(n => n.StartsWith("GC_", StringComparison.OrdinalIgnoreCase) && unitNames.Contains(n[3..]));
+            var units = unitNames.Select(n => templates.Find(n) is { } t ? Unit(t, catalog, rules) : null).OfType<SsrUnit>()
+                .GroupBy(u => u.DisplayName, StringComparer.OrdinalIgnoreCase)
+                .Select(g => g.OrderBy(u => u.Template.StartsWith("GC_", StringComparison.OrdinalIgnoreCase) ? 1 : 0)
+                    .ThenBy(u => u.Template.EndsWith("_STARPORT", StringComparison.OrdinalIgnoreCase) ? 1 : 0)
+                    .ThenBy(u => u.Template.Length).ThenBy(u => u.Cost).ThenBy(u => u.Template, StringComparer.Ordinal).First())
+                .ToList();
             if (units.Count == 0)
                 continue;
             units.Sort((a, b) => a.Cost != b.Cost ? a.Cost.CompareTo(b.Cost) : string.Compare(a.Template, b.Template, StringComparison.Ordinal));
@@ -103,6 +109,28 @@ public static class SsrCatalog
         "KW_GDISniper", "KW_GDICommando", "KW_ZOCOMCommando", "KW_NODCommando", "KW_BlackHandCommando", "KW_MarkedOfKaneCommando",
     ];
 
+    /// <summary>
+    /// The units that blow themselves up on what they reach (the user's rule: none in Sole Survivor), by the end of their
+    /// name: Zero Hour's Terrorists, Bomb Trucks and the Terrorist's combat bike; Red Alert 2's Terrorist and Demolition
+    /// Truck; Red Alert's Demolition Truck; Kane's Wrath's Fanatics; Emperor's Ordos Saboteur. (And any unit whose main
+    /// weapon goes off where it stands, see <see cref="IsSuicide"/>.)
+    /// </summary>
+    static readonly string[] Bombers =
+    [
+        "InfantryTerrorist", "VehicleBombTruck", "CombatBikeTerrorist",
+        "RA2SOV_TERROR", "RA2SOV_DTRUCK", "RAALL_DTRK", "RASOV_DTRK",
+        "Fanatic", "EM_ORSaboteur",
+    ];
+
+    /// <summary>The unit's first weapon (its first weapon set's) blows up where the unit stands (a suicide weapon).</summary>
+    static bool IsSuicide(ObjectTemplate t, RuleSet rules)
+    {
+        if (!t.Rules.TryGet("WeaponSet", out var sets) || sets.AsList().FirstOrDefault() is not { } set || !set.TryGet("Weapon", out var weapons))
+            return false;
+        var words = weapons.AsList().Select(e => RuleValue.Words(e.Value ?? "")).FirstOrDefault(w => w.Length >= 2 && w[0].Equals("PRIMARY", StringComparison.OrdinalIgnoreCase));
+        return words != null && rules.Get("Weapons", words[1]) is { } weapon && RuleValue.Bool(weapon.GetString("DamageDealtAtSelfPosition"), false);
+    }
+
     static readonly HashSet<string> HarmlessDamage = new(StringComparer.OrdinalIgnoreCase)
         { "MICROWAVE", "HACK", "STATUS", "SURRENDER", "KILL_PILOT", "DEPLOY", "PENALTY", "HEALING", "SUBDUAL_BUILDING", "SUBDUAL_VEHICLE", "DISARM", "HAZARD_CLEANUP", "KILL_GARRISONED" };
 
@@ -125,7 +153,7 @@ public static class SsrCatalog
 
     const float LogicTimeFrames = Core.LogicTime.FramesPerSecond;
 
-    static SsrUnit? Unit(ObjectTemplate t, RulesCatalog catalog)
+    static SsrUnit? Unit(ObjectTemplate t, RulesCatalog catalog, RuleSet rules)
     {
         if (t.Name.Contains("MCV", StringComparison.OrdinalIgnoreCase) || t.Is("STRUCTURE") || t.Is("HARVESTER") || t.Is("DOZER") || t.Is("TD_MCV") || t.Is("COMMANDCENTER") || !t.Rules.TryGet("WeaponSet", out _))
             return null;
@@ -138,6 +166,9 @@ public static class SsrCatalog
             return null;
         // (The user's rule: no Tanya and no snipers in Sole Survivor; nor the heroes that pick soldiers off like them.)
         if (Snipers.Any(n => t.Name.EndsWith(n, StringComparison.OrdinalIgnoreCase)))
+            return null;
+        // (Nor anything that blows itself up on contact.)
+        if (Bombers.Any(n => t.Name.EndsWith(n, StringComparison.OrdinalIgnoreCase)) || IsSuicide(t, rules))
             return null;
         var category = t.Is("AIRCRAFT") ? SsrCategory.Aircraft : t.Is("INFANTRY") ? SsrCategory.Infantry
             : IsNaval(t) ? SsrCategory.Naval : SsrCategory.Vehicle;

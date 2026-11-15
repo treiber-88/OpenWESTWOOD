@@ -546,17 +546,22 @@ public sealed class SoleSurvivorMatch
     /// A civilian vehicle a soldier could get into: a working vehicle near them that belongs to nobody in the match (the
     /// map's civilians) and isn't being driven.
     /// </summary>
-    public GameObject? VehicleNear(SsrPlayer p)
+    public GameObject? VehicleNear(SsrPlayer p) =>
+        UnitOf(p) is { } soldier ? VehiclesAround(p, 90).OrderBy(o => MathUtil.Distance2D(o.Position, soldier.Position)).FirstOrDefault() : null;
+
+    /// <summary>The civilian vehicles within <paramref name="radius"/> of the player's soldier that they could get into.</summary>
+    public IEnumerable<GameObject> VehiclesAround(SsrPlayer p, float radius)
     {
         if (p.RiderId != 0 || UnitOf(p) is not { } soldier || !soldier.IsKindOf(Kind.Infantry))
-            return null;
-        return game.ObjectsInRadius(soldier.Position, 90)
-            .Where(o => o != soldier && !o.IsEffectivelyDead && o.AI != null && o.IsKindOf("VEHICLE") && !o.IsKindOf(Kind.Aircraft)
-                && !o.IsKindOf(Kind.Structure) && Of(o.Owner) == null && !o.IsContained
-                // (Not trains, on their rails, nor boats.)
-                && !o.Template.Name.Contains("Train", StringComparison.OrdinalIgnoreCase) && !o.Template.Name.Contains("Boat", StringComparison.OrdinalIgnoreCase))
-            .OrderBy(o => MathUtil.Distance2D(o.Position, soldier.Position)).FirstOrDefault();
+            return [];
+        return game.ObjectsInRadius(soldier.Position, radius).Where(o => o != soldier && IsDrivable(o));
     }
+
+    /// <summary>A working civilian vehicle nobody in the match owns or drives (not trains, on their rails, nor boats).</summary>
+    public bool IsDrivable(GameObject o) =>
+        !o.IsEffectivelyDead && o.AI != null && o.IsKindOf("VEHICLE") && !o.IsKindOf(Kind.Aircraft) && !o.IsKindOf(Kind.Structure)
+        && Of(o.Owner) == null && !o.IsContained
+        && !o.Template.Name.Contains("Train", StringComparison.OrdinalIgnoreCase) && !o.Template.Name.Contains("Boat", StringComparison.OrdinalIgnoreCase);
 
     /// <summary>Gets the player's soldier into the civilian vehicle beside them, or out of the one they drive.</summary>
     public bool ToggleVehicle(SsrPlayer p)

@@ -315,52 +315,24 @@ public sealed class ShellScreen : IScreen
         string message =
             $"{names}'s artwork {(missing.Count > 1 ? "are" : "is")} not installed in OpenWESTWOOD, so {them} factions, maps and missions are locked. " +
             "You can still play every other game's factions. " +
-            $"If you have the game (installed, on another drive or on its disc), press Install to copy {them} artwork into OpenWESTWOOD. " +
+            $"If you have the game (installed, on another drive or on its disc), press Install to copy {them} artwork into OpenWESTWOOD; you can also tell it the folder the game is in. " +
             $"If not, get {(missing.Count > 1 ? "them" : "it")} in the Command & Conquer Ultimate Collection on Steam or the EA app.";
         var box = GuiLayout.Load(Ui.Content.FileSystem, "Window/Menus/MessageBox.wnd");
         if (box.Find("MessageBox.wnd:StaticTextTitle") is { } t)
             t.Text = "Games not installed";
         if (box.Find("MessageBox.wnd:StaticTextMessage") is { } m)
             m.Text = message;
-        var messageText = box.Find("MessageBox.wnd:StaticTextMessage");
         if (box.Find<GuiPushButton>("MessageBox.wnd:ButtonYes") is { } yes)
         {
-            // Install: finds the player's copy, copies the artwork in the background, and shows how far it is.
+            // Install: the install screen, which finds the player's copy (or takes the folder they type), copies the
+            // artwork with a progress bar and restarts; Back there returns to the menus.
             yes.Hidden = false;
             yes.Text = "Install";
-            bool running = false, finished = false;
-            string status = "";
             yes.Clicked += _ =>
             {
-                if (finished)
-                {
-                    Screens.InstallScreen.Restart();
-                    return;
-                }
-                if (running)
-                    return;
-                running = true;
-                status = "Looking for your copy of the game...";
-                Task.Run(() =>
-                {
-                    var lines = new List<string>();
-                    Core.Installs.GameInstalls.Rescan();
-                    foreach (var game in missing)
-                    {
-                        var result = Core.Installs.ContentInstaller.Install(game, (done, total, file) =>
-                            status = $"Installing {Core.Installs.GameInstalls.DisplayName(game)}: {done / 1e9:0.0} of {total / 1e9:0.0} GB ({file})");
-                        lines.Add(result.Message);
-                    }
-                    finished = missing.All(Core.Installs.GameInstalls.Has);
-                    status = string.Join(" ", lines) + (finished ? " Press Restart to use it." : "");
-                    running = false;
-                });
-            };
-            perFrame = () =>
-            {
-                if (status.Length > 0 && messageText != null)
-                    messageText.Text = status;
-                yes.Text = finished ? "Restart" : running ? "Installing" : "Install";
+                perFrame = null;
+                SwitchTo(new Screens.InstallScreen(gl, input, window, Ui.Content.RootFolder, missing,
+                    back: () => GameWindow.Current?.Switch(new ShellScreen(gl, input, window, Ui))));
             };
         }
         // The bottom row: OK, No and Cancel, side by side.

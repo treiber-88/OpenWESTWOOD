@@ -64,6 +64,7 @@ return command switch
     "list" => FileTools.List(fileSystem, rest),
     "extract" => FileTools.Extract(fileSystem, rest),
     "texture-png" => FileTools.TexturePng(fileSystem, rest),
+    "build-menu-pack" => MenuPack.Build(root, fileSystem, rest),
     _ => Help(),
 };
 

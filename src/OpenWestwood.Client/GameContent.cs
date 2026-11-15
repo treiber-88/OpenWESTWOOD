@@ -47,6 +47,25 @@ public sealed class GameContent : IDisposable
         return new GameContent(root, mod, fileSystem, rules);
     }
 
+    /// <summary>
+    /// The Zero Hour menu pack is there (mods/zh/menu-pack): the Zero Hour files OpenWESTWOOD's menus, fonts and in-game
+    /// bar are made of, so the game runs without Zero Hour installed (its factions, maps and missions locked).
+    /// </summary>
+    public static bool HasMenuPack(string? root = null)
+    {
+        try
+        {
+            return File.Exists(Path.Combine(root ?? FindRoot(), "mods", "zh", "menu-pack", MenuPackMarker));
+        }
+        catch (DirectoryNotFoundException)
+        {
+            return false;
+        }
+    }
+
+    /// <summary>The menu pack's list of its files (written by the tool that builds it).</summary>
+    public const string MenuPackMarker = "menu-pack.txt";
+
     /// <summary>The OpenWESTWOOD folder: the nearest parent of the executable that contains "mods".</summary>
     public static string FindRoot()
     {

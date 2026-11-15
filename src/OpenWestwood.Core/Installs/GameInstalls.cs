@@ -85,6 +85,25 @@ public static class GameInstalls
         _ => game.ToString(),
     };
 
+    /// <summary>
+    /// A package of a game the player is trying without (--pretend-missing): content/zerohour, content/generals or
+    /// content/kaneswrath. It isn't mounted at all, so the game runs as it would without those files.
+    /// </summary>
+    public static bool IsWithheld(string fullPath)
+    {
+        // (OPENWESTWOOD_MOUNT_WITHHELD=1: the game stays locked but its files are still read, to list which ones are used.)
+        if (Environment.GetEnvironmentVariable("OPENWESTWOOD_MOUNT_WITHHELD") == "1")
+            return false;
+        foreach (var game in pretendMissing)
+            foreach (string folder in ContentInstaller.FoldersOf(game))
+            {
+                string dir = Path.GetFullPath(ContentInstaller.ContentFolder(folder)).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                if (Path.GetFullPath(fullPath).StartsWith(dir, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+        return false;
+    }
+
     public static IEnumerable<OriginalGame> Missing() => Enum.GetValues<OriginalGame>().Where(g => !Has(g));
 
     /// <summary>The user data folder (settings, installs.ini).</summary>
@@ -126,6 +145,49 @@ public static class GameInstalls
     }
 
     static string? overrideZh, overrideKw;
+
+    /// <summary>
+    /// The player's own folder for a game (typed in the install screen): kept in installs.ini ("ZeroHour = ..." /
+    /// "KanesWrath = ...") and searched from now on instead of the rest of the computer. Null or empty forgets it.
+    /// </summary>
+    public static void SetFolder(OriginalGame game, string? folder)
+    {
+        string key = game == OriginalGame.KanesWrath ? "KanesWrath" : "ZeroHour";
+        folder = string.IsNullOrWhiteSpace(folder) ? null : Path.GetFullPath(folder.Trim().Trim('"'));
+        var settings = ReadSettingsFile();
+        if (folder == null)
+            settings.Remove(key);
+        else
+            settings[key] = folder;
+        try
+        {
+            Directory.CreateDirectory(UserDataFolder);
+            File.WriteAllLines(Path.Combine(UserDataFolder, "installs.ini"),
+                new[] { "; Where OpenWESTWOOD looks for the original games (set from the install screen)." }
+                    .Concat(settings.Select(kv => $"{kv.Key} = {kv.Value}")));
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        {
+            log.Add($"could not write installs.ini: {e.Message}");
+        }
+        if (game == OriginalGame.KanesWrath)
+            overrideKw = folder;
+        else
+            overrideZh = folder;
+        Reset();
+    }
+
+    /// <summary>The folder the player set for a game (installs.ini or the command line), if any.</summary>
+    public static string? FolderSetFor(OriginalGame game) => game == OriginalGame.KanesWrath
+        ? overrideKw ?? ReadSettingsFile().GetValueOrDefault("KanesWrath")
+        : overrideZh ?? ReadSettingsFile().GetValueOrDefault("ZeroHour");
+
+    /// <summary>The folder (or one up to two levels below it) has the game's files.</summary>
+    public static bool FolderHasGame(OriginalGame game, string folder) => Directory.Exists(folder) && game switch
+    {
+        OriginalGame.KanesWrath => FindAllBelow([folder], IsKanesWrathFolder, 2).Any(),
+        _ => FindAllBelow([folder], IsZeroHourFolder, 2).Any(),
+    };
 
     /// <summary>Back to searching for both games.</summary>
     public static void ClearOverrides()

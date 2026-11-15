@@ -35,12 +35,17 @@ public sealed class VirtualFileSystem : IDisposable
     {
         if (index.TryGetValue(PathUtil.Normalize(path), out var package))
         {
+            Trace?.Invoke(path, package);
             stream = package.Open(path);
             return true;
         }
+        Trace?.Invoke(path, null);
         stream = null;
         return false;
     }
+
+    /// <summary>Debug (--file-trace): every file opened, with the package it came from (null: not found).</summary>
+    public static Action<string, IPackage?>? Trace { get; set; }
 
     public byte[] ReadAllBytes(string path)
     {

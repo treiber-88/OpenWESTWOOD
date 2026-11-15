@@ -41,6 +41,8 @@ public sealed class SsrController
     // (A unit order on its way: not sent again for a moment; the unit it brings is looked at when it comes.)
     float orderWait;
     uint lastUnitId;
+    List<System.Numerics.Vector3> cars = new();
+    int carsFrame;
 
     public SsrController(GameScreen screen, SoleSurvivorMatch match, SsrPlayer me, Action onEnd,
         Logic.Multiplayer.MapMetaData? mapInfo = null, Graphics.Texture? mapPicture = null)
@@ -353,6 +355,13 @@ public sealed class SsrController
 
     void DrawWorldMarks(SpriteBatch batch)
     {
+        // Civilian vehicles a soldier could take, round about: a small mark over each (the nearest says how).
+        foreach (var car in match.VehiclesAround(me, 450))
+            if (screen.WorldToScreen(car.Position with { Z = car.Position.Z + car.Height + 12 }) is { } at)
+            {
+                var white = new Vector4(1, 1, 1, 0.85f);
+                batch.FillTriangle(at + new Vector2(-6, -8) * Scale, at + new Vector2(6, -8) * Scale, at, white);
+            }
         // Zone Defense: each zone's ring (blue: the team's own to hold; red: the other team's, to stand in). Capture the
         // Flag: where each flag is.
         foreach (var (team, c) in match.Zones)
@@ -425,6 +434,20 @@ public sealed class SsrController
             var color = flag.Team == me.Team ? new Vector4(0.3f, 0.6f, 1, 1) : new Vector4(1, 0.3f, 0.25f, 1);
             batch.FillTriangle(p + new Vector2(0, -8), p + new Vector2(7, -5), p + new Vector2(0, -2), color);
             batch.DrawLine(p + new Vector2(0, -8), p, color, 1);
+        }
+        // Civilian vehicles that can be driven (an infantry player's to take).
+        if (MyUnit is { } soldierUnit && soldierUnit.IsKindOf(Logic.Core.Kind.Infantry) || me.RiderId != 0)
+        {
+            if (screen.Game.Frame >= carsFrame)
+            {
+                carsFrame = screen.Game.Frame + Logic.Core.LogicTime.FramesPerSecond;
+                cars = screen.Game.Objects.Where(match.IsDrivable).Select(o => o.Position).ToList();
+            }
+            foreach (var c in cars)
+            {
+                var at = At(c);
+                batch.FillRect(new Rect(at.X - 1, at.Y - 1, 2, 2), new Vector4(0.9f, 0.9f, 0.9f, 0.7f));
+            }
         }
         bool teams = match.Settings.Teams;
         foreach (var p in match.Players)

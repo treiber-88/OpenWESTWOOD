@@ -124,6 +124,10 @@ public sealed class ModManifest
             fullPath = fullPath[..^1];
         }
 
+        // (A game the player is trying without: as if its files weren't there.)
+        if (Installs.GameInstalls.IsWithheld(fullPath.Split('>')[0]))
+            return;
+
         // "...MIX>AUDIO.BAG": Red Alert 2's sound archive (its .IDX beside it) in that archive, its sounds as .WAV files.
         string? bag = null;
         if (fullPath.EndsWith(".bag", StringComparison.OrdinalIgnoreCase) && fullPath.LastIndexOf('>') is > 0 and var cut)

@@ -272,7 +272,8 @@ public sealed class NetHost : IDisposable
                     Reject(client, "That game has already started.");
                     return;
                 }
-                int slot = Array.FindIndex(Lobby.Info.Slots, s => s.State == SlotState.Open);
+                // (Slot 0 is the host's own, even when another machine's hello arrives before the host's.)
+                int slot = Array.FindIndex(Lobby.Info.Slots, 1, s => s.State == SlotState.Open);
                 // The host's own machine (the first to connect) takes the first slot.
                 if (client.Connection.Id == 0)
                     slot = 0;

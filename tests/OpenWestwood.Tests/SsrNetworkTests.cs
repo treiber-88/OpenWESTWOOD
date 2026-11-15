@@ -27,7 +27,7 @@ public class SsrNetworkTests(ITestOutputHelper output)
         }
         if (!done())
             foreach (var s in sessions)
-                output.WriteLine($"{what}: client {s.ClientId} error {s.Error} lobby extra '{s.Lobby?.Info.Extra}' accepted {string.Join(",", s.Lobby?.Accepted ?? [])} slots {string.Join(",", s.Lobby?.Info.Slots.Select(x => $"{x.State}:{x.Name}:{x.PlayerTemplate}") ?? [])}");
+                output.WriteLine($"{what}: client {s.ClientId} connected {s.IsConnected} closed '{s.CloseReason}' chat [{string.Join(" | ", s.Chat)}] error {s.Error} lobby extra '{s.Lobby?.Info.Extra}' accepted {string.Join(",", s.Lobby?.Accepted ?? [])} slots {string.Join(",", s.Lobby?.Info.Slots.Select(x => $"{x.State}:{x.Name}:{x.PlayerTemplate}") ?? [])}");
         Assert.True(done(), "timed out waiting on the network: " + what);
     }
 
@@ -111,7 +111,7 @@ public class SsrNetworkTests(ITestOutputHelper output)
         // Both people's units are in, the same on both machines, with the upgrades each machine sent.
         foreach (var (pa, pb) in a.Match.Players.Zip(b.Match.Players))
             Assert.Equal(a.Match.UnitOf(pa)?.Position, b.Match.UnitOf(pb)?.Position);
-        Assert.NotNull(a.Match.UnitOf(a.Me));
+        Assert.True(a.Me.Spawns > 0 && b.Match.Players.All(p => p.Spawns > 0 || p.IsComputer), "both people went in"); // (a unit may have just been killed)
         Assert.Equal(2, b.Match.Players.First(p => p.Player.DisplayName == "Guest").ArmorLevel);
         Assert.Equal(1, a.Match.Players.First(p => p.Player.DisplayName == "Host").WeaponLevel);
     }

@@ -44,6 +44,19 @@ AppDomain.CurrentDomain.UnhandledException += (_, e) =>
 // Which original games the player has: --zh-path / --kw-path give a folder, --pretend-missing zh,kw tries the game
 // without them, --detect-installs prints what was found and where it looked.
 OpenWestwood.Core.Installs.GameInstalls.Configure(args);
+// Debug: --file-trace FILE lists every file the game opens ("package|path"; "MISSING|path" for one not found), on exit.
+if (options.Get("file-trace") is { } fileTrace)
+{
+    var opened = new System.Collections.Concurrent.ConcurrentDictionary<string, byte>();
+    OpenWestwood.Core.FileSystem.VirtualFileSystem.Trace = (path, package) => opened.TryAdd($"{package?.Name ?? "MISSING"}|{path}", 0);
+    AppDomain.CurrentDomain.ProcessExit += (_, _) =>
+    {
+        var lines = opened.Keys.ToList();
+        if (File.Exists(fileTrace))
+            lines.AddRange(File.ReadAllLines(fileTrace));
+        File.WriteAllLines(fileTrace, lines.Distinct().Order());
+    };
+}
 // Debug: --content-root DIR uses another OpenWESTWOOD folder's content (to try a fresh copy's first start).
 if (options.Get("content-root") is { } contentRootOption)
     OpenWestwood.Core.Installs.GameInstalls.ContentRoot = Path.GetFullPath(contentRootOption);
@@ -79,9 +92,13 @@ if (options.Get("install") is { } installWhat)
     return;
 }
 
-// Without Zero Hour's artwork nothing else can run (the menus are made of it): the install screen comes first.
-// (The files themselves: --pretend-missing zh still starts the menus, with Zero Hour's factions locked.)
-if (!OpenWestwood.Core.Installs.ContentInstaller.IsInstalled(OpenWestwood.Core.Installs.OriginalGame.ZeroHour))
+// Without Zero Hour the game still runs on its menu pack (mods/zh/menu-pack: the few Zero Hour files the menus and the
+// in-game bar are made of), with Zero Hour's factions, maps and missions locked; the menus offer to install it. Only a
+// copy without the pack has to install Zero Hour first. (--pretend-missing zh: as if Zero Hour weren't there.)
+bool zeroHourMissing = !OpenWestwood.Core.Installs.GameInstalls.Has(OpenWestwood.Core.Installs.OriginalGame.ZeroHour);
+// (Debug: --install-screen shows the install screen for the games missing.)
+if (zeroHourMissing && (!OpenWestwood.Client.GameContent.HasMenuPack() || options.Has("audit") || options.Has("ai-census") || options.Has("net-test"))
+    || options.Has("install-screen"))
 {
     if (options.Has("hidden") || options.Has("audit") || options.Has("net-test") || options.Has("ai-census"))
     {
@@ -94,7 +111,8 @@ if (!OpenWestwood.Core.Installs.ContentInstaller.IsInstalled(OpenWestwood.Core.I
         ScreenshotPath = options.Get("screenshot"),
         ScreenshotAfterFrames = int.TryParse(options.Get("screenshot-frames"), out int installShotFrames) ? installShotFrames : 5,
     };
-    installWindow.Run((gl, input, osWindow) => new OpenWestwood.Client.Screens.InstallScreen(gl, input, osWindow, OpenWestwood.Core.Installs.GameInstalls.ContentRoot));
+    installWindow.Run((gl, input, osWindow) => new OpenWestwood.Client.Screens.InstallScreen(gl, input, osWindow, OpenWestwood.Core.Installs.GameInstalls.ContentRoot,
+        OpenWestwood.Core.Installs.GameInstalls.Missing().DefaultIfEmpty(OpenWestwood.Core.Installs.OriginalGame.ZeroHour).ToList()));
     return;
 }
 
