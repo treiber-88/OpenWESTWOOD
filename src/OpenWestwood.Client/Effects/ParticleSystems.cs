@@ -364,6 +364,11 @@ public sealed class ParticleSystem
     public void SetSystemLifetime(int frames) => systemLifetimeLeft = frames;
     public void Start() => isStopped = false;
     public void Stop() => isStopped = true;
+
+    /// <summary>A LINE volume's ends for this system alone (a Kane's Wrath stream: from the nozzle to where it reaches).</summary>
+    public Vector3? LineStart, LineEnd;
+    Vector3 VolLineStart => LineStart ?? Template.VolLineStart;
+    Vector3 VolLineEnd => LineEnd ?? Template.VolLineEnd;
     public void Trigger() { burstDelayLeft = 0; delayLeft = 0; }
 
     public void SetEmissionVolumeSphereRadius(float radius) { if (volumeType == EmissionVolume.Sphere) sphereRadius = radius; }
@@ -423,7 +428,7 @@ public sealed class ParticleSystem
                         break;
                     case EmissionVolume.Line:
                     {
-                        var along = t.VolLineEnd - t.VolLineStart;
+                        var along = VolLineEnd - VolLineStart;
                         along = along.LengthSquared() > 0 ? Vector3.Normalize(along) : Vector3.UnitX;
                         var perp = Vector3.Cross(Vector3.UnitZ, along);
                         var up = Vector3.Cross(along, perp);
@@ -515,7 +520,7 @@ public sealed class ParticleSystem
                 break;
             }
             case EmissionVolume.Line:
-                p = t.VolLineStart + ClientRandom.Real(0, 1) * (t.VolLineEnd - t.VolLineStart);
+                p = VolLineStart + ClientRandom.Real(0, 1) * (VolLineEnd - VolLineStart);
                 break;
             default:
                 p = Vector3.Zero;

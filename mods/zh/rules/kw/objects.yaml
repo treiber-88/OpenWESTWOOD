@@ -16670,6 +16670,17 @@ Objects:
             Model: KW_NU_BlkHnd_SKN
             Animation: KW_NU_BlkHnd_RUNA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXFireStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 0.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_NOD_BlackHandFlameWeaponHit
+        ParticleSystems: KWPS_NUBlkHndStreamFlame KWPS_NUBlkHndStreamGlow
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -18337,6 +18348,28 @@ Objects:
         TailColor: R:0 G:0 B:0 A:0
         TracerHitFx: KWFX_FX_BulletHitNOD
         RequiredStatus: WEAPON_UPGRADED_02
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
+      ModuleTag_Stream2:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -20801,6 +20834,28 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: None
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXFireStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 0.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_NOD_BlackHandFlameWeaponHit
+        ParticleSystems: KWPS_NUBlkHndStreamFlame KWPS_NUBlkHndStreamGlow
+      ModuleTag_Stream2:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXFireStream_Blue.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 0.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_NOD_BlackHandFlameWeaponHit
+        ParticleSystems: KWPS_NUBlkHndPurifyingStrmFlame KWPS_NUBlkHndPurifyingStrmGlow
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -22025,6 +22080,28 @@ Objects:
         TailColor: R:0 G:0 B:0 A:0
         TracerHitFx: KWFX_FX_BulletHitNOD
         RequiredStatus: WEAPON_UPGRADED_02
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
+      ModuleTag_Stream2:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -24813,6 +24890,16 @@ Objects:
             Model: KW_NUTibTroop_SKN
             Animation: KW_NU_BlkHnd_RUNA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.25
+        UVWorldSize: 100
+        Lifetime: 750
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -26510,6 +26597,28 @@ Objects:
         TailColor: R:0 G:0 B:0 A:0
         TracerHitFx: KWFX_FX_BulletHitNOD
         RequiredStatus: WEAPON_UPGRADED_02
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
+      ModuleTag_Stream2:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXTiberiumStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.5
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_TiberiumLiquidStreamDrip KWPS_TiberiumLiquidStreamGas KWPS_TiberiumLiquidStreamGas1
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -29740,6 +29849,17 @@ Objects:
             Model: KW_AUCorrupt_SKN
             Animation: KW_AUCorrupt_RUNA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXCorrupterStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.25
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_AlienCorrupterStreamDrip
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -29950,6 +30070,17 @@ Objects:
             Model: KW_AUMillipedeBody_SKN
             Animation: KW_AUMillipedeBody_MOVA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXCorrupterStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.25
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_AlienCorrupterStreamDrip
       ModuleTag_02:
         Module: Body
         Class: ShieldBody
@@ -33152,6 +33283,17 @@ Objects:
             Model: KW_AUCorrupt_SKN
             Animation: KW_AUCorrupt_RUNA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXCorrupterStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.25
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_AlienCorrupterStreamDrip
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -36429,6 +36571,17 @@ Objects:
             Model: KW_AUCorrupt_SKN
             Animation: KW_AUCorrupt_RUNA
             AnimationMode: LOOP
+      ModuleTag_Stream1:
+        Module: Draw
+        Class: KWStreamDraw
+        Texture: kw/FXCorrupterStream.dds
+        Velocity: 200
+        ArcHeightFactor: 0.063
+        TubeRadius: 1.25
+        UVWorldSize: 100
+        Lifetime: 750
+        HitFx: KWFX_FX_BulletHitGDI
+        ParticleSystems: KWPS_AlienCorrupterStreamDrip
       ModuleTag_02:
         Module: Body
         Class: ActiveBody

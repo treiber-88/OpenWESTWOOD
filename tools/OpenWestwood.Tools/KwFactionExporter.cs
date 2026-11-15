@@ -609,6 +609,7 @@ public static partial class KwFactionExporter
             sb.Append("    Modules:\n");
             sb.Append(Draw(o, squad));
             sb.Append(Tracers(o));
+            sb.Append(Streams(o));
             // (The last body: an object's own replaces the base object's default.)
             var body = KwXml.Modules(o, "Body").LastOrDefault(b => x.Attr(b, "MaxHealth").Length > 0);
             float hp = x.Num(body, "MaxHealth", structure ? 1000 : 100);
@@ -849,6 +850,44 @@ public static partial class KwFactionExporter
                     if (x.Attr(valid, "ForbiddenStatus") is { Length: > 0 } forbidden)
                         sb.Append($"        ForbiddenStatus: {forbidden}\n");
                 }
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Its StreamDraws (the Black Hand's flame, the Tiberium Trooper's and Corrupter's sprays: a textured tube from the
+        /// weapon's fire bone to where it hits, growing out at Velocity, arched by ArcHeightFactor of its length) as
+        /// KWStreamDraw modules; Lifetime is how long a shot keeps it lit (the weapons' ActivateStreamNugget).
+        /// </summary>
+        string Streams(XElement o)
+        {
+            var sb = new StringBuilder();
+            int n = 0;
+            // How long a shot lights the stream: the longest ActivateStreamNugget of the unit's weapons.
+            float lifetime = 0;
+            var weaponSet = KwXml.AllModules(o).FirstOrDefault(m => m.Name.LocalName == "WeaponSetUpdate");
+            foreach (var slot in weaponSet?.Elements() ?? [])
+                foreach (var w in KwXml.Children(slot, "Weapon"))
+                    if (x.Get("WeaponTemplate", x.Attr(w, "Template")) is { } template
+                        && KwXml.Child(template, "Nuggets") is { } nuggets && KwXml.Child(nuggets, "ActivateStreamNugget") is { } stream)
+                        lifetime = Math.Max(lifetime, x.Num(stream, "Lifetime", 500));
+            foreach (var d in KwXml.Modules(o, "Draws").Where(d => d.Name.LocalName == "StreamDraw"))
+            {
+                var texture = KwXml.Child(KwXml.Child(KwXml.Child(d, "FXShader"), "Constants"), "Texture");
+                string name = KwXml.Child(texture, "Value")?.Value.Trim() ?? "";
+                if (name.Length == 0)
+                    continue;
+                sb.Append($"      ModuleTag_Stream{++n}:\n        Module: Draw\n        Class: KWStreamDraw\n");
+                sb.Append($"        Texture: {OpenWestwood.Formats.Sage.SageW3d.TextureFolder}{name}.dds\n");
+                sb.Append($"        Velocity: {F(x.Num(d, "Velocity", 200))}\n        ArcHeightFactor: {F(x.Num(d, "ArcHeightFactor"))}\n");
+                sb.Append($"        TubeRadius: {F(x.Num(d, "TubeRadius", 0.5f))}\n        UVWorldSize: {F(x.Num(d, "UVWorldSize", 100))}\n");
+                sb.Append($"        Lifetime: {F(lifetime > 0 ? lifetime : 500)}\n");
+                if (Fx(x.Attr(d, "HitFx")) is { Length: > 0 } hitFx)
+                    sb.Append($"        HitFx: {hitFx}\n");
+                // The particle systems along it (the body of the flame).
+                var systems = KwXml.Children(KwXml.Child(d, "ParticleSystems"), "ParticleSys").Select(e => Ps(e.Value)).Where(s => s.Length > 0).ToList();
+                if (systems.Count > 0)
+                    sb.Append($"        ParticleSystems: {string.Join(' ', systems)}\n");
             }
             return sb.ToString();
         }

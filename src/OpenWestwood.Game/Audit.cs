@@ -27,7 +27,7 @@ static class Audit
         "W3DModelDraw", "W3DDefaultDraw", "W3DTankDraw", "W3DTruckDraw", "W3DTankTruckDraw", "W3DDependencyModelDraw", "W3DOverlordAircraftDraw",
         "W3DOverlordTankDraw", "W3DOverlordTruckDraw", "W3DPoliceCarDraw", "W3DProjectileStreamDraw", "W3DPropDraw", "W3DRopeDraw",
         "W3DScienceModelDraw", "W3DSupplyDraw", "W3DTracerDraw", "W3DTreeDraw", "W3DLaserDraw", "W3DNoDraw", "TDSpriteDraw", "RASpriteDraw",
-        "RA2SpriteDraw", "D2KSpriteDraw", "KWTracerDraw",
+        "RA2SpriteDraw", "D2KSpriteDraw", "KWTracerDraw", "KWStreamDraw",
     };
 
     sealed class Report
@@ -393,7 +393,7 @@ static class Audit
                     return ok ? null : $"{(game.Length > 0 ? game : "RA2")} {(voxel ? "voxel" : "shape")} {image}";
                 });
             }
-            case "KWTracerDraw" or "W3DLaserDraw" or "W3DNoDraw" or "W3DProjectileStreamDraw" or "W3DRopeDraw" or "W3DTracerDraw":
+            case "KWTracerDraw" or "KWStreamDraw" or "W3DLaserDraw" or "W3DNoDraw" or "W3DProjectileStreamDraw" or "W3DRopeDraw" or "W3DTracerDraw":
                 return null;
         }
         // Model draws: every model they name must exist.

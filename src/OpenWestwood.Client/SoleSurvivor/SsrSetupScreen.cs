@@ -364,7 +364,7 @@ public sealed class SsrSetupScreen : IScreen
         if (session != null)
             screen.Network = session;
         void ToMenu() => GameWindow.Current?.Switch(new ShellScreen(gl, input, window, ui));
-        _ = new SsrController(screen, match, me, ToMenu, setup.MapInfo, ShellScreen.LoadMapPreview(ui, setup.Map)) { AutoUnit = setup.AutoUnit };
+        _ = new SsrController(screen, match, me, ToMenu, setup.MapInfo, ShellScreen.LoadMapPreview(ui, setup.Map)) { AutoUnit = setup.AutoUnit, AutoFire = setup.AutoFire };
         // (Classic ends by the usual victory, the others by the match's own.)
         screen.GameEnded = ToMenu;
         return screen;

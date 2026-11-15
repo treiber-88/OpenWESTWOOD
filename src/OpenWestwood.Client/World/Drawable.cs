@@ -161,7 +161,7 @@ public sealed class Drawable
         }
         foreach (var module in obj.Template.ModulesOfType("Draw"))
         {
-            if (module.ClassName is "W3DDefaultDraw" or "W3DLaserDraw" or "W3DTracerDraw" or "KWTracerDraw" or "W3DRopeDraw" or "W3DProjectileStreamDraw")
+            if (module.ClassName is "W3DDefaultDraw" or "W3DLaserDraw" or "W3DTracerDraw" or "KWTracerDraw" or "KWStreamDraw" or "W3DRopeDraw" or "W3DProjectileStreamDraw")
                 continue;
             var part = new DrawPart(ModelDrawData.For(obj.Template, module));
             if (VehicleDraw.Handles(module.ClassName))

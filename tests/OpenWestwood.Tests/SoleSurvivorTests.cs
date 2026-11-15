@@ -427,6 +427,33 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Assert.Equal(2f, defender / ranger, 2);
     }
 
+    /// <summary>Kane's Wrath's Black Hand has its flame stream (KWStreamDraw: the stream texture and its flame particle systems).</summary>
+    [Fact]
+    public void BlackHandHasItsFlameStream()
+    {
+        if (Content() is not { } c || !Core.Installs.GameInstalls.Has(Core.Installs.OriginalGame.KanesWrath)) return;
+        var stream = new Logic.Templates.TemplateStore(c.Rules).Find("KW_NODBlackHand")!.ModulesOfType("Draw").Single(m => m.ClassName == "KWStreamDraw");
+        Assert.Equal("kw/FXFireStream.dds", stream.Get("Texture"));
+        Assert.Contains("KWPS_NUBlkHndStreamFlame", stream.Get("ParticleSystems"));
+        Assert.NotNull(c.Rules.Get("ParticleSystems", "KWPS_NUBlkHndStreamFlame"));
+    }
+
+    /// <summary>A 2D game's soldier (TD's Chem Warrior, one cell of sight) clears the fog round it as far as MinSight in Sole
+    /// Survivor, while how far it spots targets stays its own.</summary>
+    [Fact]
+    public void EveryUnitSeesAtLeastMinSight()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2, UnitType = SsrCategory.Infantry, Faction = "FactionTDNod" };
+        var (_, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        var chem = match.Spawn(me, "TDNOD_E5")!;
+        Assert.Equal(SoleSurvivorMatch.MinSight, chem.ShroudClearingRange);
+        Assert.Equal(chem.Template.VisionRange, chem.VisionRange);
+        var ranger = match.Switch(me, "AmericaInfantryRanger")!;
+        Assert.Equal(ranger.Template.ShroudClearingRange, ranger.ShroudClearingRange);
+    }
+
     /// <summary>Kane's Wrath's parked cars (map scenery) can be got into, driven and left in an infantry match.</summary>
     [Fact]
     public void KanesWrathParkedCarsCanBeDriven()

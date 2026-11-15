@@ -86,6 +86,9 @@ public sealed class SsrController
     /// <summary>Debug: a unit to go in as at once.</summary>
     public string? AutoUnit { get; set; }
 
+    /// <summary>Debug (--ssr-autofire): the unit keeps firing its main weapon at the ground ahead of it.</summary>
+    public bool AutoFire { get; set; }
+
     // ---- Input ----
 
     static readonly Key[] DriveKeys = [Key.W, Key.A, Key.S, Key.D, Key.Up, Key.Down, Key.Left, Key.Right, Key.Space, Key.H];
@@ -151,6 +154,12 @@ public sealed class SsrController
             var aim = screen.GroundUnderMouse() ?? unit.Position;
             uint target = screen.ObjectUnderMouse(o => !o.IsEffectivelyDead && o.Owner != me.Player && !o.Owner.IsNeutral)?.Id ?? 0;
             bool fire1 = !overPanel && screen.IsHeld(Key.Space), fire2 = !overPanel && screen.IsHeld(Key.H);
+            if (AutoFire)
+            {
+                fire1 = true;
+                aim = unit.Position + new Vector3(MathF.Cos(unit.Orientation), MathF.Sin(unit.Orientation), 0) * 60;
+                aim.Z = game.Terrain.GroundHeight(aim);
+            }
             var input = (move.X, move.Y, fire1, fire2, aim, target);
             // (Sent when it changes, and now and then for the aim.)
             if (input.Item1 != lastSent.X || input.Item2 != lastSent.Y || fire1 != lastSent.Fire1 || fire2 != lastSent.Fire2 || target != lastSent.Target

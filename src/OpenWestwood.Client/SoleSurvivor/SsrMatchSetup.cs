@@ -36,6 +36,8 @@ public sealed class SsrMatchSetup
     public Logic.Multiplayer.MapMetaData? MapInfo { get; set; }
     /// <summary>Debug: the unit the person goes in as at once (no choice panel first).</summary>
     public string? AutoUnit { get; set; }
+    /// <summary>Debug: the person's unit keeps firing (to see its weapon).</summary>
+    public bool AutoFire { get; set; }
 
     /// <summary>A person in the match (a network game's players; the host first).</summary>
     public sealed record Human(string Name, string Faction, int Team);

@@ -840,6 +840,14 @@ FXLists:
     Nuggets:
     - Type: Sound
       Name: KwSnd_NOD_StealthTank_RocketImpactExplosion
+  KWFX_FX_NOD_BlackHandFlameWeaponHit:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_BulletHitGDIFlash
+      Ricochet: Yes
+    - Type: ParticleSystem
+      Name: KWPS_BulletHitGDISpark
+      Ricochet: Yes
   KWFX_FX_NOD_CommandoWeaponFire:
     Nuggets:
     - Type: Sound

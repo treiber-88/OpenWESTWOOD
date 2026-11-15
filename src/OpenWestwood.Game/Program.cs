@@ -266,6 +266,8 @@ window.Run((gl, input, osWindow) =>
             Start = int.TryParse(options.Get("ssr-start"), out int ssrStart) ? ssrStart - 1 : -1,
             // Debug: --ssr-unit TEMPLATE goes in as that unit at once.
             AutoUnit = options.Get("ssr-unit"),
+            // Debug: --ssr-autofire keeps it firing at the ground ahead.
+            AutoFire = options.Has("ssr-autofire"),
         };
         return OpenWestwood.Client.SoleSurvivor.SsrSetupScreen.Play(gl, input, osWindow, ssrUi, ssrSetup);
     }

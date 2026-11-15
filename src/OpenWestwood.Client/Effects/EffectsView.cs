@@ -259,6 +259,7 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
             && !shooter.HasStatus("DISGUISED") && !shooter.IsKindOf("MINE") && !fx.PlayWhenStealthed)
             return;
         StartKwTracers(shooter, fx.Slot, fx.Target);
+        StartKwStream(shooter, fx.Slot, fx.Target);
         // At the barrel's fire-FX bone if the model has one (the original's handleWeaponFireFX).
         if (game.Bones.CurrentState(shooter) is { } state)
         {
@@ -288,6 +289,7 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
         Particles.Update();
 
         UpdateKwTracers();
+        UpdateKwStreams();
         for (int i = tracers.Count - 1; i >= 0; i--)
         {
             var t = tracers[i];
@@ -521,6 +523,7 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
         DrawBolts();
         DrawTracers();
         DrawProjectileStreams();
+        DrawKwStreams();
         DrawRopes();
         renderer.Draw(viewProjection);
     }
@@ -897,6 +900,150 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
             foreach (uint id in done)
                 kwTracerFiring.Remove(id);
     }
+
+    // ---- Kane's Wrath streams (StreamDraw) ----
+
+    /// <summary>A Kane's Wrath StreamDraw (exported as KWStreamDraw): the Black Hand's flame, the Tiberium Trooper's spray.</summary>
+    sealed record KwStreamLook(Texture? Texture, float Velocity, float ArcHeightFactor, float Radius, float UVWorldSize, int LifetimeFrames, string HitFx,
+        string[] ParticleSystems);
+
+    /// <summary>A unit's stream while lit: where it plays on, since when, and until when (each shot keeps it lit for Lifetime).</summary>
+    sealed class KwStreamFiring
+    {
+        public int Slot, StartFrame, EndFrame, NextHitFrame;
+        public Vector3 Target;
+        /// <summary>The flame's particle systems, spread along it.</summary>
+        public List<ParticleSystem> Systems = [];
+    }
+
+    readonly Dictionary<string, KwStreamLook?> kwStreamLooks = new(StringComparer.OrdinalIgnoreCase);
+    readonly Dictionary<uint, KwStreamFiring> kwStreams = new();
+
+    KwStreamLook? KwStreamLookFor(GameObject obj)
+    {
+        if (kwStreamLooks.TryGetValue(obj.Template.Name, out var look))
+            return look;
+        look = obj.Template.ModulesOfType("Draw").FirstOrDefault(m => m.ClassName.Equals("KWStreamDraw", StringComparison.OrdinalIgnoreCase)) is { } d
+            ? new KwStreamLook(textures.Get(d.Get("Texture")), d.GetFloat("Velocity", 200), d.GetFloat("ArcHeightFactor"), d.GetFloat("TubeRadius", 0.5f),
+                Math.Max(1, d.GetFloat("UVWorldSize", 100)), Math.Max(1, (int)MathF.Ceiling(d.GetFloat("Lifetime", 500) / 1000 * LogicTime.FramesPerSecond)),
+                d.Get("HitFx") ?? "", (d.Get("ParticleSystems") ?? "").Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            : null;
+        kwStreamLooks[obj.Template.Name] = look;
+        return look;
+    }
+
+    void StartKwStream(GameObject shooter, int slot, Vector3 target)
+    {
+        if (KwStreamLookFor(shooter) is not { } look)
+            return;
+        if (!kwStreams.TryGetValue(shooter.Id, out var stream) || game.Frame > stream.EndFrame)
+        {
+            if (stream != null)
+                StopStreamSystems(stream);
+            kwStreams[shooter.Id] = stream = new KwStreamFiring { StartFrame = game.Frame, NextHitFrame = game.Frame };
+            if (world.IsVisibleToViewer(shooter))
+                foreach (string name in look.ParticleSystems)
+                    if (Particles.CreateSystem(name) is { } system)
+                        stream.Systems.Add(system);
+        }
+        stream.Slot = slot;
+        stream.Target = target;
+        stream.EndFrame = game.Frame + look.LifetimeFrames;
+    }
+
+    /// <summary>Where a unit's weapon fires from (its fire-FX bone, else its middle).</summary>
+    Vector3 MuzzleOf(GameObject shooter, int slot)
+    {
+        if (game.Bones.CurrentState(shooter) is { } state
+            && state.FireFxBone.TryGetValue(((Logic.Combat.WeaponSlot)slot).ToString().ToUpperInvariant(), out var bone) && bone.Length > 0
+            && (game.Bones.TryGetBone(shooter, bone, out var at) || game.Bones.TryGetBone(shooter, bone + "01", out at)))
+            return at.Translation;
+        return shooter.Position + new Vector3(0, 0, shooter.Height * 0.5f);
+    }
+
+    /// <summary>Streams out: the shooter gone or its shots over. Lit ones that have reached the target play their hit FX there now and then.</summary>
+    void UpdateKwStreams()
+    {
+        List<uint>? done = null;
+        foreach (var (id, stream) in kwStreams)
+        {
+            var shooter = game.FindObject(id);
+            if (shooter == null || shooter.IsDestroyed || shooter.IsEffectivelyDead || game.Frame > stream.EndFrame || KwStreamLookFor(shooter) is not { } look)
+            {
+                StopStreamSystems(stream);
+                (done ??= []).Add(id);
+                continue;
+            }
+            float reach = look.Velocity * (game.Frame - stream.StartFrame) / LogicTime.FramesPerSecond;
+            // The particle systems: along the stream as far as it has reached (their +Y pointing down it).
+            var muzzle = MuzzleOf(shooter, stream.Slot);
+            var span = stream.Target - muzzle;
+            float length = Math.Min(reach, span.Length());
+            float angle = MathF.Atan2(span.Y, span.X);
+            foreach (var system in stream.Systems)
+            {
+                system.SetLocalTransform(Matrix4x4.CreateRotationZ(angle - MathF.PI / 2) * Matrix4x4.CreateTranslation(muzzle));
+                system.LineStart = Vector3.Zero;
+                system.LineEnd = new Vector3(0, length, 0);
+            }
+            if (look.HitFx.Length > 0 && game.Frame >= stream.NextHitFrame && reach >= Vector3.Distance(MuzzleOf(shooter, stream.Slot), stream.Target)
+                && world.IsVisibleToViewer(shooter))
+            {
+                Fx.DoFxPos(look.HitFx, stream.Target, null);
+                stream.NextHitFrame = game.Frame + LogicTime.FramesPerSecond / 4;
+            }
+        }
+        if (done != null)
+            foreach (uint id in done)
+                kwStreams.Remove(id);
+    }
+
+    /// <summary>The stream is out: its particle systems stop making more (those made fade out as usual).</summary>
+    static void StopStreamSystems(KwStreamFiring stream)
+    {
+        foreach (var system in stream.Systems)
+            system.Stop();
+        stream.Systems.Clear();
+    }
+
+    /// <summary>
+    /// Each lit stream: a scrolling textured ribbon from the muzzle towards the target, arched up by ArcHeightFactor of its
+    /// length, reaching out at Velocity from when it lit (the original's StreamDraw tube, drawn as a camera-facing ribbon).
+    /// </summary>
+    void DrawKwStreams()
+    {
+        const int Segments = 12;
+        foreach (var (id, stream) in kwStreams)
+        {
+            if (game.FindObject(id) is not { } shooter || KwStreamLookFor(shooter) is not { } look || !world.IsVisibleToViewer(shooter))
+                continue;
+            var from = MuzzleOf(shooter, stream.Slot);
+            float distance = Vector3.Distance(from, stream.Target);
+            if (distance < 1)
+                continue;
+            float reach = Math.Clamp(look.Velocity * (game.Frame - stream.StartFrame + 1) / LogicTime.FramesPerSecond / distance, 0.05f, 1);
+            float arc = look.ArcHeightFactor * distance;
+            var points = new Vector3[Segments + 1];
+            Span<float> widths = stackalloc float[Segments + 1];
+            var colors = new Vector4[Segments + 1];
+            for (int i = 0; i <= Segments; i++)
+            {
+                float t = reach * i / Segments;
+                points[i] = Vector3.Lerp(from, stream.Target, t) + new Vector3(0, 0, 4 * arc * t * (1 - t));
+                // Thin at the nozzle, opening out to the far end.
+                widths[i] = StreamWidth(look) * (0.35f + 0.65f * t);
+                colors[i] = Vector4.One;
+            }
+            renderer.Ribbon(look.Texture, EffectBlend.Additive, points, widths, colors, distance * reach / look.UVWorldSize,
+                new Vector2(-clock * look.Velocity / look.UVWorldSize, 0));
+        }
+    }
+
+    /// <summary>
+    /// How wide a stream is drawn: its tube's diameter, at least a few units (the original drew the body of the flame with
+    /// particle systems along the tube, not exported; a bare thin tube would hardly show).
+    /// </summary>
+    static float StreamWidth(KwStreamLook look) => Math.Max(look.Radius * 2, 3);
 
     void SendKwTracer(GameObject shooter, KwTracerLook look, KwTracerFiring firing)
     {

@@ -250,6 +250,9 @@ public sealed class SoleSurvivorMatch
         return unit;
     }
 
+    /// <summary>How far round their unit every player sees at least (the map's fog cleared; not how far it spots targets).</summary>
+    public const float MinSight = 300;
+
     /// <summary>In Sole Survivor the GLA's infantry (GLA and its generals') run this many times their own speed.</summary>
     public const float GlaInfantrySpeed = 2f;
 
@@ -273,6 +276,8 @@ public sealed class SoleSurvivorMatch
         unit.DamageBonus *= 1 + Settings.WeaponStep * p.WeaponLevel;
         unit.ArmorBonus *= 1 + Settings.ArmorStep * p.ArmorLevel;
         unit.SpeedBonus *= 1 + Settings.SpeedStep * p.SpeedLevel;
+        // Everyone sees round their unit at least this far (the 2D games' units clear a cell or two: a match in fog).
+        unit.ShroudClearingRange = Math.Max(unit.ShroudClearingRange, MinSight);
         if (IsGlaInfantry(unit))
         {
             unit.SpeedBonus *= GlaInfantrySpeed;
@@ -651,6 +656,7 @@ public sealed class SoleSurvivorMatch
         vehicle.AI!.Stop(CommandSource.AI);
         vehicle.AI.NoAutoAttack = true;
         vehicle.SpeedBonus = vehicle.AccelerationBonus = CarSpeed;
+        vehicle.ShroudClearingRange = Math.Max(vehicle.ShroudClearingRange, MinSight);
         soldier.AI?.Stop(CommandSource.AI);
         soldier.OnContainedBy(vehicle);
         soldier.IsHiddenInContainer = true;
