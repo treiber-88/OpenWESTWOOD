@@ -261,7 +261,8 @@ public sealed class NetHost : IDisposable
                 client.HasKanesWrath = r.ReadBoolean();
                 if (fingerprint != expectedFingerprint)
                 {
-                    Reject(client, "That game runs a different version of OpenWESTWOOD (or different mods).");
+                    Console.WriteLine($"[net] {name}: fingerprint {fingerprint}, host {expectedFingerprint}");
+                    Reject(client, Mismatch(fingerprint, expectedFingerprint));
                     return;
                 }
                 byte[] proof = r.ReadBytes(r.ReadByte());
@@ -456,17 +457,54 @@ public sealed class NetHost : IDisposable
     }
 
     /// <summary>A fingerprint of the rules: the names and sizes of every rules file of the mod.</summary>
-    static uint RulesFingerprint(GameContent content)
+    static uint RulesFingerprint(GameContent content) => ModFiles(content.RootFolder).Hash;
+
+    static readonly Dictionary<string, (uint Hash, List<(string File, uint Hash)> Files)> modFiles = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// A fingerprint of the mod files (every .yaml under mods/): their names and contents. Line endings don't count
+    /// (a copy that went through git or a zip tool on another machine often has CRLF where this one has LF, and the
+    /// game reads both the same). Worked out once per folder.
+    /// </summary>
+    public static (uint Hash, List<(string File, uint Hash)> Files) ModFiles(string rootFolder)
     {
-        uint hash = 2166136261;
-        string folder = Path.Combine(content.RootFolder, "mods");
-        foreach (string file in Directory.EnumerateFiles(folder, "*.yaml", SearchOption.AllDirectories).Order(StringComparer.Ordinal))
+        lock (modFiles)
         {
-            string relative = Path.GetRelativePath(folder, file).Replace('\\', '/');
-            foreach (char c in relative + new FileInfo(file).Length)
-                hash = (hash ^ c) * 16777619;
+            if (modFiles.TryGetValue(rootFolder, out var known))
+                return known;
+            uint hash = 2166136261;
+            var files = new List<(string, uint)>();
+            string folder = Path.Combine(rootFolder, "mods");
+            IEnumerable<(string Full, string Relative)> paths = Directory.Exists(folder)
+                ? Directory.EnumerateFiles(folder, "*.yaml", SearchOption.AllDirectories)
+                    .Select(f => (Full: f, Relative: Path.GetRelativePath(folder, f).Replace('\\', '/')))
+                    .OrderBy(f => f.Relative, StringComparer.OrdinalIgnoreCase)
+                : Enumerable.Empty<(string, string)>();
+            foreach (var (full, relative) in paths)
+            {
+                uint fileHash = 2166136261;
+                foreach (byte b in File.ReadAllBytes(full))
+                    if (b != (byte)'\r')
+                        fileHash = (fileHash ^ b) * 16777619;
+                files.Add((relative, fileHash));
+                foreach (char c in relative.ToLowerInvariant())
+                    hash = (hash ^ c) * 16777619;
+                hash = (hash ^ fileHash) * 16777619;
+            }
+            return modFiles[rootFolder] = (hash, files);
         }
-        return hash;
+    }
+
+    /// <summary>What differs between two machines' fingerprints, in words.</summary>
+    public static string Mismatch(string mine, string theirs)
+    {
+        string[] a = mine.Split('/'), b = theirs.Split('/');
+        if (a.Length != 3 || b.Length != 3)
+            return "That game runs a different version of OpenWESTWOOD.";
+        if (a[0] != b[0] || a[1] != b[1])
+            return "That game runs a different build of OpenWESTWOOD.exe. Copy the same OpenWESTWOOD.exe to both computers.";
+        return $"That game's mod files (the mods folder) differ from this computer's (host {b[2]}, here {a[2]}). "
+            + "Copy the whole mods folder from one computer to the other, or start both with --net-fingerprint and compare the net-fingerprint.txt files.";
     }
 
     public void Dispose()

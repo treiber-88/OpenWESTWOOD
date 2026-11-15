@@ -60,6 +60,22 @@ if (options.Get("file-trace") is { } fileTrace)
 // Debug: --content-root DIR uses another OpenWESTWOOD folder's content (to try a fresh copy's first start).
 if (options.Get("content-root") is { } contentRootOption)
     OpenWestwood.Core.Installs.GameInstalls.ContentRoot = Path.GetFullPath(contentRootOption);
+// --net-fingerprint: writes net-fingerprint.txt (in the OpenWESTWOOD folder) with what network games compare: the
+// program's version and each mod file's hash. Compare two computers' files to see what differs.
+if (options.Has("net-fingerprint"))
+{
+    string root = OpenWestwood.Core.Installs.GameInstalls.ContentRoot;
+    var (modHash, modFiles) = OpenWestwood.Client.Network.NetHost.ModFiles(root);
+    var lines = new List<string>
+    {
+        $"protocol {OpenWestwood.Client.Network.NetHost.Protocol}",
+        $"commands {OpenWestwood.Logic.Network.CommandCodec.Version:X8}",
+        $"mods {modHash:X8} ({modFiles.Count} files in {Path.Combine(root, "mods")})",
+    };
+    lines.AddRange(modFiles.Select(f => $"{f.Hash:X8} {f.File}"));
+    File.WriteAllLines(Path.Combine(root, "net-fingerprint.txt"), lines);
+    return;
+}
 if (options.Has("detect-installs"))
 {
     OpenWestwood.Core.Installs.GameInstalls.Detect();

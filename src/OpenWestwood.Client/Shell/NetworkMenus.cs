@@ -130,7 +130,7 @@ public sealed class LanLobbyMenu : ShellMenu
             var game = games[i];
             if (game.Fingerprint != NetHost.Fingerprint(Screen.Ui.Content))
             {
-                Screen.ShowMessageBox("Network game", "That game runs a different version of OpenWESTWOOD (or different mods).");
+                Screen.ShowMessageBox("Network game", NetHost.Mismatch(NetHost.Fingerprint(Screen.Ui.Content), game.Fingerprint));
                 return;
             }
             if (game.Locked)
