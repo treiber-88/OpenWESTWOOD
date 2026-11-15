@@ -320,6 +320,7 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
         Assert.Equal(car.Id, match.UnitOf(me)!.Id);
         Assert.True(soldier.IsHiddenInContainer);
+        Assert.Equal(SoleSurvivorMatch.CarSpeed, car.SpeedBonus);
         // Drive.
         var from = car.Position;
         me.Move = new System.Numerics.Vector2(0, 1);
@@ -327,7 +328,7 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         me.Move = System.Numerics.Vector2.Zero;
         float driven = MathUtil.Distance2D(from, car.Position);
         output.WriteLine($"drove {driven:0}");
-        Assert.True(driven > 40, "the car drove");
+        Assert.True(driven > 85, "the car drove, 60% quicker than its own speed");
         Assert.True(MathUtil.Distance2D(soldier.Position, car.Position) < 1, "the soldier rides along");
         // Shoot from it.
         var enemy = game.CreateObject("AmericaInfantryRanger", them.Player, car.Position + new System.Numerics.Vector3(0, 80, 0) with { Z = game.Terrain.GroundHeight(car.Position.X, car.Position.Y + 80) })!;
@@ -376,6 +377,98 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         new Logic.SoleSurvivor.SsrVehicleCommand(me.Player.Index).Execute(game);
         Assert.Equal(nearest.Id, match.UnitOf(me)?.Id);
         Assert.Equal(soldier.Id, me.RiderId);
+    }
+
+    /// <summary>
+    /// UNITS FROM ALL GAMES off: a 3D game's faction (Zero Hour) gets only 3D games' computers, a 2D one's (Red Alert 2)
+    /// only 2D games'; on: both kinds turn up. The setting goes through a network lobby unchanged.
+    /// </summary>
+    [Theory]
+    [InlineData("FactionAmerica", true)]
+    [InlineData("FactionRA2British", false)]
+    public void AllGamesOptionPicksTheComputersGames(string faction, bool threeD)
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var factions = SsrCatalog.Factions(c.Rules, new Logic.Templates.TemplateStore(c.Rules));
+        if (factions.All(f => f.Name != faction)) { output.WriteLine($"{faction} not found: " + string.Join(", ", factions.Select(f => f.Name))); Assert.Fail("faction"); }
+        Assert.Equal(threeD, SsrCatalog.Is3D(factions.First(f => f.Name == faction).Game));
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 40, MapPlayers = 2, Faction = faction, AllGames = false, Seed = 7 };
+        Assert.False(Client.SoleSurvivor.SsrMatchSetup.Decode(setup.Encode()).AllGames);
+        var (_, _, match) = setup.Build(c);
+        var games = match.Players.Where(p => p.IsComputer).Select(p => p.Faction!.Game).Distinct().ToList();
+        output.WriteLine($"{faction}, all games off: {string.Join(", ", games)}");
+        Assert.All(games, g => Assert.Equal(threeD, SsrCatalog.Is3D(g)));
+        setup.AllGames = true;
+        var (_, _, mixed) = setup.Build(c);
+        var all = mixed.Players.Where(p => p.IsComputer).Select(p => p.Faction!.Game).Distinct().ToList();
+        output.WriteLine($"{faction}, all games on: {string.Join(", ", all)}");
+        Assert.Contains(all, g => SsrCatalog.Is3D(g));
+        Assert.Contains(all, g => !SsrCatalog.Is3D(g));
+    }
+
+    /// <summary>GLA infantry run twice their own speed in Sole Survivor; others' infantry don't.</summary>
+    [Fact]
+    public void GlaInfantryRunTwiceAsFast()
+    {
+        if (Content() is not { } c || !File.Exists(Path.Combine(c.RootFolder, "content", "zerohour", "INIZH.big"))) return;
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = 2, UnitType = SsrCategory.Infantry, Faction = "FactionGLA" };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        match.Players.First(p => p.IsComputer).RespawnFrame = int.MaxValue;
+        float Run(string template)
+        {
+            var unit = match.UnitOf(me) == null ? match.Spawn(me, template)! : match.Switch(me, template)!;
+            output.WriteLine($"{template}: speed bonus {unit.SpeedBonus}, top speed {unit.AI!.CurrentLocomotor!.MaxSpeedFor(unit):0.0}");
+            return unit.AI!.CurrentLocomotor!.MaxSpeedFor(unit) / unit.AI.CurrentLocomotor.Template.Speed;
+        }
+        // (Against a Ranger, so the profile's own speed upgrade doesn't matter.)
+        float rebel = Run("GLAInfantryRebel"), defender = Run("GLAInfantryTunnelDefender"), ranger = Run("AmericaInfantryRanger");
+        Assert.Equal(2f, rebel / ranger, 2);
+        Assert.Equal(2f, defender / ranger, 2);
+    }
+
+    /// <summary>Kane's Wrath's parked cars (map scenery) can be got into, driven and left in an infantry match.</summary>
+    [Fact]
+    public void KanesWrathParkedCarsCanBeDriven()
+    {
+        if (Content() is not { } c || !Core.Installs.GameInstalls.Has(Core.Installs.OriginalGame.KanesWrath)) return;
+        var cache = Client.Shell.ShellScreen.BuildMapCache(c);
+        var map = cache.Maps.Where(m => m.FileName.StartsWith("kw:", StringComparison.OrdinalIgnoreCase) && m.NumPlayers >= 2)
+            .Select(m => (Meta: m, Cars: Client.KanesWrath.KwMaps.Read(m.FileName).Objects.Count(o => o.TemplateName.Contains("PAUTO", StringComparison.OrdinalIgnoreCase))))
+            .Where(m => m.Cars > 0).OrderByDescending(m => m.Cars).First();
+        output.WriteLine($"{map.Meta.FileName}: {map.Cars} parked cars");
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = map.Meta.NumPlayers, UnitType = SsrCategory.Infantry,
+            Map = map.Meta.FileName, MapInfo = map.Meta };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        match.Players.First(p => p.IsComputer).RespawnFrame = int.MaxValue;
+        var allParked = game.Objects.Where(o => SoleSurvivorMatch.IsParkedCar(o) && !o.IsEffectivelyDead).ToList();
+        Logic.Locomotion.Pathfinder.CellType Base(System.Numerics.Vector3 v) { var (x, y) = game.Terrain.CellAt(v.X, v.Y); return game.Terrain.IsWaterCell(x, y) ? Logic.Locomotion.Pathfinder.CellType.Water : game.Terrain.IsCliffCell(x, y) ? Logic.Locomotion.Pathfinder.CellType.Cliff : Logic.Locomotion.Pathfinder.CellType.Clear; }
+        // (One or two stand on ground no car can drive on.)
+        var onRoad = allParked.Where(o => Base(o.Position) == Logic.Locomotion.Pathfinder.CellType.Clear).ToList();
+        output.WriteLine($"{allParked.Count} parked cars, {onRoad.Count} on drivable ground");
+        var parked = onRoad.First();
+        var soldier = match.Spawn(me, "KW_GDIRifleSoldier")!;
+        soldier.AI!.Teleport(parked.Position + new System.Numerics.Vector3(parked.Radius + 15, 0, 0));
+        Assert.Same(parked, match.VehicleNear(me));
+        Assert.Contains(parked, match.VehiclesAround(me, 450));
+        new SsrVehicleCommand(me.Player.Index).Execute(game);
+        var car = match.UnitOf(me)!;
+        output.WriteLine($"{parked.Template.Name} -> {car.Template.Name}, model kept: {car.Template.Name == "SSR_" + parked.Template.Name}");
+        Assert.Equal("SSR_" + parked.Template.Name, car.Template.Name);
+        Assert.Equal(soldier.Id, me.RiderId);
+        Assert.NotNull(car.AI);
+        var from = car.Position;
+        me.Move = new System.Numerics.Vector2(0, 1);
+        for (int i = 0; i < 60; i++) { game.IsGameOver = false; game.Update(); }
+        me.Move = System.Numerics.Vector2.Zero;
+        output.WriteLine($"drove {MathUtil.Distance2D(from, car.Position):0}");
+        Assert.True(MathUtil.Distance2D(from, car.Position) > 30, "the car drove");
+        new SsrVehicleCommand(me.Player.Index).Execute(game);
+        Assert.Equal(soldier.Id, match.UnitOf(me)!.Id);
+        // Left, it can be taken again.
+        for (int i = 0; i < 5; i++) { game.IsGameOver = false; game.Update(); }
+        Assert.Same(car, match.VehicleNear(me));
     }
 
     /// <summary>The orders a network game sends for Sole Survivor (unit picks, vehicles, steering) go through the

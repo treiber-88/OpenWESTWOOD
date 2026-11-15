@@ -315,6 +315,7 @@ public sealed class SsrController
         }
     }
 
+static Vector4 HealthColor(float health) =>        health > 0.5f ? new Vector4(0.2f, 0.85f, 0.2f, 1) : health > 0.25f ? new Vector4(0.95f, 0.8f, 0.1f, 1) : new Vector4(0.9f, 0.15f, 0.1f, 1);
     void DrawHud(SpriteBatch batch)
     {
         float s = Scale, x = 12 * s, y = 10 * s;
@@ -326,7 +327,7 @@ public sealed class SsrController
             float health = unit.MaxHealth > 0 ? Math.Clamp(unit.Health / unit.MaxHealth, 0, 1) : 0;
             var bar = new Rect(x, y + 38 * s, 220 * s, 8 * s);
             batch.FillRect(bar, new Vector4(0.15f, 0.15f, 0.15f, 1));
-            batch.FillRect(bar with { Width = bar.Width * health }, health > 0.5f ? new Vector4(0.2f, 0.85f, 0.2f, 1) : health > 0.25f ? new Vector4(0.95f, 0.8f, 0.1f, 1) : new Vector4(0.9f, 0.15f, 0.1f, 1));
+            batch.FillRect(bar with { Width = bar.Width * health }, HealthColor(health));
         }
         else
             Text(batch, me.Out ? "OUT OF LIVES" : $"RESPAWN {(match.RespawnWait(me) > 0 ? $"IN {match.RespawnWait(me):0.0}s" : "READY")}", x, y + 20 * s, 11, Dim);
@@ -355,6 +356,19 @@ public sealed class SsrController
 
     void DrawWorldMarks(SpriteBatch batch)
     {
+        // Enemies' health: a small bar over each enemy player's unit on screen (green, yellow under half, red under a quarter).
+        bool teams = match.Settings.Teams;
+        foreach (var p in match.Players)
+        {
+            if (p == me || teams && p.Team == me.Team || match.UnitOf(p) is not { IsEffectivelyDead: false } enemy || enemy.MaxHealth <= 0)
+                continue;
+            if (screen.WorldToScreen(enemy.Position with { Z = enemy.Position.Z + enemy.Height + 6 }) is not { } over)
+                continue;
+            float health = Math.Clamp(enemy.Health / enemy.MaxHealth, 0, 1);
+            var bar = new Rect(over.X - 17 * Scale, over.Y - 5 * Scale, 34 * Scale, 4 * Scale);
+            batch.FillRect(new Rect(bar.X - 1, bar.Y - 1, bar.Width + 2, bar.Height + 2), new Vector4(0, 0, 0, 0.75f));
+            batch.FillRect(bar with { Width = bar.Width * health }, HealthColor(health));
+        }
         // Civilian vehicles a soldier could take, round about: a small mark over each (the nearest says how).
         foreach (var car in match.VehiclesAround(me, 450))
             if (screen.WorldToScreen(car.Position with { Z = car.Position.Z + car.Height + 12 }) is { } at)

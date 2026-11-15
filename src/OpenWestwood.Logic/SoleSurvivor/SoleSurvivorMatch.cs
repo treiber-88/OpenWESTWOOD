@@ -1,4 +1,5 @@
 using System.Numerics;
+using OpenWestwood.Core.Rules;
 using OpenWestwood.Logic.Commands;
 using OpenWestwood.Logic.Core;
 using OpenWestwood.Logic.Objects;
@@ -249,6 +250,13 @@ public sealed class SoleSurvivorMatch
         return unit;
     }
 
+    /// <summary>In Sole Survivor the GLA's infantry (GLA and its generals') run this many times their own speed.</summary>
+    public const float GlaInfantrySpeed = 2f;
+
+    /// <summary>A GLA (or GLA general's) infantry unit.</summary>
+    public static bool IsGlaInfantry(GameObject unit) =>
+        unit.IsKindOf(Kind.Infantry) && unit.Template.Side.StartsWith("GLA", StringComparison.OrdinalIgnoreCase);
+
     GameObject Place(SsrPlayer p, Templates.ObjectTemplate t, string template, Vector3 at, float facing)
     {
         var unit = game.CreateObject(t, p.Player, at with { Z = game.Terrain.GroundHeight(at) }, facing);
@@ -265,6 +273,11 @@ public sealed class SoleSurvivorMatch
         unit.DamageBonus *= 1 + Settings.WeaponStep * p.WeaponLevel;
         unit.ArmorBonus *= 1 + Settings.ArmorStep * p.ArmorLevel;
         unit.SpeedBonus *= 1 + Settings.SpeedStep * p.SpeedLevel;
+        if (IsGlaInfantry(unit))
+        {
+            unit.SpeedBonus *= GlaInfantrySpeed;
+            unit.AccelerationBonus *= GlaInfantrySpeed;
+        }
         p.UnitId = unit.Id;
         p.Unit = template;
         p.Move = Vector2.Zero;
@@ -557,11 +570,68 @@ public sealed class SoleSurvivorMatch
         return game.ObjectsInRadius(soldier.Position, radius).Where(o => o != soldier && IsDrivable(o));
     }
 
-    /// <summary>A working civilian vehicle nobody in the match owns or drives (not trains, on their rails, nor boats).</summary>
+    /// <summary>A working civilian vehicle nobody in the match owns or drives (not trains, on their rails, nor boats), or
+    /// one of Kane's Wrath's parked cars.</summary>
     public bool IsDrivable(GameObject o) =>
-        !o.IsEffectivelyDead && o.AI != null && o.IsKindOf("VEHICLE") && !o.IsKindOf(Kind.Aircraft) && !o.IsKindOf(Kind.Structure)
-        && Of(o.Owner) == null && !o.IsContained
-        && !o.Template.Name.Contains("Train", StringComparison.OrdinalIgnoreCase) && !o.Template.Name.Contains("Boat", StringComparison.OrdinalIgnoreCase);
+        !o.IsEffectivelyDead && Of(o.Owner) == null && !o.IsContained
+        && (IsParkedCar(o)
+            || o.AI != null && o.IsKindOf("VEHICLE") && !o.IsKindOf(Kind.Aircraft) && !o.IsKindOf(Kind.Structure)
+               && !o.Template.Name.Contains("Train", StringComparison.OrdinalIgnoreCase) && !o.Template.Name.Contains("Boat", StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>
+    /// Kane's Wrath's cars are scenery on its maps (KW_xxPAUTOnn, KW_CUAuto01: a model, no engine). In Sole Survivor a
+    /// soldier can take one: it's swapped for a drivable car with the same model (<see cref="DrivableCar"/>).
+    /// </summary>
+    public static bool IsParkedCar(GameObject o) =>
+        o.Template.Name.StartsWith("KW_", StringComparison.OrdinalIgnoreCase) && o.AI == null
+        && (o.Template.Name.Contains("PAUTO", StringComparison.OrdinalIgnoreCase) || o.Template.Name.Equals("KW_CUAuto01", StringComparison.OrdinalIgnoreCase));
+
+    /// <summary>Base for a Kane's Wrath parked car made drivable: the civilian sedan's engine, wheels and body.</summary>
+    const string DrivableCarBase = "CarSedan01";
+
+    /// <summary>Civilian cars taken in Sole Survivor go this much faster than their own speed (set, not stacked).</summary>
+    public const float CarSpeed = 1.6f;
+
+    /// <summary>
+    /// The drivable car standing in for a parked one (same place, facing, model and size), made the first time one is
+    /// taken: SSR_&lt;prop&gt;, a reskin of the sedan with the prop's look and no sedan wreck or car bomb.
+    /// </summary>
+    GameObject? DrivableCar(GameObject parked)
+    {
+        string name = "SSR_" + parked.Template.Name;
+        var objects = game.Templates.Rules.Section("Objects");
+        if (objects[name] == null)
+        {
+            if (game.Templates.Rules.Get("Objects", parked.Template.Name) is not { } prop || game.Templates.Rules.Get("Objects", DrivableCarBase) == null)
+                return null;
+            var car = RuleNode.Mapping();
+            car.Set("ReskinOf", DrivableCarBase);
+            foreach (string key in new[] { "DisplayName", "Geometry", "GeometryMajorRadius", "GeometryMinorRadius", "GeometryHeight" })
+                if (prop.TryGet(key, out var value))
+                    car.Set(key, value.DeepClone());
+            car.Set("GeometryIsSmall", "Yes");
+            car.Set("CommandSet", RuleNode.Scalar(null));
+            car.Set("SelectPortrait", RuleNode.Scalar(null));
+            car.Set("ButtonImage", RuleNode.Scalar(null));
+            var weapons = RuleNode.Mapping();
+            weapons.Set("Conditions", "None");
+            weapons.Set("Weapon", "PRIMARY None");
+            car.Set("WeaponSet", weapons);
+            var modules = car.Set("Modules", RuleNode.Mapping());
+            if (prop.TryGet("Modules", out var propModules) && propModules.Entries.Select(e => e.Value)
+                    .FirstOrDefault(m => string.Equals(m.GetString("Module"), "Draw", StringComparison.OrdinalIgnoreCase)) is { } draw)
+                modules.Set("ModuleTag_01", draw.DeepClone());
+            // The sedan's crushed wreck and burnt hull are Zero Hour's: a Kane's Wrath car just blows up.
+            foreach (string tag in new[] { "ModuleTag_04", "ModuleTag_05", "ModuleTag_06", "ModuleTag_08", "ModuleTag_11" })
+                modules.Set(tag, RuleNode.Scalar(null));
+            objects.Set(name, car);
+        }
+        var position = parked.Position;
+        float facing = parked.Orientation;
+        var owner = parked.Owner;
+        game.DestroyObject(parked);
+        return game.CreateObject(name, owner, position, facing);
+    }
 
     /// <summary>Gets the player's soldier into the civilian vehicle beside them, or out of the one they drive.</summary>
     public bool ToggleVehicle(SsrPlayer p)
@@ -570,10 +640,17 @@ public sealed class SoleSurvivorMatch
             return UnitOf(p) is { } car && LeaveVehicle(p, car) != null;
         if (VehicleNear(p) is not { } vehicle || UnitOf(p) is not { } soldier)
             return false;
+        if (IsParkedCar(vehicle))
+        {
+            if (DrivableCar(vehicle) is not { } drivable)
+                return false;
+            vehicle = drivable;
+        }
         p.VehicleFormerOwner = vehicle.Owner;
         vehicle.SetOwner(p.Player);
         vehicle.AI!.Stop(CommandSource.AI);
         vehicle.AI.NoAutoAttack = true;
+        vehicle.SpeedBonus = vehicle.AccelerationBonus = CarSpeed;
         soldier.AI?.Stop(CommandSource.AI);
         soldier.OnContainedBy(vehicle);
         soldier.IsHiddenInContainer = true;

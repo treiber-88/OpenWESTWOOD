@@ -236,6 +236,8 @@ public sealed partial class GameObject
     public float RateOfFireBonus { get; set; } = 1;
     public float RangeBonus { get; set; } = 1;
     public float SpeedBonus { get; set; } = 1;
+    /// <summary>How much quicker it picks up speed than its locomotor says (Sole Survivor's cars).</summary>
+    public float AccelerationBonus { get; set; } = 1;
 
     /// <summary>Damage taken is divided by this (a Sole Survivor Remix armour upgrade; 1 normally).</summary>
     public float ArmorBonus { get; set; } = 1;

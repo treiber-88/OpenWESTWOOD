@@ -31,14 +31,15 @@ public sealed class SsrSetupScreen : IScreen
     Vector2 mouse;
 
     int mode, map, unitType, game, faction, computers = 3, allies = 1, enemies = 2, lives, timeLimit, killLimit, difficulty = 1, start = -1;
+    bool allGames = true;
     static readonly string[] ModeNames = ["FREEPLAY", "ZONE DEFENSE", "CAPTURE THE FLAG", "CLASSIC", "TEAM BATTLE"];
     static readonly int[] TimeLimits = [0, 5, 10, 15, 20, 30, 45, 60];
     static readonly int[] KillLimits = [0, 5, 10, 15, 20, 25, 30, 50, 75, 100];
     static readonly (string Name, SsrCategory Category)[] UnitTypes = [("VEHICLES", SsrCategory.Vehicle), ("INFANTRY", SsrCategory.Infantry), ("NAVAL", SsrCategory.Naval)];
     static readonly int[] LivesChoices = [0, 1, 3, 5, 10];
     static readonly string[] DifficultyNames = ["EASY", "NORMAL", "HARD"];
-    const int RowCount = 11;
-    const int RowPitch = 40, Top = 140;
+    const int RowCount = 12;
+    const int RowPitch = 38, Top = 140;
     SsrMode Mode => (SsrMode)mode;
     bool TeamBattle => Mode == SsrMode.TeamBattle;
     bool KillLimitApplies => Mode is SsrMode.Freeplay or SsrMode.TeamBattle;
@@ -72,6 +73,7 @@ public sealed class SsrSetupScreen : IScreen
         lives = Index("Lives", LivesChoices.Length);
         difficulty = profile.Setup.ContainsKey("Difficulty") ? Index("Difficulty", 3) : 1;
         start = profile.Setup.TryGetValue("Start", out var s) && int.TryParse(s, out int st) ? st : -1;
+        allGames = !profile.Setup.TryGetValue("AllGames", out var ag) || ag != "0";
         foreach (var m in input.Mice)
         {
             Action<IMouse, Vector2> move = (_, p) => mouse = p * GameWindow.MouseScale;
@@ -274,6 +276,7 @@ public sealed class SsrSetupScreen : IScreen
                         killLimit = Wrap(killLimit, KillLimits.Length);
                     break;
                 case 10: difficulty = Wrap(difficulty, 3); break;
+                case 11: allGames = !allGames; break;
             }
         }
     }
@@ -320,6 +323,7 @@ public sealed class SsrSetupScreen : IScreen
             KillLimit = KillLimitApplies ? KillLimits[killLimit] : 0,
             Lives = LivesChoices[lives],
             Difficulty = (Logic.Scripting.Difficulty)difficulty,
+            AllGames = allGames,
         };
         profile.Setup["Mode"] = mode.ToString();
         profile.Setup["Map"] = maps[map].File;
@@ -334,6 +338,7 @@ public sealed class SsrSetupScreen : IScreen
         profile.Setup["Lives"] = lives.ToString();
         profile.Setup["Difficulty"] = difficulty.ToString();
         profile.Setup["Start"] = start.ToString();
+        profile.Setup["AllGames"] = allGames ? "1" : "0";
         profile.Save();
         return setup;
     }
@@ -389,9 +394,9 @@ public sealed class SsrSetupScreen : IScreen
         var games = Games;
         var factionNow = chosen.Count > 0 ? chosen[Math.Clamp(faction, 0, chosen.Count - 1)] : null;
         string[] labels = ["MODE", "MAP", "UNIT TYPE", "GAME", "FACTION", TeamBattle ? "COMPUTERS ON MY TEAM" : "COMPUTER PLAYERS",
-            "COMPUTERS ON OTHER TEAM", "LIVES", "TIME LIMIT", "KILL LIMIT", "COMPUTER SKILL"];
+            "COMPUTERS ON OTHER TEAM", "LIVES", "TIME LIMIT", "KILL LIMIT", "COMPUTER SKILL", "UNITS FROM ALL GAMES"];
         // Rows that don't apply to this mode.
-        bool[] off = [false, false, false, false, false, false, !TeamBattle, false, false, !KillLimitApplies, false];
+        bool[] off = [false, false, false, false, false, false, !TeamBattle, false, false, !KillLimitApplies, false, false];
         string[] values =
         [
             ModeNames[mode],
@@ -405,6 +410,7 @@ public sealed class SsrSetupScreen : IScreen
             TimeLimits[timeLimit] == 0 ? "NONE" : $"{TimeLimits[timeLimit]} MINUTES (MOST KILLS WINS)",
             !KillLimitApplies ? "FREEPLAY / TEAM BATTLE ONLY" : KillLimits[killLimit] == 0 ? "NONE" : $"FIRST TO {KillLimits[killLimit]}",
             DifficultyNames[difficulty],
+            allGames ? "ON" : SsrCatalog.Is3D(games.Count > 0 ? games[Math.Clamp(game, 0, games.Count - 1)] : "") ? "OFF (3D GAMES ONLY)" : "OFF (2D GAMES ONLY)",
         ];
         for (int i = 0; i < labels.Length; i++)
         {

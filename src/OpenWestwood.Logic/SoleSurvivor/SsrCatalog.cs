@@ -39,6 +39,12 @@ public static class SsrCatalog
     public static readonly string[] Games =
         ["Zero Hour", "Tiberian Dawn", "Red Alert", "Tiberian Sun", "Red Alert 2", "Dune 2000", "Emperor: Battle for Dune", "Kane's Wrath"];
 
+    /// <summary>The games played in 3D (models); the rest are 2D (sprites, voxels).</summary>
+    public static readonly string[] Games3D = ["Zero Hour", "Emperor: Battle for Dune", "Kane's Wrath"];
+
+    /// <summary>Whether a game (one of <see cref="Games"/>) is a 3D one.</summary>
+    public static bool Is3D(string game) => Games3D.Contains(game);
+
     static readonly Dictionary<RuleSet, List<SsrFaction>> cache = new();
 
     /// <summary>Every playable faction with its units (worked out once per rule set).</summary>

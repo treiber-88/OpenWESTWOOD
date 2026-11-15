@@ -28,6 +28,8 @@ public sealed class SsrMatchSetup
     public Logic.Scripting.Difficulty Difficulty { get; set; } = Logic.Scripting.Difficulty.Normal;
     /// <summary>The kind of unit everyone plays (aircraft allowed besides, except with infantry); null: any.</summary>
     public SsrCategory? UnitType { get; set; } = SsrCategory.Vehicle;
+    /// <summary>Computers from every game; off: only from games drawn like the host's faction's (3D with 3D, 2D with 2D).</summary>
+    public bool AllGames { get; set; } = true;
     /// <summary>The person's start point (0-based, the map's Player_N_Start); -1: any.</summary>
     public int Start { get; set; } = -1;
     /// <summary>The map's list entry (its picture and extent, for the minimap); found from the map cache if not given.</summary>
@@ -47,7 +49,7 @@ public sealed class SsrMatchSetup
     /// <summary>The settings as a network game's lobby carries them (GameInfo.Extra).</summary>
     public string Encode() => string.Join(";", "SSR", $"Mode={(int)Mode}", $"Unit={(UnitType is { } u ? (int)u : -1)}", $"Lives={Lives}",
         $"Computers={Computers}", $"Allies={AlliedComputers}", $"Enemies={EnemyComputers}", $"Time={TimeLimitMinutes}", $"Kills={KillLimit}",
-        $"Skill={(int)Difficulty}", $"Start={Start}");
+        $"Skill={(int)Difficulty}", $"Start={Start}", $"AllGames={(AllGames ? 1 : 0)}");
 
     /// <summary>Whether a lobby's extra settings are a Sole Survivor Remix game's.</summary>
     public static bool IsSsr(string extra) => extra.StartsWith("SSR;", StringComparison.Ordinal);
@@ -71,6 +73,7 @@ public sealed class SsrMatchSetup
             KillLimit = Get("Kills", 0),
             Difficulty = (Logic.Scripting.Difficulty)Get("Skill", 1),
             Start = Get("Start", -1),
+            AllGames = Get("AllGames", 1) != 0,
         };
     }
 
@@ -96,11 +99,15 @@ public sealed class SsrMatchSetup
         var factions = all.Where(f => f.Units.Any(u => u.Power > 0 && u.Category != SsrCategory.Aircraft && settings.Allowed(u))).ToList();
         if (factions.Count == 0)
             factions = all.ToList();
+        var people = Humans is { Count: > 0 } humans ? humans : [new Human("Player", Faction, 0)];
+        // All games off: the computers only from the 3D games if the host plays a 3D game's faction, else only the 2D ones.
+        if (!AllGames && all.FirstOrDefault(f => f.Name == people[0].Faction) is { } hostFaction
+            && factions.Where(f => SsrCatalog.Is3D(f.Game) == SsrCatalog.Is3D(hostFaction.Game)).ToList() is { Count: > 0 } alike)
+            factions = alike;
         // (A network game: every machine draws the same "random" choices, from the host's seed.)
         var random = Seed is { } seed ? new Random((int)(seed ^ (seed >> 32))) : new Random();
         bool teams = settings.Teams;
         bool battle = Mode == SsrMode.TeamBattle;
-        var people = Humans is { Count: > 0 } humans ? humans : [new Human("Player", Faction, 0)];
         int hostTeam = teams ? Math.Clamp(people[0].Team, 0, 1) : 0;
         if (battle)
             Computers = Math.Clamp(AlliedComputers, 0, MaxComputers) + Math.Clamp(EnemyComputers, 0, MaxComputers);

@@ -483,7 +483,7 @@ public sealed class SsrOnlineScreen : IScreen
             $"MAP  {map}",
             $"UNITS  {type}",
             $"COMPUTER PLAYERS  {computers}",
-            $"LIVES  {(setup.Lives == 0 ? "UNLIMITED" : setup.Lives)}   TIME LIMIT  {(setup.TimeLimitMinutes == 0 ? "NONE" : setup.TimeLimitMinutes + " MIN")}   KILL LIMIT  {(setup.KillLimit == 0 ? "NONE" : setup.KillLimit)}",
+            $"LIVES  {(setup.Lives == 0 ? "UNLIMITED" : setup.Lives)}   TIME LIMIT  {(setup.TimeLimitMinutes == 0 ? "NONE" : setup.TimeLimitMinutes + " MIN")}   KILL LIMIT  {(setup.KillLimit == 0 ? "NONE" : setup.KillLimit)}   ALL GAMES  {(setup.AllGames ? "ON" : "OFF")}",
         ];
         for (int i = 0; i < lines.Length; i++)
             Text(batch, lines[i], left.X, left.Y + (30 + i * 20) * Scale, 11, Vector4.One);

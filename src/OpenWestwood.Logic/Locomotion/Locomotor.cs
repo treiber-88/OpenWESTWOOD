@@ -112,7 +112,7 @@ public sealed class Locomotor
     /// <summary>(Classic motion: as quick as it likes, so it is at full speed or stopped from one frame to the next.)</summary>
     const float ClassicInstant = 100000;
 
-    public float MaxAccelerationFor(GameObject obj) => Template.ClassicMotion ? ClassicInstant : Math.Min(Penalized(obj) ? Template.AccelerationDamaged : Template.Acceleration, maxAccel);
+    public float MaxAccelerationFor(GameObject obj) => Template.ClassicMotion ? ClassicInstant : Math.Min(Penalized(obj) ? Template.AccelerationDamaged : Template.Acceleration, maxAccel) * obj.AccelerationBonus;
     public float Braking => Template.ClassicMotion ? ClassicInstant : Math.Min(Template.Braking, maxBraking);
 
     /// <summary>Classic motion: whatever it was carrying sideways is dropped, so it goes exactly the way it faces.</summary>
