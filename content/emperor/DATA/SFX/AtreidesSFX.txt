@@ -1,0 +1,920 @@
+;dko denotes a comment by dwight@westwood
+
+
+	;
+	; -------- AT Specific Effects ---------------
+	;
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~ATREIDES ORGANIC UNITS~~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko associate all STANDARD death screams with this hook
+[atnormalmandying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+FShift= -5 5
+Volume=70
+
+;dko associate all BURNING death screams with this hook
+[atburningmandying]
+Sounds=burn_dying_1 burn_dying_2 burn_dying_3 burn_dying_4 burn_dying_5 burn_dying_6 burn_dying_7 burn_dying_8 
+Control=random
+Volume=70
+
+;dko associate all CHOKING death screams with this hook
+[atchoking]
+Sounds=choke_dying_1 choke_dying_2 choke_dying_3 choke_dying_4 choke_dying_5 choke_dying_6 
+Control=random
+Volume=70
+
+;dko associate all CRUSHING death with this hook
+[atcrush]
+Sounds=crush_guy_1 crush_guy_2 crush_guy_3 crush_guy_4
+Control=random
+Volume=60
+
+;Rifle1, Rifle2, Rifle3 samples are being called by the Atreides ;Sniper unit. This sample is also being called by the Fremen (non-elite)
+[SingleShotRifle]
+;Sounds = GUN_SNIPER_50CAL_1
+Sounds=sniper_3
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATSniperGun]
+Sounds=sniper_3
+Volume=70
+
+[SniperRifleReload]
+;Sounds = SNIPER_RIFLE_RELOAD_1B
+;;;Sounds=sniper_reload_3
+Sounds = kindjal_infantry_reload_1
+Volume=40
+
+;dko at light infantry fires weapon
+[atlightmg-shortburst]
+Sounds=at_light_infantry_1 at_light_infantry_2 at_light_infantry_3 at_light_infantry_4
+Control=random
+Limit = 1
+Volume=65
+
+;dko added 4/16/01 new idries call
+[ATInfGun]
+Sounds=at_light_infantry_1 at_light_infantry_2 at_light_infantry_3 at_light_infantry_4
+Control=random
+Limit = 1
+Volume=65
+
+; LMGS1, LMGS2, LMGS3 samples are being called by the Atreides ;Light Infantry (a short machine gun burst). These samples are also being used ;by the IM Advanced Sardaukar ;(for his pistol attack)
+[LightMG-Shortburst]
+Sounds=at_light_infantry_1 at_light_infantry_2 at_light_infantry_3 at_light_infantry_4
+Control=random
+Limit = 1
+Volume=65
+
+; KindjalGun1, KindjalGun2, KindjalGun3 samples are being called by ;the Atreides Kindjal infantryman. Also currently being called by the Atreides ;APC and the Ixian Projector tank. 
+; Atreides Kindjal deployable gun fire - sounds like a hybid between a ;cannonshot and a rocket launch
+[KindjalGunShot]
+Sounds = kindjal_infantry_cannon_2
+Volume=70
+
+[KindjalCannonReload]
+Sounds = kindjal_infantry_reload_1
+Volume=40
+
+;dko 4/24/01 new idries call
+[KindjalUnDeploy]
+Sounds = kindjal_infantry_deploy_2
+Volume=50
+
+;dko 4/24/01 new idries call
+[KindjalDeploy]
+Sounds = kindjal_infantry_deploy_2
+Volume=50
+
+;dko Kindjal fires gun
+[atsingleshotpistol]
+;dko Sounds = Pistol1 Pistol2 Pistol3
+Sounds=hk_engineer_pistol_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATKindjalGun]
+Sounds=hk_engineer_pistol_1
+Volume=70
+
+Sounds = 
+;dko Kindjal fires cannon
+[atmortarlaunch1]
+Sounds=kindjal_infantry_canon_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATKindjalBigGun]
+Sounds=kindjal_infantry_canon_1
+Volume=70
+
+;dko Kindjal reloads
+[frwarriorreload]
+Sounds=kindjal_infantry_reload_1
+Volume=40
+
+;dko at sniper fire this is the actual call for the at sniper 4/17/01
+[atsingleshotrifle]
+Sounds=sniper_3
+Volume=70
+
+;dko at sniper reload
+[atsniperreload]
+Sounds = kindjal_infantry_reload_1
+Volume=40
+
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~~~~~~~VEHICLES~~~~~~~~~~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+								  								  
+;dko added 4/24/01 new idries call
+;this is the ADP fire gun sound
+[atheavymg-shortburst]
+Sounds=mongoose_rocket_1
+Volume = 50
+
+;dko added 5/1/01
+;or adp move
+;[atadpmove]
+;Sounds=or_adp_motor_1
+;Limit = 1
+;Volume=65
+
+;dko ADV Carry All Pickup 
+[atadvancedcarryallstakeoff]
+Sounds=adv_carryall_pickup_1
+Limit = 1
+Volume = 40
+
+;dko ADV Carry All Descent 4/23/01 this call is the one that works
+[atadvancedcarryallsland]
+Sounds=adv_carryall_land_1
+Limit = 1
+Volume = 40
+
+;dko adv carryall ascent 4/23/01
+[ATADVCarryallMoveFxStart]
+Sounds=adv_carryall_takeoff_1
+Limit = 1
+Volume=70
+
+;dko adv carryall ascent 4/23/01
+[ATCarryallMoveFxStart]
+Sounds = adv_carryall_takeoff_1
+Control = loop decay
+Limit = 1
+Decay = 1
+Volume=70
+
+;dko AT Drone Fire
+[atrocketlaunch3]
+Sounds=at_drone_rocket_1 
+Volume = 70
+
+;dko AT Drone Fire new hook requested 4/18/01
+[ATAirDroneGun]
+Sounds=at_drone_rocket_1 
+Volume = 70
+
+
+;Bazooka1, Bazooka2, Bazooka3 samples are called by the Ordos AA Infantryman. ;They are also being called by the Atreides Mongoose, the Atreides Rocket ;Turret, the Harkonnen Trooper and the Hakonnen Missile Tank (this one also ;calls the Rocket wavs).  
+;dko check to see what this call actually associated with.
+[MongooseRocket]
+Sounds = mongoose_rocket_1
+Limit = 2
+Volume=60
+
+;dko added 4/16/01 new idries call
+[ATMongooseMissile]
+Sounds=mongoose_rocket_1
+Limit = 2
+Volume=60
+
+
+;dko This is the call for the AT APC Gun
+[AtApcGun]
+Sounds = camouflage_apc_gun_1
+Volume=70
+
+; ATHollowstep (footstep noise) is being called by the Atreides Minotaurus {Heavy Mech}. This sample is also being called by the Harkonnen Devastator   
+[ATHollowstep]
+Sounds = MINOTAURUS_STEP_2
+limit = 3
+Priority = low
+Volume = 50
+
+;dko 4/18/01 This is the rocket sound attached to the AT APC. 
+[atcannonsingleloudshot]
+Sounds = mongoose_rocket_1
+Limit = 2
+Volume=40
+
+[atthumpstep]
+Sounds = MONGOOSE_STEP_2
+Limit = 3
+Priority = low
+Volume = 35
+
+[SonicWail]
+Sounds = sonic_tank_boom_large_1
+Limit = 2
+Volume = 65
+
+;dko added 4/16/01 new idries call
+[ATSonicTankGun]
+Sounds = sonic_tank_boom_large_1
+Limit = 2
+Volume = 65
+
+;dko added 4/20/01
+[atsonictankmovefxstart]
+Sounds=sonic_tank_motor_1
+Limit = 1
+Volume=45
+
+;dko sonic tank deploy
+[atstdeploy]
+Sounds=sonic_tank_deploy_1 
+Volume = 50
+
+; MMGS1, MMGS2, MMGS3 samples are being called by the Atreides ;Trike. These samples are also being called by the Atreides Pillbox.
+[MedMG-Shortburst]
+Sounds = sand_trike_gun_1
+Priority = low
+Volume=70
+
+;dko added 4/24/01 used for both the ATPillbox and AT Trike
+[ATMedMG-Shortburst]
+Sounds = sand_trike_gun_1
+Priority = low
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATTrikeGun]
+Sounds = sand_trike_gun_1
+Priority = low
+Volume=70
+  
+;dko added 4/20/01
+[attrikemovefxstart]
+Sounds=sand_bike_move_1
+Limit = 1
+Volume=45
+
+[OrnithopterRocket]
+Sounds = ORNITHOPTER_ROCKET_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATOrnithopterGun]
+Sounds = ORNITHOPTER_ROCKET_1
+Volume=70
+
+;Howitzer1, Howitzer2, Howitzer3 samples are being called by the ;Ordos Kobra vehicle. Also being called by the Atreides Minotaurus. 
+; WS 12_07_00 Audio to add recoil/round toss to the end of this sample
+[MinotaurusCannon]
+Sounds = minotaurus_cannon_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[ATMinotaurusGun]
+Sounds = minotaurus_cannon_1
+Volume=70
+
+;dko ornithopter rocket launch
+[atrocketlaunch]
+Sounds=ornithopter_rocket_2
+Volume=60
+
+;dko ornithopter ascend
+[atornitoff]
+Sounds=ornithopter_motor_1c
+Volume=50
+
+;dko ornithopter ascend
+[atornioff]
+Sounds=ornithopter_motor_1c
+Volume=50
+
+
+;dko ornithopter descend
+[atorniland]
+Sounds=ornithopter_motor_2c
+Volume=50
+
+[ATRepairbuzz]
+Sounds = REPAIR_VEHICLE_SPARKS_1 REPAIR_VEHICLE_SPARKS_1B REPAIR_VEHICLE_SPARKS_1C REPAIR_VEHICLE_SPARKS_1D
+Control=random
+Limit = 1
+Volume=45
+
+;dko added 4/20/01
+[atrepairunitmovefxstart]
+Sounds=camouflage_apc_motor_1
+Limit = 1
+Volume=55
+
+;dko at trike fire machine gun
+[atmedmgshortburst]
+Sounds = at_mgun_tower_1
+Volume=70
+
+;dko added 4/20/01
+[mcvmovefxstart]
+Sounds=mcv_a_motor_1
+Limit = 1
+Volume=50
+
+
+
+;~~~~AT HAWK STRIKE SECTION~~~~~
+
+; Atreides Hawk Strike
+; Image - initial sound of hawk 'projection' (as it descends from above)
+[Image]
+Sounds = Image
+Volume=70
+
+;wingbeat - happens when AT Hawk flaps wings
+[Wingbeat]
+Sounds = Wingbeat
+Volume=70
+
+;screech - happens when AT hawk opens beak
+[Screech]
+Sounds = Screech
+Volume=70
+
+ 
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~CONSTRUCTION & BUILDING SOUNDS~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko MCV deploys
+[atmcvdeploy]
+Sounds=mcv_b_open_1
+Control=random
+Volume=60
+
+;dko MCV Drills into ground
+[atcyconstructingbuilding]
+Sounds=mcv_d_drill_dig_1
+Control=random
+Volume=60
+
+
+;dko MCV Scaffolding goes up
+[atsmallconstruction]
+Sounds=mcv_f_scaffold_up_1
+Control=random
+Volume=60
+
+;dko MCV Scaffolding goes up
+[atmediumconstruction]
+Sounds=mcv_g_building_out_1
+Control=random
+Volume=60
+
+;dko MCV Scaffolding goes up
+[atlargeconstruction]
+Sounds=mcv_g_building_out_1
+Control=random
+Volume=60
+
+;dko MCV Scaffolding with sparks
+[atsconstructionspark]
+Sounds=constructionsparks
+Control=random
+Volume=60
+
+;dko at construction yard stationary amb sound <untested>
+;[ambient1]
+;Volume=80
+
+;dko at factory stationary amb sound <untested>
+;[atfactorynoise1]
+;Volume=80
+
+;dko at machine gun tower <untested> 3/27/01
+;[atmedmgshortburst]
+;Sounds=at_mgun_tower_1
+;Volume=80
+
+;dko at outpost amb sound <untested>
+;[ambient4]
+;Volume=80
+
+;dko at palace amb sound <untested>
+;[ambient6]
+;Volume=80
+
+;dko at star port amb sound <untested>
+;[ambient5]
+;Volume=80
+
+;dko at rocket turret 
+[atrocketlaunch1]
+Sounds=at_rocket_turret_1
+Volume=60
+
+;dko added 4/16/01 new idries call
+[ATRocketTurretGun]
+Sounds = mongoose_rocket_1
+Limit = 2
+Volume=60
+
+;dko pill turret move test 4/23/01
+[ATPillboxGunMoveFxStart]
+Sounds=turret_start_11
+Volume=40
+
+;dko pill turret move test 4/23/01
+[ATPillboxGunMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+;loop
+Limit = 1
+Decay = 1
+Volume=70
+
+;dko rocket base turret move test 4/23/01
+[ATRocketTurretBaseMoveFxStart]
+Sounds=turret_start_11
+Limit = 1
+Volume=40
+
+;dko rocket base turret move test 4/23/01
+[ATRocketTurretBaseMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+;loop
+Decay = 1
+Limit = 1
+Volume=70
+
+;dko rocket gun turret move test 4/23/01
+[ATRocketTurretGunMoveFxStart]
+Sounds=turret_start_11
+Volume=40
+
+;dko rocket gun turret move test 4/23/01
+[ATRocketTurretGunMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+;loop
+Limit = 1
+Decay = 1
+Volume=70
+
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~BUILDING EXPLOSION SOUNDS~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko Large AT Building Explodes
+[atlargebuildingbang]
+Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Control=random
+Priority = high
+Volume=80
+
+	;**********************************
+	; -------- UNIT VOICES ------------
+	;**********************************
+
+
+[LocalDefaults]
+Type	=	Dialog
+Control	=	Random
+
+	
+
+[ATKindjalAttack]
+Sounds = $00-UA01		 ;"Engaging enemy."
+Sounds = $00-UA04		 ;"Victory!"
+Sounds = $00-UA07		 ;"We're on them!"
+
+
+[ATKindjalSelection]
+Sounds = $00-US02		 ;"Awaiting orders."
+Sounds = $00-US04		 ;"Kindjal ready"
+Sounds = $00-US06		 ;"Ready for a fight"
+Sounds = $00-US08		 ;"Ready for action"
+
+
+[ATKindjalMove]
+Sounds = $00-UM01		 ;"Yes"
+Sounds = $00-UM04		 ;"You've got it!"
+Sounds = $00-UM05		 ;"On the move!"
+Sounds = $00-UM06		 ;"Look sharp!"
+
+
+[ATAPCAttack]
+Sounds = $03-UA01		 ;"Acknowledged."
+Sounds = $03-UA05		 ;"Order confirmed."
+Sounds = $03-UA06		 ;"Acknowledged."
+Sounds = $03-UA07		 ;"Silent and deadly!"
+
+
+[ATAPCSelection]
+Sounds = $03-US02		 ;"Ready to go!"
+Sounds = $03-US03		 ;"Climb aboard"
+Sounds = $03-US04		 ;"APC"
+Sounds = $03-US05		 ;"We're powered up."
+
+
+[ATAPCMove]
+Sounds = $03-UM00		 ;"On our way!"
+Sounds = $03-UM02		 ;"Rolling!"
+Sounds = $03-UM03		 ;"Transport in motion"
+Sounds = $03-UM06		 ;"Moving to new location."
+
+
+[ATSniperAttack]
+Sounds = $06-UA05		 ;"I need a clear shot."
+Sounds = $06-UA06		 ;"He's mine"
+Sounds = $06-UA07		 ;"I've got him in my sights."
+
+
+[ATSniperSelection]
+Sounds = $06-US04		 ;"Sniper waiting"
+Sounds = $06-US06		 ;"Just give me a taget"
+Sounds = $06-US07		 ;"Readu and willing."
+Sounds = $06-US08		 ;"Eyes like a hawk"
+
+
+[ATSniperMove]
+Sounds = $06-UM01		 ;"Check."
+Sounds = $06-UM02		 ;"Moving out."
+Sounds = $06-UM05		 ;"I'm on the move."
+Sounds = $06-UM06		 ;"Roger"
+
+
+[ATADVCarryallAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UA02		 ;"Prepare for pickup"
+Sounds = $07-UA07		 ;"Grapplers in position."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATADVCarryallSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-US01		 ;"Transport."
+Sounds = $07-US04		 ;"Carryall reporting"
+Sounds = $07-US06		 ;"On your command"
+Sounds = $07-US07		 ;"Transport standing by."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATADVCarryallMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UM01		 ;"Roger."
+Sounds = $07-UM03		 ;"We can do that."
+Sounds = $07-UM04		 ;"On the move."
+Sounds = $07-UM06		 ;"Coming about."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATSonicTankAttack]
+Sounds = $10-UA01		 ;"Cover your ears."
+Sounds = $10-UA02		 ;"For the Duke!"
+Sounds = $10-UA04		 ;"Harmonics set."
+Sounds = $10-UA05		 ;"Full power!"
+
+
+[ATSonicTankSelection]
+Sounds = $10-US02		 ;"Sonics Online"
+Sounds = $10-US04		 ;"Wave shifters ready"
+Sounds = $10-US05		 ;"Sonic tank"
+Sounds = $10-US07		 ;"We're ready for action."
+
+
+[ATSonicTankMove]
+Sounds = $10-UM02		 ;"Yes Commander."
+Sounds = $10-UM06		 ;"Rolling thunder."
+Sounds = $10-UM07		 ;"Good to go"
+
+
+[ATInfantryAttack]
+Sounds = $16-UA01		 ;"Attacking target."
+Sounds = $16-UA03		 ;"For the Duke!"
+Sounds = $16-UA04		 ;"Charge!"
+Sounds = $16-UA05		 ;"Attack!"
+
+
+[ATInfantrySelection]
+Sounds = $16-US00		 ;"Infantry here."
+Sounds = $16-US04		 ;"Are we going in?"
+Sounds = $16-US06		 ;"In position"
+Sounds = $16-US07		 ;"On your order."
+
+
+[ATInfantryMove]
+Sounds = $16-UM02		 ;"Yes Sir!"
+Sounds = $16-UM04		 ;"To the battle!"
+Sounds = $16-UM06		 ;""Right away"
+
+
+[ATRepairUnitAttack]
+Sounds = $24-UA00		 ;"Repairing."
+Sounds = $24-UA02		 ;"What seems to be the problem?"
+Sounds = $24-UA04		 ;"We're on the job."
+Sounds = $24-UA06		 ;"We're here to help."
+
+
+[ATRepairUnitSelection]
+Sounds = $24-US00		 ;"Who needs help?"
+Sounds = $24-US01		 ;""If it moves"
+Sounds = $24-US02		 ;"Repair here."
+Sounds = $24-US03		 ;"Mobile repair"
+
+
+[ATRepairUnitMove]
+Sounds = $24-UM00		 ;"Let's go."
+Sounds = $24-UM01		 ;"At once"
+Sounds = $24-UM03		 ;"Heading out!"
+Sounds = $24-UM05		 ;"We're on the move."
+
+
+[ATMongooseAttack]
+Sounds = $28-UA00		 ;"Locked on target."
+Sounds = $28-UA04		 ;"Target locked."
+Sounds = $28-UA05		 ;"They'll not escape"
+Sounds = $28-UA07		 ;"Time for battle!"
+
+
+[ATMongooseSelection]
+Sounds = $28-US03		 ;"Mongoose "
+Sounds = $28-US04		 ;"Mongoose"
+Sounds = $28-US07		 ;"Standing by."
+
+
+[ATMongooseMove]
+Sounds = $28-UM01		 ;"Let's go."
+Sounds = $28-UM02		 ;"At once"
+Sounds = $28-UM07		 ;"On my way!"
+
+
+[ATEngineerAttack]
+Sounds = $35-UA00		 ;"I see it."
+Sounds = $35-UA02		 ;"I'm going in."
+Sounds = $35-UA03		 ;"It shall be ours."
+
+
+[ATEngineerSelection]
+Sounds = $35-US00		 ;"Engineering."
+Sounds = $35-US01		 ;"Engineer reporting"
+Sounds = $35-US05		 ;"At your service"
+Sounds = $35-US06		 ;"My tools are at your disposal."
+
+
+[ATEngineerMove]
+Sounds = $35-UM01		 ;"Yes Sir!"
+Sounds = $35-UM03		 ;"Cover me"
+Sounds = $35-UM04		 ;"On my way."
+Sounds = $35-UM05		 ;"I'll check into it."
+
+
+[ATMinotaurusAttack]
+Sounds = $39-UA00		 ;"They wont know what hit them."
+Sounds = $39-UA03		 ;"No holding back."
+Sounds = $39-UA04		 ;"I smell fear!"
+Sounds = $39-UA05		 ;"Open fire!"
+
+
+[ATMinotaurusSelection]
+Sounds = $39-US02		 ;"Awaiting orders."
+Sounds = $39-US03		 ;"Canons loaded"
+Sounds = $39-US06		 ;"Awaiting your signal."
+Sounds = $39-US07		 ;"Canons at the ready."
+
+
+[ATMinotaurusMove]
+Sounds = $39-UM00		 ;"Responding."
+Sounds = $39-UM01		 ;"Yes Sir!"
+Sounds = $39-UM04		 ;"Orders confirmed!"
+Sounds = $39-UM06		 ;"Moving to new position."
+
+
+[ATScoutSelection]
+Sounds = $40-US00		 ;"On watch."
+Sounds = $40-US01		 ;"Yes Sir?"
+Sounds = $40-US02		 ;"In position."
+Sounds = $40-US04		 ;"They won't notice me"
+
+
+[ATScoutMove]
+Sounds = $40-UM00		 ;"On the double."
+Sounds = $40-UM01		 ;"Yes"
+Sounds = $40-UM03		 ;"Scouting ahead."
+Sounds = $40-UM07		 ;"On alert"
+Sounds = $40-UM08		 ;"Eyes wide"
+
+
+[ATOrniAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $41-UA00		 ;"Target spotted - twelve o'clock low."
+Sounds = $41-UA01		 ;"I've got the boogey."
+Sounds = $41-UA02		 ;"Attacking."
+Sounds = $41-UA03		 ;"Target locked!"
+Sounds = $41-UA06		 ;"Hostiles engaged."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATOrniSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $41-US02		 ;"Eagle force ready!"
+Sounds = $41-US05		 ;"Holding position"
+Sounds = $41-US08		 ;"Airborne ready!"
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATOrniMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $41-UM00		 ;"Roger.  Watch our six."
+Sounds = $41-UM01		 ;"Roger that."
+Sounds = $41-UM03		 ;"On attack vector"
+Sounds = $41-UM05		 ;"Course plotted."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ATTrikeAttack]
+Sounds = $45-UA02		 ;"Engaging enemy commander!"
+Sounds = $45-UA04		 ;"For House Atreides!"
+Sounds = $45-UA06		 ;"Take 'em out!"
+
+
+[ATTrikeSelection]
+Sounds = $45-US01		 ;"Ready and willing."
+;Sounds = $45-US02		 ;"Trike here"
+Sounds = $45-US03		 ;"Need somethin?"
+Sounds = $45-US04		 ;"How 'bout a little recon?"
+
+
+[ATTrikeMove]
+Sounds = $45-UM00		 ;"Right away Sir."
+Sounds = $45-UM04		 ;"Sounds good!"
+Sounds = $45-UM06		 ;"On the way."
+
+[ATADPAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UA03		 ;
+Sounds = $07-UA05		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[ATADPMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UM00		 ;
+Sounds = $07-UM07		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+[ATADPSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-US00	 	;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+
+;
+; AT Group
+;
+
+; Uncomment these once the foreign groups are built
+
+[ATGroupAttack]
+;Sounds = $00-UA01		 ;"Engaging enemy."
+Sounds = $ATRAttack1
+Sounds = $ATRAttack2
+
+[ATGroupMove]
+;Sounds = $00-UM01		 ;"Yes"
+Sounds = $ATRMove1
+Sounds = $ATRMove2
+
+[ATGroupSelection]
+;Sounds = $00-US02		 ;"Awaiting orders."
+Sounds = $ATRSelect1
+Sounds = $ATRSelect2
+
+
+
+
+; ----- Unit Special Response -----
+;[ATHawkStrike]		 ; Played when the Hawk Strike is targeted (deployed)
+;
+
+
+; ----- Depolyable Infantry -----
+[ORMortarSpecial0]	 ; Played when the mortar infantry deploy
+Sounds = $42-UX00		 ;"Readying mortar for targets"
+
+[ORMortarSpecial1]	 ; Played when the mortar infantry undeploy
+Sounds = $42-UX01		 ;"Evacuating position."
+
+; Note that the same numbers will work for the ATKindjal i.e.
+[ATKindjalSpecial0]		 ; is played when the Kindjal infantry deployed
+Sounds = $00-UX00	 ; "Deploying gun.  Ready to fire."
+
+[ATKindjalSpecial1]
+Sounds = $00-UX02	 ; "Time to move."
+
+
+
+; ----- Shared units -----
+; The sound hooks that follow are for units which are shared between the houses, but need
+; per-house sound hooks
+
+
+; ----- Harvester -----
+[ATHarvesterAttack]	; used when the harvester gets ordered to harvest
+Sounds = $29-UA02
+Sounds = $29-UA03
+Sounds = $29-UA04
+					  
+[ATHarvesterSelection]
+Sounds = $29-US01
+Sounds = $29-US02
+Sounds = $29-US03
+Sounds = $29-US06
+
+[ATHarvesterMove]
+Sounds = $29-UM01
+Sounds = $29-UM04
+Sounds = $29-UM05
+Sounds = $29-UM06
+
+
+
+; ----- MCV -----
+[ATMCVSpecial0]		; used when the MCV is deployed
+Sounds = $54-UX00		 ;
+Sounds = $54-UX02		 ;
+
+[ATMCVMove]
+Sounds = $54-UM01		 ;
+Sounds = $54-UM03		 ;
+Sounds = $54-UM04		 ;
+
+
+[ATMCVSelection]
+Sounds = $54-US00		 ;
+Sounds = $54-US01		 ;
+Sounds = $54-US02		 ;
+Sounds = $54-US05		 ;
+
+

@@ -1,0 +1,2336 @@
+[LocalDefaults]
+Group	=	HD InvalidHouse
+
+; "Spice harvester under attack"
+; ORHarvAttack
+[UI-G004]
+Data = UI-G004.wav
+
+
+; "The base is under attack."
+[UI-G006]
+Data = UI-G006.wav
+
+
+; "Unit lost"
+[UI-G008]
+Data = UI-G008.wav
+
+
+; "Building lost"
+[UI-G010]
+Data = UI-G010.wav
+
+
+; "Insufficient power, windtraps required."
+[UI-G016]
+;Data = UI-G016.wav
+Data = UI-G316.wav
+
+
+; "Building sold"
+[UI-G018]
+Data = UI-G018.wav
+
+
+; "Unit ready"
+[UI-G024]
+Data = UI-G024.wav
+
+
+; "Building"
+[UI-G032]
+Data = UI-G032.wav
+
+
+; "Additional space required"
+[UI-G034]
+;Data = UI-G034.wav
+Data = UI-G334.wav
+
+
+; "New construction options are now available"
+[UI-G040]
+Data = UI-G040.wav
+
+
+; "Training"
+[UI-G046]
+Data = UI-G046.wav
+
+
+; "Hawk strike sequence initiated"
+[UI-G048]
+Data = UI-G048.wav
+
+
+; "Hawk strike ready to fire.  Standing by."
+[UI-G054]
+Data = UI-G054.wav
+
+
+; "Missile launch detected."
+[UI-G072]
+Data = UI-G072.wav
+
+
+; "Enemy structure captured."
+[UI-G080]
+;Data = UI-G080.wav
+Data = UI-G084.wav
+
+
+; "Wormsign"
+[UI-G096]
+Data = UI-G096.wav
+
+
+; "Worm attack"
+[UI-G098]
+Data = UI-G098.wav
+
+
+; "Upgrading building"
+[UI-G106]
+Data = UI-G106.wav
+
+
+; "On guard"
+[UI-G112]
+;Data = UI-G112.wav
+Data = UI-G110.wav
+
+
+; "Retreat"
+[UI-G146]
+Data = UI-G146.wav
+
+
+; "Reinforcements have arrived"
+[UI-G160]
+Data = UI-G160.wav
+
+
+; "Insufficient funds"
+[UI-G162]
+Data = UI-G162.wav
+
+
+; "T minus five"
+[UI-G164]
+Data = UI-G164.wav
+
+
+; "T minus four"
+[UI-G166]
+Data = UI-G166.wav
+
+
+; "T minus three"
+[UI-G168]
+Data = UI-G168.wav
+
+
+; "T minus two"
+[UI-G170]
+Data = UI-G170.wav
+
+
+; "T minus one"
+[UI-G172]
+Data = UI-G172.wav
+
+
+; "Construction complete"
+[UI-G174]
+Data = UI-G174.wav
+
+
+; "Game loaded"
+[UI-G176]
+Data = UI-G176.wav
+
+
+; "Game saved"
+[UI-G178]
+Data = UI-G178.wav
+
+
+; "You are victorious"
+[UI-G182]
+;Data = UI-G182.wav
+Data = UI-G482.wav
+
+
+; "You have been defeated"
+[UI-G184]
+;Data = UI-G184.wav
+Data = UI-G484.wav
+
+
+
+;
+; Beginning of unit/vehicle descriptions
+;
+
+
+; ATScout, HKScout, ORScout
+[UI-B000]
+;Data = UI-B000.wav
+Data = UI-B150.wav
+
+
+; ATInfantry
+[UI-B002]
+;Data = UI-B002.wav
+Data = UI-B152.wav
+
+
+; ATSniper
+[UI-B004]
+;Data = UI-B004.wav
+Data = UI-B154.wav
+
+
+; ATKindjal
+[UI-B006]
+;Data = UI-B006.wav
+Data = UI-B156.wav
+
+
+; ATEngineer
+[UI-B008]
+;Data = UI-B008.wav
+Data = UI-B158.wav
+
+
+; ATMinotaurus
+[UI-B010]
+;Data = UI-B010.wav
+Data = UI-B160.wav
+
+
+; ATMongoose
+[UI-B012]
+;Data = UI-B012.wav
+Data = UI-B162.wav
+
+
+; ATTrike
+[UI-B014]
+;Data = UI-B014.wav
+Data = UI-B164.wav
+
+
+; ATAPC
+[UI-B016]
+;Data = UI-B016.wav
+Data = UI-B166.wav
+
+
+; ATRepairUnit
+[UI-B018]
+;Data = UI-B018.wav
+Data = UI-B168.wav
+
+
+; ATSonicTank
+[UI-B020]
+;Data = UI-B020.wav
+Data = UI-B170.wav
+
+
+; ATOrni
+[UI-B022]
+;Data = UI-B022.wav
+Data = UI-B172.wav
+
+
+; ATADVCarryall
+[UI-B024]
+;Data = UI-B024.wav
+Data = UI-B174.wav
+
+
+; ATHawkStrike
+[UI-B026]
+;Data = UI-B026.wav
+Data = UI-B176.wav
+
+
+;New Add! May 08, 2001
+; HKScout
+[UI-B028]
+Data = UI-B150.wav
+
+
+; HKLightInf
+[UI-B030]
+;Data = UI-B030.wav
+Data = UI-B178.wav
+
+
+; HKFlamer
+[UI-B032]
+;Data = UI-B032.wav
+Data = UI-B180.wav
+
+
+; HKTrooper
+[UI-B034]
+;Data = UI-B034.wav
+Data = UI-B182.wav
+
+
+; HKEnginner
+[UI-B036]
+;Data = UI-B036.wav
+Data = UI-B184.wav
+
+
+; HKDevastator
+[UI-B038]
+;Data = UI-B038.wav
+Data = UI-B186.wav
+
+
+; HKFlame
+[UI-B040]
+;Data = UI-B040.wav
+Data = UI-B188.wav
+
+
+; HKMissile
+[UI-B042]
+;Data = UI-B042.wav
+Data = UI-B190.wav
+
+
+; HKAssault
+[UI-B044]
+;Data = UI-B044.wav
+Data = UI-B192.wav
+
+
+; HKInkVine
+[UI-B046]
+;Data = UI-B046.wav
+Data = UI-B194.wav
+
+
+; HKBuzzsaw
+[UI-B048]
+;Data = UI-B048.wav
+Data = UI-B196.wav
+
+
+; New Add!  May 08, 2001
+[UI-B050]
+Data = UI-B024.wav
+			  
+
+; HKDeathHand
+[UI-B052]
+;Data = UI-B052.wav
+Data = UI-B198.wav
+
+
+; HKGunship
+[UI-B054]
+;Data = UI-B054.wav
+Data = UI-B200.wav
+
+
+; New Add!  May 08, 2001
+[UI-B056]
+Data = UI-B150.wav
+
+
+; ORChemical
+[UI-B058]
+;Data = UI-B058.wav
+Data = UI-B202.wav
+
+
+; ORAATrooper
+[UI-B060]
+;Data = UI-B060.wav
+Data = UI-B204.wav
+
+
+; ORMortar
+[UI-B062]
+;Data = UI-B062.wav
+Data = UI-B206.wav
+
+
+; ORSaboteur
+[UI-B064]
+;Data = UI-B064.wav
+Data = UI-B208.wav
+
+
+;New Add!  May 08, 2001
+[UI-B066]
+Data = UI-B158.wav
+
+
+; ORDustScout
+[UI-B068]
+;Data = UI-B068.wav
+Data = UI-B210.wav
+
+
+; ORLaserTank
+[UI-B070]
+;Data = UI-B070.wav
+Data = UI-B212.wav
+
+
+; ORAPC
+[UI-B072]
+;Data = UI-B072.wav
+Data = UI-B214.wav
+
+
+; ORKobra
+[UI-B074]
+;Data = UI-B074.wav
+Data = UI-B216.wav
+
+
+; ORDeviator
+[UI-B076]
+;Data = UI-B076.wav
+Data = UI-B218.wav
+
+
+; OREITS
+[UI-B078]
+;Data = UI-B078.wav
+Data = UI-B220.wav
+
+
+;ORADVCarryall
+[UI-B080]
+Data = UI-B222.wav
+
+
+; ORBeamWeapon
+[UI-B082]
+;Data = UI-B082.wav
+Data = UI-B224.wav
+
+
+; Harvester
+[UI-B084]
+;Data = UI-B084.wav
+Data = UI-B226.wav
+
+
+; Carryall
+[UI-B086]
+;Data = UI-B086.wav
+Data = UI-B228.wav
+
+
+; MCV
+[UI-B088]
+;Data = UI-B088.wav
+Data = UI-B230.wav
+
+
+; FRFremen
+[UI-B090]
+;Data = UI-B090.wav
+Data = UI-B232.wav
+
+
+; FRADVFremen
+[UI-B092]
+;Data = UI-B092.wav
+Data = UI-B234.wav
+
+
+; WormRider
+[UI-B094]
+;Data = UI-B094.wav
+Data = UI-B236.wav
+
+
+; IMSardaukar
+[UI-B096]
+;Data = UI-B096.wav
+Data = UI-B238.wav
+
+
+; IMADVSardaukar
+[UI-B098]
+;Data = UI-B098.wav
+Data = UI-B240.wav
+
+
+; GUNIABTank
+[UI-B100]
+;Data = UI-B100.wav
+Data = UI-B242.wav
+
+
+; GUMaker
+[UI-B102]
+; Data = UI-B102.wav
+Data = UI-B244.wav
+
+
+; IXProjector
+[UI-B104]
+;Data = UI-B104.wav
+Data = UI-B246.wav
+
+
+; IXInfiltrator
+[UI-B106]
+;Data = UI-B106.wav
+Data = UI-B248.wav
+
+
+; TLLeech
+[UI-B108]
+;Data = UI-B108.wav
+Data = UI-B250.wav
+
+
+; TLContaminator
+[UI-B110]
+;Data = UI-B110.wav
+Data = UI-B252.wav
+
+
+
+
+;
+; More in-game calls
+;
+
+
+
+; ATHarvAttack
+[UI-G000]
+;Data = UI-G000.wav
+Data = UI-G004.wav
+
+
+; HKHarvAttack
+[UI-G002]
+;Data = UI-G002.wav
+Data = UI-G004.wav
+
+
+; ATLowPower
+[UI-G012]
+;Data = UI-G012.wav
+Data = UI-G316.wav
+
+
+; HKLowPower
+[UI-G014]
+;Data = UI-G014.wav
+Data = UI-G316.wav
+
+
+; "Structure ready to place"
+; ATBldgBuilt
+[UI-G020]
+Data = UI-G020.wav
+
+
+; "Building ready to place"
+; BldgBuilt
+[UI-G022]
+Data = UI-G022.wav
+
+
+; ATBldgStart
+[UI-G026]
+;Data = UI-G026.wav
+Data = UI-G030.wav
+
+
+; HKBldgStart
+[UI-G028]
+;Data = UI-G028.wav
+Data = UI-G030.wav
+
+
+; ORBldgBuilt
+[UI-G030]
+Data = UI-G030.wav
+
+
+; HKCannotBuild
+[UI-G036]
+;Data = UI-G036.wav
+Data = UI-G334.wav
+
+
+; ORCannotBuild
+[UI-G038]
+;Data = UI-G038.wav
+Data = UI-G334.wav
+
+
+; HKNewConOpt
+[UI-G042]
+;Data = UI-G042.wav
+Data = UI-G040.wav
+
+
+; ORNewConOpt
+[UI-G044]
+;Data = UI-G044.wav
+Data = UI-G040.wav
+
+
+; HKSpecWeapStart
+[UI-G050]
+Data = UI-G050.wav
+
+
+; ORSpecWeapStart
+[UI-G052]
+Data = UI-G052.wav
+
+
+; HKSpecWeapReady
+[UI-G056]
+Data = UI-G056.wav
+
+
+; ORSpecWeapReady
+[UI-G058]
+Data = UI-G058.wav
+
+
+; IncomingHawk
+[UI-G060]
+Data = UI-G060.wav
+
+
+; ORIncomingHawk
+[UI-G062]
+Data = UI-G062.wav
+
+
+; ATIncomingChaos
+[UI-G064]
+Data = UI-G064.wav
+
+
+; IncomingChaos
+[UI-G066]
+Data = UI-G066.wav
+
+
+; ATIncomingDHand
+[UI-G068]
+Data = UI-G068.wav
+
+
+; HKIncomingDHand
+[UI-G070]
+Data = UI-G070.wav
+
+
+; "Missile launch detected"
+[UI-G072]
+Data = UI-G072.wav
+
+
+; ATBldgStolen
+[UI-G074]
+Data = UI-G074.wav
+
+
+; HKBldgStolen
+[UI-G076]
+Data = UI-G076.wav
+
+
+; ORBldgStolen
+[UI-G078]
+Data = UI-G078.wav
+
+
+; HKBldgCaptured
+[UI-G082]
+;Data = UI-G082.wav
+Data = UI-G084.wav
+
+
+; ORBldgCaptured
+[UI-G084]
+Data = UI-G084.wav
+
+
+; ATLeechAttack
+[UI-G086]
+Data = UI-G086.wav
+
+
+; HKLeechAttack
+[UI-G088]
+;Data = UI-G088.wav
+Data = UI-G086.wav
+
+
+; ORLeechAttack
+[UI-G090]
+;Data = UI-G090.wav
+Data = UI-G086.wav
+
+
+; ContAttack
+[UI-G092]
+Data = UI-G092.wav
+
+
+; WormSign
+[UI-G094]
+;Data = UI-G094.wav
+Data = UI-G096.wav
+
+
+; CarryAttack
+[UI-G100]
+Data = UI-G100.wav
+
+
+; TargDest
+[UI-G102]
+Data = UI-G102.wav
+
+
+; ATUpgrade
+[UI-G104]
+;Data = UI-G104.wav
+Data = UI-G106.wav
+
+
+; ORUpgrade
+[UI-G108]
+;Data = UI-G108.wav
+Data = UI-G106.wav
+
+
+; ATGuardOn
+[UI-G110]
+;Data = UI-G110.wav
+Data = UI-G110.wav
+
+
+; ORGuardOn
+[UI-G114]
+;Data = UI-G114.wav
+Data = UI-G110.wav
+
+
+; AtGuardOff
+[UI-G116]
+;Data = UI-G116.wav
+Data = UI-G416.wav
+
+
+; GuardOff
+[UI-G118]
+;Data = UI-G118.wav
+Data = UI-G416.wav
+
+
+; ATWayPlaced
+[UI-G120]
+;Data = UI-G120.wav
+Data = UI-G124.wav
+
+
+; HKWayPlaced
+[UI-G122]
+;Data = UI-G122.wav
+Data = UI-G124.wav
+
+
+; ORWayPlaced
+[UI-G124]
+Data = UI-G124.wav
+
+
+; ATWayDeleted
+[UI-G126]
+;Data = UI-G126.wav
+Data = UI-G128.wav
+
+
+; HKWayDeleted
+[UI-G128]
+Data = UI-G128.wav
+
+
+; ORWayDeleted
+[UI-G130]
+;Data = UI-G130.wav
+Data = UI-G128.wav
+
+
+; ATWayAdded
+[UI-G132]
+;Data = UI-G132.wav
+Data = UI-G134.wav
+
+
+; HKWayAdded
+[UI-G134]
+Data = UI-G134.wav
+
+
+; ORWayAdded
+[UI-G136]
+;Data = UI-G136.wav
+Data = UI-G134.wav
+
+
+;ATWayMoved
+[UI-G138]
+;Data = UI-G138.wav
+Data = UI-G140.wav
+
+
+;HKWayMoved
+[UI-G140]
+Data = UI-G140.wav
+
+
+;ORWayMoved
+[UI-G142]
+;Data = UI-G142.wav
+Data = UI-G140.wav
+
+
+; ATRetreat
+[UI-G144]
+;Data = UI-G144.wav
+Data = UI-G146.wav
+
+
+; HKRetreat
+[UI-G148]
+;Data = UI-G148.wav
+Data = UI-G146.wav
+
+
+; RetreatStart
+[UI-G150]
+;Data = UI-G150.wav
+Data = UI-G450.wav
+
+
+; RetreatStartEnemy
+[UI-G152]
+;Data = UI-G152.wav
+Data = UI-G452
+
+
+; RetreatSuccess
+[UI-G154]
+Data = UI-G154.wav
+
+
+; RetreatFailed
+[UI-G156]
+Data = UI-G156.wav
+
+
+; ReinforceApp
+[UI-G158]
+Data = UI-G158.wav
+
+
+; BattleRetreat
+[UI-G180]
+;Data = UI-G180.wav
+Data = UI-G480.wav
+
+
+; HarvAttack
+[UI-G186]
+Data = UI-G186.wav
+
+
+; WinGame
+[UI-G188]
+;Data = UI-G188.wav
+Data = UI-G488.wav
+
+
+; LoseGame
+[UI-G190]
+;Data = UI-G190.wav
+Data = UI-G490.wav
+
+
+[UI-P000]
+Data = UI-P000.wav
+
+
+[UI-P002]
+Data = UI-P002.wav
+
+
+[UI-P004]
+Data = UI-P004.wav
+
+
+[UI-P006]
+Data = UI-P006.wav
+
+
+[UI-P008]
+Data = UI-P008.wav
+
+
+[UI-P010]
+Data = UI-P010.wav
+
+
+[UI-P012]
+Data = UI-P012.wav
+
+
+[UI-P014]
+Data = UI-P014.wav
+
+
+[UI-P016]
+Data = UI-P016.wav
+
+
+[UI-P018]
+Data = UI-P018.wav
+
+
+[UI-P020]
+Data = UI-P020.wav
+
+
+[UI-P022]
+Data = UI-P022.wav
+
+
+[UI-P024]
+Data = UI-P024.wav
+
+
+[UI-P026]
+Data = UI-P026.wav
+
+
+[UI-P028]
+Data = UI-P028.wav
+
+
+[UI-P030]
+Data = UI-P030.wav
+
+
+[UI-P032]
+Data = UI-P032.wav
+
+
+[UI-P034]
+Data = UI-P034.wav
+
+
+[UI-P036]
+Data = UI-P036.wav
+
+
+[UI-P038]
+Data = UI-P038.wav
+
+
+[UI-P040]
+Data = UI-P040.wav
+
+
+[UI-P042]
+Data = UI-P042.wav
+
+
+[UI-P044]
+Data = UI-P044.wav
+
+
+[UI-P046]
+Data = UI-P046.wav
+
+
+[UI-P048]
+Data = UI-P048.wav
+
+
+[UI-P050]
+Data = UI-P050.wav
+
+
+[UI-P052]
+Data = UI-P052.wav
+
+
+[UI-P054]
+Data = UI-P054.wav
+
+
+[UI-P056]
+Data = UI-P056.wav
+
+
+[UI-P058]
+Data = UI-P058.wav
+
+
+[UI-P060]
+Data = UI-P060.wav
+
+
+[UI-Z000]
+Data = UI-Z000.wav
+
+
+[UI-Z002]
+Data = UI-Z002.wav
+
+
+
+;  -paul mudra   April 18,2001
+;
+;  The area below contains all of the pick-up lines from the pick-up script.
+;  It is being included for a European test version but should be verified
+;  afterward to make sure we want to use all of the dialogue that we recorded.
+;  Also, I did not know at the time of including these files which ones needed
+;  to be shared for which houses, so any non-specific house dialogue I placed
+;  in this text file. 
+;
+; UPDATE April 18, 2001 
+; After looking at the script that Idries sent, I've placed all of the
+; "KK" lines in Atreides, the "YK" lines in Harkonnen and the "RA" lines in
+; Ordos dialogue script files.  The remaining lines I placed in the "UI_Comp"
+; generic (HD based) text file even though some of them are specifically used
+; for only one house, according to the spreadsheet.  Having them here should be
+; a reliable catch-all in the event that they were not labeled correctly.
+
+
+
+[UI-G192]
+Data = UI-G192
+
+[UI-G193]
+Data = UI-G193
+
+[UI-G194]
+Data = UI-G194
+
+[UI-G195]
+Data = UI-G195
+
+[UI-G196]
+Data = UI-G196
+
+[UI-G197]
+Data = UI-G197
+
+[UI-G198]
+Data = UI-G198
+
+[UI-G199]
+Data = UI-G199
+
+[UI-G200]
+Data = UI-G200
+
+[UI-G201]
+Data = UI-G201
+
+[UI-G202]
+Data = UI-G202
+
+[UI-G203]
+Data = UI-G203
+
+[UI-G204]
+Data = UI-G204
+
+[UI-G205]
+Data = UI-G205
+
+[UI-G206]
+Data = UI-G206
+
+[UI-G207]
+Data = UI-G207
+
+[UI-G208]
+Data = UI-G208
+
+[UI-G209]
+Data = UI-G209
+
+[UI-G210]
+Data = UI-G210
+
+[UI-G211]
+Data = UI-G211
+
+[UI-G212]
+Data = UI-G212
+
+[UI-G213]
+Data = UI-G213
+
+[UI-G214]
+Data = UI-G214
+
+[UI-G215]
+Data = UI-G215
+
+[UI-G216]
+Data = UI-G216
+
+[UI-G217]
+Data = UI-G217
+
+[UI-G218]
+Data = UI-G218
+
+[UI-G219]
+Data = UI-G219
+
+[UI-G220]
+Data = UI-G220
+
+[UI-G221]
+Data = UI-G221
+
+[UI-G222]
+Data = UI-G222
+
+[UI-G223]
+Data = UI-G223
+
+[UI-G224]
+Data = UI-G224
+
+[UI-G225]
+Data = UI-G225
+
+[UI-G226]
+Data = UI-G226
+
+[UI-G227]
+Data = UI-G227
+
+[UI-G229]
+Data = UI-G229
+
+[UI-G230]
+Data = UI-G230
+
+[UI-G231]
+Data = UI-G231
+
+[UI-G232]
+Data = UI-G232
+
+[UI-G233]
+Data = UI-G233
+
+[UI-G234]
+Data = UI-G234
+
+[UI-G235]
+Data = UI-G235
+
+[UI-G236]
+Data = UI-G236
+
+[UI-G237]
+Data = UI-G237
+
+[UI-G238]
+Data = UI-G238
+
+[UI-G239]
+Data = UI-G239
+
+[UI-G240]
+Data = UI-G240
+
+[UI-G241]
+Data = UI-G241
+
+[UI-G242]
+Data = UI-G242
+
+[UI-G243]
+Data = UI-G243
+
+[UI-G244]
+Data = UI-G244
+
+[UI-G245]
+Data = UI-G245
+
+[UI-G246]
+Data = UI-G246
+
+[UI-G247]
+Data = UI-G247
+
+[UI-G248]
+Data = UI-G248
+
+[UI-G249]
+Data = UI-G249
+
+[UI-G250]
+Data = UI-G250
+
+[UI-G251]
+Data = UI-G251
+
+[UI-G252]
+Data = UI-G252
+
+[UI-G253]
+Data = UI-G253
+
+[UI-G254]
+Data = UI-G254
+
+[UI-G255]
+Data = UI-G255
+
+[UI-G256]
+Data = UI-G256
+
+[UI-G257]
+Data = UI-G257
+
+[UI-G258]
+Data = UI-G258
+
+[UI-G259]
+Data = UI-G259
+
+[UI-G260]
+Data = UI-G260
+
+[UI-G261]
+Data = UI-G261
+
+[UI-G262]
+Data = UI-G262
+
+[UI-G263]
+Data = UI-G263
+
+[UI-G264]
+Data = UI-G264
+
+[UI-G265]
+Data = UI-G265
+
+[UI-G266]
+Data = UI-G266
+
+[UI-G267]
+Data = UI-G267
+
+[UI-G268]
+Data = UI-G268
+
+[UI-G269]
+Data = UI-G269
+
+[UI-G270]
+Data = UI-G270
+
+[UI-G271]
+Data = UI-G271
+
+[UI-G272]
+Data = UI-G272
+
+[UI-G273]
+Data = UI-G273
+
+[UI-G274]
+Data = UI-G274
+
+[UI-G275]
+Data = UI-G275
+
+[UI-G276]
+Data = UI-G276
+
+[UI-G277]
+Data = UI-G277
+
+[UI-G278]
+Data = UI-G278
+
+[UI-G279]
+Data = UI-G279
+
+[UI-T000]
+Data = UI-T000
+
+[UI-T002]
+Data = UI-T002
+
+[UI-T004]
+Data = UI-T004
+
+[UI-T006]
+Data = UI-T006
+
+[UI-T008]
+Data = UI-T008
+
+[UI-T010]
+Data = UI-T010
+
+[UI-T012]
+Data = UI-T012
+
+[UI-T014]
+Data = UI-T014
+
+[UI-T016]
+Data = UI-T016
+
+[UI-T018]
+Data = UI-T018
+
+[UI-T020]
+Data = UI-T020
+
+[UI-T022]
+Data = UI-T022
+
+[UI-T024]
+Data = UI-T024
+
+[UI-T026]
+Data = UI-T026
+
+[UI-T028]
+Data = UI-T028
+
+[UI-T030]
+Data = UI-T030
+
+[UI-T032]
+Data = UI-T032
+
+[UI-T034]
+Data = UI-T034
+
+[UI-T036]
+Data = UI-T036
+
+[UI-T038]
+Data = UI-T038
+
+[UI-T040]
+Data = UI-T040
+
+[UI-T042]
+Data = UI-T042
+
+[UI-T044]
+Data = UI-T044
+
+[UI-T046]
+Data = UI-T046
+
+[UI-T048]
+Data = UI-T048
+
+[UI-T050]
+Data = UI-T050
+
+[UI-T052]
+Data = UI-T052
+
+[UI-T054]
+Data = UI-T054
+
+[UI-T056]
+Data = UI-T056
+
+[UI-T058]
+Data = UI-T058
+
+[UI-T060]
+Data = UI-T060
+
+[UI-T062]
+Data = UI-T062
+
+[UI-T064]
+Data = UI-T064
+
+[UI-T066]
+Data = UI-T066
+
+[UI-T068]
+Data = UI-T068
+
+[UI-T070]
+Data = UI-T070
+
+[UI-T072]
+Data = UI-T072
+
+[UI-T074]
+Data = UI-T074
+
+[UI-T076]
+Data = UI-T076
+
+[UI-T078]
+Data = UI-T078
+
+[UI-T080]
+Data = UI-T080
+
+[UI-T082]
+Data = UI-T082
+
+[UI-T084]
+Data = UI-T084
+
+[UI-T086]
+Data = UI-T086
+
+[UI-T088]
+Data = UI-T088
+
+[UI-T090]
+Data = UI-T090
+
+[UI-T092]
+Data = UI-T092
+
+[UI-T094]
+Data = UI-T094
+
+[UI-T096]
+Data = UI-T096
+
+[UI-T098]
+Data = UI-T098
+
+[UI-T100]
+Data = UI-T100
+
+[UI-T102]
+Data = UI-T102
+
+[UI-T104]
+Data = UI-T104
+
+[UI-T106]
+Data = UI-T106
+
+[UI-T108]
+Data = UI-T108
+
+[UI-T110]
+Data = UI-T110
+
+[UI-T112]
+Data = UI-T112
+
+[UI-T114]
+Data = UI-T114
+
+[UI-T116]
+Data = UI-T116
+
+[UI-T118]
+Data = UI-T118
+
+[UI-T120]
+Data = UI-T120
+
+[UI-T122]
+Data = UI-T122
+
+[UI-G300]
+Data = UI-G300
+
+[UI-G302]
+Data = UI-G302
+
+[UI-G304]
+Data = UI-G304
+
+[UI-G312]
+Data = UI-G312
+
+[UI-G314]
+Data = UI-G314
+
+[UI-G316]
+Data = UI-G316
+
+[UI-G320]
+Data = UI-G320
+
+[UI-G322]
+Data = UI-G322
+
+[UI-G324]
+Data = UI-G324
+
+[UI-G326]
+Data = UI-G326
+
+[UI-G332]
+Data = UI-G332
+
+[UI-G334]
+Data = UI-G334
+
+[UI-G340]
+Data = UI-G340
+
+[UI-G350]
+Data = UI-G350
+
+[UI-G352]
+Data = UI-G352
+
+[UI-G354]
+Data = UI-G354
+
+[UI-G356]
+Data = UI-G356
+
+[UI-G358]
+Data = UI-G358
+
+[UI-G360]
+Data = UI-G360
+
+[UI-G362]
+Data = UI-G362
+
+[UI-G364]
+Data = UI-G364
+
+[UI-G366]
+Data = UI-G366
+
+[UI-G370]
+Data = UI-G370
+
+[UI-G374]
+Data = UI-G374
+
+[UI-G376]
+Data = UI-G376
+
+[UI-G378]
+Data = UI-G378
+
+[UI-G380]
+Data = UI-G380
+
+[UI-G382]
+Data = UI-G382
+
+[UI-G384]
+Data = UI-G384
+
+[UI-G386]
+Data = UI-G386
+
+[UI-G388]
+Data = UI-G388
+
+[UI-G390]
+Data = UI-G390
+
+[UI-G392]
+Data = UI-G392
+
+[UI-G394]
+Data = UI-G394
+
+[UI-G396]
+Data = UI-G396
+
+[UI-G398]
+Data = UI-G398
+
+[UI-G400]
+Data = UI-G400
+
+[UI-G402]
+Data = UI-G402
+
+[UI-G404]
+Data = UI-G404
+
+[UI-G406]
+Data = UI-G406
+
+[UI-G414]
+Data = UI-G414
+
+[UI-G416]
+Data = UI-G416
+
+[UI-G418]
+Data = UI-G418
+
+[UI-G420]
+Data = UI-G420
+
+[UI-G422]
+Data = UI-G422
+
+[UI-G424]
+Data = UI-G424
+
+[UI-G426]
+Data = UI-G426
+
+[UI-G428]
+Data = UI-G428
+
+[UI-G430]
+Data = UI-G430
+
+[UI-G432]
+Data = UI-G432
+
+[UI-G434]
+Data = UI-G434
+
+[UI-G436]
+Data = UI-G436
+
+[UI-G438]
+Data = UI-G438
+
+[UI-G440]
+Data = UI-G440
+
+[UI-G442]
+Data = UI-G442
+
+[UI-G444]
+Data = UI-G444
+
+[UI-G446]
+Data = UI-G446
+
+[UI-G448]
+Data = UI-G448
+
+[UI-G450]
+Data = UI-G450
+
+[UI-G452]
+Data = UI-G452
+
+[UI-G454]
+Data = UI-G454
+
+[UI-G456]
+Data = UI-G456
+
+[UI-G458]
+Data = UI-G458
+
+[UI-G460]
+Data = UI-G460
+
+[UI-G480]
+Data = UI-G480
+
+[UI-G482]
+Data = UI-G482
+
+[UI-G484]
+Data = UI-G484
+
+[UI-G486]
+Data = UI-G486
+
+[UI-G488]
+Data = UI-G488
+
+[UI-G490]
+Data = UI-G490
+
+[UI-B150]
+Data = UI-B150
+
+[UI-B152]
+Data = UI-B152
+
+[UI-B154]
+Data = UI-B154
+
+[UI-B156]
+Data = UI-B156
+
+[UI-B158]
+Data = UI-B158
+
+[UI-B160]
+Data = UI-B160
+
+[UI-B162]
+Data = UI-B162
+
+[UI-B164]
+Data = UI-B164
+
+[UI-B166]
+Data = UI-B166
+
+[UI-B168]
+Data = UI-B168
+
+[UI-B170]
+Data = UI-B170
+
+[UI-B172]
+Data = UI-B172
+
+[UI-B174]
+Data = UI-B174
+
+[UI-B176]
+Data = UI-B176
+
+[UI-B178]
+Data = UI-B178
+
+[UI-B180]
+Data = UI-B180
+
+[UI-B182]
+Data = UI-B182
+
+[UI-B184]
+Data = UI-B184
+
+[UI-B186]
+Data = UI-B186
+
+[UI-B188]
+Data = UI-B188
+
+[UI-B190]
+Data = UI-B190
+
+[UI-B192]
+Data = UI-B192
+
+[UI-B194]
+Data = UI-B194
+
+[UI-B196]
+Data = UI-B196
+
+[UI-B198]
+Data = UI-B198
+
+[UI-B200]
+Data = UI-B200
+
+[UI-B202]
+Data = UI-B202
+
+[UI-B204]
+Data = UI-B204
+
+[UI-B206]
+Data = UI-B206
+
+[UI-B208]
+Data = UI-B208
+
+[UI-B210]
+Data = UI-B210
+
+[UI-B212]
+Data = UI-B212
+
+[UI-B214]
+Data = UI-B214
+
+[UI-B216]
+Data = UI-B216
+
+[UI-B218]
+Data = UI-B218
+
+[UI-B220]
+Data = UI-B220
+
+[UI-B222]
+Data = UI-B222
+
+[UI-B224]
+Data = UI-B224
+
+[UI-B226]
+Data = UI-B226
+
+[UI-B228]
+Data = UI-B228
+
+[UI-B230]
+Data = UI-B230
+
+[UI-B232]
+Data = UI-B232
+
+[UI-B234]
+Data = UI-B234
+
+[UI-B236]
+Data = UI-B236
+
+[UI-B238]
+Data = UI-B238
+
+[UI-B240]
+Data = UI-B240
+
+[UI-B242]
+Data = UI-B242
+
+[UI-B244]
+Data = UI-B244
+
+[UI-B246]
+Data = UI-B246
+
+[UI-B248]
+Data = UI-B248
+
+[UI-B250]
+Data = UI-B250
+
+[UI-B252]
+Data = UI-B252
+
+[UI-G492]
+Data = UI-G492
+
+[UI-G494]
+Data = UI-G494
+
+[UI-P100]
+Data = UI-P100
+
+[UI-P102]
+Data = UI-P102
+
+[UI-P104]
+Data = UI-P104
+
+[UI-P106]
+Data = UI-P106
+
+[UI-P108]
+Data = UI-P108
+
+[UI-P110]
+Data = UI-P110
+
+[UI-P112]
+Data = UI-P112
+
+[UI-P114]
+Data = UI-P114
+
+[UI-P116]
+Data = UI-P116
+
+[UI-P118]
+Data = UI-P118
+
+[UI-P120]
+Data = UI-P120
+
+[UI-P122]
+Data = UI-P122
+
+[UI-P124]
+Data = UI-P124
+
+[UI-P126]
+Data = UI-P126
+
+[UI-P128]
+Data = UI-P128
+
+[UI-P130]
+Data = UI-P130
+
+[UI-P132]
+Data = UI-P132
+
+[UI-P134]
+Data = UI-P134
+
+[UI-P136]
+Data = UI-P136
+
+[UI-P138]
+Data = UI-P138
+
+[UI-P140]
+Data = UI-P140
+
+[UI-P142]
+Data = UI-P142
+
+[UI-P144]
+Data = UI-P144
+
+[UI-P146]
+Data = UI-P146
+
+[UI-P148]
+Data = UI-P148
+
+[UI-P150]
+Data = UI-P150
+
+[UI-P152]
+Data = UI-P152
+
+[UI-P154]
+Data = UI-P154
+
+[UI-P156]
+Data = UI-P156
+
+[UI-P158]
+Data = UI-P158
+
+[UI-P160]
+Data = UI-P160
+
+[UI-G496]
+Data = UI-G496
+
+[UI-B300]
+Data = UI-B300
+
+[UI-B302]
+Data = UI-B302
+
+[UI-B304]
+Data = UI-B304
+
+[UI-B306]
+Data = UI-B306
+
+[UI-B308]
+Data = UI-B308
+
+[UI-B310]
+Data = UI-B310
+
+[UI-B312]
+Data = UI-B312
+
+[UI-B314]
+Data = UI-B314
+
+[UI-B316]
+Data = UI-B316
+
+[UI-B318]
+Data = UI-B318
+
+[UI-B320]
+Data = UI-B320
+
+[UI-B322]
+Data = UI-B322
+
+[UI-B324]
+Data = UI-B324
+
+[UI-B326]
+Data = UI-B326
+
+[UI-B328]
+Data = UI-B328
+
+[UI-B330]
+Data = UI-B330
+
+[UI-B332]
+Data = UI-B332
+
+[UI-B334]
+Data = UI-B334
+
+[UI-B336]
+Data = UI-B336
+
+[UI-B338]
+Data = UI-B338
+
+[UI-B340]
+Data = UI-B340
+
+[UI-B342]
+Data = UI-B342
+
+[UI-B344]
+Data = UI-B344
+
+[UI-B346]
+Data = UI-B346
+
+[UI-B348]
+Data = UI-B348
+
+[UI-B350]
+Data = UI-B350
+
+[UI-B352]
+Data = UI-B352
+
+[UI-B354]
+Data = UI-B354
+
+[UI-B356]
+Data = UI-B356
+
+[UI-B358]
+Data = UI-B358
+
+[UI-B360]
+Data = UI-B360
+
+[UI-B362]
+Data = UI-B362
+
+[UI-B364]
+Data = UI-B364
+
+[UI-B366]
+Data = UI-B366
+
+[UI-B368]
+Data = UI-B368
+
+[UI-B370]
+Data = UI-B370
+
+[UI-B372]
+Data = UI-B372
+
+[UI-B374]
+Data = UI-B374
+
+[UI-B376]
+Data = UI-B376
+
+[UI-B378]
+Data = UI-B378
+
+[UI-B380]
+Data = UI-B380
+
+[UI-B382]
+Data = UI-B382
+
+[UI-B384]
+Data = UI-B384
+
+[UI-B386]
+Data = UI-B386
+
+[UI-B388]
+Data = UI-B388
+
+[UI-B390]
+Data = UI-B390
+
+[UI-B392]
+Data = UI-B392
+
+[UI-B394]
+Data = UI-B394
+
+[UI-B396]
+Data = UI-B396
+
+[UI-B398]
+Data = UI-B398
+
+[UI-B400]
+Data = UI-B400
+
+[UI-B402]
+Data = UI-B402
+
+[UI-B404]
+Data = UI-B404
+
+[UI-B406]
+Data = UI-B406
+
+[UI-B408]
+Data = UI-B408
+
+[UI-B410]
+Data = UI-B410
+
+[UI-G379]
+Data = UI-G379
+
+[UI-G413]
+Data = UI-G413
+
+
+;
+; Other Pick-up lines
+;
+
+
+[GH-G004]
+Data = GH-G004
+
+[GH-G006]
+Data = GH-G006
+
+[GN-G000]
+Data = GN-G000
+
+[GN-G002]
+Data = GN-G002
+
+[GN-G004]
+Data = GN-G004
+
+[FR-G150]
+Data = FR-G150
+
+[FR-G152]
+Data = FR-G152
+
+[FR-G154]
+Data = FR-G154
+
+; missing line - find from WW pickups and add to project
+; -pm April 01, 2001 - Uncommented 04/24/2001
+[AG-G006]
+Data = AG-G006
+
+[FR-G156]
+Data = FR-G156
+
+[FR-G158]
+Data = FR-G158
+
+[FR-G160]
+Data = FR-G160
+
+[FR-G162]
+Data = FR-G162
+
+[IR-G020]
+Data = IR-G020
+
+[IR-G022]
+Data = IR-G022
+
+[FR-G164]
+Data = FR-G164
+
+[DB-G000]
+Data = DB-G000
+
+[FR-G166]
+Data = FR-G166
+
+[TL-G150]
+Data = TL-G150
+
+[TL-G152]
+Data = TL-G152
+
+[FR-G168]
+Data = FR-G168
+
+[TL-G154]
+Data = TL-G154
+
+[F2-G000]
+Data = F2-G000
+
+[TE-G010]
+Data = TE-G010
+
+[HS-G030]
+Data = HS-G030
+
+[FR-G170]
+Data = FR-G170
+
+[TL-G156]
+Data = TL-G156
+
+[IX-G080]
+Data = IX-G080
+
+[IX-G082]
+Data = IX-G082
+
+[FR-G172]
+Data = FR-G172
+
+[SD-G100]
+Data = SD-G100
+
+[SD-G102]
+Data = SD-G102
+
+[SD-G104]
+Data = SD-G104
+
+[FR-G174]
+Data = FR-G174
+
+[FR-G176]
+Data = FR-G176
+
+[SD-G106]
+Data = SD-G106
+
+[OS-G004]
+Data = OS-G004
+
+[FR-G178]
+Data = FR-G164
+
+[SD-G108]
+Data = SD-G108
+
+[SD-G110]
+Data = SD-G110
+
+[SD-G112]
+Data = SD-G112
+
+[SD-G114]
+Data = SD-G114
+
+[OS-G006]
+Data = OS-G006
+
+[SD-G116]
+Data = SD-G116
+
+[TL-G158]
+Data = TL-G158
+
+[SD-G118]
+Data = SD-G118
+
+[TL-G160]
+Data = TL-G160
+
+[TL-G162]
+Data = TL-G162
+
+[TL-G164]
+Data = TL-G164
+
+[IX-G084]
+Data = IX-G084
+
+[TL-G166]
+Data = TL-G166
+
+[TL-G168]
+Data = TL-G168
+
+[IX-G086]
+Data = IX-G086
+
+[IX-G088]
+Data = IX-G088
+
+[TL-G170]
+Data = TL-G170
+
+[SD-G120]
+Data = SD-G120
+
+[FR-G180]
+Data = FR-G180
+
+[FR-G182]
+Data = FR-G182
+
+[FR-G184]
+Data = FR-G184
+
+[SD-G122]
+Data = SD-G122
+
+[HS-G032]
+Data = HS-G032
+
+[FR-G186]
+Data = FR-G186
+
+[SD-G124]
+Data = SD-G124
+
+[SD-G126]
+Data = SD-G126
+
+[FC-G000]
+Data = FC-G000
+
+[TL-G172]
+Data = TL-G172
+
+[IX-G090]
+Data = IX-G090
+
+[IX-G092]
+Data = IX-G092
+
+[IX-G094]
+Data = IX-G094
+
+
+

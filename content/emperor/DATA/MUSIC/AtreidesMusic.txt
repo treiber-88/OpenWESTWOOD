@@ -1,0 +1,85 @@
+;
+; Music tracks for house Atreides
+;
+
+[LocalDefaults]
+Volume	=	80
+Group = Atreides CD2
+
+
+[ATMenu]
+Data = AT_Menu1
+Loop = Yes
+Phase = -1
+
+[ATMap]
+Data = AT_Map1
+Loop = Yes
+Phase = -1
+
+[ATScore]
+Data = AT_Score1a
+Loop = Yes
+Phase = -1
+
+
+
+;[Atreides1]
+;Data = (AT01)The_War_Begins
+;Title = The War Begins
+
+[Atreides2]
+Data = (AT02)Sand_Excursion
+Title = Sand Excursion
+Phase = 4
+
+[Atreides3]
+Data = (AT03)Assembling_the_Troops
+Title = Assembling the Troops
+Phase = 3
+
+[Atreides4]
+Data = (AT04)The_Spice_Must_Flow
+Title = The Spice Must Flow
+Phase = 1
+
+[Atreides5]
+Data = (AT05)The_Overseer
+Title = The Overseer
+Phase = 2
+
+[Atreides6]
+Data = (AT06)Battle_of_the_Atreides
+Title = Battle of the Atreides
+Phase = 5
+
+;[Atreides7]
+;Data = (AT07)Ride_the_Worm
+;Title = Ride the Worm
+
+[Atreides8]
+Data = (AT08)Infiltrating_HK
+Title = Infiltrating the Harkonnen
+Phase = 6
+
+[Atreides9]
+Data = (AT09)Unsuspected_Attack
+Title = Unsuspected Attack
+Phase = 1
+
+[Atreides10]
+Data = (AT10)Fremen_Alliance
+Title = Fremen Alliance
+Phase = 7
+
+[Atreides11]
+Data = (AT11)Assassination_Attempt
+Title = Assassination Attempt
+Phase = 8
+
+[Atreides12]
+Data = (AT12)Fight_in_the_Dunes
+Title = Fight in the Dunes
+Phase = 9
+
+

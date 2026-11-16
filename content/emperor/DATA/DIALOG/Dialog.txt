@@ -1,0 +1,122 @@
+;
+; Dialog definition file for Emperor
+;
+; Format:
+;
+;#include "<filename>"  ; inlcude contents of <filename>
+;
+;[<name>]               ; Dialog logical name
+;Data    = <file>       ; file to play (no path, no extension)
+;Priority= <lowest low normal high critical> ; importance of line of dialog
+;Interrupt = <YES NO> ; stop current dialog if it is lower priority
+;TimeOut = <milliseconds> ; time after which the line will get dropped 
+;Group = <group list>
+;
+; DEFINITIONS
+;
+; DATA
+;
+;   Syntax:     Data = <filename>
+;
+;Name of sound file to play for this dialog without path or extension. 
+;The Dialog system will search for the file in the dialog directory and/or 
+;the CDROM drive at playback time.
+;
+;PRIORITY
+;
+;    Syntax:    Priority = <lowest low normal high critical>
+;
+;Priority is used to determine in what order lines are spoken when multiple 
+;lines of dialog are submitted simultaneously.
+;
+;INTERRUPT
+;
+;    Syntax:    Interrupt = <yes no> 
+;
+;If interrupt is on then any dialog currently being spoken, which is of 
+;lesser priority than this dialog, will be interrupted so that this dialog 
+;line can be spoken immediately.
+;
+;TIMEOUT
+;
+;   Syntax:    TimeOut = <milliseconds>
+;
+;It is the time after which if the submitted line of dialog has not yet been 
+;spoken it will get canceled; i.e. if the dialog is not spoken with in this 
+;time limit then don't bother saying it. A timeout of 0 means never timeout. 
+;The dialog system will not accept timeouts less then 3 seconds.
+;
+;VOLUME
+;
+;    Syntax:    Volume = <0..100>
+;
+;Volume level for this dialog. We assume that all sounds are normalized. 
+;Use this attribute to set the mixing levels for game audio. The value 
+;specified is the percentage of full volume; e.g. 25 means playback at one 
+;quarter of full volume.
+;
+;GROUP
+;
+;    Syntax:    Group = <Common Atreides Harkonnen Ordos>
+;
+;Specifies the house that this dialog is associated with. Groups are also 
+;used to specify where the final assets are stored, i.e. on a particular CD 
+;or on the harddisk.
+;
+;
+;
+;[GlobalDefaults]       ; specify defaults for all following dialog
+;[LocalDefaults]        ; overrides global defaults for following dialog
+;                       ; in current file
+;[SectionDefaults]      ; overrides local defaults for following dialog
+;                       ; in current file
+;
+
+[TestEvent]
+;Play = TL-G160
+Play = UI-T052 
+
+[Groups]
+0 = InvalidHouse
+1 = Atreides
+2 = Harkonnen
+3 = Ordos
+4 = HD
+5 = CD1
+6 = CD2
+7 = CD3
+8 = CD4
+
+[GlobalDefaults]
+Priority  = normal
+Interrupt = no
+TimeOut   = 0
+Group = HD InvalidHouse
+
+;
+; Include user interface dialog, e.b. "building", "unit ready", ...
+;
+
+; The following include/file contained old UI files called by old "AT", "OR",
+; and "HK" script files before the audio changeover.  These were 'duplicate'
+; lines that are already contained in "Unit_UI.TXT".  -pm
+; #include "UIDialog.txt"
+
+
+; The following include was used when the unit responses were under the "dialog"
+; system.  With Idries' new scripts, they are now called under the "sfx" system.
+; #include "Unit_UI.txt"
+
+;
+; Include house dialogs
+;
+
+#include "AtreidesDialog.txt"
+
+#include "HarkonnenDialog.txt"
+
+#include "OrdosDialog.txt"
+
+#include "UIDialog.txt"
+
+#include "UI_Comp.txt"

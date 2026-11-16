@@ -1,0 +1,81 @@
+
+[LocalDefaults]
+Group    =   HD InvalidHouse
+Volume	=	80
+
+;
+; Generic Front End themes
+;
+
+[INMenu]
+Data = IN_Menu
+Loop = Yes
+Phase = -1
+
+[INScore]
+Data = IN_Score
+Loop = Yes
+Phase = -1
+
+
+
+;
+; Atreides Skirmish themes
+;
+
+[Atreides1]
+Group = Atreides HD
+Data = (AT01)The_War_Begins
+Title = The War Begins
+Phase = 0
+
+[Atreides7]
+Group = Atreides HD
+Data = (AT07)Ride_the_Worm
+Title = Ride the Worm
+Phase = 0
+
+
+
+;
+; Harkonnen Skirmish themes
+;
+
+[Harkonnen1]
+Group = Harkonnen HD
+Data = (HK01)The_Machine
+Title = The Machine
+Phase = 0
+
+[Harkonnen5]
+Group = Harkonnen HD
+Data = (HK05)Legacy
+Title = Legacy
+Phase = 0
+
+
+
+;
+; Ordos Skirmish themes
+;
+
+[Ordos1]
+Group = Ordos HD
+Data = (OR01)Not_an_Option
+Title = Not an Option
+Phase = 0
+
+[Ordos9]
+Group = Ordos HD
+Data = (OR09)A_Plan_of_Attack
+Title = A Plan of Attack
+Phase = 0
+
+
+
+
+
+
+
+
+

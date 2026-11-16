@@ -1,0 +1,83 @@
+;
+; Music tracks for house Harkonnen
+;
+
+[LocalDefaults]
+Volume	=	80
+Group = Harkonnen CD3
+
+[HKMenu]
+Data = HK_Menu1
+Loop = Yes
+Phase = -1
+
+[HKMap]
+Data = HK_Map1
+Loop = Yes
+Phase = -1
+
+[HKScore]
+Data = HK_Score1
+Loop = Yes
+Phase = -1
+
+
+
+;[Harkonnen1]
+;Data = (HK01)The_Machine
+;Title = The Machine
+
+[Harkonnen2]
+Data = (HK02)Surrounded
+Title = Surrounded
+Phase = 8
+
+[Harkonnen3]
+Data = (HK03)Tribute_to_Evil
+Title = Tribute to Evil
+Phase = 1
+
+[Harkonnen4]
+Data = (HK04)Harkonnen_Force
+Title = Harkonnen Force
+Phase = 1
+
+;[Harkonnen5]
+;Data = (HK05)Legacy
+;Title = Legacy
+
+[Harkonnen6]
+Data = (HK06)Unstoppable
+Title = Unstoppable
+Phase = 4
+
+[Harkonnen7]
+Data = (HK07)Dark_Alliance
+Title = Dark Alliance
+Phase = 5
+
+[Harkonnen8]
+Data = (HK08)War_for_the_Spice
+Title = War for the Spice
+Phase = 2
+
+[Harkonnen9]
+Data = (HK09)Defenders_of_Arrakis
+Title = Defenders of Arrakis
+Phase = 7
+
+[Harkonnen10]
+Data = (HK10)House_Harkonnen
+Title = House Harkonnen
+Phase = 3
+
+[Harkonnen11]
+Data = (HK11)Invincible
+Title = Invincible
+Phase = 6
+
+[Harkonnen12]
+Data = (HK12)Victory_is_Inevitable
+Title = Victory is Inevitable
+Phase = 9
+

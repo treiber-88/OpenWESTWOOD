@@ -55,6 +55,19 @@ SpecialPowers:
     ViewObjectRange: 150
     RadiusCursorRadius: 300
     ShortcutPower: Yes
+  KW_SpecialPower_FireEMPGrenades:
+    Enum: SPECIAL_KW_SPECIALPOWER_FIREEMPGRENADES
+    ReloadTime: 30000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 60
+    RequiredUpgrade: KW_Upgrade_EMPGrenades
+  KW_SpecialPower_SpotTargetBombard:
+    Enum: SPECIAL_KW_SPECIALPOWER_SPOTTARGETBOMBARD
+    ReloadTime: 20000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 50
   KW_SpecialAbilityStratoFighter:
     Enum: SPECIAL_KW_SPECIALABILITYSTRATOFIGHTER
     ReloadTime: 20000
@@ -70,6 +83,13 @@ SpecialPowers:
     ViewObjectRange: 150
     RadiusCursorRadius: 200
     ShortcutPower: Yes
+  KW_SteelTalonsAdaptiveArmor:
+    Enum: SPECIAL_KW_STEELTALONSADAPTIVEARMOR
+    ReloadTime: 10000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
+    RequiredUpgrade: KW_Upgrade_AdaptiveArmor
   KW_SpecialPowerZOCOM_SpaceCommandRaiderPods:
     Enum: SPECIAL_KW_SPECIALPOWERZOCOM_SPACECOMMANDRAIDERPODS
     ReloadTime: 120000
@@ -79,6 +99,12 @@ SpecialPowers:
     ViewObjectRange: 150
     RadiusCursorRadius: 80
     ShortcutPower: Yes
+  KW_SpecialPower_ImprovedSonicTankOverloadBeam:
+    Enum: SPECIAL_KW_SPECIALPOWER_IMPROVEDSONICTANKOVERLOADBEAM
+    ReloadTime: 0
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
   KW_SpecialPower_Redemption:
     Enum: SPECIAL_KW_SPECIALPOWER_REDEMPTION
     ReloadTime: 140000
@@ -106,6 +132,49 @@ SpecialPowers:
     ViewObjectRange: 150
     RadiusCursorRadius: 300
     ShortcutPower: Yes
+  KW_SpecialPower_PlaceSatchelCharge_NOD:
+    Enum: SPECIAL_KW_SPECIALPOWER_PLACESATCHELCHARGE_NOD
+    ReloadTime: 30000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
+  KW_SpecialPowerDeployBeacon:
+    Enum: SPECIAL_KW_SPECIALPOWERDEPLOYBEACON
+    ReloadTime: 60000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
+  KW_EmpBurst:
+    Enum: SPECIAL_KW_EMPBURST
+    ReloadTime: 10000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
+    RequiredUpgrade: KW_Upgrade_NODEmpBurst
+  KW_SpecialPower_SpotBeaconBombard:
+    Enum: SPECIAL_KW_SPECIALPOWER_SPOTBEACONBOMBARD
+    ReloadTime: 20000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 50
+  KW_NodRageGenerator:
+    Enum: SPECIAL_KW_NODRAGEGENERATOR
+    ReloadTime: 60000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
+  KW_SpecialPower_BlackHandConfessorCabalFireGrenade:
+    Enum: SPECIAL_KW_SPECIALPOWER_BLACKHANDCONFESSORCABALFIREGRENADE
+    ReloadTime: 30000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 40
+  KW_EMPBlast:
+    Enum: SPECIAL_KW_EMPBLAST
+    ReloadTime: 30000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 30
   KW_SpecialPower_AlienSeedTiberium:
     Enum: SPECIAL_KW_SPECIALPOWER_ALIENSEEDTIBERIUM
     ReloadTime: 200000
@@ -159,6 +228,12 @@ SpecialPowers:
     RadiusCursorRadius: 16
     InitiateSound: KwSnd_ALI_ShockTrooper_Blink
     RequiredUpgrade: KW_Upgrade_AlienShockTrooperBlinkPack
+  KW_SpecialPower_UseTiberiumAgitation:
+    Enum: SPECIAL_KW_SPECIALPOWER_USETIBERIUMAGITATION
+    ReloadTime: 45000
+    PublicTimer: No
+    SharedSyncedTimer: No
+    RadiusCursorRadius: 16
   KW_SpecialPower_TeleportEradicator:
     Enum: SPECIAL_KW_SPECIALPOWER_TELEPORTERADICATOR
     ReloadTime: 30000

@@ -1,0 +1,3650 @@
+;
+; Dialog for house Harkonnen only
+;
+
+[LocalDefaults]
+Group    =   CD3 Harkonnen
+
+[AT-G000]
+Data = AT-G000
+
+[BA-G000]
+Data = BA-G000
+
+[BA-G002]
+Data = BA-G002
+
+[CL-G002]
+Data = CL-G002
+
+[CO-G000]
+Data = CO-G000
+
+[CO-G002]
+Data = CO-G002
+
+[CO-G004]
+Data = CO-G004
+
+[CO-G006]
+Data = CO-G006
+
+;[CP-G000]
+;Data = CP-G000
+
+[CP-G006]
+Data = CP-G006
+
+[FR-G090]
+Data = FR-G090
+
+[FR-G092]
+Data = FR-G092
+
+[FR-G094]
+Data = FR-G094
+
+[FR-G096]
+Data = FR-G096
+
+[FR-G098]
+Data = FR-G098
+
+[FR-G100]
+Data = FR-G100
+
+[FR-G102]
+Data = FR-G102
+
+[FR-G104]
+Data = FR-G104
+
+[FR-G106]
+Data = FR-G106
+
+[FR-G108]
+Data = FR-G108
+
+[FR-G110]
+Data = FR-G110
+
+[FW-G000]
+Data = FW-G000
+
+[FW-G002]
+Data = FW-G002
+
+[FW-G004]
+Data = FW-G004
+
+[GU-G000]
+Data = GU-G000
+
+[GU-G002]
+Data = GU-G002
+
+[GU-G004]
+Data = GU-G004
+
+[GU-G006]
+Data = GU-G006
+
+[HS-G000]
+Data = HS-G000
+
+[HS-G002]
+Data = HS-G002
+
+[HS-G004]
+Data = HS-G004
+
+[HS-G006]
+Data = HS-G006
+
+[HS-G008]
+Data = HS-G008
+
+[HS-G010]
+Data = HS-G010
+
+[HS-G012]
+Data = HS-G012
+
+[HS-G014]
+Data = HS-G014
+
+[HS-G016]
+Data = HS-G016
+
+[HS-G018]
+Data = HS-G018
+
+[HS-G020]
+Data = HS-G020
+
+[IA-G000]
+Data = IA-G000
+
+[IA-G002]
+Data = IA-G002
+
+[IB-G002]
+Data = IB-G002
+
+[IB-G004]
+Data = IB-G004
+
+[IG-G004]
+Data = IG-G004
+
+[II-G004]
+Data = II-G004
+
+[II-G006]
+Data = II-G006
+
+[II-G008]
+Data = II-G008
+
+[IR-G000]
+Data = IR-G000
+
+[IR-G002]
+Data = IR-G002
+
+[IR-G004]
+Data = IR-G004
+
+[IR-G006]
+Data = IR-G006
+
+[IS-G000]
+Data = IS-G000
+
+[IS-G002]
+Data = IS-G002
+
+[IS-G004]
+Data = IS-G004
+
+[IS-G006]
+Data = IS-G006
+
+[IS-G008]
+Data = IS-G008
+
+[IX-G032]
+Data = IX-G032
+
+[IX-G034]
+Data = IX-G034
+
+[IX-G036]
+Data = IX-G036
+
+[IX-G038]
+Data = IX-G038
+
+[IX-G040]
+Data = IX-G040
+
+[IX-G042]
+Data = IX-G042
+
+; Commented out 04/30/2001 Duplicate line.  The same dialogue exists in previous line IX-G042.
+;[IX-G044]
+;Data = IX-G044
+
+[IX-G046]
+Data = IX-G046
+
+[IX-G048]
+Data = IX-G048
+
+;[KK-D170]
+;Data = KK-D170
+
+[SC-G000]
+Data = SC-G000
+
+[SC-G002]
+Data = SC-G002
+
+[SC-G004]
+Data = SC-G004
+
+[SC-G006]
+Data = SC-G006
+
+[SC-G008]
+Data = SC-G008
+
+[SC-G010]
+Data = SC-G010
+
+[SD-G038]
+Data = SD-G038
+
+[SD-G040]
+Data = SD-G040
+
+[SD-G042]
+Data = SD-G042
+
+[SD-G044]
+Data = SD-G044
+
+[SD-G046]
+Data = SD-G046
+
+[SM-G008]
+Data = SM-G008
+
+[SM-G010]
+Data = SM-G010
+
+[SM-G012]
+Data = SM-G012
+
+[SM-G014]
+Data = SM-G014
+
+[TD-G004]
+Data = TD-G004
+
+[TD-G006]
+Data = TD-G006
+
+[TD-G008]
+Data = TD-G008
+
+[TE-G000]
+Data = TE-G000
+
+[TE-G002]
+Data = TE-G002
+
+[TE-G004]
+Data = TE-G004
+
+[TE-G006]
+Data = TE-G006
+
+[TE-G008]
+Data = TE-G008
+
+;[TL-G038]
+;Data = TL-G038
+
+;[TL-G040]
+;Data = TL-G040
+
+[TL-G050]
+Data = TL-G050
+
+[TL-G052]
+Data = TL-G052
+
+[TL-G054]
+Data = TL-G054
+
+[TL-G056]
+Data = TL-G056
+
+[TL-G058]
+Data = TL-G058
+
+[TL-G060]
+Data = TL-G060
+
+[TL-G062]
+Data = TL-G062
+
+[TL-G064]
+Data = TL-G064
+
+[TL-G066]
+Data = TL-G066
+
+[TL-G068]
+Data = TL-G068
+
+[TL-G070]
+Data = TL-G070
+
+[TL-G072]
+Data = TL-G072
+
+[TL-G074]
+Data = TL-G074
+
+[TL-G076]
+Data = TL-G076
+
+[TL-G078]
+Data = TL-G078
+
+[TL-G138]
+Data = TL-G138
+Group = CD3 CD4 Harkonnen Ordos
+
+[TL-G144]
+Data = TL-G144
+Group = CD3 CD4 Harkonnen Ordos
+
+[TL-G146]
+Data = TL-G146
+Group = CD3 CD4 Harkonnen Ordos
+
+[TR-G000]
+Data = TR-G000
+
+[YK-D000]
+Data = YK-D000
+
+[YK-D002]
+Data = YK-D002
+
+[YK-D004]
+Data = YK-D004
+
+[YK-D006]
+Data = YK-D006
+
+[YK-D008]
+Data = YK-D008
+
+[YK-D010]
+Data = YK-D010
+
+[YK-D012]
+Data = YK-D012
+
+[YK-D014]
+Data = YK-D014
+
+[YK-D016]
+Data = YK-D016
+
+[YK-D018]
+Data = YK-D018
+
+[YK-D020]
+Data = YK-D020
+
+[YK-D022]
+Data = YK-D022
+
+[YK-D024]
+Data = YK-D024
+
+[YK-D026]
+Data = YK-D026
+
+[YK-D028]
+Data = YK-D028
+
+[YK-D030]
+Data = YK-D030
+
+[YK-D032]
+Data = YK-D032
+
+[YK-D034]
+Data = YK-D034
+
+[YK-D036]
+Data = YK-D036
+
+[YK-D038]
+Data = YK-D038
+
+[YK-D040]
+Data = YK-D040
+
+[YK-D042]
+Data = YK-D042
+
+[YK-D044]
+Data = YK-D044
+
+[YK-D046]
+Data = YK-D046
+
+[YK-D048]
+Data = YK-D048
+
+[YK-D050]
+Data = YK-D050
+
+[YK-D052]
+Data = YK-D052
+
+[YK-D054]
+Data = YK-D054
+
+[YK-D056]
+Data = YK-D056
+
+[YK-D058]
+Data = YK-D058
+
+[YK-D060]
+Data = YK-D060
+
+[YK-D062]
+Data = YK-D062
+
+[YK-D064]
+Data = YK-D064
+
+[YK-D066]
+Data = YK-D066
+
+[YK-D068]
+Data = YK-D068
+
+[YK-D070]
+Data = YK-D070
+
+[YK-D072]
+Data = YK-D072
+
+[YK-D074]
+Data = YK-D074
+
+[YK-D076]
+Data = YK-D076
+
+[YK-D078]
+Data = YK-D078
+
+[YK-D080]
+Data = YK-D080
+
+[YK-D082]
+Data = YK-D082
+
+[YK-D084]
+Data = YK-D084
+
+[YK-D086]
+Data = YK-D086
+
+[YK-D088]
+Data = YK-D088
+
+[YK-D090]
+Data = YK-D090
+
+[YK-D092]
+Data = YK-D092
+
+[YK-D094]
+Data = YK-D094
+
+[YK-D096]
+Data = YK-D096
+
+[YK-D098]
+Data = YK-D098
+
+[YK-D100]
+Data = YK-D100
+
+[YK-D102]
+Data = YK-D102
+
+[YK-D104]
+Data = YK-D104
+
+[YK-D106]
+Data = YK-D106
+
+[YK-D108]
+Data = YK-D108
+
+[YK-D110]
+Data = YK-D110
+
+[YK-D112]
+Data = YK-D112
+
+[YK-D114]
+Data = YK-D114
+
+[YK-D116]
+Data = YK-D116
+
+[YK-D118]
+Data = YK-D118
+
+[YK-D120]
+Data = YK-D120
+
+[YK-D122]
+Data = YK-D122
+
+[YK-D124]
+Data = YK-D124
+
+[YK-D126]
+Data = YK-D126
+
+[YK-D128]
+Data = YK-D128
+
+[YK-D130]
+Data = YK-D130
+
+[YK-D132]
+Data = YK-D132
+
+[YK-D134]
+Data = YK-D134
+
+[YK-D136]
+Data = YK-D136
+
+[YK-D138]
+Data = YK-D138
+
+[YK-D140]
+Data = YK-D140
+
+[YK-D142]
+Data = YK-D142
+
+[YK-D144]
+Data = YK-D144
+
+[YK-D146]
+Data = YK-D146
+
+[YK-D148]
+Data = YK-D148
+
+[YK-D150]
+Data = YK-D150
+
+[YK-D151]
+Data = YK-D151
+
+[YK-D152]
+Data = YK-D152
+
+[YK-D154]
+Data = YK-D154
+
+[YK-D156]
+Data = YK-D156
+
+[YK-D158]
+Data = YK-D158
+
+[YK-D160]
+Data = YK-D160
+
+[YK-D162]
+Data = YK-D162
+
+[YK-D164]
+Data = YK-D164
+
+[YK-D166]
+Data = YK-D166
+
+[YK-D168]
+Data = YK-D168
+
+[YK-D170]
+Data = YK-D170
+
+[YK-D172]
+Data = YK-D172
+
+[YK-D174]
+Data = YK-D174
+
+[YK-D176]
+Data = YK-D176
+
+[YK-D178]
+Data = YK-D178
+
+[YK-D180]
+Data = YK-D180
+
+[YK-D182]
+Data = YK-D182
+
+[YK-D184]
+Data = YK-D184
+
+[YK-D185]
+Data = YK-D185
+
+[YK-D186]
+Data = YK-D186
+
+[YK-D187]
+Data = YK-D187
+
+[YK-D188]
+Data = YK-D188
+
+[YK-D189]
+Data = YK-D189
+
+[YK-D190]
+Data = YK-D190
+
+[YK-D192]
+Data = YK-D192
+
+[YK-D194]
+Data = YK-D194
+
+[YK-D196]
+Data = YK-D196
+
+[YK-D198]
+Data = YK-D198
+
+[YK-D199]
+Data = YK-D199
+
+[YK-D200]
+Data = YK-D200
+
+[YK-D201]
+Data = YK-D201
+
+[YK-D202]
+Data = YK-D202
+
+[YK-D203]
+Data = YK-D203
+
+[YK-D204]
+Data = YK-D204
+
+[YK-D205]
+Data = YK-D205
+
+[YK-D206]
+Data = YK-D206
+
+[YK-D207]
+Data = YK-D207
+
+[YK-D208]
+Data = YK-D208
+
+[YK-D209]
+Data = YK-D209
+
+[YK-D210]
+Data = YK-D210
+
+[YK-D211]
+Data = YK-D211
+
+[YK-D212]
+Data = YK-D212
+
+[YK-D214]
+Data = YK-D214
+
+[YK-D215]
+Data = YK-D215
+
+[YK-D216]
+Data = YK-D216
+
+[YK-D218]
+Data = YK-D218
+
+[YK-D219]
+Data = YK-D219
+
+[YK-D220]
+Data = YK-D220
+
+[YK-D221]
+Data = YK-D221
+
+[YK-D222]
+Data = YK-D222
+
+[YK-D224]
+Data = YK-D224
+
+[YK-D226]
+Data = YK-D226
+
+[YK-D228]
+Data = YK-D228
+
+[YK-D230]
+Data = YK-D230
+
+[YK-D232]
+Data = YK-D232
+
+[YK-D233]
+Data = YK-D233
+
+[YK-D234]
+Data = YK-D234
+
+[YK-D236]
+Data = YK-D236
+
+[YK-D238]
+Data = YK-D238
+
+[YK-D239]
+Data = YK-D239
+
+[YK-D240]
+Data = YK-D240
+
+[YK-D241]
+Data = YK-D241
+
+[YK-D242]
+Data = YK-D242
+
+[YK-D243]
+Data = YK-D243
+
+[YK-D244]
+Data = YK-D244
+
+[YK-D245]
+Data = YK-D245
+
+[YK-D246]
+Data = YK-D246
+
+[YK-D248]
+Data = YK-D248
+
+[YK-D250]
+Data = YK-D250
+
+[YK-D252]
+Data = YK-D252
+
+[YK-D254]
+Data = YK-D254
+
+[YK-D256]
+Data = YK-D256
+
+[YK-D258]
+Data = YK-D258
+
+[YK-G000]
+Data = YK-G000
+
+[YK-G002]
+Data = YK-G002
+
+[YK-G004]
+Data = YK-G004
+
+[YK-G006]
+Data = YK-G006
+
+[YK-G008]
+Data = YK-G008
+
+[YK-G010]
+Data = YK-G010
+
+[YK-G012]
+Data = YK-G012
+
+[YK-G014]
+Data = YK-G014
+
+[YK-G016]
+Data = YK-G016
+
+[YK-G018]
+Data = YK-G018
+
+[YK-G020]
+Data = YK-G020
+
+[YK-G022]
+Data = YK-G022
+
+[YK-G024]
+Data = YK-G024
+
+[YK-G026]
+Data = YK-G026
+
+[YK-G028]
+Data = YK-G028
+
+[YK-G030]
+Data = YK-G030
+
+[YK-G032]
+Data = YK-G032
+
+[YK-G034]
+Data = YK-G034
+
+[YK-G036]
+Data = YK-G036
+
+[YK-G038]
+Data = YK-G038
+
+[YK-G040]
+Data = YK-G040
+
+[YK-G042]
+Data = YK-G042
+
+[YK-G044]
+Data = YK-G044
+
+[YK-G046]
+Data = YK-G046
+
+[YK-G048]
+Data = YK-G048
+
+[YK-G050]
+Data = YK-G050
+
+[YK-G052]
+Data = YK-G052
+
+[YK-G054]
+Data = YK-G054
+
+[YK-G056]
+Data = YK-G056
+
+[YK-G058]
+Data = YK-G058
+
+[YK-G060]
+Data = YK-G060
+
+[YK-G062]
+Data = YK-G062
+
+[YK-G064]
+Data = YK-G064
+
+[YK-G066]
+Data = YK-G066
+
+[YK-G068]
+Data = YK-G068
+
+[YK-G070]
+Data = YK-G070
+
+[YK-G072]
+Data = YK-G072
+
+[YK-G074]
+Data = YK-G074
+
+[YK-G076]
+Data = YK-G076
+
+[YK-G078]
+Data = YK-G078
+
+[YK-G080]
+Data = YK-G080
+
+[YK-G082]
+Data = YK-G082
+
+[YK-G084]
+Data = YK-G084
+
+[YK-G086]
+Data = YK-G086
+
+[YK-G088]
+Data = YK-G088
+
+[YK-G090]
+Data = YK-G090
+
+[YK-G092]
+Data = YK-G092
+
+[YK-G094]
+Data = YK-G094
+
+[YK-G096]
+Data = YK-G096
+
+[YK-G098]
+Data = YK-G098
+
+[YK-G100]
+Data = YK-G100
+
+[YK-G102]
+Data = YK-G102
+
+[YK-G104]
+Data = YK-G104
+
+[YK-G106]
+Data = YK-G106
+
+[YK-G108]
+Data = YK-G108
+
+[YK-G110]
+Data = YK-G110
+
+[YK-G112]
+Data = YK-G112
+
+[YK-G114]
+Data = YK-G114
+
+[YK-G116]
+Data = YK-G116
+
+[YK-G118]
+Data = YK-G118
+
+[YK-G120]
+Data = YK-G120
+
+[YK-G122]
+Data = YK-G122
+
+[YK-G124]
+Data = YK-G124
+
+[YK-G126]
+Data = YK-G126
+
+[YK-G128]
+Data = YK-G128
+
+[YK-G130]
+Data = YK-G130
+
+[YK-G132]
+Data = YK-G132
+
+[YK-G134]
+Data = YK-G134
+
+[YK-G136]
+Data = YK-G136
+
+[YK-G138]
+Data = YK-G138
+
+[YK-G140]
+Data = YK-G140
+
+[YK-G142]
+Data = YK-G142
+
+[YK-G144]
+Data = YK-G144
+
+[YK-G146]
+Data = YK-G146
+
+[YK-G148]
+Data = YK-G148
+
+[YK-G150]
+Data = YK-G150
+
+[YK-G152]
+Data = YK-G152
+
+[YK-G154]
+Data = YK-G154
+
+[YK-G156]
+Data = YK-G156
+
+[YK-G158]
+Data = YK-G158
+
+[YK-G160]
+Data = YK-G160
+
+[YK-G162]
+Data = YK-G162
+
+[YK-G164]
+Data = YK-G164
+
+;Newly added 04/30/01 -pm
+[YK-G166]
+Data = YK-G166
+
+[YK-G168]
+Data = YK-G168
+
+[YK-G170]
+Data = YK-G170
+
+[YK-G172]
+Data = YK-G172
+
+[YK-G174]
+Data = YK-G174
+
+[YK-G176]
+Data = YK-G176
+
+[YK-G178]
+Data = YK-G178
+
+[YK-G180]
+Data = YK-G180
+
+[YK-G182]
+Data = YK-G182
+
+[YK-G184]
+Data = YK-G184
+
+[YK-G186]
+Data = YK-G186
+
+[YK-G188]
+Data = YK-G188
+
+[YK-G190]
+Data = YK-G190
+
+[YK-G192]
+Data = YK-G192
+
+[YK-G194]
+Data = YK-G194
+
+[YK-G196]
+Data = YK-G196
+
+[YK-G198]
+Data = YK-G198
+
+[YK-G200]
+Data = YK-G200
+
+[YK-G202]
+Data = YK-G202
+
+[YK-G204]
+Data = YK-G204
+
+[YK-G206]
+Data = YK-G206
+
+[YK-G208]
+Data = YK-G208
+
+[YK-G210]
+Data = YK-G210
+
+[YK-G212]
+Data = YK-G212
+
+[YK-G214]
+Data = YK-G214
+
+[YK-G216]
+Data = YK-G216
+
+[YK-G218]
+Data = YK-G218
+
+[YK-G220]
+Data = YK-G220
+
+[YK-G222]
+Data = YK-G222
+
+[YK-G224]
+Data = YK-G224
+
+[YK-G226]
+Data = YK-G226
+
+[YK-G228]
+Data = YK-G228
+
+[YK-G230]
+Data = YK-G230
+
+[YK-G232]
+Data = YK-G232
+
+[YK-G234]
+Data = YK-G234
+
+[YK-G236]
+Data = YK-G236
+
+[YK-G238]
+Data = YK-G238
+
+[YK-G240]
+Data = YK-G240
+
+[YK-G242]
+Data = YK-G242
+
+[YK-G244]
+Data = YK-G244
+
+[YK-G246]
+Data = YK-G246
+
+[YK-G248]
+Data = YK-G248
+
+[YK-G250]
+Data = YK-G250
+
+[YK-G252]
+Data = YK-G252
+
+[YK-G254]
+Data = YK-G254
+
+[YK-G256]
+Data = YK-G256
+
+[YK-G258]
+Data = YK-G258
+
+[YK-G260]
+Data = YK-G260
+
+[YK-G262]
+Data = YK-G262
+
+[YK-G264]
+Data = YK-G264
+
+[YK-G266]
+Data = YK-G266
+
+[YK-G268]
+Data = YK-G268
+
+[YK-G270]
+Data = YK-G270
+
+[YK-G272]
+Data = YK-G272
+
+[YK-G274]
+Data = YK-G274
+
+[YK-G276]
+Data = YK-G276
+
+[YK-G278]
+Data = YK-G278
+
+[YK-G280]
+Data = YK-G280
+
+[YK-G282]
+Data = YK-G282
+
+[YK-G284]
+Data = YK-G284
+
+[YK-G286]
+Data = YK-G286
+
+[YK-G288]
+Data = YK-G288
+
+[YK-G290]
+Data = YK-G290
+
+[YK-G292]
+Data = YK-G292
+
+[YK-G294]
+Data = YK-G294
+
+[YK-G296]
+Data = YK-G296
+
+[YK-G298]
+Data = YK-G298
+
+[YK-G300]
+Data = YK-G300
+
+[YK-G302]
+Data = YK-G302
+
+[YK-G304]
+Data = YK-G304
+
+[YK-G306]
+Data = YK-G306
+
+[YK-G308]
+Data = YK-G308
+
+[YK-G310]
+Data = YK-G310
+
+[YK-G312]
+Data = YK-G312
+
+[YK-G314]
+Data = YK-G314
+
+[YK-G316]
+Data = YK-G316
+
+[YK-G318]
+Data = YK-G318
+
+[YK-G320]
+Data = YK-G320
+
+[YK-G322]
+Data = YK-G322
+
+[YK-G324]
+Data = YK-G324
+
+[YK-G326]
+Data = YK-G326
+
+[YK-G328]
+Data = YK-G328
+
+[YK-G330]
+Data = YK-G330
+
+[YK-G332]
+Data = YK-G332
+
+[YK-G334]
+Data = YK-G334
+
+[YK-G336]
+Data = YK-G336
+
+[YK-G338]
+Data = YK-G338
+
+[YK-G340]
+Data = YK-G340
+
+[YK-G342]
+Data = YK-G342
+
+[YK-G344]
+Data = YK-G344
+
+[YK-G346]
+Data = YK-G346
+
+[YK-G348]
+Data = YK-G348
+
+[YK-G350]
+Data = YK-G350
+
+[YK-G352]
+Data = YK-G352
+
+[YK-G354]
+Data = YK-G354
+
+[YK-G356]
+Data = YK-G356
+
+[YK-G358]
+Data = YK-G358
+
+[YK-G360]
+Data = YK-G360
+
+[YK-G362]
+Data = YK-G362
+
+[YK-G364]
+Data = YK-G364
+
+[YK-G366]
+Data = YK-G366
+
+[YK-G368]
+Data = YK-G368
+
+[YK-G370]
+Data = YK-G370
+
+[YK-G372]
+Data = YK-G372
+
+[YK-G374]
+Data = YK-G374
+
+[YK-G376]
+Data = YK-G376
+
+[YK-G378]
+Data = YK-G378
+
+[YK-G380]
+Data = YK-G380
+
+[YK-G382]
+Data = YK-G382
+
+[YK-G384]
+Data = YK-G384
+
+[YK-G386]
+Data = YK-G386
+
+[YK-G388]
+Data = YK-G388
+
+[YK-G390]
+Data = YK-G390
+
+[YK-G392]
+Data = YK-G392
+
+[YK-G394]
+Data = YK-G394
+
+[YK-G396]
+Data = YK-G396
+
+[YK-G398]
+Data = YK-G398
+
+[YK-G400]
+Data = YK-G400
+
+[YK-G402]
+Data = YK-G402
+
+[YK-G404]
+Data = YK-G404
+
+[YK-G406]
+Data = YK-G406
+
+[YK-G408]
+Data = YK-G408
+
+[YK-G410]
+Data = YK-G410
+
+[YK-G412]
+Data = YK-G412
+
+[YK-G414]
+Data = YK-G414
+
+[YK-G416]
+Data = YK-G416
+
+[YK-G418]
+Data = YK-G418
+
+[YK-G420]
+Data = YK-G420
+
+[YK-G422]
+Data = YK-G422
+
+[YK-G424]
+Data = YK-G424
+
+[YK-G426]
+Data = YK-G426
+
+[YK-G428]
+Data = YK-G428
+
+[YK-G430]
+Data = YK-G430
+
+[YK-G431]
+Data = YK-G431
+
+[YK-G432]
+Data = YK-G432
+
+[YK-G434]
+Data = YK-G434
+
+[YK-G436]
+Data = YK-G436
+
+[YK-G438]
+Data = YK-G438
+
+[YK-G440]
+Data = YK-G440
+
+[YK-G442]
+Data = YK-G442
+
+[YK-G444]
+Data = YK-G444
+
+[YK-G446]
+Data = YK-G446
+
+[YK-G448]
+Data = YK-G448
+
+[YK-G450]
+Data = YK-G450
+
+[YK-G452]
+Data = YK-G452
+
+[YK-G454]
+Data = YK-G454
+
+[YK-G455]
+Data = YK-G455
+
+[YK-G456]
+Data = YK-G456
+
+[YK-G458]
+Data = YK-G458
+
+[YK-G459]
+Data = YK-G459
+
+[YK-G460]
+Data = YK-G460
+
+[YK-G462]
+Data = YK-G462
+
+[YK-G464]
+Data = YK-G464
+
+[YK-G466]
+Data = YK-G466
+
+[YK-G468]
+Data = YK-G468
+
+[YK-G470]
+Data = YK-G470
+
+[YK-G472]
+Data = YK-G472
+
+[YK-G474]
+Data = YK-G474
+
+[YK-G476]
+Data = YK-G476
+
+[YK-G478]
+Data = YK-G478
+
+[YK-G480]
+Data = YK-G480
+
+[YK-G482]
+Data = YK-G482
+
+[YK-G484]
+Data = YK-G484
+
+[YK-G486]
+Data = YK-G486
+
+[YK-G488]
+Data = YK-G488
+
+[YK-G490]
+Data = YK-G490
+
+[YK-G492]
+Data = YK-G492
+
+[YK-G494]
+Data = YK-G494
+
+[YK-G496]
+Data = YK-G496
+
+[YK-G498]
+Data = YK-G498
+
+[YK-G500]
+Data = YK-G500
+
+[YK-G501]
+Data = YK-G501
+
+[YK-G502]
+Data = YK-G502
+
+[YK-G504]
+Data = YK-G504
+
+[YK-G506]
+Data = YK-G506
+
+[YK-G508]
+Data = YK-G508
+
+[YK-G510]
+Data = YK-G510
+
+[YK-G512]
+Data = YK-G512
+
+[YK-G514]
+Data = YK-G514
+
+[YK-G515]
+Data = YK-G515
+
+[YK-G516]
+Data = YK-G516
+
+[YK-G517]
+Data = YK-G517
+
+[YK-G518]
+Data = YK-G518
+
+[YK-G520]
+Data = YK-G520
+
+[YK-G522]
+Data = YK-G522
+
+[YK-G524]
+Data = YK-G524
+
+[YK-G526]
+Data = YK-G526
+
+[YK-G528]
+Data = YK-G528
+
+[YK-G530]
+Data = YK-G530
+
+[YK-G531]
+Data = YK-G531
+
+[YK-G532]
+Data = YK-G532
+
+[YK-G533]
+Data = YK-G533
+
+[YK-G534]
+Data = YK-G534
+
+[YK-G535]
+Data = YK-G535
+
+[YK-G536]
+Data = YK-G536
+
+[YK-G537]
+Data = YK-G537
+
+[YK-G538]
+Data = YK-G538
+
+[YK-G539]
+Data = YK-G539
+
+[YK-G540]
+Data = YK-G540
+
+[YK-G541]
+Data = YK-G541
+
+[YK-G542]
+Data = YK-G542
+
+[YK-G543]
+Data = YK-G543
+
+[YK-G544]
+Data = YK-G544
+
+[YK-G546]
+Data = YK-G546
+
+[YK-G548]
+Data = YK-G548
+
+[YK-G550]
+Data = YK-G550
+
+[YK-G552]
+Data = YK-G552
+
+[YK-G554]
+Data = YK-G554
+
+[YK-G556]
+Data = YK-G556
+
+[YK-G558]
+Data = YK-G558
+
+[YK-G560]
+Data = YK-G560
+
+[YK-G562]
+Data = YK-G562
+
+[YK-G563]
+Data = YK-G563
+
+[YK-G564]
+Data = YK-G564
+
+[YK-G566]
+Data = YK-G566
+
+[YK-G568]
+Data = YK-G568
+
+[YK-G570]
+Data = YK-G570
+
+[YK-G572]
+Data = YK-G572
+
+[YK-G574]
+Data = YK-G574
+
+[YK-G576]
+Data = YK-G576
+
+[YK-G578]
+Data = YK-G578
+
+[YK-G580]
+Data = YK-G580
+
+[YK-G582]
+Data = YK-G582
+
+[YK-G584]
+Data = YK-G584
+
+[YK-G585]
+Data = YK-G585
+
+[YK-G586]
+Data = YK-G586
+
+[YK-G588]
+Data = YK-G588
+
+[YK-G590]
+Data = YK-G590
+
+[YK-G592]
+Data = YK-G592
+
+[YK-G593]
+Data = YK-G593
+
+[YK-G594]
+Data = YK-G594
+
+[YK-G596]
+Data = YK-G596
+
+[YK-G598]
+Data = YK-G598
+
+[YK-G600]
+Data = YK-G600
+
+[YK-G601]
+Data = YK-G601
+
+[YK-G602]
+Data = YK-G602
+
+[YK-G603]
+Data = YK-G603
+
+[YK-G604]
+Data = YK-G604
+
+[YK-G606]
+Data = YK-G606
+
+[YK-G608]
+Data = YK-G608
+
+[YK-G610]
+Data = YK-G610
+
+[YK-G612]
+Data = YK-G612
+
+[YK-G613]
+Data = YK-G613
+
+[YK-G614]
+Data = YK-G614
+
+[YK-G616]
+Data = YK-G616
+
+[YK-G618]
+Data = YK-G618
+
+[YK-G620]
+Data = YK-G620
+
+[YK-G622]
+Data = YK-G622
+
+[YK-G624]
+Data = YK-G624
+
+[YK-G625]
+Data = YK-G625
+
+[YK-G626]
+Data = YK-G626
+
+[YK-G627]
+Data = YK-G627
+
+[YK-G628]
+Data = YK-G628
+
+[YK-G629]
+Data = YK-G629
+
+[YK-G630]
+Data = YK-G630
+
+[YK-G631]
+Data = YK-G631
+
+[YK-G632]
+Data = YK-G632
+
+[YK-G633]
+Data = YK-G633
+
+[YK-G634]
+Data = YK-G634
+
+[YK-G635]
+Data = YK-G635
+
+[YK-G636]
+Data = YK-G636
+
+[YK-G638]
+Data = YK-G638
+
+[YK-G640]
+Data = YK-G640
+
+[YK-G642]
+Data = YK-G642
+
+[YK-G644]
+Data = YK-G644
+
+[YK-G646]
+Data = YK-G646
+
+[YK-G648]
+Data = YK-G648
+
+;;New Add!  May 09, 2001
+[YK-G650]
+Data = YK-G650
+
+[YK-G652]
+Data = YK-G652
+
+[YK-G653]
+Data = YK-G653
+
+[YK-G654]
+Data = YK-G654
+
+[YK-G656]
+Data = YK-G656
+
+[YK-G658]
+Data = YK-G658
+
+[YK-G660]
+Data = YK-G660
+
+[YK-G661]
+Data = YK-G661
+
+[YK-G662]
+Data = YK-G662
+
+[YK-G664]
+Data = YK-G664
+
+[YK-G666]
+Data = YK-G666
+
+[YK-G667]
+Data = YK-G667
+
+[YK-G668]
+Data = YK-G668
+
+[YK-G670]
+Data = YK-G670
+
+[YK-G672]
+Data = YK-G672
+
+[YK-G674]
+Data = YK-G674
+
+[YK-G676]
+Data = YK-G676
+
+[YK-G678]
+Data = YK-G678
+
+[YK-G680]
+Data = YK-G680
+
+[YK-G682]
+Data = YK-G682
+
+[YK-G684]
+Data = YK-G684
+
+[YK-G686]
+Data = YK-G686
+
+[YK-G688]
+Data = YK-G688
+
+[YK-G689]
+Data = YK-G689
+
+[YK-G690]
+Data = YK-G690
+
+[YK-G691]
+Data = YK-G691
+
+[YK-G692]
+Data = YK-G692
+
+[YK-G693]
+Data = YK-G693
+
+[YK-G694]
+Data = YK-G694
+
+[YK-G695]
+Data = YK-G695
+
+[YK-G696]
+Data = YK-G696
+
+[YK-G697]
+Data = YK-G697
+
+[YK-G698]
+Data = YK-G698
+
+[YK-G699]
+Data = YK-G699
+
+[YK-G700]
+Data = YK-G700
+
+[YK-G701]
+Data = YK-G701
+
+[YK-G702]
+Data = YK-G702
+
+[YK-G703]
+Data = YK-G703
+
+[YK-G704]
+Data = YK-G704
+
+[YK-G705]
+Data = YK-G705
+
+[YK-G706]
+Data = YK-G706
+
+[YK-G707]
+Data = YK-G707
+
+[YK-G708]
+Data = YK-G708
+
+[YK-G709]
+Data = YK-G709
+
+[YK-G710]
+Data = YK-G710
+
+[YK-G711]
+Data = YK-G711
+
+[YK-G712]
+Data = YK-G712
+
+[YK-G713]
+Data = YK-G713
+
+[YK-G714]
+Data = YK-G714
+
+[YK-G715]
+Data = YK-G715
+
+[YK-G716]
+Data = YK-G716
+
+[YK-G717]
+Data = YK-G717
+
+[YK-G718]
+Data = YK-G718
+
+[YK-G720]
+Data = YK-G720
+
+[YK-G722]
+Data = YK-G722
+
+[YK-G724]
+Data = YK-G724
+
+[YK-G726]
+Data = YK-G726
+
+[YK-G728]
+Data = YK-G728
+
+[YK-G730]
+Data = YK-G730
+
+[YK-G732]
+Data = YK-G732
+
+[YK-G900]
+Data = YK-G900
+
+[YK-G902]
+Data = YK-G902
+
+[YK-G904]
+Data = YK-G904
+
+[YK-G906]
+Data = YK-G906
+
+[YK-G908]
+Data = YK-G908
+
+[YK-G910]
+Data = YK-G910
+
+[YK-G912]
+Data = YK-G912
+
+[YK-G914]
+Data = YK-G914
+
+[YK-G916]
+Data = YK-G916
+
+[YK-G918]
+Data = YK-G918
+
+[YK-M000]
+Data = YK-M000
+
+[YK-M002]
+Data = YK-M002
+
+[YK-M004]
+Data = YK-M004
+
+[YK-M006]
+Data = YK-M006
+
+[YK-M008]
+Data = YK-M008
+
+[YK-M010]
+Data = YK-M010
+
+[YK-M012]
+Data = YK-M012
+
+[YK-M014]
+Data = YK-M014
+
+[YK-M016]
+Data = YK-M016
+
+[YK-M018]
+Data = YK-M018
+
+[YK-M020]
+Data = YK-M020
+
+[YK-M022]
+Data = YK-M022
+
+[YK-M024]
+Data = YK-M024
+
+[YK-M026]
+Data = YK-M026
+
+[YK-M028]
+Data = YK-M028
+
+[YK-M030]
+Data = YK-M030
+
+[YK-M032]
+Data = YK-M032
+
+[YK-M034]
+Data = YK-M034
+
+[YK-M036]
+Data = YK-M036
+
+[YK-M038]
+Data = YK-M038
+
+[YK-M040]
+Data = YK-M040
+
+[YK-M042]
+Data = YK-M042
+
+[YK-M044]
+Data = YK-M044
+
+[YK-M046]
+Data = YK-M046
+
+[YK-M048]
+Data = YK-M048
+
+[YK-M050]
+Data = YK-M050
+
+[YK-M052]
+Data = YK-M052
+
+[YK-M054]
+Data = YK-M054
+
+[YK-M056]
+Data = YK-M056
+
+[YK-M058]
+Data = YK-M058
+
+[YK-M060]
+Data = YK-M060
+
+[YK-M062]
+Data = YK-M062
+
+[YK-M064]
+Data = YK-M064
+
+[YK-M066]
+Data = YK-M066
+
+[YK-M068]
+Data = YK-M068
+
+[YK-M070]
+Data = YK-M070
+
+[YK-M072]
+Data = YK-M072
+
+[YK-M074]
+Data = YK-M074
+
+[YK-M076]
+Data = YK-M076
+
+[YK-M078]
+Data = YK-M078
+
+[YK-M080]
+Data = YK-M080
+
+[YK-M082]
+Data = YK-M082
+
+[YK-M084]
+Data = YK-M084
+
+[YK-M086]
+Data = YK-M086
+
+[YK-M088]
+Data = YK-M088
+
+[YK-M090]
+Data = YK-M090
+
+[YK-M092]
+Data = YK-M092
+
+[YK-M094]
+Data = YK-M094
+
+[YK-M096]
+Data = YK-M096
+
+[YK-M098]
+Data = YK-M098
+
+[YK-M100]
+Data = YK-M100
+
+[YK-M102]
+Data = YK-M102
+
+[YK-M104]
+Data = YK-M104
+
+[YK-M106]
+Data = YK-M106
+
+[YK-M108]
+Data = YK-M108
+
+[YK-M110]
+Data = YK-M110
+
+[YK-M112]
+Data = YK-M112
+
+[YK-M114]
+Data = YK-M114
+
+[YK-M116]
+Data = YK-M116
+
+[YK-M118]
+Data = YK-M118
+
+[YK-M120]
+Data = YK-M120
+
+[YK-M122]
+Data = YK-M122
+
+[YK-M124]
+Data = YK-M124
+
+[YK-M126]
+Data = YK-M126
+
+[YK-M128]
+Data = YK-M128
+
+[YK-M130]
+Data = YK-M130
+
+[YK-M132]
+Data = YK-M132
+
+[YK-M134]
+Data = YK-M134
+
+[YK-M136]
+Data = YK-M136
+
+[YK-M138]
+Data = YK-M138
+
+[YK-M140]
+Data = YK-M140
+
+[YK-M142]
+Data = YK-M142
+
+[YK-M146]
+Data = YK-M146
+
+[YK-M148]
+Data = YK-M148
+
+[YK-M150]
+Data = YK-M150
+
+[YK-M152]
+Data = YK-M152
+
+[YK-M154]
+Data = YK-M154
+
+[YK-M156]
+Data = YK-M156
+
+[YK-M158]
+Data = YK-M158
+
+[YK-M160]
+Data = YK-M160
+
+[YK-M162]
+Data = YK-M162
+
+[YK-M164]
+Data = YK-M164
+
+[YK-M166]
+Data = YK-M166
+
+[YK-M168]
+Data = YK-M168
+
+[YK-M170]
+Data = YK-M170
+
+[YK-M172]
+Data = YK-M172
+
+[YK-M174]
+Data = YK-M174
+
+[YK-M176]
+Data = YK-M176
+
+[YK-M178]
+Data = YK-M178
+
+[YK-M180]
+Data = YK-M180
+
+[YK-M182]
+Data = YK-M182
+
+[YK-M184]
+Data = YK-M184
+
+[YK-M186]
+Data = YK-M186
+
+[YK-M188]
+Data = YK-M188
+
+[YK-M190]
+Data = YK-M190
+
+[YK-M192]
+Data = YK-M192
+
+[YK-M194]
+Data = YK-M194
+
+[YK-M196]
+Data = YK-M196
+
+[YK-M198]
+Data = YK-M198
+
+[YK-M200]
+Data = YK-M200
+
+[YK-M202]
+Data = YK-M202
+
+[YK-M204]
+Data = YK-M204
+
+[YK-M206]
+Data = YK-M206
+
+[YK-M208]
+Data = YK-M208
+
+[YK-M210]
+Data = YK-M210
+
+[YK-M212]
+Data = YK-M212
+
+[YK-M214]
+Data = YK-M214
+
+[YK-M216]
+Data = YK-M216
+
+[YK-M218]
+Data = YK-M218
+
+[YK-M220]
+Data = YK-M220
+
+[YK-M222]
+Data = YK-M222
+
+[YK-M223]
+Data = YK-M223
+
+[YK-M224]
+Data = YK-M224
+
+[YK-M226]
+Data = YK-M226
+
+[YK-M228]
+Data = YK-M228
+
+[YK-M230]
+Data = YK-M230
+
+[YK-M231]
+Data = YK-M231
+
+[YK-M232]
+Data = YK-M232
+
+[YK-M234]
+Data = YK-M234
+
+[YK-M236]
+Data = YK-M236
+
+[YK-M238]
+Data = YK-M238
+
+[YK-M240]
+Data = YK-M240
+
+[YK-M242]
+Data = YK-M242
+
+[YK-M244]
+Data = YK-M244
+
+[YK-M246]
+Data = YK-M246
+
+[YK-M248]
+Data = YK-M248
+
+[YK-M250]
+Data = YK-M250
+
+[YK-M252]
+Data = YK-M252
+
+[YK-M254]
+Data = YK-M254
+
+[YK-M255]
+Data = YK-M255
+
+[YK-M256]
+Data = YK-M256
+
+[YK-M257]
+Data = YK-M257
+
+[YK-M258]
+Data = YK-M258
+
+[YK-M259]
+Data = YK-M259
+
+[YK-M260]
+Data = YK-M260
+
+[YK-M261]
+Data = YK-M261
+
+[YK-M262]
+Data = YK-M262
+
+[YK-M263]
+Data = YK-M263
+
+[YK-M264]
+Data = YK-M264
+
+[YK-M265]
+Data = YK-M265
+
+[YK-M266]
+Data = YK-M266
+
+[YK-M267]
+Data = YK-M267
+
+[YK-M268]
+Data = YK-M268
+
+[YK-M269]
+Data = YK-M269
+
+[YK-M270]
+Data = YK-M270
+
+[YK-M272]
+Data = YK-M272
+
+[YK-M274]
+Data = YK-M274
+
+[YK-M276]
+Data = YK-M276
+
+[YK-M278]
+Data = YK-M278
+
+[YK-M280]
+Data = YK-M280
+
+[YK-M282]
+Data = YK-M282
+
+[YK-M284]
+Data = YK-M284
+
+[YK-M286]
+Data = YK-M286
+
+[YK-M288]
+Data = YK-M288
+
+[YK-M290]
+Data = YK-M290
+
+[YK-M291]
+Data = YK-M291
+
+[YK-M292]
+Data = YK-M292
+
+[YK-M294]
+Data = YK-M294
+
+[YK-M296]
+Data = YK-M296
+
+[YK-M298]
+Data = YK-M298
+
+[YK-M299]
+Data = YK-M299
+
+[YK-M300]
+Data = YK-M300
+
+[YK-M301]
+Data = YK-M301
+
+[YK-M302]
+Data = YK-M302
+
+[YK-M303]
+Data = YK-M303
+
+[YK-M304]
+Data = YK-M304
+
+[YK-M306]
+Data = YK-M306
+
+[YK-M308]
+Data = YK-M308
+
+;Newly added 04/30/01 -pm
+[YK-M310]
+Data = YK-M310
+
+;Newly added 04/30/01 -pm
+[YK-M312]
+Data = YK-M312
+
+[YK-M313]
+Data = YK-M313
+
+[YK-M314]
+Data = YK-M314
+
+[YK-M315]
+Data = YK-M315
+
+[YK-M316]
+Data = YK-M316
+
+[YK-M320]
+Data = YK-M320
+
+[YK-M322]
+Data = YK-M322
+
+[YK-M323]
+Data = YK-M323
+
+[YK-M324]
+Data = YK-M324
+
+[YK-M325]
+Data = YK-M325
+
+[YK-M326]
+Data = YK-M326
+
+[YK-M327]
+Data = YK-M327
+
+[YK-M328]
+Data = YK-M328
+
+; Newly added 04/30/01 -pm
+[YK-M329]
+Data = YK-M329
+
+[YK-M330]
+Data = YK-M330
+
+[YK-M331]
+Data = YK-M331
+
+[YK-M332]
+Data = YK-M332
+
+[YK-M334]
+Data = YK-M334
+
+[YK-M336]
+Data = YK-M336
+
+[YK-M338]
+Data = YK-M338
+
+[YK-M340]
+Data = YK-M340
+
+[YK-M342]
+Data = YK-M342
+
+[YK-M344]
+Data = YK-M344
+
+[YK-M346]
+Data = YK-M346
+
+[YK-T000]
+Data = YK-T000
+
+[YK-T001]
+Data = YK-T001
+
+[YK-T002]
+Data = YK-T002
+
+[YK-T004]
+Data = YK-T004
+
+[YK-T006]
+Data = YK-T006
+
+[YK-T008]
+Data = YK-T008
+
+[YK-T010]
+Data = YK-T010
+
+[YK-T011]
+Data = YK-T011
+
+[YK-T012]
+Data = YK-T012
+
+[YK-T013]
+Data = YK-T013
+
+[YK-T014]
+Data = YK-T014
+
+[YK-T015]
+Data = YK-T015
+
+[YK-T016]
+Data = YK-T016
+
+[YK-T017]
+Data = YK-T017
+
+[YK-T018]
+Data = YK-T018
+
+[YK-T020]
+Data = YK-T020
+
+[YK-T022]
+Data = YK-T022
+
+[YK-T024]
+Data = YK-T024
+
+[YK-T026]
+Data = YK-T026
+
+[YK-T028]
+Data = YK-T028
+
+[YK-T030]
+Data = YK-T030
+
+[YK-T032]
+Data = YK-T032
+
+[YK-T034]
+Data = YK-T034
+
+[YK-T036]
+Data = YK-T036
+
+[YK-T038]
+Data = YK-T038
+
+[YK-T040]
+Data = YK-T040
+
+[YK-T042]
+Data = YK-T042
+
+[YK-T044]
+Data = YK-T044
+
+[YK-T046]
+Data = YK-T046
+
+[YK-T048]
+Data = YK-T048
+
+[YK-T050]
+Data = YK-T050
+
+
+;  -paul mudra   April 01,2001
+;
+;  The area below contains all of the pick-up lines from the pick-up script.
+;  It is being included for a European test version but should be verified
+;  afterward to make sure we want to use all of the dialogue that we recorded.
+;  Also, I did not know at the time of including these files which ones needed
+;  to be shared for which houses, so any non-specific house dialogue I placed
+;  in a generic HD text file named "General_HD.TXT". 
+;
+
+; UPDATE April 18, 2001 
+; After looking at the script that Idries sent, I've placed all of the
+; "KK" lines in Atreides, the "YK" lines in Harkonnen and the "RA" lines in
+; Ordos dialogue script files.  The remaining lines I placed in the "UI_Comp"
+; generic (HD based) text file even though some of them are specifically used
+; for only one house, according to the spreadsheet.  Having them here should be
+; a reliable catch-all in the event that they were not labeled correctly.
+
+
+
+
+[YK-B000]
+Data = YK-B000
+
+[YK-B002]
+Data = YK-B002
+
+[YK-B004]
+Data = YK-B004
+
+[YK-B006]
+Data = YK-B006
+
+[YK-B010]
+Data = YK-B010
+
+[YK-D300]
+Data = YK-D300
+
+[YK-D302]
+Data = YK-D302
+
+[YK-D304]
+Data = YK-D304
+
+[YK-D306]
+Data = YK-D306
+
+[YK-D308]
+Data = YK-D308
+
+[YK-D310]
+Data = YK-D310
+
+[YK-D312]
+Data = YK-D312
+
+[YK-D314]
+Data = YK-D314
+
+[YK-D316]
+Data = YK-D316
+
+[YK-D318]
+Data = YK-D318
+
+[YK-D320]
+Data = YK-D320
+
+[YK-D322]
+Data = YK-D322
+
+[YK-D324]
+Data = YK-D324
+
+[YK-D326]
+Data = YK-D326
+
+[YK-D328]
+Data = YK-D328
+
+[YK-D330]
+Data = YK-D330
+
+[YK-D332]
+Data = YK-D332
+
+[YK-D334]
+Data = YK-D334
+
+[YK-D336]
+Data = YK-D336
+
+[YK-M400]
+Data = YK-M400
+
+[YK-M402]
+Data = YK-M402
+
+[YK-M404]
+Data = YK-M404
+
+[YK-M406]
+Data = YK-M406
+
+[YK-M408]
+Data = YK-M408
+
+[YK-M410]
+Data = YK-M410
+
+[YK-M412]
+Data = YK-M412
+
+[YK-M414]
+Data = YK-M414
+
+[YK-M416]
+Data = YK-M416
+
+[YK-M418]
+Data = YK-M418
+
+[YK-M420]
+Data = YK-M420
+
+[YK-M422]
+Data = YK-M422
+
+[YK-M424]
+Data = YK-M424
+
+[YK-M426]
+Data = YK-M426
+
+[YK-M428]
+Data = YK-M428
+
+[YK-M430]
+Data = YK-M430
+
+[YK-M432]
+Data = YK-M432
+
+[YK-M434]
+Data = YK-M434
+
+[YK-M436]
+Data = YK-M436
+
+[YK-M438]
+Data = YK-M438
+
+[YK-M440]
+Data = YK-M440
+
+[YK-M442]
+Data = YK-M442
+
+[YK-M444]
+Data = YK-M444
+
+[YK-M446]
+Data = YK-M446
+
+[YK-M448]
+Data = YK-M448
+
+[YK-M450]
+Data = YK-M450
+
+[YK-M452]
+Data = YK-M452
+
+[YK-M454]
+Data = YK-M454
+
+[YK-M456]
+Data = YK-M456
+
+[YK-M458]
+Data = YK-M458
+
+[YK-M460]
+Data = YK-M460
+
+[YK-M462]
+Data = YK-M462
+
+[YK-M464]
+Data = YK-M464
+
+[YK-M466]
+Data = YK-M466
+
+[YK-M468]
+Data = YK-M468
+
+[YK-M470]
+Data = YK-M470
+
+[YK-M472]
+Data = YK-M472
+
+[YK-M474]
+Data = YK-M474
+
+[YK-M476]
+Data = YK-M476
+
+[YK-M478]
+Data = YK-M478
+
+[YK-M480]
+Data = YK-M480
+
+[YK-M482]
+Data = YK-M482
+
+[YK-M484]
+Data = YK-M484
+
+[YK-M486]
+Data = YK-M486
+
+[YK-M488]
+Data = YK-M488
+
+[YK-M490]
+Data = YK-M490
+
+[YK-M492]
+Data = YK-M492
+
+[YK-M494]
+Data = YK-M494
+
+[YK-M496]
+Data = YK-M496
+
+[YK-M498]
+Data = YK-M498
+
+[YK-M500]
+Data = YK-M500
+
+[YK-M502]
+Data = YK-M502
+
+[YK-M504]
+Data = YK-M504
+
+[YK-M506]
+Data = YK-M506
+
+[YK-M508]
+Data = YK-M508
+
+[YK-M510]
+Data = YK-M510
+
+[YK-M512]
+Data = YK-M512
+
+[YK-M514]
+Data = YK-M514
+
+[YK-M516]
+Data = YK-M516
+
+[YK-M518]
+Data = YK-M518
+
+[YK-M520]
+Data = YK-M520
+
+[YK-M522]
+Data = YK-M522
+
+[YK-M524]
+Data = YK-M524
+
+[YK-M526]
+Data = YK-M526
+
+[YK-M528]
+Data = YK-M528
+
+[YK-M530]
+Data = YK-M530
+
+[YK-M532]
+Data = YK-M532
+
+[YK-M534]
+Data = YK-M534
+
+[YK-M536]
+Data = YK-M536
+
+[YK-M538]
+Data = YK-M538
+
+[YK-M540]
+Data = YK-M540
+
+[YK-M542]
+Data = YK-M542
+
+[YK-M544]
+Data = YK-M544
+
+[YK-M546]
+Data = YK-M546
+
+[YK-M548]
+Data = YK-M548
+
+[YK-M550]
+Data = YK-M550
+
+[YK-M552]
+Data = YK-M552
+
+[YK-M554]
+Data = YK-M554
+
+[YK-M556]
+Data = YK-M556
+
+[YK-M558]
+Data = YK-M558
+
+[YK-M560]
+Data = YK-M560
+
+[YK-M562]
+Data = YK-M562
+
+[YK-M564]
+Data = YK-M564
+
+[YK-M566]
+Data = YK-M566
+
+[YK-M568]
+Data = YK-M568
+
+[YK-M570]
+Data = YK-M570
+
+[YK-M572]
+Data = YK-M572
+
+[YK-M574]
+Data = YK-M574
+
+[YK-M576]
+Data = YK-M576
+
+[YK-M578]
+Data = YK-M578
+
+[YK-M580]
+Data = YK-M580
+
+[YK-M582]
+Data = YK-M582
+
+[YK-M584]
+Data = YK-M584
+
+[YK-M586]
+Data = YK-M586
+
+[YK-M588]
+Data = YK-M588
+
+[YK-M590]
+Data = YK-M590
+
+[YK-M592]
+Data = YK-M592
+
+[YK-M594]
+Data = YK-M594
+
+[YK-M596]
+Data = YK-M596
+
+[YK-M598]
+Data = YK-M598
+
+[YK-M600]
+Data = YK-M600
+
+[YK-M602]
+Data = YK-M602
+
+[YK-M604]
+Data = YK-M604
+
+[YK-M606]
+Data = YK-M606
+
+[YK-M608]
+Data = YK-M608
+
+[YK-M610]
+Data = YK-M610
+
+[YK-M612]
+Data = YK-M612
+
+[YK-M614]
+Data = YK-M614
+
+[YK-M616]
+Data = YK-M616
+
+[YK-M618]
+Data = YK-M618
+
+[YK-M620]
+Data = YK-M620
+
+[YK-M622]
+Data = YK-M622
+
+[YK-M624]
+Data = YK-M624
+
+[YK-M626]
+Data = YK-M626
+
+[YK-M628]
+Data = YK-M628
+
+[YK-M630]
+Data = YK-M630
+
+[YK-M632]
+Data = YK-M632
+
+[YK-M634]
+Data = YK-M634
+
+[YK-M636]
+Data = YK-M636
+
+[YK-M638]
+Data = YK-M638
+
+[YK-M640]
+Data = YK-M640
+
+[YK-M642]
+Data = YK-M642
+
+[YK-M644]
+Data = YK-M644
+
+[YK-M646]
+Data = YK-M646
+
+[YK-M648]
+Data = YK-M648
+
+[YK-M650]
+Data = YK-M650
+
+[YK-M652]
+Data = YK-M652
+
+[YK-M654]
+Data = YK-M654
+
+[YK-M656]
+Data = YK-M656
+
+[YK-M658]
+Data = YK-M658
+
+[YK-M660]
+Data = YK-M660
+
+[YK-M662]
+Data = YK-M662
+
+[YK-M664]
+Data = YK-M664
+
+[YK-M666]
+Data = YK-M666
+
+[YK-M668]
+Data = YK-M668
+
+[YK-M670]
+Data = YK-M670
+
+[YK-M672]
+Data = YK-M672
+
+[YK-M674]
+Data = YK-M674
+
+[YK-M676]
+Data = YK-M676
+
+[YK-M678]
+Data = YK-M678
+
+[YK-M680]
+Data = YK-M680
+
+[YK-M682]
+Data = YK-M682
+
+[YK-M684]
+Data = YK-M684
+
+[YK-M686]
+Data = YK-M686
+
+[YK-M688]
+Data = YK-M688
+
+[YK-M690]
+Data = YK-M690
+
+[YK-M692]
+Data = YK-M692
+
+[YK-M694]
+Data = YK-M694
+
+[YK-M696]
+Data = YK-M696
+
+[YK-M698]
+Data = YK-M698
+
+[YK-M700]
+Data = YK-M700
+
+[YK-M702]
+Data = YK-M702
+
+[YK-M704]
+Data = YK-M704
+
+[YK-M706]
+Data = YK-M706
+
+[YK-M708]
+Data = YK-M708
+
+[YK-M710]
+Data = YK-M710
+
+[YK-M712]
+Data = YK-M712
+
+[YK-M714]
+Data = YK-M714
+
+[YK-M716]
+Data = YK-M716
+
+[YK-M718]
+Data = YK-M718
+
+[YK-M720]
+Data = YK-M720
+
+[YK-M722]
+Data = YK-M722
+
+[YK-M724]
+Data = YK-M724
+
+[YK-M726]
+Data = YK-M726
+
+[YK-M728]
+Data = YK-M728
+
+[YK-M730]
+Data = YK-M730
+
+[YK-M732]
+Data = YK-M732
+
+[YK-M734]
+Data = YK-M734
+
+[YK-M736]
+Data = YK-M736
+
+[YK-M738]
+Data = YK-M738
+
+[YK-M740]
+Data = YK-M740
+
+[YK-M742]
+Data = YK-M742
+
+[YK-M744]
+Data = YK-M744
+
+[YK-M746]
+Data = YK-M746
+
+[YK-M748]
+Data = YK-M748
+
+[YK-M750]
+Data = YK-M750
+
+[YK-M752]
+Data = YK-M752
+
+[YK-M754]
+Data = YK-M754
+
+[YK-M756]
+Data = YK-M756
+
+[YK-M758]
+Data = YK-M758
+
+[YK-M760]
+Data = YK-M760
+
+[YK-M762]
+Data = YK-M762
+
+[YK-M764]
+Data = YK-M764
+
+[YK-M766]
+Data = YK-M766
+
+[YK-M768]
+Data = YK-M768
+
+[YK-M770]
+Data = YK-M770
+
+[YK-M772]
+Data = YK-M772
+
+[YK-M774]
+Data = YK-M774
+
+[YK-M776]
+Data = YK-M776
+
+[YK-M778]
+Data = YK-M778
+
+[YK-M780]
+Data = YK-M780
+
+[YK-M782]
+Data = YK-M782
+
+[YK-M784]
+Data = YK-M784
+
+[YK-M786]
+Data = YK-M786
+
+[YK-M788]
+Data = YK-M788
+
+[YK-B012]
+Data = YK-B012
+
+[YK-B014]
+Data = YK-B014
+
+[YK-B016]
+Data = YK-B016
+
+[YK-B018]
+Data = YK-B018
+
+[YK-B020]
+Data = YK-B020
+
+[YK-D338]
+Data = YK-D338
+
+[YK-D340]
+Data = YK-D340
+
+[YK-D342]
+Data = YK-D342
+
+[YK-D344]
+Data = YK-D344
+
+[YK-D346]
+Data = YK-D346
+
+[YK-D348]
+Data = YK-D348
+
+[YK-D350]
+Data = YK-D350
+
+[YK-M790]
+Data = YK-M790
+
+[YK-M792]
+Data = YK-M792
+
+[YK-M794]
+Data = YK-M794
+
+[YK-M796]
+Data = YK-M796
+
+[YK-M798]
+Data = YK-M798
+
+[YK-M800]
+Data = YK-M800
+
+[YK-M802]
+Data = YK-M802
+
+[YK-M804]
+Data = YK-M804
+
+[YK-M806]
+Data = YK-M806
+
+[YK-M808]
+Data = YK-M808
+
+[YK-M810]
+Data = YK-M810
+
+[YK-M812]
+Data = YK-M812
+
+[YK-M814]
+Data = YK-M814
+
+[YK-M816]
+Data = YK-M816
+
+[YK-M818]
+Data = YK-M818
+
+[YK-M820]
+Data = YK-M820
+
+[YK-M822]
+Data = YK-M822
+
+[YK-M824]
+Data = YK-M824
+
+[YK-M826]
+Data = YK-M826
+
+[YK-M828]
+Data = YK-M828
+
+[YK-M830]
+Data = YK-M830
+
+[YK-M832]
+Data = YK-M832
+
+[YK-M834]
+Data = YK-M834
+
+[YK-M836]
+Data = YK-M836
+
+[YK-M838]
+Data = YK-M838
+
+[YK-M840]
+Data = YK-M840
+
+[YK-M842]
+Data = YK-M842
+
+[YK-M844]
+Data = YK-M844
+
+[YK-M846]
+Data = YK-M846
+
+[YK-M848]
+Data = YK-M848
+
+[YK-M850]
+Data = YK-M850
+
+[YK-M852]
+Data = YK-M852
+
+[YK-M854]
+Data = YK-M854
+
+[YK-M856]
+Data = YK-M856
+
+[YK-M858]
+Data = YK-M858
+
+[YK-M860]
+Data = YK-M860
+
+[YK-M862]
+Data = YK-M862
+
+[YK-M864]
+Data = YK-M864
+
+[YK-M866]
+Data = YK-M866
+
+[YK-M868]
+Data = YK-M868
+
+[YK-M870]
+Data = YK-M870
+
+[YK-M872]
+Data = YK-M872
+
+[YK-M874]
+Data = YK-M874
+
+[YK-M876]
+Data = YK-M876
+
+[YK-M878]
+Data = YK-M878
+
+[YK-M880]
+Data = YK-M880
+
+[YK-M882]
+Data = YK-M882
+
+[YK-M884]
+Data = YK-M884
+
+[YK-M886]
+Data = YK-M886
+
+[YK-M888]
+Data = YK-M888
+
+[YK-M890]
+Data = YK-M890
+
+[YK-M892]
+Data = YK-M892
+
+[YK-M894]
+Data = YK-M894
+
+[YK-M896]
+Data = YK-M896
+
+[YK-M898]
+Data = YK-M898
+
+[YK-M900]
+Data = YK-M900
+
+[YK-M902]
+Data = YK-M902
+
+[YK-M904]
+Data = YK-M904
+
+[YK-M906]
+Data = YK-M906
+
+[YK-M908]
+Data = YK-M908
+
+[YK-M910]
+Data = YK-M910
+
+[YK-M912]
+Data = YK-M912
+
+[YK-M914]
+Data = YK-M914
+
+[YK-M916]
+Data = YK-M916
+
+[YK-M918]
+Data = YK-M918
+
+[YK-M920]
+Data = YK-M920
+
+[YK-M922]
+Data = YK-M922
+
+[YK-M723]
+Data = YK-M723
+
+;
+; End Pick-ups
+;
+
+
+

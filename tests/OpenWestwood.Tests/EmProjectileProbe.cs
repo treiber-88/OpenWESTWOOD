@@ -84,9 +84,11 @@ public class EmFxDumpProbe(ITestOutputHelper output)
         var data = Path.Combine(OpenWestwood.Client.GameContent.FindRoot(), "content", "emperor", "DATA");
         using var art = new OpenWestwood.Formats.Emperor.EmperorArtPackage(data);
         string outDir = Environment.GetEnvironmentVariable("EM_FX_OUT") ?? Path.GetTempPath();
-        foreach (string name in names.Split(','))
+        var list = names == "*" ? art.FilePaths.Where(p => p.EndsWith(".xbf", StringComparison.OrdinalIgnoreCase)).Select(p => "@" + p).ToList() : names.Split(',').ToList();
+        foreach (string name0 in list)
         {
-            var path = art.XbfPath(name)!;
+            string name = name0.StartsWith('@') ? name0[1..].Replace('/', '_') : name0;
+            var path = name0.StartsWith('@') ? name0[1..] : art.XbfPath(name)!;
             var bytes = art.ReadAllBytes(path);
             var xbf = OpenWestwood.Formats.Emperor.XbfFile.Read(bytes);
             File.WriteAllBytes(Path.Combine(outDir, name + ".fx"), xbf.FxData);
@@ -105,5 +107,36 @@ public class EmTextureListProbe(ITestOutputHelper output)
         using var art = new OpenWestwood.Formats.Emperor.EmperorArtPackage(data);
         foreach (var p in art.FilePaths.Where(p => filter.Split(',').Any(f => p.Contains(f, StringComparison.OrdinalIgnoreCase))))
             output.WriteLine(p);
+    }
+}
+
+public class EmFxReadProbe(ITestOutputHelper output)
+{
+    [Fact]
+    public void Read()
+    {
+        if (Environment.GetEnvironmentVariable("EM_FXR") is not { } names) return;
+        var data = Path.Combine(OpenWestwood.Client.GameContent.FindRoot(), "content", "emperor", "DATA");
+        using var art = new OpenWestwood.Formats.Emperor.EmperorArtPackage(data);
+        foreach (string name in names.Split(','))
+        {
+            var path = art.XbfPath(name)!;
+            var xbf = OpenWestwood.Formats.Emperor.XbfFile.Read(art.ReadAllBytes(path));
+            var fx = OpenWestwood.Formats.Emperor.XbfFx.Read(xbf.FxData);
+            output.WriteLine($"{name} {path}: fxbytes {xbf.FxData.Length} systems {fx.Systems.Count} events {fx.Events.Count} frames {fx.Frames} nodes {string.Join("|", xbf.AllNodes.Select(n => n.Name))}");
+            foreach (var e in fx.Events) output.WriteLine($"  f{e.Frame} t{e.Type} {string.Join(" / ", e.Strings)}");
+        }
+    }
+}
+
+public class EmFxFilesProbe(BaseGameFixture content, ITestOutputHelper output) : IClassFixture<BaseGameFixture>
+{
+    [Fact]
+    public void Files()
+    {
+        if (Environment.GetEnvironmentVariable("EM_FXFILES") is not { } names || !content.Available) return;
+        foreach (string n in names.Split(','))
+            output.WriteLine($"{n}: {content.FileSystem!.Exists(n)}");
+        output.WriteLine("rules has EMPS_shellhit_0: " + (content.Rules!.Root.TryGet("ParticleSystems", out var ps) && ps.TryGet("EMPS_shellhit_0", out _)));
     }
 }

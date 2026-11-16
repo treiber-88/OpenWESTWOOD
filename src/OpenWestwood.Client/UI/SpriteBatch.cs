@@ -220,6 +220,17 @@ public sealed class SpriteBatch : IDisposable
             new Vector2(r.X, r.Y), new Vector2(r.Right, r.Y), new Vector2(r.Right, r.Bottom), new Vector2(r.X, r.Bottom),
             uvTopLeft, uvTopRight, uvBottomRight, uvBottomLeft, color);
 
+    /// <summary>A textured triangle (a 3D interface's faces, Emperor's sidebar), screen positions and their UVs.</summary>
+    public void DrawTexturedTriangle(Texture texture, Vector2 a, Vector2 b, Vector2 c, Vector2 uvA, Vector2 uvB, Vector2 uvC, Vector4 color) =>
+        AddQuad(texture.Handle, false, a, b, c, c, uvA, uvB, uvC, uvC, color);
+
+    /// <summary>Additive blending (glows) from here on, or back to normal alpha blending.</summary>
+    public void SetAdditive(bool additive)
+    {
+        Flush();
+        gl.BlendFunc(BlendingFactor.SrcAlpha, additive ? BlendingFactor.One : BlendingFactor.OneMinusSrcAlpha);
+    }
+
     /// <summary>Draws a glyph from a font atlas (coverage in the red channel), tinted.</summary>
     internal void DrawGlyph(uint atlas, Rect destination, float u0, float v0, float u1, float v1, Vector4 color) =>
         Quad(atlas, true, destination, u0, v0, u1, v1, color);

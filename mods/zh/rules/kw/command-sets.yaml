@@ -143,6 +143,16 @@ CommandSets:
   KW_GDIAirSupportCommandSet:
     1: Command_KwRepair
     2: Command_Sell
+  KW_GDIGrenadeSoldierCommandSet:
+    1: Command_KW_FireEMPGrenades
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_GDIJuggernaughtCommandSet:
+    1: Command_KW_SpotTargetBombard
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_GDIFireHawkCommandSet:
     1: Command_KW_GDI_FireHawkStratoFighterAbility
     11: Command_AttackMove
@@ -272,6 +282,16 @@ CommandSets:
   KW_SteelTalonsAirSupportCommandSet:
     1: Command_KwRepair
     2: Command_Sell
+  KW_SteelTalonsTitanCommandSet:
+    1: Command_KW_ActivateAdaptiveArmor
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_SteelTalonsMammothCommandSet:
+    1: Command_KW_ActivateAdaptiveArmor
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_SteelTalonsFireHawkCommandSet:
     1: Command_KW_GDI_FireHawkStratoFighterAbility
     11: Command_AttackMove
@@ -413,6 +433,16 @@ CommandSets:
   KW_ZOCOMAirSupportCommandSet:
     1: Command_KwRepair
     2: Command_Sell
+  KW_ZOCOMGrenadeSoldierCommandSet:
+    1: Command_KW_FireEMPGrenades
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_ZOCOMImprovedSonicTankCommandSet:
+    1: Command_KW_FireImprovedSonicTankOverloadBeam
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_ZOCOMFireHawkCommandSet:
     1: Command_KW_GDI_FireHawkStratoFighterAbility
     11: Command_AttackMove
@@ -563,6 +593,27 @@ CommandSets:
     13: Command_SetRallyPoint
     14: Command_KwRepair
     15: Command_Sell
+  KW_NODShadowCommandSet:
+    1: Command_KW_NodShadow_PlaceExplosiveCharges
+    2: Command_KW_NODShadowSquadDeployBeacon
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_NODScorpionBuggyCommandSet:
+    1: Command_KW_FireEmpBurst
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_NODMobileArtilleryCommandSet:
+    1: Command_KW_SpotBeaconBombard
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_NODMetaUnitCommandSet:
+    1: Command_KW_FireRageGenerator
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_BlackHandConstructionYardCommandSet:
     1: Command_KW_BlackHandPowerPlant
     2: Command_KW_BlackHandRefinery
@@ -686,6 +737,21 @@ CommandSets:
     13: Command_SetRallyPoint
     14: Command_KwRepair
     15: Command_Sell
+  KW_BlackHandConfessorCommandSet:
+    1: Command_KW_BlackHandConfessorCabalFireGrenade
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_BlackHandScorpionBuggyCommandSet:
+    1: Command_KW_FireEmpBurst
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_BlackHandMetaUnitCommandSet:
+    1: Command_KW_FireRageGenerator
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_MarkedOfKaneConstructionYardCommandSet:
     1: Command_KW_MarkedOfKanePowerPlant
     2: Command_KW_MarkedOfKaneRefinery
@@ -829,6 +895,37 @@ CommandSets:
     12: Command_SetRallyPoint
     13: Command_KwRepair
     14: Command_Sell
+  KW_MOKCyborgInfantryCommandSet:
+    1: Command_KW_NODEMPBlast
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_MarkedOfKaneShadowCommandSet:
+    1: Command_KW_NodShadow_PlaceExplosiveCharges
+    2: Command_KW_NODShadowSquadDeployBeacon
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_MarkedOfKaneImprovedCyborgInfantryCommandSet:
+    1: Command_KW_NODEMPBlast
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_MarkedOfKaneScorpionBuggyCommandSet:
+    1: Command_KW_FireEmpBurst
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_MarkedOfKaneMobileArtilleryCommandSet:
+    1: Command_KW_SpotBeaconBombard
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_MarkedOfKaneMetaUnitCommandSet:
+    1: Command_KW_FireRageGenerator
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
   KW_AlienDronePlatformCommandSet:
     1: Command_KW_AlienPowerProjector
     2: Command_KW_AlienTiberiumTower
@@ -952,6 +1049,11 @@ CommandSets:
     11: Command_Sell
   KW_AlienShockTrooperCommandSet:
     1: Command_KW_UseBlinkPack
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_AlienStalkerCommandSet:
+    1: Command_KW_FireTiberiumAgitation
     11: Command_AttackMove
     13: Command_Guard
     14: Command_Stop
@@ -1081,6 +1183,11 @@ CommandSets:
     11: Command_Sell
   KW_Reaper17ShockTrooperCommandSet:
     1: Command_KW_UseBlinkPack
+    11: Command_AttackMove
+    13: Command_Guard
+    14: Command_Stop
+  KW_Reaper17StalkerCommandSet:
+    1: Command_KW_FireTiberiumAgitation
     11: Command_AttackMove
     13: Command_Guard
     14: Command_Stop

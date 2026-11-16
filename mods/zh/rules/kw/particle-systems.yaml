@@ -2054,6 +2054,187 @@ ParticleSystems:
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
     WindMotion: Unused
+  KWPS_TeraDistortC:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ALPHA
+    Type: PARTICLE
+    ParticleName: kw/FXNukeMarkA.dds
+    AngleZ: 0 0
+    AngularRateZ: -0.1 0.1
+    AngularDamping: 1 1
+    VelocityDamping: 0.5 0.55
+    Gravity: 0
+    DriftVelocity: X:0.1 Y:0 Z:0.1
+    Lifetime: 4 4
+    SystemLifetime: 0
+    Size: 22.5 22.5
+    StartSizeRate: 0 0
+    SizeRate: 15 15
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.25 0
+    Alpha2: 0.25 0.25 3
+    Alpha3: 0 0 4
+    Color1: R:225 G:201 B:128 0
+    Color2: R:78 G:78 B:78 1
+    Color3: R:83 G:83 B:83 3
+    Color4: R:87 G:87 B:87 4
+    BurstDelay: 1 1
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -5 5
+    VelOrthoY: -5 5
+    VelOrthoZ: 20 45
+    VolumeType: CYLINDER
+    VolCylinderRadius: 11.25
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraGlowC:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 2
+    ParticleName: kw/FXLenzFlare02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.5 0.6
+    Gravity: 0
+    Lifetime: 5 5
+    SystemLifetime: 0
+    Size: 1 5
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.5 0
+    Alpha2: 0 0 5
+    Color1: R:255 G:128 B:0 0
+    Color2: R:0 G:0 B:0 5
+    BurstDelay: 0 0
+    BurstCount: 10 10
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -5 5
+    VelOrthoY: -5 5
+    VelOrthoZ: 20 45
+    VolumeType: CYLINDER
+    VolCylinderRadius: 11.25
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraGlowC2:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 2
+    ParticleName: kw/FXLenzFlare02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.5 0.6
+    Gravity: 0
+    Lifetime: 5 5
+    SystemLifetime: 0
+    Size: 1 5
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.5 0
+    Alpha2: 0 0 5
+    Color1: R:255 G:128 B:64 0
+    Color2: R:0 G:0 B:0 5
+    BurstDelay: 2 2
+    BurstCount: 5 5
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -5 5
+    VelOrthoY: -5 5
+    VelOrthoZ: 20 50
+    VolumeType: CYLINDER
+    VolCylinderRadius: 13
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraSparkC:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticlesAttachToEmitter: Yes
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -1 1
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 5 10
+    SystemLifetime: 0
+    Size: 22.5 30
+    StartSizeRate: 0 0
+    SizeRate: 5 5
+    SizeRateDamping: 1 1
+    Alpha1: 0.75 1 0
+    Alpha2: -0.5 0 1
+    Color1: R:255 G:128 B:64 0
+    Color2: R:0 G:0 B:0 8
+    BurstDelay: 2 2
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraSparkC2:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticlesAttachToEmitter: Yes
+    ParticleName: kw/FXSparks.dds
+    AngleZ: -1 1
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    DriftVelocity: X:0 Y:0 Z:2
+    Lifetime: 5 10
+    SystemLifetime: 0
+    Size: 15 30
+    StartSizeRate: 0 0
+    SizeRate: 5 5
+    SizeRateDamping: 1 1
+    Alpha1: 0.75 1 0
+    Alpha2: 1 0.75 1
+    Alpha3: -0.5 0 2
+    Color1: R:255 G:128 B:0 0
+    Color2: R:0 G:0 B:0 8
+    BurstDelay: 2 2
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
   KWPS_NODDamagedFire:
     Priority: ALWAYS_RENDER
     IsOneShot: No
@@ -3783,6 +3964,42 @@ ParticleSystems:
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
+  KWPS_NPHalTrail:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 10
+    ParticlesAttachToEmitter: Yes
+    ParticleName: kw/FXMissileStreak.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: -0.1
+    Lifetime: 150 150
+    SystemLifetime: 1
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:180 G:175 B:103 0
+    Color2: R:0 G:0 B:0 150
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 10
+    VolCylinderLength: 10
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
   KWPS_NUBlkHndPurifyingStrmFlame:
     Priority: ALWAYS_RENDER
     IsOneShot: No
@@ -3852,6 +4069,40 @@ ParticleSystems:
     VolumeType: LINE
     VolLineStart: X:0 Y:0 Z:0
     VolLineEnd: X:0 Y:0 Z:0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPBlastTrail_proj:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 5
+    ParticleName: kw/FXEmpDistort.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 3 3
+    SystemLifetime: 0
+    Size: 15 15
+    StartSizeRate: 0 0
+    SizeRate: 3 -3
+    SizeRateDamping: 0.7 0.75
+    Alpha1: 1 1 0
+    Alpha2: 0 0 3
+    Color1: R:152 G:166 B:233 0
+    Color2: R:55 G:55 B:113 3
+    BurstDelay: 0 0
+    BurstCount: 5 5
+    InitialDelay: 1 1
+    VelocityType: ORTHO
+    VelOrthoX: -1 -1
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
     IsHollow: No
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
@@ -7177,6 +7428,246 @@ ParticleSystems:
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPCard02:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 50 50
+    SystemLifetime: 18
+    Size: 50 50
+    StartSizeRate: 0 0
+    SizeRate: -1 1
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:62 G:62 B:62 0
+    Color2: R:0 G:0 B:0 50
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPCard03:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 50 50
+    SystemLifetime: 18
+    Size: 50 50
+    StartSizeRate: 0 0
+    SizeRate: -1 1
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:53 G:53 B:53 0
+    Color2: R:0 G:0 B:0 50
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraGlowB:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 2
+    ParticleName: kw/FXLenzFlare02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.5 0.6
+    Gravity: 0
+    Lifetime: 3 4
+    SystemLifetime: 7
+    Size: 1 5
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.5 0
+    Alpha2: 0 0 4
+    Color1: R:161 G:156 B:249 0
+    Color2: R:0 G:0 B:0 4
+    BurstDelay: 0 1
+    BurstCount: 2 3
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -5 5
+    VelOrthoY: -5 5
+    VelOrthoZ: 24 45
+    VolumeType: CYLINDER
+    VolCylinderRadius: 12
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPBlast02_qtr:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 20 20
+    SystemLifetime: 1
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 8 8
+    SizeRateDamping: 0.5 0.7
+    Alpha1: 1 1 0
+    Color1: R:62 G:62 B:62 0
+    Color2: R:0 G:0 B:0 20
+    BurstDelay: 0 0
+    BurstCount: 8 8
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPBlast03_qtr:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 20 20
+    SystemLifetime: 1
+    Size: 13 13
+    StartSizeRate: 0 0
+    SizeRate: 11 11
+    SizeRateDamping: 0.5 0.7
+    Alpha1: 1 1 0
+    Color1: R:53 G:53 B:53 0
+    Color2: R:0 G:0 B:0 20
+    BurstDelay: 0 0
+    BurstCount: 8 8
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPCard02_qtr:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 20 20
+    SystemLifetime: 12
+    Size: 10 10
+    StartSizeRate: 0 0
+    SizeRate: -0.5 0.5
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:62 G:62 B:62 0
+    Color2: R:0 G:0 B:0 20
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 2 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_BuggyEMPCard03_qtr:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -3 3
+    AngularRateZ: -0.025 0.025
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 20 20
+    SystemLifetime: 12
+    Size: 10 10
+    StartSizeRate: 0 0
+    SizeRate: -0.5 0.5
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:53 G:53 B:53 0
+    Color2: R:0 G:0 B:0 20
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 2 2
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
   KWPS_GDISniperFireDust:
     Priority: WEAPON_EXPLOSION
     IsOneShot: No
@@ -7931,6 +8422,77 @@ ParticleSystems:
     VolCylinderRadius: 0
     VolCylinderLength: 0
     IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_GDISensorExplosion:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXBlast02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.3 0.35
+    Gravity: 0
+    Lifetime: 2 10
+    SystemLifetime: 1
+    Size: 20 40
+    StartSizeRate: 0 0
+    SizeRate: 1 2
+    SizeRateDamping: 0.7 0.9
+    Alpha1: 1 1 0
+    Color1: R:134 G:159 B:219 0
+    Color2: R:0 G:0 B:0 6
+    Color3: R:83 G:83 B:83 7
+    BurstDelay: 0 0
+    BurstCount: 20 30
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_GDISensorDots:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.3 0.35
+    Gravity: 0
+    DriftVelocity: X:0.36 Y:0 Z:0
+    Lifetime: 1 15
+    SystemLifetime: 1
+    Size: 2 5
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 0.7 0.9
+    Alpha1: 1 1 0
+    Color1: R:134 G:159 B:219 0
+    Color2: R:0 G:0 B:0 8
+    Color3: R:83 G:83 B:83 9
+    BurstDelay: 0 0
+    BurstCount: 80 150
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -15 15
+    VelOrthoY: -15 15
+    VelOrthoZ: -15 15
+    VolumeType: CYLINDER
+    VolCylinderRadius: 15
+    VolCylinderLength: 0
+    IsHollow: Yes
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
@@ -8787,6 +9349,114 @@ ParticleSystems:
     VolCylinderRadius: 0
     VolCylinderLength: 0
     IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraMuzzleFireFlash2:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare03.dds
+    AngleZ: -7 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.7 0.75
+    Gravity: 0
+    Lifetime: 3 3
+    SystemLifetime: 1
+    Size: 12 22
+    StartSizeRate: 0 0
+    SizeRate: 1 1
+    SizeRateDamping: 0.95 0.99
+    Alpha1: 1 1 0
+    Color1: R:255 G:255 B:255 0
+    Color2: R:255 G:159 B:108 1
+    Color3: R:191 G:96 B:0 2
+    Color4: R:0 G:0 B:0 3
+    BurstDelay: 0 0
+    BurstCount: 2 2
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraMuzzleFireSmoke2:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXCloudCR01.dds
+    AngleZ: -7 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.98 0.99
+    Gravity: 0
+    DriftVelocity: X:0.2 Y:0 Z:0.2
+    Lifetime: 10 20
+    SystemLifetime: 3
+    Size: 7 25
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:255 G:128 B:64 0
+    Color2: R:113 G:115 B:215 10
+    Color3: R:0 G:0 B:0 15
+    BurstDelay: 0 0
+    BurstCount: 1 5
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -0.1 0.1
+    VelOrthoY: -0.1 0.1
+    VelOrthoZ: -0.1 0.1
+    VolumeType: CYLINDER
+    VolCylinderRadius: 5
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TeraMuzzleFireDistort2:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ALPHA
+    Type: PARTICLE
+    ParticleName: kw/FXNukeMarkA.dds
+    AngleZ: 0 7
+    AngularRateZ: -0.02 0.02
+    AngularDamping: 1 1
+    VelocityDamping: 0.98 0.99
+    Gravity: 0
+    Lifetime: 4 5
+    SystemLifetime: 3
+    Size: 20 32
+    StartSizeRate: 0 0
+    SizeRate: 1 2
+    SizeRateDamping: 1 1
+    Alpha1: 0.2 0.2 0
+    Alpha2: 0 0 4
+    Alpha3: 0 0 9
+    Color1: R:128 G:64 B:0 0
+    Color2: R:255 G:255 B:255 1
+    Color3: R:255 G:255 B:255 4
+    Color4: R:0 G:0 B:0 9
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -3 3
+    VelOrthoY: -3 3
+    VelOrthoZ: -3 3
+    VolumeType: LINE
+    VolLineStart: X:10 Y:0 Z:0
+    VolLineEnd: X:0 Y:0 Z:0
+    IsHollow: No
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
@@ -10873,6 +11543,144 @@ ParticleSystems:
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
+  KWPS_NODVertigoDisruptionPodDust:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ALPHA
+    Type: PARTICLE
+    ParticleName: kw/FXSmoke2x2_02.dds
+    FramesPerRow: 2
+    TotalFrames: 4
+    FrameSpeed: 0.0001
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.3 0.6
+    Gravity: 0
+    DriftVelocity: X:0.1 Y:0 Z:0
+    Lifetime: 20 50
+    SystemLifetime: 1
+    Size: 15 30
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 0.85 0.9
+    Alpha1: 0.5 0.5 0
+    Alpha2: 0 0 35
+    Color1: R:132 G:124 B:117 0
+    Color2: R:114 G:100 B:92 35
+    BurstDelay: 0 0
+    BurstCount: 10 25
+    InitialDelay: 0 0
+    VelocityType: OUTWARD
+    VelOutward: 1 5
+    VelOutwardOther: 0 2
+    VolumeType: CYLINDER
+    VolCylinderRadius: 15
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_NODVertigoDisruptionPodFire:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -1.5 2
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0 0.5
+    Gravity: 0
+    DriftVelocity: X:0 Y:0 Z:0.5
+    Lifetime: 10 15
+    SystemLifetime: 1
+    Size: 1 5
+    StartSizeRate: 0 0
+    SizeRate: 0 0.5
+    SizeRateDamping: 0.8 0.85
+    Alpha1: 1 1 0
+    Color1: R:255 G:94 B:94 0
+    Color2: R:0 G:0 B:0 12
+    BurstDelay: 0 0
+    BurstCount: 40 60
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -0.1 0.1
+    VelOrthoY: -0.1 0.1
+    VelOrthoZ: 0 10
+    VolumeType: CYLINDER
+    VolCylinderRadius: 10
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: Yes
+  KWPS_NODVertigoDisruptionPodFlash:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -7 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 5 5
+    SystemLifetime: 1
+    Size: 15 35
+    StartSizeRate: 0 0
+    SizeRate: 0.5 0.5
+    SizeRateDamping: 1 1
+    Alpha1: 0.3 0.3 0
+    Alpha2: 0 0 5
+    Color1: R:255 G:149 B:149 0
+    Color2: R:0 G:0 B:0 5
+    BurstDelay: 1 1
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: OUTWARD
+    VelOutward: 0 0
+    VelOutwardOther: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_NODVertigoDisruptionPodGlow:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -1.5 -0.5
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1.15 1.15
+    Gravity: 0
+    Lifetime: 10 15
+    SystemLifetime: 10
+    Size: 2 10
+    StartSizeRate: 0 0
+    SizeRate: 0 0.5
+    SizeRateDamping: 0.8 0.85
+    Alpha1: 1 1 0
+    Color1: R:252 G:95 B:118 0
+    Color2: R:0 G:0 B:0 12
+    BurstDelay: 0 0
+    BurstCount: 4 6
+    InitialDelay: 0 0
+    VelocityType: OUTWARD
+    VelOutward: -0.1 -0.25
+    VelOutwardOther: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 10
+    VolCylinderLength: 10
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: Yes
   KWPS_RedeemerLaserFireGlow:
     Priority: ALWAYS_RENDER
     IsOneShot: No
@@ -10907,6 +11715,388 @@ ParticleSystems:
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: Yes
+  KWPS_RedeemerRageBurst:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXFireBlast04.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 4 4
+    SystemLifetime: 1
+    Size: 40 120
+    StartSizeRate: 0 0
+    SizeRate: -3 -1
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:177 G:86 B:86 0
+    Color2: R:0 G:0 B:0 4
+    BurstDelay: 0 0
+    BurstCount: 5 5
+    InitialDelay: 25 25
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 2
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageBurstGlow:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticlesAttachToEmitter: Yes
+    ParticleName: kw/FXLenzFlare04.dds
+    AngleZ: -2 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.8 0.95
+    Gravity: 0
+    Lifetime: 5 10
+    SystemLifetime: 1
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 20 20
+    SizeRateDamping: 0.6 0.6
+    Alpha1: 1 1 0
+    Color1: R:235 G:156 B:176 0
+    Color2: R:216 G:99 B:129 4
+    Color3: R:0 G:0 B:0 8
+    BurstDelay: 0 0
+    BurstCount: 4 4
+    InitialDelay: 25 25
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageEngulf:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: STREAK
+    ParticleName: kw/FXRailgunThread.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 10 10
+    Gravity: 0
+    Lifetime: 8 8
+    SystemLifetime: 9
+    Size: 10 10
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.25 0
+    Alpha2: 0.25 0.25 8
+    Color1: R:115 G:11 B:37 0
+    Color2: R:40 G:2 B:17 2
+    Color3: R:120 G:29 B:52 4
+    Color4: R:0 G:0 B:0 7
+    Color5: R:0 G:0 B:0 8
+    BurstDelay: 0 0
+    BurstCount: 20 20
+    InitialDelay: 20 20
+    VolumeType: BOX
+    VolBoxHalfSize: X:30 Y:30 Z:40
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageEngulfSpark:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXBlast04.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: -20
+    DriftVelocity: X:0 Y:0 Z:-10
+    Lifetime: 2 3
+    SystemLifetime: 10
+    Size: 10 20
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:199 G:120 B:199 0
+    Color2: R:0 G:0 B:0 2
+    BurstDelay: 1 5
+    BurstCount: 10 15
+    InitialDelay: 25 25
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: BOX
+    VolBoxHalfSize: X:15 Y:15 Z:40
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageExplosion:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXBlast02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.3 0.35
+    Gravity: 0
+    Lifetime: 2 10
+    SystemLifetime: 1
+    Size: 30 60
+    StartSizeRate: 0 0
+    SizeRate: 1 2
+    SizeRateDamping: 0.7 0.9
+    Alpha1: 1 1 0
+    Color1: R:196 G:60 B:63 0
+    Color2: R:0 G:0 B:0 6
+    Color3: R:83 G:83 B:83 7
+    BurstDelay: 0 0
+    BurstCount: 20 30
+    InitialDelay: 25 25
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageFlashes:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.95 0.95
+    Gravity: 0
+    DriftVelocity: X:0 Y:0 Z:2
+    Lifetime: 3 3
+    SystemLifetime: 20
+    Size: 3 10
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:232 G:132 B:157 0
+    Color2: R:0 G:0 B:0 3
+    BurstDelay: 5 7
+    BurstCount: 5 10
+    InitialDelay: 5 5
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: SPHERE
+    VolSphereRadius: 8
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageLightningRing:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticlesAttachToEmitter: Yes
+    ParticleName: kw/FXLightning03.dds
+    AngleZ: -3 3
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 10
+    DriftVelocity: X:0 Y:0 Z:-5
+    Lifetime: 5 10
+    SystemLifetime: 30
+    Size: 14 20
+    StartSizeRate: 0 0
+    SizeRate: 0.25 0.25
+    SizeRateDamping: 0.99 0.99
+    Alpha1: 1 1 0
+    Color1: R:140 G:38 B:64 0
+    Color2: R:177 G:106 B:204 5
+    Color3: R:0 G:0 B:0 8
+    BurstDelay: 0 10
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: SPHERE
+    VolSphereRadius: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageRadial:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 2
+    ParticleName: kw/FXLenzFlare02.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 7 0.8
+    Gravity: 0
+    Lifetime: 1 5
+    SystemLifetime: 20
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 0.25 0.5 0
+    Alpha2: 0 0 3
+    Color1: R:248 G:105 B:141 0
+    Color2: R:0 G:0 B:0 3
+    BurstDelay: 0 0
+    BurstCount: 100 100
+    InitialDelay: 35 35
+    VelocityType: ORTHO
+    VelOrthoX: -10 10
+    VelOrthoY: -10 10
+    VelOrthoZ: 1 1
+    VolumeType: CYLINDER
+    VolCylinderRadius: 20
+    VolCylinderLength: 0
+    IsHollow: Yes
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: Yes
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageRadialSpark:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXBlast04.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 2 3
+    SystemLifetime: 30
+    Size: 1 10
+    StartSizeRate: 0 0
+    SizeRate: 0 5
+    SizeRateDamping: -5 5
+    Alpha1: 1 1 0
+    Color1: R:226 G:90 B:101 0
+    Color2: R:0 G:0 B:0 2
+    BurstDelay: 0 0
+    BurstCount: 50 75
+    InitialDelay: 35 35
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 10
+    VolCylinderLength: 0
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageShockwave:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXEmpXP.dds
+    AngleZ: -7 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 30 30
+    SystemLifetime: 1
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 30 30
+    SizeRateDamping: 1.2 1.2
+    Alpha1: 0.01 0.01 0
+    Alpha2: 0.01 0.01 15
+    Alpha3: 0 0 30
+    Color1: R:43 G:9 B:11 0
+    Color2: R:11 G:11 B:11 30
+    BurstDelay: 0 0
+    BurstCount: 3 3
+    InitialDelay: 35 35
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: Yes
+    IsParticleUpTowardsEmitter: No
+  KWPS_RedeemerRageSpark:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXBlast04.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: -5
+    DriftVelocity: X:0 Y:0 Z:-10
+    Lifetime: 2 3
+    SystemLifetime: 30
+    Size: 1 10
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:199 G:120 B:199 0
+    Color2: R:0 G:0 B:0 2
+    BurstDelay: 1 5
+    BurstCount: 10 15
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: SPHERE
+    VolSphereRadius: 15
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
   KWPS_RedeemerExplodeSparksBig:
     Priority: WEAPON_EXPLOSION
     IsOneShot: No
@@ -11144,6 +12334,140 @@ ParticleSystems:
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No
+  KWPS_NodHalBuzz:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 80
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 15 15
+    SystemLifetime: 15
+    Size: 2 2
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 0.95 0.95
+    Alpha1: 1 1 0
+    Color1: R:176 G:181 B:23 0
+    Color2: R:184 G:172 B:22 11
+    Color3: R:0 G:0 B:0 15
+    BurstDelay: 0 0
+    BurstCount: 1 3
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -3 3
+    VelOrthoY: -3 3
+    VelOrthoZ: -3 3
+    VolumeType: SPHERE
+    VolSphereRadius: 20
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_NodHalFLashes:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.95 0.95
+    Gravity: 0
+    Lifetime: 3 3
+    SystemLifetime: 15
+    Size: 5 30
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:208 G:197 B:117 0
+    Color2: R:0 G:0 B:0 3
+    BurstDelay: 0 0
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: SPHERE
+    VolSphereRadius: 5
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_NodHalGlow:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -1.5 -0.5
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1.15 1.15
+    Gravity: 0
+    Lifetime: 10 20
+    SystemLifetime: 30
+    Size: 5 15
+    StartSizeRate: 0 0
+    SizeRate: 0 0.5
+    SizeRateDamping: 0.8 0.85
+    Alpha1: 1 1 0
+    Color1: R:252 G:233 B:97 0
+    Color2: R:0 G:0 B:0 15
+    BurstDelay: 0 0
+    BurstCount: 4 6
+    InitialDelay: 0 0
+    VelocityType: OUTWARD
+    VelOutward: -0.1 -0.25
+    VelOutwardOther: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 20
+    VolCylinderLength: 20
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: Yes
+  KWPS_NodHalMult:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: INVERSE_MULTIPLY
+    Type: PARTICLE
+    ParticleName: kw/FXCloudCR01.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 50 50
+    SystemLifetime: 1
+    Size: 20 40
+    StartSizeRate: 0 0
+    SizeRate: -1 1
+    SizeRateDamping: 0.99 0.99
+    Alpha1: 1 1 0
+    Color1: R:255 G:255 B:255 0
+    Color2: R:187 G:151 B:4 5
+    Color3: R:255 G:255 B:255 50
+    BurstDelay: 0 0
+    BurstCount: 50 50
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
   KWPS_GDIShell2:
     Priority: WEAPON_EXPLOSION
     IsOneShot: No
@@ -11177,6 +12501,76 @@ ParticleSystems:
     VolumeType: LINE
     VolLineStart: X:-6 Y:0 Z:0
     VolLineEnd: X:-6 Y:0 Z:0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_EMPMuzzleFlash:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -3 3
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 5 10
+    SystemLifetime: 10
+    Size: 5 10
+    StartSizeRate: 0 0
+    SizeRate: 0.5 0.5
+    SizeRateDamping: 0.99 0.99
+    Alpha1: 1 1 0
+    Color1: R:94 G:117 B:221 0
+    Color2: R:0 G:0 B:0 8
+    BurstDelay: 1 4
+    BurstCount: 1 8
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_EMPMuzzlePulse:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 10
+    ParticleName: kw/FXEmpDistort.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 8 8
+    SystemLifetime: 10
+    Size: 1 1
+    StartSizeRate: 0 0
+    SizeRate: 1 3
+    SizeRateDamping: 0.7 0.75
+    Alpha1: 1 1 0
+    Alpha2: 0 0 8
+    Color1: R:14 G:22 B:65 0
+    Color2: R:0 G:0 B:0 8
+    Color3: R:94 G:117 B:221 9
+    Color4: R:94 G:117 B:221 10
+    BurstDelay: 0 0
+    BurstCount: 2 2
+    InitialDelay: 1 1
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 1 5
+    VolumeType: POINT
     IsHollow: No
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
@@ -12236,6 +13630,341 @@ ParticleSystems:
     VelOrthoZ: -0.5 0.5
     VolumeType: POINT
     IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationBeamCore:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: STREAK
+    ParticleName: kw/FXRailGunCore.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 25 25
+    SystemLifetime: 11
+    Size: 0.25 0.25
+    StartSizeRate: 0 0
+    SizeRate: 0.01 0.01
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:255 G:255 B:0 0
+    Color2: R:255 G:255 B:0 12
+    Color3: R:0 G:0 B:0 25
+    BurstDelay: 0 0
+    BurstCount: 3 3
+    InitialDelay: 5 5
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationBeamThreads:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: STREAK
+    ParticleName: kw/FXObeliskLaser.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 25 25
+    SystemLifetime: 11
+    Size: 20 20
+    StartSizeRate: 0 0
+    SizeRate: 0.1 0.1
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:0 G:176 B:88 0
+    Color2: R:0 G:185 B:92 12
+    Color3: R:0 G:128 B:63 25
+    BurstDelay: 0 0
+    BurstCount: 10 10
+    InitialDelay: 3 3
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationFire:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: TRAIL
+    TrailLife: 10
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: 0 0
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.95 0.95
+    Gravity: 0
+    Lifetime: 10 10
+    SystemLifetime: 10
+    Size: 20 25
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:33 G:72 B:28 0
+    Color2: R:0 G:0 B:0 10
+    BurstDelay: 2 2
+    BurstCount: 1 1
+    InitialDelay: 3 3
+    VelocityType: ORTHO
+    VelOrthoX: 5 15
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: POINT
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationFire_Sparks:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXSparks.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 0.35 0.5
+    Gravity: 0
+    DriftVelocity: X:0 Y:0 Z:-0.5
+    Lifetime: 5 10
+    SystemLifetime: 10
+    Size: 5 5
+    StartSizeRate: 0 0
+    SizeRate: -4 4
+    SizeRateDamping: 0.7 0.75
+    Alpha1: 1 1 0
+    Color1: R:122 G:239 B:105 0
+    Color2: R:0 G:0 B:0 8
+    BurstDelay: 0 3
+    BurstCount: 10 40
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 15
+    VelOrthoY: -3 3
+    VelOrthoZ: -3 3
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Base:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXCloudCR01.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 3 10
+    SystemLifetime: 30
+    Size: 15 25
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 0.75 1 0
+    Alpha2: -0.5 0 1
+    Color1: R:79 G:163 B:66 0
+    Color2: R:0 G:0 B:0 6
+    BurstDelay: 0 3
+    BurstCount: 8 8
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: 0 0
+    VelOrthoY: 0 0
+    VelOrthoZ: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 40
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Debris:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ALPHA
+    Type: PARTICLE
+    ParticleName: kw/FXGlass.dds
+    FramesPerRow: 4
+    TotalFrames: 8
+    FrameSpeed: 0.001
+    AngleZ: 0 7
+    AngularRateZ: -0.1 0.1
+    AngularDamping: 1 1
+    VelocityDamping: 0.8 0.95
+    Gravity: -0.3
+    DriftVelocity: X:0.05 Y:0 Z:0
+    Lifetime: 20 20
+    SystemLifetime: 30
+    Size: 5 17
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Alpha2: 1 1 20
+    Color1: R:74 G:253 B:74 0
+    Color2: R:43 G:114 B:18 20
+    BurstDelay: 2 5
+    BurstCount: 15 25
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -10 10
+    VelOrthoY: -10 10
+    VelOrthoZ: 3 8
+    VolumeType: CYLINDER
+    VolCylinderRadius: 5
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Fire:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXCloudCR01.dds
+    AngleZ: 0 7
+    AngularRateZ: -0.05 0.05
+    AngularDamping: 1 1
+    VelocityDamping: 0.98 0.99
+    Gravity: 0
+    Lifetime: 10 10
+    SystemLifetime: 30
+    Size: 20 30
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:19 G:53 B:17 0
+    Color2: R:0 G:0 B:0 10
+    BurstDelay: 0 0
+    BurstCount: 15 30
+    InitialDelay: 5 5
+    VelocityType: OUTWARD
+    VelOutward: 1 5
+    VelOutwardOther: 0 0
+    VolumeType: CYLINDER
+    VolCylinderRadius: 5
+    VolCylinderLength: 0
+    IsHollow: No
+    IsGroundAligned: Yes
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Flash:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLenzFlare01.dds
+    AngleZ: -1 1
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 5 10
+    SystemLifetime: 30
+    Size: 0.1 0.5
+    StartSizeRate: 0 0
+    SizeRate: 5 8
+    SizeRateDamping: 1 1
+    Alpha1: 0.75 1 0
+    Alpha2: -0.5 0 1
+    Color1: R:175 G:249 B:151 0
+    Color2: R:0 G:0 B:0 8
+    BurstDelay: 0 0
+    BurstCount: 1 2
+    InitialDelay: 0 0
+    VelocityType: SPHERICAL
+    VelSpherical: 20 30
+    VolumeType: SPHERE
+    VolSphereRadius: 20
+    IsHollow: Yes
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Lightning:
+    Priority: WEAPON_EXPLOSION
+    IsOneShot: No
+    Shader: ADDITIVE
+    Type: PARTICLE
+    ParticleName: kw/FXLightning03.dds
+    AngleZ: 0 7
+    AngularRateZ: 0 0
+    AngularDamping: 1 1
+    VelocityDamping: 1 1
+    Gravity: 0
+    Lifetime: 5 10
+    SystemLifetime: 30
+    Size: 5 30
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 1 1
+    Alpha1: 1 1 0
+    Color1: R:255 G:237 B:164 0
+    Color2: R:66 G:119 B:60 4
+    Color3: R:0 G:0 B:0 8
+    BurstDelay: 0 5
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: OUTWARD
+    VelOutward: 0.1 0.25
+    VelOutwardOther: 0 0
+    VolumeType: SPHERE
+    VolSphereRadius: 45
+    IsHollow: No
+    IsGroundAligned: No
+    IsEmitAboveGroundOnly: No
+    IsParticleUpTowardsEmitter: No
+  KWPS_TibAgitationHit_Shards:
+    Priority: ALWAYS_RENDER
+    IsOneShot: No
+    Shader: ALPHA
+    Type: DRAWABLE
+    ParticleName: KW_EXTIBCLUSTER
+    AngleZ: 0 7
+    AngularRateZ: -0.2 0.2
+    AngularDamping: 0.9 1
+    VelocityDamping: 0.8 0.95
+    Gravity: -0.5
+    Lifetime: 30 30
+    SystemLifetime: 30
+    Size: 0.01 0.05
+    StartSizeRate: 0 0
+    SizeRate: 0 0
+    SizeRateDamping: 0.5 0.5
+    Alpha1: 1 1 0
+    Alpha2: 1 1 15
+    Alpha3: 1 1 30
+    Color1: R:35 G:35 B:35 0
+    Color2: R:56 G:56 B:56 15
+    Color3: R:56 G:56 B:56 30
+    BurstDelay: 1 2
+    BurstCount: 1 1
+    InitialDelay: 0 0
+    VelocityType: ORTHO
+    VelOrthoX: -5 5
+    VelOrthoY: -5 5
+    VelOrthoZ: 0 8
+    VolumeType: CYLINDER
+    VolCylinderRadius: 0
+    VolCylinderLength: 0
+    IsHollow: Yes
     IsGroundAligned: No
     IsEmitAboveGroundOnly: No
     IsParticleUpTowardsEmitter: No

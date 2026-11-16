@@ -614,6 +614,17 @@ public sealed class SoleSurvivorMatch
             foreach (string key in new[] { "DisplayName", "Geometry", "GeometryMajorRadius", "GeometryMinorRadius", "GeometryHeight" })
                 if (prop.TryGet(key, out var value))
                     car.Set(key, value.DeepClone());
+            // Most of Kane's Wrath's car models (Stuttgart's, and the BR/EE/IT/GR sets) lie lengthwise along their Y axis,
+            // nose at -Y (the box is 7 wide by 13 long): a parked car never moved, so it never mattered. Driven, the
+            // model is turned a quarter so its nose leads (DrawModelYaw), and the box turns with it.
+            float major = prop.GetString("GeometryMajorRadius") is { Length: > 0 } a && float.TryParse(a, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float ma) ? ma : 0;
+            float minor = prop.GetString("GeometryMinorRadius") is { Length: > 0 } b && float.TryParse(b, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float mi) ? mi : 0;
+            if (minor > major)
+            {
+                car.Set("GeometryMajorRadius", minor.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                car.Set("GeometryMinorRadius", major.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                car.Set("DrawModelYaw", "90");
+            }
             car.Set("GeometryIsSmall", "Yes");
             car.Set("CommandSet", RuleNode.Scalar(null));
             car.Set("SelectPortrait", RuleNode.Scalar(null));
@@ -632,11 +643,15 @@ public sealed class SoleSurvivorMatch
             objects.Set(name, car);
         }
         var position = parked.Position;
-        float facing = parked.Orientation;
+        // The drivable car's model is drawn turned by DrawModelYaw: face it that much less so it stands as it was parked.
+        float facing = parked.Orientation - Sideways(objects[name]!);
         var owner = parked.Owner;
         game.DestroyObject(parked);
         return game.CreateObject(name, owner, position, facing);
     }
+
+    static float Sideways(RuleNode car) =>
+        car.GetString("DrawModelYaw") is { Length: > 0 } yaw && float.TryParse(yaw, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float degrees) ? degrees * MathF.PI / 180 : 0;
 
     /// <summary>Gets the player's soldier into the civilian vehicle beside them, or out of the one they drive.</summary>
     public bool ToggleVehicle(SsrPlayer p)

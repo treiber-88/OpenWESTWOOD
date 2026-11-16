@@ -1,0 +1,905 @@
+;dko denotes a comment by dwight@westwood
+
+	;
+	; -------- HK Specific Effects ---------------
+	;
+
+
+; LMGL1, LMGL2, LMGL3 samples are being called by the HK Light ;Infantry.
+;dko [LightMG-Longburst]
+;dko Sounds = HK_LIGHT_INFANTRY_1F HK_LIGHT_INFANTRY_1F HK_LIGHT_INFANTRY_1F
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~HARKONNEN ORGANIC UNITS~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko associate all STANDARD death screams with this hook
+[hknormalmandying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+FShift= -5 5
+Volume=70
+
+;dko associate all BURNING death screams with this hook
+[hkburningmandying]
+Sounds=burn_dying_1 burn_dying_2 burn_dying_3 burn_dying_4 burn_dying_5 burn_dying_6 burn_dying_7 burn_dying_8 
+Control=random
+Volume=70
+
+;dko associate all CHOKING death screams with this hook
+[hkchoking]
+Sounds=choke_dying_1 choke_dying_2 choke_dying_3 choke_dying_4 choke_dying_5 choke_dying_6 
+Control=random
+Volume=70
+
+;dko associate all CRUSHING death with this hook
+[hkcrush]
+Sounds=crush_guy_1 crush_guy_2 crush_guy_3 crush_guy_4
+Control=random
+Volume=60
+
+;dko added 4/13/01 
+[HKLightInfantryGun]
+Sounds=hk_light_infantry_1 hk_light_infantry_1b hk_light_infantry_1c hk_light_infantry_1d hk_light_infantry_1e hk_light_infantry_1f 
+Control=random
+Volume=80
+
+;dko[HarkInfantryAttack]
+[hkheavymg-shortburst]
+Sounds=hk_light_infantry_1 hk_light_infantry_1b hk_light_infantry_1c hk_light_infantry_1d hk_light_infantry_1e hk_light_infantry_1f 
+Control=random
+Volume=80
+
+;dko[HarkInfantryAttack]
+[hklightmg-shortburst]
+Sounds=hk_light_infantry_1 hk_light_infantry_1b hk_light_infantry_1c hk_light_infantry_1d hk_light_infantry_1e hk_light_infantry_1f 
+Control=random
+Volume=80
+
+;dko[HarkInfantryAttack]
+[hklightmg-longburst]
+Sounds=hk_light_infantry_1 hk_light_infantry_1b hk_light_infantry_1c hk_light_infantry_1d hk_light_infantry_1e hk_light_infantry_1f 
+Control=random
+Volume=80
+
+;dko added 4/24/01 
+[hkheavymg-longburst]
+Sounds = adp_gun_1 adp_gun_2
+Control=random
+Limit = 2
+FShift = -5 5
+Volume=65
+
+;dko[HarkTrooperAttack] 
+[hkbazookalaunch]
+Sounds=hk_rocket_trooper_1
+Volume=70
+
+;dko[HarkTrooperAttack] 
+[hkbazookalaunch1]
+Sounds=hk_rocket_trooper_1
+Volume=70
+
+;dko new idries call 4/13/01
+[HKTrooperGun]
+Sounds=hk_rocket_trooper_1
+Control=random
+Volume=70
+
+;dko[HarkTrooper reload]
+[hkreload]
+Sounds=hk_rocket_trooper_reload_1
+Control=random
+Volume=50
+
+;dko[HarkFlameInfantryAttack]
+[medflamespray]
+Sounds=hk_flame_infantry_1
+Control=random
+Volume=80
+
+;dko[HarkFlameInfantryAttack] new idries call
+[HKFlamerGun]
+Sounds=hk_flame_infantry_1
+Control=random
+Volume=80
+
+;dko[EngineerPistolAttack]
+[hksingleshotpistol]
+Sounds=hk_engineer_pistol_1
+Limit = 1
+Volume=60
+
+;dko added 4/13/01 new idries call
+[HKEngineerGun]
+Sounds=hk_engineer_pistol_1
+Limit = 1
+Volume=60
+
+
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~~~~~~~VEHICLES~~~~~~~~~~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+; Catapult - the HK Inkvine Catapult launch - just a mechanical ejection sound
+[Catapult]
+Sounds=hk_inkvine_shot_1b
+Volume=68
+
+;dko[HarkInkvineDie]
+[hkmedium2]
+Sounds=bigxplosion04 explosion_vehicle_1
+Control=random
+Priority = high
+Volume=70
+
+;dko added 4/20/01
+[hkinkvinemovefxstart]
+Sounds=inkvine_engine_1
+Limit = 1
+Volume=65
+
+;dko 4/13/01 
+;InkvineSplat - as HK Inkvine projectile splats onto ground
+[InkvineSplat]
+Sounds=hk_inkvine_hit_1
+Volume=80
+
+;dko added 4/23/01 new idries call
+[InkvineBurn]
+Sounds = explosion_medium_1
+Volume = 65
+
+;dko[HarkAssaultTank] also is used for the HK Gun Turret
+;dko 5/2/01  let's set this aside for the hk assault tank only
+[hkcannonsingleloudshot]
+Sounds=hk_assault_tank_1a
+Limit = 1
+Volume=66
+
+;dko added 4/20/01
+[hkassaultmovefxstart]
+Sounds=assault_tank_engine_1
+Limit = 1
+Volume=75
+
+;dko[HarkAssaultTankDie]
+[hkmedium1]
+Sounds=bigxplosion04 explosion_vehicle_1 explosion_vehicle_2
+Control=random
+Priority = high
+Volume=70
+
+;dko[HarkBuzzsawAttack]
+[hkmedmg-shortburst]
+Sounds=hk_buzzsaw_gun_1
+Control=random
+Volume=80
+
+[HarkBuzzsawAttack2]
+;dko use this if we have a call for the saw actually cutting into the fleshy target.  Sound is combination of saw, bones, and flesh
+Sounds=buzzsaw_rip_1
+;Control=random
+Volume=80
+
+
+;dko added 4/20/01
+[hkbuzzsawmovefxstart]
+Sounds=buzzstartmove_mod_1
+Limit = 1
+Volume = 55
+
+;dko[HarkBuzzsawDie]
+[hksmall1]
+Sounds=bigxplosion04 explosion_vehicle_1
+Control=random
+Priority = high
+Volume=80
+
+;dko[HarkDevastatorAttack]
+;dko plasma cannon fires
+[plasma1]
+Sounds=hk_devastator_1d
+Control=random
+Limit = 1
+Volume=70
+
+;dko new idries call 4/13/01
+[HKDevastatorGun]
+Sounds=hk_devastator_1d
+Limit = 1
+Volume=70
+
+;dko[HarkDevastatorAttack2]
+;dko missile fires
+[hkrocketlaunch]
+Sounds=hk_missile_tank_1
+Control=random
+Volume=80
+
+;dko new idries call 4/13/01
+[HKDevastatorMissile]
+Sounds=hk_missile_tank_1
+Volume=80
+
+;dko added 4/20/01
+[hkdevastatormovefxstart]
+Sounds = hk_devastator_walk_1
+Limit = 1
+Volume = 60
+ 
+;dko[HarkDevastatorDie]
+[explode]
+Sounds=explosion_vehicle_2
+Priority = high
+Volume=80
+
+;dko[HarkMissileTankAttack]
+[hkmissilelaunch]
+Sounds=hk_missile_tank_1
+Control=random
+Volume=80
+
+;dko added 4/13/01 new idries call
+[HKMissileTankBarrage]
+Sounds=hk_missile_tank_1
+Volume=80
+
+;dko added 4/20/01
+[hkmissilemovefxstart]
+Sounds=hk_missile_tank_move_1
+Limit = 1
+Volume=60
+
+;dko[HarkOrnithopterAttack]
+[hkrocketlaunch1]
+Sounds=ornithopter_rocket_2
+Control=random
+Limit = 1
+Volume=70
+
+;dko new idries call 4/13/01
+[HKGunshipGun]
+Sounds=hk_adp_gun_1
+Volume=80
+
+;dko added 4/30/01
+;hk adp move
+;[gunshipflying]
+;Sounds=or_adp_motor_1
+;Limit = 1
+;Volume=65
+
+;dko[HarkOrnithopterAscend]
+[hkgunshipoff]
+Sounds=ornithopter_motor_1c
+Control=random
+Volume=50
+
+;dko[HarkOrnithopterDescend]
+[hkgunshipland]
+Sounds=hk_ornithopter_motor_down_1
+Control=random
+Volume=50
+
+;dko ADV Carryall Ascend added 4/24/01 new idries call
+[hkcarryalltakeoff]
+Sounds=adv_carryall_pickup_1
+Control=random
+Limit = 1
+Volume=40
+
+;dko ADV Carryall descent added 4/24/01 new idries call
+[hkcarryallland]
+Sounds=adv_carryall_land_1
+Control=random
+Limit = 1
+Volume=40
+
+;dko added 4/30/01
+[hkadvcarryallmovefxstart]
+Sounds = adv_carryall_takeoff_1
+Limit = 1
+Volume=70
+
+;dko added 4/30/01
+[hkcarryallmovefxstart]
+Sounds = adv_carryall_takeoff_1
+Limit = 1
+Volume=70
+
+;dko added 4/20/01
+[hkflamemovefxstart]
+Sounds=hk_flame_tank_move_1
+Limit = 1
+Volume=70
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~CONSTRUCTION & BUILDING SOUNDS~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko MCV deploys
+[hkmcvdeploy]
+Sounds=mcv_b_open_1
+Control=random
+Volume=40
+
+;dko MCV Drills into ground
+[hkcyconstructingabuilding]
+Sounds=mcv_d_drill_dig_1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[hksmallconstruction]
+Sounds=mcv_f_scaffold_up_1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[hkmediumconstruction]
+Sounds=mcv_g_building_out_1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[hklargeconstruction]
+Sounds=mcv_g_building_out_1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding with sparks 3/27/01 one call is sparks plural one is singular.  which one is correct?
+[hksconstructionsparks]
+Sounds=constructionsparks
+Control=random
+Volume=40
+      
+;dko MCV Scaffolding with sparks 3/27/01 one call is sparks plural one is singular.  which one is correct?
+[hksconstructionspark]
+Sounds=constructionsparks
+Control=random
+Volume=40
+      
+
+;dko HK outpost amb sound 
+;[hkambient2]
+;Volume=80
+
+;dko hk construction yard stationary amb sound 
+;[hkambient1]
+;Volume=80
+
+;dko HK factory amb sound 
+;[hkfactorynoise1]
+;Volume=80
+
+;dko HK palace amb sound 
+;[hkambient8]
+;Volume=80
+
+;dko HK star port amb sound 
+;[hkambient3]
+;Volume=80
+
+;dko HK windtrap amb sound 
+;[hkambient4]
+;Volume=80
+
+;dko HK windtrap explode sound 
+;[explode2.wav]
+;Volume=80
+
+;dko hk burning large
+;[hkburninglarge]
+;Control=random
+;Volume=80
+
+;dko HK SM Stationary building damage? 
+;[atburningsmall]
+;Control=random
+;Volume=80
+
+;dko flame turret
+[largeflamespray]
+Sounds=hk_flame_turret_1
+Limit = 1
+Volume=80
+
+;dko flame turret new idries call 4/13/01
+[HKFlameTowerBase]
+Sounds=hk_flame_turret_1
+Limit = 1
+Volume=80
+
+;dko HK Gun Turret added 4/13/01 new idries call
+[HKGunTurretGun]
+Sounds=hk_assault_tank_1a
+Volume=66
+
+;dko flame turret move test 4/23/01
+[HKFlameTowerBaseMoveFxStart]
+Sounds=turret_start_11
+Volume=40
+
+;dko flame turret move test 4/23/01
+[HKFlameTowerBaseMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+;loop
+Decay = 1
+Volume=70
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~BUILDING EXPLOSION SOUNDS~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko Large HK Building Explodes
+[hklargebuildingbang]
+Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Control=random
+Priority = critical
+Volume=80
+
+
+;dko AT Stationary building damage
+[hkburninglarge]
+Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Control=random
+Priority = critical
+Volume=70
+
+
+
+
+
+
+	;**********************************
+	; -------- UNIT VOICES ------------
+	;**********************************
+
+
+[LocalDefaults]
+Type	=	Dialog
+Control	=	Random
+			
+
+[HKScoutSelection]
+Sounds = $01-US01		 ;"Yes!"
+Sounds = $01-US02		 ;"Reporting!"
+Sounds = $01-US03		 ;"What?!  (as if you are bothering him)"
+Sounds = $01-US06		 ;"Just lurking about."
+ 
+
+[HKScoutMove]
+Sounds = $01-UM00		 ;"At once."
+Sounds = $01-UM01		 ;"Understood."
+Sounds = $01-UM04		 ;"Let's get a closer look."
+Sounds = $01-UM07		 ;"As you wish."
+ 
+
+[HKFlameAttack]
+Sounds = $04-UA01		 ;"Burners on."
+Sounds = $04-UA02		 ;"Ashes to ashes…"
+Sounds = $04-UA04		 ;"Careful it's hot"
+Sounds = $04-UA07		 ;"Put to the torch."
+Sounds = $04-UA08		 ;"Smoke 'em!"
+Sounds = $04-UA11		 ;"Flame on!"
+
+
+[HKFlameSelection]
+Sounds = $04-US02		 ;"Flame ready."
+Sounds = $04-US03		 ;"I'm burning for a fight"
+Sounds = $04-US05		 ;"Flame Tanks primed"
+Sounds = $04-US08		 ;"Maximum burn"
+Sounds = $04-US11		 ;"Let's Barbeque!"
+
+
+[HKFlameMove]
+Sounds = $04-UM02		 ;"Order understood."
+Sounds = $04-UM03		 ;"Fire lit."
+Sounds = $04-UM06		 ;"Hot and heavy"
+Sounds = $04-UM07		 ;"Turn 'em and burn 'em!"
+Sounds = $04-UM10		 ;"Try and stop me."
+ 
+
+[HKADVCarryallAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-UA01		 ;"Easy"
+Sounds = $08-UA03		 ;"Attempting Transport"
+Sounds = $08-UA04		 ;"No Problem!"
+Sounds = $08-UA08		 ;"I can move that!"
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+
+[HKADVCarryallSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-US00		 ;"Air transport."
+Sounds = $08-US03		 ;"What you need?"
+Sounds = $08-US05		 ;"Need something moved?"
+Sounds = $08-US06		 ;"Carryall in position."
+Sounds = $08-US07		 ;"At your bidding"
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+
+[HKADVCarryallMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-UM00		 ;"Setting new course."
+Sounds = $08-UM01		 ;"Coming about."
+Sounds = $08-UM05		 ;"Agreed."
+Sounds = $08-UM06		 ;"Course confirmed."
+Sounds = $08-UM08		 ;"Roger that."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+
+[HKTrooperAttack]
+Sounds = $09-UA01		 ;"Attack!"
+Sounds = $09-UA02		 ;"Die!"
+Sounds = $09-UA05		 ;"First blood is ours."
+Sounds = $09-UA07		 ;"Lambs to the slaughter."
+Sounds = $09-UA09		 ;"No prisoners!"
+
+
+[HKTrooperSelection]
+Sounds = $09-US01		 ;"Bring them on."
+Sounds = $09-US04		 ;"I live for pain."
+Sounds = $09-US05		 ;"This Trooper's ready."
+Sounds = $09-US06		 ;"Bring 'em on."
+Sounds = $09-US07		 ;"Your orders?"
+ 
+
+[HKTrooperMove]
+Sounds = $09-UM01		 ;"Understood."
+Sounds = $09-UM02		 ;"At once."
+Sounds = $09-UM03		 ;"I go…and death will follow"
+Sounds = $09-UM06		 ;"For the Baron!"
+Sounds = $09-UM08		 ;"For Geidi Prime!"
+ 
+
+[HKAssaultAttack]
+Sounds = $11-UA02		 ;"One for the Baron."
+Sounds = $11-UA05		 ;""Bah"
+Sounds = $11-UA06		 ;"They'll die quickly…"
+Sounds = $11-UA08		 ;"Hit 'em hard!"
+Sounds = $11-UA10		 ;"All too easy."
+ 
+
+[HKAssaultSelection]
+Sounds = $11-US00		 ;"Armed and dangerous."
+Sounds = $11-US02		 ;"Reporting!"
+Sounds = $11-US07		 ;"Ready to rumble."
+Sounds = $11-US10		 ;"Full power"
+ 
+
+[HKAssaultMove]
+Sounds = $11-UM00		 ;"As you command."
+Sounds = $11-UM04		 ;"Engines engaged."
+Sounds = $11-UM06		 ;"Rolling thunder."
+Sounds = $11-UM07		 ;"Metal on the move."
+ 
+
+[HKFlamerAttack]
+Sounds = $18-UA00		 ;"Burn them all."
+Sounds = $18-UA02		 ;"Light 'em up."
+Sounds = $18-UA05		 ;"Embrace the flame"
+Sounds = $18-UA06		 ;"Your turn to burn!"
+Sounds = $18-UA07		 ;"Roast 'em!"
+ 
+
+[HKFlamerSelection]
+Sounds = $18-US02		 ;"Smells like…victory."
+Sounds = $18-US04		 ;"It's getting hot down here."
+Sounds = $18-US05		 ;"Shall I light a fire?"
+Sounds = $18-US09		 ;"Let's burn!"
+Sounds = $18-US10		 ;"My blood's boiling."
+ 
+
+[HKFlamerMove]
+Sounds = $18-UM01		 ;"On my way."
+Sounds = $18-UM05		 ;"Let's start a fire"
+Sounds = $18-UM07		 ;"Looking for tinder."
+Sounds = $18-UM08		 ;"Where there's smoke"
+Sounds = $18-UM11		 ;"Excellent"
+ 
+
+[HKBuzzsawAttack]
+Sounds = $19-UA00		 ;"Time to kill!"
+Sounds = $19-UA01		 ;"They'll fall before me…"
+Sounds = $19-UA02		 ;"Rip it up!"
+Sounds = $19-UA03		 ;"Slice and Dice!"
+Sounds = $19-UA06		 ;"In my sights!"
+Sounds = $19-UA07		 ;"Divide and conquer!  Ha-ha!"
+Sounds = $19-UA08		 ;"Tearing it up!"
+ 
+
+[HKBuzzsawSelection]
+Sounds = $19-US00		 ;"Ready to roll."
+Sounds = $19-US04		 ;"Find me something fleshy."
+Sounds = $19-US06		 ;"Need some power tools?"
+ 
+
+[HKBuzzsawMove]
+Sounds = $19-UM00		 ;"At last."
+Sounds = $19-UM02		 ;"On the move."
+Sounds = $19-UM03		 ;"Saws engaged."
+Sounds = $19-UM04		 ;"Cutting loose…"
+Sounds = $19-UM07		 ;"Chop"
+ 
+
+[HKMissileAttack]
+Sounds = $33-UA00		 ;"Target locked."
+Sounds = $33-UA02		 ;"No escape."
+Sounds = $33-UA05		 ;"Mass Destruction!"
+Sounds = $33-UA06		 ;"Lock on target!"
+ 
+
+[HKMissileSelection]
+Sounds = $33-US02		 ;"Harkonnen ready."
+Sounds = $33-US05		 ;"Warheads armed"
+Sounds = $33-US07		 ;"Armed and ready"
+Sounds = $33-US08		 ;"On your command."
+ 
+
+[HKMissileMove]
+Sounds = $33-UM02		 ;"Moving out."
+Sounds = $33-UM05		 ;"Closing in"
+Sounds = $33-UM06		 ;"Moving to position."
+Sounds = $33-UM07		 ;"Heading into range."
+ 
+
+[HKDevastatorAttack]
+Sounds = $44-UA00		 ;"Firing sequence initiated."
+Sounds = $44-UA01		 ;"Open fire - all weapons."
+Sounds = $44-UA03		 ;"Devastation Imminent"
+Sounds = $44-UA06		 ;"Weapons to maximum."
+Sounds = $44-UA09		 ;"Devastation Time!"
+ 
+
+[HKDevastatorSelection]
+Sounds = $44-US01		 ;"Reactors stable"
+Sounds = $44-US03		 ;"Radiation?  Heh.. Whatever"
+Sounds = $44-US06		 ;"I feel sick."
+Sounds = $44-US07		 ;"Devastator on-line."
+Sounds = $44-US08		 ;"Radiation level high"
+ 
+
+[HKDevastatorMove]
+Sounds = $44-UM01		 ;"Drives engaged."
+Sounds = $44-UM05		 ;"Control rods engaged."
+Sounds = $44-UM06		 ;"Reactor online."
+Sounds = $44-UM09		 ;"Reactor at maximum."
+ 
+
+[HKInkVineAttack]
+Sounds = $51-UA01		 ;"They'll beg to die!"
+Sounds = $51-UA03		 ;"Releasing Toxin"
+Sounds = $51-UA04		 ;"How 'bout another?"
+Sounds = $51-UA08		 ;"Special Delivery!"
+ 
+
+[HKInkVineSelection]
+Sounds = $51-US00		 ;"Inkvine loaded."
+Sounds = $51-US01		 ;"Toxin ready"
+Sounds = $51-US04		 ;"Catapults locked."
+ 
+
+[HKInkVineMove]
+Sounds = $51-UM05		 ;"Find a peaceful spot and destroy it."
+Sounds = $51-UM06		 ;"On the move."
+Sounds = $51-UM08		 ;"Order confirmed - repositioning."
+ 
+[HKGunshipMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+; Sounds = $22-UM00		 ; Not effected
+Sounds = $22-UM03		 ;
+Sounds = $22-UM04		 ;
+Sounds = $22-UM06		 ;
+Sounds = $22-UM09		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+[HKGunshipSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $22-US02		 ;
+;Sounds = $22-US04		 ;"Ornithopter reporting"
+Sounds = $22-US09		 ;"Airborne reporting"
+Sounds = $22-US05		 ;
+Sounds = $22-US08		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[HKGunshipAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $22-UA02		 ;
+Sounds = $22-UA03		 ;
+Sounds = $22-UA04		 ;
+Sounds = $22-UA07		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[HKEngineerMove]
+Sounds = $53-UM00		 ;
+Sounds = $53-UM02		 ;
+Sounds = $53-UM04		 ;
+Sounds = $53-UM06		 ;
+Sounds = $53-UM08		 ;
+ 
+[HKEngineerSelection]
+Sounds = $53-US00		 ;
+Sounds = $53-US04		 ;
+Sounds = $53-US05		 ;
+Sounds = $53-US07		 ;
+Sounds = $53-US08		 ;
+ 
+[HKEngineerAttack]
+Sounds = $53-UA01		 ;
+Sounds = $53-UA03		 ;
+Sounds = $53-UA04		 ;
+Sounds = $53-UA05		 ;
+ 
+[HKADPAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-UA00		 ;
+Sounds = $08-UA02		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[HKADPMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-UM03		 ;
+Sounds = $08-UM04		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+[HKADPSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $08-US01		 ;
+Sounds = $08-US02		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+;
+; HK Group
+;
+
+; Uncomment after building the foreign group sounds
+
+[HKGroupAttack]
+;Sounds = $09-UA01		 ;"Attack!"
+Sounds = $HARAttack1
+Sounds = $HARAttack2
+
+[HKGroupMove]
+;Sounds = $09-UM01		 ;"Understood."
+Sounds = $HARMove1
+Sounds = $HARMove2
+
+[HKGroupSelection]
+;Sounds = $09-US07		 ;"Your orders?"
+Sounds = $HARSelect1
+Sounds = $HARSelect2
+
+ 
+
+; ----- Special Weapons -----
+;
+; pm 04/25/00 - This is the filmbook woman commenting on the Death Hand.
+; Clashes with the UI comment.
+
+;[HKDeathHandSpecial0]	 ; Played when DeathHand is targeted (deployed)
+;Sounds = $37-UX00		 ;"Target area defined."
+;Sounds = $37-UX03		 ;"Victory shall be ours!"
+
+
+; ----- Devastator -----
+[HKDevastatorSpecial0]	 ; Played when the Devastator is deployed (destructs)
+Sounds = $44-UX00		 ;"Exposing core!"
+Sounds = $44-UX01		 ;"They're coming with me!!"
+Sounds = $44-UX02		 ;"MELTDOOOOWWWNNNNN!"
+Sounds = $44-UX04		 ;"(painful scream)"
+Sounds = $44-UX05		 ;"(fanatical suicidal laughter)"
+
+
+; ----- Harvester -----
+[HKHarvesterAttack]	; used when the harvester gets ordered to harvest
+Sounds = $32-UA01		;"
+Sounds = $32-UA02		;"
+Sounds = $32-UA03		;"
+Sounds = $32-UA04		;"
+Sounds = $32-UA05		;"
+
+[HKHarvesterSelection]
+Sounds = $32-US01		;"
+Sounds = $32-US03		;"
+Sounds = $32-US05		;"
+Sounds = $32-US06		;"
+
+[HKHarvesterMove]
+Sounds = $32-UM00		;"
+Sounds = $32-UM05		;"
+Sounds = $32-UM07		;"
+
+
+[HKLightInfMove]
+Sounds = $50-UM00		;"
+Sounds = $50-UM04		;"
+Sounds = $50-UM06		;"
+Sounds = $50-UM08		;"
+
+[HKLightInfSelection]
+Sounds = $50-US00		;"
+Sounds = $50-US02		;"
+Sounds = $50-US04		;"
+Sounds = $50-US07		;"
+Sounds = $50-US08		;"
+
+[HKLightInfAttack]
+Sounds = $50-UA02		;"
+Sounds = $50-UA03		;"
+Sounds = $50-UA05		;"
+Sounds = $50-UA08		;"
+Sounds = $50-UM03		;"
+
+
+; ----- MCV -----
+[HKMCVSpecial0]		; used when the MCV is deployed
+Sounds = $52-UX01		;"
+Sounds = $52-UX02		;"
+Sounds = $52-UX03		;"
+
+[HKMCVMove]
+Sounds = $52-UM01		;"
+Sounds = $52-UM02		;"
+Sounds = $52-UM05		;"
+Sounds = $52-UM06		;"
+
+[HKMCVSelection]
+Sounds = $52-US00		;"
+Sounds = $52-US01		;"
+Sounds = $52-US02		;"
+Sounds = $52-US05		;"
+Sounds = $52-US05		;"
+Sounds = $52-US05		;"
+Sounds = $52-US06		;"

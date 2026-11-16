@@ -297,6 +297,28 @@ Weapons:
     WeaponSpeed: 180
     FireSound: KwSnd_GDI_Grenadier_GrenadeThrow
     ProjectileDetonationFX: KWFX_FX_GrenadeHit
+  KW_Weapon_GDIGrenadeSoldierEMPGrenade:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 260
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 2000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    ParalyzeRadius: 60
+    ParalyzeTime: 10000
+    ParalyzeType: EMP
+    ParalyzeExclude: UNATTACKABLE INFANTRY TIBERIUM TIBERIUM_FIELD CIVILIAN_BUILDING AIRCRAFT
+    ParalyzeFX: KWFX_FX_NODBuggyEmpHit
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
+    ProjectileObject: KW_GDIGrenadeSoldierEMPGrenadeProjectile
+    WeaponSpeed: 180
+    ProjectileDetonationFX: KWFX_FX_GDI_Grenadier_EMPBlast
   KW_Weapon_GDISniperRifle:
     PrimaryDamage: 400
     PrimaryDamageRadius: 0
@@ -571,6 +593,24 @@ Weapons:
     ProjectileObject: KW_FXArtilleryShell
     WeaponSpeed: 500
     ProjectileDetonationFX: KWFX_FX_GDI_MammothTank_CannonProjectileImpact
+  KW_Weapon_GDIJuggernaughtArtilleryBombard:
+    PrimaryDamage: 1000
+    PrimaryDamageRadius: 25
+    AttackRange: 50000
+    MinimumAttackRange: 300
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 5000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_GDI_CommandPostGolemCannonFire
+    ProjectileObject: KW_GDIJuggernaughtBombardShell
+    WeaponSpeed: 500
+    ProjectileDetonationFX: KWFX_FX_GDI_MammothTank_CannonProjectileImpact
   KW_Weapon_GDIOrcaRocketWeapon:
     PrimaryDamage: 750
     PrimaryDamageRadius: 10
@@ -607,6 +647,40 @@ Weapons:
     ProjectileObject: KW_GDIOrcaMissileProjectile
     WeaponSpeed: 200
     ProjectileDetonationFX: KWFX_FX_GDI_Orca_RocketImpactExplosion
+  KW_Weapon_GDIOrcaSensorPodWeapon:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 0
+    AttackRange: 300
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 3100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_GDIOrcaSensorPodFire
+    ProjectileObject: KW_GDIOrcaSensorPodProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: KWFX_FX_SensorDeath
+  KW_Weapon_GDIOrcaSensorStickyPodWeapon:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 0
+    AttackRange: 300
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 3100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_GDIOrcaSensorPodFire
+    ProjectileObject: KW_GDIOrcaSensorPodProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: KWFX_FX_SensorDeath
   KW_Weapon_GDIHammerheadChaingun:
     PrimaryDamage: 15
     PrimaryDamageRadius: 0
@@ -870,6 +944,42 @@ Weapons:
     FireFX: KWFX_FX_ShattererSonicFire
     FireSound: KwSnd_GDI_Shatterer_WeaponFire
     ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
+  KW_Weapon_SteelTalonsImprovedShattererOverloadBeam:
+    PrimaryDamage: 1500
+    PrimaryDamageRadius: 10
+    AttackRange: 375
+    MinimumAttackRange: 50
+    DamageType: CANNON
+    DeathType: NORMAL
+    DelayBetweenShots: 3000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_OverloadShattererSonicFire
+    ProjectileObject: KW_SteelTalonsOverloadBeamProjectile
+    WeaponSpeed: 280
+    ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
+  KW_Weapon_OverloadBeamSelfStunWeapon:
+    PrimaryDamage: 1000
+    PrimaryDamageRadius: 10
+    AttackRange: 100
+    DamageType: CANNON
+    DeathType: NORMAL
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES SELF
+    ParalyzeRadius: 1
+    ParalyzeTime: 6000
+    ParalyzeType: EMP
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracer
+    ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
   KW_Weapon_OrcaEchoCannon:
     PrimaryDamage: 750
     PrimaryDamageRadius: 60
@@ -1082,6 +1192,40 @@ Weapons:
     AntiAirborneInfantry: No
     FireFX: KWFX_FX_NODRifleManFire
     FireSound: KwSnd_NOD_ShadowSquad_WeaponFirePistol
+  KW_Weapon_NODShadowPlaceExplosiveCharge:
+    PrimaryDamage: 1800
+    PrimaryDamageRadius: 40
+    AttackRange: 20
+    DamageType: GRENADE
+    DeathType: TOPPLED
+    DelayBetweenShots: 2100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ENEMIES NEUTRALS NOT_SIMILAR
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
+    ProjectileObject: KW_NODHandOfNodBallProjectile
+    WeaponSpeed: 9999
+    ProjectileDetonationFX: WeaponFX_JetMissileDetonation
+  KW_Weapon_NODShadowSquadBeaconWeapon:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 0
+    AttackRange: 10
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 3100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
+    ProjectileObject: KW_NODShadowSquadBeaconProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: WeaponFX_JetMissileDetonation
   KW_Weapon_NODCommandoLaserCarbine:
     PrimaryDamage: 500
     PrimaryDamageRadius: 0
@@ -1199,6 +1343,25 @@ Weapons:
     LaserName: KW_Laser_NODScorpionBuggy_1
     LaserBoneName: FX_WEAPON01
     FireSound: KwSnd_NOD_RaiderBuggy_CapacitorFire
+  KW_Weapon_NODBuggyEmpBurst:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 100
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS SELF
+    ParalyzeRadius: 100
+    ParalyzeTime: 10000
+    ParalyzeType: EMP
+    ParalyzeExclude: UNATTACKABLE INFANTRY TIBERIUM TIBERIUM_FIELD CIVILIAN_BUILDING AIRCRAFT
+    ParalyzeFX: KWFX_FX_NODBuggyEmpHit
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
   KW_Weapon_NODRaiderTankCannon:
     PrimaryDamage: 240
     PrimaryDamageRadius: 0
@@ -1317,6 +1480,24 @@ Weapons:
     ProjectileObject: KW_NodMobileArtilleryShell
     WeaponSpeed: 200
     ProjectileDetonationFX: KWFX_FX_NODArtShellMiss
+  KW_Weapon_NodMobileArtilleryBombardCannon:
+    PrimaryDamage: 1200
+    PrimaryDamageRadius: 110
+    AttackRange: 50000
+    MinimumAttackRange: 125
+    DamageType: CANNON
+    DeathType: NORMAL
+    DelayBetweenShots: 5000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NODMobileArtilleryBombardCannon
+    ProjectileObject: KW_NodMobileArtilleryShell
+    WeaponSpeed: 300
+    ProjectileDetonationFX: KWFX_FX_NODArtShellMiss
   KW_Weapon_NODAvatarLaser:
     PrimaryDamage: 900
     PrimaryDamageRadius: 0
@@ -1368,6 +1549,38 @@ Weapons:
     ProjectileObject: KW_NODBlackHandFlamerProjectile
     WeaponSpeed: 150
     ProjectileDetonationFX: WeaponFX_JetMissileDetonation
+  KW_Weapon_NODAvatarCommandeerParalyzeWeapon:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 10
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    ParalyzeRadius: 10
+    ParalyzeTime: 3000
+    ParalyzeType: USER_PARALYZE
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
+  KW_Weapon_NODAvatarCommandeerWeapon:
+    PrimaryDamage: 10000
+    PrimaryDamageRadius: 0
+    AttackRange: 10
+    DamageType: CANNON
+    DeathType: NORMAL
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracer
+    ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
   KW_Weapon_NODVenomMinigun:
     PrimaryDamage: 39
     PrimaryDamageRadius: 0
@@ -1434,6 +1647,40 @@ Weapons:
     AntiAirborneInfantry: Yes
     FireFX: KWFX_FX_NODRifleManFire
     FireSoundPerClip: KwSnd_NOD_RifleMilitant_GunFire_v2
+  KW_Weapon_NODVertigoDisruptionPodWeapon:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 0
+    AttackRange: 300
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 3100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NODVertigoDisruptionPodFire
+    ProjectileObject: KW_NODVertigoDisruptionPodProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: KWFX_FX_NODVertigoDisruptionPodDeploy
+  KW_Weapon_NODVertigoDisruptionStickyPodWeapon:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 0
+    AttackRange: 300
+    DamageType: GRENADE
+    DeathType: NORMAL
+    DelayBetweenShots: 3100
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NOD_Vertigo_StickyDisruptionPodFire
+    ProjectileObject: KW_NODVertigoDisruptionPodProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: KWFX_FX_NODVertigoDisruptionPodDeploy
   KW_Weapon_NODWarmechTriPointLaser1:
     PrimaryDamage: 800
     PrimaryDamageRadius: 8
@@ -1451,6 +1698,21 @@ Weapons:
     LaserName: KW_Laser_NODMetaUnit_1
     LaserBoneName: FX_LAZERBLAST
     FireSound: KwSnd_NOD_Redeemer_LaserFire
+  KW_Weapon_NODWarmechRageGenerator:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 500
+    AttackRange: 100
+    DamageType: GRENADE
+    DeathType: EXPLODED
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NODRedeemerRageGenerator
+    ProjectileDetonationFX: WeaponFX_JetMissileDetonation
   KW_Weapon_NODConfessorMinigun:
     PrimaryDamage: 6
     PrimaryDamageRadius: 0
@@ -1481,6 +1743,23 @@ Weapons:
     AntiAirborneInfantry: No
     FireFX: KWFX_FX_ChargedParticleBeamFire
     FireSound: KwSnd_NOD_Confessor_ChargedParticleBeamWeaponFire
+  KW_Weapon_BlackHandConfessorCabalGrenade:
+    PrimaryDamage: 1
+    PrimaryDamageRadius: 75
+    AttackRange: 250
+    DamageType: GRENADE
+    DeathType: EXPLODED
+    DelayBetweenShots: 5750
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
+    ProjectileObject: KW_NODConfessorGrenadeProjectile
+    WeaponSpeed: 200
+    ProjectileDetonationFX: KWFX_FX_NOD_HalGrenade
   KW_Weapon_BlackHandTankTankRocket:
     PrimaryDamage: 375
     PrimaryDamageRadius: 10
@@ -1561,6 +1840,28 @@ Weapons:
     FireFX: KWFX_FX_ChargedParticleBeamFire
     FireSoundPerClip: KwSnd_NOD_Enlightened_ChargedParticleBeamWeaponFire
     ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
+  KW_Weapon_NODCyborgEMPCannon:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 250
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 2000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    ParalyzeRadius: 50
+    ParalyzeTime: 5000
+    ParalyzeType: EMP
+    ParalyzeExclude: UNATTACKABLE INFANTRY TIBERIUM TIBERIUM_FIELD CIVILIAN_BUILDING AIRCRAFT
+    ParalyzeFX: KWFX_FX_NODBuggyEmpHit
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NODSilent1sEMPMuzzle
+    ProjectileObject: KW_NODEMPBlastProjectile
+    WeaponSpeed: 400
+    ProjectileDetonationFX: KWFX_FX_NODSilent1sEMPHit
   KW_Weapon_TibTrooperBlastCannon:
     PrimaryDamage: 20
     PrimaryDamageRadius: 40
@@ -1592,6 +1893,28 @@ Weapons:
     FireFX: KWFX_FX_SChargedParticleBeamFire
     FireSoundPerClip: KwSnd_NOD_Enlightened_SuperChargedParticleBeamWeaponFire
     ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
+  KW_Weapon_NODImprovedCyborgEMPCannon:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 275
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 2000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ALLIES ENEMIES NEUTRALS
+    ParalyzeRadius: 75
+    ParalyzeTime: 7500
+    ParalyzeType: EMP
+    ParalyzeExclude: UNATTACKABLE INFANTRY TIBERIUM TIBERIUM_FIELD CIVILIAN_BUILDING AIRCRAFT
+    ParalyzeFX: KWFX_FX_NODBuggyEmpHit
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_NODSilent1sEMPMuzzle
+    ProjectileObject: KW_NODEMPBlastProjectile
+    WeaponSpeed: 400
+    ProjectileDetonationFX: KWFX_FX_NODSilent1sEMPHit
   KW_Weapon_MarkedOfKaneVenomSuperChargedParticleBeam:
     PrimaryDamage: 165
     PrimaryDamageRadius: 0
@@ -1766,6 +2089,23 @@ Weapons:
     FireFX: KWFX_FX_LightningSpikeFire
     FireSound: KwSnd_ALI_StormColumn_SmallWeaponFire
     ProjectileDetonationFX: WeaponFX_GenericTankShellDetonation
+  KW_Weapon_AlienCrystalShieldWeaponTrigger:
+    PrimaryDamage: 0
+    PrimaryDamageRadius: 0
+    AttackRange: 50000
+    DamageType: EXPLOSION
+    DeathType: NORMAL
+    DelayBetweenShots: 1000
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: NOT_SIMILAR ALLIES ENEMIES NEUTRALS
+    ParalyzeRadius: 100
+    ParalyzeTime: 1250
+    ParalyzeType: USER_PARALYZE
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: WeaponFX_GenericTankGunNoTracerSmall
   KW_Weapon_RiftGeneratorWeapon:
     PrimaryDamage: 200
     PrimaryDamageRadius: 300
@@ -1867,6 +2207,23 @@ Weapons:
     WeaponSpeed: 500
     FireSound: KwSnd_ALI_Stalker_ShardWeaponFireVeteran
     ProjectileDetonationFX: KWFX_FX_AlienTibShard_WeaponProjectileImpact
+  KW_Weapon_AlienStalkerTiberiumAgitation:
+    PrimaryDamage: 1000
+    PrimaryDamageRadius: 25
+    AttackRange: 375
+    DamageType: TIBERIUM
+    DeathType: NORMAL
+    DelayBetweenShots: 2500
+    ClipSize: 0
+    ClipReloadTime: 0
+    RadiusDamageAffects: ENEMIES ALLIES NEUTRALS NOT_SIMILAR
+    AntiGround: Yes
+    AntiAirborneVehicle: No
+    AntiAirborneInfantry: No
+    FireFX: KWFX_FX_AlienTibAgitationFire
+    ProjectileObject: KW_AlienTibAgitationProjectile
+    WeaponSpeed: 400
+    ProjectileDetonationFX: KWFX_FX_AlienTibAgitationHit
   KW_Weapon_AlienPlaceManipulatorDeviceWeaponTrigger:
     PrimaryDamage: 0
     PrimaryDamageRadius: 0

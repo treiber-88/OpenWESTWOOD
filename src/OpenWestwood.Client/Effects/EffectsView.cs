@@ -541,6 +541,9 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
     readonly List<float> streakWidths = new();
     readonly List<Vector4> streakColors = new();
 
+    static readonly bool ParticleDebug = Environment.GetEnvironmentVariable("OW_PARTICLE_DEBUG") is { Length: > 0 };
+    readonly HashSet<string> particleDebugSeen = new();
+
     void DrawParticles()
     {
         int field = 0;
@@ -549,6 +552,9 @@ public sealed class EffectsView : IFxHost, IParticleWorld, IDisposable
             if (system.ParticleCount == 0 || system.Type is ParticleType.Drawable or ParticleType.Smudge)
                 continue;
             var texture = textures.Get(system.ParticleName);
+            // Debug: OW_PARTICLE_DEBUG=1 prints each system drawn (once a template): its particles and whether its texture loaded.
+            if (ParticleDebug && particleDebugSeen.Add(system.Template.Name))
+                Console.Error.WriteLine($"particles {system.Template.Name}: {system.ParticleCount}, texture {system.ParticleName} {(texture == null ? "MISSING" : "ok")}");
             var blend = BlendFor(system.Template.Shader);
             if (system.Type == ParticleType.Streak && system.ParticleCount >= 2)
             {

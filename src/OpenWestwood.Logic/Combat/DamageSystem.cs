@@ -71,6 +71,20 @@ public sealed class DamageSystem
         }
     }
 
+    /// <summary>A ParalyzeNugget's effect (OpenWESTWOOD, Kane's Wrath's EMP weapons): disables what is near the impact for a while.</summary>
+    void Paralyze(WeaponTemplate weapon, Vector3 at)
+    {
+        string disable = weapon.ParalyzeType == "EMP" ? "DISABLED_EMP" : "DISABLED_PARALYZED";
+        foreach (var victim in game.ObjectsInRadius(at, weapon.ParalyzeRadius))
+        {
+            if (victim.IsEffectivelyDead || victim.IsContained || weapon.ParalyzeExclude.Any(victim.IsKindOf))
+                continue;
+            victim.SetDisabledFor(disable, weapon.ParalyzeFrames);
+            if (weapon.ParalyzeFx.Length > 0)
+                game.Events.PlayFx(weapon.ParalyzeFx, victim.Position, victim);
+        }
+    }
+
     /// <summary>Applies a weapon's damage at a position (and to <paramref name="primaryVictim"/>, if any).</summary>
     public void DealWeaponDamage(WeaponTemplate weapon, GameObject? source, GameObject? primaryVictim, Vector3 position, WeaponBonus bonus)
     {
@@ -91,6 +105,8 @@ public sealed class DamageSystem
         if (weapon.MindControl && source != null && primaryVictim is { IsEffectivelyDead: false } controlled && controlled.IsMobile
             && !controlled.IsKindOf(Core.Kind.Structure) && controlled.Owner != source.Owner && !controlled.IsKindOf("IMMUNE_TO_PSIONICS"))
             controlled.Defect(source.Owner.DefaultTeam, 0);
+        if (weapon.ParalyzeRadius > 0 && weapon.ParalyzeFrames > 0)
+            Paralyze(weapon, primaryVictim is { IsDestroyed: false } hit ? hit.Position : position);
 
         if (radius <= 0)
         {

@@ -272,7 +272,92 @@ public static partial class KwFactionExporter
                         sb.Append($"        {key}: {fx}\n");
                 result.Add(button);
             }
+            // WeaponFireSpecialAbilityUpdate (EMP blasts and grenades, the Confessor's grenade, jump jets, the Rage Generator,
+            // minefields...): walk into StartAbilityRange, unpack, fire SpecialWeapon at the target, pack.
+            foreach (var m in new[] { o, squad }.Where(s => s != null).SelectMany(s => KwXml.AllModules(s!)).Where(m => m.Name.LocalName == "WeaponFireSpecialAbilityUpdate"))
+            {
+                string spId = x.Attr(m, "SpecialPowerTemplate");
+                if (x.Get("SpecialPowerTemplate", spId) is not { } sp || !done.Add(spId))
+                    continue;
+                if (Weapon(x.Attr(m, "SpecialWeapon"), o) is not { } weapon)
+                    continue;
+                var command = commands.FirstOrDefault(c => KwXml.Child(c.Command, "SpecialPower")?.Value.Trim() == spId);
+                if (command.Command == null)
+                    continue; // (no button for it: triggered some other way)
+                string power = AbilityPower(spId, sp);
+                string button = AbilityButton(command.Id, sp, spId, power, x.Attr(command.Command, "Options"));
+                sb.Append($"      ModuleTag_A{++n:00}:\n        Module: Behavior\n        Class: SpecialAbility\n        SpecialPowerTemplate: {power}\n        UpdateModuleStartsAttack: Yes\n");
+                sb.Append($"      ModuleTag_A{++n:00}:\n        Module: Behavior\n        Class: SpecialAbilityUpdate\n        SpecialPowerTemplate: {power}\n        SpecialWeapon: {weapon}\n");
+                sb.Append($"        StartAbilityRange: {F(x.Num(m, "StartAbilityRange", 1e6f))}\n        UnpackTime: {F(x.Ms(m, "UnpackTime"))}\n        PackTime: {F(x.Ms(m, "PackTime"))}\n");
+                foreach (var key in new[] { "TriggerSound", "UnpackSound", "PackSound" })
+                    if (Snd(x.Attr(m, key)) is { Length: > 0 } sound)
+                        sb.Append($"        {key}: {sound}\n");
+                result.Add(button);
+            }
+            // A SpecialPower that modifies the unit itself for a while (AttributeModifierAffectsSelf: Adaptive Armor).
+            foreach (var m in new[] { o, squad }.Where(s => s != null).SelectMany(s => KwXml.AllModules(s!))
+                .Where(m => m.Name.LocalName == "SpecialPower" && x.Attr(m, "AttributeModifierAffectsSelf").Equals("true", StringComparison.OrdinalIgnoreCase)))
+            {
+                string spId = x.Attr(m, "SpecialPowerTemplate");
+                if (x.Get("SpecialPowerTemplate", spId) is not { } sp || !done.Add(spId) || x.Get("AttributeModifier", x.Attr(m, "AttributeModifier")) is not { } modifier)
+                    continue;
+                var command = commands.FirstOrDefault(c => KwXml.Child(c.Command, "SpecialPower")?.Value.Trim() == spId);
+                if (command.Command == null)
+                    continue;
+                string power = AbilityPower(spId, sp);
+                string button = AbilityButton(command.Id, sp, spId, power, "");
+                sb.Append($"      ModuleTag_A{++n:00}:\n        Module: Behavior\n        Class: SpecialAbility\n        SpecialPowerTemplate: {power}\n");
+                sb.Append($"      ModuleTag_A{++n:00}:\n        Module: Behavior\n        Class: TimedAttributeModifierUpdate\n        SpecialPowerTemplate: {power}\n");
+                sb.Append($"        Duration: {F(x.Ms(modifier, "Duration", 10000))}\n");
+                foreach (var mod in KwXml.Children(modifier, "Modifier"))
+                {
+                    string key = x.Attr(mod, "Type").ToUpperInvariant() switch
+                    {
+                        "DAMAGE_MULT" => "Damage", "RATE_OF_FIRE" => "RateOfFire", "RANGE" => "Range", "SPEED" => "Speed", "ARMOR" => "Armor", _ => "",
+                    };
+                    if (key.Length > 0)
+                        sb.Append($"        {key}: {F(KwXml.ParseNumber(x.Attr(mod, "Value"), 100))}%\n");
+                }
+                if (x.Attr(modifier, "ModelConditionsSet") is { Length: > 0 } flags)
+                    sb.Append($"        ModelConditions: {flags}\n");
+                result.Add(button);
+            }
             return (sb.ToString(), result);
+        }
+
+        /// <summary>A unit ability's special power (written once).</summary>
+        string AbilityPower(string spId, XElement sp)
+        {
+            string power = P + spId;
+            if (donePowers.Add(spId))
+            {
+                powers.Append($"  {power}:\n    Enum: SPECIAL_KW_{spId.ToUpperInvariant()}\n    ReloadTime: {F(x.Ms(sp, "ReloadTime", 30000))}\n");
+                powers.Append($"    PublicTimer: No\n    SharedSyncedTimer: No\n    RadiusCursorRadius: {F(x.Num(sp, "RadiusCursorRadius", 16))}\n");
+                if (Snd(x.Attr(sp, "InitiateSound")) is { Length: > 0 } sound)
+                    powers.Append($"    InitiateSound: {sound}\n");
+                string needed = KwXml.Child(sp, "GameDependency") is { } dep ? KwXml.Child(dep, "NeededUpgrade")?.Value.Trim() ?? "" : "";
+                if (needed.Length > 0 && x.Get("UpgradeTemplate", needed) is { } nu && x.Num(nu, "BuildCost") > 0 && Upgrade(needed) is { } upgrade)
+                    powers.Append($"    RequiredUpgrade: {upgrade}\n");
+            }
+            return power;
+        }
+
+        /// <summary>A unit ability's button (written once): its picture, title and description from UnitAbilityButtonTemplates.</summary>
+        string AbilityButton(string cmdId, XElement sp, string spId, string power, string options)
+        {
+            string button = "Command_KW_" + (cmdId.StartsWith("Command_") ? cmdId["Command_".Length..] : cmdId);
+            if (doneButtons.Add(button))
+            {
+                string label = Text(AbilityButtonState(cmdId, 1), Text(x.Attr(sp, "DisplayName"), spId));
+                buttons.Append($"  {button}:\n    Command: SPECIAL_POWER\n    SpecialPower: {power}\n");
+                if (options.Length > 0)
+                    buttons.Append($"    Options: {options}\n");
+                buttons.Append($"    TextLabel: {label}\n");
+                if (AbilityButtonState(cmdId, 0) is { } image)
+                    buttons.Append($"    ButtonImage: KWCAMEO:{image}\n");
+                buttons.Append($"    ButtonBorderType: ACTION\n    DescriptLabel: {Text(AbilityButtonState(cmdId, 2), label)}\n");
+            }
+            return button;
         }
 
         void WritePowers(string output, string header)

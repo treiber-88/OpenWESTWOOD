@@ -1,0 +1,97 @@
+;
+; Music definition file for Emperor
+;
+; Format:
+;
+;#include "<filename>"  ; inlcude contents of <filename>
+;
+;[<name>]               ; track logical name
+;Data    = <file>       ; file to play (no path, no extension)
+;Title   = <title>      ; name user sees
+;Group = <group list>
+;Volume	= <0..100>		; playback volume level
+;Loop = <yes | no>      ; seamless looping
+;
+;DEFINITIONS
+;
+; DATA
+;
+;   Syntax:     Data = <filename>
+;
+;Name of sound file to play for this track, without path or extension. 
+;The Music system will search for the file in the music directory and/or 
+;the CDROM drive at playback time.
+;
+;TITLE
+;
+;    Syntax:    Title = <title/label>
+;
+;This is real name of the track, i.e. the name the user sees. I am not 
+;sure how localization is being done on the project, but I would suspect 
+;that a string label would be used here.
+;
+;GROUP
+;
+;    Syntax:    Group = <Common Atreides Harkonnen Ordos>
+;
+;Specifies the house that this track is associated with. Groups are also 
+;used to specify where the final assets are stored, i.e. on a particular CD 
+;or on the harddisk.
+;
+;VOLUME
+;
+;    Syntax:    Volume = <0..100>
+;
+;Volume level for this track. We assume that all sounds are normalized. 
+:Use this attribute to set the mixing levels for game audio. The value 
+;specified is the percentage of full volume; e.g. 25 means playback at 
+;one quarter of full volume.
+;
+;LOOP
+;
+;    Syntax:    Loop = < yes | no >
+;
+;If set to yes then the track will seamlessly loop. Idea for continuous 
+;ambient music.
+;
+;[GlobalDefaults]       ; specify defaults for all following tracks
+;[LocalDefaults]        ; overrides global defaults for following tracks 
+;                       ; in current file
+;[SectionDefaults]      ; overrides local defaults for following tracks
+;                       ; in current file
+;
+
+[Groups]
+0 = InvalidHouse
+1 = Atreides
+2 = Harkonnen
+3 = Ordos
+4 = HD
+5 = CD1
+6 = CD2
+7 = CD3
+8 = CD4
+
+[GlobalDefaults]
+Title  = no title
+Group  = HD InvalidHouse
+
+;
+; Include tracks for each house
+;
+
+
+#include "AtreidesMusic.txt"
+
+#include "HarkonnenMusic.txt"
+
+#include "OrdosMusic.txt"
+
+#include "CommonMusic.txt"
+
+;
+; Following tracks do not belong to any house
+;
+
+;[MainTitle]
+;Data = (AT01)The_War_Begins

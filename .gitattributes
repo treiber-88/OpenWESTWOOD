@@ -1,0 +1,4 @@
+# The games' big archives (several are over GitHub's 100 MB file limit) go through Git LFS.
+content/**/*.[mM][iI][xX] filter=lfs diff=lfs merge=lfs -text
+content/**/*.[rR][fF][dD] filter=lfs diff=lfs merge=lfs -text
+content/**/*.[bB][aA][gG] filter=lfs diff=lfs merge=lfs -text

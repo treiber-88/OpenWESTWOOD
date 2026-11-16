@@ -1,0 +1,81 @@
+;
+; Music tracks for house Ordos
+;
+
+[LocalDefaults]
+Volume	=	80
+Group = Ordos CD4
+
+[ORMenu]
+Data = OR_Menu1
+Loop = Yes
+Phase = -1
+
+[ORMap]
+Data = OR_Map1
+Loop = Yes
+Phase = -1
+
+[ORScore]
+Data = OR_Score1
+Loop = Yes
+Phase = -1
+
+
+;[Ordos1]
+;Data = (OR01)Not_an_Option
+;Title = Not an Option
+
+[Ordos2]
+Data = (OR02)The_Strategist
+Title = The Strategist
+Phase = 1
+
+[Ordos3]
+Data = (OR03)House_Ordos
+Title = House Ordos
+Phase = 8
+
+[Ordos4]
+Data = (OR04)Ghola
+Title = Ghola
+Phase = 6
+
+[Ordos5]
+Data = (OR05)Executronic
+Title = Executronic
+Phase = 4
+
+[Ordos6]
+Data = (OR06)Deception
+Title = Deception
+Phase = 7
+
+[Ordos7]
+Data = (OR07)Sabotage
+Title = Sabotage
+Phase = 3
+
+[Ordos8]
+Data = (OR08)Dream_of_the_Executrix
+Title = Dream of the Executrix
+Phase = 2
+
+;[Ordos9]
+;Data = (OR09)A_Plan_of_Attack
+;Title = A Plan of Attack
+
+[Ordos10]
+Data = (OR10)Ordos_Control
+Title = Ordos Control
+Phase = 1
+
+[Ordos11]
+Data = (OR11)The_Specimen
+Title = The Specimen
+Phase = 5
+
+[Ordos12]
+Data = (OR12)Infiltrators
+Title = Infiltrators and Assassins
+Phase = 9

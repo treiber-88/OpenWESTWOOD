@@ -56,7 +56,7 @@ public sealed class SpecialAbilityUpdate : Module, IUpdateModule, ISpecialPowerU
     int maxSpecialObjects, awardXp, skillPoints;
     bool skipPackingWithNoTarget, specialObjectsPersistent, specialObjectsPersistWhenOwnerDies, alwaysValidate;
     bool flipAfterPacking, flipAfterUnpacking, doCaptureFx, loseStealthOnTrigger, approachRequiresLos, needToFaceTarget, persistenceRequiresRecharge;
-    string specialObjectName = "";
+    string specialObjectName = "", specialWeaponName = "";
 
     // State
     bool active;
@@ -88,6 +88,7 @@ public sealed class SpecialAbilityUpdate : Module, IUpdateModule, ISpecialPowerU
         skipPackingWithNoTarget = BoolSetting("SkipPackingWithNoTarget");
         packUnpackVariation = FloatSetting("PackUnpackVariationFactor");
         specialObjectName = Setting("SpecialObject");
+        specialWeaponName = Setting("SpecialWeapon");
         maxSpecialObjects = IntSetting("MaxSpecialObjects", 1);
         specialObjectsPersistent = BoolSetting("SpecialObjectsPersistent");
         effectDuration = FramesSetting("EffectDuration");
@@ -591,6 +592,16 @@ public sealed class SpecialAbilityUpdate : Module, IUpdateModule, ISpecialPowerU
 
         bool okToLoseStealth = true;
         var target = Target;
+        // OpenWESTWOOD (Kane's Wrath's WeaponFireSpecialAbilityUpdate: EMP blasts and grenades, the Confessor's grenade, jump
+        // jets, the Rage Generator...): SpecialWeapon is fired at the target, or the spot, when the ability triggers.
+        if (specialWeaponName.Length > 0 && Game.Catalog.Weapon(specialWeaponName) is { } specialWeapon)
+        {
+            var weapon = new Weapon(Owner, specialWeapon, WeaponSlot.Primary);
+            if (target != null)
+                weapon.FireAt(target);
+            else
+                weapon.FireAtPosition(HasTargetPos ? targetPos : Owner.Position);
+        }
         switch (Type)
         {
             case "SPECIAL_MISSILE_DEFENDER_LASER_GUIDED_MISSILES":

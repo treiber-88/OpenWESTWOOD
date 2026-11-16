@@ -111,6 +111,43 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
+  KW_GDIGrenadeSoldierEMPGrenadeProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_UG_GrenadeEMP_Projectile
+            ParticleSysBone: [FXTRAIL KWPS_GUGrenadeTrail]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 50
+        SecondHeight: 50
+        FirstPercentIndent: 20%
+        SecondPercentIndent: 90%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
   KW_NODHandOfNodBallProjectile:
     EditorSorting: SYSTEM
     VisionRange: 0
@@ -294,6 +331,43 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
+  KW_GDIJuggernaughtBombardShell:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_FXArtShell
+            ParticleSysBone: [NONE KWPS_GDIShellTrail]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 80
+        SecondHeight: 40
+        FirstPercentIndent: 25%
+        SecondPercentIndent: 66%
+        FlightPathAdjustDistPerSecond: 0
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
   KW_GDIOrcaMissileProjectile:
     EditorSorting: SYSTEM
     VisionRange: 0
@@ -324,6 +398,42 @@ Objects:
         Class: DumbProjectileBehavior
         FirstHeight: 1
         SecondHeight: 5
+        FirstPercentIndent: 33%
+        SecondPercentIndent: 66%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  KW_GDIOrcaSensorPodProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_FX_Sensor
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 20
+        SecondHeight: 20
         FirstPercentIndent: 33%
         SecondPercentIndent: 66%
         FlightPathAdjustDistPerSecond: 100
@@ -515,6 +625,43 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
+  KW_SteelTalonsOverloadBeamProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_FXEMPBlastProjectile
+            ParticleSysBone: [NONE KWPS_TeraDistortC, NONE KWPS_TeraGlowC, NONE KWPS_TeraGlowC2, NONE KWPS_TeraSparkC, NONE KWPS_TeraSparkC2]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 0
+        SecondHeight: 0
+        FirstPercentIndent: 20%
+        SecondPercentIndent: 40%
+        FlightPathAdjustDistPerSecond: 20
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
   KW_GDIOrcaECHOProjectile:
     EditorSorting: SYSTEM
     VisionRange: 0
@@ -693,6 +840,43 @@ Objects:
         SecondHeight: 0
         FirstPercentIndent: 20%
         SecondPercentIndent: 90%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  KW_NODShadowSquadBeaconProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_NUBBeacon
+            ParticleSysBone: [FXTRAIL KWPS_GDIZSonicProj_Trail]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 0
+        SecondHeight: 0
+        FirstPercentIndent: 20%
+        SecondPercentIndent: 40%
         FlightPathAdjustDistPerSecond: 100
       ModuleTag_05:
         Module: Behavior
@@ -955,6 +1139,79 @@ Objects:
         Module: Behavior
         Class: PhysicsBehavior
         Mass: 0.01
+  KW_NODVertigoDisruptionPodProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_FXDisruptionProjectile
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 5
+        SecondHeight: 5
+        FirstPercentIndent: 33%
+        SecondPercentIndent: 66%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  KW_NODConfessorGrenadeProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_NPHalGrenadeGeo
+            ParticleSysBone: [FXBONE01 KWPS_NPHalTrail, FXBONE02 KWPS_NPHalTrail]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 50
+        SecondHeight: 50
+        FirstPercentIndent: 20%
+        SecondPercentIndent: 90%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
   KW_BlackHandTankRocketProjectile:
     EditorSorting: SYSTEM
     VisionRange: 0
@@ -1025,6 +1282,43 @@ Objects:
         FirstPercentIndent: 20%
         SecondPercentIndent: 90%
         FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  KW_NODEMPBlastProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: KW_FXEMPBlastProjectile
+            ParticleSysBone: [FX_WEAPON KWPS_BuggyEMPBlastTrail_proj]
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 25
+        SecondHeight: 20
+        FirstPercentIndent: 33%
+        SecondPercentIndent: 66%
+        FlightPathAdjustDistPerSecond: 20
       ModuleTag_05:
         Module: Behavior
         Class: PhysicsBehavior
@@ -1172,6 +1466,42 @@ Objects:
         SecondHeight: 0
         FirstPercentIndent: 20%
         SecondPercentIndent: 90%
+        FlightPathAdjustDistPerSecond: 100
+      ModuleTag_05:
+        Module: Behavior
+        Class: PhysicsBehavior
+        Mass: 0.01
+  KW_AlienTibAgitationProjectile:
+    EditorSorting: SYSTEM
+    VisionRange: 0
+    KindOf: PROJECTILE
+    Geometry: Sphere
+    GeometryIsSmall: Yes
+    GeometryMajorRadius: 1.0
+    ArmorSet:
+      Armor: ProjectileArmor
+    Modules:
+      ModuleTag_01:
+        Module: Draw
+        Class: W3DModelDraw
+        ConditionState:
+          NONE:
+            Model: None
+      ModuleTag_02:
+        Module: Body
+        Class: ActiveBody
+        MaxHealth: 100.0
+        InitialHealth: 100.0
+      ModuleTag_03:
+        Module: Behavior
+        Class: DestroyDie
+      ModuleTag_04:
+        Module: Behavior
+        Class: DumbProjectileBehavior
+        FirstHeight: 5
+        SecondHeight: 5
+        FirstPercentIndent: 33%
+        SecondPercentIndent: 66%
         FlightPathAdjustDistPerSecond: 100
       ModuleTag_05:
         Module: Behavior

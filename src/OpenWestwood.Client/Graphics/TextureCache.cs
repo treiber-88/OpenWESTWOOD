@@ -52,6 +52,9 @@ public sealed class TextureCache : IDisposable
         if (textures.TryGetValue(name, out var cached))
             return cached;
 
+        if (EmperorSequence(name) is { } sheet)
+            return textures[name] = new Texture(gl, sheet, repeat: false);
+
         Texture? texture = null;
         string? path = Resolve(name);
         if (path != null)
@@ -149,6 +152,67 @@ public sealed class TextureCache : IDisposable
     /// Kane's Wrath: a texture's spec map ("..._SPM") marks house color in its blue channel; there the texture takes the
     /// player's color, keeping its shading.
     /// </summary>
+    /// <summary>
+    /// Emperor's animated particle textures are numbered files ("!%Bru0.tga" .. "!%Bru20.tga"); "name@seqN" packs N of them
+    /// into one sheet, ceil(sqrt N) frames a row, as a Kane's Wrath flipbook (FramesPerRow, TotalFrames).
+    /// </summary>
+    public static int SequenceFramesPerRow(int frames) => Math.Max(1, (int)MathF.Ceiling(MathF.Sqrt(frames)));
+
+    Image? EmperorSequence(string name)
+    {
+        int at = name.LastIndexOf("@seq", StringComparison.OrdinalIgnoreCase);
+        if (at < 0 || !int.TryParse(name.AsSpan(at + 4), out int count) || count < 1)
+            return null;
+        string stem = name[..at];
+        var frames = new Image?[count];
+        for (int i = 0; i < count; i++)
+            if ((Resolve($"{stem}{i}.tga") ?? (count == 1 ? Resolve(stem + ".tga") : null)) is { } path)
+            {
+                try { frames[i] = Image.Load(fileSystem.ReadAllBytes(path), path); }
+                catch (Exception e) { Console.Error.WriteLine($"Could not load texture {path}: {e.Message}"); }
+            }
+        if (frames.All(f => f == null))
+            return null;
+        // The name's marks say how the pixels are used: '@' the brightness is the opacity (greyscale smoke, white then);
+        // otherwise '!' adds the colour (its alpha, often 0, is not used: opaque).
+        string file = stem[(stem.LastIndexOf('/') + 1)..];
+        bool brightnessAlpha = file.Contains('@'), additive = !brightnessAlpha && file.Contains('!');
+        foreach (var f in frames)
+        {
+            if (f == null || !brightnessAlpha && !additive)
+                continue;
+            var px = f.Pixels;
+            int brightest = 1;
+            if (brightnessAlpha)
+                for (int i = 0; i < px.Length; i += 4)
+                    brightest = Math.Max(brightest, Math.Max(px[i], Math.Max(px[i + 1], px[i + 2])));
+            for (int i = 0; i < px.Length; i += 4)
+            {
+                if (brightnessAlpha)
+                {
+                    int lum = Math.Max(px[i], Math.Max(px[i + 1], px[i + 2]));
+                    px[i] = px[i + 1] = px[i + 2] = 255;
+                    px[i + 3] = (byte)(lum * 255 / brightest);
+                }
+                else
+                    px[i + 3] = 255;
+            }
+        }
+        int w = frames.Max(f => f?.Width ?? 0), h = frames.Max(f => f?.Height ?? 0);
+        int perRow = SequenceFramesPerRow(count), rows = (count + perRow - 1) / perRow;
+        var sheet = new Image(w * perRow, h * rows);
+        for (int i = 0; i < count; i++)
+        {
+            if (frames[i] is not { } f)
+                continue;
+            EmperorColorKey(f);
+            int ox = i % perRow * w, oy = i / perRow * h;
+            for (int y = 0; y < f.Height; y++)
+                Array.Copy(f.Pixels, y * f.Width * 4, sheet.Pixels, ((oy + y) * sheet.Width + ox) * 4, f.Width * 4);
+        }
+        return sheet;
+    }
+
     /// <summary>Emperor's see-through colour: magenta (lattices, girders, fences) is cut out.</summary>
     static void EmperorColorKey(Image image)
     {

@@ -140,6 +140,15 @@ public sealed class WeaponTemplate
     public bool OrderSlavesToAttack { get; }
     /// <summary>OpenWESTWOOD (Kane's Wrath's Cultist): the unit it hits becomes the firer's.</summary>
     public bool MindControl { get; }
+    /// <summary>
+    /// OpenWESTWOOD (Kane's Wrath's ParalyzeNugget: the Awakened's EMP cannon, EMP grenades, the buggy's EMP burst): everything
+    /// within ParalyzeRadius of the impact, but the ParalyzeExclude kinds, is disabled (ParalyzeType, e.g. EMP) for ParalyzeTime.
+    /// </summary>
+    public float ParalyzeRadius { get; }
+    public int ParalyzeFrames { get; }
+    public string ParalyzeType { get; }
+    public string[] ParalyzeExclude { get; }
+    public string ParalyzeFx { get; }
     public string ProjectileStreamName { get; }
     public string LaserName { get; }
     public string LaserBoneName { get; }
@@ -251,6 +260,11 @@ public sealed class WeaponTemplate
         FireSoundPerClip = S("FireSoundPerClip");
         OrderSlavesToAttack = B("OrderSlavesToAttack");
         MindControl = B("MindControl");
+        ParalyzeRadius = RuleValue.Float(S("ParalyzeRadius"));
+        ParalyzeFrames = RuleUnits.Duration(S("ParalyzeTime"));
+        ParalyzeType = S("ParalyzeType") is { Length: > 0 } paralyzeType ? paralyzeType.ToUpperInvariant() : "EMP";
+        ParalyzeExclude = RuleValue.Words(S("ParalyzeExclude"));
+        ParalyzeFx = S("ParalyzeFX");
         ProjectileStreamName = S("ProjectileStreamName");
         LaserName = S("LaserName");
         LaserBoneName = S("LaserBoneName");

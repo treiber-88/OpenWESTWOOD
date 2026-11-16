@@ -1,0 +1,154 @@
+;
+; User Interface Dialog
+;
+
+[LocalDefaults]
+TimeOut   = 3000
+Interrupt = no
+Group = HD InvalidHouse
+
+
+[TMinus1]
+Data = UI-G164
+
+[TMinus2]
+Data = UI-G166
+
+[TMinus3]
+Data = UI-G168
+
+[TMinus4]
+Data = UI-G170
+
+[TMinus5]
+Data = UI-G172
+
+; This is commented out just to build the French files (missing file)
+[MissionAborted]
+;Data = "mission aborted"
+Data = UI-G496
+
+[BaseUnderAttack]
+Data = UI-G006
+
+[ConstructionComplete]
+Data = UI-G174
+
+[BuildingLost]
+Data = UI-G010
+
+[Building]
+Data = UI-G032
+
+[Cancelled]
+;Data = Cancelled
+Data = UI-G237
+
+[EnemyBuildingCaptured]
+Data = UI-G080
+
+[SpecialWeaponReady]
+Data = UI-G054
+
+[CannotDeployHere]
+;Data = "cannot deploy here"
+Data = UI-G216
+
+[UnitRepaired]
+;Data = "unit repaired"
+Data = UI-G225
+
+[GameLoaded]
+Data = UI-G176
+
+[GameSaved]
+Data = UI-G178
+
+[Guarding]
+Data = UI-G112
+
+[HarvesterUnderAttack]
+Data = UI-G004
+
+[OnHold]
+;Data = "on hold"
+Data = UI-G236
+
+[MissileLaunchDetected]
+Data = UI-G072
+
+[Repairing]
+;Data = repairing
+Data = UI-G224
+
+[MissionFailed]
+Data = UI-G184
+
+[InsufficientFunds]
+Data = UI-G162
+
+[MissionComplete]
+Data = UI-G182
+
+[NewConstructionOptions]
+Data = UI-G040
+
+[OrderPlaced]
+;Data = "order placed"
+Data = UI-G273
+
+[CannotBuildHere]
+Data = UI-G034
+
+[LowPower]
+Data = UI-G016
+
+[SpecialWeaponPreping]
+Data = UI-G048
+
+[PrimaryBuildingSelected]
+;Data = "primary building selected"
+Data = UI-G223
+
+[ReinforcementsHaveArrived]
+Data = UI-G160
+
+[Retreating]
+Data = UI-G146
+
+[StructureSold]
+Data = UI-G018
+
+[Silos]
+;Data = silos
+Data = UI-G277
+
+; This is commented out just to build the French files (missing file)
+[StarportOptions]
+;Data = Sport
+Data = UI-G278
+
+[Training]
+Data = UI-G046
+
+[UnitLost]
+Data = UI-G008
+
+[UnitReady]
+Data = UI-G024
+
+; This is commented out just to build the French files (missing file)
+[UpgradeOptions]
+;Data = UpGop
+Data = UI-G279
+
+[Upgrading]
+Data = UI-G106
+
+[WormAttack]
+Data = UI-G098
+
+[WormSign]
+Data = UI-G096
+
+

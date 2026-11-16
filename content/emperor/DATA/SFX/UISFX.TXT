@@ -1,0 +1,7 @@
+
+; user interfce sounds
+
+
+[InterfaceClick]
+Sounds = Button1
+

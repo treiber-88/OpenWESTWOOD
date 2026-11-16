@@ -148,10 +148,19 @@ public sealed class Drawable
     readonly BeaconClientUpdate? beacon;
     readonly Effects.ParticleSystemManager? particles;
 
+    /// <summary>
+    /// DrawModelYaw (degrees): the model is turned this much before the object's facing, for a model built facing
+    /// another way than +X (Sole Survivor's drivable Kane's Wrath cars, whose models lie along Y).
+    /// </summary>
+    readonly float modelYaw;
+
     public Drawable(GameObject obj, Effects.ParticleSystemManager? particles = null)
     {
         Object = obj;
         this.particles = particles;
+        if (obj.Template.Rules.GetString("DrawModelYaw") is { Length: > 0 } yaw
+            && float.TryParse(yaw, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float degrees))
+            modelYaw = degrees * MathF.PI / 180;
         foreach (var module in obj.Template.ModulesOfType("ClientUpdate"))
         {
             if (module.ClassName == "SwayClientUpdate")
@@ -261,7 +270,8 @@ public sealed class Drawable
             position.Z -= (1 - Object.ConstructionPercent / 100f) * Object.Height;
 
         position += Object.DrawJitter;
-        return Matrix4x4.CreateScale(Object.DrawScale) * Matrix4x4.CreateFromQuaternion(Object.Tilt) * Matrix4x4.CreateRotationY(-Object.Pitch)
+        return (modelYaw != 0 ? Matrix4x4.CreateRotationZ(modelYaw) : Matrix4x4.Identity)
+             * Matrix4x4.CreateScale(Object.DrawScale) * Matrix4x4.CreateFromQuaternion(Object.Tilt) * Matrix4x4.CreateRotationY(-Object.Pitch)
              * Matrix4x4.CreateRotationX(Object.Roll)
              * Matrix4x4.CreateRotationZ(Object.Orientation)
              * Matrix4x4.CreateTranslation(position);

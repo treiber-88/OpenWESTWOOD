@@ -1,0 +1,3538 @@
+;
+; Dialog for house Atreides only
+;
+
+[LocalDefaults]
+Group    =   Atreides CD2
+
+[AC-G000]
+Data = AC-G000
+
+[AC-G002]
+Data = AC-G002
+
+[AC-G004]
+Data = AC-G004
+
+[AG-G000]
+Data = AG-G000
+
+[AG-G002]
+Data = AG-G002
+
+[AG-G004]
+Data = AG-G004
+
+[AS-G002]
+Data = AS-G002
+
+[AS-G004]
+Data = AS-G004
+
+[AS-G006]
+Data = AS-G006
+
+[CL-G000]
+Data = CL-G000
+
+[CP-G000]
+Data = CP-G000
+Group = Atreides Harkonnen CD2 CD3
+
+[CP-G002]
+Data = CP-G002
+Group = Atreides Ordos CD2 CD4
+
+[FE-G000]
+Data = FE-G000
+
+[FE-G002]
+Data = FE-G002
+
+[FF-G000]
+Data = FF-G000
+
+[FF-G002]
+Data = FF-G002
+
+[FF-G004]
+Data = FF-G004
+
+[FF-G006]
+Data = FF-G006
+
+[FF-G008]
+Data = FF-G008
+
+[FF-G010]
+Data = FF-G010
+
+[FF-G012]
+Data = FF-G012
+
+[FF-G014]
+Data = FF-G014
+
+[FF-G016]
+Data = FF-G016
+
+[FR-G000]
+Data = FR-G000
+
+[FR-G002]
+Data = FR-G002
+
+[FR-G004]
+Data = FR-G004
+
+[FR-G006]
+Data = FR-G006
+
+[FR-G008]
+Data = FR-G008
+
+[FR-G010]
+Data = FR-G010
+
+[FR-G012]
+Data = FR-G012
+
+[FR-G014]
+Data = FR-G014
+
+[FR-G016]
+Data = FR-G016
+
+[FR-G018]
+Data = FR-G018
+
+[FR-G020]
+Data = FR-G020
+
+[FR-G022]
+Data = FR-G022
+
+[FR-G024]
+Data = FR-G024
+
+[FR-G026]
+Data = FR-G026
+
+[FR-G028]
+Data = FR-G028
+
+[FR-G030]
+Data = FR-G030
+
+[FR-G032]
+Data = FR-G032
+
+[FR-G034]
+Data = FR-G034
+
+[FR-G036]
+Data = FR-G036
+
+[FR-G038]
+Data = FR-G038
+
+[FR-G040]
+Data = FR-G040
+
+[FR-G042]
+Data = FR-G042
+
+[FR-G044]
+Data = FR-G044
+
+[FR-G046]
+Data = FR-G046
+
+[FR-G048]
+Data = FR-G048
+
+[FR-G050]
+Data = FR-G050
+
+[FR-G052]
+Data = FR-G052
+
+[FR-G054]
+Data = FR-G054
+
+[FR-G056]
+Data = FR-G056
+
+[FR-G058]
+Data = FR-G058
+
+[FR-G060]
+Data = FR-G060
+
+[FR-G064]
+Data = FR-G064
+
+[FR-G066]
+Data = FR-G066
+
+[FR-G068]
+Data = FR-G068
+
+[FR-G070]
+Data = FR-G070
+
+[FR-G072]
+Data = FR-G072
+
+[FR-G074]
+Data = FR-G074
+Group = Atreides Ordos CD2 CD4
+
+[FR-G076]
+Data = FR-G076
+
+[FR-G078]
+Data = FR-G078
+
+[FR-G080]
+Data = FR-G080
+
+[FR-G082]
+Data = FR-G082
+
+[FR-G084]
+Data = FR-G084
+
+[FR-G086]
+Data = FR-G086
+
+[FR-G088]
+Data = FR-G088
+
+[GH-G000]
+Data = GH-G000
+
+[GH-G002]
+Data = GH-G002
+
+[IB-G000]
+Data = IB-G000
+
+[IG-G000]
+Data = IG-G000
+
+[IG-G002]
+Data = IG-G002
+
+[II-G000]
+Data = II-G000
+
+[II-G002]
+Data = II-G002
+
+[IX-G000]
+Data = IX-G000
+
+[IX-G002]
+Data = IX-G002
+
+[IX-G004]
+Data = IX-G004
+
+[IX-G006]
+Data = IX-G006
+
+[IX-G008]
+Data = IX-G008
+
+[IX-G010]
+Data = IX-G010
+
+[IX-G012]
+Data = IX-G012
+
+[IX-G014]
+Data = IX-G014
+
+[IX-G016]
+Data = IX-G016
+
+[IX-G018]
+Data = IX-G018
+
+[IX-G020]
+Data = IX-G020
+
+[IX-G022]
+Data = IX-G022
+
+[IX-G024]
+Data = IX-G024
+
+[IX-G026]
+Data = IX-G026
+
+[IX-G028]
+Data = IX-G028
+
+[IX-G030]
+Data = IX-G030
+
+[KK-D000]
+Data = KK-D000
+
+[KK-D002]
+Data = KK-D002
+
+[KK-D004]
+Data = KK-D004
+
+[KK-D006]
+Data = KK-D006
+
+[KK-D008]
+Data = KK-D008
+
+[KK-D010]
+Data = KK-D010
+
+[KK-D012]
+Data = KK-D012
+
+[KK-D014]
+Data = KK-D014
+
+[KK-D016]
+Data = KK-D016
+
+[KK-D018]
+Data = KK-D018
+
+[KK-D020]
+Data = KK-D020
+
+[KK-D022]
+Data = KK-D022
+
+[KK-D024]
+Data = KK-D024
+
+[KK-D026]
+Data = KK-D026
+
+[KK-D028]
+Data = KK-D028
+
+[KK-D030]
+Data = KK-D030
+
+[KK-D032]
+Data = KK-D032
+
+[KK-D034]
+Data = KK-D034
+
+[KK-D036]
+Data = KK-D036
+
+[KK-D038]
+Data = KK-D038
+
+[KK-D040]
+Data = KK-D040
+
+[KK-D042]
+Data = KK-D042
+
+[KK-D044]
+Data = KK-D044
+
+[KK-D046]
+Data = KK-D046
+
+[KK-D048]
+Data = KK-D048
+
+[KK-D050]
+Data = KK-D050
+
+[KK-D052]
+Data = KK-D052
+
+[KK-D054]
+Data = KK-D054
+
+[KK-D056]
+Data = KK-D056
+
+[KK-D058]
+Data = KK-D058
+
+[KK-D060]
+Data = KK-D060
+
+[KK-D062]
+Data = KK-D062
+
+[KK-D064]
+Data = KK-D064
+
+[KK-D066]
+Data = KK-D066
+
+[KK-D068]
+Data = KK-D068
+
+[KK-D070]
+Data = KK-D070
+
+[KK-D072]
+Data = KK-D072
+
+[KK-D074]
+Data = KK-D074
+
+[KK-D076]
+Data = KK-D076
+
+[KK-D078]
+Data = KK-D078
+
+[KK-D080]
+Data = KK-D080
+
+[KK-D082]
+Data = KK-D082
+
+[KK-D084]
+Data = KK-D084
+
+[KK-D086]
+Data = KK-D086
+
+[KK-D088]
+Data = KK-D088
+
+[KK-D090]
+Data = KK-D090
+
+[KK-D092]
+Data = KK-D092
+
+[KK-D094]
+Data = KK-D094
+
+[KK-D096]
+Data = KK-D096
+
+[KK-D098]
+Data = KK-D098
+
+[KK-D100]
+Data = KK-D100
+
+[KK-D102]
+Data = KK-D102
+
+[KK-D104]
+Data = KK-D104
+
+[KK-D106]
+Data = KK-D106
+
+[KK-D108]
+Data = KK-D108
+
+[KK-D110]
+Data = KK-D110
+
+[KK-D112]
+Data = KK-D112
+
+[KK-D114]
+Data = KK-D114
+
+[KK-D116]
+Data = KK-D116
+
+[KK-D118]
+Data = KK-D118
+
+[KK-D120]
+Data = KK-D120
+
+[KK-D122]
+Data = KK-D122
+
+[KK-D124]
+Data = KK-D124
+
+[KK-D126]
+Data = KK-D126
+
+[KK-D128]
+Data = KK-D128
+
+[KK-D130]
+Data = KK-D130
+
+[KK-D132]
+Data = KK-D132
+
+[KK-D134]
+Data = KK-D134
+
+[KK-D136]
+Data = KK-D136
+
+[KK-D138]
+Data = KK-D138
+
+[KK-D140]
+Data = KK-D140
+
+[KK-D142]
+Data = KK-D142
+
+[KK-D144]
+Data = KK-D144
+
+[KK-D146]
+Data = KK-D146
+
+[KK-D148]
+Data = KK-D148
+
+[KK-D150]
+Data = KK-D150
+
+[KK-D152]
+Data = KK-D152
+
+[KK-D154]
+Data = KK-D154
+
+[KK-D156]
+Data = KK-D156
+
+[KK-D158]
+Data = KK-D158
+
+[KK-D160]
+Data = KK-D160
+
+[KK-D162]
+Data = KK-D162
+
+[KK-D164]
+Data = KK-D164
+
+[KK-D166]
+Data = KK-D166
+
+[KK-D168]
+Data = KK-D168
+
+[KK-D170]
+Data = KK-D170
+Group = Atreides Harkonnen CD2 CD4
+
+[KK-D172]
+Data = KK-D172
+
+[KK-D174]
+Data = KK-D174
+
+[KK-D176]
+Data = KK-D176
+
+[KK-D178]
+Data = KK-D178
+
+[KK-D180]
+Data = KK-D180
+
+;;New Add!  May 09, 2001
+[KK-D182]
+Data = KK-D182
+
+[KK-D184]
+Data = KK-D184
+
+[KK-D186]
+Data = KK-D186
+
+[KK-D188]
+Data = KK-D188
+
+[KK-D190]
+Data = KK-D190
+
+[KK-D192]
+Data = KK-D192
+
+[KK-D194]
+Data = KK-D194
+
+[KK-D196]
+Data = KK-D196
+
+[KK-D198]
+Data = KK-D198
+
+[KK-D200]
+Data = KK-D200
+
+[KK-D202]
+Data = KK-D202
+
+[KK-D203]
+Data = KK-D203
+
+[KK-D204]
+Data = KK-D204
+
+[KK-D206]
+Data = KK-D206
+
+[KK-D208]
+Data = KK-D208
+
+[KK-D210]
+Data = KK-D210
+
+[KK-D212]
+Data = KK-D212
+
+[KK-D214]
+Data = KK-D214
+
+[KK-D216]
+Data = KK-D216
+
+[KK-D218]
+Data = KK-D218
+
+[KK-D220]
+Data = KK-D220
+
+[KK-D222]
+Data = KK-D222
+
+[KK-D224]
+Data = KK-D224
+
+[KK-D226]
+Data = KK-D226
+
+[KK-D228]
+Data = KK-D228
+
+[KK-D230]
+Data = KK-D230
+
+[KK-D232]
+Data = KK-D232
+
+[KK-D238]
+Data = KK-D238
+
+[KK-D240]
+Data = KK-D240
+
+[KK-D242]
+Data = KK-D242
+
+[KK-D244]
+Data = KK-D244
+
+[KK-D246]
+Data = KK-D246
+
+[KK-D248]
+Data = KK-D248
+
+[KK-D250]
+Data = KK-D250
+
+[KK-D252]
+Data = KK-D252
+
+[KK-D254]
+Data = KK-D254
+
+[KK-D256]
+Data = KK-D256
+
+[KK-D258]
+Data = KK-D258
+
+[KK-D260]
+Data = KK-D260
+
+[KK-D262]
+Data = KK-D262
+
+[KK-D264]
+Data = KK-D264
+
+[KK-D266]
+Data = KK-D266
+
+[KK-D268]
+Data = KK-D268
+
+[KK-D270]
+Data = KK-D270
+
+[KK-D272]
+Data = KK-D272
+
+[KK-D274]
+Data = KK-D274
+
+[KK-D276]
+Data = KK-D276
+
+[KK-D278]
+Data = KK-D278
+
+[KK-D324]
+Data = KK-D324
+
+[KK-D326]
+Data = KK-D326
+
+[KK-G000]
+Data = KK-G000
+
+[KK-G002]
+Data = KK-G002
+
+[KK-G004]
+Data = KK-G004
+
+[KK-G006]
+Data = KK-G006
+
+[KK-G008]
+Data = KK-G008
+
+[KK-G010]
+Data = KK-G010
+
+[KK-G012]
+Data = KK-G012
+
+[KK-G014]
+Data = KK-G014
+
+[KK-G016]
+Data = KK-G016
+
+[KK-G018]
+Data = KK-G018
+
+[KK-G020]
+Data = KK-G020
+
+[KK-G022]
+Data = KK-G022
+
+[KK-G024]
+Data = KK-G024
+
+[KK-G026]
+Data = KK-G026
+
+[KK-G028]
+Data = KK-G028
+
+[KK-G030]
+Data = KK-G030
+
+[KK-G032]
+Data = KK-G032
+
+[KK-G034]
+Data = KK-G034
+
+[KK-G036]
+Data = KK-G036
+
+[KK-G038]
+Data = KK-G038
+
+[KK-G040]
+Data = KK-G040
+
+[KK-G042]
+Data = KK-G042
+
+[KK-G044]
+Data = KK-G044
+
+[KK-G046]
+Data = KK-G046
+
+[KK-G048]
+Data = KK-G048
+
+[KK-G050]
+Data = KK-G050
+
+[KK-G052]
+Data = KK-G052
+
+[KK-G054]
+Data = KK-G054
+
+[KK-G056]
+Data = KK-G056
+
+[KK-G058]
+Data = KK-G058
+
+[KK-G060]
+Data = KK-G060
+
+[KK-G062]
+Data = KK-G062
+
+[KK-G064]
+Data = KK-G064
+
+[KK-G066]
+Data = KK-G066
+
+[KK-G068]
+Data = KK-G068
+
+[KK-G070]
+Data = KK-G070
+
+[KK-G072]
+Data = KK-G072
+
+[KK-G074]
+Data = KK-G074
+
+[KK-G076]
+Data = KK-G076
+
+[KK-G078]
+Data = KK-G078
+
+[KK-G080]
+Data = KK-G080
+
+[KK-G082]
+Data = KK-G082
+
+[KK-G084]
+Data = KK-G084
+
+[KK-G086]
+Data = KK-G086
+
+[KK-G088]
+Data = KK-G088
+
+[KK-G090]
+Data = KK-G090
+
+[KK-G092]
+Data = KK-G092
+
+[KK-G094]
+Data = KK-G094
+
+[KK-G096]
+Data = KK-G096
+
+[KK-G098]
+Data = KK-G098
+
+[KK-G100]
+Data = KK-G100
+
+[KK-G102]
+Data = KK-G102
+
+[KK-G104]
+Data = KK-G104
+
+[KK-G106]
+Data = KK-G106
+
+[KK-G108]
+Data = KK-G108
+
+[KK-G110]
+Data = KK-G110
+
+[KK-G112]
+Data = KK-G112
+
+[KK-G114]
+Data = KK-G114
+
+[KK-G116]
+Data = KK-G116
+
+[KK-G118]
+Data = KK-G118
+
+[KK-G120]
+Data = KK-G120
+
+[KK-G122]
+Data = KK-G122
+
+[KK-G124]
+Data = KK-G124
+
+[KK-G126]
+Data = KK-G126
+
+; Commented out 04/30/2001 - This is a duplicate part of the previous line KK-G126
+;[KK-G128]
+;Data = KK-G128
+
+[KK-G130]
+Data = KK-G130
+
+[KK-G132]
+Data = KK-G132
+
+[KK-G134]
+Data = KK-G134
+
+[KK-G136]
+Data = KK-G136
+
+[KK-G138]
+Data = KK-G138
+
+[KK-G140]
+Data = KK-G140
+
+[KK-G142]
+Data = KK-G142
+
+[KK-G144]
+Data = KK-G144
+
+[KK-G146]
+Data = KK-G146
+
+[KK-G148]
+Data = KK-G148
+
+[KK-G150]
+Data = KK-G150
+
+[KK-G152]
+Data = KK-G152
+
+[KK-G154]
+Data = KK-G154
+
+[KK-G156]
+Data = KK-G156
+
+[KK-G158]
+Data = KK-G158
+
+[KK-G160]
+Data = KK-G160
+
+[KK-G162]
+Data = KK-G162
+
+[KK-G164]
+Data = KK-G164
+
+[KK-G166]
+Data = KK-G166
+
+[KK-G168]
+Data = KK-G168
+
+[KK-G170]
+Data = KK-G170
+
+[KK-G172]
+Data = KK-G172
+
+[KK-G174]
+Data = KK-G174
+
+[KK-G176]
+Data = KK-G176
+
+[KK-G178]
+Data = KK-G178
+
+[KK-G180]
+Data = KK-G180
+
+[KK-G182]
+Data = KK-G182
+
+[KK-G184]
+Data = KK-G184
+
+[KK-G186]
+Data = KK-G186
+
+[KK-G188]
+Data = KK-G188
+
+[KK-G190]
+Data = KK-G190
+
+[KK-G192]
+Data = KK-G192
+
+[KK-G194]
+Data = KK-G194
+
+[KK-G196]
+Data = KK-G196
+
+[KK-G198]
+Data = KK-G198
+
+[KK-G200]
+Data = KK-G200
+
+[KK-G202]
+Data = KK-G202
+
+[KK-G204]
+Data = KK-G204
+
+[KK-G206]
+Data = KK-G206
+
+[KK-G208]
+Data = KK-G208
+
+[KK-G210]
+Data = KK-G210
+
+[KK-G212]
+Data = KK-G212
+
+[KK-G214]
+Data = KK-G214
+
+[KK-G216]
+Data = KK-G216
+
+[KK-G218]
+Data = KK-G218
+
+[KK-G220]
+Data = KK-G220
+
+[KK-G222]
+Data = KK-G222
+
+[KK-G224]
+Data = KK-G224
+
+[KK-G226]
+Data = KK-G226
+
+[KK-G228]
+Data = KK-G228
+
+[KK-G230]
+Data = KK-G230
+
+[KK-G232]
+Data = KK-G232
+
+[KK-G234]
+Data = KK-G234
+
+[KK-G236]
+Data = KK-G236
+
+[KK-G238]
+Data = KK-G238
+
+[KK-G240]
+Data = KK-G240
+
+[KK-G242]
+Data = KK-G242
+
+[KK-G244]
+Data = KK-G244
+
+[KK-G246]
+Data = KK-G246
+
+[KK-G248]
+Data = KK-G248
+
+[KK-G250]
+Data = KK-G250
+
+[KK-G252]
+Data = KK-G252
+
+[KK-G254]
+Data = KK-G254
+
+[KK-G256]
+Data = KK-G256
+
+[KK-G258]
+Data = KK-G258
+
+[KK-G260]
+Data = KK-G260
+
+[KK-G262]
+Data = KK-G262
+
+[KK-G264]
+Data = KK-G264
+
+[KK-G266]
+Data = KK-G266
+
+[KK-G268]
+Data = KK-G268
+
+[KK-G270]
+Data = KK-G270
+
+[KK-G272]
+Data = KK-G272
+
+[KK-G274]
+Data = KK-G274
+
+[KK-G276]
+Data = KK-G276
+
+[KK-G278]
+Data = KK-G278
+
+[KK-G280]
+Data = KK-G280
+
+[KK-G282]
+Data = KK-G282
+
+[KK-G284]
+Data = KK-G284
+
+[KK-G286]
+Data = KK-G286
+
+[KK-G288]
+Data = KK-G288
+
+[KK-G290]
+Data = KK-G290
+
+[KK-G292]
+Data = KK-G292
+
+[KK-G294]
+Data = KK-G294
+
+[KK-G296]
+Data = KK-G296
+
+[KK-G298]
+Data = KK-G298
+
+[KK-G300]
+Data = KK-G300
+
+[KK-G302]
+Data = KK-G302
+
+[KK-G304]
+Data = KK-G304
+
+[KK-G306]
+Data = KK-G306
+
+[KK-G308]
+Data = KK-G308
+
+[KK-G310]
+Data = KK-G310
+
+[KK-G312]
+Data = KK-G312
+
+[KK-G314]
+Data = KK-G314
+
+[KK-G316]
+Data = KK-G316
+
+[KK-G318]
+Data = KK-G318
+
+[KK-G320]
+Data = KK-G320
+
+[KK-G322]
+Data = KK-G322
+
+[KK-G324]
+Data = KK-G324
+
+[KK-G326]
+Data = KK-G326
+
+[KK-G328]
+Data = KK-G328
+
+[KK-G330]
+Data = KK-G330
+
+[KK-G332]
+Data = KK-G332
+
+[KK-G334]
+Data = KK-G334
+
+[KK-G336]
+Data = KK-G336
+
+[KK-G338]
+Data = KK-G338
+
+[KK-G340]
+Data = KK-G340
+
+[KK-G342]
+Data = KK-G342
+
+[KK-G344]
+Data = KK-G344
+
+[KK-G346]
+Data = KK-G346
+
+[KK-G348]
+Data = KK-G348
+
+[KK-G350]
+Data = KK-G350
+
+[KK-G352]
+Data = KK-G352
+
+[KK-G354]
+Data = KK-G354
+
+[KK-G356]
+Data = KK-G356
+
+[KK-G358]
+Data = KK-G358
+
+[KK-G360]
+Data = KK-G360
+
+[KK-G362]
+Data = KK-G362
+
+[KK-G364]
+Data = KK-G364
+
+[KK-G366]
+Data = KK-G366
+
+[KK-G368]
+Data = KK-G368
+
+[KK-G370]
+Data = KK-G370
+
+[KK-G372]
+Data = KK-G372
+
+[KK-G374]
+Data = KK-G374
+
+[KK-G376]
+Data = KK-G376
+
+[KK-G378]
+Data = KK-G378
+
+[KK-G380]
+Data = KK-G380
+
+[KK-G382]
+Data = KK-G382
+
+[KK-G384]
+Data = KK-G384
+
+[KK-G386]
+Data = KK-G386
+
+[KK-G388]
+Data = KK-G388
+
+[KK-G390]
+Data = KK-G390
+
+[KK-G392]
+Data = KK-G392
+
+[KK-G394]
+Data = KK-G394
+
+[KK-G396]
+Data = KK-G396
+
+[KK-G398]
+Data = KK-G398
+
+[KK-G400]
+Data = KK-G400
+
+[KK-G402]
+Data = KK-G402
+
+[KK-G404]
+Data = KK-G404
+
+[KK-G406]
+Data = KK-G406
+
+[KK-G408]
+Data = KK-G408
+
+[KK-G410]
+Data = KK-G410
+
+[KK-G412]
+Data = KK-G412
+
+[KK-G414]
+Data = KK-G414
+
+[KK-G416]
+Data = KK-G416
+
+[KK-G418]
+Data = KK-G418
+
+[KK-G420]
+Data = KK-G420
+
+[KK-G422]
+Data = KK-G422
+
+[KK-G424]
+Data = KK-G424
+
+[KK-G426]
+Data = KK-G426
+
+[KK-G428]
+Data = KK-G428
+
+[KK-G430]
+Data = KK-G430
+
+[KK-G432]
+Data = KK-G432
+
+[KK-G434]
+Data = KK-G434
+
+[KK-G436]
+Data = KK-G436
+
+[KK-G438]
+Data = KK-G438
+
+[KK-G440]
+Data = KK-G440
+
+[KK-G442]
+Data = KK-G442
+
+[KK-G444]
+Data = KK-G444
+
+[KK-G446]
+Data = KK-G446
+
+[KK-G448]
+Data = KK-G448
+
+[KK-G450]
+Data = KK-G450
+
+[KK-G452]
+Data = KK-G452
+
+[KK-G454]
+Data = KK-G454
+
+[KK-G456]
+Data = KK-G456
+
+[KK-G458]
+Data = KK-G458
+
+[KK-G460]
+Data = KK-G460
+
+[KK-G462]
+Data = KK-G462
+
+[KK-G464]
+Data = KK-G464
+
+[KK-G466]
+Data = KK-G466
+
+[KK-G468]
+Data = KK-G468
+
+[KK-G470]
+Data = KK-G470
+
+[KK-G472]
+Data = KK-G472
+
+[KK-G474]
+Data = KK-G474
+
+[KK-G476]
+Data = KK-G476
+
+[KK-G478]
+Data = KK-G478
+
+[KK-G480]
+Data = KK-G480
+
+[KK-G482]
+Data = KK-G482
+
+[KK-G484]
+Data = KK-G484
+
+[KK-G486]
+Data = KK-G486
+
+[KK-G488]
+Data = KK-G488
+
+[KK-G490]
+Data = KK-G490
+
+[KK-G492]
+Data = KK-G492
+
+[KK-G494]
+Data = KK-G494
+
+[KK-G496]
+Data = KK-G496
+
+[KK-G498]
+Data = KK-G498
+
+[KK-G500]
+Data = KK-G500
+
+[KK-G502]
+Data = KK-G502
+
+[KK-G504]
+Data = KK-G504
+
+[KK-G506]
+Data = KK-G506
+
+[KK-G508]
+Data = KK-G508
+
+[KK-G510]
+Data = KK-G510
+
+[KK-G512]
+Data = KK-G512
+
+[KK-G514]
+Data = KK-G514
+
+[KK-G516]
+Data = KK-G516
+
+[KK-G518]
+Data = KK-G518
+
+[KK-G520]
+Data = KK-G520
+
+[KK-G522]
+Data = KK-G522
+
+[KK-G524]
+Data = KK-G524
+
+[KK-G526]
+Data = KK-G526
+
+[KK-G528]
+Data = KK-G528
+
+[KK-G530]
+Data = KK-G530
+
+[KK-G532]
+Data = KK-G532
+
+[KK-G534]
+Data = KK-G534
+
+[KK-G536]
+Data = KK-G536
+
+[KK-G538]
+Data = KK-G538
+
+[KK-G540]
+Data = KK-G540
+
+[KK-G542]
+Data = KK-G542
+
+[KK-G544]
+Data = KK-G544
+
+[KK-G546]
+Data = KK-G546
+
+[KK-G548]
+Data = KK-G548
+
+[KK-G550]
+Data = KK-G550
+
+[KK-G552]
+Data = KK-G552
+
+[KK-G554]
+Data = KK-G554
+
+[KK-G556]
+Data = KK-G556
+
+[KK-G558]
+Data = KK-G558
+
+[KK-G560]
+Data = KK-G560
+
+[KK-G562]
+Data = KK-G562
+
+[KK-G564]
+Data = KK-G564
+
+[KK-G566]
+Data = KK-G566
+
+[KK-G568]
+Data = KK-G568
+
+[KK-G570]
+Data = KK-G570
+
+[KK-G572]
+Data = KK-G572
+
+[KK-G574]
+Data = KK-G574
+
+[KK-G576]
+Data = KK-G576
+
+[KK-G578]
+Data = KK-G578
+
+[KK-G580]
+Data = KK-G580
+
+[KK-G582]
+Data = KK-G582
+
+[KK-G584]
+Data = KK-G584
+
+[KK-G586]
+Data = KK-G586
+
+[KK-G588]
+Data = KK-G588
+
+[KK-G590]
+Data = KK-G590
+
+[KK-G592]
+Data = KK-G592
+
+[KK-G594]
+Data = KK-G594
+
+[KK-G596]
+Data = KK-G596
+
+[KK-G598]
+Data = KK-G598
+
+[KK-G600]
+Data = KK-G600
+
+[KK-G602]
+Data = KK-G602
+
+[KK-G604]
+Data = KK-G604
+
+[KK-G606]
+Data = KK-G606
+
+[KK-G608]
+Data = KK-G608
+
+[KK-G610]
+Data = KK-G610
+
+[KK-G612]
+Data = KK-G612
+
+[KK-G614]
+Data = KK-G614
+
+[KK-G616]
+Data = KK-G616
+
+[KK-G618]
+Data = KK-G618
+
+[KK-G620]
+Data = KK-G620
+
+[KK-G622]
+Data = KK-G622
+
+[KK-G624]
+Data = KK-G624
+
+[KK-G626]
+Data = KK-G626
+
+[KK-G628]
+Data = KK-G628
+
+[KK-G630]
+Data = KK-G630
+
+[KK-G632]
+Data = KK-G632
+
+[KK-G634]
+Data = KK-G634
+
+[KK-G636]
+Data = KK-G636
+
+[KK-G638]
+Data = KK-G638
+
+[KK-G640]
+Data = KK-G640
+
+[KK-G642]
+Data = KK-G642
+
+[KK-G644]
+Data = KK-G644
+
+[KK-G646]
+Data = KK-G646
+
+[KK-G648]
+Data = KK-G648
+
+[KK-G650]
+Data = KK-G650
+
+[KK-G652]
+Data = KK-G652
+
+[KK-G654]
+Data = KK-G654
+
+[KK-G656]
+Data = KK-G656
+
+[KK-G658]
+Data = KK-G658
+
+[KK-G660]
+Data = KK-G660
+
+[KK-G662]
+Data = KK-G662
+
+[KK-G664]
+Data = KK-G664
+
+[KK-G666]
+Data = KK-G666
+
+[KK-G668]
+Data = KK-G668
+
+[KK-G670]
+Data = KK-G670
+
+[KK-G672]
+Data = KK-G672
+
+[KK-G674]
+Data = KK-G674
+
+[KK-G676]
+Data = KK-G676
+
+[KK-G678]
+Data = KK-G678
+
+[KK-G680]
+Data = KK-G680
+
+[KK-G682]
+Data = KK-G682
+
+[KK-G684]
+Data = KK-G684
+
+[KK-G686]
+Data = KK-G686
+
+[KK-G688]
+Data = KK-G688
+
+[KK-G690]
+Data = KK-G690
+
+[KK-G692]
+Data = KK-G692
+
+[KK-G694]
+Data = KK-G694
+
+[KK-G696]
+Data = KK-G696
+
+[KK-G698]
+Data = KK-G698
+
+[KK-G700]
+Data = KK-G700
+
+[KK-G702]
+Data = KK-G702
+
+[KK-G704]
+Data = KK-G704
+
+[KK-G706]
+Data = KK-G706
+
+[KK-G708]
+Data = KK-G708
+
+[KK-G710]
+Data = KK-G710
+
+[KK-G712]
+Data = KK-G712
+
+[KK-G714]
+Data = KK-G714
+
+[KK-G716]
+Data = KK-G716
+
+[KK-G718]
+Data = KK-G718
+
+[KK-G720]
+Data = KK-G720
+
+[KK-G722]
+Data = KK-G722
+
+[KK-G724]
+Data = KK-G724
+
+[KK-G725]
+Data = KK-G725
+
+[KK-G726]
+Data = KK-G726
+
+[KK-G728]
+Data = KK-G728
+
+[KK-G730]
+Data = KK-G730
+
+[KK-G732]
+Data = KK-G732
+
+[KK-G734]
+Data = KK-G734
+
+[KK-G736]
+Data = KK-G736
+
+[KK-G738]
+Data = KK-G738
+
+[KK-G740]
+Data = KK-G740
+
+[KK-G742]
+Data = KK-G742
+
+[KK-G744]
+Data = KK-G744
+
+[KK-G746]
+Data = KK-G746
+
+[KK-G748]
+Data = KK-G748
+
+[KK-G750]
+Data = KK-G750
+
+[KK-G752]
+Data = KK-G752
+
+[KK-M000]
+Data = KK-M000
+
+[KK-M002]
+Data = KK-M002
+
+[KK-M004]
+Data = KK-M004
+
+[KK-M006]
+Data = KK-M006
+
+[KK-M008]
+Data = KK-M008
+
+[KK-M010]
+Data = KK-M010
+
+[KK-M012]
+Data = KK-M012
+
+[KK-M014]
+Data = KK-M014
+
+[KK-M016]
+Data = KK-M016
+
+[KK-M018]
+Data = KK-M018
+
+[KK-M020]
+Data = KK-M020
+
+[KK-M022]
+Data = KK-M022
+
+[KK-M024]
+Data = KK-M024
+
+[KK-M026]
+Data = KK-M026
+
+[KK-M028]
+Data = KK-M028
+
+[KK-M030]
+Data = KK-M030
+
+[KK-M032]
+Data = KK-M032
+
+[KK-M034]
+Data = KK-M034
+
+[KK-M036]
+Data = KK-M036
+
+[KK-M038]
+Data = KK-M038
+
+[KK-M040]
+Data = KK-M040
+
+[KK-M042]
+Data = KK-M042
+
+[KK-M044]
+Data = KK-M044
+
+[KK-M046]
+Data = KK-M046
+
+[KK-M048]
+Data = KK-M048
+
+[KK-M050]
+Data = KK-M050
+
+[KK-M052]
+Data = KK-M052
+
+[KK-M054]
+Data = KK-M054
+
+[KK-M056]
+Data = KK-M056
+
+[KK-M058]
+Data = KK-M058
+
+[KK-M060]
+Data = KK-M060
+
+[KK-M062]
+Data = KK-M062
+
+[KK-M064]
+Data = KK-M064
+
+[KK-M066]
+Data = KK-M066
+
+[KK-M068]
+Data = KK-M068
+
+[KK-M070]
+Data = KK-M070
+
+[KK-M072]
+Data = KK-M072
+
+[KK-M074]
+Data = KK-M074
+
+[KK-M076]
+Data = KK-M076
+
+[KK-M078]
+Data = KK-M078
+
+[KK-M080]
+Data = KK-M080
+
+[KK-M082]
+Data = KK-M082
+
+[KK-M084]
+Data = KK-M084
+
+[KK-M086]
+Data = KK-M086
+
+[KK-M088]
+Data = KK-M088
+
+[KK-M090]
+Data = KK-M090
+
+[KK-M092]
+Data = KK-M092
+
+[KK-M094]
+Data = KK-M094
+
+[KK-M096]
+Data = KK-M096
+
+[KK-M098]
+Data = KK-M098
+
+[KK-M100]
+Data = KK-M100
+
+[KK-M102]
+Data = KK-M102
+
+[KK-M104]
+Data = KK-M104
+
+[KK-M106]
+Data = KK-M106
+
+[KK-M108]
+Data = KK-M108
+
+[KK-M110]
+Data = KK-M110
+
+[KK-M112]
+Data = KK-M112
+
+[KK-M114]
+Data = KK-M114
+
+[KK-M116]
+Data = KK-M116
+
+[KK-M118]
+Data = KK-M118
+
+[KK-M120]
+Data = KK-M120
+
+[KK-M122]
+Data = KK-M122
+
+[KK-M124]
+Data = KK-M124
+
+[KK-M126]
+Data = KK-M126
+
+[KK-M128]
+Data = KK-M128
+
+[KK-M130]
+Data = KK-M130
+
+[KK-M132]
+Data = KK-M132
+
+[KK-M134]
+Data = KK-M134
+
+[KK-M136]
+Data = KK-M136
+
+[KK-M138]
+Data = KK-M138
+
+[KK-M140]
+Data = KK-M140
+
+[KK-M142]
+Data = KK-M142
+
+[KK-M144]
+Data = KK-M144
+
+[KK-M146]
+Data = KK-M146
+
+[KK-M148]
+Data = KK-M148
+
+[KK-M150]
+Data = KK-M150
+
+[KK-M152]
+Data = KK-M152
+
+[KK-M154]
+Data = KK-M154
+
+[KK-M156]
+Data = KK-M156
+
+[KK-M158]
+Data = KK-M158
+
+[KK-M160]
+Data = KK-M160
+
+[KK-M162]
+Data = KK-M162
+
+[KK-M164]
+Data = KK-M164
+
+[KK-M166]
+Data = KK-M166
+
+[KK-M168]
+Data = KK-M168
+
+[KK-M170]
+Data = KK-M170
+
+[KK-M172]
+Data = KK-M172
+
+[KK-M174]
+Data = KK-M174
+
+[KK-M176]
+Data = KK-M176
+
+[KK-M178]
+Data = KK-M178
+
+[KK-M180]
+Data = KK-M180
+
+[KK-M182]
+Data = KK-M182
+
+[KK-M184]
+Data = KK-M184
+
+[KK-M186]
+Data = KK-M186
+
+[KK-M188]
+Data = KK-M188
+
+[KK-M190]
+Data = KK-M190
+
+[KK-M192]
+Data = KK-M192
+
+[KK-M194]
+Data = KK-M194
+
+[KK-M196]
+Data = KK-M196
+
+[KK-M198]
+Data = KK-M198
+
+[KK-M200]
+Data = KK-M200
+
+[KK-M202]
+Data = KK-M202
+
+[KK-M204]
+Data = KK-M204
+
+[KK-M206]
+Data = KK-M206
+
+[KK-M208]
+Data = KK-M208
+
+[KK-M210]
+Data = KK-M210
+
+[KK-M212]
+Data = KK-M212
+
+[KK-M214]
+Data = KK-M214
+
+[KK-M216]
+Data = KK-M216
+
+;New Add!  May 09, 2001
+[KK-M218]
+Data = KK-M218
+
+;New Add!  May 09, 2001
+[KK-M220]
+Data = KK-M220
+
+[KK-M222]
+Data = KK-M222
+
+[KK-M224]
+Data = KK-M224
+
+[KK-M226]
+Data = KK-M226
+
+[KK-M228]
+Data = KK-M228
+
+[KK-M230]
+Data = KK-M230
+
+[KK-M232]
+Data = KK-M232
+
+[KK-M234]
+Data = KK-M234
+
+[KK-M236]
+Data = KK-M236
+
+[KK-M238]
+Data = KK-M238
+
+[KK-M240]
+Data = KK-M240
+
+[KK-M242]
+Data = KK-M242
+
+[KK-M244]
+Data = KK-M244
+
+[KK-M246]
+Data = KK-M246
+
+[KK-M248]
+Data = KK-M248
+
+[KK-M250]
+Data = KK-M250
+
+[KK-M252]
+Data = KK-M252
+
+[KK-M254]
+Data = KK-M254
+
+[KK-M256]
+Data = KK-M256
+
+[KK-M258]
+Data = KK-M258
+
+[KK-M260]
+Data = KK-M260
+
+[KK-M262]
+Data = KK-M262
+
+[KK-M264]
+Data = KK-M264
+
+[KK-M266]
+Data = KK-M266
+
+[KK-M268]
+Data = KK-M268
+
+[KK-M270]
+Data = KK-M270
+
+[KK-M272]
+Data = KK-M272
+
+[KK-M274]
+Data = KK-M274
+
+[KK-M276]
+Data = KK-M276
+
+[KK-M278]
+Data = KK-M278
+
+[KK-M280]
+Data = KK-M280
+
+[KK-M282]
+Data = KK-M282
+
+[KK-M284]
+Data = KK-M284
+
+[KK-M286]
+Data = KK-M286
+
+[KK-M288]
+Data = KK-M288
+
+[KK-M290]
+Data = KK-M290
+
+[KK-M292]
+Data = KK-M292
+
+[KK-M294]
+Data = KK-M294
+
+[KK-M296]
+Data = KK-M296
+
+[KK-M298]
+Data = KK-M298
+
+[KK-M300]
+Data = KK-M300
+
+[KK-M302]
+Data = KK-M302
+
+[KK-M304]
+Data = KK-M304
+
+[KK-M306]
+Data = KK-M306
+
+[KK-M308]
+Data = KK-M308
+
+[KK-M310]
+Data = KK-M310
+
+[KK-M312]
+Data = KK-M312
+
+[KK-M314]
+Data = KK-M314
+
+[KK-M316]
+Data = KK-M316
+
+[KK-M318]
+Data = KK-M318
+
+[KK-M320]
+Data = KK-M320
+
+[KK-M322]
+Data = KK-M322
+
+[KK-M324]
+Data = KK-M324
+
+[KK-M326]
+Data = KK-M326
+
+[KK-M328]
+Data = KK-M328
+
+[KK-M330]
+Data = KK-M330
+
+[KK-M332]
+Data = KK-M332
+
+[KK-M334]
+Data = KK-M334
+
+[KK-M336]
+Data = KK-M336
+
+[KK-M338]
+Data = KK-M338
+
+[KK-M340]
+Data = KK-M340
+
+[KK-M342]
+Data = KK-M342
+
+[KK-M344]
+Data = KK-M344
+
+[KK-M346]
+Data = KK-M346
+
+[KK-M348]
+Data = KK-M348
+
+[KK-M350]
+Data = KK-M350
+
+[KK-M352]
+Data = KK-M352
+
+[KK-M354]
+Data = KK-M354
+
+[KK-T000]
+Data = KK-T000
+
+[KK-T002]
+Data = KK-T002
+
+[KK-T004]
+Data = KK-T004
+
+[KK-T006]
+Data = KK-T006
+
+[KK-T008]
+Data = KK-T008
+
+[KK-T010]
+Data = KK-T010
+
+[KK-T012]
+Data = KK-T012
+
+[KK-T014]
+Data = KK-T014
+
+[KK-T016]
+Data = KK-T016
+
+[KK-T018]
+Data = KK-T018
+
+[KK-T020]
+Data = KK-T020
+
+[KK-T022]
+Data = KK-T022
+
+[KK-T024]
+Data = KK-T024
+
+[KK-T026]
+Data = KK-T026
+
+[KK-T028]
+Data = KK-T028
+
+[KK-T030]
+Data = KK-T030
+
+[KK-T032]
+Data = KK-T032
+
+[KK-T034]
+Data = KK-T034
+
+[KK-T036]
+Data = KK-T036
+
+[KK-T038]
+Data = KK-T038
+
+[KK-T040]
+Data = KK-T040
+
+[KK-T042]
+Data = KK-T042
+
+[KK-T044]
+Data = KK-T044
+
+[KK-T046]
+Data = KK-T046
+
+[KK-T048]
+Data = KK-T048
+
+[KK-T050]
+Data = KK-T050
+
+[KK-T052]
+Data = KK-T052
+
+[KK-T054]
+Data = KK-T054
+
+[KK-T056]
+Data = KK-T056
+
+[KK-T058]
+Data = KK-T058
+
+[KK-T060]
+Data = KK-T060
+
+[KK-T062]
+Data = KK-T062
+
+[KK-T064]
+Data = KK-T064
+
+[KK-T066]
+Data = KK-T066
+
+[SB-G000]
+Data = SB-G000
+
+[SB-G002]
+Data = SB-G002
+
+[SB-G004]
+Data = SB-G004
+
+[SB-G006]
+Data = SB-G006
+
+[SD-G000]
+Data = SD-G000
+
+[SD-G002]
+Data = SD-G002
+
+[SD-G004]
+Data = SD-G004
+
+[SD-G006]
+Data = SD-G006
+
+[SD-G008]
+Data = SD-G008
+
+[SD-G010]
+Data = SD-G010
+
+[SD-G012]
+Data = SD-G012
+
+[SD-G014]
+Data = SD-G014
+
+[SD-G016]
+Data = SD-G016
+
+[SD-G018]
+Data = SD-G018
+
+[SD-G020]
+Data = SD-G020
+
+[SD-G022]
+Data = SD-G022
+
+[SD-G024]
+Data = SD-G024
+
+[SD-G026]
+Data = SD-G026
+
+[SD-G028]
+Data = SD-G028
+
+[SD-G030]
+Data = SD-G030
+
+[SD-G032]
+Data = SD-G032
+
+[SD-G034]
+Data = SD-G034
+
+[SD-G036]
+Data = SD-G036
+
+[SM-G000]
+Data = SM-G000
+Group = Atreides Ordos CD2 CD4
+
+[SM-G002]
+Data = SM-G002
+Group = Atreides Ordos CD2 CD4
+
+[SM-G004]
+Data = SM-G004
+Group = Atreides Ordos CD2 CD4
+
+[SM-G006]
+Data = SM-G006
+
+[TD-G000]
+Data = TD-G000
+
+[TD-G002]
+Data = TD-G002
+
+[TL-G000]
+Data = TL-G000
+
+[TL-G002]
+Data = TL-G002
+
+[TL-G004]
+Data = TL-G004
+
+[TL-G006]
+Data = TL-G006
+
+[TL-G008]
+Data = TL-G008
+
+[TL-G010]
+Data = TL-G010
+
+[TL-G012]
+Data = TL-G012
+
+[TL-G014]
+Data = TL-G014
+
+[TL-G016]
+Data = TL-G016
+
+[TL-G018]
+Data = TL-G018
+
+[TL-G020]
+Data = TL-G020
+
+[TL-G022]
+Data = TL-G022
+
+[TL-G024]
+Data = TL-G024
+
+[TL-G026]
+Data = TL-G026
+
+[TL-G028]
+Data = TL-G028
+
+[TL-G030]
+Data = TL-G030
+
+[TL-G032]
+Data = TL-G032
+
+[TL-G034]
+Data = TL-G034
+
+[TL-G036]
+Data = TL-G036
+
+[TL-G038]
+Data = TL-G038
+Group = Atreides Harkonnen CD2 CD3
+
+[TL-G040]
+Data = TL-G040
+Group = Atreides Harkonnen CD2 CD3
+
+[TL-G042]
+Data = TL-G042
+
+[TL-G044]
+Data = TL-G044
+
+[TL-G046]
+Data = TL-G046
+
+[TL-G048]
+Data = TL-G048
+
+
+;  -paul mudra   April 01,2001
+;
+;  The area below contains all of the pick-up lines from the pick-up script.
+;  It is being included for a European test version but should be verified
+;  afterward to make sure we want to use all of the dialogue that we recorded.
+;  Also, I did not know at the time of including these files which ones needed
+;  to be shared for which houses, so any non-specific house dialogue I placed
+;  in a generic HD text file named "General_HD.TXT". 
+;
+; UPDATE April 18, 2001 
+; After looking at the script that Idries sent, I've placed all of the
+; "KK" lines in Atreides, the "YK" lines in Harkonnen and the "RA" lines in
+; Ordos dialogue script files.  The remaining lines I placed in the "UI_Comp"
+; generic (HD based) text file even though some of them are specifically used
+; for only one house, according to the spreadsheet.  Having them here should be
+; a reliable catch-all in the event that they were not labeled correctly.
+
+
+
+[KK-B000]
+Data = KK-B000
+
+[KK-B002]
+Data = KK-B002
+
+[KK-B004]
+Data = KK-B004
+
+[KK-B006]
+Data = KK-B006
+
+[KK-B008]
+Data = KK-B008
+
+[KK-B010]
+Data = KK-B010
+
+[KK-D300]
+Data = KK-D300
+
+[KK-D302]
+Data = KK-D302
+
+[KK-D304]
+Data = KK-D304
+
+[KK-D306]
+Data = KK-D306
+
+[KK-D308]
+Data = KK-D308
+
+[KK-D310]
+Data = KK-D310
+
+[KK-D312]
+Data = KK-D312
+
+[KK-D314]
+Data = KK-D314
+
+[KK-D316]
+Data = KK-D316
+
+[KK-D318]
+Data = KK-D318
+
+[KK-D320]
+Data = KK-D320
+
+[KK-D322]
+Data = KK-D322
+
+[KK-D325]
+Data = KK-D325
+
+[KK-D327]
+Data = KK-D327
+
+[KK-D328]
+Data = KK-D328
+
+[KK-D330]
+Data = KK-D330
+
+[KK-D332]
+Data = KK-D332
+
+[KK-D334]
+Data = KK-D334
+
+[KK-D336]
+Data = KK-D336
+
+[KK-D338]
+Data = KK-D338
+
+[KK-D340]
+Data = KK-D340
+
+[KK-D342]
+Data = KK-D342
+
+[KK-M400]
+Data = KK-M400
+
+[KK-M402]
+Data = KK-M402
+
+[KK-M404]
+Data = KK-M404
+
+[KK-M406]
+Data = KK-M406
+
+[KK-M408]
+Data = KK-M408
+
+[KK-M410]
+Data = KK-M410
+
+[KK-M412]
+Data = KK-M412
+
+[KK-M414]
+Data = KK-M414
+
+[KK-M416]
+Data = KK-M416
+
+[KK-M418]
+Data = KK-M418
+
+[KK-M420]
+Data = KK-M420
+
+[KK-M422]
+Data = KK-M422
+
+[KK-M424]
+Data = KK-M424
+
+[KK-M426]
+Data = KK-M426
+
+[KK-M428]
+Data = KK-M428
+
+[KK-M430]
+Data = KK-M430
+
+[KK-M432]
+Data = KK-M432
+
+[KK-M434]
+Data = KK-M434
+
+[KK-M436]
+Data = KK-M436
+
+[KK-M438]
+Data = KK-M438
+
+[KK-M440]
+Data = KK-M440
+
+[KK-M442]
+Data = KK-M442
+
+[KK-M444]
+Data = KK-M444
+
+[KK-M446]
+Data = KK-M446
+
+[KK-M448]
+Data = KK-M448
+
+[KK-M450]
+Data = KK-M450
+
+[KK-M452]
+Data = KK-M452
+
+[KK-M454]
+Data = KK-M454
+
+[KK-M456]
+Data = KK-M456
+
+[KK-M458]
+Data = KK-M458
+
+[KK-M460]
+Data = KK-M460
+
+[KK-M462]
+Data = KK-M462
+
+[KK-M464]
+Data = KK-M464
+
+[KK-M466]
+Data = KK-M466
+
+[KK-M468]
+Data = KK-M468
+
+[KK-M470]
+Data = KK-M470
+
+[KK-M472]
+Data = KK-M472
+
+[KK-M474]
+Data = KK-M474
+
+[KK-M476]
+Data = KK-M476
+
+[KK-M478]
+Data = KK-M478
+
+[KK-M480]
+Data = KK-M480
+
+[KK-M482]
+Data = KK-M482
+
+[KK-M484]
+Data = KK-M484
+
+[KK-M486]
+Data = KK-M486
+
+[KK-M488]
+Data = KK-M488
+
+[KK-M490]
+Data = KK-M490
+
+[KK-M492]
+Data = KK-M492
+
+[KK-M494]
+Data = KK-M494
+
+[KK-M496]
+Data = KK-M496
+
+[KK-M498]
+Data = KK-M498
+
+[KK-M500]
+Data = KK-M500
+
+[KK-M502]
+Data = KK-M502
+
+[KK-M504]
+Data = KK-M504
+
+[KK-M506]
+Data = KK-M506
+
+[KK-M508]
+Data = KK-M508
+
+[KK-M510]
+Data = KK-M510
+
+[KK-M512]
+Data = KK-M512
+
+[KK-M514]
+Data = KK-M514
+
+[KK-M516]
+Data = KK-M516
+
+[KK-M518]
+Data = KK-M518
+
+[KK-M520]
+Data = KK-M520
+
+[KK-M522]
+Data = KK-M522
+
+[KK-M524]
+Data = KK-M524
+
+[KK-M526]
+Data = KK-M526
+
+[KK-M528]
+Data = KK-M528
+
+[KK-M530]
+Data = KK-M530
+
+[KK-M532]
+Data = KK-M532
+
+[KK-M534]
+Data = KK-M534
+
+[KK-M536]
+Data = KK-M536
+
+[KK-M538]
+Data = KK-M538
+
+[KK-M540]
+Data = KK-M540
+
+[KK-M542]
+Data = KK-M542
+
+[KK-M544]
+Data = KK-M544
+
+[KK-M546]
+Data = KK-M546
+
+[KK-M548]
+Data = KK-M548
+
+[KK-M550]
+Data = KK-M550
+
+[KK-M552]
+Data = KK-M552
+
+[KK-M554]
+Data = KK-M554
+
+[KK-M556]
+Data = KK-M556
+
+[KK-M558]
+Data = KK-M558
+
+[KK-M560]
+Data = KK-M560
+
+[KK-M562]
+Data = KK-M562
+
+[KK-M564]
+Data = KK-M564
+
+[KK-M566]
+Data = KK-M566
+
+[KK-M568]
+Data = KK-M568
+
+[KK-M570]
+Data = KK-M570
+
+[KK-M572]
+Data = KK-M572
+
+[KK-M574]
+Data = KK-M574
+
+[KK-M576]
+Data = KK-M576
+
+[KK-M578]
+Data = KK-M578
+
+[KK-M580]
+Data = KK-M580
+
+[KK-M582]
+Data = KK-M582
+
+[KK-M584]
+Data = KK-M584
+
+[KK-M586]
+Data = KK-M586
+
+[KK-M588]
+Data = KK-M588
+
+[KK-M590]
+Data = KK-M590
+
+[KK-M592]
+Data = KK-M592
+
+[KK-M594]
+Data = KK-M594
+
+[KK-M596]
+Data = KK-M596
+
+[KK-M598]
+Data = KK-M598
+
+[KK-M600]
+Data = KK-M600
+
+[KK-M602]
+Data = KK-M602
+
+[KK-M604]
+Data = KK-M604
+
+[KK-M606]
+Data = KK-M606
+
+[KK-M608]
+Data = KK-M608
+
+[KK-M610]
+Data = KK-M610
+
+[KK-M612]
+Data = KK-M612
+
+[KK-M614]
+Data = KK-M614
+
+[KK-M616]
+Data = KK-M616
+
+[KK-M618]
+Data = KK-M618
+
+[KK-M620]
+Data = KK-M620
+
+[KK-M622]
+Data = KK-M622
+
+[KK-M624]
+Data = KK-M624
+
+[KK-M626]
+Data = KK-M626
+
+[KK-M628]
+Data = KK-M628
+
+[KK-M630]
+Data = KK-M630
+
+[KK-M632]
+Data = KK-M632
+
+[KK-M634]
+Data = KK-M634
+
+[KK-M636]
+Data = KK-M636
+
+[KK-M638]
+Data = KK-M638
+
+[KK-M640]
+Data = KK-M640
+
+[KK-M642]
+Data = KK-M642
+
+[KK-M644]
+Data = KK-M644
+
+[KK-M646]
+Data = KK-M646
+
+[KK-M648]
+Data = KK-M648
+
+[KK-M650]
+Data = KK-M650
+
+[KK-M652]
+Data = KK-M652
+
+[KK-M654]
+Data = KK-M654
+
+[KK-M656]
+Data = KK-M656
+
+[KK-M658]
+Data = KK-M658
+
+[KK-M660]
+Data = KK-M660
+
+[KK-M662]
+Data = KK-M662
+
+[KK-M664]
+Data = KK-M664
+
+[KK-M666]
+Data = KK-M666
+
+[KK-M668]
+Data = KK-M668
+
+[KK-M670]
+Data = KK-M670
+
+[KK-M672]
+Data = KK-M672
+
+[KK-M674]
+Data = KK-M674
+
+[KK-M676]
+Data = KK-M676
+
+[KK-M678]
+Data = KK-M678
+
+[KK-M680]
+Data = KK-M680
+
+[KK-M682]
+Data = KK-M682
+
+[KK-M684]
+Data = KK-M684
+
+[KK-M686]
+Data = KK-M686
+
+[KK-M688]
+Data = KK-M688
+
+[KK-M690]
+Data = KK-M690
+
+[KK-M692]
+Data = KK-M692
+
+[KK-M694]
+Data = KK-M694
+
+[KK-M696]
+Data = KK-M696
+
+[KK-M698]
+Data = KK-M698
+
+[KK-M700]
+Data = KK-M700
+
+[KK-M702]
+Data = KK-M702
+
+[KK-M704]
+Data = KK-M704
+
+[KK-M706]
+Data = KK-M706
+
+[KK-M708]
+Data = KK-M708
+
+[KK-M710]
+Data = KK-M710
+
+[KK-M712]
+Data = KK-M712
+
+[KK-M714]
+Data = KK-M714
+
+[KK-M716]
+Data = KK-M716
+
+[KK-M718]
+Data = KK-M718
+
+[KK-M720]
+Data = KK-M720
+
+[KK-M722]
+Data = KK-M722
+
+[KK-M724]
+Data = KK-M724
+
+[KK-M726]
+Data = KK-M726
+
+[KK-M728]
+Data = KK-M728
+
+[KK-M730]
+Data = KK-M730
+
+[KK-M732]
+Data = KK-M732
+
+[KK-M734]
+Data = KK-M734
+
+[KK-M736]
+Data = KK-M736
+
+[KK-M738]
+Data = KK-M738
+
+[KK-M740]
+Data = KK-M740
+
+[KK-M742]
+Data = KK-M742
+
+[KK-M744]
+Data = KK-M744
+
+[KK-M746]
+Data = KK-M746
+
+[KK-M748]
+Data = KK-M748
+
+[KK-M750]
+Data = KK-M750
+
+[KK-M752]
+Data = KK-M752
+
+[KK-M754]
+Data = KK-M754
+
+[KK-M756]
+Data = KK-M756
+
+[KK-M758]
+Data = KK-M758
+
+[KK-M760]
+Data = KK-M760
+
+[KK-M762]
+Data = KK-M762
+
+[KK-M764]
+Data = KK-M764
+
+[KK-M766]
+Data = KK-M766
+
+[KK-M768]
+Data = KK-M768
+
+[KK-M770]
+Data = KK-M770
+
+[KK-M772]
+Data = KK-M772
+
+[KK-M774]
+Data = KK-M774
+
+[KK-M776]
+Data = KK-M776
+
+[KK-M778]
+Data = KK-M778
+
+[KK-M780]
+Data = KK-M780
+
+[KK-M782]
+Data = KK-M782
+
+[KK-M784]
+Data = KK-M784
+
+[KK-M786]
+Data = KK-M786
+
+[KK-M788]
+Data = KK-M788
+
+[KK-M790]
+Data = KK-M790
+
+[KK-M792]
+Data = KK-M792
+
+[KK-M794]
+Data = KK-M794
+
+[KK-B012]
+Data = KK-B012
+
+[KK-B014]
+Data = KK-B014
+
+[KK-B016]
+Data = KK-B016
+
+[KK-B018]
+Data = KK-B018
+
+[KK-D344]
+Data = KK-D344
+
+[KK-D346]
+Data = KK-D346
+
+[KK-D348]
+Data = KK-D348
+
+[KK-D350]
+Data = KK-D350
+
+[KK-D352]
+Data = KK-D352
+
+[KK-D354]
+Data = KK-D354
+
+[KK-M796]
+Data = KK-M796
+
+[KK-M798]
+Data = KK-M798
+
+[KK-M800]
+Data = KK-M800
+
+[KK-M802]
+Data = KK-M802
+
+[KK-M804]
+Data = KK-M804
+
+[KK-M806]
+Data = KK-M806
+
+[KK-M808]
+Data = KK-M808
+
+[KK-M810]
+Data = KK-M810
+
+[KK-M812]
+Data = KK-M812
+
+[KK-M814]
+Data = KK-M814
+
+[KK-M816]
+Data = KK-M816
+
+[KK-M818]
+Data = KK-M818
+
+[KK-M820]
+Data = KK-M820
+
+[KK-M822]
+Data = KK-M822
+
+[KK-M824]
+Data = KK-M824
+
+[KK-M826]
+Data = KK-M826
+
+[KK-M828]
+Data = KK-M828
+
+[KK-M830]
+Data = KK-M830
+
+[KK-M832]
+Data = KK-M832
+
+[KK-M834]
+Data = KK-M834
+
+[KK-M836]
+Data = KK-M836
+
+[KK-M838]
+Data = KK-M838
+
+[KK-M840]
+Data = KK-M840
+
+[KK-M842]
+Data = KK-M842
+
+[KK-M844]
+Data = KK-M844
+
+[KK-M846]
+Data = KK-M846
+
+[KK-M848]
+Data = KK-M848
+
+[KK-M850]
+Data = KK-M850
+
+[KK-M852]
+Data = KK-M852
+
+[KK-M854]
+Data = KK-M854
+
+[KK-M856]
+Data = KK-M856
+
+[KK-M858]
+Data = KK-M858
+
+[KK-M860]
+Data = KK-M860
+
+[KK-M862]
+Data = KK-M862
+
+[KK-M864]
+Data = KK-M864
+
+[KK-M866]
+Data = KK-M866
+
+[KK-M868]
+Data = KK-M868
+
+[KK-M870]
+Data = KK-M870
+
+[KK-M872]
+Data = KK-M872
+
+[KK-M874]
+Data = KK-M874
+
+[KK-M876]
+Data = KK-M876
+
+[KK-M878]
+Data = KK-M878
+
+[KK-M880]
+Data = KK-M880
+
+[KK-M882]
+Data = KK-M882
+
+[KK-M884]
+Data = KK-M884
+
+[KK-M886]
+Data = KK-M886
+
+[KK-M888]
+Data = KK-M888
+
+[KK-M890]
+Data = KK-M890
+
+[KK-M892]
+Data = KK-M892
+
+[KK-M894]
+Data = KK-M894
+
+[KK-M896]
+Data = KK-M896
+
+[KK-M719]
+Data = KK-M719
+
+[KK-M725]
+Data = KK-M725
+
+
+;
+; End Pick-ups
+;
+
+

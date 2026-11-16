@@ -219,7 +219,7 @@ if (options.Get("ai-census") is { } censusFactions)
 }
 
 // The shell map's battle is set up while the window opens and the menus load (only when the main menu will show).
-if (!options.Has("skirmish") && !options.Has("trailer") && !options.Has("view-model") && !options.Has("view-map") && !options.Has("sole-survivor")
+if (!options.Has("skirmish") && !options.Has("trailer") && !options.Has("view-model") && !options.Has("view-apt") && !options.Has("view-map") && !options.Has("sole-survivor")
     && !options.Has("demo-fx") && !options.Has("demo-drive") && !options.Has("select") && !options.Has("look-at"))
     OpenWestwood.Client.Shell.DuneShellBattle.StartEarly(content);
 
@@ -236,6 +236,9 @@ OpenWestwood.Logic.GameProfiler.Enabled = options.Has("perf");
 
 window.Run((gl, input, osWindow) =>
 {
+    // Debug: --view-apt tacticalhudmaincommandbar,tacticalhudradar [--apt-frame N] draws Kane's Wrath interface movies.
+    if (options.Get("view-apt") is { } aptNames)
+        return new OpenWestwood.Client.Screens.AptViewerScreen(gl, content, aptNames, int.TryParse(options.Get("apt-frame"), out int aptFrame) ? aptFrame : 0);
     if (options.Get("view-model") is { } modelName)
     {
         uint house = Convert.ToUInt32(options.Get("house") ?? "0", 16);

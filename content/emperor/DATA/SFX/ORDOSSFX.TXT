@@ -1,0 +1,921 @@
+;dko denotes a comment by dwight@westwood
+
+
+  
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~~ORDOS ORGANIC UNITS~~~~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko associate all STANDARD death screams with this hook <good>
+[ornormalmandying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+FShift= -5 5
+Volume=70
+
+;dko associate all BURNING death screams with this hook	<good>
+[orburningmandying]
+Sounds=burn_dying_1 burn_dying_2 burn_dying_3 burn_dying_4 burn_dying_5 burn_dying_6 burn_dying_7 burn_dying_8 
+Control=random
+Volume=70
+
+;dko associate all CHOKING death screams with this hook	<good>
+[orchoking]
+Sounds=choke_dying_1 choke_dying_2 choke_dying_3 choke_dying_4 choke_dying_5 choke_dying_6 
+Control=random
+Volume=70
+
+;dko associate all CRUSHING death with this hook
+[orcrush]
+Sounds=crush_guy_1 crush_guy_2 crush_guy_3 crush_guy_4
+Control=random
+Volume=60
+
+;dko fire for aa trooper <good>
+[orbazookalaunch1]
+Sounds=aatrooperattack
+Volume=80
+
+;dko added 4/13/01 new idries call
+;dko this is the or inf trooper attack
+[ORAATrooperGun]
+Sounds=aatrooperattack
+Volume=80
+
+;dko reload for aa trooper <good>
+[orkobrareload]
+Sounds=kindjal_infantry_reload_1
+Volume=40
+
+;dko or chemical trooper fire <good> and or gas turret
+[chemicalspray]
+Sounds=chemflamerattack
+Volume = 70
+FShift = -5 5
+VShift = 20
+
+;dko added 4/18/01 for the gas turret gun sound
+[ORGasTurretGun]
+Sounds=chemflamerattack
+Volume = 70
+
+;dko gas turret move test 4/23/01
+[ORGasTurretBaseMoveFxStart]
+Sounds=turret_start_11
+Limit = 1
+Volume=40
+
+;dko gas turret move test 4/23/01
+[ORGasTurretBaseMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+Limit = 1
+Decay = 1
+Volume=70
+
+;dko gun turret move test 4/23/01
+[ORGasTurretGunMoveFxStart]
+Sounds=turret_start_11
+Limit = 1
+Volume=40
+
+;dko gun turret move test 4/23/01
+[ORGasTurretGunMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+Limit = 1
+Decay = 1
+Volume=70
+
+;dko gun turret move test 4/23/01
+[ORPopUpGunMoveFxStart]
+Sounds=turret_start_11
+Limit = 1
+Volume=40
+
+;dko gun turret move test 4/23/01
+[ORPopUpGunMoveFx]
+Sounds=turret_loop_11 turret_end_11
+Control = loop decay interrupt
+Limit = 1
+Decay = 1
+Volume=70
+
+;dko added 4/13/01 new idries call
+;chemical trooper attack
+[ORChemicalGun]
+Sounds=chemflamerattack
+Volume = 70
+FShift = -5 5
+VShift = 20
+
+[MortarLaunch]
+Sounds = MortarAttack
+Volume=80
+
+;dko added 4/13/01 new idries call
+;dko this is for the big weapon the mortar inf. has
+[ORMortarInfBigGun]
+Sounds = MortarAttack
+Volume=80
+
+;dko added 4/13/01 new idries call
+;dko this is for the pistol weapon the mortar inf. has
+[ORMortarInfGun]
+Sounds = MortarAttackPistol
+Volume=60
+
+;[MortarAttackPistol]
+;dko this call is played at the same time as [singleshotpistol].  we should only call this call for mortar infantry. 3/23/01
+[orsingleshotpistol]
+Sounds = MortarAttackPistol
+Volume=60
+
+
+[MortarDeploy]
+Sounds = MortarDeploy
+Priority = low
+Volume = 60
+
+[MortarUnDeploy]
+Sounds = MortarUnDeploy
+Priority = low
+Volume = 60
+
+;dko <good>
+[SaboteurPrime]
+Sounds = SaboteurDeploy
+Priority = high
+Volume=70
+
+
+
+
+	;***************************
+	;--------- VEHICLES--------
+	;***************************
+
+
+;dko or apc fires weapon
+[orrocketlaunch1] 
+Sounds = APCAttack
+Limit = 1
+Volume=70
+
+;dko added 4/18/01 suggested new hook be made.
+[ORApcGun]
+Sounds = APCAttack
+Volume=70
+
+;dko apc door open
+[deploygun]
+Sounds = APCDoorOpen
+Volume=70
+
+;dko added 4/20/01
+[orapcmovefxstart]
+Sounds = apcmovestarta apcmovestartb apcmovestartc
+Limit = 1
+Control = random
+Volume=60
+
+[DeviatorFizz]
+Sounds = DeviatorAttack
+;VShift = 15
+Limit = 1
+Volume=60
+
+;dko added 4/13/01 new idries call
+[ORDeviatorGun]
+Sounds = DeviatorAttack
+Volume=80
+
+;dko added 4/20/01
+[ordeviatormovefxstart]
+Sounds=deviatormovestarta
+Limit = 1
+Volume=85
+
+;dko dust scout fires weapon
+[orlightmg-shortburst]
+Sounds = dustscoutattacka dustscoutattackb dustscoutattackc
+;VShift= 15
+Volume=80
+
+;dko added 4/13/01 new idries call
+[ORDustGun]
+Sounds = dustscoutattacka dustscoutattackb dustscoutattackc
+Volume=80
+
+;dko <good>
+[DustScoutMove]
+Control = random
+Sounds = DustScoutLegsA DustScoutLegsB DustScoutLegsC
+Priority = low
+Limit = 3
+Volume = 30
+;VShift = 15
+
+;dko 3/23/01
+[DustScoutHide]
+Sounds = DustScoutHide
+Volume = 50
+
+;dko 3/23/01
+[DustScoutEmerge]
+Sounds = DustScoutUnhide
+Volume = 50
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" SELECT.
+[ordustscoutselection]
+Sounds=dustscoutselecta dustscoutselectb dustscoutselectc dustscoutselectd dustscoutselecte
+Control = random
+Volume = 60
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" COMMAND.
+[ordustscoutmove]
+Sounds=dustscoutcommanda dustscoutcommandb dustscoutcommandc dustscoutcommandd dustscoutcommande
+Control = random
+Volume = 60
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" ATTACK.
+;dko The ATTACK is pretty much like a COMMAND so I am using those samples for this action.  3/28/01
+[ordustscoutattack]
+Sounds=dustscoutcommanda dustscoutcommandb dustscoutcommandc dustscoutcommandd dustscoutcommande
+Control = random
+Volume = 60
+		 
+;dko <good>	 This is being called for the laser tank as well as the IM Elite Sardukar 4/12/01
+[orlaser1]
+Sounds = LaserTankAttack
+Volume=75
+
+;dko added 4/20/01
+[orlasertankmovefxstart]
+Sounds=	lasertankmovestarta
+Limit = 1
+Volume=70
+
+;dko kobra fires big weapon <good>
+[KobraAttack]
+Sounds= KobraAttack
+Volume=80
+
+;dko added 4/24/01 new idries/lee call
+;dko this is for the deployed kobra gun
+[ORCANNONSINGLELOUDSHOT]
+Sounds= KobraAttack
+Volume=80
+
+
+;dko added 4/20/01
+[orkobramovefxstart]
+Sounds=kobramovestarta
+Limit = 1
+Volume=65
+
+[Humloop]
+Sounds = KobraLock
+Priority = low
+Volume = 60
+
+[Klunkair]
+Sounds = KobraUnlock
+Priority = low
+Volume = 60
+
+[klunkair.wav]
+Sounds = KobraDeploy
+Limit = 1
+Volume = 55
+
+;EITSTakeOff is called by the Ordos Eye In the Sky unit.
+;EITSLand/takeoff - Eye in the Sky making descent/ascent with thrusters 
+;this hook is not working correctly 5/1/01
+[EITSTakeOff]
+Sounds = EITSTakeOff
+Volume = 70
+
+;EITSLand.wav is called by the Ordos Eye In the Sky unit.
+;only this hook is being played.  It is only played once when unit is created.
+[EITSLand]
+Sounds = EITSLand
+Volume = 70
+
+;dko added 5/1/01
+;this hook is funky.  It is looking for a constant loop which would be annoying to the player.  I've commented it 5/1/01
+;[eitsmove]
+;Sounds = eyeskymovestart
+;limit = 1
+;volume = 65
+
+;dko ADV Carryall Ascend added 4/24/01 new idries call
+[orcarryalltakeoff]
+Sounds=adv_carryall_pickup_1
+Limit = 1
+Volume=70
+
+;dko ADV Carryall descent added 4/24/01 new idries call
+[orcarryallland]
+Sounds=adv_carryall_land_1
+Limit = 1
+Volume=70
+
+;dko added 4/30/01
+[oradvcarryallmovefxstart]
+Sounds = adv_carryall_takeoff_1
+Limit = 1
+Volume=70
+
+;dko added 4/30/01
+[orcarryallmovefxstart]
+Sounds = adv_carryall_takeoff_1
+Limit = 1
+Volume=70
+
+;dko added 4/30/01
+;or adp move
+;[orcarryallflying]
+;Sounds=or_adp_motor_1
+;Limit = 1
+;Volume=65
+
+
+
+	
+	;***************************
+	;--------- BUILDINGS--------
+	;***************************
+
+;dko pop up laser turret fire
+[orlaser2]
+Sounds = PopupTurretAttack
+Volume=70
+
+;dko added 4/18/01 new idries call
+[ORPopUpGun]
+Sounds = PopupTurretAttack
+Volume=70
+
+;pop up turret up
+[orpopturretsup]
+Sounds = PopUpTurretRise
+Volume=60
+
+;pop up turret down
+[orpopturretsdown]
+Sounds = PopUpTurretDrop
+Volume=60
+
+;pop up turret explode
+[ormedium1]
+Sounds = explosionordos05 explosion_medium_1 explosion_medium_2 explosion_medium_3 explosion_medium_4
+Control=random
+Priority = high
+Volume=60
+
+
+;pop up turret explode
+[ormedium2]
+Sounds = explosionordos05 explosion_medium_1 explosion_medium_2 explosion_medium_3 explosion_medium_4
+Control=random
+Priority = high
+Volume=60
+
+
+
+[ChemTurretAttack]
+Sounds = ChemTurretAttack
+Volume = 80
+VShift = 15
+
+
+;dko Large HK Building Explodes
+[orlargebuildingbang]
+;Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Sounds=explosionordos01 explosionordos02 explosionordos03 explosionordos04 explosionordos06
+Control=random
+Priority = high
+Volume=80
+
+
+	;*******************************
+	;------- SPECIAL WEAPONS--------
+	;*******************************
+
+
+	;Mical 01/12: This is an even that needs to be hooked up by a programmer
+[EyeInTheSkyDeploy]
+Sounds= EyeSkyDeploy
+Priority= High
+
+	;Mical 01/12: This is an even that needs to be hooked up by a programmer
+[ChaosLightning]
+Sounds = ChaosLightning
+Volume = 80
+
+;dko added 4/19/01 rules.txt
+[ORBeamWeapon]
+Sounds = ChaosLightning
+Volume = 80
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;~~~~~~~CONSTRUCTION SOUNDS~~~~~~~~~
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;dko MCV deploys
+[ormcvdeploy]
+Sounds=mcv_b_open_1
+Control=random
+Volume=40
+
+;dko MCV Drills into ground
+[orcyconstructingabuilding]
+Sounds=mcv_d_drill_dig_1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[orsmallconstruction]
+Sounds=constructionelement1
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[ormediumconstruction]
+Sounds=constructionelement2
+Control=random
+Volume=40
+
+;dko MCV Scaffolding goes up
+[orlargeconstruction]
+Sounds=constructionelement2
+Control=random
+Volume=40
+
+;dko MCV Scaffolding with sparks 3/27/01
+[orsconstructionspark]
+Sounds=constructionsparks
+Control=random
+Volume=40
+      
+
+
+
+
+	;**********************************
+	; -------- UNIT VOICES ------------
+	;**********************************
+
+
+[LocalDefaults]
+Type	=	Dialog
+Control	=	Random
+
+	
+
+[ORScoutSelection]
+Sounds = $02-US01		 ;"Awaiting instruction."
+Sounds = $02-US04		 ;"Our purpose is observation."
+Sounds = $02-US05		 ;"We are at your command."
+ 
+
+[ORScoutMove]
+Sounds = $02-UM00		 ;"We obey."
+Sounds = $02-UM02		 ;"As ordered."
+Sounds = $02-UM04		 ;"Area scan commencing."
+Sounds = $02-UM06		 ;"Relocation commencing."
+ 
+
+[ORLaserTankAttack]
+Sounds = $05-UA00		 ;"Targeting Laser."
+Sounds = $05-UA01		 ;"Turret locked on target."
+Sounds = $05-UA04		 ;"Amplifying emission levels"
+Sounds = $05-UA07		 ;"Enemy targets engaged."
+ 
+
+[ORLaserTankSelection]
+Sounds = $05-US01		 ;"Powered up!"
+Sounds = $05-US05		 ;"Laser tank operational."
+Sounds = $05-US06		 ;"Laser at full power."
+Sounds = $05-US07		 ;"Engines on maximum."
+ 
+
+[ORLaserTankMove]
+Sounds = $05-UM01		 ;"Destination received."
+Sounds = $05-UM02		 ;"By your order."
+Sounds = $05-UM04		 ;"Throttle to full power."
+Sounds = $05-UM06		 ;"Moving to coordinates"
+ 
+
+[ORKobraAttack]
+Sounds = $12-UA00		 ;"Calculating trajectory."
+Sounds = $12-UA02		 ;"Target data entered."
+Sounds = $12-UA03		 ;"Sensors locked on"
+ 
+
+[ORKobraSelection]
+Sounds = $12-US01		 ;"Ready to strike."
+Sounds = $12-US03		 ;"Kobra unit"
+ 
+
+[ORKobraMove]
+Sounds = $12-UM01		 ;"Position marked."
+Sounds = $12-UM04		 ;"Kobra unit now in motion."
+ 
+
+[ORSaboteurAttack]
+Sounds = $15-UA00		 ;"Death comes to all."
+Sounds = $15-UA01		 ;"For House Ordos."
+Sounds = $15-UA05		 ;"Death is inevitable."
+ 
+
+[ORSaboteurSelection]
+Sounds = $15-US02		 ;"No fear."
+Sounds = $15-US03		 ;"Explosives ready"
+Sounds = $15-US05		 ;"Our purpose is sabotage. "
+Sounds = $15-US06		 ;"We have no fear of death."
+ 
+
+[ORSaboteurMove]
+Sounds = $15-UM02		 ;"Orders received."
+Sounds = $15-UM05		 ;"Approaching new location"
+Sounds = $15-UM06		 ;"Orders confirmed."
+ 
+
+[OREngineerAttack]
+Sounds = $20-UA00		 ;"Plans received."
+Sounds = $20-UA02		 ;"Moving to target structure."
+Sounds = $20-UA06		 ;"We will succeed!"
+ 
+
+[OREngineerSelection]
+Sounds = $20-US02		 ;"Awaiting instruction."
+Sounds = $20-US03		 ;"Our designation is Engineer."
+Sounds = $20-US04		 ;"We are at your disposal."
+Sounds = $20-US05		 ;"What is the required task?"
+ 
+
+[OREngineerMove]
+Sounds = $20-UM04		 ;"We go where we are needed."
+Sounds = $20-UM05		 ;"How can we be of assistance?"
+Sounds = $20-UM06		 ;"Order Accepted."
+ 
+
+[OREITSAttack]
+Control = random attack decay 
+Sounds = Static01i_vol1
+Sounds = Static02i_vol1
+Sounds = $21-UA00		 ;"Initiating sequence."
+Sounds = $21-UA01		 ;"Surprise."
+Sounds = $21-UA03		 ;"Drop zone confirmed."
+Sounds = $21-UA04		 ;"Attack sequence initiated."
+Sounds = $21-UA05		 ;"Death rains from the sky!"
+Sounds = Static01i_vol1
+Sounds = Static02i_vol1
+Attack = 2
+Decay  = 2
+ 
+
+[OREITSSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $21-US00		 ;"They suspect nothing."
+Sounds = $21-US04		 ;"Your command?"
+Sounds = $21-US05		 ;"Eye in the sky"
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+
+[OREITSMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $21-UM02		 ;"Course data updated."
+Sounds = $21-UM03		 ;"Vectors reset."
+Sounds = $21-UM04		 ;"Determining drop zone"
+Sounds = $21-UM06		 ;"Approach profile acknowledged."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+
+[ORAATrooperAttack]
+Sounds = $23-UA00		 ;"Weapon locked."
+Sounds = $23-UA03		 ;"Strike now!"
+Sounds = $23-UA05		 ;"Terminate the enemy."
+ 
+
+[ORAATrooperSelection]
+Sounds = $23-US01		 ;"Ready to move."
+Sounds = $23-US05		 ;"What is the directive?"
+ 
+
+[ORAATrooperMove]
+Sounds = $23-UM00		 ;"Received."
+Sounds = $23-UM02		 ;"We obey."
+Sounds = $23-UM05		 ;"We will comply."
+ 
+
+[ORChemicalAttack]
+Sounds = $25-UA01		 ;"Spraying target."
+Sounds = $25-UA02		 ;"Deploying toxins."
+Sounds = $25-UA04		 ;"Intoxicating"
+Sounds = $25-UA07		 ;"Success is imperative."
+ 
+
+[ORChemicalSelection]
+Sounds = $25-US04		 ;"Chemical mix ready"
+Sounds = $25-US06		 ;"Pressure is maximized."
+Sounds = $25-US07		 ;"We await your signal."
+ 
+
+[ORChemicalMove]
+Sounds	=	$25-UM00		 ;"As ordered."
+Sounds	=	$25-UM03		 ;"A good plan."
+Sounds	=	$25-UM07		 ;"Moving to specified location."
+
+
+[ORDeviatorAttack]
+Sounds = $26-UA00		 ;"Loyalty is an illusion."
+Sounds = $26-UA01		 ;"They will be ours."
+Sounds = $26-UA03		 ;"This may change their minds"
+ 
+
+[ORDeviatorSelection]
+Sounds = $26-US01		 ;"Gas ready for delivery."
+Sounds = $26-US02		 ;"Awaiting instruction."
+Sounds = $26-US05		 ;"Deviator gas ready for deployment. "
+Sounds = $26-US06		 ;"Cannisters primed and ready."
+ 
+
+[ORDeviatorMove]
+Sounds = $26-UM01		 ;"At top speed."
+Sounds = $26-UM03		 ;"Agreed!"
+Sounds = $26-UM05		 ;"Coordinates received."
+ 
+
+[ORAPCAttack]
+Sounds = $30-UA01		 ;"For House Ordos."
+Sounds = $30-UA02		 ;"Target data entered."
+ 
+
+[ORAPCSelection]
+Sounds = $30-US01		 ;"Your orders?"
+Sounds = $30-US06		 ;"Transport powered up."
+Sounds = $30-US07		 ;"Maximum lift attained."
+ 
+
+[ORAPCMove]
+Sounds = $30-UM01		 ;"Complying."
+Sounds = $30-UM05		 ;"By your command."
+Sounds = $30-UM06		 ;"Redirect confirmed."
+ 
+
+[ORMortarAttack]
+Sounds = $42-UA01		 ;"For House Ordos."
+Sounds = $42-UA04		 ;"Targeting Mortar."
+Sounds = $42-UA05		 ;"Trajectory confirmed."
+ 
+
+[ORMortarSelection]
+Sounds = $42-US00		 ;"Designate required position."
+Sounds = $42-US01		 ;"Ready to move."
+Sounds = $42-US03		 ;"Mortar supply ready"
+ 
+
+[ORMortarMove]
+Sounds = $42-UM01		 ;"In compliance."
+Sounds = $42-UM07		 ;"Relocation commencing."
+ 
+[ORADVCarryallAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UA02		 ;"Prepare for pickup"
+Sounds = $07-UA07		 ;"Grapplers in position."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ORADVCarryallSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-US01		 ;"Transport."
+Sounds = $07-US04		 ;"Carryall reporting"
+Sounds = $07-US06		 ;"On your command"
+Sounds = $07-US07		 ;"Transport standing by."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+[ORADVCarryallMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $07-UM01		 ;"Roger."
+Sounds = $07-UM03		 ;"We can do that."
+Sounds = $07-UM04		 ;"On the move."
+Sounds = $07-UM06		 ;"Coming about."
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[ORADPAttack]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $30-UA03		 ;
+Sounds = $30-UA05		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+ 
+[ORADPMove]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $30-UM02		 ;
+Sounds = $30-UM04		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+[ORADPSelection]
+Control = random attack decay 
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Sounds = $30-US00		 ;
+Sounds = $30-US02		 ;
+Sounds	=	Static01i_vol1
+Sounds	=	Static02i_vol1
+Attack	=	2
+Decay	=	2
+
+
+;
+; OR Group
+;
+
+
+[ORGroupAttack]
+;Sounds = $23-UA05		 ;"Terminate the enemy."
+Sounds = $ORDAttack1
+Sounds = $ORDAttack2
+
+[ORGroupMove]
+;Sounds = $23-UM00		 ;"Received."
+Sounds = $ORDMove1
+Sounds = $ORDMove2
+
+[ORGroupSelection]
+Sounds = $23-US01		 ;"Ready to move."
+Sounds = $ORDSelect1
+Sounds = $ORDSelect2
+
+
+
+
+; ---------------------------
+; SPECIAL ORDOS UNIT COMMANDS
+; ---------------------------
+
+; ----- APC -----
+[ORAPCSpecial0]		 ; Played when the APC is deployed (Infantry exit)
+Sounds = $30-UX01		 ;"Deploying cargo."
+
+[ORAPCSpecial1]		 ; Played when Infantry enter the APC
+Sounds = $30-UX00		 ;"Loading cargo."
+
+;[ORAPCSpecial2]		 ; Played when the APC moves and has occupants.
+				 ; If this sound is not defined, then the move sound is used
+
+; Note that the same numbers will work for the ATAPC i.e.
+; [ATAPCSpecial0] is played when the AT APC is deployed
+
+
+; ----- Ordos Special Weapon - Chaos Lightning -----
+;
+; pm 04/25/01 - Commented out the filmbook woman comments.  Clashes with UI Comp.
+
+;[ORBeamWeaponSpecial0]	 ; Played when Chaos Lightning is targeted (deployed)
+;Sounds = $38-UX02		 ;"Prepare to be Destroyed!"
+;Sounds = $38-UX04		 ;"All things must die"
+
+
+; ----- Depolyable Infantry -----
+[ORMortarSpecial0]	 ; Played when the mortar infantry deploy
+Sounds = $42-UX00		 ;"Readying mortar for targets"
+
+[ORMortarSpecial1]	 ; Played when the mortar infantry undeploy
+Sounds = $42-UX01		 ;"Evacuating position."
+
+; Note that the same numbers will work for the ATKindjal i.e.
+; [ATKindjall0] is played when the Kindjal infantry deployed
+
+
+
+; ----- Shared units -----
+; The sound hooks that follow are for units which are shared between the houses, but need
+; per-house sound hooks
+
+
+; ----- Harvester -----
+[ORHarvesterAttack]	; used when the harvester gets ordered to harvest
+Sounds = $27-UA01		;"As ordered"
+Sounds = $27-UA04		;"Spice field located"
+Sounds = $27-UA05		;"Harvest commencing"
+ 
+
+[ORHarvesterSelection]
+Sounds = $27-US02		;"Ready"
+Sounds = $27-US04		;"Harvester standing by"
+Sounds = $27-US05		;"What is the directive?"
+ 
+
+[ORHarvesterMove]
+Sounds = $27-UM02		;"By your order"
+Sounds = $27-UM04		;"Orders have been received"
+Sounds = $27-UM06		;"Plotting course"
+ 
+
+
+; ----- MCV -----
+[ORMCVSpecial0]		; used when the MCV is deployed
+Sounds = $34-UA01		;"Construction facility onine"
+Sounds = $34-UA03		;"House Ordos will prevail"
+ 
+
+[ORMCVMove]
+Sounds = $34-UM03		;"Directive initiated"
+Sounds = $34-UM04		;"Course change confirmed"
+ 
+
+[ORMCVSelection]
+Sounds = $34-US02		;"House Ordos will prevail"
+Sounds = $34-US04		;"Mobile construction unit in place"
+Sounds = $34-US05		;"All systems functional"
+Sounds = $34-US06		;"Awating your directive"
+ 
+
+
+
+; Events to check... -pm
+
+;TR [CarryallSelect]
+;TR Sounds = $"awaiting orders" $"in position" $"standing by" $"unit reporting" $"yes sir"
+
+;TR [CarryallMoveOrder]
+;TR Sounds = $"moving to position" $acknowledged $"long live the fighters" $"house atreides" $ok
+
+;TR [CarryallAttackOrder]
+;TR Sounds = $"carrying out orders" $"for the duke" $"right away" $"by your command"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

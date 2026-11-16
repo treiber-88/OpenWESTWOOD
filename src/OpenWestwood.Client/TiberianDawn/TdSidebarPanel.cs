@@ -16,7 +16,7 @@ namespace OpenWestwood.Client.TiberianDawn;
 /// right click puts the last one of that kind back (cancel). The mouse wheel scrolls a column.
 /// Building upgrades (Dune 2000's) sit at the end of the right column until researched.
 /// </summary>
-public sealed class TdSidebarPanel
+public sealed partial class TdSidebarPanel
 {
     const float CameoW = 64, CameoH = 48, Gap = 4;
 
@@ -86,12 +86,12 @@ public sealed class TdSidebarPanel
     public ClickMode Mode { get; set; }
 
     /// <summary>Whether this is the game's own sidebar (it takes the Zero Hour control bar's place).</summary>
-    public bool HasSkin => skin != null;
+    public bool HasSkin => skin != null || emperor != null || kwHud != null;
 
     Rect P(float x, float y, float w, float h) => new(Area.X + x * scale, Area.Y + y * scale, w * scale, h * scale);
 
     /// <summary>Where the mini-map is drawn on the skin's radar (null without one).</summary>
-    public Rect? RadarMapRect => skin?.Radar is { } r
+    public Rect? RadarMapRect => emperor != null ? EmperorRadarRect : kwHud != null ? KwRadarRect : skin?.Radar is { } r
         ? P(r.X + skin.RadarInset.X, r.Y + skin.RadarInset.Y, r.Z - 2 * skin.RadarInset.X, r.W - 2 * skin.RadarInset.Y) : null;
 
     int CostOf(Item item) => item.Template != null ? game.Costs.BuildCost(player, item.Template)
@@ -104,6 +104,16 @@ public sealed class TdSidebarPanel
         this.ui = ui;
         theme = ThemeFor(player.Side);
         skin = SidebarSkin.For(game.Rules, player.Side);
+        // Emperor's houses: the game's own 3D sidebar.
+        if (skin == null && player.Side.StartsWith("EM", StringComparison.OrdinalIgnoreCase))
+            emperor = Emperor.EmperorSidebarModel.Load(ui.Content.FileSystem, ui.Textures);
+        // Kane's Wrath's factions: its own HUD, from Apt.big.
+        if (skin == null && IsKwSide(player.Side) && KanesWrath.KwApt.Load(ui.Content, "tacticalhud") is { } hud)
+        {
+            kwHud = new KanesWrath.AptRenderer(hud, ui.Textures);
+            if (KanesWrath.KwApt.Load(ui.Content, "tacticalhudmaincommandbar") is { } bar)
+                kwBar = new KanesWrath.AptRenderer(bar, ui.Textures);
+        }
     }
 
     /// <summary>Whether this player's faction is a Tiberian Dawn one.</summary>
@@ -112,6 +122,16 @@ public sealed class TdSidebarPanel
 
     public void Layout(int width, int height)
     {
+        if (emperor != null)
+        {
+            EmperorLayout(width, height);
+            return;
+        }
+        if (kwHud != null)
+        {
+            KwLayout(width, height);
+            return;
+        }
         if (skin != null)
         {
             // The game's own sidebar, to the screen's height at its right edge.
@@ -182,6 +202,10 @@ public sealed class TdSidebarPanel
 
     (int Column, Item Item)? ItemAt(Vector2 point)
     {
+        if (emperor != null)
+            return EmperorItemAt(point);
+        if (kwHud != null)
+            return KwItemAt(point);
         for (int column = 0; column < 2; column++)
         {
             var list = Column(column);
@@ -270,7 +294,7 @@ public sealed class TdSidebarPanel
     public (ObjectTemplate Template, GameObject Factory, uint EntryId)? Click(Vector2 point, bool right, out string? message)
     {
         message = null;
-        if (!right && SkinButtonClick(point))
+        if (!right && (emperor != null ? EmperorButtonClick(point) : kwHud != null ? KwButtonClick(point) : SkinButtonClick(point)))
             return null;
         if (ItemAt(point) is not { } hit)
             return null;
@@ -332,6 +356,16 @@ public sealed class TdSidebarPanel
 
     public void Scroll(Vector2 point, float amount)
     {
+        if (emperor != null)
+        {
+            EmperorScroll(amount);
+            return;
+        }
+        if (kwHud != null)
+        {
+            KwScroll(amount);
+            return;
+        }
         int column = point.X < Area.X + Area.Width / 2 ? 0 : 1;
         int max = Math.Max(0, Column(column).Count - VisibleRows);
         scroll[column] = Math.Clamp(scroll[column] - Math.Sign(amount), 0, max);
@@ -346,6 +380,16 @@ public sealed class TdSidebarPanel
 
     public void Draw(SpriteBatch batch)
     {
+        if (emperor != null)
+        {
+            DrawEmperor(batch);
+            return;
+        }
+        if (kwHud != null)
+        {
+            DrawKw(batch);
+            return;
+        }
         if (skin != null)
         {
             DrawSkin(batch, skin);

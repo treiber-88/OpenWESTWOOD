@@ -13,11 +13,15 @@ Objects:
           Model: EM_mghit
           Animation: EM_mghit.All
           AnimationMode: ONCE
+          ParticleSysBone: ["?#flashtest~~0 EMPS_mghit_0", "?#flashtest~~0 EMPS_mghit_1", "?#flashtest~~0 EMPS_mghit_2"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_HMG_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -67,11 +71,15 @@ Objects:
           Model: EM_missileHit
           Animation: EM_missileHit.All
           AnimationMode: ONCE
+          ParticleSysBone: ["?#bing4 EMPS_missileHit_0", "?#bigbing~~1 EMPS_missileHit_1", "?#bing1 EMPS_missileHit_2", "?#bing2 EMPS_missileHit_3", "?#bing3 EMPS_missileHit_4", "?#bing4 EMPS_missileHit_5", "?#bing2 EMPS_missileHit_6", "?#bing3 EMPS_missileHit_7", "?#bing1 EMPS_missileHit_8"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_Rocket_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -92,6 +100,10 @@ Objects:
           Model: EM_missile
           Animation: EM_missile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_missile_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -162,11 +174,15 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: EM_SniperHit
+          ParticleSysBone: ["#MGHit~~0 EMPS_SniperHit_0", "#MGHit~~0 EMPS_SniperHit_1"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_cal50_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -290,6 +306,10 @@ Objects:
           Model: EM_missile
           Animation: EM_missile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_missile_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -323,11 +343,15 @@ Objects:
           Model: EM_shellhit
           Animation: EM_shellhit.All
           AnimationMode: ONCE
+          ParticleSysBone: ["?#bing1 EMPS_shellhit_0", "?#bing2 EMPS_shellhit_1", "?#bing3 EMPS_shellhit_2", "?#bing4 EMPS_shellhit_3", "?#bing2 EMPS_shellhit_4", "?#bing3 EMPS_shellhit_5", "?#bing1 EMPS_shellhit_6", "?#bigbing~~1 EMPS_shellhit_7"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_KobraHowitzer_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -347,6 +371,10 @@ Objects:
           Model: EM_shell
           Animation: EM_shell.All
           AnimationMode: LOOP
+          ParticleSysBone: ["shell~~0 EMPS_shell_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -386,6 +414,10 @@ Objects:
           Model: EM_lsonic
           Animation: EM_lsonic.All
           AnimationMode: LOOP
+          ParticleSysBone: ["#sand EMPS_lsonic_0", "#particle04 EMPS_lsonic_1", "#particle03 EMPS_lsonic_2", "#particle02 EMPS_lsonic_3", "#particle01 EMPS_lsonic_4"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -426,6 +458,10 @@ Objects:
           Model: EM_trailmissile
           Animation: EM_trailmissile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_trailmissile_0", "#trail01 EMPS_trailmissile_1", "#trail02 EMPS_trailmissile_2", "#trail03 EMPS_trailmissile_3"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -465,6 +501,10 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: EM_ORmissile
+          ParticleSysBone: ["missile~~0 EMPS_ORmissile_0", "missile~~0 EMPS_ORmissile_1"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -496,11 +536,15 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: EM_BloodSplat
+          ParticleSysBone: ["#~~0 EMPS_BloodSplat_0"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_Contaminator_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -644,6 +688,10 @@ Objects:
           Model: EM_lsonic
           Animation: EM_lsonic.All
           AnimationMode: LOOP
+          ParticleSysBone: ["#sand EMPS_lsonic_0", "#particle04 EMPS_lsonic_1", "#particle03 EMPS_lsonic_2", "#particle02 EMPS_lsonic_3", "#particle01 EMPS_lsonic_4"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -822,6 +870,10 @@ Objects:
           Model: EM_missile
           Animation: EM_missile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_missile_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -894,6 +946,10 @@ Objects:
           Model: EM_shell
           Animation: EM_shell.All
           AnimationMode: LOOP
+          ParticleSysBone: ["shell~~0 EMPS_shell_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -963,11 +1019,15 @@ Objects:
           Model: EM_InkvineSplat
           Animation: EM_InkvineSplat.All
           AnimationMode: ONCE
+          ParticleSysBone: ["#splat EMPS_InkvineSplat_0"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_InkVine_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -987,6 +1047,10 @@ Objects:
           Model: EM_InkvineBullet
           Animation: EM_InkvineBullet.All
           AnimationMode: LOOP
+          ParticleSysBone: ["~~0Inkvine EMPS_InkvineBullet_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1026,6 +1090,10 @@ Objects:
           Model: EM_DevPlasma
           Animation: EM_DevPlasma.All
           AnimationMode: LOOP
+          ParticleSysBone: ["#coil EMPS_DevPlasma_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1066,6 +1134,10 @@ Objects:
           Model: EM_trailmissile
           Animation: EM_trailmissile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_trailmissile_0", "#trail01 EMPS_trailmissile_1", "#trail02 EMPS_trailmissile_2", "#trail03 EMPS_trailmissile_3"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1136,11 +1208,15 @@ Objects:
           Model: EM_Deviatehit
           Animation: EM_Deviatehit.All
           AnimationMode: ONCE
+          ParticleSysBone: ["?#bigbing~~0 EMPS_Deviatehit_0", "?#bigbing2 EMPS_Deviatehit_1"]
       ModuleTag_02:
         Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 1500
         MaxLifetime: 1500
+      ModuleTag_03:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
   EM_Projectile_Gas_B:
     DisplayName: Emperor projectile
     EditorSorting: SYSTEM
@@ -1160,6 +1236,10 @@ Objects:
           Model: EM_GasGrenade
           Animation: EM_GasGrenade.All
           AnimationMode: LOOP
+          ParticleSysBone: ["emmiter EMPS_GasGrenade_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1197,6 +1277,10 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: EM_gplasbolt
+          ParticleSysBone: ["#coil01 EMPS_gplasbolt_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1234,6 +1318,10 @@ Objects:
         Class: W3DModelDraw
         DefaultConditionState:
           Model: EM_LingerGas
+          ParticleSysBone: ["#~~0 EMPS_LingerGas_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1295,6 +1383,10 @@ Objects:
           Model: EM_missile
           Animation: EM_missile.All
           AnimationMode: LOOP
+          ParticleSysBone: ["missile~~0 EMPS_missile_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1335,6 +1427,10 @@ Objects:
           Model: EM_shell
           Animation: EM_shell.All
           AnimationMode: LOOP
+          ParticleSysBone: ["shell~~0 EMPS_shell_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody
@@ -1374,6 +1470,10 @@ Objects:
           Model: EM_GasRocket
           Animation: EM_GasRocket.All
           AnimationMode: LOOP
+          ParticleSysBone: ["#gsmoke EMPS_GasRocket_0"]
+      ModuleTag_09:
+        Module: ClientUpdate
+        Class: AnimatedParticleSysBoneClientUpdate
       ModuleTag_02:
         Module: Body
         Class: ActiveBody

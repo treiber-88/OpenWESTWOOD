@@ -406,6 +406,21 @@ CommandButtons:
     ButtonImage: KWCAMEO:Button_PlayerPowerIonCannon
     ButtonBorderType: ACTION
     DescriptLabel: Countdown Timer     Double-click to jump to this weapon
+  Command_KW_FireEMPGrenades:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_FireEMPGrenades
+    Options: NEED_TARGET_POS
+    TextLabel: SpecialPower_FireEMPGrenades
+    ButtonBorderType: ACTION
+    DescriptLabel: SpecialPower_FireEMPGrenades
+  Command_KW_SpotTargetBombard:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_SpotTargetBombard
+    Options: NEED_TARGET_ALLY_OBJECT
+    TextLabel: Bombard Spotted Target
+    ButtonImage: KWCAMEO:Button_AbilitySpotTargetBombard
+    ButtonBorderType: ACTION
+    DescriptLabel: Launches a volley of fire near a Sniper Team's vision radius     Left-click icon then left-click near a Sniper Team's vision radius
   Command_KW_GDI_FireHawkStratoFighterAbility:
     Command: SPECIAL_POWER
     SpecialPower: KW_SpecialAbilityStratoFighter
@@ -688,6 +703,13 @@ CommandButtons:
     ButtonImage: KWCAMEO:Portrait_MARV
     ButtonBorderType: BUILD
     DescriptLabel: MARV
+  Command_KW_ActivateAdaptiveArmor:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SteelTalonsAdaptiveArmor
+    TextLabel: Adaptive Armor
+    ButtonImage: KWCAMEO:Button_AbilityAdaptiveArmor
+    ButtonBorderType: ACTION
+    DescriptLabel: Increases armor and confers EMP immunity but reduces rate of fire     Left-click to activate
   Command_KW_ZOCOMPowerPlant:
     Command: UNIT_BUILD
     Object: KW_ZOCOMPowerPlant
@@ -990,6 +1012,14 @@ CommandButtons:
     ButtonImage: KWCAMEO:Portrait_MARV
     ButtonBorderType: BUILD
     DescriptLabel: MARV
+  Command_KW_FireImprovedSonicTankOverloadBeam:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_ImprovedSonicTankOverloadBeam
+    Options: NEED_TARGET_ENEMY_OBJECT
+    TextLabel: Overload Beam
+    ButtonImage: KWCAMEO:Button_AbilityOverloadBeam
+    ButtonBorderType: ACTION
+    DescriptLabel: Overloads the Sonic Cannon to fire one extra-powerful shot on a targeted location   Leaves the Zone Shatterer briefly disabled     Left-click icon then left-click on target location
   Command_KW_NODPowerPlant:
     Command: UNIT_BUILD
     Object: KW_NODPowerPlant
@@ -1371,6 +1401,44 @@ CommandButtons:
     ButtonImage: KWCAMEO:Portrait_Redeemer
     ButtonBorderType: BUILD
     DescriptLabel: Redeemer
+  Command_KW_NodShadow_PlaceExplosiveCharges:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_PlaceSatchelCharge_NOD
+    Options: NEED_TARGET_ENEMY_OBJECT
+    TextLabel: Explosive Charge
+    ButtonImage: KWCAMEO:Button_AbilityDivebomb
+    ButtonBorderType: ACTION
+    DescriptLabel: Shadow Teams plant an explosive charge near a structure causing blast damage   Can only be used when on foot     Left-click on icon then left-click on target structure
+  Command_KW_NODShadowSquadDeployBeacon:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPowerDeployBeacon
+    Options: NEED_TARGET_POS
+    TextLabel: Deploy Artillery Beacon
+    ButtonImage: KWCAMEO:Button_Ability_DeployBeacon
+    ButtonBorderType: ACTION
+    DescriptLabel: The Shadows deploy a Beacon allowing Specter artillery to Bombard the nearby area.     Left-click icon then left-click target location.
+  Command_KW_FireEmpBurst:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_EmpBurst
+    TextLabel: EMP Burst
+    ButtonImage: KWCAMEO:Button_AbilityEMPBurst
+    ButtonBorderType: ACTION
+    DescriptLabel: Causes all nearby mechanical units and structures to become temporarily disabled     Left-click to activate
+  Command_KW_SpotBeaconBombard:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_SpotBeaconBombard
+    Options: NEED_TARGET_ALLY_OBJECT
+    TextLabel: Bombard Deployed Beacon
+    ButtonImage: KWCAMEO:Button_AbilitySpotTargetBombard
+    ButtonBorderType: ACTION
+    DescriptLabel: Launches an artillery shell near a Shadow Team's deployed Beacon.     Left-click icon then left-click near Shadow Team Beacon
+  Command_KW_FireRageGenerator:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_NodRageGenerator
+    TextLabel: Rage Generator
+    ButtonImage: KWCAMEO:Button_Upgrade_RageGenerator
+    ButtonBorderType: ACTION
+    DescriptLabel: Causes enemies in the target area to attack their own allies     Left-click to activate
   Command_KW_BlackHandPowerPlant:
     Command: UNIT_BUILD
     Object: KW_BlackHandPowerPlant
@@ -1651,6 +1719,13 @@ CommandButtons:
     ButtonImage: KWCAMEO:Portrait_Redeemer
     ButtonBorderType: BUILD
     DescriptLabel: Redeemer
+  Command_KW_BlackHandConfessorCabalFireGrenade:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_BlackHandConfessorCabalFireGrenade
+    Options: NEED_TARGET_POS
+    TextLabel: SpecialPower_BlackHandConfessorCabalFireGrenade
+    ButtonBorderType: ACTION
+    DescriptLabel: SpecialPower_BlackHandConfessorCabalFireGrenade
   Command_KW_MarkedOfKanePowerPlant:
     Command: UNIT_BUILD
     Object: KW_MarkedOfKanePowerPlant
@@ -1959,6 +2034,14 @@ CommandButtons:
     ButtonImage: KWCAMEO:Portrait_Redeemer
     ButtonBorderType: BUILD
     DescriptLabel: Redeemer
+  Command_KW_NODEMPBlast:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_EMPBlast
+    Options: NEED_TARGET_POS
+    TextLabel: EMP Blast
+    ButtonImage: KWCAMEO:Button_Ability_EMPBlast
+    ButtonBorderType: ACTION
+    DescriptLabel: Causes all mechanical units and structures in the Area of Effect to become temporarily disabled     Left-click icon then left-click on target unit or structure
   Command_KW_AlienPowerProjector:
     Command: UNIT_BUILD
     Object: KW_AlienPowerProjector
@@ -2294,6 +2377,13 @@ CommandButtons:
     ButtonImage: KWCAMEO:Button_AbilityBlinkPack
     ButtonBorderType: ACTION
     DescriptLabel: Teleport unit to a location on the battlefield     Left-click icon then left-click on target location
+  Command_KW_FireTiberiumAgitation:
+    Command: SPECIAL_POWER
+    SpecialPower: KW_SpecialPower_UseTiberiumAgitation
+    Options: NEED_TARGET_ENEMY_OBJECT
+    TextLabel: SpecialPower_UseTiberiumAgitation
+    ButtonBorderType: ACTION
+    DescriptLabel: SpecialPower_UseTiberiumAgitation
   Command_KW_TeleportEradicator:
     Command: SPECIAL_POWER
     SpecialPower: KW_SpecialPower_TeleportEradicator

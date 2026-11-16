@@ -4,8 +4,11 @@ obj/
 *.user
 .vs/
 
-# Original game data copied from a local Zero Hour install (copyrighted, never commit)
-content/
+# Original game data. Kane's Wrath and Generals / Zero Hour stay local; the other games' content is committed
+# (their big archives through Git LFS, see .gitattributes).
+content/kaneswrath/
+content/generals/
+content/zerohour/
 
 # Per-user settings, logs and saves
 userdata/

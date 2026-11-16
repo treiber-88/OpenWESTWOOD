@@ -240,6 +240,89 @@ static class EmperorFactionExporter
             return Regex.Replace(name, "(?<=[a-z])(?=[A-Z])", " ");
         }
 
+        // ---- Particle effects: the model's effect block (XbfFx) starts and stops particle systems on its nodes ----
+        var particles = new StringBuilder("ParticleSystems:\n");
+        var fxBonesDone = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+        List<string> FxBones(string model, bool looping)
+        {
+            string key = model + (looping ? "@loop" : "");
+            if (fxBonesDone.TryGetValue(key, out var cached))
+                return cached;
+            var result = fxBonesDone[key] = new List<string>();
+            string file = model[(model.IndexOf('_') + 1)..];
+            if (art.XbfPath(file) is not { } path)
+                return result;
+            var xbf = XbfFile.Read(art.ReadAllBytes(path));
+            var fx = XbfFx.Read(xbf.FxData);
+            if (fx.Systems.Count == 0 || fx.Events.Count == 0)
+                return result;
+            var nodes = new HashSet<string>(xbf.AllNodes.Select(n => n.Name), StringComparer.Ordinal);
+            var systems = fx.Systems.ToDictionary(s => s.Name, s => s, StringComparer.Ordinal);
+            var open = new Dictionary<(string System, string Node), int>();
+            var runs = new List<(XbfParticleSystem System, string Node, int Start, int Stop)>();
+            foreach (var e in fx.Events.OrderBy(e => e.Frame))
+            {
+                if (e.Strings.Count < 2 || !systems.TryGetValue(e.Strings[0], out var s) || !nodes.Contains(e.Strings[1]))
+                    continue;
+                var k = (e.Strings[0], e.Strings[1]);
+                if (e.Type == 3)
+                    open.TryAdd(k, e.Frame);
+                else if (e.Type == 4 && open.Remove(k, out int start))
+                    runs.Add((s, e.Strings[1], start, e.Frame));
+            }
+            foreach (var ((sys, node), start) in open)
+                runs.Add((systems[sys], node, start, looping ? -1 : fx.Frames));
+            string stem = "EMPS_" + Regex.Replace(file, "[^A-Za-z0-9_]", "_");
+            for (int i = 0; i < runs.Count; i++)
+            {
+                var (s, node, start, stop) = runs[i];
+                string name = $"{stem}_{i}";
+                particles.Append(ParticleSystem(name, s, start, stop));
+                result.Add($"\"{node} {name}\"");
+            }
+            return result;
+        }
+        // An Emperor particle system as an engine one. Emperor sizes/speeds are in model units (x Scale), times in 30 a
+        // second frames like the engine's. Size is multiplied by SizeRate each frame: rate = size*(r-1), damping r gives
+        // exactly size*r^t. Colours and alpha change by fixed steps a frame.
+        string ParticleSystem(string name, XbfParticleSystem s, int start, int stop)
+        {
+            float scale = XbfToW3d.Scale;
+            int life = Math.Max(1, s.Lifetime);
+            int frames = Math.Max(1, s.TextureFrames);
+            bool alpha = s.Texture.Contains('@');
+            // (Emperor's size reads as a radius: drawn twice as wide, the hits match the original's against the units.)
+            float size = Math.Max(0.1f, 2 * s.Size * scale);
+            float r = s.SizeRate > 0 ? s.SizeRate : 1;
+            static int Clamp(int v) => Math.Clamp(v, 0, 255);
+            var sb = new StringBuilder($"  {name}:\n    Priority: WEAPON_EXPLOSION\n    IsOneShot: No\n");
+            sb.Append($"    Shader: {(alpha ? "ALPHA" : "ADDITIVE")}\n    Type: PARTICLE\n");
+            sb.Append($"    ParticleName: {EmperorArtPackage.Folder}Textures/{s.Texture}@seq{frames}\n");
+            sb.Append($"    FramesPerRow: {Math.Max(1, (int)Math.Ceiling(Math.Sqrt(frames)))}\n    TotalFrames: {frames}\n");
+            sb.Append($"    Lifetime: {life} {life}\n");
+            // 0/1: one burst when started; 2: a burst every frame while it runs (stop -1 = for as long as the object lives).
+            bool continuous = s.Emitter == 2;
+            int running = stop < 0 ? 0 : Math.Max(1, stop - start);
+            sb.Append($"    SystemLifetime: {(continuous ? running : 1)}\n");
+            sb.Append($"    Size: {F(size)} {F(size)}\n    StartSizeRate: 0 0\n");
+            sb.Append($"    SizeRate: {F(size * (r - 1))} {F(size * (r - 1))}\n    SizeRateDamping: {F(r)} {F(r)}\n");
+            float a0 = Clamp(s.Alpha) / 255f, a1 = Clamp(s.Alpha + s.AlphaRate * life) / 255f;
+            sb.Append($"    Alpha1: {F(a0)} {F(a0)} 0\n    Alpha2: {F(a1)} {F(a1)} {life}\n");
+            sb.Append($"    Color1: R:{Clamp(s.Red)} G:{Clamp(s.Green)} B:{Clamp(s.Blue)} 0\n");
+            sb.Append($"    Color2: R:{Clamp(s.Red + s.RedRate * life)} G:{Clamp(s.Green + s.GreenRate * life)} B:{Clamp(s.Blue + s.BlueRate * life)} {life}\n");
+            int count = s.Emitter == 0 ? 1 : Math.Max(1, s.PerEmission);
+            sb.Append($"    BurstDelay: {(continuous ? 1 : 0)} {(continuous ? 1 : 0)}\n    BurstCount: {count} {count}\n");
+            sb.Append($"    InitialDelay: {start} {start}\n");
+            float speed = s.Emitter == 0 ? 0 : s.Speed * scale;
+            sb.Append($"    VelocityType: SPHERICAL\n    VelSpherical: {F(speed * 0.5f)} {F(speed)}\n");
+            float damping = s.Drag is > 0 and < 1 ? 1 - s.Drag : 1;
+            sb.Append($"    VelocityDamping: {F(damping)} {F(damping)}\n");
+            if (s.Gravity is > -50 and < 50 and not 0)
+                sb.Append($"    Gravity: {F(s.Gravity * scale / 30)}\n");
+            sb.Append("    VolumeType: POINT\n    AngleZ: 0 6.28\n");
+            return sb.ToString();
+        }
+
         // ---- Explosions: the effect model played once where a shot lands ----
         var explosionDone = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
         string? Explosion(string type)
@@ -258,7 +341,12 @@ static class EmperorFactionExporter
             effects.Append($"      ModuleTag_01:\n        Module: Draw\n        Class: W3DModelDraw\n        DefaultConditionState:\n          Model: {model}\n");
             if (anims.Contains("All"))
                 effects.Append($"          Animation: {model}.All\n          AnimationMode: ONCE\n");
+            var fxBones = FxBones(model, looping: false);
+            if (fxBones.Count > 0)
+                effects.Append($"          ParticleSysBone: [{string.Join(", ", fxBones)}]\n");
             effects.Append("      ModuleTag_02:\n        Module: Behavior\n        Class: LifetimeUpdate\n        MinLifetime: 1500\n        MaxLifetime: 1500\n");
+            if (fxBones.Count > 0)
+                effects.Append("      ModuleTag_03:\n        Module: ClientUpdate\n        Class: AnimatedParticleSysBoneClientUpdate\n");
             ocls.Append($"  {ocl}:\n    Nuggets:\n    - Type: CreateObject\n      ObjectNames: {obj}\n      Disposition: LIKE_EXISTING\n");
             return explosionDone[type] = ocl;
         }
@@ -355,6 +443,8 @@ static class EmperorFactionExporter
                     effects.Append($"      ModuleTag_01:\n        Module: Draw\n        Class: W3DModelDraw\n        DefaultConditionState:\n          Model: {model}\n");
                     if (Animations(model).Contains("All"))
                         effects.Append($"          Animation: {model}.All\n          AnimationMode: LOOP\n");
+                    if (FxBones(model, looping: true) is { Count: > 0 } trail)
+                        effects.Append($"          ParticleSysBone: [{string.Join(", ", trail)}]\n      ModuleTag_09:\n        Module: ClientUpdate\n        Class: AnimatedParticleSysBoneClientUpdate\n");
                 }
                 effects.Append("      ModuleTag_02:\n        Module: Body\n        Class: ActiveBody\n        MaxHealth: 100.0\n        InitialHealth: 100.0\n");
                 effects.Append("      ModuleTag_03:\n        Module: Behavior\n        Class: DestroyDie\n");
@@ -690,6 +780,7 @@ static class EmperorFactionExporter
         File.WriteAllText(Path.Combine(output, "command-buttons.yaml"), header + buttons);
         File.WriteAllText(Path.Combine(output, "upgrades.yaml"), header + upgrades);
         File.WriteAllText(Path.Combine(output, "object-creation-lists.yaml"), header + ocls);
+        File.WriteAllText(Path.Combine(output, "particle-systems.yaml"), header + particles);
         Console.WriteLine($"Wrote Emperor factions to {output} ({weaponDone.Count} weapons)");
         return 0;
     }

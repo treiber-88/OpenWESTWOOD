@@ -498,6 +498,36 @@ public class SoleSurvivorTests(ITestOutputHelper output)
         Assert.Same(car, match.VehicleNear(me));
     }
 
+    /// <summary>Stuttgart's cars (models lying along Y, nose at -Y) drive nose first: the drivable car's model is turned
+    /// a quarter and the car faces a quarter less, so it stands as parked, with its box long along its facing.</summary>
+    [Fact]
+    public void SidewaysParkedCarsDriveNoseFirst()
+    {
+        if (Content() is not { } c || !Core.Installs.GameInstalls.Has(Core.Installs.OriginalGame.KanesWrath)) return;
+        var cache = Client.Shell.ShellScreen.BuildMapCache(c);
+        var map = cache.Maps.Where(m => m.FileName.StartsWith("kw:", StringComparison.OrdinalIgnoreCase) && m.NumPlayers >= 2)
+            .FirstOrDefault(m => Client.KanesWrath.KwMaps.Read(m.FileName).Objects.Any(o => o.TemplateName.Contains("GRPAUTO", StringComparison.OrdinalIgnoreCase)));
+        Assert.NotNull(map);
+        output.WriteLine(map.FileName);
+        var setup = new Client.SoleSurvivor.SsrMatchSetup { Mode = SsrMode.Freeplay, Computers = 1, MapPlayers = map.NumPlayers, UnitType = SsrCategory.Infantry,
+            Map = map.FileName, MapInfo = map };
+        var (game, _, match) = setup.Build(c);
+        var me = match.Players.First(p => !p.IsComputer);
+        match.Players.First(p => p.IsComputer).RespawnFrame = int.MaxValue;
+        var parked = game.Objects.First(o => SoleSurvivorMatch.IsParkedCar(o) && !o.IsEffectivelyDead && o.Template.Name.Contains("GRPAUTO", StringComparison.OrdinalIgnoreCase));
+        float parkedFacing = parked.Orientation;
+        var soldier = match.Spawn(me, "KW_GDIRifleSoldier")!;
+        soldier.AI!.Teleport(parked.Position + new System.Numerics.Vector3(parked.Radius + 15, 0, 0));
+        Assert.Same(parked, match.VehicleNear(me));
+        new SsrVehicleCommand(me.Player.Index).Execute(game);
+        var car = match.UnitOf(me)!;
+        output.WriteLine($"{parked.Template.Name}: parked facing {parkedFacing:0.00}, car {car.Orientation:0.00}, box {car.Template.GeometryMajorRadius} x {car.Template.GeometryMinorRadius}");
+        Assert.Equal("90", car.Template.Rules.GetString("DrawModelYaw"));
+        Assert.True(car.Template.GeometryMajorRadius > car.Template.GeometryMinorRadius);
+        float turn = MathUtil.NormalizeAngle(parkedFacing - MathF.PI / 2 - car.Orientation);
+        Assert.True(MathF.Abs(turn) < 0.01f, $"car faces {car.Orientation}, parked {parkedFacing}");
+    }
+
     /// <summary>The orders a network game sends for Sole Survivor (unit picks, vehicles, steering) go through the
     /// network's encoding unchanged.</summary>
     [Fact]

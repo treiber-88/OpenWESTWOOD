@@ -1,0 +1,1425 @@
+;dko denotes a comment by dwight@westwood
+
+
+	;
+	; -------- Misc Weapons ----------------------
+	;	
+
+[SingleShotPistol]
+Sounds=hk_engineer_pistol_1
+FShift=-1 1
+Volume=70
+
+
+;dko 4/24/01 test new idries call 
+[saheavymg-longburst1]
+Sounds = sardukar_mgun_1 sardukar_mgun_2
+Control=random
+Volume=70
+
+;dko 4/24/01 test new idries call 
+[saheavymg-longburst2]
+Sounds = sardukar_mgun_1 sardukar_mgun_2
+Control=random
+Volume=70
+
+;dko added 4/10/01
+[MedMG-Longburst]
+Sounds = sardukar_mgun_1 sardukar_mgun_2
+Control=random
+Volume=70
+
+
+[HeavyMG-Shortburst]
+Sounds=hk_buzzsaw_gun_1
+FShift=-1 1
+Volume=70
+
+
+; HMGL1, HMGL2, HMGL2 samples are not currently being called by any ; units but might be needed in future
+[HeavyMG-Longburst]
+Sounds = HMGL1 HMGL2 HMGL3
+
+
+;Bazooka1, Bazooka2, Bazooka3 samples are called by the Ordos AA Infantryman. ;They are also being called by the Atreides Mongoose, the Atreides Rocket ;Turret, the Harkonnen Trooper and the Hakonnen Missile Tank (this one also ;calls the Rocket wavs).  
+[BazookaLaunch]
+;Sounds = Bazooka1 Bazooka2 Bazooka3
+Sounds = bazooka_mod_1
+Volume=70
+
+;Rocket1, Rocket2, Rocket3 samples are being called by the Ordos ;APC. Also called by the Harkonnen Devastator (secondary weapon), the Harkonnen ;Gunship and the Harkonnen Missile Tank.
+;RocketLaunch - initial launch sound of a rocket  
+[RocketLaunch]
+Sounds=hk_missile_tank_1
+Volume=70
+
+
+;Cannon1, Cannon2, Cannon3 samples are all being called by the ;Harkonnen Assault Tank. They are also being called by the Harkonnen GunTurret
+;dko 5/2/01  Let's set this aside for the HK Gun Turret
+[CannonSingleLoudShot]
+Sounds=hk_assault_tank_1a
+Volume=80
+
+; Flamethrower-flames crackling (a single burst of flame)
+[FlameSpray]
+Sounds=hk_flame_infantry_1
+Volume=80
+
+
+;LrgFlamer1, LrgFlamer2, LrgFlamer3 samples are being called by the ;Harkonnen Flamer Turret
+[LrgFlameSpray]
+;dko Sounds = LrgFlamer1 LrgFlamer2 LrgFlamer3
+Sounds=hk_flame_turret_1
+Volume=80
+
+
+;dko 4/10/01 is this being called?  If so, for what?
+          ;Unsure that this is being called
+          ; Detonation same as 'Shell Detonation'
+[Detonation]
+Sounds = ShellDet1
+
+
+;dko 4/12/01  I'm now using single samples tied to the animation frames.
+[Thumper]
+Sounds = thumper_single_1 thumper_single_2
+Control=random
+;FShift=-2 2
+Volume=80
+
+
+; Plasma1, Plasma2, Plasma3 samples are being called by the ;Harkonnen Devastator (primary fire weapon)
+; Plasma (Devastator Plasma Gun) - energistic firing noise (single shot)
+[Plasma]
+Sounds=hk_devastator_1d
+Volume=80
+
+				  
+;dko added 4/10/01
+; DeathHandLaunch is being called by the Harkonnen DeathHand special weapon
+; DeathHandLaunch - sound of missile in flight (the weapon explosion is uses a ;separate sound to this) 
+[DeathHandLaunch]
+Sounds = death_hand_launch_3
+Limit = 1
+Volume=99
+
+;dko added 4/10/01
+; Wierd1, Wierd2, Wierd3 samples being called by the Adv Fremen ;unit
+; Wierding Voice - Fremen Fedaykin fires his sonic weapon
+[WierdingVoice]
+;Sounds = Wierd1 Wierd2 Wierd3
+Sounds = weirding_weapon_3
+Limit = 3
+Volume=80
+
+;dko added 4/16/01 new idries call
+[FRADVFremenGun]
+Sounds = weirding_weapon_3
+Limit = 2
+Volume=80
+		 
+;dko added 4/10/01
+; Fremen Machine Gun unit
+[frsingleshotrifle]
+Sounds=sniper_3
+Volume=80
+
+;dko added 4/16/01
+; Fremen Machine Gun unit
+[FRFremenGun]
+Sounds=sniper_3
+Volume=80
+
+;dko added 4/10/01
+; Infect1, Infect2, Infect3 samples being called by the Tleilaxu ;Contaminator unit
+; InfectingTouch(con) is weapon noise made by the Contaminator (coincide with ;contaminator swinging his infecting arm)
+[InfectingTouch(con)]
+;Sounds = Infect1 Infect2 Infect3
+Sounds = contaminator_attack_2
+Volume=80
+
+;dko added 4/16/01 new idries call
+[TLContaminatorGun]
+Sounds = contaminator_attack_2
+Volume=80
+
+;dko added 4/10/01
+; Knife1, Knife1, Knife1 samples being called by the Adv Sardaukar
+; EliteSardukar noise made as Sardukar swishes knife (one motion)
+[EliteSardukar]
+;Sounds = Knife1 Knife1 Knife1
+Sounds = sardukar_knife_swing_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[IMADVSardaukarKnife]
+Sounds = sardukar_knife_swing_1
+Volume=70
+
+;dko added 4/16/01
+[IXSlaveKnife]
+Sounds = sardukar_knife_swing_1
+Volume=55
+
+; Spore1, Spore2, Spore3 are being called by the Tleilaxu Leech
+; SpittingSpore is the projectile fired by TL Leech - sort of organic firing noise
+[SpittingSpore]
+;Sounds=spore_shot_1 spore_shot_2 spore_shot_3
+Sounds = tx_leech_attack_6 tx_leech_attack_7
+Control=random
+Volume=80
+
+;dko 4/10/01 added guild maker electric spew
+;GuPower1, GuPower2, GuPower3 samples are being called by the ;GuildMaker unit  
+; single Energy discharge of GuildMaker firing
+[GuildMPower]
+;Sounds = GuPower1 GuPower2 GuPower3
+Sounds = guild_maker_attack_1
+Volume=70
+
+;dko added 4/16/01 new idries call
+[GUMakerGun]
+Sounds = guild_maker_attack_1
+Volume=70
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" SELECT.
+[gumakerselection]
+Sounds=guild_maker_select_1
+Control = random
+Volume = 60
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" COMMAND.
+[gumakermove]
+Sounds=guild_maker_move_1
+Control = random
+Volume = 60
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" ATTACK.
+;dko The ATTACK is pretty much like a COMMAND so I am using those samples for this action.  3/28/01
+[gumakerattack]
+Sounds=guild_maker_attack_confirm_1
+Control = random
+Volume = 60
+		 
+;dko added 4/10/01
+; Zap1, Zap2, Zap3 samples are called by the Guild Niab Tank.
+; Single Energy discharge of GU Niab Tank firing
+[ElectricDischarge]
+;Sounds = Zap1 Zap2 Zap3
+Sounds = niab_tank_fire_1
+Volume=90
+
+;dko added 4/16/01 new idries call
+[GUNIABTankGun]								  
+Sounds = niab_tank_fire_1
+Volume=90
+
+;dko added 4/30/01
+;hk adp move
+[guniabtankmovefxstart]
+Sounds=niab_tank_motor_1
+Limit = 1
+Volume=65
+
+;Howitzer1, Howitzer2, Howitzer3 samples are being called by the ;Ordos Kobra vehicle. Also being called by the Atreides Minotaurus. 
+[Howitzer]
+;dko Sounds = Howitzer1 Howitzer2 Howitzer3
+Sounds = minotaurus_cannon_1
+Volume=70
+
+;dko 4/11/01 this looks like the gun attack sound for the IX Projector
+[atsmallcannonsingleshot]
+Sounds = KindjalGun1 KindjalGun2 KindjalGun3
+Control=random
+Volume=80
+
+;dko added 4/20/01
+[ixprojectormovefxstart]
+Sounds=ix_projector_move_1
+Limit = 1
+Volume=50
+
+;dko added 4/16/01 new idries call
+[IXProjectorTurretGun]
+Sounds = KindjalGun1 KindjalGun2 KindjalGun3
+Control=random
+Volume=80
+
+;dko added 4/23/01 new idries call
+[ReplicaSpawn]
+Sounds = replica_spawn_1
+Limit = 1
+Volume = 80
+
+;dko added 4/23/01 new lee call
+[wormsignlarge]
+Sounds = worm_sign_elec_1 worm_sign_elec_2 worm_sign_elec_3
+Control = random
+Limit = 2
+Type = global
+MinVolume = 25
+Volume =50
+
+;dko added 4/23/01 new lee call
+[wormsignmedium]
+Sounds = worm_sign_elec_1 worm_sign_elec_2 worm_sign_elec_3
+Control = random
+Limit = 2
+Type = global
+MinVolume = 25
+Volume =40
+
+;dko added 4/23/01 new lee call
+[wormsignsmall]
+Sounds = worm_sign_elec_1 worm_sign_elec_2 worm_sign_elec_3
+Control = random
+Limit = 2
+MinVolume = 15
+Volume =30
+
+
+;dko added 4/23/01 new lee call
+[wormsignextralarge]
+Sounds = worm_sign_elec_1 worm_sign_elec_2 worm_sign_elec_3
+Control = random
+Limit = 2
+Type = global
+MinVolume = 25
+Volume =60
+
+;dko added 4/23/01 Yak Death Sound
+[YakDying]
+Sounds = yak_death_1 yak_death_2
+Limit = 1
+Control = random
+Fshift = -2 2
+Volume = 70
+
+	;
+	; -------- Explosions/Deaths -----------------
+	;
+
+          ;smallbang1, smallbang2, smallbang3 samples being called by small ;scale explosions (when small vehicles bite it - Atreides Mongoose, Atreides ;Trike)
+[Small]
+;dko Sounds = smallbang1 smallbang2 smallbang3
+Sounds=explosion_small_1 explosion_small_2 explosion_small_3 explosion_small_4 explosion_small_5
+Control=random
+Priority = high
+Volume=80
+
+
+          ;medbang1, medbang2, medbang3 samples being called when medium ;scale vehicles are destroyed (Harkonnen Missile Tank, HK Flame Tank, Atreides ;Repair vehicle, Atreides Sonic Tank) 
+[Medium]
+;dko Sounds = medbang1 medbang2
+Sounds=explosion_medium_1 explosion_medium_2 explosion_medium_3 explosion_medium_4 explosion_medium_5 bigxplosion04 explosion_vehicle_1
+Control=random
+Priority = high
+Volume=80
+
+
+
+          ;bigbang1, bigbang2, bigbang3 samples being called by Large vehicle ;explosions
+          ;Large - e.g. when a Devastator blows up (bits of debris scattering as well)
+[Large]
+;dko Sounds = bigbang1 bigbang2 
+Sounds=explosion_large_1 explosion_large_2 explosion_large_3 explosion_large_4 explosion_large_5
+Control=random
+Priority = high
+Volume=80
+
+
+          ; BuildBang1, BuildBang2, BuildBang3 called by small/medium ;building explosions
+[Building(EvenLarger)]
+;dko Sounds = BuildBang1 BuildBang2 BuildBang3
+Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Control=random
+Priority = high
+Volume=80
+
+
+          ; LBuildBang1, LBuildBang2, LBuildBang3 called by large building ;explosions (Harkonnen palace)
+          ;LargeBuilding bang called when a palace gets destroyed
+[LargeBuildingBang]
+;dko Sounds = LBuildBang1 LBuildBang2 LBuildBang3
+Sounds=bigxplosion01 bigxplosion02 bigxplosion09 bigxplosion17
+Control=random
+Priority = high
+Volume=80
+
+
+
+          ; BurningS1, BurningS2, BurningS3 samples being called by any ;infantry unit which is torched to death by a flamer. (Harkonnen, Atreides, ;Ordos Infantry)
+          ;BurningSmall/Large - sound of flames when infantryman is on fire
+[BurningSmall]
+;dko Sounds = BurningS1 BurningS2 BurningS3
+Sounds=burn_dying_1 burn_dying_2 burn_dying_3 burn_dying_4 burn_dying_5 burn_dying_6 burn_dying_7 burn_dying_8 
+Control=random
+Volume=70
+
+
+
+          ; BurningL1, BurningL2, BurningL3 not currently being called or ;used
+[BurningLarge]
+Sounds = BurningL1 BurningL2 BurningL3
+
+;KillGuy1, KillGuy2, KillGuy3 samples being called when an infantry ;unit (any house) is killed by a bullet.
+;NormalManDying - groan/scream as human gets hit
+[NormalManDying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+Volume=70
+
+;dko added 4/10/01 check to see if they need specialized yell
+;Killsar1, Killsar2, Killsar3 samples being called whenever a ;Sarduakar/Elite Sarduakar is killed.
+[SardaukarDying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+Volume=70
+
+;dko added 4/10/01 check to see if they need specialized yell
+;KillFrem1, KillFrem2, KillFrem3 samples being called whenever a ;Fremen/Elite Fremen is killed.
+[FremenDying]
+Sounds=normal_dying_1 normal_dying_2 normal_dying_3 normal_dying_4 normal_dying_5 normal_dying_6 normal_dying_7 normal_dying_8 normal_dying_9 normal_dying_10 normal_dying_11 normal_dying_12 normal_dying_13 normal_dying_14 normal_dying_15 normal_dying_16 normal_dying_17 normal_dying_18 normal_dying_19 normal_dying_20 normal_dying_21 normal_dying_22 
+Control=random
+Volume=70
+
+;dko added 4/10/01
+; KillGirl1, KillGirl2, KillGirl3 samples being called whenever a ;female civilian (e.g. in a Fremen camp) is killed.
+[FemaleCivDying]
+Sounds = female_death_1 female_death_2 female_death_3 female_death_4
+Control=random
+Volume=70
+
+;dko added 4/10/01
+; KillCon sample is called whenever a TL Contminator unit is killed 
+[ContaminatorDying]
+Sounds = contaminator_die_1 contaminator_die_2
+Control=random
+Volume=60
+
+; Crush1, Crush2, Crush3 samples called whenever infantry
+;units are run-over by vehicles
+; Crush - sickening 'squelch' as a human gets crushed by vehicle
+[Crush]
+Sounds=crush_guy_1 crush_guy_2 crush_guy_3 crush_guy_4
+Control=random
+Volume=60
+
+
+;Choking1, Choking2, Choking3 samples called whenever infantry ;units (all houses, Sarduakar and Fremen) are hit with poisonous gas (from ;Ordos Chemical Trooper) 
+; Choking from Gas - unit has already been hit by weapon and is now coughing on its poisonous effect
+[Choking]
+Sounds=choke_dying_1 choke_dying_2 choke_dying_3 choke_dying_4 choke_dying_5 choke_dying_6 
+Control=random
+Volume=70
+
+; ConChoking sample called whenever contaminators are hit with poisonous ;gas (from Ordos Chemical Trooper)
+; Contaminator Choking from Gas
+[ContamChoking]
+Sounds=choke_dying_1 choke_dying_2 choke_dying_3 choke_dying_4 choke_dying_5 choke_dying_6 
+FShift=-3
+Control=random
+Volume=60
+
+          ; KilGuild1 etc not currently being called.
+          ; GuildMaker Death Rattle
+[GuildMDying]
+Sounds = KilGuild1 KilGuild2 KilGuild3
+
+
+;dko added 4/16/01 new idries call
+[TLLeechGun]
+Sounds=leech_suck_1 leech_suck_2 leech_suck_3 leech_suck_4
+Control=random
+Volume=60
+
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" SELECT.
+[tlleechselection]
+Sounds=tx_leech_select_1
+Control = random
+Volume = 80
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" COMMAND.
+[tlleechmove]
+Sounds=tx_leech_move_1
+Control = random
+Volume = 80
+
+;dko these are unique hooks for the or dust scout.  This is his "verbal" ATTACK.
+;dko The ATTACK is pretty much like a COMMAND so I am using those samples for this action.  3/28/01
+[tlleechattack]
+Sounds=tx_leech_attack_confirm_1
+Control = random
+Volume = 80
+		 
+          ; ShellDet1, ShellDet2, ShellDet3 samples called when a shell ;impacts off the ground (from an Atreides Minotaurus) 
+          ;ShellDetonation - as shell hits ground (not a full on explosion) 
+[ShellDetonation]
+;dko Sounds = ShellDet1 ShellDet2 ShellDet3
+Sounds=shell_dud_1
+Limit = 3
+Volume=60
+
+          ;RocketDetonation - as rocket explodes on ground (not a full on explosion)
+          ;being called by rocket impacts from the AT Rocket Turret and the Harkonnen ;Gunship 
+[RocketDetonation]
+;dko Sounds = RocketDet1 RocketDet2 RocketDet3
+Sounds=shell_dud_1
+Limit = 3
+Volume=60
+
+
+	;
+	; -------- Construction ----------------------
+	;
+
+
+;dko building placement thud
+[BuildingThud]
+Sounds=building_thud_1
+Volume=80
+
+;dko wall placement thud
+[WallThud]
+Sounds=wall_thud_1
+Volume=70
+
+
+          ; BuildCY is called by the Ordos, Harkonnen and Atreides MCVs when deployed
+          ; CYConstructingABuilding - sound of the MCV drill drilling into ground
+[CYConstructingABuilding]
+;dko Sounds = BuildCY
+Sounds=mcv_d_drill_dig_1
+Volume=60
+
+
+
+          ; Construction - sound that scaffold makes when being erected. Building ;construction animations call combinations of the following samples... 
+          ;Build1 sample called by all House Windtraps and turrets during ;construction animations. Also called by small scale buildings
+[SmallConstruction]
+;dko Sounds = Build1
+Sounds=mcv_f_scaffold_up_1
+Volume=60
+
+
+
+          ;MedBuild1 sample called by all House Refineries construction animations. ;Also called during Starport and Hangar (and medium size buildings) ;construction animations (all houses) 
+[MediumConstruction]
+;dko Sounds = MedBuild1
+Sounds=mcv_g_building_out_1
+Volume=60
+
+
+
+          ;LrgBuild1 sample called by Atreides Palace construction animations. ;Also ;called during Guild Palace and Harkonnen Palace construction animations 
+[LargeConstruction]
+;dko Sounds = LrgBuild1
+Sounds=mcv_g_building_out_1
+Volume=60
+
+;dko 4/10/01
+; FremenTent sample is called by the Fremen camp building during the ;construction animation
+; FremenTent - sound of Fremen camp being constructed 
+[FremenTent]
+;Sounds = FremenTent
+Sounds = fremen_tent_build_1
+Volume=80
+
+
+          ; ConstructSpark is called by Ordos Factory, Harkonnen palace and the ;Atreides palace. 
+          ; ConstructSpark - brief sound of a welding spark (?) that appears while ;building is being put together
+[ConstructSpark]
+Sounds = ConstructSpark build_spark_1
+Volume=50
+
+
+;dko added 4/10/01
+; FleshVat isn't currently being called the Tleilaxu Flesh Vat (but will be ;sound-hooked soon) 
+; Tleilaxu Flesh Vat 'giving birth' (nasty squelching noise)
+[FleshVat]
+;Sounds = FleshVat
+Sounds = tx_flesh_born_2 tx_flesh_born_3
+Control=random
+Limit = 1
+Priority = low
+Volume=50
+
+
+; PalaceArc is being called by the Guild Palace
+; Guild Palace electrical arcs - a single beam which appears between emitters
+[PalaceArc]
+;Sounds = PalaceArc
+Sounds = palace_arc_1
+FShift = -1 1
+;Limit = 1
+Priority = medium
+Volume=85
+
+
+
+	;
+	; -------- Movement --------------------------
+	; 
+
+
+          ; ; ATOrniLand sample is called by the Atreides Ornithopter
+          ;ATOrniLand - descent noise of the AT Ornithopter
+          ; WS 12_07_00  We will not be using this call for any ornithopter landing sound
+;[ATOrniLand]
+;Sounds = ATOrniLand
+Sounds = ORNITHOPTER_MOTOR_2c
+limit = 2
+Volume=50
+
+
+
+          ; LeechMove sample is being called by the Tleilaxu Leech 
+          ;LeechFootsteps - single footstep noise (not unlike that of the Ordos DustScout)
+[LeechFootsteps]
+Sounds = LeechMove
+Volume=40
+
+
+
+;dko 4/10/01
+; TeleportOut is being called by the Guild Niab Tank.
+;Niab tank teleport sounds. NiabVanish - energy bubble contracts, tank ;disappears. NiabAppear - energy bubble expands to reveal the tank  
+[NiabVanish(teleport)]
+;Sounds = TeleportOut
+Sounds = niab_action_1
+Volume=80
+
+
+
+;dko to test 4/10/01
+;TeleportIn is being called by the Guild Niab Tank.
+[NiabAppear(teleport)]
+;Sounds = TeleportIn
+Type = global
+MinVolume = 30
+Sounds = niab_action_2
+
+Volume=80
+
+;dko to test 4/11/01 I don't think this is the correct hook name.
+;Guild Niab Tank deploy power sound.
+[guildpower]
+;Sounds = TeleportIn
+Sounds = niab_action_1
+Volume=80
+
+
+
+          ; MCVDeploy sample is being called by the Atreides MCV. Is is also called ; by the Ordos MCV and the Harkonnen MCV
+          ; MCVDeploy - MCV unloading drilling mechanism
+[MCVDeploy]
+Sounds = MCVDeploy
+Sounds=mcv_b_open_1
+Volume=80
+
+
+
+
+          ; MCVUnDeploy sample is being called by the Atreides MCV. Is is also called ; by the Ordos MCV and the Harkonnen MCV
+          ; MCVUnDeploy - Drilling mechanism loading back onto platform (ends with 'clang' noise)
+[MCVUnDeploy]
+Sounds = MCVUnDeploy
+Sounds=mcv_e_flatten_1
+Volume=80
+
+
+
+
+
+          ; GunshipMove sample is called by the Harkonnen Gunship vehicle
+          ; Harkonnen GunshipMove - the sound of a single brief wingbeat (same wav will be used in rapid succession)
+[GunshipMove]
+Sounds = GunshipMove
+
+
+          ; GunshipTakeOff sample is called by the Harkonnen Gunship vehicle
+[GunshipTakeOff]
+Sounds = GunshipTakeOff
+
+
+          ; GunshipLand sample is called by the Harkonnen Gunship vehicle
+[GunshipLand]
+Sounds = GunshipLand
+
+
+
+
+
+          ; FrigateTakeOff is being called by the generic Frigate unit (used in  ;starport deliveries.
+          ; Frigate Flight Sounds
+[FrigateTakeOff]
+;dko Sounds = FrigateTakeOff
+Sounds=adv_carryall_takeoff_1
+Control=random
+Limit = 1
+Volume=60
+
+
+          ; FrigateLand is being called by the generic Frigate unit (used in  ;starport deliveries.
+[FrigateLand]
+;dko Sounds = FrigateLand
+Sounds=adv_carryall_land_1
+Control=random
+Limit = 1
+Volume=60
+
+
+
+
+          ; DropShipTakeOff is being called by the Drop Ship vehicle (incedental ;units which appear in one or two missions.
+          ; DropShip Flight Sounds
+[DropShipTakeOff]
+Sounds = DropShipTakeOff
+Volume = 40
+
+          ; DropShipLand is being called by the Drop Ship vehicle (incedental units ; which appear in one or two missions.
+[DropShipLand]
+Sounds = DropShipLand
+Volume = 40
+
+
+          ; GuildMMove sample is called by the Guildmaker unit
+          ; GuildMMove - Guild Maker Movement Noise - coincides with sluglike contraction 
+[GuildMMove]
+Sounds = GuildMMove
+Volume = 40
+
+
+
+	;
+	; -------- Special ---------------------------
+	;
+
+;dko added 5/1/01
+[GreenTVScreenOn]
+Sounds = sn_monitor_on_1
+Limit = 1
+Volume = 70
+
+;dko added 5/1/01
+[GreenTVScreenOff]
+Sounds = sn_monitor_off_1
+Limit = 1
+Volume = 70
+
+;dko added 5/1/01
+[VeteranUpgrade]
+Sounds = veteran_upgrade_1
+Limit = 1
+Priority = low
+Volume = 40
+
+          ;Stealth1 & Stealth1 not being called (may be used later for the Scout ; infantry and the Atreides APC)
+          ;energistic sound as stationary unit uses stealth field
+[Stealth]
+Sounds = Stealth1
+
+[UnStealth]
+Sounds = Stealth2
+
+
+          ; Scortik1 is a UI sound being called whenever spice is being deposited ;into a player's refinery 
+[MoneyTicking]
+;dko Sounds = Scortik1
+Sounds=credit_up_5
+Volume= 20
+
+
+          ;PowrDn1 is a UI sound being called when power reaches critically low ;levels
+[PowerDown]
+Sounds = Powrdn1
+
+          ;Powrup1 is a UI sound being called when power reaches suffiecient levels ;to power your base
+[PowerUp]
+Sounds = Powrup1
+
+          ;RadarOnline is a UI sound being called when the Radar goes back online 
+[RadarOnline]
+Sounds = RadarOnline
+Volume = 40
+
+
+          ; LeechHatch is being called by the Tleilaxu Leech unit (during the ;animation when it forms out of a leeched vehicle or birthed from the Vat
+[LeechHatchEgg]
+;Sounds = LeechHatch
+Sounds = tx_flesh_born_2 tx_flesh_born_3
+Control=random
+Limit = 1
+Volume=70
+
+
+
+          ;ConBirth is being called by the Tleilaxu Contaminator unit
+          ;ContaminatorBirth - When TL Contaminator morphs out of human remains (figure ;looks like it is stretching skin) 
+[ContaminatorBirth]
+;Sounds = ConBirth
+Sounds = tx_flesh_born_2 tx_flesh_born_3
+Control=random
+Limit = 1
+Volume=70
+
+;dko added 4/12/01
+;ThumperDeploy is called by the Advanced Fremen when he deploys
+;ThumperDeploy - click when Fremen unfolds worm-thumper device  
+[ThumperDeploy]
+Sounds = thumper_deploy_1
+Volume = 50
+
+;dko added 4/12/01
+;ThumperUnDeploy is called by the Advanced Fremen when he undeploys
+;ThumperUnDeploy - click when Fremen folds up worm-thumper device  
+[ThumperUnDeploy]
+Sounds = thumper_deploy_1
+Volume = 50
+
+
+          ;HarvesterDeposit sample is being called by the Atreides Harvetser. It is ;also called by the Ordos and Harkonnen Harvester vehicles. 
+          ;HarvesterDeposit - mechanical sound when harvester connects to refinery
+[HarvesterDeposit]
+;dko replaced old Sounds = HarvestDeposit
+Sounds=harvester_deposit_spice_1
+Volume = 50
+
+
+          ;HarvesterUnDeposit sample is being called by the Atreides Harvetser. It is ;also called by the Ordos and Harkonnen Harvester vehicles.
+          ;HarvesterUnDeposit - mechanical sound when harvester disconnects to refinery 
+[HarvesterUnDeposit]
+;dko replaced old Sounds = HarvestUnDeposit
+Sounds=harvester_no_deposit_spice_1
+Volume = 40
+
+
+          ; Harvest sample is being called by the Atreides, Ordos and Harkonnen ;Harvester vehicles
+          ;HarvesterHarvest - when harvester's collection scoop hits the ground
+[HarvesterHarvest]
+;dko replaced old Sounds = Harvest
+Sounds=harvester_harvest_spice_1
+Volume = 30
+Limit = 1
+
+
+;dko added 4/24/01 new idries call
+          ;CarryallTakeOff is being called by the Atriedes, Orodos and Harkonnen ;basic Carryalls
+[ATCarryallTakeOff]
+;dko replaced old Sounds = CarryallTakeOff
+Sounds=carryall_takeoff_1
+Limit = 1
+Volume = 40
+
+;dko added 4/24/01 new idries call
+          ;CarryallLand is being called by the Atriedes, Orodos and Harkonnen ;basic Carryalls
+[ATCarryallLand]
+;dko replaced old Sounds = CarryallLand
+Sounds=carryall_land_1
+Limit = 1
+Volume = 40
+
+;dko added 4/10/01
+; ProjectorDeploy is being called by the Ixian Projector Tank
+; ProjectorDeploy - unfolds mechanical arms 
+[ProjectorDeploy]
+;Sounds = ProjectorDeploy
+Sounds = ix_projector_deploy_1
+Volume = 50
+
+;dko added 4/10/01
+; ProjectorUnDeploy is being called by the Ixian Projector Tank
+; ProjectorUnDeploy - folds mechanical arms
+[ProjectorUnDeploy]
+;lSounds = ProjectorUnDeploy
+Sounds = ix_projector_deploy_1
+Volume = 50
+
+
+; Projector is being called by the Ixian Projector Tank
+;Projector -sound to coincide with an energy flash that appears between the ;unfolded projector arms
+[Projector]
+;dko Sounds = Projector
+Sounds = ixian_projector_tank_1
+Volume=60
+
+;dko added 4/11/01
+; InfiltratorDeploy is being called by the Ixian Infiltrator vehicle
+; InfiltratorDeploy - Infiltrator Pre-detonation Sound - legs retract into body 
+[InfiltratorDeploy]
+;Sounds = InfiltratorDeploy
+Sounds = ix_deploy_3
+Volume=65
+
+[ixInfiltratorDeploy]
+;Sounds = InfiltratorDeploy
+Sounds = ix_deploy_3
+Volume=65
+
+;dko added 4/30/01
+;ix infiltrator move
+[ixinfiltratormovefxstart]
+Sounds=ix_infil_motor_1
+Limit = 1
+Volume=85
+
+;dko added 4/17/01 new idries call
+;HarkInkvine storm effect
+[StormUnitMoveFx]
+Sounds = wind_loop_medium_1 wind_loop_medium_2
+Control = random loop 
+Priority = high
+Type = global
+MinVolume = 39
+FShift = -5 5
+Volume = 99
+
+;dko added 4/24/01
+[tornadoman]
+sounds = tornado_man_2
+Limit = 1
+Volume = 60
+
+;dko added 4/25/01
+[StepOnCrate]
+Sounds = open_crate_2
+Limit = 2
+Volume = 90
+
+
+	;
+	; -------- Worm Sounds ---------------------------
+	;
+
+
+          ; GroundRumble1, GroundRumble2, GroundRumble3 samples are being ;called by the small and medium worms
+          ; GroundRumble - earth tremor prior to worm breaking the surface
+[GroundRumble]
+;dko Sounds = GroundRumble1 GroundRumble2 GroundRumble3
+Sounds=worm_rumble_1 worm_rumble_2 worm_rumble_3 worm_rumble_4 worm_rumble_5
+Control=random
+Volume=90
+
+          ; LGroundRumble1, LgroundRumble2, LgroundRumble3 samples are being ;called by the Large worm
+[LrgGroundRumble]
+;dko Sounds = LGroundRumble1 LGroundRumble2 LGroundRumble3
+Sounds=worm_rumble_1 worm_rumble_2 worm_rumble_3 worm_rumble_4 worm_rumble_5
+Control=random
+FShift= -2
+Volume=90
+
+
+
+          ; WormAttack1, WormAttack2, WormAttack3 samples are being called by ;the small worm. Also being called by the medium worm.
+          ; WormAttacking - noise made by worm as it opens its mouth
+[WormAttacking]
+;dko Sounds = WormAttack1 WormAttack2 WormAttack3
+Sounds=worm_roar_1_tc worm_roar_2_tc worm_roar_3_tc worm_roar_4_tc worm_roar_5_tc worm_roar_6_tc
+Control=random
+FShift= 2
+Volume=90
+
+
+
+          ; LWormAttack1, LWormAttack2, LWormAttack3 samples are being called ; by the Large worm. 
+[LrgWormAttacking]
+;dko Sounds = LWormAttack1 LWormAttack2 LWormAttack3
+Sounds=worm_roar_1_tc worm_roar_2_tc worm_roar_3_tc worm_roar_4_tc worm_roar_5_tc worm_roar_6_tc
+Control=random
+Volume=90
+
+		
+;dko 4/12/01 I thought maybe this was the call for the wormsign but no luck.  This sound plays when work is on surface.
+[wormmove]
+;dko Sounds = WormMove1 WormMove2 WormMove3
+Sounds=worm_roar_1_tc worm_roar_2_tc worm_roar_3_tc worm_roar_4_tc worm_roar_5_tc worm_roar_6_tc
+Control=random
+Limit = 1
+Volume=80
+
+
+
+
+	;
+	; -------- When Selected ---------------------
+	;
+	
+;TR [Selected]
+;TR Sounds = $"awaiting orders" $"in position" $"standing by" $"unit reporting" $"yes sir"
+
+	;
+	; -------- When Given An Order ---------------
+	;
+
+;TR [Ordered]
+;TR Sounds = $"moving to position" $acknowledged $"long live the fighters" $"house atreides" $ok
+;TR Sounds = $"carrying out orders" $"for the duke" $"right away" $"by your command"
+
+	;
+	; -------- Deployable Units ------------------
+	;
+
+;TR [Deploying]
+;TR Sounds = $deploying
+
+	;
+	; -------- Engineer --------------------------
+	;
+
+;TR [EngineerSelected]
+;TR Sounds = $engineering $"ai sir"
+
+	;
+	; -------- Ornithopter (Probably All Aircraft)
+	;
+
+;TR [PilotSelected]
+;TR Sounds = $Roger $"no problem"
+
+	;
+	; -------- Sabotuer --------------------------
+	;
+
+;TR [SabotuerSelected]
+;TR Sounds = $yes
+
+;TR [SaboteurOrdered]
+;TR Sounds = $"ha ha ha" $affirmative
+
+	;
+	; -------- Harvester -------------------------
+	;
+
+;TR [HarvesterSelected]
+;TR Sounds = $"harvester reporting"
+
+;TR [HarvesterOrdered]
+;TR Sounds = $"going to work"
+
+	;
+	; -------- Sarduakar -------------------------
+	;
+
+;TR [SarduakarSelected]
+;TR Sounds = $yes
+
+;TR [SarduakarOrdered]
+;TR Sounds = $"sarduakar ready"
+
+
+
+	;**********************************
+	; -------- UNIT VOICES ------------
+	;**********************************
+
+
+[LocalDefaults]
+Type	=	Dialog
+Control	=	Random
+
+[IMSardaukarAttack]
+Sounds = $13-UA00		 ;"To battle!"
+Sounds = $13-UA01		 ;"Attack!"
+Sounds = $13-UA03		 ;"Time to die!"
+Sounds = $13-UA06		 ;"Death Before Dishonor!"
+
+
+[IMSardaukarSelection]
+Sounds = $13-US00		 ;"Imperial troops reporting."
+Sounds = $13-US02		 ;"Ready for battle."
+Sounds = $13-US04		 ;"Fear us"
+Sounds = $13-US08		 ;"We are prepared!"
+
+
+[IMSardaukarMove]
+Sounds = $13-UM01		 ;"No surrender!"
+Sounds = $13-UM02		 ;"As you wish!"
+Sounds = $13-UM03		 ;"Take no prisoners."
+
+;psm dko removed 4/12/01
+;[GUMakerAttack]
+;Sounds = $14-UA04		 ;"Die"
+;Sounds = $14-UA08		 ;"Too late for them."
+;Sounds = $14-UA09		 ;"They will suffer!"
+
+;psm dko removed 4/12/01
+;[GUMakerSelection]
+;Sounds = $14-US05		 ;"The Guild is always ready."
+;Sounds = $14-US07		 ;"You have an idea?"
+
+;psm dko removed 4/12/01
+;[GUMakerMove]
+;Sounds = $14-UM01		 ;"For the Guild."
+;Sounds = $14-UM02		 ;"We agree with your suggestion."
+;Sounds = $14-UM03		 ;"We will cooperate."
+
+
+[GUNIABTankAttack]
+Sounds = $31-UA02		 ;"The Guild will triumph."
+Sounds = $31-UA04		 ;"I see our victory."
+Sounds = $31-UA07		 ;"I have seen our victory!"
+
+
+[GUNIABTankSelection]
+Sounds = $31-US00		 ;"Yes human."
+Sounds = $31-US04		 ;"I hear you"
+Sounds = $31-US07		 ;"The Guild is always ready."
+
+
+[GUNIABTankMove]
+Sounds = $31-UM05		 ;"We agree with your suggestion."
+Sounds = $31-UM06		 ;"We will cooperate."
+
+
+[IXProjectorAttack]
+Sounds = $43-UA00		 ;"Targeting"
+Sounds = $43-UA02		 ;"Attack confirmed."
+Sounds = $43-UA04		 ;"Target confirmed."
+
+
+[IXProjectorSelection]
+Sounds = $43-US01		 ;"Need input."
+Sounds = $43-US03		 ;"Projector operational."
+Sounds = $43-US04		 ;"Instructions are required."
+
+
+[IXProjectorMove]
+Sounds = $43-UM00		 ;"Processed orders."
+Sounds = $43-UM05		 ;"Processing instructions."
+Sounds = $43-UM07		 ;"Coordinates received."
+
+
+[IXInfiltratorAttack]
+Sounds = $46-UA03		 ;"Target acquired."
+
+
+[IXInfiltratorSelection]
+Sounds = $46-US03		 ;"Infiltrator operational."
+Sounds = $46-US04		 ;"Waiting for Instructions."
+
+
+[IXInfiltratorMove]
+Sounds = $46-UM01		 ;"Don't rush me."
+Sounds = $46-UM03		 ;"Moving to a better spot."
+Sounds = $46-UM05		 ;"Actions prioritized."
+Sounds = $46-UM06		 ;"Orders confirmed."
+
+
+[FRFremenAttack]
+Sounds = $48-UA00		 ;"For Shai Halud!"
+Sounds = $48-UA01		 ;"Death to the enemy."
+Sounds = $48-UA02		 ;"Bi la Khaifa (Battle cry like Xena"
+Sounds = $48-UA06		 ;"Their water is ours!"
+
+
+[FRFremenSelection]
+Sounds = $48-US01		 ;"Long live the fighters!"
+Sounds = $48-US02		 ;"Fremen ready."
+Sounds = $48-US03		 ;"Ready for action."
+Sounds = $48-US07		 ;"We are ready to fight!"
+Sounds = $48-US08		 ;"We fight for our people!"
+
+
+[FRFremenMove]
+Sounds = $48-UM00		 ;"As you wish."
+Sounds = $48-UM01		 ;"As you command."
+Sounds = $48-UM02		 ;"With honor!"
+Sounds = $48-UM03		 ;"Well done!"
+
+
+[StoryFRFremenAttack]
+Sounds = $48-UA00		 ;"For Shai Halud!"
+Sounds = $48-UA01		 ;"Death to the enemy."
+Sounds = $48-UA02		 ;"Bi la Khaifa (Battle cry like Xena"
+Sounds = $48-UA06		 ;"Their water is ours!"
+
+
+[StoryFRFremenSelection]
+Sounds = $48-US01		 ;"Long live the fighters!"
+Sounds = $48-US02		 ;"Fremen ready."
+Sounds = $48-US03		 ;"Ready for action."
+Sounds = $48-US07		 ;"We are ready to fight!"
+Sounds = $48-US08		 ;"We fight for our people!"
+
+
+[StoryFRFremenMove]
+Sounds = $48-UM00		 ;"As you wish."
+Sounds = $48-UM01		 ;"As you command."
+Sounds = $48-UM02		 ;"With honor!"
+Sounds = $48-UM03		 ;"Well done!"
+
+
+[FRADVFremenAttack]
+Sounds = $47-UA00		 ;"For Shai Halud!"
+Sounds = $47-UA02		 ;"Bi la Khaifa!"
+Sounds = $47-UA04		 ;"The sands will run red."
+Sounds = $47-UA01		 ;"Death to the enemy!"
+
+
+[FRADVFremenSelection]
+;Sounds = $47-US02		 ;"Fremen ready."
+Sounds = $47-US03		 ;"Ready for action."
+Sounds = $47-US05		 ;"Glory to the Fremen."
+Sounds = $47-US07		 ;"Feydakin ready."
+
+
+[FRADVFremenMove]
+Sounds = $47-UM02		 ;"Onward."
+Sounds = $47-UM04		 ;"I shall bring us honor."
+Sounds = $47-UM05		 ;"I go."
+Sounds = $47-UM07		 ;"We go with honor."
+
+
+[IMADVSardaukarAttack]
+Sounds = $49-UA00		 ;"To the death!"
+Sounds = $49-UA01		 ;"For honor!"
+Sounds = $49-UA02		 ;"Destroying target!"
+Sounds = $49-UA03		 ;"With pleasure!"
+
+
+[IMADVSardaukarSelection]
+Sounds = $49-US02		 ;"Ready for battle."
+Sounds = $49-US03		 ;"Ready."
+Sounds = $49-US07		 ;"We are prepared!"
+Sounds = $49-US08		 ;"Your command?"
+
+
+[IMADVSardaukarMove]
+Sounds = $49-UM01		 ;"No surrender!"
+Sounds = $49-UM02		 ;"Onwards."
+Sounds = $49-UM09		 ;"Of course!"
+ 
+[TLContaminatorAttack]
+Sounds = $17-UA00		 
+Sounds = $17-UA01		 
+
+
+[TLContaminatorSelection]
+Sounds = $17-US00		 
+Sounds = $17-US01		 
+Sounds = $17-US02		 
+
+
+[TLContaminatorMove]
+Sounds = $17-UM00		 
+Sounds = $17-UM01		 
+ 
+			
+[TLScientistAttack]
+Sounds = $17-UA00		 
+Sounds = $17-UA01		 
+
+
+[TLScientistSelection]
+Sounds = $17-US00		 
+Sounds = $17-US01		 
+Sounds = $17-US02		 
+
+
+[TLScientistMove]
+Sounds = $17-UM00		 
+Sounds = $17-UM01		 
+ 
+
+[IXScientistSelection]
+Sounds = $14-US06		 
+Sounds = $14-US07		 
+
+
+[IXScientistMove]
+Sounds = $14-UM00		 
+Sounds = $14-UM04		 
+ 
+[IXSlaveAttack]
+Sounds = $17-UA00		 
+Sounds = $17-UA01		 
+
+[IXSlaveSelection]
+Sounds = $17-US00		 
+Sounds = $17-US01		 
+Sounds = $17-US02		 
+
+[IXSlaveMove]
+Sounds = $17-UM00		 
+Sounds = $17-UM01		 
+ 
+[ATMilitiaAttack]
+Sounds = $16-UA05		 
+
+[ATMilitiaSelection]
+Sounds = $16-US06		 
+
+[ATMilitiaMove]
+Sounds = $16-UM06		 
+ 
+[ATGeneralAttack]
+Sounds = $16-UA05		 
+
+[ATGeneralSelection]
+Sounds = $16-US06		 
+
+[ATGeneralMove]
+Sounds = $16-UM06		 
+ 
+[HKGeneralAttack]
+Sounds = $09-UA01		 
+
+[HKGeneralSelection]
+Sounds = $09-US07	 
+
+[HKGeneralMove]
+Sounds = $09-UM06		 
+ 
+[ORGeneralAttack]
+Sounds = $30-UA01		 
+
+[ORGeneralSelection]
+Sounds = $30-US01	 
+
+[ORGeneralMove]
+Sounds = $30-UM01		 
+ 
+[IMGeneralAttack]
+Sounds = $49-UA01		 
+
+[IMGeneralSelection]
+Sounds = $49-US03	 
+
+[IMGeneralMove]
+Sounds = $49-UM09		 
+ 
+[CubScoutAttack]
+Sounds = $40-UM01		 
+
+[CubScoutSelection]
+Sounds = $40-US01	 
+
+[CubScoutMove]
+Sounds = $40-UM03		 
+ 
+[DukeAchillusSelection]
+Sounds = $dukeachilus 
+
+[DukeAchillusMove]
+Sounds = $silent
+
+[DukeAchillusAttack]
+Sounds = $silent
+
+;
+; IX Group
+;
+
+; Uncomment when the foreign groups are built
+
+[IXGroupAttack]
+;Sounds = $43-UA04		 ;"Target confirmed."
+Sounds = $IXAttack1
+Sounds = $IXAttack2
+
+[IXGroupMove]
+;Sounds = $43-UM05		 ;"Processing instructions."
+Sounds = $IXMove1
+Sounds = $IXMove2
+
+[IXGroupSelection]
+;Sounds = $43-US01		 ;"Need input."
+Sounds = $IXSelect1
+Sounds = $IXSelect2
+
+
+;
+; Imperial Sardaukar Group
+;
+
+[IMGroupAttack]
+;Sounds = $13-UA00		 ;"To battle!"
+Sounds = $SarAttack1
+Sounds = $SarAttack2
+
+[IMGroupMove]
+;Sounds = $13-UM02		 ;"As you wish!"
+Sounds = $SarMove1
+Sounds = $SarMove2
+
+[IMGroupSelection]
+;Sounds = $13-US08		 ;"We are prepared!"
+Sounds = $SarSelect1
+Sounds = $SarSelect2
+
+
+;
+; Fremen Group
+;
+
+[FRGroupAttack]
+;Sounds = $48-UA01		 ;"Death to the enemy."
+Sounds = $FREAttack1
+Sounds = $FREAttack2
+
+[FRGroupMove]
+;Sounds = $48-UM00		 ;"As you wish."
+Sounds = $FREMove1
+Sounds = $FREMove2
+
+[FRGroupSelection]
+;Sounds = $48-US02		 ;"Fremen ready."
+Sounds = $FRESelect1
+Sounds = $FRESelect2
+
+
+;
+; Guild Group
+;
+
+[GUGroupAttack]
+;Sounds = $14-UA09		 ;"They will suffer!"
+Sounds = $GUIAttack1
+Sounds = $GUIAttack2
+
+[GUGroupMove]
+;Sounds = $14-UM01		 ;"For the Guild."
+Sounds = $GUIMove1
+Sounds = $GUIMove2
+
+[GUGroupSelection]
+;Sounds = $31-UA04		 ;"I see our victory."
+Sounds = $GUISelect1
+Sounds = $GUISelect2
+
+
+
+
+
+; ----- Unit Special Response -----
+
+
+; ----- NIAB -----
+[GUNIABTankSpecial0]	 ; Played when the NIAB Tank is deployed (Ready to teleport)
+Sounds = $31-UX01		 ;"Charging fold space generator."
+
+[GUNIABTankSpecial1]	 ; Played when the NAIB Tank teleports
+Sounds = $31-UX00		 ;"Folding space"
+Sounds = $31-UX02		 ;"Engaging fold space generator."
+
+
+; ----- Projector -----
+[IXProjectorSpecial0]	 ; Played when the projector is deployed
+Sounds = $43-UX02		 ;"Duplication mode operational."
+
+
+[IXProjectorSpecial1]
+Sounds = $43-UX01		 ;"Duplication sequence initiated."
+Sounds = $43-UX04		 ;"Duplication sequence initiated."
+Sounds = $43-UX05		 ;"Duplicate operational."
+
+; These are not part of the unit response system, they are not used yet.
+;Sounds = $43-UX00		 ;"Duplicate destroyed."
+;Sounds = $43-UX03		 ;"Target destroyed." ???????
+
+
+; ----- Infiltrator -----
+[IXInfiltratorSpecial0]	 ; Played when the Infiltrator is deployed (destructs)
+Sounds = $46-UX00		 ;"Self destruct sequence initiated."
+

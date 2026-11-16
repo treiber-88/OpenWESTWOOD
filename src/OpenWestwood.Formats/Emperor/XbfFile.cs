@@ -294,4 +294,47 @@ public sealed class XbfKeyAnimation
     public Matrix4x4[] Matrices { get; set; } = [];
     public short[]? FrameToMatrix { get; set; }
     public List<XbfKey> Keys { get; } = new();
+
+    /// <summary>
+    /// The node's local transform (row-vector, as XbfNode.Transform) at a frame: from the matrix table, or from the
+    /// keyframes (rotation slerped, scale and translation lerped between the keys that carry each; what no key carries
+    /// stays as at rest).
+    /// </summary>
+    public Matrix4x4 LocalAt(float frame, Matrix4x4 rest)
+    {
+        if (Matrices.Length > 0)
+        {
+            int f = Math.Clamp((int)frame, 0, FrameCount);
+            int index = FrameToMatrix is { } map ? (f < map.Length ? map[f] : map[^1]) : f;
+            return Matrices[Math.Clamp(index, 0, Matrices.Length - 1)];
+        }
+        if (Keys.Count == 0 || !Matrix4x4.Decompose(rest, out var restScale, out var restRotation, out var restTranslation))
+            return rest;
+        var rotation = Sample(k => k.Rotation, frame, restRotation, Quaternion.Slerp);
+        var scale = Sample(k => k.Scale, frame, restScale, Vector3.Lerp);
+        var translation = Sample(k => k.Translation, frame, restTranslation, Vector3.Lerp);
+        return Matrix4x4.CreateScale(scale) * Matrix4x4.CreateFromQuaternion(rotation) * Matrix4x4.CreateTranslation(translation);
+    }
+
+    T Sample<T>(Func<XbfKey, T?> part, float frame, T rest, Func<T, T, float, T> blend) where T : struct
+    {
+        XbfKey? before = null, after = null;
+        foreach (var k in Keys)
+        {
+            if (part(k) == null)
+                continue;
+            if (k.Frame <= frame)
+                before = k;
+            else
+            {
+                after = k;
+                break;
+            }
+        }
+        if (before is not { } a)
+            return after is { } first ? part(first)!.Value : rest;
+        if (after is not { } b || b.Frame == a.Frame)
+            return part(a)!.Value;
+        return blend(part(a)!.Value, part(b)!.Value, (frame - a.Frame) / (b.Frame - a.Frame));
+    }
 }

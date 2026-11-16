@@ -2868,7 +2868,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_GDIGrenadeSoldierGrenade]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_54
-    CommandSet: GenericCommandSet
+    CommandSet: KW_GDIGrenadeSoldierCommandSet
     VoiceSelect: KwSnd_GDI_GrenadierSoldier_VoiceSelectMS
     VoiceMove: KwSnd_GDI_GrenadierSoldier_VoiceMove
     VoiceAttack: KwSnd_GDI_GrenadierSoldier_VoiceAttack
@@ -2941,6 +2941,19 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: UG_STRAPS UG_GRENADEEMP_PROJECTILE
         TriggeredBy: KW_Upgrade_EMPGrenades
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_FireEMPGrenades
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_FireEMPGrenades
+        SpecialWeapon: KW_Weapon_GDIGrenadeSoldierEMPGrenade
+        StartAbilityRange: 285
+        UnpackTime: 900
+        PackTime: 500
   KW_GDISniper:
     DisplayName: Sniper Team
     Side: KWGDI
@@ -4233,7 +4246,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_GDIJuggernaughtArtillery]
     Locomotor: SET_NORMAL KW_Loco_JuggernaughtLocomotor_40
-    CommandSet: GenericCommandSet
+    CommandSet: KW_GDIJuggernaughtCommandSet
     VoiceSelect: KwSnd_GDI_Juggernaught_VoiceSelectMS
     VoiceMove: KwSnd_GDI_Juggernaught_VoiceMoveMS
     VoiceAttack: KwSnd_GDI_Juggernaught_VoiceAttackMS
@@ -4310,6 +4323,19 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: UGRAIL_01
         TriggeredBy: KW_Upgrade_GDIArmoryRailgunTech
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_SpotTargetBombard
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_SpotTargetBombard
+        SpecialWeapon: KW_Weapon_GDIJuggernaughtArtilleryBombard
+        StartAbilityRange: 100000
+        UnpackTime: 2000
+        PackTime: 2000
   KW_GDIOrca:
     DisplayName: Orca
     Side: KWGDI
@@ -7612,7 +7638,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_TitanCannonRailgun]
     Locomotor: SET_NORMAL KW_Loco_TitanLocomotor_50
-    CommandSet: GenericCommandSet
+    CommandSet: KW_SteelTalonsTitanCommandSet
     VoiceSelect: KwSnd_GDI_Titan_VoiceSelectMS
     VoiceMove: KwSnd_GDI_Titan_VoiceMove
     VoiceAttack: KwSnd_GDI_Titan_VoiceAttack
@@ -7726,6 +7752,19 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: EMP
         TriggeredBy: KW_Upgrade_AdaptiveArmor
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SteelTalonsAdaptiveArmor
+      ModuleTag_A02:
+        Module: Behavior
+        Class: TimedAttributeModifierUpdate
+        SpecialPowerTemplate: KW_SteelTalonsAdaptiveArmor
+        Duration: 10000
+        RateOfFire: 75%
+        Speed: 85%
+        Armor: 70%
+        ModelConditions: USER_8
   KW_SteelTalonsRepairAPC:
     DisplayName: Mobile Repair Transport
     Side: KWGDI
@@ -8474,7 +8513,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_MammothTankRailCannon]
     Locomotor: SET_NORMAL KW_Loco_GDIMammothLocomotor_45
-    CommandSet: GenericCommandSet
+    CommandSet: KW_SteelTalonsMammothCommandSet
     VoiceSelect: KwSnd_GDI_MammothTank_VoiceSelectMS
     VoiceMove: KwSnd_GDI_MammothTank_VoiceMove
     VoiceAttack: KwSnd_GDI_MammothTank_VoiceAttack
@@ -8540,6 +8579,19 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: EMP
         TriggeredBy: KW_Upgrade_AdaptiveArmor
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SteelTalonsAdaptiveArmor
+      ModuleTag_A02:
+        Module: Behavior
+        Class: TimedAttributeModifierUpdate
+        SpecialPowerTemplate: KW_SteelTalonsAdaptiveArmor
+        Duration: 10000
+        RateOfFire: 75%
+        Speed: 85%
+        Armor: 70%
+        ModelConditions: USER_8
   KW_SteelTalonsBehemoth:
     DisplayName: Behemoth
     Side: KWGDI
@@ -11936,7 +11988,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_GDIGrenadeSoldierGrenade]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_54
-    CommandSet: GenericCommandSet
+    CommandSet: KW_ZOCOMGrenadeSoldierCommandSet
     VoiceSelect: KwSnd_GDI_GrenadierSoldier_VoiceSelectMS
     VoiceMove: KwSnd_GDI_GrenadierSoldier_VoiceMove
     VoiceAttack: KwSnd_GDI_GrenadierSoldier_VoiceAttack
@@ -12014,6 +12066,19 @@ Objects:
         Class: StatusBitsUpgrade
         StatusToSet: SHIELDBODY_ENABLED
         TriggeredBy: KW_Upgrade_ZOCOMFieldSuits
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_FireEMPGrenades
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_FireEMPGrenades
+        SpecialWeapon: KW_Weapon_GDIGrenadeSoldierEMPGrenade
+        StartAbilityRange: 285
+        UnpackTime: 900
+        PackTime: 500
   KW_ZOCOMCommando:
     DisplayName: Commando
     Side: KWGDI
@@ -12716,7 +12781,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_SteelShattererShockWaveCannon]
     Locomotor: SET_NORMAL KW_Loco_GDISonicTankLocomotor_60
-    CommandSet: GenericCommandSet
+    CommandSet: KW_ZOCOMImprovedSonicTankCommandSet
     VoiceSelect: KwSnd_GDI_ZoneShatterer_VoiceSelectMS
     VoiceMove: KwSnd_GDI_ZoneShatterer_VoiceMove
     VoiceAttack: KwSnd_GDI_ZoneShatterer_VoiceAttack
@@ -12788,6 +12853,19 @@ Objects:
         Class: WeaponSetUpgrade
         WeaponSetFlag: PLAYER_UPGRADE
         TriggeredBy: KW_Upgrade_GDIArmoryRailgunTech
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_ImprovedSonicTankOverloadBeam
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_ImprovedSonicTankOverloadBeam
+        SpecialWeapon: KW_Weapon_SteelTalonsImprovedShattererOverloadBeam
+        StartAbilityRange: 325
+        UnpackTime: 100
+        PackTime: 0
   KW_ZOCOMAAScout:
     DisplayName: Slingshot
     Side: KWGDI
@@ -16734,7 +16812,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODShadowMachinePistol, SECONDARY KW_Weapon_NODShadowMachinePistol]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_90
-    CommandSet: GenericCommandSet
+    CommandSet: KW_NODShadowCommandSet
     VoiceSelect: KwSnd_NOD_Shadow_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Shadow_VoiceMove
     VoiceAttack: KwSnd_NOD_Shadow_VoiceAttack
@@ -16880,6 +16958,32 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 4500
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_PlaceSatchelCharge_NOD
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_PlaceSatchelCharge_NOD
+        SpecialWeapon: KW_Weapon_NODShadowPlaceExplosiveCharge
+        StartAbilityRange: 15
+        UnpackTime: 0
+        PackTime: 0
+      ModuleTag_A03:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPowerDeployBeacon
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A04:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPowerDeployBeacon
+        SpecialWeapon: KW_Weapon_NODShadowSquadBeaconWeapon
+        StartAbilityRange: 0.1
+        UnpackTime: 0
+        PackTime: 0
   KW_NODCommando:
     DisplayName: Commando
     Side: KWNod
@@ -17118,7 +17222,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_NODScorpionBuggyGatlingLaser]
     Locomotor: SET_NORMAL KW_Loco_NODScorpionBuggyLocomotor_130
-    CommandSet: GenericCommandSet
+    CommandSet: KW_NODScorpionBuggyCommandSet
     VoiceSelect: KwSnd_NOD_RaiderBuggy_VoiceSelectMS
     VoiceMove: KwSnd_NOD_RaiderBuggy_VoiceMove
     VoiceAttack: KwSnd_NOD_RaiderBuggy_VoiceAttack
@@ -17222,6 +17326,20 @@ Objects:
         Class: WeaponSetUpgrade
         WeaponSetFlag: PLAYER_UPGRADE
         TriggeredBy: KW_Upgrade_NODTechCenterLaserCapacitor
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_EmpBurst
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_EmpBurst
+        SpecialWeapon: KW_Weapon_NODBuggyEmpBurst
+        StartAbilityRange: 100
+        UnpackTime: 500
+        PackTime: 500
+        UnpackSound: KwSnd_NOD_RaiderBuggy_EMPblast
   KW_NODRaiderTank:
     DisplayName: Scorpion Tank
     Side: KWNod
@@ -17752,7 +17870,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NodMobileArtilleryCannon]
     Locomotor: SET_NORMAL KW_Loco_NODMobileArtilleryLocomotor_90
-    CommandSet: GenericCommandSet
+    CommandSet: KW_NODMobileArtilleryCommandSet
     VoiceSelect: KwSnd_NOD_Spectre_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Spectre_VoiceMove
     VoiceAttack: KwSnd_NOD_Spectre_VoiceAttack
@@ -17828,6 +17946,19 @@ Objects:
         SinkDelay: 3000
         SinkRate: 0.5
         FX: INITIAL KWFX_FX_GDIMammothExplode
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_SpotBeaconBombard
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_SpotBeaconBombard
+        SpecialWeapon: KW_Weapon_NodMobileArtilleryBombardCannon
+        StartAbilityRange: 100000
+        UnpackTime: 3500
+        PackTime: 3500
   KW_NODAvatar:
     DisplayName: Avatar
     Side: KWNod
@@ -18261,7 +18392,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODWarmechTriPointLaser1]
     Locomotor: SET_NORMAL KW_Loco_NODAvatarLocomotor_40
-    CommandSet: GenericCommandSet
+    CommandSet: KW_NODMetaUnitCommandSet
     VoiceSelect: KwSnd_NOD_Redeemer_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Redeemer_VoiceMove
     VoiceAttack: KwSnd_NOD_Redeemer_VoiceAttack
@@ -18391,6 +18522,20 @@ Objects:
         SinkDelay: 6000
         SinkRate: 1
         FX: INITIAL KWFX_FX_NOD_RedeemerExplodeWithVoice
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_NodRageGenerator
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_NodRageGenerator
+        SpecialWeapon: KW_Weapon_NODWarmechRageGenerator
+        StartAbilityRange: 400
+        UnpackTime: 500
+        PackTime: 500
+        TriggerSound: KwSnd_NOD_Redeemer_RageGeneratorMS
   KW_BlackHandMCV:
     DisplayName: MCV
     Side: KWNod
@@ -20350,7 +20495,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_NODConfessorChargedParticleBeam]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_48
-    CommandSet: GenericCommandSet
+    CommandSet: KW_BlackHandConfessorCommandSet
     VoiceSelect: KwSnd_NOD_Confessor_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Confessor_VoiceMove
     VoiceAttack: KwSnd_NOD_Confessor_VoiceAttack
@@ -20479,6 +20624,20 @@ Objects:
         Module: Behavior
         Class: ArmorUpgrade
         TriggeredBy: KW_Upgrade_TiberiumInfusion
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_BlackHandConfessorCabalFireGrenade
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_BlackHandConfessorCabalFireGrenade
+        SpecialWeapon: KW_Weapon_BlackHandConfessorCabalGrenade
+        StartAbilityRange: 250
+        UnpackTime: 2000
+        PackTime: 1500
+        TriggerSound: KwSnd_BH_Confessor_GrenadeThrowMS
       ModuleTag_S2:
         Module: Behavior
         Class: SlavedUpdate
@@ -21121,7 +21280,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_NODScorpionBuggyGatlingLaser]
     Locomotor: SET_NORMAL KW_Loco_NODScorpionBuggyLocomotor_130
-    CommandSet: GenericCommandSet
+    CommandSet: KW_BlackHandScorpionBuggyCommandSet
     VoiceSelect: KwSnd_NOD_RaiderBuggy_VoiceSelectMS
     VoiceMove: KwSnd_NOD_RaiderBuggy_VoiceMove
     VoiceAttack: KwSnd_NOD_RaiderBuggy_VoiceAttack
@@ -21230,6 +21389,20 @@ Objects:
         Class: WeaponSetUpgrade
         WeaponSetFlag: PLAYER_UPGRADE
         TriggeredBy: KW_Upgrade_NODTechCenterLaserCapacitor
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_EmpBurst
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_EmpBurst
+        SpecialWeapon: KW_Weapon_NODBuggyEmpBurst
+        StartAbilityRange: 100
+        UnpackTime: 500
+        PackTime: 500
+        UnpackSound: KwSnd_NOD_RaiderBuggy_EMPblast
   KW_BlackHandRaiderTank:
     DisplayName: Scorpion Tank
     Side: KWNod
@@ -21993,7 +22166,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODWarmechTriPointLaser1]
     Locomotor: SET_NORMAL KW_Loco_NODAvatarLocomotor_40
-    CommandSet: GenericCommandSet
+    CommandSet: KW_BlackHandMetaUnitCommandSet
     VoiceSelect: KwSnd_NOD_Redeemer_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Redeemer_VoiceMove
     VoiceAttack: KwSnd_NOD_Redeemer_VoiceAttack
@@ -22123,6 +22296,20 @@ Objects:
         SinkDelay: 6000
         SinkRate: 1
         FX: INITIAL KWFX_FX_NOD_RedeemerExplodeWithVoice
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_NodRageGenerator
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_NodRageGenerator
+        SpecialWeapon: KW_Weapon_NODWarmechRageGenerator
+        StartAbilityRange: 400
+        UnpackTime: 500
+        PackTime: 500
+        TriggerSound: KwSnd_NOD_Redeemer_RageGeneratorMS
   KW_MarkedOfKaneMCV:
     DisplayName: MCV
     Side: KWNod
@@ -24374,7 +24561,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_NODCyborgChargedParticleBeam]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_50
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MOKCyborgInfantryCommandSet
     VoiceSelect: KwSnd_NOD_SilentOne_VoiceSelectMS
     VoiceMove: KwSnd_NOD_SilentOne_VoiceMove
     VoiceAttack: KwSnd_NOD_SilentOne_VoiceAttack
@@ -24503,6 +24690,20 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: WEAPON_PARTICLEBM
         TriggeredBy: KW_Upgrade_NodTechCenterChargedParticleBeam
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_EMPBlast
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_EMPBlast
+        SpecialWeapon: KW_Weapon_NODCyborgEMPCannon
+        StartAbilityRange: 275
+        UnpackTime: 0
+        PackTime: 700
+        TriggerSound: KwSnd_NOD_Awakened_EMPgunFire
   KW_MarkedOfKaneMilitantRocket:
     DisplayName: Militant Rocket Squad
     Side: KWNod
@@ -24958,7 +25159,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODShadowMachinePistol, SECONDARY KW_Weapon_NODShadowMachinePistol]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_90
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MarkedOfKaneShadowCommandSet
     VoiceSelect: KwSnd_NOD_Shadow_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Shadow_VoiceMove
     VoiceAttack: KwSnd_NOD_Shadow_VoiceAttack
@@ -25104,6 +25305,32 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 4500
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_PlaceSatchelCharge_NOD
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_PlaceSatchelCharge_NOD
+        SpecialWeapon: KW_Weapon_NODShadowPlaceExplosiveCharge
+        StartAbilityRange: 15
+        UnpackTime: 0
+        PackTime: 0
+      ModuleTag_A03:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPowerDeployBeacon
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A04:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPowerDeployBeacon
+        SpecialWeapon: KW_Weapon_NODShadowSquadBeaconWeapon
+        StartAbilityRange: 0.1
+        UnpackTime: 0
+        PackTime: 0
   KW_MarkedOfKaneImprovedCyborgInfantry:
     DisplayName: The Enlightened
     Side: KWNod
@@ -25137,7 +25364,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_MarkedOfKaneCyborgSuperChargedParticleBeam]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_45
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MarkedOfKaneImprovedCyborgInfantryCommandSet
     VoiceSelect: KwSnd_NOD_Enlightened_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Enlightened_VoiceMove
     VoiceAttack: KwSnd_NOD_Enlightened_VoiceAttack
@@ -25223,6 +25450,20 @@ Objects:
         Class: AttributeModifierUpgrade
         Speed: 200%
         TriggeredBy: KW_Upgrade_MarkedOfKaneCyberneticLegs
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_EMPBlast
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_EMPBlast
+        SpecialWeapon: KW_Weapon_NODImprovedCyborgEMPCannon
+        StartAbilityRange: 300
+        UnpackTime: 0
+        PackTime: 700
+        TriggerSound: KwSnd_NOD_Awakened_EMPgunFire
   KW_MarkedOfKaneCommando:
     DisplayName: Commando
     Side: KWNod
@@ -25459,7 +25700,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODScorpionBuggyGatling]
     Locomotor: SET_NORMAL KW_Loco_NODScorpionBuggyLocomotor_130
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MarkedOfKaneScorpionBuggyCommandSet
     VoiceSelect: KwSnd_NOD_RaiderBuggy_VoiceSelectMS
     VoiceMove: KwSnd_NOD_RaiderBuggy_VoiceMove
     VoiceAttack: KwSnd_NOD_RaiderBuggy_VoiceAttack
@@ -25563,6 +25804,20 @@ Objects:
         Class: SubObjectsUpgrade
         ShowSubObjects: EMP
         TriggeredBy: KW_Upgrade_NODEmpBurst
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_EmpBurst
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_EmpBurst
+        SpecialWeapon: KW_Weapon_NODBuggyEmpBurst
+        StartAbilityRange: 100
+        UnpackTime: 500
+        PackTime: 500
+        UnpackSound: KwSnd_NOD_RaiderBuggy_EMPblast
   KW_MarkedOfKaneRaiderTank:
     DisplayName: Scorpion Tank
     Side: KWNod
@@ -25994,7 +26249,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NodMobileArtilleryCannon]
     Locomotor: SET_NORMAL KW_Loco_NODMobileArtilleryLocomotor_90
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MarkedOfKaneMobileArtilleryCommandSet
     VoiceSelect: KwSnd_NOD_Spectre_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Spectre_VoiceMove
     VoiceAttack: KwSnd_NOD_Spectre_VoiceAttack
@@ -26070,6 +26325,19 @@ Objects:
         SinkDelay: 3000
         SinkRate: 0.5
         FX: INITIAL KWFX_FX_GDIMammothExplode
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_SpotBeaconBombard
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_SpotBeaconBombard
+        SpecialWeapon: KW_Weapon_NodMobileArtilleryBombardCannon
+        StartAbilityRange: 100000
+        UnpackTime: 3500
+        PackTime: 3500
   KW_MarkedOfKaneAvatar:
     DisplayName: Avatar
     Side: KWNod
@@ -26510,7 +26778,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_NODWarmechTriPointLaser1]
     Locomotor: SET_NORMAL KW_Loco_NODAvatarLocomotor_40
-    CommandSet: GenericCommandSet
+    CommandSet: KW_MarkedOfKaneMetaUnitCommandSet
     VoiceSelect: KwSnd_NOD_Redeemer_VoiceSelectMS
     VoiceMove: KwSnd_NOD_Redeemer_VoiceMove
     VoiceAttack: KwSnd_NOD_Redeemer_VoiceAttack
@@ -26640,6 +26908,20 @@ Objects:
         SinkDelay: 6000
         SinkRate: 1
         FX: INITIAL KWFX_FX_NOD_RedeemerExplodeWithVoice
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_NodRageGenerator
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_NodRageGenerator
+        SpecialWeapon: KW_Weapon_NODWarmechRageGenerator
+        StartAbilityRange: 400
+        UnpackTime: 500
+        PackTime: 500
+        TriggerSound: KwSnd_NOD_Redeemer_RageGeneratorMS
   KW_AlienMCV:
     DisplayName: Drone Ship
     Side: KWScrin
@@ -29264,7 +29546,7 @@ Objects:
       Conditions: None
       Weapon: [PRIMARY KW_Weapon_AlienStalkerShardWeapon]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_80
-    CommandSet: GenericCommandSet
+    CommandSet: KW_AlienStalkerCommandSet
     VoiceSelect: KwSnd_ALI_Stalker_SoundSelect
     VoiceMove: KwSnd_ALI_Stalker_SoundMove
     VoiceAttack: KwSnd_ALI_Stalker_SoundAttack
@@ -29326,6 +29608,19 @@ Objects:
         Class: SlowDeathBehavior
         DeathTypes: ALL
         DestructionDelay: 7000
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_UseTiberiumAgitation
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_UseTiberiumAgitation
+        SpecialWeapon: KW_Weapon_AlienStalkerTiberiumAgitation
+        StartAbilityRange: 350
+        UnpackTime: 900
+        PackTime: 1500
   KW_AlienMastermind:
     DisplayName: Mastermind
     Side: KWScrin
@@ -32795,7 +33090,7 @@ Objects:
     - Conditions: PLAYER_UPGRADE
       Weapon: [PRIMARY KW_Weapon_AlienStalkerBlueShardWeapon]
     Locomotor: SET_NORMAL KW_Loco_HumanLocomotor_80
-    CommandSet: GenericCommandSet
+    CommandSet: KW_Reaper17StalkerCommandSet
     VoiceSelect: KwSnd_ALI_Stalker_SoundSelect
     VoiceMove: KwSnd_ALI_Stalker_SoundMove
     VoiceAttack: KwSnd_ALI_Stalker_SoundAttack
@@ -32868,6 +33163,19 @@ Objects:
         ShowSubObjects: AUSTALKER_C_B AUSTALKER_GUN
         HideSubObjects: AUSTALKER_C_G
         TriggeredBy: KW_Upgrade_AlienBlueShardWeapon
+      ModuleTag_A01:
+        Module: Behavior
+        Class: SpecialAbility
+        SpecialPowerTemplate: KW_SpecialPower_UseTiberiumAgitation
+        UpdateModuleStartsAttack: Yes
+      ModuleTag_A02:
+        Module: Behavior
+        Class: SpecialAbilityUpdate
+        SpecialPowerTemplate: KW_SpecialPower_UseTiberiumAgitation
+        SpecialWeapon: KW_Weapon_AlienStalkerTiberiumAgitation
+        StartAbilityRange: 350
+        UnpackTime: 900
+        PackTime: 1500
   KW_Reaper17ShardWalker:
     DisplayName: Shard Walker
     Side: KWScrin

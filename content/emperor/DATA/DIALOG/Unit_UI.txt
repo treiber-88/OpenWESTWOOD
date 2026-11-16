@@ -1,0 +1,4280 @@
+[LocalDefaults]
+Group	=	HD InvalidHouse
+
+[UI-G004]
+Data = UI-G004.wav
+
+[UI-G006]
+Data = UI-G006.wav
+
+[UI-G008]
+Data = UI-G008.wav
+
+[UI-G010]
+Data = UI-G010.wav
+
+[UI-G016]
+Data = UI-G016.wav
+
+[UI-G018]
+Data = UI-G018.wav
+
+[UI-G024]
+Data = UI-G024.wav
+
+[UI-G032]
+Data = UI-G032.wav
+
+[UI-G034]
+Data = UI-G034.wav
+
+[UI-G040]
+Data = UI-G040.wav
+
+[UI-G046]
+Data = UI-G046.wav
+
+[UI-G048]
+Data = UI-G048.wav
+
+[UI-G054]
+Data = UI-G054.wav
+
+[UI-G072]
+Data = UI-G072.wav
+
+[UI-G080]
+Data = UI-G080.wav
+
+[UI-G096]
+Data = UI-G096.wav
+
+[UI-G098]
+Data = UI-G098.wav
+
+[UI-G106]
+Data = UI-G106.wav
+
+[UI-G112]
+Data = UI-G112.wav
+
+[UI-G146]
+Data = UI-G146.wav
+
+[UI-G160]
+Data = UI-G160.wav
+
+[UI-G162]
+Data = UI-G162.wav
+
+[UI-G164]
+Data = UI-G164.wav
+
+[UI-G166]
+Data = UI-G166.wav
+
+[UI-G168]
+Data = UI-G168.wav
+
+[UI-G170]
+Data = UI-G170.wav
+
+[UI-G172]
+Data = UI-G172.wav
+
+[UI-G174]
+Data = UI-G174.wav
+
+[UI-G176]
+Data = UI-G176.wav
+
+[UI-G178]
+Data = UI-G178.wav
+
+[UI-G182]
+Data = UI-G182.wav
+
+[UI-G184]
+Data = UI-G184.wav
+
+[54-UX02]
+Data = 54-UX02.wav		;"House Atreides shall prevail!"
+
+[00-UA01]
+Data = 00-UA01.wav		;"Engaging enemy."
+
+;[00-UA02]
+;Data = 00-UA02.wav		;"For the Duke!"
+
+;[00-UA03]
+;Data = 00-UA03.wav		;"The Spice is ours!"
+
+[00-UA04]
+Data = 00-UA04.wav		;"Victory!"
+
+;[00-UA05]
+;Data = 00-UA05.wav		;"Open fire!"
+
+;[00-UA06]
+;Data = 00-UA06.wav		;""Attack"
+
+[00-UA07]
+Data = 00-UA07.wav		;"We're on them!"
+
+;[00-UA08]
+;Data = 00-UA08.wav		;"Wipe them out!"
+
+;[00-UM00]
+;Data = 00-UM00.wav		;"On the double."
+
+[00-UM01]
+Data = 00-UM01.wav		;""Yes"
+
+;[00-UM02]
+;Data = 00-UM02.wav		;"Yes Sir!"
+
+;[00-UM03]
+;Data = 00-UM03.wav		;"Kindjal on the move"
+
+[00-UM04]
+Data = 00-UM04.wav		;"You've got it!"
+
+[00-UM05]
+Data = 00-UM05.wav		;"On the move!"
+
+[00-UM06]
+Data = 00-UM06.wav		;"Look sharp!"
+
+;[00-UM07]
+;Data = 00-UM07.wav		;"The enemy can't be far off."
+
+;[00-UM08]
+;Data = 00-UM08.wav		;"For Duke Achillus!"
+
+;[00-US00]
+;Data = 00-US00.wav		;"Support ready."
+
+;[00-US01]
+;Data = 00-US01.wav		;"Show me my position."
+
+[00-US02]
+Data = 00-US02.wav		;"Awaiting orders."
+
+;[00-US03]
+;Data = 00-US03.wav		;"Yes Sir?"
+
+[00-US04]
+Data = 00-US04.wav		;"Kindjal ready"
+
+;[00-US05]
+;Data = 00-US05.wav		;""Kinjal infantry"
+
+[00-US06]
+Data = 00-US06.wav		;""Ready for a fight"
+
+;[00-US07]
+;Data = 00-US07.wav		;"Your orders?"
+
+[00-US08]
+Data = 00-US08.wav		;""Ready for action"
+
+;[00-UX00]
+;Data = 00-UX00.wav		;"Deploying gun…ready to fire."
+
+;[00-UX01]
+;Data = 00-UX01.wav		;"Digging in!"
+
+;[00-UX02]
+;Data = 00-UX02.wav		;"Time to move."
+
+[01-UM00]
+Data = 01-UM00.wav		;"At once."
+
+[01-UM01]
+Data = 01-UM01.wav		;"Understood."
+
+;[01-UM02]
+;Data = 01-UM02.wav		;"Agreed."
+
+[01-UM04]
+Data = 01-UM04.wav		;"Let's get a closer look."
+
+;[01-UM05]
+;Data = 01-UM05.wav		;"By your command."
+
+;[01-UM06]
+;Data = 01-UM06.wav		;"Moving out."
+
+[01-UM07]
+Data = 01-UM07.wav		;"As you wish."
+
+;[01-US00]
+;Data = 01-US00.wav		;"Scouts."
+
+[01-US01]
+Data = 01-US01.wav		;"Yes!"
+
+[01-US02]
+Data = 01-US02.wav		;"Reporting!"
+
+[01-US03]
+Data = 01-US03.wav		;"What?!  (as if you are bothering him)"
+
+;[01-US04]
+;Data = 01-US04.wav		;"Awaiting your orders."
+
+;[01-US05]
+;Data = 01-US05.wav		;"At my station."
+
+[01-US06]
+Data = 01-US06.wav		;"Just lurking about."
+
+;[01-US07]
+;Data = 01-US07.wav		;""Your orders"
+
+;[01-US08]
+;Data = 01-US08.wav		;"Ready to move out."
+
+;[01-US09]
+;Data = 01-US09.wav		;""At your leave"
+
+[02-UM00]
+Data = 02-UM00.wav		;"We obey."
+
+;[02-UM01]
+;Data = 02-UM01.wav		;"Complying."
+
+[02-UM02]
+Data = 02-UM02.wav		;"As ordered."
+
+;[02-UM03]
+;Data = 02-UM03.wav		;"Scanning the area"
+
+[02-UM04]
+Data = 02-UM04.wav		;"Area scan commencing."
+
+;[02-UM05]
+;Data = 02-UM05.wav		;"Moving to new position."
+
+[02-UM06]
+Data = 02-UM06.wav		;"Relocation commencing."
+
+;[02-UM07]
+;Data = 02-UM07.wav		;"On my way."
+
+;[02-US00]
+;Data = 02-US00.wav		;"Observers."
+
+[02-US01]
+Data = 02-US01.wav		;"Awaiting instruction."
+
+;[02-US02]
+;Data = 02-US02.wav		;"Your orders?"
+
+;[02-US03]
+;Data = 02-US03.wav		;"On the lookout"
+
+[02-US04]
+Data = 02-US04.wav		;"Our purpose is observation."
+
+[02-US05]
+Data = 02-US05.wav		;"We are at your command."
+
+;[02-US06]
+;Data = 02-US06.wav		;"We await instructions."
+
+;[02-US07]
+;Data = 02-US07.wav		;"Yes sir?"
+
+;[03-UA00]
+;Data = 03-UA00.wav		;"Engaging enemy."
+
+[03-UA01]
+Data = 03-UA01.wav		;"Acknowledged."
+
+;[03-UA02]
+;Data = 03-UA02.wav		;"Engaging."
+
+;[03-UA04]
+;Data = 03-UA04.wav		;"Enemy engaged."
+
+[03-UA05]
+Data = 03-UA05.wav		;"Order confirmed."
+
+[03-UA06]
+Data = 03-UA06.wav		;"Acknowledged."
+
+[03-UA07]
+Data = 03-UA07.wav		;"Silent and deadly!"
+
+[03-UM00]
+Data = 03-UM00.wav		;"On our way!"
+
+;[03-UM01]
+;Data = 03-UM01.wav		;"Wagons roll!"
+
+[03-UM02]
+Data = 03-UM02.wav		;"Rolling!"
+
+[03-UM03]
+Data = 03-UM03.wav		;"Transport in motion"
+
+;[03-UM04]
+;Data = 03-UM04.wav		;"Transport on the way."
+
+;[03-UM05]
+;Data = 03-UM05.wav		;"We're rolling."
+
+[03-UM06]
+Data = 03-UM06.wav		;"Moving to new location."
+
+;[03-UM07]
+;Data = 03-UM07.wav		;"Excellent!"
+
+;[03-US00]
+;Data = 03-US00.wav		;"APC."
+
+;[03-US01]
+;Data = 03-US01.wav		;"Delivery guaranteed."
+
+[03-US02]
+Data = 03-US02.wav		;"Ready to go!"
+
+[03-US03]
+Data = 03-US03.wav		;"Climb aboard"
+
+[03-US04]
+Data = 03-US04.wav		;""APC"
+
+[03-US05]
+Data = 03-US05.wav		;"We're powered up."
+
+;[03-US06]
+;Data = 03-US06.wav		;"Let's load up."
+
+;[03-US07]
+;Data = 03-US07.wav		;"Your orders?"
+
+;[03-UX00]
+;Data = 03-UX00.wav		;"Load up!"
+
+;[03-UX01]
+;Data = 03-UX01.wav		;"Go!  Go!  Go!"
+
+;[03-UX02]
+;Data = 03-UX02.wav		;"Let's move it out!"
+
+;[03-UX03]
+;Data = 03-UX03.wav		;""Go"
+
+;[03-UX04]
+;Data = 03-UX04.wav		;"On the double!"
+
+;[04-UA00]
+;Data = 04-UA00.wav		;"They're going to burn."
+
+[04-UA01]
+Data = 04-UA01.wav		;"Burners on."
+
+[04-UA02]
+Data = 04-UA02.wav		;"Ashes to ashes…"
+
+;[04-UA03]
+;Data = 04-UA03.wav		;"Some like it hot!"
+
+[04-UA04]
+Data = 04-UA04.wav		;""Careful it's hot"
+
+;[04-UA05]
+;Data = 04-UA05.wav		;"Arrakis flambe!"
+
+;[04-UA06]
+;Data = 04-UA06.wav		;"The heat is on!"
+
+[04-UA07]
+Data = 04-UA07.wav		;"Put to the torch."
+
+[04-UA08]
+Data = 04-UA08.wav		;"Smoke 'em!"
+
+;[04-UA09]
+;Data = 04-UA09.wav		;"It ain't the heat - it's the humidity!"
+
+;[04-UA10]
+;Data = 04-UA10.wav		;"Medium or well done?"
+
+[04-UA11]
+Data = 04-UA11.wav		;"Flame on!"
+
+;[04-UA12]
+;Data = 04-UA12.wav		;"I taste your fear!"
+
+;[04-UM00]
+;Data = 04-UM00.wav		;"Moving out."
+
+;[04-UM01]
+;Data = 04-UM01.wav		;"As you command."
+
+[04-UM02]
+Data = 04-UM02.wav		;"Order understood."
+
+[04-UM03]
+Data = 04-UM03.wav		;"Fire lit."
+
+;[04-UM04]
+;Data = 04-UM04.wav		;"Moving to position."
+
+;[04-UM05]
+;Data = 04-UM05.wav		;"Into the frying pan!"
+
+[04-UM06]
+Data = 04-UM06.wav		;""Hot and heavy"
+
+[04-UM07]
+Data = 04-UM07.wav		;"Turn 'em and burn 'em!"
+
+;[04-UM08]
+;Data = 04-UM08.wav		;""Fire"
+
+;[04-UM09]
+;Data = 04-UM09.wav		;"Unstoppable!"
+
+[04-UM10]
+Data = 04-UM10.wav		;"Try and stop me."
+
+;[04-US00]
+;Data = 04-US00.wav		;"Flamer ready."
+
+;[04-US01]
+;Data = 04-US01.wav		;"Let us at them."
+
+[04-US02]
+Data = 04-US02.wav		;"Flame ready."
+
+[04-US03]
+Data = 04-US03.wav		;"I'm burning for a fight"
+
+;[04-US04]
+;Data = 04-US04.wav		;"I love a fire."
+
+[04-US05]
+Data = 04-US05.wav		;"Flame Tanks primed"
+
+;[04-US06]
+;Data = 04-US06.wav		;"Flame at your command."
+
+;[04-US07]
+;Data = 04-US07.wav		;"We're ready to roast 'em."
+
+[04-US08]
+Data = 04-US08.wav		;""Maximum burn"
+
+;[04-US09]
+;Data = 04-US09.wav		;"I'm here!"
+
+;[04-US10]
+;Data = 04-US10.wav		;"Your orders?"
+
+[04-US11]
+Data = 04-US11.wav		;"Let's Barbeque!"
+
+[05-UA00]
+Data = 05-UA00.wav		;"Targeting Laser."
+
+[05-UA01]
+Data = 05-UA01.wav		;"Turret locked on target."
+
+;[05-UA02]
+;Data = 05-UA02.wav		;"Terminating."
+
+;[05-UA03]
+;Data = 05-UA03.wav		;"For House Ordos."
+
+[05-UA04]
+Data = 05-UA04.wav		;"Amplifying emission levels"
+
+[05-UA07]
+Data = 05-UA07.wav		;"Enemy targets engaged."
+
+;[05-UM00]
+;Data = 05-UM00.wav		;"Thrusters engaged."
+
+[05-UM01]
+Data = 05-UM01.wav		;"Destination received."
+
+[05-UM02]
+Data = 05-UM02.wav		;"By your order."
+
+;[05-UM03]
+;Data = 05-UM03.wav		;"A fine plan!"
+
+[05-UM04]
+Data = 05-UM04.wav		;"Throttle to full power."
+
+;[05-UM05]
+;Data = 05-UM05.wav		;"Redirect confirmed."
+
+[05-UM06]
+Data = 05-UM06.wav		;"Moving to coordinates"
+
+;[05-UM07]
+;Data = 05-UM07.wav		;"Order Confirmed!"
+
+;[05-US00]
+;Data = 05-US00.wav		;"Laser ready."
+
+[05-US01]
+Data = 05-US01.wav		;"Powered up!"
+
+;[05-US02]
+;Data = 05-US02.wav		;"Your orders?"
+
+;[05-US03]
+;Data = 05-US03.wav		;"Laser intensity set"
+
+[05-US05]
+Data = 05-US05.wav		;"Laser tank operational."
+
+[05-US06]
+Data = 05-US06.wav		;"Laser at full power."
+
+[05-US07]
+Data = 05-US07.wav		;"Engines on maximum."
+
+;[05-US08]
+;Data = 05-US08.wav		;"Laser Tank Ready!"
+
+;[06-UA00]
+;Data = 06-UA00.wav		;"I need a clear shot."
+
+;[06-UA01]
+;Data = 06-UA01.wav		;"I have a bullet with his name on it…"
+
+;[06-UA02]
+;Data = 06-UA02.wav		;"In my sight."
+
+;[06-UA03]
+;Data = 06-UA03.wav		;"Target marked."
+
+;[06-UA04]
+;Data = 06-UA04.wav		;"Target aquired."
+
+[06-UA05]
+Data = 06-UA05.wav		;"I need a clear shot."
+
+[06-UA06]
+Data = 06-UA06.wav		;""He's mine"
+
+[06-UA07]
+Data = 06-UA07.wav		;"I've got him in my sights."
+
+;[06-UM00]
+;Data = 06-UM00.wav		;"Yes Sir!"
+
+[06-UM01]
+Data = 06-UM01.wav		;"Check."
+
+[06-UM02]
+Data = 06-UM02.wav		;"Moving out."
+
+;[06-UM03]
+;Data = 06-UM03.wav		;"Moving to position."
+
+;[06-UM04]
+;Data = 06-UM04.wav		;"Locked and loaded!"
+
+[06-UM05]
+Data = 06-UM05.wav		;"I'm on the move."
+
+[06-UM06]
+Data = 06-UM06.wav		;""Roger"
+
+;[06-US00]
+;Data = 06-US00.wav		;"Readying my sight."
+
+;[06-US01]
+;Data = 06-US01.wav		;"Give me a target."
+
+;[06-US02]
+;Data = 06-US02.wav		;"Target required."
+
+;[06-US03]
+;Data = 06-US03.wav		;"In position."
+
+[06-US04]
+Data = 06-US04.wav		;"Sniper waiting"
+
+;[06-US05]
+;Data = 06-US05.wav		;""Sniper elite"
+
+[06-US06]
+Data = 06-US06.wav		;""Just give me a taget"
+
+[06-US07]
+Data = 06-US07.wav		;"Readu and willing."
+
+[06-US08]
+Data = 06-US08.wav		;"Eyes like a hawk"
+
+;[07-UA00]
+;Data = 07-UA00.wav		;"Ready for pickup."
+
+;[07-UA01]
+;Data = 07-UA01.wav		;"I see the target.  Crew prepare grabs for pickup."
+
+[07-UA02]
+Data = 07-UA02.wav		;"Prepare for pickup"
+
+;[07-UA03]
+;Data = 07-UA03.wav		;"Stand back!"
+
+;[07-UA04]
+;Data = 07-UA04.wav		;"Operation Started!"
+
+;[07-UA05]
+;Data = 07-UA05.wav		;"Target confirmed."
+
+;[07-UA06]
+;Data = 07-UA06.wav		;"Target in site - ready for pick-up."
+
+[07-UA07]
+Data = 07-UA07.wav		;"Grapplers in position."
+
+;[07-UM00]
+;Data = 07-UM00.wav		;"Responding."
+
+[07-UM01]
+Data = 07-UM01.wav		;"Roger."
+
+;[07-UM02]
+;Data = 07-UM02.wav		;"Roger that control."
+
+[07-UM03]
+Data = 07-UM03.wav		;"We can do that."
+
+[07-UM04]
+Data = 07-UM04.wav		;"On the move."
+
+;[07-UM05]
+;Data = 07-UM05.wav		;"Course confirmed."
+
+[07-UM06]
+Data = 07-UM06.wav		;"Coming about."
+
+;[07-UM07]
+;Data = 07-UM07.wav		;"Roger that."
+
+;[07-US00]
+;Data = 07-US00.wav		;"Airborne."
+
+[07-US01]
+Data = 07-US01.wav		;"Transport."
+
+;[07-US02]
+;Data = 07-US02.wav		;"Holding here."
+
+;[07-US03]
+;Data = 07-US03.wav		;"Need some heavy lifting?"
+
+[07-US04]
+Data = 07-US04.wav		;"Carryall reporting"
+
+;[07-US05]
+;Data = 07-US05.wav		;"Carryall in position."
+
+[07-US06]
+Data = 07-US06.wav		;""On your command"
+
+[07-US07]
+Data = 07-US07.wav		;"Transport standing by."
+
+;[08-UA00]
+;Data = 08-UA00.wav		;"I see it."
+
+[08-UA01]
+Data = 08-UA01.wav		;"Easy"
+
+;[08-UA02]
+;Data = 08-UA02.wav		;"Gathering data"
+
+[08-UA03]
+Data = 08-UA03.wav		;"Attempting Transport"
+
+[08-UA04]
+Data = 08-UA04.wav		;"No Problem!"
+
+;[08-UA05]
+;Data = 08-UA05.wav		;"Piece of cake"
+
+;[08-UA06]
+;Data = 08-UA06.wav		;"I have it in sight."
+
+;[08-UA07]
+;Data = 08-UA07.wav		;"Like stealing spice candy from a infant."
+
+[08-UA08]
+Data = 08-UA08.wav		;"I can move that!"
+
+[08-UM00]
+Data = 08-UM00.wav		;"Setting new course."
+
+[08-UM01]
+Data = 08-UM01.wav		;"Coming about."
+
+;[08-UM02]
+;Data = 08-UM02.wav		;""Roger"
+
+;[08-UM03]
+;Data = 08-UM03.wav		;"Sounds good."
+
+;[08-UM04]
+;Data = 08-UM04.wav		;"Allright."
+
+[08-UM05]
+Data = 08-UM05.wav		;"Agreed."
+
+[08-UM06]
+Data = 08-UM06.wav		;"Course confirmed."
+
+[08-UM08]
+Data = 08-UM08.wav		;"Roger that."
+
+[08-US00]
+Data = 08-US00.wav		;"Air transport."
+
+;[08-US01]
+;Data = 08-US01.wav		;"Sir?"
+
+;[08-US02]
+;Data = 08-US02.wav		;"Yes?"
+
+[08-US03]
+Data = 08-US03.wav		;"What you need?"
+
+;[08-US04]
+;Data = 08-US04.wav		;"Don't keep the Baron waiting."
+
+[08-US05]
+Data = 08-US05.wav		;"Need something moved?"
+
+[08-US06]
+Data = 08-US06.wav		;"Carryall in position."
+
+[08-US07]
+Data = 08-US07.wav		;""At your bidding"
+
+;[08-US08]
+;Data = 08-US08.wav		;"Transport at your command."
+
+;[09-UA00]
+;Data = 09-UA00.wav		;"Run or die."
+
+[09-UA01]
+Data = 09-UA01.wav		;"Attack!"
+
+[09-UA02]
+Data = 09-UA02.wav		;"Die!"
+
+;[09-UA03]
+;Data = 09-UA03.wav		;"No survivors."
+
+;[09-UA04]
+;Data = 09-UA04.wav		;"Another slow death!"
+
+[09-UA05]
+Data = 09-UA05.wav		;"First blood is ours."
+
+;[09-UA06]
+;Data = 09-UA06.wav		;"Meet your death!"
+
+[09-UA07]
+Data = 09-UA07.wav		;"Lambs to the slaughter."
+
+;[09-UA08]
+;Data = 09-UA08.wav		;"Butcher them!"
+
+[09-UA09]
+Data = 09-UA09.wav		;"No prisoners!"
+
+;[09-UM00]
+;Data = 09-UM00.wav		;"On our way."
+
+[09-UM01]
+Data = 09-UM01.wav		;"Understood."
+
+[09-UM02]
+Data = 09-UM02.wav		;"At once."
+
+[09-UM03]
+Data = 09-UM03.wav		;"I go…and death will follow"
+
+;[09-UM04]
+;Data = 09-UM04.wav		;""Gladly"
+
+;[09-UM05]
+;Data = 09-UM05.wav		;"For the good of Geidi Prime."
+
+[09-UM06]
+Data = 09-UM06.wav		;"For the Baron!"
+
+;[09-UM07]
+;Data = 09-UM07.wav		;"By your command."
+
+[09-UM08]
+Data = 09-UM08.wav		;"For Geidi Prime!"
+
+;[09-UM09]
+;Data = 09-UM09.wav		;"I'm thirsty for blood."
+
+;[09-UM10]
+;Data = 09-UM10.wav		;"In the Baron's name!"
+
+;[09-US00]
+;Data = 09-US00.wav		;"Trooper ready."
+
+[09-US01]
+Data = 09-US01.wav		;"Bring them on."
+
+;[09-US02]
+;Data = 09-US02.wav		;"Face me - face death."
+
+;[09-US03]
+;Data = 09-US03.wav		;"Yes?"
+
+[09-US04]
+Data = 09-US04.wav		;"I live for pain."
+
+[09-US05]
+Data = 09-US05.wav		;"This Trooper's ready."
+
+[09-US06]
+Data = 09-US06.wav		;"Bring 'em on."
+
+[09-US07]
+Data = 09-US07.wav		;"Your orders?"
+
+;[09-US08]
+;Data = 09-US08.wav		;""Ready for action"
+
+;[10-UA00]
+;Data = 10-UA00.wav		;"Powering up."
+
+[10-UA01]
+Data = 10-UA01.wav		;"Cover your ears."
+
+[10-UA02]
+Data = 10-UA02.wav		;"For the Duke!"
+
+;[10-UA03]
+;Data = 10-UA03.wav		;"Readying pulse generator."
+
+[10-UA04]
+Data = 10-UA04.wav		;"Harmonics set."
+
+[10-UA05]
+Data = 10-UA05.wav		;"Full power!"
+
+;[10-UA06]
+;Data = 10-UA06.wav		;"Generating sonic pulse."
+
+;[10-UA07]
+;Data = 10-UA07.wav		;"Protect your ears!"
+
+;[10-UA08]
+;Data = 10-UA08.wav		;"Sounds like a plan!"
+
+;[10-UM00]
+;Data = 10-UM00.wav		;"We're all ears."
+
+;[10-UM01]
+;Data = 10-UM01.wav		;"Responding."
+
+[10-UM02]
+Data = 10-UM02.wav		;"Yes Commander."
+
+;[10-UM03]
+;Data = 10-UM03.wav		;"Yes Sir!"
+
+;[10-UM04]
+;Data = 10-UM04.wav		;"Location Acknowledged."
+
+;[10-UM05]
+;Data = 10-UM05.wav		;""All ahead"
+
+[10-UM06]
+Data = 10-UM06.wav		;"Rolling thunder."
+
+[10-UM07]
+Data = 10-UM07.wav		;""Good to go"
+
+;[10-UM08]
+;Data = 10-UM08.wav		;"Right Away!"
+
+;[10-US00]
+;Data = 10-US00.wav		;"Sonics reporting in."
+
+;[10-US01]
+;Data = 10-US01.wav		;"Sonics online and ready."
+
+[10-US02]
+Data = 10-US02.wav		;"Sonics Online"
+
+;[10-US03]
+;Data = 10-US03.wav		;"House Atredies."
+
+[10-US04]
+Data = 10-US04.wav		;"Wave shifters ready"
+
+[10-US05]
+Data = 10-US05.wav		;""Sonic tank"
+
+;[10-US06]
+;Data = 10-US06.wav		;"Wave shifters on-line."
+
+[10-US07]
+Data = 10-US07.wav		;"We're ready for action."
+
+;[11-UA01]
+;Data = 11-UA01.wav		;"They're dead."
+
+[11-UA02]
+Data = 11-UA02.wav		;"One for the Baron."
+
+;[11-UA03]
+;Data = 11-UA03.wav		;"Death to the enemy."
+
+;[11-UA04]
+;Data = 11-UA04.wav		;"Fire at will"
+
+[11-UA05]
+Data = 11-UA05.wav		;""Bah"
+
+[11-UA06]
+Data = 11-UA06.wav		;"They'll die quickly…"
+
+;[11-UA07]
+;Data = 11-UA07.wav		;"Fire in the hold."
+
+[11-UA08]
+Data = 11-UA08.wav		;"Hit 'em hard!"
+
+[11-UA10]
+Data = 11-UA10.wav		;"All too easy."
+
+[11-UM00]
+Data = 11-UM00.wav		;"As you command."
+
+;[11-UM01]
+;Data = 11-UM01.wav		;"On the move."
+
+;[11-UM02]
+;Data = 11-UM02.wav		;"At once."
+
+;[11-UM03]
+;Data = 11-UM03.wav		;"By your will"
+
+[11-UM04]
+Data = 11-UM04.wav		;"Engines engaged."
+
+;[11-UM05]
+;Data = 11-UM05.wav		;""All ahead"
+
+[11-UM06]
+Data = 11-UM06.wav		;"Rolling thunder."
+
+[11-UM07]
+Data = 11-UM07.wav		;"Metal on the move."
+
+;[11-UM08]
+;Data = 11-UM08.wav		;""Good to go"
+
+[11-US00]
+Data = 11-US00.wav		;"Armed and dangerous."
+
+;[11-US01]
+;Data = 11-US01.wav		;"Ready to kill!"
+
+[11-US02]
+Data = 11-US02.wav		;"Reporting!"
+
+;[11-US03]
+;Data = 11-US03.wav		;"[Evil laughter]"
+
+;[11-US04]
+;Data = 11-US04.wav		;"Preparing to move."
+
+;[11-US06]
+;Data = 11-US06.wav		;"Our guns will crush them"
+
+[11-US07]
+Data = 11-US07.wav		;"Ready to rumble."
+
+;[11-US08]
+;Data = 11-US08.wav		;"Locked and loaded."
+
+;[11-US09]
+;Data = 11-US09.wav		;"Engines primed."
+
+[11-US10]
+Data = 11-US10.wav		;""Full power"
+
+[12-UA00]
+Data = 12-UA00.wav		;"Calculating trajectory."
+
+;[12-UA01]
+;Data = 12-UA01.wav		;"Shell loaded.  Preparing to fire."
+
+[12-UA02]
+Data = 12-UA02.wav		;"Target data entered."
+
+[12-UA03]
+Data = 12-UA03.wav		;"Sensors locked on"
+
+;[12-UA04]
+;Data = 12-UA04.wav		;"Trajectory has been calculated."
+
+;[12-UA05]
+;Data = 12-UA05.wav		;"Sensors locked on"
+
+;[12-UA06]
+;Data = 12-UA06.wav		;"Firing on target."
+
+;[12-UM00]
+;Data = 12-UM00.wav		;"Moving to firing point."
+
+[12-UM01]
+Data = 12-UM01.wav		;"Position marked."
+
+;[12-UM02]
+;Data = 12-UM02.wav		;"Tracks engaged."
+
+[12-UM04]
+Data = 12-UM04.wav		;"Kobra unit now in motion."
+
+;[12-UM05]
+;Data = 12-UM05.wav		;"Your orders have been received."
+
+;[12-UM06]
+;Data = 12-UM06.wav		;"Proceeding to the new location."
+
+;[12-US00]
+;Data = 12-US00.wav		;"Gun ready."
+
+[12-US01]
+Data = 12-US01.wav		;"Ready to strike."
+
+;[12-US02]
+;Data = 12-US02.wav		;"Ready as ordered."
+
+[12-US03]
+Data = 12-US03.wav		;"Kobra unit"
+
+;[12-US04]
+;Data = 12-US04.wav		;"Kobra Unit operational."
+
+;[12-US05]
+;Data = 12-US05.wav		;"Unit power at maximum efficiency."
+
+;[12-US06]
+;Data = 12-US06.wav		;"What is your command?"
+
+;[12-UX00]
+;Data = 12-UX00.wav		;"Firing position set.  Drive disengaged."
+
+;[12-UX01]
+;Data = 12-UX01.wav		;"Reverting to mobile configuration."
+
+[13-UA00]
+Data = 13-UA00.wav		;"To battle!"
+
+[13-UA01]
+Data = 13-UA01.wav		;"Attack!"
+
+[13-UA03]
+Data = 13-UA03.wav		;"Time to die!"
+
+;[13-UA04]
+;Data = 13-UA04.wav		;"For the Emperor!"
+
+[13-UA06]
+Data = 13-UA06.wav		;"Death Before Dishonor!"
+
+;[13-UA07]
+;Data = 13-UA07.wav		;"In the Emperor's memory!"
+
+;[13-UM00]
+;Data = 13-UM00.wav		;"Acknowledged."
+
+[13-UM01]
+Data = 13-UM01.wav		;"No surrender!"
+
+[13-UM02]
+Data = 13-UM02.wav		;"As you wish!"
+
+[13-UM03]
+Data = 13-UM03.wav		;"Take no prisoners."
+
+;[13-UM04]
+;Data = 13-UM04.wav		;"Interesting…"
+
+;[13-UM05]
+;Data = 13-UM05.wav		;""Onward"
+
+;[13-UM06]
+;Data = 13-UM06.wav		;""We go"
+
+[13-US00]
+Data = 13-US00.wav		;"Imperial troops reporting."
+
+[13-US02]
+Data = 13-US02.wav		;"Ready for battle."
+
+;[13-US03]
+;Data = 13-US03.wav		;"Ready."
+
+[13-US04]
+Data = 13-US04.wav		;"Fear us"
+
+;[13-US05]
+;Data = 13-US05.wav		;"A task?"
+
+;[13-US06]
+;Data = 13-US06.wav		;""Imperial Saradukar"
+
+;[13-US07]
+;Data = 13-US07.wav		;""We will triumph"
+
+[13-US08]
+Data = 13-US08.wav		;"We are prepared!"
+
+;[14-UA00]
+;Data = 14-UA00.wav		;"Die primitives."
+
+;[14-UA01]
+;Data = 14-UA01.wav		;"You will die."
+
+;[14-UA02]
+;Data = 14-UA02.wav		;"The Guild will triumph."
+
+[14-UA04]
+Data = 14-UA04.wav		;""Die"
+
+;[14-UA06]
+;Data = 14-UA06.wav		;"It is already too late for them!"
+
+;[14-UA07]
+;Data = 14-UA07.wav		;"Death is imminent"
+
+[14-UA08]
+Data = 14-UA08.wav		;"Too late for them."
+
+[14-UA09]
+Data = 14-UA09.wav		;"They will suffer!"
+
+;[14-UM00]
+;Data = 14-UM00.wav		;"Agreed."
+
+[14-UM01]
+Data = 14-UM01.wav		;"For the Guild."
+
+[14-UM02]
+Data = 14-UM02.wav		;"We agree with your suggestion."
+
+[14-UM03]
+Data = 14-UM03.wav		;"We will cooperate."
+
+;[14-UM04]
+;Data = 14-UM04.wav		;"Onward…"
+
+;[14-UM05]
+;Data = 14-UM05.wav		;"Ahhhhh……"
+
+;[14-UM06]
+;Data = 14-UM06.wav		;"Of course!"
+
+;[14-US00]
+;Data = 14-US00.wav		;"Yes human."
+
+;[14-US01]
+;Data = 14-US01.wav		;"We are ready."
+
+;[14-US02]
+;Data = 14-US02.wav		;"Guild ready."
+
+;[14-US03]
+;Data = 14-US03.wav		;""What is it"
+
+;[14-US04]
+;Data = 14-US04.wav		;"Of course we are ready!"
+
+[14-US05]
+Data = 14-US05.wav		;"The Guild is always ready."
+
+;[14-US06]
+;Data = 14-US06.wav		;"Waiting…."
+
+[14-US07]
+Data = 14-US07.wav		;"You have an idea?"
+
+;[14-US08]
+;Data = 14-US08.wav		;"You have a plan?"
+
+[15-UA00]
+Data = 15-UA00.wav		;"Death comes to all."
+
+[15-UA01]
+Data = 15-UA01.wav		;"For House Ordos."
+
+;[15-UA02]
+;Data = 15-UA02.wav		;"Placing Explosives"
+
+;[15-UA03]
+;Data = 15-UA03.wav		;"For my legacy!"
+
+;[15-UA04]
+;Data = 15-UA04.wav		;"The Spice must flow!"
+
+[15-UA05]
+Data = 15-UA05.wav		;"Death is inevitable."
+
+;[15-UA06]
+;Data = 15-UA06.wav		;"I kill for House Ordos - I die for House Ordos!"
+
+;[15-UA07]
+;Data = 15-UA07.wav		;"The Explosives are in position."
+
+;[15-UA08]
+;Data = 15-UA08.wav		;"For the cause!"
+
+;[15-UM00]
+;Data = 15-UM00.wav		;"Complying."
+
+;[15-UM01]
+;Data = 15-UM01.wav		;"Obeying orders."
+
+[15-UM02]
+Data = 15-UM02.wav		;"Orders received."
+
+;[15-UM03]
+;Data = 15-UM03.wav		;"Saboteur acknowledge"
+
+;[15-UM04]
+;Data = 15-UM04.wav		;"Heading out."
+
+[15-UM05]
+Data = 15-UM05.wav		;"Approaching new location"
+
+[15-UM06]
+Data = 15-UM06.wav		;"Orders confirmed."
+
+;[15-UM07]
+;Data = 15-UM07.wav		;"Moving to new coordinates."
+
+;[15-UM08]
+;Data = 15-UM08.wav		;""Go"
+
+;[15-US00]
+;Data = 15-US00.wav		;"Ready to die."
+
+;[15-US01]
+;Data = 15-US01.wav		;"Charges primed and ready for your order."
+
+[15-US02]
+Data = 15-US02.wav		;"No fear."
+
+[15-US03]
+Data = 15-US03.wav		;"Explosives ready"
+
+;[15-US04]
+;Data = 15-US04.wav		;"Sabotage is the answer"
+
+[15-US05]
+Data = 15-US05.wav		;"Our purpose is sabotage. "
+
+[15-US06]
+Data = 15-US06.wav		;"We have no fear of death."
+
+;[15-US07]
+;Data = 15-US07.wav		;"What is the target?"
+
+;[15-US08]
+;Data = 15-US08.wav		;"Your request?"
+
+[16-UA01]
+Data = 16-UA01.wav		;"Attacking target."
+
+;[16-UA02]
+;Data = 16-UA02.wav		;"Engaging enemy."
+
+[16-UA03]
+Data = 16-UA03.wav		;"For the Duke!"
+
+[16-UA04]
+Data = 16-UA04.wav		;"Charge!"
+
+[16-UA05]
+Data = 16-UA05.wav		;"Attack!"
+
+;[16-UA06]
+;Data = 16-UA06.wav		;"For Duke Achillus!"
+
+;[16-UA07]
+;Data = 16-UA07.wav		;"Kill the enemy!"
+
+;[16-UM00]
+;Data = 16-UM00.wav		;"On the double."
+
+;[16-UM01]
+;Data = 16-UM01.wav		;""Yes"
+
+[16-UM02]
+Data = 16-UM02.wav		;"Yes Sir!"
+
+;[16-UM03]
+;Data = 16-UM03.wav		;"Good Idea!"
+
+[16-UM04]
+Data = 16-UM04.wav		;"To the battle!"
+
+[16-UM06]
+Data = 16-UM06.wav		;""Right away"
+
+;[16-UM07]
+;Data = 16-UM07.wav		;""Willing and able"
+
+[16-US00]
+Data = 16-US00.wav		;"Infantry here."
+
+;[16-US01]
+;Data = 16-US01.wav		;"Awaiting orders."
+
+;[16-US02]
+;Data = 16-US02.wav		;"In position."
+
+;[16-US03]
+;Data = 16-US03.wav		;"Yes Sir?"
+
+[16-US04]
+Data = 16-US04.wav		;"Are we going in?"
+
+;[16-US05]
+;Data = 16-US05.wav		;"Light Infantry at the ready."
+
+[16-US06]
+Data = 16-US06.wav		;""In position"
+
+[16-US07]
+Data = 16-US07.wav		;"On your order."
+
+;[17-UA00]
+;Data = 17-UA00.wav		;"Hisses and clicks. (Delight)"
+
+;[17-UA01]
+;Data = 17-UA01.wav		;"Hisses and clicks. (Delight)"
+
+;[17-UM00]
+;Data = 17-UM00.wav		;"Hisses and clicks. ""OK…"""
+
+;[17-UM01]
+;Data = 17-UM01.wav		;"Hisses and clicks. ""OK…"""
+
+;[17-US00]
+;Data = 17-US00.wav		;"Hisses and clicks ""Yes?"""
+
+;[17-US01]
+;Data = 17-US01.wav		;"Hisses and clicks ""Yes?"""
+
+;[17-US02]
+;Data = 17-US02.wav		;"Hisses and clicks ""Yes?"""
+
+[18-UA00]
+Data = 18-UA00.wav		;"Burn them all."
+
+;[18-UA01]
+;Data = 18-UA01.wav		;"""Evil laughter"""
+
+[18-UA02]
+Data = 18-UA02.wav		;"Light 'em up."
+
+;[18-UA03]
+;Data = 18-UA03.wav		;"I like 'em well done."
+
+;[18-UA04]
+;Data = 18-UA04.wav		;"Torching away!"
+
+[18-UA05]
+Data = 18-UA05.wav		;"Embrace the flame"
+
+[18-UA06]
+Data = 18-UA06.wav		;"Your turn to burn!"
+
+[18-UA07]
+Data = 18-UA07.wav		;"Roast 'em!"
+
+;[18-UA09]
+;Data = 18-UA09.wav		;"Scald 'em bald!"
+
+;[18-UA12]
+;Data = 18-UA12.wav		;"EnLIGHTning!"
+
+;[18-UM00]
+;Data = 18-UM00.wav		;"Let's go."
+
+[18-UM01]
+Data = 18-UM01.wav		;"On my way."
+
+;[18-UM02]
+;Data = 18-UM02.wav		;"Understood."
+
+;[18-UM03]
+;Data = 18-UM03.wav		;"I will light the way"
+
+;[18-UM04]
+;Data = 18-UM04.wav		;"Burners set to maximum."
+
+[18-UM05]
+Data = 18-UM05.wav		;"Let's start a fire"
+
+;[18-UM06]
+;Data = 18-UM06.wav		;"Turn 'em and burn 'em."
+
+[18-UM07]
+Data = 18-UM07.wav		;"Looking for tinder."
+
+[18-UM08]
+Data = 18-UM08.wav		;""Where there's smoke"
+
+;[18-UM09]
+;Data = 18-UM09.wav		;"Smokin'!"
+
+;[18-UM10]
+;Data = 18-UM10.wav		;"How Exciting…"
+
+[18-UM11]
+Data = 18-UM11.wav		;"Excellent"
+
+;[18-US00]
+;Data = 18-US00.wav		;"Yes?"
+
+;[18-US01]
+;Data = 18-US01.wav		;"Ready to burn."
+
+[18-US02]
+Data = 18-US02.wav		;"Smells like…victory."
+
+;[18-US03]
+;Data = 18-US03.wav		;"Burning…everything…burning…"
+
+[18-US04]
+Data = 18-US04.wav		;"It's getting hot down here."
+
+[18-US05]
+Data = 18-US05.wav		;"Shall I light a fire?"
+
+;[18-US06]
+;Data = 18-US06.wav		;"Flame Throwers ready"
+
+;[18-US07]
+;Data = 18-US07.wav		;""Pyro-maniac [gutteral"
+
+;[18-US08]
+;Data = 18-US08.wav		;"Ready to light it up."
+
+[18-US09]
+Data = 18-US09.wav		;"Let's burn!"
+
+[18-US10]
+Data = 18-US10.wav		;"My blood's boiling."
+
+;[18-US11]
+;Data = 18-US11.wav		;"I got cremation frustration."
+
+;[18-US12]
+;Data = 18-US12.wav		;"You have a plan?"
+
+;[18-US13]
+;Data = 18-US13.wav		;"I'm waiting."
+
+[19-UA00]
+Data = 19-UA00.wav		;"Time to kill!"
+
+[19-UA01]
+Data = 19-UA01.wav		;"They'll fall before me…"
+
+[19-UA02]
+Data = 19-UA02.wav		;"Rip it up!"
+
+[19-UA03]
+Data = 19-UA03.wav		;"Slice and Dice!"
+
+;[19-UA04]
+;Data = 19-UA04.wav		;""Mmmm"
+
+;[19-UA05]
+;Data = 19-UA05.wav		;"Split right down the middle!"
+
+[19-UA06]
+Data = 19-UA06.wav		;"In my sights!"
+
+[19-UA07]
+Data = 19-UA07.wav		;"Divide and conquer!  Ha-ha!"
+
+[19-UA08]
+Data = 19-UA08.wav		;"Tearing it up!"
+
+;[19-UA09]
+;Data = 19-UA09.wav		;"A little modern sculpture?"
+
+;[19-UA10]
+;Data = 19-UA10.wav		;"Let's sever some ties with the enemy."
+
+;[19-UA11]
+;Data = 19-UA11.wav		;"Beware the Blade!"
+
+;[19-UA12]
+;Data = 19-UA12.wav		;"Feel My Blade!"
+
+[19-UM00]
+Data = 19-UM00.wav		;"At last."
+
+;[19-UM01]
+;Data = 19-UM01.wav		;"On my way."
+
+[19-UM02]
+Data = 19-UM02.wav		;"On the move."
+
+[19-UM03]
+Data = 19-UM03.wav		;"Saws engaged."
+
+[19-UM04]
+Data = 19-UM04.wav		;"Cutting loose…"
+
+;[19-UM05]
+;Data = 19-UM05.wav		;"Buzz saw spinning"
+
+;[19-UM06]
+;Data = 19-UM06.wav		;"Glad I made the cut."
+
+[19-UM07]
+Data = 19-UM07.wav		;""Chop"
+
+;[19-UM08]
+;Data = 19-UM08.wav		;"I'll carve 'em up."
+
+;[19-UM09]
+;Data = 19-UM09.wav		;"Where's the beef?"
+
+;[19-UM11]
+;Data = 19-UM11.wav		;"Affirmative"
+
+[19-US00]
+Data = 19-US00.wav		;"Ready to roll."
+
+;[19-US01]
+;Data = 19-US01.wav		;"Let's go!  Let's go!"
+
+;[19-US02]
+;Data = 19-US02.wav		;"I'm ready for it."
+
+;[19-US03]
+;Data = 19-US03.wav		;"Yes?"
+
+[19-US04]
+Data = 19-US04.wav		;"Find me something fleshy."
+
+;[19-US05]
+;Data = 19-US05.wav		;"Just sharpening my blade."
+
+[19-US06]
+Data = 19-US06.wav		;"Need some power tools?"
+
+;[19-US07]
+;Data = 19-US07.wav		;"I'll cut 'em in half"
+
+;[19-US08]
+;Data = 19-US08.wav		;"Feed my blade!"
+
+;[19-US09]
+;Data = 19-US09.wav		;"Something I can sink my teeth into?"
+
+;[19-US10]
+;Data = 19-US10.wav		;"Just call me ""the butcher."""
+
+;[19-US11]
+;Data = 19-US11.wav		;"A little something to dismember?"
+
+;[19-US12]
+;Data = 19-US12.wav		;"Where to?"
+
+;[19-US13]
+;Data = 19-US13.wav		;"Ready."
+
+[20-UA00]
+Data = 20-UA00.wav		;"Plans received."
+
+;[20-UA01]
+;Data = 20-UA01.wav		;"It will be done."
+
+[20-UA02]
+Data = 20-UA02.wav		;"Moving to target structure."
+
+;[20-UA03]
+;Data = 20-UA03.wav		;"Now analyzing damage."
+
+;[20-UA04]
+;Data = 20-UA04.wav		;"The repairs should not be difficult."
+
+;[20-UA05]
+;Data = 20-UA05.wav		;"Repairs Commencing."
+
+[20-UA06]
+Data = 20-UA06.wav		;"We will succeed!"
+
+;[20-UM00]
+;Data = 20-UM00.wav		;"Instructed."
+
+;[20-UM01]
+;Data = 20-UM01.wav		;"Complying."
+
+;[20-UM02]
+;Data = 20-UM02.wav		;"As ordered."
+
+;[20-UM03]
+;Data = 20-UM03.wav		;"Moving to new coordinates."
+
+[20-UM04]
+Data = 20-UM04.wav		;"We go where we are needed."
+
+[20-UM05]
+Data = 20-UM05.wav		;"How can we be of assistance?"
+
+[20-UM06]
+Data = 20-UM06.wav		;"Order Accepted."
+
+;[20-US00]
+;Data = 20-US00.wav		;"Engineers reporting."
+
+;[20-US01]
+;Data = 20-US01.wav		;"Your orders?"
+
+[20-US02]
+Data = 20-US02.wav		;"Awaiting instruction."
+
+[20-US03]
+Data = 20-US03.wav		;"Our designation is Engineer."
+
+[20-US04]
+Data = 20-US04.wav		;"We are at your disposal."
+
+[20-US05]
+Data = 20-US05.wav		;"What is the required task?"
+
+;[20-US06]
+;Data = 20-US06.wav		;"You have a plan?"
+
+[21-UA00]
+Data = 21-UA00.wav		;"Initiating sequence."
+
+[21-UA01]
+Data = 21-UA01.wav		;"Surprise."
+
+;[21-UA02]
+;Data = 21-UA02.wav		;"Destruction awaits."
+
+[21-UA03]
+Data = 21-UA03.wav		;"Drop zone confirmed."
+
+[21-UA04]
+Data = 21-UA04.wav		;"Attack sequence initiated."
+
+[21-UA05]
+Data = 21-UA05.wav		;"Death rains from the sky!"
+
+;[21-UM00]
+;Data = 21-UM00.wav		;"Approach profile set."
+
+;[21-UM01]
+;Data = 21-UM01.wav		;"New course entered."
+
+[21-UM02]
+Data = 21-UM02.wav		;"Course data updated."
+
+[21-UM03]
+Data = 21-UM03.wav		;"Vectors reset."
+
+[21-UM04]
+Data = 21-UM04.wav		;"Determining drop zone"
+
+;[21-UM05]
+;Data = 21-UM05.wav		;"Whatever you wish."
+
+[21-UM06]
+Data = 21-UM06.wav		;"Approach profile acknowledged."
+
+[21-US00]
+Data = 21-US00.wav		;"They suspect nothing."
+
+;[21-US01]
+;Data = 21-US01.wav		;"Infiltration unit ready."
+
+;[21-US02]
+;Data = 21-US02.wav		;"Awaiting instruction."
+
+;[21-US03]
+;Data = 21-US03.wav		;"Surgical Strike"
+
+[21-US04]
+Data = 21-US04.wav		;"Your command?"
+
+[21-US05]
+Data = 21-US05.wav		;"Eye in the sky"
+
+;[21-US06]
+;Data = 21-US06.wav		;""Ordos Eye In The Sky"
+
+;[21-US07]
+;Data = 21-US07.wav		;"Ready for infiltration"
+
+;[21-US08]
+;Data = 21-US08.wav		;"Surgical strike at your command."
+
+;[22-UA00]
+;Data = 22-UA00.wav		;"Target spotted.  Preparing to dive."
+
+;[22-UA01]
+;Data = 22-UA01.wav		;"Missles locked."
+
+[22-UA02]
+Data = 22-UA02.wav		;"Marked for death."
+
+[22-UA03]
+Data = 22-UA03.wav		;"I see the target."
+
+[22-UA04]
+Data = 22-UA04.wav		;"Locked on enemy."
+
+;[22-UA05]
+;Data = 22-UA05.wav		;"Strafing the enemy."
+
+;[22-UA06]
+;Data = 22-UA06.wav		;"Target in range."
+
+[22-UA07]
+Data = 22-UA07.wav		;"Locked and firing."
+
+;[22-UA08]
+;Data = 22-UA08.wav		;"Hostiles engaged."
+
+;[22-UA10]
+;Data = 22-UA10.wav		;"Target Acquired"
+
+[22-UM00]
+Data = 22-UM00.wav		;"On course."
+
+;[22-UM01]
+;Data = 22-UM01.wav		;"Understood."
+
+;[22-UM02]
+;Data = 22-UM02.wav		;"Received."
+
+[22-UM03]
+Data = 22-UM03.wav		;"Flying to position."
+
+[22-UM04]
+Data = 22-UM04.wav		;"Scanning the horizon."
+
+;[22-UM05]
+;Data = 22-UM05.wav		;"Flight moving into position."
+
+[22-UM06]
+Data = 22-UM06.wav		;"Course plotted."
+
+;[22-UM07]
+;Data = 22-UM07.wav		;"Redirect confirmed.  On the fly."
+
+;[22-UM08]
+;Data = 22-UM08.wav		;"You got it!"
+
+[22-UM09]
+Data = 22-UM09.wav		;"The skies the limit!"
+
+;[22-US00]
+;Data = 22-US00.wav		;"Death from above."
+
+;[22-US01]
+;Data = 22-US01.wav		;"Where is the target?"
+
+[22-US02]
+Data = 22-US02.wav		;"Sir?"
+
+;[22-US03]
+;Data = 22-US03.wav		;"High in the Sky"
+
+[22-US04]
+Data = 22-US04.wav		;"Ornithopter ready."
+
+[22-US05]
+Data = 22-US05.wav		;"Visibility optimal."
+
+;[22-US06]
+;Data = 22-US06.wav		;"Air support."
+
+;[22-US07]
+;Data = 22-US07.wav		;"Spotter control."
+
+[22-US08]
+Data = 22-US08.wav		;"Do we have a target?"
+
+;[22-US09]
+;Data = 22-US09.wav		;"Airborne Reporting."
+
+;[22-US10]
+;Data = 22-US10.wav		;"Your coordinates?"
+
+[23-UA00]
+Data = 23-UA00.wav		;"Weapon locked."
+
+;[23-UA01]
+;Data = 23-UA01.wav		;"Missile powering."
+
+[23-UA03]
+Data = 23-UA03.wav		;"Strike now!"
+
+;[23-UA04]
+;Data = 23-UA04.wav		;"Weapons are locked."
+
+[23-UA05]
+Data = 23-UA05.wav		;"Terminate the enemy."
+
+;[23-UA06]
+;Data = 23-UA06.wav		;"Failure is not an option."
+
+[23-UM00]
+Data = 23-UM00.wav		;"Received."
+
+;[23-UM01]
+;Data = 23-UM01.wav		;"Complying."
+
+[23-UM02]
+Data = 23-UM02.wav		;"We obey."
+
+;[23-UM03]
+;Data = 23-UM03.wav		;"For house Ordos!"
+
+;[23-UM04]
+;Data = 23-UM04.wav		;"Orders received."
+
+[23-UM05]
+Data = 23-UM05.wav		;"We will comply."
+
+;[23-UM06]
+;Data = 23-UM06.wav		;"New orders confirmed."
+
+;[23-US00]
+;Data = 23-US00.wav		;"Scanning for targets."
+
+[23-US01]
+Data = 23-US01.wav		;"Ready to move."
+
+;[23-US02]
+;Data = 23-US02.wav		;"Your orders?"
+
+;[23-US03]
+;Data = 23-US03.wav		;"Ordos Trooper ready"
+
+;[23-US04]
+;Data = 23-US04.wav		;"Infantry unit standing by."
+
+[23-US05]
+Data = 23-US05.wav		;"What is the directive?"
+
+;[23-US06]
+;Data = 23-US06.wav		;"How should we proceed?"
+
+[24-UA00]
+Data = 24-UA00.wav		;"Repairing."
+
+;[24-UA01]
+;Data = 24-UA01.wav		;"We'll see what we can do."
+
+[24-UA02]
+Data = 24-UA02.wav		;"What seems to be the problem?"
+
+;[24-UA03]
+;Data = 24-UA03.wav		;"We'll fix you up!"
+
+[24-UA04]
+Data = 24-UA04.wav		;"We're on the job."
+
+;[24-UA05]
+;Data = 24-UA05.wav		;"We'll do our best."
+
+[24-UA06]
+Data = 24-UA06.wav		;"We're here to help."
+
+[24-UM00]
+Data = 24-UM00.wav		;"Let's go."
+
+[24-UM01]
+Data = 24-UM01.wav		;""At once"
+
+;[24-UM02]
+;Data = 24-UM02.wav		;"Moving to position."
+
+[24-UM03]
+Data = 24-UM03.wav		;"Heading out!"
+
+;[24-UM04]
+;Data = 24-UM04.wav		;"On the way!"
+
+[24-UM05]
+Data = 24-UM05.wav		;"We're on the move."
+
+;[24-UM06]
+;Data = 24-UM06.wav		;"Where are we needed?"
+
+[24-US00]
+Data = 24-US00.wav		;"Who needs help?"
+
+[24-US01]
+Data = 24-US01.wav		;""If it moves"
+
+[24-US02]
+Data = 24-US02.wav		;"Repair here."
+
+[24-US03]
+Data = 24-US03.wav		;""Mobile repair"
+
+;[24-US06]
+;Data = 24-US06.wav		;"We're at your disposal."
+
+;[25-UA00]
+;Data = 25-UA00.wav		;"Target engaged."
+
+[25-UA01]
+Data = 25-UA01.wav		;"Spraying target."
+
+[25-UA02]
+Data = 25-UA02.wav		;"Deploying toxins."
+
+;[25-UA03]
+;Data = 25-UA03.wav		;"Exterminate the vermin."
+
+[25-UA04]
+Data = 25-UA04.wav		;"Intoxicating"
+
+;[25-UA05]
+;Data = 25-UA05.wav		;"Enemy engaged."
+
+;[25-UA06]
+;Data = 25-UA06.wav		;"Destroy the target."
+
+[25-UA07]
+Data = 25-UA07.wav		;"Success is imperative."
+
+;[25-UA08]
+;Data = 25-UA08.wav		;"My special recipe!"
+
+[25-UM00]
+Data = 25-UM00.wav		;"As ordered."
+
+;[25-UM01]
+;Data = 25-UM01.wav		;"Complying."
+
+;[25-UM02]
+;Data = 25-UM02.wav		;"Received."
+
+[25-UM03]
+Data = 25-UM03.wav		;"A good plan."
+
+;[25-UM04]
+;Data = 25-UM04.wav		;"Troop moving."
+
+;[25-UM05]
+;Data = 25-UM05.wav		;"New directive confirmed."
+
+;[25-UM06]
+;Data = 25-UM06.wav		;"We will comply."
+
+[25-UM07]
+Data = 25-UM07.wav		;"Moving to specified location."
+
+;[25-UM08]
+;Data = 25-UM08.wav		;"Agreed!"
+
+;[25-US00]
+;Data = 25-US00.wav		;"Toxins ready."
+
+;[25-US01]
+;Data = 25-US01.wav		;"Pressure at maximum."
+
+;[25-US02]
+;Data = 25-US02.wav		;"Your orders?"
+
+;[25-US03]
+;Data = 25-US03.wav		;"Chem gases primed"
+
+[25-US04]
+Data = 25-US04.wav		;"Chemical mix ready"
+
+;[25-US05]
+;Data = 25-US05.wav		;"Chemical Flamers in position."
+
+[25-US06]
+Data = 25-US06.wav		;"Pressure is maximized."
+
+[25-US07]
+Data = 25-US07.wav		;"We await your signal."
+
+;[25-US08]
+;Data = 25-US08.wav		;"Ready!"
+
+[26-UA00]
+Data = 26-UA00.wav		;"Loyalty is an illusion."
+
+[26-UA01]
+Data = 26-UA01.wav		;"They will be ours."
+
+;[26-UA02]
+;Data = 26-UA02.wav		;"Their mind to ours."
+
+[26-UA03]
+Data = 26-UA03.wav		;"This may change their minds"
+
+;[26-UA04]
+;Data = 26-UA04.wav		;"Mass Destruction!"
+
+;[26-UA05]
+;Data = 26-UA05.wav		;"Employing Deviation gas."
+
+;[26-UA06]
+;Data = 26-UA06.wav		;"The enemy's loyalty is an illusion."
+
+;[26-UA07]
+;Data = 26-UA07.wav		;"The gas will change their minds."
+
+;[26-UM00]
+;Data = 26-UM00.wav		;"Directions received."
+
+[26-UM01]
+Data = 26-UM01.wav		;"At top speed."
+
+;[26-UM02]
+;Data = 26-UM02.wav		;"We obey."
+
+[26-UM03]
+Data = 26-UM03.wav		;"Agreed!"
+
+;[26-UM04]
+;Data = 26-UM04.wav		;"Movin' out!"
+
+[26-UM05]
+Data = 26-UM05.wav		;"Coordinates received."
+
+;[26-UM06]
+;Data = 26-UM06.wav		;"We are moving into position."
+
+;[26-UM07]
+;Data = 26-UM07.wav		;"Redirect confirmed."
+
+;[26-US00]
+;Data = 26-US00.wav		;"Deviation."
+
+[26-US01]
+Data = 26-US01.wav		;"Gas ready for delivery."
+
+[26-US02]
+Data = 26-US02.wav		;"Awaiting instruction."
+
+;[26-US03]
+;Data = 26-US03.wav		;"Cannisters primed"
+
+;[26-US04]
+;Data = 26-US04.wav		;"Deviation gases ready"
+
+[26-US05]
+Data = 26-US05.wav		;"Deviator gas ready for deployment. "
+
+[26-US06]
+Data = 26-US06.wav		;"Cannisters primed and ready."
+
+;[26-US07]
+;Data = 26-US07.wav		;"We await your instructions."
+
+;[27-UA00]
+;Data = 27-UA00.wav		;"Spice field allocated."
+
+[27-UA01]
+Data = 27-UA01.wav		;"As ordered."
+
+;[27-UA02]
+;Data = 27-UA02.wav		;"Spice is life"
+
+;[27-UA03]
+;Data = 27-UA03.wav		;"The Spice will flow!"
+
+[27-UA04]
+Data = 27-UA04.wav		;"Spice field located."
+
+[27-UA05]
+Data = 27-UA05.wav		;"Harvest commencing."
+
+;[27-UA06]
+;Data = 27-UA06.wav		;"Spice is power.  "
+
+;[27-UM00]
+;Data = 27-UM00.wav		;"Directions received."
+
+;[27-UM01]
+;Data = 27-UM01.wav		;"We obey."
+
+[27-UM02]
+Data = 27-UM02.wav		;"By your order."
+
+;[27-UM03]
+;Data = 27-UM03.wav		;"I'm on it!"
+
+[27-UM04]
+Data = 27-UM04.wav		;"Orders have been received."
+
+;[27-UM05]
+;Data = 27-UM05.wav		;"We will comply."
+
+[27-UM06]
+Data = 27-UM06.wav		;"Plotting course."
+
+;[27-US00]
+;Data = 27-US00.wav		;"Harvester reporting."
+
+;[27-US01]
+;Data = 27-US01.wav		;"Your orders?"
+
+[27-US02]
+Data = 27-US02.wav		;"Ready."
+
+;[27-US03]
+;Data = 27-US03.wav		;"Ready to go!"
+
+[27-US04]
+Data = 27-US04.wav		;"Harvester standing by."
+
+[27-US05]
+Data = 27-US05.wav		;"What is the directive?"
+
+;[27-US06]
+;Data = 27-US06.wav		;"We are ready to harvest the spice."
+
+[28-UA00]
+Data = 28-UA00.wav		;"Locked on target."
+
+;[28-UA01]
+;Data = 28-UA01.wav		;"Hit and run!"
+
+;[28-UA02]
+;Data = 28-UA02.wav		;"Acknowledged."
+
+;[28-UA03]
+;Data = 28-UA03.wav		;"You have found your death."
+
+[28-UA04]
+Data = 28-UA04.wav		;"Target locked."
+
+[28-UA05]
+Data = 28-UA05.wav		;""They'll not escape"
+
+;[28-UA06]
+;Data = 28-UA06.wav		;"They're slag!"
+
+[28-UA07]
+Data = 28-UA07.wav		;"Time for battle!"
+
+;[28-UM00]
+;Data = 28-UM00.wav		;"Top speed engaged."
+
+[28-UM01]
+Data = 28-UM01.wav		;"Let's go."
+
+[28-UM02]
+Data = 28-UM02.wav		;""At once"
+
+;[28-UM03]
+;Data = 28-UM03.wav		;"Moving to coordinates"
+
+;[28-UM04]
+;Data = 28-UM04.wav		;"Cruising speed."
+
+;[28-UM05]
+;Data = 28-UM05.wav		;"Redirect confirmed."
+
+[28-UM07]
+Data = 28-UM07.wav		;"On my way!"
+
+;[28-US00]
+;Data = 28-US00.wav		;"Powered up and ready to go."
+
+;[28-US01]
+;Data = 28-US01.wav		;"Engines running."
+
+;[28-US02]
+;Data = 28-US02.wav		;"House Atredies."
+
+[28-US03]
+Data = 28-US03.wav		;"Mongoose "
+
+[28-US04]
+Data = 28-US04.wav		;""Mongoose"
+
+;[28-US06]
+;Data = 28-US06.wav		;"Engines on maximum."
+
+[28-US07]
+Data = 28-US07.wav		;"Standing by."
+
+;[29-UA00]
+;Data = 29-UA00.wav		;"Acknowledged."
+
+;[29-UA01]
+;Data = 29-UA01.wav		;"For the Duke!"
+
+[29-UA02]
+Data = 29-UA02.wav		;"Spice targeted."
+
+[29-UA03]
+Data = 29-UA03.wav		;"The Spice will flow!"
+
+[29-UA04]
+Data = 29-UA04.wav		;"We're digging in."
+
+;[29-UA05]
+;Data = 29-UA05.wav		;"It's harvest time!"
+
+;[29-UA06]
+;Data = 29-UA06.wav		;"Has there been wormsign?"
+
+;[29-UM00]
+;Data = 29-UM00.wav		;""Roger"
+
+[29-UM01]
+Data = 29-UM01.wav		;"Let's go."
+
+;[29-UM02]
+;Data = 29-UM02.wav		;"Yes Sir!"
+
+;[29-UM03]
+;Data = 29-UM03.wav		;"Excellent!"
+
+[29-UM04]
+Data = 29-UM04.wav		;""We read you"
+
+[29-UM05]
+Data = 29-UM05.wav		;"We're on the move."
+
+[29-UM06]
+Data = 29-UM06.wav		;"Approaching new position."
+
+;[29-US00]
+;Data = 29-US00.wav		;"Harvester."
+
+[29-US01]
+Data = 29-US01.wav		;"Harvester here."
+
+[29-US02]
+Data = 29-US02.wav		;"Unit awaiting orders."
+
+[29-US03]
+Data = 29-US03.wav		;"Yes commander?"
+
+;[29-US04]
+;Data = 29-US04.wav		;"Harvester standing by."
+
+;[29-US05]
+;Data = 29-US05.wav		;"There's spice here.  I can smell it."
+
+[29-US06]
+Data = 29-US06.wav		;""We're ready to harvest"
+
+;[29-US07]
+;Data = 29-US07.wav		;"Yes commander?"
+
+;[30-UA00]
+;Data = 30-UA00.wav		;"Terminating."
+
+[30-UA01]
+Data = 30-UA01.wav		;"For House Ordos."
+
+[30-UA02]
+Data = 30-UA02.wav		;"Target data entered."
+
+;[30-UA03]
+;Data = 30-UA03.wav		;"Target locked."
+
+;[30-UA04]
+;Data = 30-UA04.wav		;"Weapons engaged."
+
+;[30-UA05]
+;Data = 30-UA05.wav		;"Success is imperative."
+
+;[30-UM00]
+;Data = 30-UM00.wav		;"By your order."
+
+[30-UM01]
+Data = 30-UM01.wav		;"Complying."
+
+;[30-UM02]
+;Data = 30-UM02.wav		;"Directions received."
+
+;[30-UM03]
+;Data = 30-UM03.wav		;"We obey."
+
+;[30-UM04]
+;Data = 30-UM04.wav		;"Delivery en route"
+
+[30-UM05]
+Data = 30-UM05.wav		;"By your command."
+
+[30-UM06]
+Data = 30-UM06.wav		;"Redirect confirmed."
+
+;[30-UM07]
+;Data = 30-UM07.wav		;"We will comply."
+
+;[30-US00]
+;Data = 30-US00.wav		;"Awaiting instruction."
+
+[30-US01]
+Data = 30-US01.wav		;"Your orders?"
+
+;[30-US02]
+;Data = 30-US02.wav		;"Ready."
+
+;[30-US03]
+;Data = 30-US03.wav		;"Hover Transport ready"
+
+;[30-US04]
+;Data = 30-US04.wav		;"Need a ride?"
+
+;[30-US05]
+;Data = 30-US05.wav		;"Hover Transport standing by."
+
+[30-US06]
+Data = 30-US06.wav		;"Transport powered up."
+
+[30-US07]
+Data = 30-US07.wav		;"Maximum lift attained."
+
+[30-UX00]
+Data = 30-UX00.wav		;"Loading cargo."
+
+[30-UX01]
+Data = 30-UX01.wav		;"Deploying cargo."
+
+;[31-UA00]
+;Data = 31-UA00.wav		;"Die primitives."
+
+;[31-UA01]
+;Data = 31-UA01.wav		;"You will die."
+
+[31-UA02]
+Data = 31-UA02.wav		;"The Guild will triumph."
+
+;[31-UA03]
+;Data = 31-UA03.wav		;"Goodbye Human!"
+
+[31-UA04]
+Data = 31-UA04.wav		;"I see our victory."
+
+;[31-UA05]
+;Data = 31-UA05.wav		;""Die"
+
+[31-UA07]
+Data = 31-UA07.wav		;"I have seen our victory!"
+
+;[31-UA08]
+;Data = 31-UA08.wav		;"Charging."
+
+;[31-UM00]
+;Data = 31-UM00.wav		;"Agreed."
+
+;[31-UM01]
+;Data = 31-UM01.wav		;"For the Guild."
+
+;[31-UM02]
+;Data = 31-UM02.wav		;"Engaging fold space generator."
+
+;[31-UM03]
+;Data = 31-UM03.wav		;"Sealing fold space rift."
+
+;[31-UM04]
+;Data = 31-UM04.wav		;"It is done."
+
+[31-UM05]
+Data = 31-UM05.wav		;"We agree with your suggestion."
+
+[31-UM06]
+Data = 31-UM06.wav		;"We will cooperate."
+
+;[31-UM07]
+;Data = 31-UM07.wav		;""Fold space rift"
+
+[31-US00]
+Data = 31-US00.wav		;"Yes human."
+
+;[31-US01]
+;Data = 31-US01.wav		;"We are ready."
+
+;[31-US02]
+;Data = 31-US02.wav		;"Guild ready."
+
+;[31-US03]
+;Data = 31-US03.wav		;"You have needs?"
+
+[31-US04]
+Data = 31-US04.wav		;"I hear you…"
+
+;[31-US05]
+;Data = 31-US05.wav		;""What is it"
+
+;[31-US06]
+;Data = 31-US06.wav		;"Of course we are ready!"
+
+[31-US07]
+Data = 31-US07.wav		;"The Guild is always ready."
+
+[31-UX00]
+Data = 31-UX00.wav		;"Folding space"
+
+[31-UX01]
+Data = 31-UX01.wav		;"Charging fold space generator."
+
+[31-UX02]
+Data = 31-UX02.wav		;"Engaging fold space generator."
+
+;[32-UA00]
+;Data = 32-UA00.wav		;"Harvesting Spice"
+
+[32-UA01]
+Data = 32-UA01.wav		;"Approaching Spice field"
+
+[32-UA02]
+Data = 32-UA02.wav		;""No wormsign"
+
+[32-UA03]
+Data = 32-UA03.wav		;"Retrieving the Baron's Spice"
+
+[32-UA04]
+Data = 32-UA04.wav		;"Damn the worms!"
+
+[32-UA05]
+Data = 32-UA05.wav		;"Let’s dig in."
+
+;[32-UA06]
+;Data = 32-UA06.wav		;"It's harvest time!"
+
+;[32-UA07]
+;Data = 32-UA07.wav		;""Any sign of worms"
+
+[32-UM00]
+Data = 32-UM00.wav		;"Underway."
+
+;[32-UM01]
+;Data = 32-UM01.wav		;"Digging in."
+
+;[32-UM02]
+;Data = 32-UM02.wav		;"Harvester in motion"
+
+;[32-UM03]
+;Data = 32-UM03.wav		;"Sounds good"
+
+;[32-UM04]
+;Data = 32-UM04.wav		;"Approved"
+
+[32-UM05]
+Data = 32-UM05.wav		;""Yes"
+
+;[32-UM06]
+;Data = 32-UM06.wav		;"Show me the way."
+
+[32-UM07]
+Data = 32-UM07.wav		;"We're on the move."
+
+;[32-UM08]
+;Data = 32-UM08.wav		;"Time to play in the sand."
+
+;[32-US00]
+;Data = 32-US00.wav		;"Harvester ready."
+
+[32-US01]
+Data = 32-US01.wav		;"Smell the spice."
+
+;[32-US02]
+;Data = 32-US02.wav		;"Take me to the spice."
+
+[32-US03]
+Data = 32-US03.wav		;"Yes Commander?"
+
+;[32-US04]
+;Data = 32-US04.wav		;"Orders?"
+
+[32-US05]
+Data = 32-US05.wav		;"Harvester Reporting."
+
+[32-US06]
+Data = 32-US06.wav		;"Harvester standing by."
+
+;[32-US07]
+;Data = 32-US07.wav		;"There's spice here.  I can smell it."
+
+;[32-US08]
+;Data = 32-US08.wav		;""We're ready to harvest"
+
+[33-UA00]
+Data = 33-UA00.wav		;"Target locked."
+
+;[33-UA01]
+;Data = 33-UA01.wav		;"Salvo ready."
+
+[33-UA02]
+Data = 33-UA02.wav		;"No escape."
+
+;[33-UA03]
+;Data = 33-UA03.wav		;"Fire!"
+
+;[33-UA04]
+;Data = 33-UA04.wav		;"Launch!"
+
+[33-UA05]
+Data = 33-UA05.wav		;"Mass Destruction!"
+
+[33-UA06]
+Data = 33-UA06.wav		;"Lock on target!"
+
+;[33-UA07]
+;Data = 33-UA07.wav		;"It's away!"
+
+;[33-UA08]
+;Data = 33-UA08.wav		;"Fire in the hold!"
+
+;[33-UA09]
+;Data = 33-UA09.wav		;"Blast Off!"
+
+;[33-UM00]
+;Data = 33-UM00.wav		;"As you command."
+
+;[33-UM01]
+;Data = 33-UM01.wav		;"On the move."
+
+[33-UM02]
+Data = 33-UM02.wav		;"Moving out."
+
+;[33-UM03]
+;Data = 33-UM03.wav		;"Getting in range."
+
+;[33-UM04]
+;Data = 33-UM04.wav		;"Close to missile range"
+
+[33-UM05]
+Data = 33-UM05.wav		;"Closing in"
+
+[33-UM06]
+Data = 33-UM06.wav		;"Moving to position."
+
+[33-UM07]
+Data = 33-UM07.wav		;"Heading into range."
+
+;[33-UM08]
+;Data = 33-UM08.wav		;"Repositioning."
+
+;[33-UM09]
+;Data = 33-UM09.wav		;"Headin' Out"
+
+;[33-US00]
+;Data = 33-US00.wav		;"Widow maker."
+
+;[33-US01]
+;Data = 33-US01.wav		;"Missles ready."
+
+[33-US02]
+Data = 33-US02.wav		;"Harkonnen ready."
+
+;[33-US03]
+;Data = 33-US03.wav		;""Missile tank"
+
+;[33-US04]
+;Data = 33-US04.wav		;"Missile launchers ready."
+
+[33-US05]
+Data = 33-US05.wav		;"Warheads armed"
+
+;[33-US06]
+;Data = 33-US06.wav		;""Missile Tank"
+
+[33-US07]
+Data = 33-US07.wav		;""Armed and ready"
+
+[33-US08]
+Data = 33-US08.wav		;"On your command."
+
+;[33-US09]
+;Data = 33-US09.wav		;"Tank Ready!"
+
+[34-UX00]
+Data = 34-UA00.wav
+
+[34-UX01]
+Data = 34-UA01.wav
+
+[34-UX02]
+Data = 34-UA02.wav
+
+[34-UX03]
+Data = 34-UA03.wav
+
+;[34-UM00]
+;Data = 34-UM00.wav		;"Directions received."
+
+;[34-UM01]
+;Data = 34-UM01.wav		;"By your order."
+
+;[34-UM02]
+;Data = 34-UM02.wav		;"Complying."
+
+[34-UM03]
+Data = 34-UM03.wav		;"Directive initiated."
+
+[34-UM04]
+Data = 34-UM04.wav		;"Course change confirmed."
+
+;[34-UM05]
+;Data = 34-UM05.wav		;"We will comply."
+
+;[34-US00]
+;Data = 34-US00.wav		;"Awaiting instruction."
+
+;[34-US01]
+;Data = 34-US01.wav		;"Your orders?"
+
+[34-US02]
+Data = 34-US02.wav		;"House Ordos will prevail."
+
+;[34-US03]
+;Data = 34-US03.wav		;"Construcion Vehicle ready"
+
+[34-US04]
+Data = 34-US04.wav		;"Mobile Construction Unit in place."
+
+[34-US05]
+Data = 34-US05.wav		;"All systems functional."
+
+[34-US06]
+Data = 34-US06.wav		;"Awaiting your directive."
+
+[35-UA00]
+Data = 35-UA00.wav		;"I see it."
+
+;[35-UA01]
+;Data = 35-UA01.wav		;"Here we go…"
+
+[35-UA02]
+Data = 35-UA02.wav		;"I'm going in."
+
+[35-UA03]
+Data = 35-UA03.wav		;"It shall be ours."
+
+;[35-UA04]
+;Data = 35-UA04.wav		;"I'm on it."
+
+;[35-UA05]
+;Data = 35-UA05.wav		;"Piece of cake."
+
+;[35-UA06]
+;Data = 35-UA06.wav		;"Let me work!"
+
+;[35-UM00]
+;Data = 35-UM00.wav		;"Understood"
+
+[35-UM01]
+Data = 35-UM01.wav		;"Yes Sir!"
+
+;[35-UM02]
+;Data = 35-UM02.wav		;"On the double."
+
+[35-UM03]
+Data = 35-UM03.wav		;"Cover me"
+
+[35-UM04]
+Data = 35-UM04.wav		;"On my way."
+
+[35-UM05]
+Data = 35-UM05.wav		;"I'll check into it."
+
+;[35-UM06]
+;Data = 35-UM06.wav		;"Can I be of service?"
+
+[35-US00]
+Data = 35-US00.wav		;"Engineering."
+
+[35-US01]
+Data = 35-US01.wav		;""Engineer reporting"
+
+;[35-US02]
+;Data = 35-US02.wav		;"Yes Sir?"
+
+;[35-US03]
+;Data = 35-US03.wav		;"Awaiting orders."
+
+;[35-US04]
+;Data = 35-US04.wav		;"Engineer reporting."
+
+[35-US05]
+Data = 35-US05.wav		;""At your service"
+
+[35-US06]
+Data = 35-US06.wav		;"My tools are at your disposal."
+
+;[36-UX00]
+;Data = 36-UX00.wav		;"Target selected."
+
+;[36-UX02]
+;Data = 36-UX02.wav		;"We shall rule Arrakis!"
+
+[37-UX00]
+Data = 37-UX00.wav		;"Target area defined."
+
+;[37-UX01]
+;Data = 37-UX01.wav		;"Feel my wrath!"
+
+;[37-UX02]
+;Data = 37-UX02.wav		;"Beware House Harkonnen!"
+
+[37-UX03]
+Data = 37-UX03.wav		;"Victory shall be ours!"
+
+;[38-UX00]
+;Data = 38-UX00.wav		;"Target coordinates assimilated."
+
+;[38-UX01]
+;Data = 38-UX01.wav		;"You will fear House Ordos!"
+
+[38-UX02]
+Data = 38-UX02.wav		;"Prepare to be Destroyed!"
+
+;[38-UX03]
+;Data = 38-UX03.wav		;"Ha Ha Ha (sinster laugh)"
+
+[38-UX04]
+Data = 38-UX04.wav		;"All things must die…"
+
+[39-UA00]
+Data = 39-UA00.wav		;"They wont know what hit them."
+
+;[39-UA01]
+;Data = 39-UA01.wav		;"For the Duke!"
+
+;[39-UA02]
+;Data = 39-UA02.wav		;"Combat stations."
+
+[39-UA03]
+Data = 39-UA03.wav		;"No holding back."
+
+[39-UA04]
+Data = 39-UA04.wav		;"I smell fear!"
+
+[39-UA05]
+Data = 39-UA05.wav		;"Open fire!"
+
+;[39-UA06]
+;Data = 39-UA06.wav		;"For Caladan!"
+
+;[39-UA07]
+;Data = 39-UA07.wav		;"Battle stations!"
+
+[39-UM00]
+Data = 39-UM00.wav		;"Responding."
+
+[39-UM01]
+Data = 39-UM01.wav		;"Yes Sir!"
+
+;[39-UM02]
+;Data = 39-UM02.wav		;"Moving to position."
+
+;[39-UM03]
+;Data = 39-UM03.wav		;"Approaching coordinates"
+
+[39-UM04]
+Data = 39-UM04.wav		;"Orders confirmed!"
+
+;[39-UM05]
+;Data = 39-UM05.wav		;""On the move"
+
+[39-UM06]
+Data = 39-UM06.wav		;"Moving to new position."
+
+;[39-UM07]
+;Data = 39-UM07.wav		;"Approaching coordinates."
+
+;[39-US00]
+;Data = 39-US00.wav		;"Guns here."
+
+;[39-US01]
+;Data = 39-US01.wav		;"Heavy weapons ready."
+
+[39-US02]
+Data = 39-US02.wav		;"Awaiting orders."
+
+[39-US03]
+Data = 39-US03.wav		;"Canons loaded"
+
+;[39-US04]
+;Data = 39-US04.wav		;"Minotaurus ready"
+
+;[39-US05]
+;Data = 39-US05.wav		;"Minotaurus on standby."
+
+[39-US06]
+Data = 39-US06.wav		;"Awaiting your signal."
+
+[39-US07]
+Data = 39-US07.wav		;"Canons at the ready."
+
+[40-UM00]
+Data = 40-UM00.wav		;"On the double."
+
+[40-UM01]
+Data = 40-UM01.wav		;""Yes"
+
+;[40-UM02]
+;Data = 40-UM02.wav		;"Yes Sir!"
+
+[40-UM03]
+Data = 40-UM03.wav		;"Scouting ahead."
+
+;[40-UM04]
+;Data = 40-UM04.wav		;"Scanning for enemies"
+
+;[40-UM05]
+;Data = 40-UM05.wav		;"I'm There!"
+
+;[40-UM06]
+;Data = 40-UM06.wav		;"Scouting the area."
+
+[40-UM07]
+Data = 40-UM07.wav		;""On alert"
+
+[40-UM08]
+Data = 40-UM08.wav		;""Eyes wide"
+
+[40-US00]
+Data = 40-US00.wav		;"On watch."
+
+[40-US01]
+Data = 40-US01.wav		;"Yes Sir?"
+
+[40-US02]
+Data = 40-US02.wav		;"In position."
+
+;[40-US03]
+;Data = 40-US03.wav		;"Awaiting orders."
+
+[40-US04]
+Data = 40-US04.wav		;"They won't notice me"
+
+;[40-US05]
+;Data = 40-US05.wav		;"Scout on the lookout"
+
+;[40-US06]
+;Data = 40-US06.wav		;"Ready for action."
+
+;[40-US07]
+;Data = 40-US07.wav		;""Your orders"
+
+;[40-US08]
+;Data = 40-US08.wav		;""By your leave"
+
+[41-UA00]
+Data = 41-UA00.wav		;"Target spotted - twelve o'clock low."
+
+[41-UA01]
+Data = 41-UA01.wav		;"I've got the boogey."
+
+[41-UA02]
+Data = 41-UA02.wav		;"Attacking."
+
+[41-UA03]
+Data = 41-UA03.wav		;"Target locked!"
+
+;[41-UA04]
+;Data = 41-UA04.wav		;"Target in range."
+
+;[41-UA05]
+;Data = 41-UA05.wav		;"Locked and firing."
+
+[41-UA06]
+Data = 41-UA06.wav		;"Hostiles engaged."
+
+;[41-UA07]
+;Data = 41-UA07.wav		;"Target aquired!"
+
+[41-UM00]
+Data = 41-UM00.wav		;"Roger.  Watch our six."
+
+[41-UM01]
+Data = 41-UM01.wav		;"Roger that."
+
+;[41-UM02]
+;Data = 41-UM02.wav		;"A OK."
+
+[41-UM03]
+Data = 41-UM03.wav		;"On attack vector"
+
+;[41-UM04]
+;Data = 41-UM04.wav		;"Flight moving into position."
+
+[41-UM05]
+Data = 41-UM05.wav		;"Course plotted."
+
+;[41-UM06]
+;Data = 41-UM06.wav		;"Redirect confirmed.  On the fly."
+
+;[41-UM07]
+;Data = 41-UM07.wav		;"En Route"
+
+;[41-US00]
+;Data = 41-US00.wav		;"Recon strike."
+
+;[41-US01]
+;Data = 41-US01.wav		;"Airborne."
+
+[41-US02]
+Data = 41-US02.wav		;"Eagle force ready!"
+
+;[41-US03]
+;Data = 41-US03.wav		;"Ornithopter unit"
+
+;[41-US04]
+;Data = 41-US04.wav		;""Ornithopter"
+
+[41-US05]
+Data = 41-US05.wav		;"Holding position"
+
+;[41-US06]
+;Data = 41-US06.wav		;"This is spotter control."
+
+;[41-US07]
+;Data = 41-US07.wav		;"Do we have a target?"
+
+[41-US08]
+Data = 41-US08.wav		;"Airborne ready!"
+
+;[42-UA00]
+;Data = 42-UA00.wav		;"Entering elevation."
+
+[42-UA01]
+Data = 42-UA01.wav		;"For House Ordos."
+
+;[42-UA02]
+;Data = 42-UA02.wav		;"Carrying out order."
+
+;[42-UA03]
+;Data = 42-UA03.wav		;"Estimating trajectory"
+
+[42-UA04]
+Data = 42-UA04.wav		;"Targeting Mortar."
+
+[42-UA05]
+Data = 42-UA05.wav		;"Trajectory confirmed."
+
+;[42-UA06]
+;Data = 42-UA06.wav		;"Enemy engaged."
+
+;[42-UA07]
+;Data = 42-UA07.wav		;"I have a clear shot!"
+
+;[42-UM00]
+;Data = 42-UM00.wav		;"Received."
+
+[42-UM01]
+Data = 42-UM01.wav		;"In compliance."
+
+;[42-UM02]
+;Data = 42-UM02.wav		;"Complying."
+
+;[42-UM03]
+;Data = 42-UM03.wav		;"Let's go!"
+
+;[42-UM04]
+;Data = 42-UM04.wav		;"New coordinates confirmed."
+
+;[42-UM05]
+;Data = 42-UM05.wav		;"Moving to new location."
+
+;[42-UM06]
+;Data = 42-UM06.wav		;"We will comply."
+
+[42-UM07]
+Data = 42-UM07.wav		;"Relocation commencing."
+
+[42-US00]
+Data = 42-US00.wav		;"Designate required position."
+
+[42-US01]
+Data = 42-US01.wav		;"Ready to move."
+
+;[42-US02]
+;Data = 42-US02.wav		;"Awaiting instruction."
+
+[42-US03]
+Data = 42-US03.wav		;"Mortar supply ready"
+
+;[42-US04]
+;Data = 42-US04.wav		;"Mortar infantry standing by."
+
+;[42-US05]
+;Data = 42-US05.wav		;"What is the directive?"
+
+;[42-US06]
+;Data = 42-US06.wav		;"We are at your command."
+
+;[42-US07]
+;Data = 42-US07.wav		;"Mortar Infantry Ready!"
+
+[42-UX00]
+Data = 42-UX00.wav		;"Readying mortar for targets"
+
+[42-UX01]
+Data = 42-UX01.wav		;"Evacuating position."
+
+[43-UA00]
+Data = 43-UA00.wav		;"Targeting"
+
+;[43-UA01]
+;Data = 43-UA01.wav		;"Target entered."
+
+[43-UA02]
+Data = 43-UA02.wav		;"Attack confirmed."
+
+[43-UA04]
+Data = 43-UA04.wav		;"Target confirmed."
+
+[43-UM00]
+Data = 43-UM00.wav		;"Processed orders."
+
+;[43-UM01]
+;Data = 43-UM01.wav		;"Actions prioritized."
+
+;[43-UM02]
+;Data = 43-UM02.wav		;"Orders agreed."
+
+;[43-UM03]
+;Data = 43-UM03.wav		;"Processing."
+
+;[43-UM04]
+;Data = 43-UM04.wav		;"Order received"
+
+[43-UM05]
+Data = 43-UM05.wav		;"Processing instructions."
+
+[43-UM07]
+Data = 43-UM07.wav		;"Coordinates received."
+
+;[43-US00]
+;Data = 43-US00.wav		;"Ix"
+
+[43-US01]
+Data = 43-US01.wav		;"Need input."
+
+;[43-US02]
+;Data = 43-US02.wav		;"Standing by."
+
+[43-US03]
+Data = 43-US03.wav		;"Projector operational."
+
+[43-US04]
+Data = 43-US04.wav		;"Instructions are required."
+
+[43-UX00]
+Data = 43-UX00.wav		;"Duplicate destroyed."
+
+[43-UX01]
+Data = 43-UX01.wav		;"Duplication sequence initiated."
+
+[43-UX02]
+Data = 43-UX02.wav		;"Duplication mode operational."
+
+[43-UX03]
+Data = 43-UX03.wav		;"Target destroyed."
+
+[43-UX04]
+Data = 43-UX04.wav		;"Duplication sequence initiated."
+
+[43-UX05]
+Data = 43-UX05.wav		;"Duplicate operational."
+
+[44-UA00]
+Data = 44-UA00.wav		;"Firing sequence initiated."
+
+[44-UA01]
+Data = 44-UA01.wav		;"Open fire - all weapons."
+
+;[44-UA02]
+;Data = 44-UA02.wav		;"Kill them all!"
+
+[44-UA03]
+Data = 44-UA03.wav		;"Devastation Imminent"
+
+;[44-UA04]
+;Data = 44-UA04.wav		;"Look at them run!"
+
+;[44-UA05]
+;Data = 44-UA05.wav		;"Duck and cover!"
+
+[44-UA06]
+Data = 44-UA06.wav		;"Weapons to maximum."
+
+;[44-UA07]
+;Data = 44-UA07.wav		;"Firing all weapons!"
+
+[44-UA09]
+Data = 44-UA09.wav		;"Devastation Time!"
+
+;[44-UM00]
+;Data = 44-UM00.wav		;"Standing By"
+
+[44-UM01]
+Data = 44-UM01.wav		;"Drives engaged."
+
+;[44-UM02]
+;Data = 44-UM02.wav		;"Crush them!"
+
+;[44-UM03]
+;Data = 44-UM03.wav		;"Order understood."
+
+;[44-UM04]
+;Data = 44-UM04.wav		;"For House Harkonnen!"
+
+[44-UM05]
+Data = 44-UM05.wav		;"Control rods engaged."
+
+[44-UM06]
+Data = 44-UM06.wav		;"Reactor online."
+
+;[44-UM08]
+;Data = 44-UM08.wav		;""I'll be fine"
+
+[44-UM09]
+Data = 44-UM09.wav		;"Reactor at maximum."
+
+;[44-US00]
+;Data = 44-US00.wav		;"Reactors still stable."
+
+[44-US01]
+Data = 44-US01.wav		;"Reactors stable"
+
+;[44-US02]
+;Data = 44-US02.wav		;"Plasma levels still stable."
+
+[44-US03]
+Data = 44-US03.wav		;"Radiation?  Heh.. Whatever"
+
+;[44-US04]
+;Data = 44-US04.wav		;"Ready."
+
+;[44-US05]
+;Data = 44-US05.wav		;"Devastator operational."
+
+[44-US06]
+Data = 44-US06.wav		;"I feel sick."
+
+[44-US07]
+Data = 44-US07.wav		;"Devastator on-line."
+
+[44-US08]
+Data = 44-US08.wav		;""Radiation level high"
+
+;[44-US09]
+;Data = 44-US09.wav		;""I'm not feeling well"
+
+[44-UX00]
+Data = 44-UX00.wav		;"Exposing core!"
+
+[44-UX01]
+Data = 44-UX01.wav		;"They're coming with me!!"
+
+[44-UX02]
+Data = 44-UX02.wav		;"MELTDOOOOWWWNNNNN!"
+
+;[44-UX03]
+;Data = 44-UX03.wav		;"Reactor Core Exposed!  Meltdown Imminent!"
+
+[44-UX04]
+Data = 44-UX04.wav		;"(painful scream)"
+
+[44-UX05]
+Data = 44-UX05.wav		;"(fanatical suicidal laughter)"
+
+;[45-UA00]
+;Data = 45-UA00.wav		;"Take 'em down!"
+
+;[45-UA01]
+;Data = 45-UA01.wav		;"Bring it on!"
+
+[45-UA02]
+Data = 45-UA02.wav		;"Engaging enemy commander!"
+
+;[45-UA03]
+;Data = 45-UA03.wav		;"Let's play!"
+
+[45-UA04]
+Data = 45-UA04.wav		;"For House Atreides!"
+
+;[45-UA05]
+;Data = 45-UA05.wav		;"Hit and run!"
+
+[45-UA06]
+Data = 45-UA06.wav		;"Take 'em out!"
+
+[45-UM00]
+Data = 45-UM00.wav		;"Right away Sir."
+
+;[45-UM01]
+;Data = 45-UM01.wav		;"I'm gone."
+
+;[45-UM02]
+;Data = 45-UM02.wav		;"Right on it."
+
+;[45-UM03]
+;Data = 45-UM03.wav		;"I'm there."
+
+[45-UM04]
+Data = 45-UM04.wav		;"Sounds good!"
+
+;[45-UM05]
+;Data = 45-UM05.wav		;"I'm on it."
+
+[45-UM06]
+Data = 45-UM06.wav		;"On the way."
+
+;[45-US00]
+;Data = 45-US00.wav		;"Yes Sir?"
+
+[45-US01]
+Data = 45-US01.wav		;"Ready and willing."
+
+[45-US02]
+Data = 45-US02.wav		;"Trike here"
+
+[45-US03]
+Data = 45-US03.wav		;"Need somethin?"
+
+[45-US04]
+Data = 45-US04.wav		;"How 'bout a little recon?"
+
+;[45-US06]
+;Data = 45-US06.wav		;"What do you need?"
+
+;[46-UA00]
+;Data = 46-UA00.wav		;"Target acquired."
+
+;[46-UA01]
+;Data = 46-UA01.wav		;"Destruction imminent."
+
+;[46-UA02]
+;Data = 46-UA02.wav		;"Aha!"
+
+[46-UA03]
+Data = 46-UA03.wav		;"Target acquired."
+
+;[46-UA05]
+;Data = 46-UA05.wav		;"Fear me."
+
+;[46-UM00]
+;Data = 46-UM00.wav		;"Processed orders."
+
+[46-UM01]
+Data = 46-UM01.wav		;"Don't rush me."
+
+;[46-UM02]
+;Data = 46-UM02.wav		;"Orders agreed."
+
+[46-UM03]
+Data = 46-UM03.wav		;"Moving to a better spot."
+
+;[46-UM04]
+;Data = 46-UM04.wav		;"Instructions being processed."
+
+[46-UM05]
+Data = 46-UM05.wav		;"Actions prioritized."
+
+[46-UM06]
+Data = 46-UM06.wav		;"Orders confirmed."
+
+;[46-UM07]
+;Data = 46-UM07.wav		;"Onward bound."
+
+;[46-US00]
+;Data = 46-US00.wav		;"Ix."
+
+;[46-US01]
+;Data = 46-US01.wav		;"Instructions required."
+
+;[46-US02]
+;Data = 46-US02.wav		;"Lying in wait."
+
+[46-US03]
+Data = 46-US03.wav		;"Infiltrator operational."
+
+[46-US04]
+Data = 46-US04.wav		;"Waiting for Instructions."
+
+;[46-US05]
+;Data = 46-US05.wav		;"Awaiting orders."
+
+[46-UX00]
+Data = 46-UX00.wav		;"Self destruct sequence initiated."
+
+[48-UA00]
+Data = 48-UA00.wav		;"For Shai Halud!"
+
+[48-UA01]
+Data = 48-UA01.wav		;"Death to the enemy."
+
+[48-UA02]
+Data = 48-UA02.wav		;""Bi la Khaifa (Battle cry like Xena"
+
+;[48-UA03]
+;Data = 48-UA03.wav		;"A good day to die!"
+
+;[48-UA04]
+;Data = 48-UA04.wav		;"Their water is mine."
+
+[48-UA06]
+Data = 48-UA06.wav		;"Their water is ours!"
+
+[48-UM00]
+Data = 48-UM00.wav		;"As you wish."
+
+[48-UM01]
+Data = 48-UM01.wav		;"As you command."
+
+[48-UM02]
+Data = 48-UM02.wav		;"With honor!"
+
+[48-UM03]
+Data = 48-UM03.wav		;"Well done!"
+
+;[48-UM04]
+;Data = 48-UM04.wav		;"Fast as the wind."
+
+;[48-UM05]
+;Data = 48-UM05.wav		;"We fly like the wind."
+
+;[48-UM07]
+;Data = 48-UM07.wav		;"We are yours to command!"
+
+;[48-US00]
+;Data = 48-US00.wav		;"Yes?"
+
+[48-US01]
+Data = 48-US01.wav		;"Long live the fighters!"
+
+[48-US02]
+Data = 48-US02.wav		;"Fremen ready."
+
+[48-US03]
+Data = 48-US03.wav		;"Ready for action."
+
+;[48-US04]
+;Data = 48-US04.wav		;"Let me prove my worth."
+
+;[48-US05]
+;Data = 48-US05.wav		;"Fremen are always ready."
+
+;[48-US06]
+;Data = 48-US06.wav		;"We will prove our worth."
+
+[48-US07]
+Data = 48-US07.wav		;"We are ready to fight!"
+
+[48-US08]
+Data = 48-US08.wav		;"We fight for our people!"
+
+;[48-US09]
+;Data = 48-US09.wav		;"Trained and faithful"
+
+[49-UA00]
+Data = 49-UA00.wav		;"To the death!"
+
+[49-UA01]
+Data = 49-UA01.wav		;"For honor!"
+
+[49-UA02]
+Data = 49-UA02.wav		;"Destroying target!"
+
+[49-UA03]
+Data = 49-UA03.wav		;"With pleasure!"
+
+;[49-UA05]
+;Data = 49-UA05.wav		;"In the name of honor!"
+
+;[49-UA06]
+;Data = 49-UA06.wav		;"A waste of ammo!"
+
+;[49-UA07]
+;Data = 49-UA07.wav		;"Good riddance!"
+
+;[49-UM00]
+;Data = 49-UM00.wav		;"Acknowledged."
+
+[49-UM01]
+Data = 49-UM01.wav		;"No surrender!"
+
+[49-UM02]
+Data = 49-UM02.wav		;"Onwards."
+
+;[49-UM03]
+;Data = 49-UM03.wav		;"Immediately!"
+
+;[49-UM06]
+;Data = 49-UM06.wav		;"For the Empire!"
+
+;[49-UM07]
+;Data = 49-UM07.wav		;"Right Away!"
+
+;[49-UM08]
+;Data = 49-UM08.wav		;"Brilliant!"
+
+[49-UM09]
+Data = 49-UM09.wav		;"Of course!"
+
+;[49-US00]
+;Data = 49-US00.wav		;"Imperial troops reporting."
+
+;[49-US01]
+;Data = 49-US01.wav		;"Sardaukar acknowledge."
+
+[49-US02]
+Data = 49-US02.wav		;"Ready for battle."
+
+[49-US03]
+Data = 49-US03.wav		;"Ready."
+
+;[49-US04]
+;Data = 49-US04.wav		;""Elite troops"
+
+;[49-US05]
+;Data = 49-US05.wav		;"The Sardaukar acknowledge."
+
+;[49-US06]
+;Data = 49-US06.wav		;""We will triumph"
+
+[49-US07]
+Data = 49-US07.wav		;"We are prepared!"
+
+[49-US08]
+Data = 49-US08.wav		;"Your command?"
+
+;[50-UA00]
+;Data = 50-UA00.wav		;"Mow them down!"
+
+;[50-UA01]
+;Data = 50-UA01.wav		;"Eat this!"
+
+[50-UA02]
+Data = 50-UA02.wav		;"No survivors."
+
+[50-UA03]
+Data = 50-UA03.wav		;"Kill the weak."
+
+[50-UA05]
+Data = 50-UA05.wav		;"Take that!"
+
+;[50-UA06]
+;Data = 50-UA06.wav		;"Taste this!"
+
+;[50-UA07]
+;Data = 50-UA07.wav		;"You can't hide!"
+
+[50-UA08]
+Data = 50-UA08.wav		;"You want some of this?"
+
+;[50-UA09]
+;Data = 50-UA09.wav		;"Locked and loaded!"
+
+[50-UM00]
+Data = 50-UM00.wav		;"Understood."
+
+;[50-UM01]
+;Data = 50-UM01.wav		;"At once."
+
+;[50-UM02]
+;Data = 50-UM02.wav		;"On our way."
+
+;[50-UM03]
+;Data = 50-UM03.wav		;"Action Item!"
+
+[50-UM04]
+Data = 50-UM04.wav		;"With pleasure…"
+
+;[50-UM05]
+;Data = 50-UM05.wav		;"Moving to new coordinates."
+
+[50-UM06]
+Data = 50-UM06.wav		;"At once!"
+
+;[50-UM07]
+;Data = 50-UM07.wav		;"Fresh quarry?"
+
+[50-UM08]
+Data = 50-UM08.wav		;"I smell blood…"
+
+;[50-UM09]
+;Data = 50-UM09.wav		;"As you wish!"
+
+[50-US00]
+Data = 50-US00.wav		;"Ready to kill!"
+
+;[50-US01]
+;Data = 50-US01.wav		;"Yes!"
+
+[50-US02]
+Data = 50-US02.wav		;"Reporting!"
+
+;[50-US03]
+;Data = 50-US03.wav		;"Light Infantry squad"
+
+[50-US04]
+Data = 50-US04.wav		;"Something small to kill?"
+
+;[50-US05]
+;Data = 50-US05.wav		;"Light Infantry at the ready."
+
+;[50-US06]
+;Data = 50-US06.wav		;"Standing by."
+
+[50-US07]
+Data = 50-US07.wav		;"Ready for action."
+
+[50-US08]
+Data = 50-US08.wav		;"You have a plan?"
+
+;[51-UA00]
+;Data = 51-UA00.wav		;"Make them scream!"
+
+[51-UA01]
+Data = 51-UA01.wav		;"They'll beg to die!"
+
+;[51-UA02]
+;Data = 51-UA02.wav		;"Launch!"
+
+[51-UA03]
+Data = 51-UA03.wav		;"Releasing Toxin"
+
+[51-UA04]
+Data = 51-UA04.wav		;"How 'bout another?"
+
+;[51-UA05]
+;Data = 51-UA05.wav		;"Launch catapult!"
+
+;[51-UA06]
+;Data = 51-UA06.wav		;""Projectile"
+
+;[51-UA07]
+;Data = 51-UA07.wav		;"One more time!"
+
+[51-UA08]
+Data = 51-UA08.wav		;"Special Delivery!"
+
+;[51-UM00]
+;Data = 51-UM00.wav		;"Let's go."
+
+;[51-UM01]
+;Data = 51-UM01.wav		;"As you command."
+
+;[51-UM02]
+;Data = 51-UM02.wav		;"Order understood."
+
+;[51-UM03]
+;Data = 51-UM03.wav		;"Sounds good."
+
+;[51-UM04]
+;Data = 51-UM04.wav		;"I prefer to keep a safe distance."
+
+[51-UM05]
+Data = 51-UM05.wav		;"Find a peaceful spot and destroy it."
+
+[51-UM06]
+Data = 51-UM06.wav		;"On the move."
+
+;[51-UM07]
+;Data = 51-UM07.wav		;""We should keep our distance"
+
+[51-UM08]
+Data = 51-UM08.wav		;"Order confirmed - repositioning."
+
+;[51-UM09]
+;Data = 51-UM09.wav		;"A good plan."
+
+[51-US00]
+Data = 51-US00.wav		;"Inkvine loaded."
+
+[51-US01]
+Data = 51-US01.wav		;"Toxin ready"
+
+;[51-US02]
+;Data = 51-US02.wav		;"Ready to launch."
+
+;[51-US03]
+;Data = 51-US03.wav		;"Projectile loaded."
+
+[51-US04]
+Data = 51-US04.wav		;"Catapults locked."
+
+;[51-US05]
+;Data = 51-US05.wav		;""Catapult"
+
+;[51-US06]
+;Data = 51-US06.wav		;"Inkvine projectiles loaded."
+
+;[51-US07]
+;Data = 51-US07.wav		;""Prepared to deliver toxin"
+
+;[51-US08]
+;Data = 51-US08.wav		;"Where to?"
+
+;[52-UM00]
+;Data = 52-UM00.wav		;"Moving out."
+
+[52-UM01]
+Data = 52-UM01.wav		;"As you command."
+
+[52-UM02]
+Data = 52-UM02.wav		;"On the move."
+
+;[52-UM03]
+;Data = 52-UM03.wav		;"At once."
+
+;[52-UM04]
+;Data = 52-UM04.wav		;"For the good of the Baron."
+
+[52-UM05]
+Data = 52-UM05.wav		;"We're rolling."
+
+[52-UM06]
+Data = 52-UM06.wav		;"By your command."
+
+;[52-UM07]
+;Data = 52-UM07.wav		;"Let's move it out!"
+
+[52-US00]
+Data = 52-US00.wav		;"Reporting!"
+
+[52-US01]
+Data = 52-US01.wav		;"Harkonnen ready."
+
+[52-US02]
+Data = 52-US02.wav		;"Yes?"
+
+;[52-US03]
+;Data = 52-US03.wav		;"Your Command?"
+
+;[52-US04]
+;Data = 52-US04.wav		;"Construction Vehicle mobilized."
+
+[52-US05]
+Data = 52-US05.wav		;"MCV standing by."
+
+[52-US06]
+Data = 52-US06.wav		;"All systems go."
+
+;[52-US07]
+;Data = 52-US07.wav		;""Fully operatinal"
+
+;[52-UX00]
+;Data = 52-UX00.wav		;"Deploying."
+
+[52-UX01]
+Data = 52-UX01.wav		;"The War Begins!"
+
+[52-UX02]
+Data = 52-UX02.wav		;"Preparing to build!"
+
+[52-UX03]
+Data = 52-UX03.wav		;"Drilling in…"
+
+;[53-UA00]
+;Data = 53-UA00.wav		;"It's mine."
+
+[53-UA01]
+Data = 53-UA01.wav		;"As good as mine."
+
+;[53-UA02]
+;Data = 53-UA02.wav		;"Out of my way."
+
+[53-UA03]
+Data = 53-UA03.wav		;"House Harkonnen!"
+
+[53-UA04]
+Data = 53-UA04.wav		;"The Baron will have it"
+
+[53-UA05]
+Data = 53-UA05.wav		;"I'm on it."
+
+;[53-UA06]
+;Data = 53-UA06.wav		;"Piece of cake."
+
+;[53-UA07]
+;Data = 53-UA07.wav		;"Not a problem."
+
+;[53-UA08]
+;Data = 53-UA08.wav		;"Let me work!"
+
+[53-UM00]
+Data = 53-UM00.wav		;"I'll do it."
+
+;[53-UM01]
+;Data = 53-UM01.wav		;"Check."
+
+[53-UM02]
+Data = 53-UM02.wav		;"On my way."
+
+;[53-UM03]
+;Data = 53-UM03.wav		;"Good Idea."
+
+[53-UM04]
+Data = 53-UM04.wav		;"Fetching my tools."
+
+;[53-UM05]
+;Data = 53-UM05.wav		;""On my way"
+
+[53-UM06]
+Data = 53-UM06.wav		;"I'll check into it."
+
+;[53-UM07]
+;Data = 53-UM07.wav		;"Can I be of service?"
+
+[53-UM08]
+Data = 53-UM08.wav		;"Is there a problem?"
+
+[53-US00]
+Data = 53-US00.wav		;"Reporting!"
+
+;[53-US01]
+;Data = 53-US01.wav		;"Engineer."
+
+;[53-US02]
+;Data = 53-US02.wav		;"Engineer here."
+
+;[53-US03]
+;Data = 53-US03.wav		;"Yes?"
+
+[53-US04]
+Data = 53-US04.wav		;"I brought my toolkit."
+
+[53-US05]
+Data = 53-US05.wav		;"Engineer reporting."
+
+;[53-US06]
+;Data = 53-US06.wav		;"At your service."
+
+[53-US07]
+Data = 53-US07.wav		;"What can I repair?"
+
+[53-US08]
+Data = 53-US08.wav		;"My tools are at your disposal."
+
+;[54-UM00]
+;Data = 54-UM00.wav		;""Yes"
+
+[54-UM01]
+Data = 54-UM01.wav		;""At once"
+
+;[54-UM02]
+;Data = 54-UM02.wav		;"Moving to position."
+
+[54-UM03]
+Data = 54-UM03.wav		;"Area Located"
+
+[54-UM04]
+Data = 54-UM04.wav		;"We're rolling."
+
+;[54-UM05]
+;Data = 54-UM05.wav		;"Approaching new coordinates."
+
+;[54-UM06]
+;Data = 54-UM06.wav		;"Let's move it out!"
+
+;[54-UM07]
+;Data = 54-UM07.wav		;"Deploying."
+
+[54-US00]
+Data = 54-US00.wav		;"Awaiting orders."
+
+[54-US01]
+Data = 54-US01.wav		;"In position."
+
+[54-US02]
+Data = 54-US02.wav		;"House Atredies."
+
+;[54-US03]
+;Data = 54-US03.wav		;"MCV prepared for deplyoment"
+
+;[54-US04]
+;Data = 54-US04.wav		;"MCV in position."
+
+[54-US05]
+Data = 54-US05.wav		;""All systems go"
+
+;[54-US06]
+;Data = 54-US06.wav		;""We're fully operational"
+
+[54-UX00]
+Data = 54-UX00.wav		;"Base Established!"
+
+;[54-UX01]
+;Data = 54-UX01.wav		;"The War has begun!"
+
+;[00-UA00]
+;Data = 00-UA00.wav		;"Attacking target."
+
+[UI-B000]
+Data = UI-B000.wav
+
+[UI-B002]
+Data = UI-B002.wav
+
+[UI-B004]
+Data = UI-B004.wav
+
+[UI-B006]
+Data = UI-B006.wav
+
+[UI-B008]
+Data = UI-B008.wav
+
+[UI-B010]
+Data = UI-B010.wav
+
+[UI-B012]
+Data = UI-B012.wav
+
+[UI-B014]
+Data = UI-B014.wav
+
+[UI-B016]
+Data = UI-B016.wav
+
+[UI-B018]
+Data = UI-B018.wav
+
+[UI-B020]
+Data = UI-B020.wav
+
+[UI-B022]
+Data = UI-B022.wav
+
+[UI-B024]
+Data = UI-B024.wav
+
+[UI-B026]
+Data = UI-B026.wav
+
+[UI-B030]
+Data = UI-B030.wav
+
+[UI-B032]
+Data = UI-B032.wav
+
+[UI-B034]
+Data = UI-B034.wav
+
+[UI-B036]
+Data = UI-B036.wav
+
+[UI-B038]
+Data = UI-B038.wav
+
+[UI-B040]
+Data = UI-B040.wav
+
+[UI-B042]
+Data = UI-B042.wav
+
+[UI-B044]
+Data = UI-B044.wav
+
+[UI-B046]
+Data = UI-B046.wav
+
+[UI-B048]
+Data = UI-B048.wav
+
+[UI-B052]
+Data = UI-B052.wav
+
+[UI-B054]
+Data = UI-B054.wav
+
+[UI-B058]
+Data = UI-B058.wav
+
+[UI-B060]
+Data = UI-B060.wav
+
+[UI-B062]
+Data = UI-B062.wav
+
+[UI-B064]
+Data = UI-B064.wav
+
+[UI-B068]
+Data = UI-B068.wav
+
+[UI-B070]
+Data = UI-B070.wav
+
+[UI-B072]
+Data = UI-B072.wav
+
+[UI-B074]
+Data = UI-B074.wav
+
+[UI-B076]
+Data = UI-B076.wav
+
+[UI-B078]
+Data = UI-B078.wav
+
+[UI-B082]
+Data = UI-B082.wav
+
+[UI-B084]
+Data = UI-B084.wav
+
+[UI-B086]
+Data = UI-B086.wav
+
+[UI-B088]
+Data = UI-B088.wav
+
+[UI-B090]
+Data = UI-B090.wav
+
+[UI-B092]
+Data = UI-B092.wav
+
+[UI-B094]
+Data = UI-B094.wav
+
+[UI-B096]
+Data = UI-B096.wav
+
+[UI-B098]
+Data = UI-B098.wav
+
+[UI-B100]
+Data = UI-B100.wav
+
+[UI-B102]
+Data = UI-B102.wav
+
+[UI-B104]
+Data = UI-B104.wav
+
+[UI-B106]
+Data = UI-B106.wav
+
+[UI-B108]
+Data = UI-B108.wav
+
+[UI-B110]
+Data = UI-B110.wav
+
+[UI-G000]
+Data = UI-G000.wav
+
+[UI-G002]
+Data = UI-G002.wav
+
+[UI-G012]
+Data = UI-G012.wav
+
+[UI-G014]
+Data = UI-G014.wav
+
+[UI-G020]
+Data = UI-G020.wav
+
+[UI-G022]
+Data = UI-G022.wav
+
+[UI-G026]
+Data = UI-G026.wav
+
+[UI-G028]
+Data = UI-G028.wav
+
+[UI-G030]
+Data = UI-G030.wav
+
+[UI-G036]
+Data = UI-G036.wav
+
+[UI-G038]
+Data = UI-G038.wav
+
+[UI-G042]
+Data = UI-G042.wav
+
+[UI-G044]
+Data = UI-G044.wav
+
+[UI-G050]
+Data = UI-G050.wav
+
+[UI-G052]
+Data = UI-G052.wav
+
+[UI-G056]
+Data = UI-G056.wav
+
+[UI-G058]
+Data = UI-G058.wav
+
+[UI-G060]
+Data = UI-G060.wav
+
+[UI-G062]
+Data = UI-G062.wav
+
+[UI-G064]
+Data = UI-G064.wav
+
+[UI-G066]
+Data = UI-G066.wav
+
+[UI-G068]
+Data = UI-G068.wav
+
+[UI-G070]
+Data = UI-G070.wav
+
+[UI-G074]
+Data = UI-G074.wav
+
+[UI-G076]
+Data = UI-G076.wav
+
+[UI-G078]
+Data = UI-G078.wav
+
+[UI-G082]
+Data = UI-G082.wav
+
+[UI-G084]
+Data = UI-G084.wav
+
+[UI-G086]
+Data = UI-G086.wav
+
+[UI-G088]
+Data = UI-G088.wav
+
+[UI-G090]
+Data = UI-G090.wav
+
+[UI-G092]
+Data = UI-G092.wav
+
+[UI-G094]
+Data = UI-G094.wav
+
+[UI-G100]
+Data = UI-G100.wav
+
+[UI-G102]
+Data = UI-G102.wav
+
+[UI-G104]
+Data = UI-G104.wav
+
+[UI-G108]
+Data = UI-G108.wav
+
+[UI-G110]
+Data = UI-G110.wav
+
+[UI-G114]
+Data = UI-G114.wav
+
+[UI-G116]
+Data = UI-G116.wav
+
+[UI-G118]
+Data = UI-G118.wav
+
+[UI-G120]
+Data = UI-G120.wav
+
+[UI-G122]
+Data = UI-G122.wav
+
+[UI-G124]
+Data = UI-G124.wav
+
+[UI-G126]
+Data = UI-G126.wav
+
+[UI-G128]
+Data = UI-G128.wav
+
+[UI-G130]
+Data = UI-G130.wav
+
+[UI-G132]
+Data = UI-G132.wav
+
+[UI-G134]
+Data = UI-G134.wav
+
+[UI-G136]
+Data = UI-G136.wav
+
+[UI-G138]
+Data = UI-G138.wav
+
+[UI-G140]
+Data = UI-G140.wav
+
+[UI-G142]
+Data = UI-G142.wav
+
+[UI-G144]
+Data = UI-G144.wav
+
+[UI-G148]
+Data = UI-G148.wav
+
+[UI-G150]
+Data = UI-G150.wav
+
+[UI-G152]
+Data = UI-G152.wav
+
+[UI-G154]
+Data = UI-G154.wav
+
+[UI-G156]
+Data = UI-G156.wav
+
+[UI-G158]
+Data = UI-G158.wav
+
+[UI-G180]
+Data = UI-G180.wav
+
+[UI-G186]
+Data = UI-G186.wav
+
+[UI-G188]
+Data = UI-G188.wav
+
+[UI-G190]
+Data = UI-G190.wav
+
+[UI-P000]
+Data = UI-P000.wav
+
+[UI-P002]
+Data = UI-P002.wav
+
+[UI-P004]
+Data = UI-P004.wav
+
+[UI-P006]
+Data = UI-P006.wav
+
+[UI-P008]
+Data = UI-P008.wav
+
+[UI-P010]
+Data = UI-P010.wav
+
+[UI-P012]
+Data = UI-P012.wav
+
+[UI-P014]
+Data = UI-P014.wav
+
+[UI-P016]
+Data = UI-P016.wav
+
+[UI-P018]
+Data = UI-P018.wav
+
+[UI-P020]
+Data = UI-P020.wav
+
+[UI-P022]
+Data = UI-P022.wav
+
+[UI-P024]
+Data = UI-P024.wav
+
+[UI-P026]
+Data = UI-P026.wav
+
+[UI-P028]
+Data = UI-P028.wav
+
+[UI-P030]
+Data = UI-P030.wav
+
+[UI-P032]
+Data = UI-P032.wav
+
+[UI-P034]
+Data = UI-P034.wav
+
+[UI-P036]
+Data = UI-P036.wav
+
+[UI-P038]
+Data = UI-P038.wav
+
+[UI-P040]
+Data = UI-P040.wav
+
+[UI-P042]
+Data = UI-P042.wav
+
+[UI-P044]
+Data = UI-P044.wav
+
+[UI-P046]
+Data = UI-P046.wav
+
+[UI-P048]
+Data = UI-P048.wav
+
+[UI-P050]
+Data = UI-P050.wav
+
+[UI-P052]
+Data = UI-P052.wav
+
+[UI-P054]
+Data = UI-P054.wav
+
+[UI-P056]
+Data = UI-P056.wav
+
+[UI-P058]
+Data = UI-P058.wav
+
+[UI-P060]
+Data = UI-P060.wav
+
+[UI-Z000]
+Data = UI-Z000.wav
+
+[UI-Z002]
+Data = UI-Z002.wav

@@ -295,7 +295,16 @@ public sealed partial class GameScreen : IScreen
         {
             var (name, _) = DebugClicks.Dequeue();
             EnsureUi();
-            if (uiManager.Find(name) is { } target)
+            // ("xy:X,Y": a screen point instead, e.g. on a game's own sidebar.)
+            if (name.StartsWith("xy:") && name[3..].Split(',') is [var xs, var ys]
+                && float.TryParse(xs, System.Globalization.CultureInfo.InvariantCulture, out float px) && float.TryParse(ys, System.Globalization.CultureInfo.InvariantCulture, out float py))
+            {
+                Console.WriteLine($"[debug] clicking at {px},{py}");
+                OnMouseMove(new Vector2(px, py));
+                OnMouseDown(MouseButton.Left);
+                OnMouseUp(MouseButton.Left);
+            }
+            else if (uiManager.Find(name) is { } target)
             {
                 var at = new Vector2(target.ScreenRect.X + target.ScreenRect.Width / 2, target.ScreenRect.Y + target.ScreenRect.Height / 2);
                 Console.WriteLine($"[debug] clicking {name} at {at} (hit: {uiManager.HitTest(at)?.Name ?? "nothing"}, enabled {target.IsEnabled}, hidden {target.Hidden})");

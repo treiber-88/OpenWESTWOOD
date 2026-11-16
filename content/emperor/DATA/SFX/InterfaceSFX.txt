@@ -1,0 +1,81 @@
+;**********************************
+; -------- INTERFACE SFX ----------
+;**********************************
+
+[NavButtonClick]
+Sounds=nav_button_press_1
+Volume=20
+
+[NavButtonRollOver]
+Sounds=nav_button_roll_over_1
+Volume=20
+
+[HouseLogoSweep]
+Sounds=house_logo_sweep_1
+Volume=10
+
+[NewUnitDraw]
+Sounds=new_unit_draw_1
+Volume=50
+
+[TextDraw]
+;Sounds=text_draw_1
+Sounds = sn_sci_fi_click_3
+Volume=25
+
+[HouseAffirmationWindowUp]
+Sounds=house_affirmation_window_up_1
+Volume=30
+
+[HouseAffirmationWindowDown]
+Sounds=house_affirmation_window_down_1
+Volume=30
+
+;[MoneyTicking]
+;Sounds=credit_up_5
+;Volume= 20
+
+[MoneyTickingNegative]
+Sounds=credit_down_5
+Volume= 20
+
+[slidertick]
+Sounds = credit_up_5
+Volume = 60
+
+[expandshrinkwindow]
+Sounds=new_unit_draw_1
+Volume=50
+
+[typewritertext]
+Sounds=nav_button_roll_over_1
+Volume=20
+
+
+
+
+	;**********************************
+	; -------- INTERFACE VOICES -------
+	;**********************************
+
+
+[LocalDefaults]
+Type	=	Dialog
+
+
+;Commented out until the foreign assets are received...
+
+;[HouseChooseOrdos]
+;Sounds = $UI-B502		 ;"House Ordos"
+;Volume=90
+
+;[HouseChooseAtreides]
+;Sounds = $UI-B500		 ;"House Atreides"
+;Volume=90
+
+;[HouseChooseHarkonnen]
+;Sounds = $UI-B504		 ;"House Harkonnen"
+;Volume=90
+
+
+

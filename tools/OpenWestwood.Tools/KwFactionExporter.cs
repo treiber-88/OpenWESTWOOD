@@ -1120,6 +1120,17 @@ public static partial class KwFactionExporter
             return null;
         }
 
+        /// <summary>A weapon's ParalyzeNugget (EMP): its own, or its projectile's warhead's.</summary>
+        XElement? ParalyzeOf(XElement weapon, int depth = 0)
+        {
+            var nuggets = KwXml.Child(weapon, "Nuggets");
+            if (KwXml.Child(nuggets, "ParalyzeNugget") is { } pn)
+                return pn;
+            if (depth < 3 && KwXml.Child(nuggets, "ProjectileNugget") is { } proj && x.Get("WeaponTemplate", x.Attr(proj, "WarheadTemplate")) is { } warhead)
+                return ParalyzeOf(warhead, depth + 1);
+            return null;
+        }
+
         static readonly HashSet<string> DeathTypes = new(StringComparer.OrdinalIgnoreCase) { "NORMAL", "BURNED", "EXPLODED", "POISONED", "TOPPLED", "CRUSHED", "LASERED", "DETONATED", "SPLATTED" };
 
         float Seconds(XElement w, string element, float fallbackMs)
@@ -1205,6 +1216,14 @@ public static partial class KwFactionExporter
                 weapons.Append($"    DelayBetweenShots: 1000\n    ClipSize: 0\n    ClipReloadTime: 0\n    OrderSlavesToAttack: Yes\n    AntiGround: {(g ? "Yes" : "No")}\n    AntiAirborneVehicle: {(a ? "Yes" : "No")}\n    AntiAirborneInfantry: {(a ? "Yes" : "No")}\n");
                 return slaves;
             }
+            else if (ParalyzeOf(w) != null)
+            {
+                // An EMP weapon (ParalyzeNugget): no damage, it disables what it hits (written below).
+                dt = "EXPLOSION";
+                amount = 0;
+                death = "NORMAL";
+                radius = 0;
+            }
             else
                 return null;
             string name = P + "Weapon_" + id;
@@ -1228,6 +1247,15 @@ public static partial class KwFactionExporter
             // (Aircraft weapons reload only at their air pad.)
             if (x.Attr(w, "AutoReloadsClip").ToUpperInvariant() is "RETURN_TO_BASE" or "NONE")
                 weapons.Append($"    AutoReloadsClip: {x.Attr(w, "AutoReloadsClip").ToUpperInvariant()}\n");
+            if (ParalyzeOf(w) is { } paralyze)
+            {
+                weapons.Append($"    ParalyzeRadius: {F(Math.Max(x.Num(paralyze, "Radius", 30), 1))}\n    ParalyzeTime: {F(x.Ms(paralyze, "DurationSeconds", 5000))}\n");
+                weapons.Append($"    ParalyzeType: {x.Attr(paralyze, "ParalyzeType", "EMP").ToUpperInvariant()}\n");
+                if (KwXml.Child(paralyze, "SpecialObjectFilter") is { } filter && x.Attr(filter, "Exclude") is { Length: > 0 } exclude)
+                    weapons.Append($"    ParalyzeExclude: {exclude}\n");
+                if (Fx(x.Attr(paralyze, "ParalyzeFX")) is { Length: > 0 } paralyzeFx)
+                    weapons.Append($"    ParalyzeFX: {paralyzeFx}\n");
+            }
             string anti = x.Attr(w, "AntiMask", "ANTI_GROUND");
             bool ground = anti.Contains("ANTI_GROUND") || anti.Contains("ANTI_STRUCTURE"), air = anti.Contains("ANTI_AIRBORNE");
             weapons.Append($"    AntiGround: {(ground ? "Yes" : "No")}\n    AntiAirborneVehicle: {(air ? "Yes" : "No")}\n    AntiAirborneInfantry: {(air ? "Yes" : "No")}\n");

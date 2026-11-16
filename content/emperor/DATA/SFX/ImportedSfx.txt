@@ -1,0 +1,900 @@
+[HKSMALL1]
+Sounds = $HKsmallbang1
+
+[ATTHUDSTEP]
+Sounds = $thudstep
+
+[HKSMALL2]
+Sounds = $HKsmallbang2
+
+[ATBIGBANG1]
+Sounds = $bigbang1
+
+[HKSMALL3]
+Sounds = $HKsmallbang3
+
+[ATBIGBANG2]
+Sounds = $bigbang2
+
+[ATBIGBANG3]
+Sounds = $bigbang3
+
+[ORPOPTURRETSUP]
+Sounds = $ORpopturretsup
+
+[ORCARRYALLLAND]
+Sounds = $ORCarryallLand
+
+[ATHEAVYMG-SHORTBURST]
+Sounds = $ATHMGS1
+
+[FREMENTENT]
+Sounds = $FremenTent
+
+[ATSMALLCONSTRUCTION]
+Sounds = $ATBuild1
+
+[APCCLOSE]
+Sounds = $APCclose
+
+[SHIELDCOLLAPSE1]
+Sounds = $ShieldCol1
+
+[SHIELDCOLLAPSE2]
+Sounds = $ShieldCol2
+
+[SHIELDCOLLAPSE3]
+Sounds = $ShieldCol3
+
+[ATMANYSTEP]
+Sounds = $manystep
+
+[HKAMBIENT1]
+Sounds = $HKAmbient1
+
+[HKAMBIENT2]
+Sounds = $HKAmbient2
+
+[ORLARGECONSTRUCTION]
+Sounds = $ORLrgBuild1
+
+[ORROCKETLAUNCH1]
+Sounds = $ORRocket1
+
+[HKAMBIENT3]
+Sounds = $HKAmbient3
+
+[ORROCKETLAUNCH2]
+Sounds = $ORRocket2
+
+[HKAMBIENT4]
+Sounds = $HKAmbient4
+
+[ORROCKETLAUNCH3]
+Sounds = $ORRocket3
+
+[HKAMBIENT5]
+Sounds = $HKAmbient5
+
+[HKAMBIENT6]
+Sounds = $HKAmbient6
+
+[HKCARRYALLTAKEOFF]
+Sounds = $HKCarryallTakeOff
+
+[HUMLOOP.WAV]
+Sounds = $Humloop
+
+[HKAMBIENT7]
+Sounds = $HKAmbient7
+
+[HKAMBIENT8]
+Sounds = $HKAmbient8
+
+[ORMCVUNDEPLOY]
+Sounds = $ORMCVUndeploy
+
+[AMBIENT1]
+Sounds = $Ambient1
+
+[AMBIENT2]
+Sounds = $Ambient2
+
+[AMBIENT3]
+Sounds = $Ambient3
+
+[AMBIENT4]
+Sounds = $Ambient4
+
+[NRBUILDINGEXPLODE]
+Sounds = $NRBuildingexplode
+
+[AMBIENT5]
+Sounds = $Ambient5
+
+[AMBIENT6]
+Sounds = $Ambient6
+
+[AMBIENT7]
+Sounds = $Ambient7
+
+[AMBIENT8]
+Sounds = $Ambient8
+
+[HKMEDIUM1]
+Sounds = $HKmedbang1
+
+[HKMEDIUM2]
+Sounds = $HKmedbang2
+
+[BUILDUPCHARGE]
+Sounds = $BuildUpCharge
+
+[HKMEDIUM3]
+Sounds = $HKmedbang3
+
+[HKEXPLODEFLAME]
+Sounds = $ExplodeFlame
+
+[HKCYCONSTRUCTINGABUILDING]
+Sounds = $HKBuildCY
+
+[ATLARGECONSTRUCTION]
+Sounds = $ATLrgBuild1
+
+[TWISTER]
+Sounds = $twister
+
+[ATMEDIUM1]
+Sounds = $ATmedbang1
+
+[ATMEDIUM2]
+Sounds = $ATmedbang2
+
+[HKTHUMPER]
+Sounds = $HKThumper1
+
+[ATCARRYALLTAKEOFF]
+Sounds = $ATCarryallTakeOff
+
+[ATMEDIUM3]
+Sounds = $ATmedbang3
+
+[ATMECHSTEP]
+Sounds = $mechstep
+
+[FRFEDYKINDEPLOY]
+Sounds = $FRfedykinDeploy
+
+[ATTHUMPER]
+Sounds = $ATThumper1
+
+[APCOPEN]
+Sounds = $APCopen
+
+[RICHOC]
+Sounds = $richoc
+
+[HKBUILDING(EVENLARGER)]
+Sounds = $HKBuildBang1
+
+[ATCARRYALLFLYING]
+Sounds = $ATCarryallflying
+
+[ROCKETDETONATION1]
+Sounds = $RocketDet1
+
+[ROCKETDETONATION2]
+Sounds = $RocketDet2
+
+[ROCKETDETONATION3]
+Sounds = $RocketDet3
+
+[HKSMALLCANNONSINGLESHOT]
+Sounds = $HKSCannon1
+
+[FRWARRIORRELOAD]
+Sounds = $FRwarriorreload
+
+[IXGUNCHARGE]
+Sounds = $IXguncharge.
+
+[ORCANNONSINGLELOUDSHOT]
+Sounds = $ORCannon1
+
+[IXIANLAB]
+Sounds = $Ixianlab
+
+[ATCYCONSTRUCTINGABUILDING]
+Sounds = $ATBuildCY
+
+[ORLASERTANKSHIELDDEFLECTION]
+Sounds = $ORlasertankshielddeflection
+
+[ATROCKETLAUNCH1]
+Sounds = $ATRocket1
+
+[ATROCKETLAUNCH2]
+Sounds = $ATRocket2
+
+[ORMEDIUMCONSTRUCTION]
+Sounds = $ORMedBuild1
+
+[ATROCKETLAUNCH3]
+Sounds = $ATRocket3
+
+[VULTURES]
+Sounds = $Vultures
+
+[HKCHOKING]
+Sounds = $HKChoking2
+
+[ORLIGHTMG-SHORTBURST]
+Sounds = $ORLMGS1
+
+[HKMEDMG-SHORTBURST]
+Sounds = $HKMMGS1
+
+[ATCHOKING]
+Sounds = $ATChoking1
+
+[YAKDYING]
+Sounds = $YakDying
+
+[ORCONSTRUCTSPARK]
+Sounds = $ORConstructSpark
+
+[TLTURRETBREATHING]
+Sounds = $TLTurretbreathing
+
+[KINDJALDEPLOY]
+Sounds = $KindjalDeploy
+
+[ORAPCSHIELDSUP]
+Sounds = $ORapcshieldsup
+
+[FLIGHT.WAV]
+Sounds = $Flight
+
+[ORNORMALMANDYING]
+Sounds = $ORKillguy1
+
+[ORBURNINGMANDYING]
+Sounds = $ORburningManDying
+
+[HITSHIELD1]
+Sounds = $HitShield1
+
+[HITSHIELD2]
+Sounds = $HitShield2
+
+[HITSHIELD3]
+Sounds = $HitShield3
+
+[ATSINGLESHOTRIFLE]
+Sounds = $ATRifle1
+
+[ATMEDBANG1]
+Sounds = $medbang1
+
+[ATMEDBANG2]
+Sounds = $medbang2
+
+[ATMEDBANG3]
+Sounds = $medbang3
+
+[ATBUILDING(EVENLARGER)]
+Sounds = $ATBuildBang1
+
+[HKHEAVYMG-LONGBURST]
+Sounds = $HKHMGL1
+
+[ORLASER1]
+Sounds = $ORlasturt1
+
+[ORLASER2]
+Sounds = $ORlasturt2
+
+[ORMEDIUM1]
+Sounds = $ORmedbang1
+
+[ORLASER3]
+Sounds = $ORlasturt3
+
+[ORMEDIUM2]
+Sounds = $ORmedbang2
+
+[ORMEDIUM3]
+Sounds = $ORmedbang3
+
+[ORMORTARLAUNCH1]
+Sounds = $ORmortar1
+
+[ORMORTARLAUNCH2]
+Sounds = $ORmortar2
+
+[ORMORTARLAUNCH3]
+Sounds = $ORmortar3
+
+[BUILDUP.WAV]
+Sounds = $Buildup
+
+[ORTHUMPER]
+Sounds = $ORThumper1
+
+[ATDETONATION]
+Sounds = $ATShellDet1
+
+[SHELLDETONATION1]
+Sounds = $ShellDet1
+
+[SHELLDETONATION2]
+Sounds = $ShellDet2
+
+[SHELLDETONATION3]
+Sounds = $ShellDet3
+
+[ORLASERTANKSHIELDSDOWN]
+Sounds = $ORlasertankshieldsdown
+
+[FULLPOWER]
+Sounds = $FullPower
+
+[HKCONSTRUCTSPARK]
+Sounds = $HKConstructSpark
+
+[IXDETONATION1]
+Sounds = $IXShellDet1.
+
+[HKNORMALMANDYING]
+Sounds = $HKKillguy1
+
+[IXDETONATION2]
+Sounds = $IXShellDet2.
+
+[IXDETONATION3]
+Sounds = $IXShellDet3.
+
+[ATLARGE1]
+Sounds = $ATbigbang1
+
+[ATLARGE2]
+Sounds = $ATbigbang2
+
+[EXPLODE2.WAV]
+Sounds = $Explode2
+
+[ATLARGE3]
+Sounds = $ATbigbang3
+
+[BOMB_EXPLODE]
+Sounds = $bomb_explode
+
+[ORCARRYALLFLYING]
+Sounds = $ORCarryallflying
+
+[DEPLOYINGDEATHHAND]
+Sounds = $deployingdeathhand
+
+[HKFACTORYNOISE1]
+Sounds = $HKBuildVehicle1
+
+[SAHEAVYMG-LONGBURST1]
+Sounds = $SAHMGL1
+
+[SAHEAVYMG-LONGBURST2]
+Sounds = $SAHMGL2
+
+[SAHEAVYMG-LONGBURST3]
+Sounds = $SAHMGL3
+
+[INKVINESPLAT]
+Sounds = $InkvineSplat
+
+[ORAPCSHIELDDEFLECTION]
+Sounds = $ORapcshielddeflection
+
+[LEECHDYING]
+Sounds = $LeechDying
+
+[HKMISSILELAUNCH]
+Sounds = $HKMissilelaunch
+
+[ORCHOKING]
+Sounds = $ORChoking3
+
+[ATSNIPERRELOAD]
+Sounds = $Atsniperreload
+
+[SPITTINGSPORE1]
+Sounds = $Spore1
+
+[ORLARGE1]
+Sounds = $ORbigbang1
+
+[SPITTINGSPORE2]
+Sounds = $Spore1
+
+[ORLARGE2]
+Sounds = $ORbigbang2
+
+[SPITTINGSPORE3]
+Sounds = $Spore1
+
+[ORLARGE3]
+Sounds = $ORbigbang3
+
+[ATMORTARLAUNCH1]
+Sounds = $ATmortar1
+
+[ATMORTARLAUNCH2]
+Sounds = $ATmortar2
+
+[ATMORTARLAUNCH3]
+Sounds = $ATmortar3
+
+[BANGING.WAV]
+Sounds = $Banging
+
+[ATBURNINGACIDMAN]
+Sounds = $ATburningacidMan
+
+[ATSMALLCANNONSINGLESHOT]
+Sounds = $ATSCannon1
+
+[ATTHUNKSTEP]
+Sounds = $thunkstep
+
+[HKMEDMG-LONGBURST]
+Sounds = $HKMMGL1
+
+[ORCARRYALLTAKEOFF]
+Sounds = $ORCarryallTakeOff
+
+[CATAPULT1]
+Sounds = $Catapult1
+
+[CATAPULT2]
+Sounds = $Catapult2
+
+[CATAPULT3]
+Sounds = $Catapult3
+
+[HKBURNINGLARGE]
+Sounds = $HKBurningL1
+
+[ORSMALLCANNONSINGLESHOT]
+Sounds = $ORSCannon1
+
+[HKMCVDEPLOY]
+Sounds = $HKMCVDeploy
+
+[KLUNKAIR.WAV]
+Sounds = $Klunkair
+
+[ATSINGLESHOTPISTOL]
+Sounds = $ATPistol1
+
+[HKCARRYALLFLYING]
+Sounds = $HKCarryallflying
+
+[FLESHVATBIRTH]
+Sounds = $FleshVatbirth
+
+[HKDETONATION1]
+Sounds = $HKShellDet1
+
+[HKDETONATION2]
+Sounds = $HKShellDet2
+
+[ATMEDMG-LONGBURST]
+Sounds = $ATMMGL1
+
+[HKLARGEBUILDINGBANG]
+Sounds = $HKLBuildBang1
+
+[ORFACTORYNOISE1]
+Sounds = $ORBuildVehicle1
+
+[ORFACTORYNOISE2]
+Sounds = $ORBuildVehicle2
+
+[ORFACTORYNOISE3]
+Sounds = $ORBuildVehicle3
+
+[SHARDUKARBARRACKST]
+Sounds = $Shardukarbarracks
+
+[HKDICEDMANDYING]
+Sounds = $HKdicedManDying
+
+[ORMCVDEPLOY]
+Sounds = $ORMCVDeploy
+
+[ORDEVIATORSHIELDSUP]
+Sounds = $ORdeviatorshieldsup
+
+[ATLIGHTSTEP]
+Sounds = $lightstep
+
+[ATSMALL1]
+Sounds = $ATsmallbang1
+
+[AIRSHIP.WAV]
+Sounds = $Airship
+
+[ATSMALL2]
+Sounds = $ATsmallbang2
+
+[DEATHHANDEXPLOSION]
+Sounds = $deathhandexplosion
+
+[HKLIGHTMG-LONGBURST]
+Sounds = $HKLMGL1
+
+[ATSMALL3]
+Sounds = $ATsmallbang3
+
+[ORBAZOOKALAUNCH1]
+Sounds = $ORBazooka1
+
+[ORBAZOOKALAUNCH2]
+Sounds = $ORBazooka2
+
+[ORBAZOOKALAUNCH3]
+Sounds = $ORBazooka3
+
+[ORLASERTANKSHIELDSUP]
+Sounds = $ORlasertankshieldsup
+
+[ATHEAVYMG-LONGBURST]
+Sounds = $ATHMGL1
+
+[PLASMA1]
+Sounds = $Plasma1
+
+[PLASMA2]
+Sounds = $Plasma2
+
+[PLASMA3]
+Sounds = $Plasma3
+
+[ORKOBRARELOAD]
+Sounds = $ORkobrareload
+
+[HKBURNINGSMALL]
+Sounds = $HKBurningS1
+
+[ATBURNINGLARGE]
+Sounds = $ATBurningL1
+
+[ORAPCSHIELDSDOWN]
+Sounds = $ORapcshieldsdown
+
+[ORCRUSH]
+Sounds = $ORCrush3
+
+[ORSMALL1]
+Sounds = $ORsmallbang1
+
+[ORSMALL2]
+Sounds = $ORsmallbang2
+
+[ORSMALL3]
+Sounds = $ORsmallbang3
+
+[HKCANNONSINGLELOUDSHOT]
+Sounds = $HKCannon1
+
+[KINDJALGUNSHOT1]
+Sounds = $KindjalGun1
+
+[KINDJALGUNSHOT2]
+Sounds = $KindjalGun2
+
+[KINDJALGUNSHOT3]
+Sounds = $KindjalGun3
+
+[CONTAMDYING]
+Sounds = $ConDying
+
+[ORBUILDING(EVENLARGER)]
+Sounds = $ORBuildBang1
+
+[YAK]
+Sounds = $Yak
+
+[ATFACTORYNOISE1]
+Sounds = $ATBuildVehicle1
+
+[TLDOOM]
+Sounds = $TLDoom
+
+[ATFACTORYNOISE2]
+Sounds = $ATBuildVehicle2
+
+[HKCARRYALLLAND]
+Sounds = $HKCarryallLand
+
+[ATFACTORYNOISE3]
+Sounds = $ATBuildVehicle3
+
+[HKCRUSH]
+Sounds = $HKCrush2
+
+[ORDICEDMANDYING]
+Sounds = $ORdicedManDying
+
+[ATBURNINGSMALL]
+Sounds = $ATBurningS1
+
+[HKSMALLCONSTRUCTION]
+Sounds = $HKBuild1
+
+[HKMCVUNDEPLOY]
+Sounds = $HKMCVUndeploy
+
+[HKBAZOOKALAUNCH1]
+Sounds = $HKBazooka1
+
+[HKBAZOOKALAUNCH2]
+Sounds = $HKBazooka2
+
+[HKBAZOOKALAUNCH3]
+Sounds = $HKBazooka3
+
+[HKMEDIUMCONSTRUCTION]
+Sounds = $HKMedBuild1
+
+[GUNHIT1]
+Sounds = $GunHit1
+
+[GUNHIT2]
+Sounds = $GunHit2
+
+[GUNHIT3]
+Sounds = $GunHit3
+
+[HKLIGHTMG-SHORTBURST]
+Sounds = $HKLMGS1
+
+[ORBURNINGACIDMAN]
+Sounds = $ORburningacidMan
+
+[ORDEVIATORSHIELDSDOWN]
+Sounds = $ORdeviatorshieldsdown
+
+[ORAMBIENT1]
+Sounds = $ORAmbient1
+
+[ORAMBIENT2]
+Sounds = $ORAmbient2
+
+[TLWALKERDYING]
+Sounds = $TLwalkerdying
+
+[ORAMBIENT3]
+Sounds = $ORAmbient3
+
+[ORAMBIENT4]
+Sounds = $ORAmbient4
+
+[ATMCVUNDEPLOY]
+Sounds = $ATMCVUndeploy
+
+[ORAMBIENT5]
+Sounds = $ORAmbient5
+
+[ORAMBIENT6]
+Sounds = $ORAmbient6
+
+[MACHINEGUNHIT1]
+Sounds = $MachineGunHit1
+
+[ORAMBIENT7]
+Sounds = $ORAmbient7
+
+[GUGUNCHARGE]
+Sounds = $GUguncharge
+
+[MACHINEGUNHIT2]
+Sounds = $MachineGunHit2
+
+[ORAMBIENT8]
+Sounds = $ORAmbient8
+
+[MACHINEGUNHIT3]
+Sounds = $MachineGunHit3
+
+[ORCYCONSTRUCTINGABUILDING]
+Sounds = $ORBuildCY
+
+[ATREVERBSTEP]
+Sounds = $reverbstep
+
+[HKINKVINERELOAD]
+Sounds = $HKinkvinereload
+
+[ATCANNONSINGLELOUDSHOT]
+Sounds = $ATCannon1
+
+[FRFEDYKINUNDEPLOY]
+Sounds = $FRfedykinUndeploy
+
+[IXGUNFIRE]
+Sounds = $IXgunfire.
+
+[HKLARGECONSTRUCTION]
+Sounds = $HKLrgBuild1
+
+[HKBURNINGMANDYING]
+Sounds = $HKburningManDying
+
+[ATCARRYALLLAND]
+Sounds = $ATCarryallLand
+
+[FLESHVATDYING]
+Sounds = $Fleshvatdying
+
+[ATMCVDEPLOY]
+Sounds = $ATMCVDeploy
+
+[ORLARGEBUILDINGBANG]
+Sounds = $ORLBuildBang1
+
+[HKLARGE1]
+Sounds = $HKbigbang1
+
+[HKLARGE2]
+Sounds = $HKbigbang2
+
+[HKLARGE3]
+Sounds = $HKbigbang3
+
+[TLTURRET]
+Sounds = $TLTurret
+
+[DESTROY]
+Sounds = $DESTROY
+
+[ORBURNINGLARGE]
+Sounds = $ORBurningL1
+
+[ORLIGHTMG-LONGBURST]
+Sounds = $ORLMGL1
+
+[ORSINGLESHOTPISTOL]
+Sounds = $ORPistol1
+
+[ATMEDMG-SHORTBURST]
+Sounds = $ATMMGS1
+
+[ATBURNINGMANDYING]
+Sounds = $ATburningManDying
+
+[ATMEDIUMCONSTRUCTION]
+Sounds = $ATMedBuild1
+
+[SHIELDACTIVATE1]
+Sounds = $ShieldAct1
+
+[SHIELDACTIVATE2]
+Sounds = $ShieldAct2
+
+[SHIELDACTIVATE3]
+Sounds = $ShieldAct3
+
+[ATDICEDMANDYING]
+Sounds = $ATdicedManDying
+
+[ATLARGEBUILDINGBANG]
+Sounds = $ATLBuildBang1
+
+[ATLIGHTMG-SHORTBURST]
+Sounds = $ATLMGS1
+
+[FRSINGLESHOTRIFLE]
+Sounds = $FRRifle1
+
+[YAKFOOTSTEPS]
+Sounds = $Yakfootsteps
+
+[MECHPULS.WAV]
+Sounds = $Mechpuls
+
+[SABOTEURLAUGHING]
+Sounds = $SabLaugh
+
+[HKBURNINGACIDMAN]
+Sounds = $HKburningacidMan
+
+[WIND1]
+Sounds = $Wind1
+
+[ATLIGHTMG-LONGBURST]
+Sounds = $ATLMGL1
+
+[HKHEAVYMG-SHORTBURST]
+Sounds = $HKHMGS1
+
+[ORDETONATION1]
+Sounds = $ORShellDet1
+
+[ORDETONATION2]
+Sounds = $ORShellDet2
+
+[ATHSMG]
+Sounds = $highspeedmachinegun
+
+[HKROCKETLAUNCH1]
+Sounds = $HKRocket1
+
+[HKROCKETLAUNCH2]
+Sounds = $HKRocket2
+
+[HKROCKETLAUNCH3]
+Sounds = $HKRocket3
+
+[ENDWORM]
+Sounds = $Endworm
+
+[HKSINGLESHOTPISTOL]
+Sounds = $HKPistol1
+
+[ORBURNINGSMALL]
+Sounds = $ORBurningS1
+
+[ORPOPTURRETSDOWN]
+Sounds = $ORpopturretsdown
+
+[ENDWORMDYING]
+Sounds = $Endwormdying
+
+[ATSONICWAIL1]
+Sounds = $ATSonic1
+
+[ATSONICWAIL2]
+Sounds = $ATSonic2
+
+[ATSONICWAIL3]
+Sounds = $ATSonic3
+
+[TREEFALL]
+Sounds = $Treefall
+
+[KINDJALUNDEPLOY]
+Sounds = $KindjalUndeploy
+
+[ORDEVIATORSHIELDDEFLECTION]
+Sounds = $ORdeviatorshielddeflection
+
+[GUGUNFIRE]
+Sounds = $GUgunfire
+
+[HKMISSILETANKRELOAD]
+Sounds = $HKmissiletankreload
+
+[ATCRUSH]
+Sounds = $ATCrush1
+
+[BOOST.WAV]
+Sounds = $Boost
+
+[ORSMALLCONSTRUCTION]
+Sounds = $ORBuild1
+
+[ATCONSTRUCTSPARK]
+Sounds = $ATConstructSpark
+
+[RIFLEHIT1]
+Sounds = $RifleHit1
+
+[RIFLEHIT2]
+Sounds = $RifleHit2
+
+[ATNORMALMANDYING]
+Sounds = $ATKillguy1
+
+[RIFLEHIT3]
+Sounds = $RifleHit3
+

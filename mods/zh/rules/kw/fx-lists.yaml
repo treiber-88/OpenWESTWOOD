@@ -288,6 +288,28 @@ FXLists:
       Name: KWPS_XPGrenade_Trail
       OrientToObject: Yes
       Ricochet: Yes
+  KWFX_FX_NODBuggyEmpHit:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard02
+      Offset: X:0 Y:0 Z:5
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard03
+      Offset: X:0 Y:0 Z:5
+  KWFX_FX_GDI_Grenadier_EMPBlast:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_TeraGlowB
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPBlast02_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPBlast03_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard02_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard03_qtr
+    - Type: Sound
+      Name: KwSnd_GDI_Grenadier_EMPBlast
   KWFX_FX_GDISniperFire:
     Nuggets:
     - Type: ParticleSystem
@@ -488,6 +510,26 @@ FXLists:
     Nuggets:
     - Type: Sound
       Name: KwSnd_GDI_Orca_RocketImpactExplosion
+  KWFX_FX_GDIOrcaSensorPodFire:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_GDIOrcaMissileFlash
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDIOrcaMissileSmoke
+      OrientToObject: Yes
+    - Type: Sound
+      Name: KwSnd_GDI_Orca_SensorPodFire
+  KWFX_FX_SensorDeath:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_GDISensorExplosion
+      OrientToObject: Yes
+      Ricochet: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDISensorDots
+      OrientToObject: Yes
+      Ricochet: Yes
   KWFX_FX_GDIAirVehicleExplode:
     Nuggets:
     - Type: ParticleSystem
@@ -689,6 +731,16 @@ FXLists:
     Nuggets:
     - Type: Sound
       Name: KwSnd_GDI_ZoneRaider_MissileExplosion
+  KWFX_FX_OverloadShattererSonicFire:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_TeraMuzzleFireFlash2
+    - Type: ParticleSystem
+      Name: KWPS_TeraMuzzleFireSmoke2
+    - Type: ParticleSystem
+      Name: KWPS_TeraMuzzleFireDistort2
+    - Type: Sound
+      Name: KwSnd_GDI_SteelShatterer_OverloadBeamFireMS
   KWFX_FX_GDIOrcaEchoCannonFire:
     Nuggets:
     - Type: ParticleSystem
@@ -997,6 +1049,28 @@ FXLists:
       Offset: X:0 Y:0 Z:10
     - Type: ViewShake
       Shake: NORMAL
+  KWFX_FX_NODMobileArtilleryBombardCannon:
+    Nuggets:
+    - Type: Sound
+      Name: KwSnd_NOD_Specter_ArtilleryBombardFireMS
+    - Type: ParticleSystem
+      Name: KWPS_NODMobileArt_Debris
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NODMobileArt_Flame
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NODMobileArt_Smoke
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDIMissleFire
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDIMissleFireFlash
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDIMissleFireGlow
+      OrientToObject: Yes
   KWFX_FX_NODAvatarBeamFire:
     Nuggets:
     - Type: ParticleSystem
@@ -1036,12 +1110,82 @@ FXLists:
       Name: KwSnd_NOD_Avatar_VoiceDie
     - Type: Sound
       Name: KwSnd_VehicleExplosionSmallMS
+  KWFX_FX_NODVertigoDisruptionPodFire:
+    Nuggets:
+    - Type: Sound
+      Name: KwSnd_NOD_Vertigo_DisruptionPodFire
+    - Type: ParticleSystem
+      Name: KWPS_NODMissileFire
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NODMissileFireFlash
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NODMissileFireMGlow
+      OrientToObject: Yes
+  KWFX_FX_NODVertigoDisruptionPodDeploy:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_NODVertigoDisruptionPodDust
+    - Type: ParticleSystem
+      Name: KWPS_NODVertigoDisruptionPodFire
+    - Type: ParticleSystem
+      Name: KWPS_NODVertigoDisruptionPodFlash
+    - Type: ParticleSystem
+      Name: KWPS_NODVertigoDisruptionPodGlow
+  KWFX_FX_NOD_Vertigo_StickyDisruptionPodFire:
+    Nuggets:
+    - Type: Sound
+      Name: KwSnd_NOD_Vertigo_DisruptionPodFire
+    - Type: ParticleSystem
+      Name: KWPS_GDIOrcaMissileFlash
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_GDIOrcaMissileSmoke
+      OrientToObject: Yes
   KWFX_FX_NODRedeemerTriPointLaserFire:
     Nuggets:
     - Type: ParticleSystem
       Name: KWPS_RedeemerLaserFireGlow
       Ricochet: Yes
       Offset: X:0 Y:0 Z:0
+  KWFX_FX_NODRedeemerRageGenerator:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageBurst
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageBurstGlow
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageEngulf
+      OrientToObject: Yes
+      Offset: X:0 Y:0 Z:-35
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageEngulfSpark
+      OrientToObject: Yes
+      Offset: X:0 Y:0 Z:-35
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageExplosion
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageFlashes
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageLightningRing
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageRadial
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageRadialSpark
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageShockwave
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_RedeemerRageSpark
+      OrientToObject: Yes
   KWFX_FX_NOD_RedeemerExplodeWithVoice:
     Nuggets:
     - Type: ParticleSystem
@@ -1085,6 +1229,22 @@ FXLists:
       Name: KWPS_ChParticleBeamFireFlash
     - Type: ParticleSystem
       Name: KWPS_ChParticleBeamFireSmoke
+  KWFX_FX_NOD_HalGrenade:
+    Nuggets:
+    - Type: Sound
+      Name: KwSnd_NOD_Confessor_GrenadeExplosion
+    - Type: ParticleSystem
+      Name: KWPS_NodHalBuzz
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NodHalFLashes
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NodHalGlow
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_NodHalMult
+      OrientToObject: Yes
   KWFX_FX_BlackHandTank_MissileFire:
     Nuggets:
     - Type: Sound
@@ -1128,6 +1288,30 @@ FXLists:
     - Type: ParticleSystem
       Name: KWPS_NODRifleMuzzleGlowSmall
       OrientToObject: Yes
+  KWFX_FX_NODSilent1sEMPMuzzle:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_EMPMuzzleFlash
+      OrientToObject: Yes
+      Offset: X:0 Y:0 Z:0
+    - Type: ParticleSystem
+      Name: KWPS_EMPMuzzlePulse
+      OrientToObject: Yes
+      Offset: X:0 Y:0 Z:0
+  KWFX_FX_NODSilent1sEMPHit:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_TeraGlowB
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPBlast02_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPBlast03_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard02_qtr
+    - Type: ParticleSystem
+      Name: KWPS_BuggyEMPCard03_qtr
+    - Type: Sound
+      Name: KwSnd_NOD_Awakened_EMPBlast
   KWFX_FX_SChargedParticleBeamFire:
     Nuggets:
     - Type: ParticleSystem
@@ -1308,6 +1492,46 @@ FXLists:
       OrientToObject: Yes
     - Type: ParticleSystem
       Name: KWPS_TibShardMuzzle_Smoke2_blue
+      OrientToObject: Yes
+  KWFX_FX_AlienTibAgitationFire:
+    Nuggets:
+    - Type: Sound
+      Name: KwSnd_ALI_Stalker_TiberiumAgitationFireMS
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationBeamCore
+      OrientToObject: Yes
+      Ricochet: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationBeamThreads
+      OrientToObject: Yes
+      Ricochet: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationFire
+      OrientToObject: Yes
+      Ricochet: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationFire_Sparks
+      OrientToObject: Yes
+      Ricochet: Yes
+  KWFX_FX_AlienTibAgitationHit:
+    Nuggets:
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Base
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Debris
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Fire
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Flash
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Lightning
+      OrientToObject: Yes
+    - Type: ParticleSystem
+      Name: KWPS_TibAgitationHit_Shards
       OrientToObject: Yes
   KWFX_FX_AlienAutoCannonFire:
     Nuggets:

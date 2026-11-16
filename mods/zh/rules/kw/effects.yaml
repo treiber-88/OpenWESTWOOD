@@ -645,6 +645,12 @@ Objects:
         DeathFX: KWFX_FX_ALI_StasisShield_Die
       ModuleTag_E02:
         Module: Behavior
+        Class: FireWeaponUpdate
+        Weapon: KW_Weapon_AlienCrystalShieldWeaponTrigger
+        InitialDelay: 0
+        RepeatDelay: 33
+      ModuleTag_E03:
+        Module: Behavior
         Class: LifetimeUpdate
         MinLifetime: 20000
         MaxLifetime: 20000

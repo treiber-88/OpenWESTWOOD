@@ -2248,6 +2248,17 @@ AudioEvents:
     PitchShift: -20 0
     MinRange: 200
     MaxRange: 800
+  KwSnd_NOD_RaiderBuggy_EMPblast:
+    Sounds: /kwsfx/NURaide_EMPblasta.wav
+    Volume: 90
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -10 10
+    MinRange: 200
+    MaxRange: 800
   KwSnd_NOD_RaiderBuggy_VoiceSelectMS:
     AlsoPlay: KwSnd_NOD_RaiderBuggy_VoiceSelect KwSnd_NOD_RaiderBuggy_SoundSelect
   KwSnd_NOD_RaiderBuggy_VoiceMove:
@@ -2633,6 +2644,8 @@ AudioEvents:
     PitchShift: -5 35
     MinRange: 200
     MaxRange: 800
+  KwSnd_NOD_Redeemer_RageGeneratorMS:
+    AlsoPlay: KwSnd_NOD_Redeemer_RageGenerator1 KwSnd_NOD_Redeemer_RageGenerator2 KwSnd_NOD_Redeemer_RageGeneratorStereo
   KwSnd_NOD_Redeemer_VoiceSelectMS:
     AlsoPlay: KwSnd_NOD_Redeemer_VoiceSelect KwSnd_NOD_Redeemer_SoundSelect
   KwSnd_NOD_Redeemer_VoiceMove:
@@ -2682,6 +2695,8 @@ AudioEvents:
     PitchShift: -5 10
     MinRange: 200
     MaxRange: 800
+  KwSnd_BH_Confessor_GrenadeThrowMS:
+    AlsoPlay: KwSnd_BH_Confessor_GrenadeThrow KwSnd_BH_Confessor_VoiceEffortGrenadeThrow
   KwSnd_NOD_Confessor_VoiceSelectMS:
     AlsoPlay: KwSnd_NOD_Confessor_VoiceSelect KwSnd_NOD_Confessor_FoleySelect
   KwSnd_NOD_Confessor_VoiceMove:
@@ -2849,6 +2864,17 @@ AudioEvents:
     Limit: 4
     Type: world shrouded everyone
     Control: random
+    PitchShift: -10 10
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Awakened_EMPgunFire:
+    Sounds: /kwsfx/NUAwake_empFirea.wav
+    Volume: 65
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
     PitchShift: -10 10
     MinRange: 200
     MaxRange: 800
@@ -4477,6 +4503,17 @@ AudioEvents:
     PitchShift: -5 5
     MinRange: 200
     MaxRange: 800
+  KwSnd_GDI_Grenadier_EMPBlast:
+    Sounds: /kwsfx/NURaide_EMPblasta.wav
+    Volume: 60
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: 15 25
+    MinRange: 200
+    MaxRange: 800
   KwSnd_GDI_Commando_SatchelChargePlaceMS:
     AlsoPlay: KwSnd_CommandoPlaceChargePreBeep KwSnd_CommandoPlaceChargeImpact
   KwSnd_GuardianAPCMissileFire:
@@ -4580,6 +4617,17 @@ AudioEvents:
     PitchShift: -10 10
     MinRange: 200
     MaxRange: 800
+  KwSnd_GDI_Orca_SensorPodFire:
+    Sounds: /kwsfx/GUOrca_SensFirea.wav /kwsfx/GUOrca_SensFireb.wav /kwsfx/GUOrca_SensFirec.wav /kwsfx/GUOrca_SensFired.wav /kwsfx/GUOrca_SensFiree.wav
+    Volume: 65
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -10 10
+    MinRange: 200
+    MaxRange: 800
   KwSnd_FireHawkMissileFire:
     Sounds: /kwsfx/GUFireH_wea1firea.wav /kwsfx/GUFireH_wea1fireb.wav /kwsfx/GUFireH_wea1firec.wav
     Volume: 80
@@ -4646,6 +4694,8 @@ AudioEvents:
     PitchShift: -2 8
     MinRange: 200
     MaxRange: 800
+  KwSnd_GDI_SteelShatterer_OverloadBeamFireMS:
+    AlsoPlay: KwSnd_GDI_SteelShatterer_WeaponShockwaveUpgraded KwSnd_GDI_SteelShatterer_OverloadBeamFire
   KwSnd_GDI_Orca_EchoCannonFire:
     Sounds: /kwsfx/GUZoneR_gunFirea.wav /kwsfx/GUZoneR_gunFireb.wav /kwsfx/GUZoneR_gunFirec.wav /kwsfx/GUZoneR_gunFired.wav /kwsfx/GUZoneR_gunFiree.wav /kwsfx/GUZoneR_gunFiref.wav /kwsfx/GUZoneR_gunFireg.wav /kwsfx/GUZoneR_gunFireh.wav /kwsfx/GUZoneR_gunFirei.wav /kwsfx/GUZoneR_gunFirej.wav /kwsfx/GUZoneR_gunFirek.wav
     Volume: 45
@@ -4762,6 +4812,8 @@ AudioEvents:
     MaxRange: 800
   KwSnd_NOD_Specter_ArtilleryFireMS:
     AlsoPlay: KwSnd_NOD_Specter_ArtilleryFire KwSnd_NOD_Specter_ArtilleryFire_v2
+  KwSnd_NOD_Specter_ArtilleryBombardFireMS:
+    AlsoPlay: KwSnd_NOD_Specter_ArtilleryBombardFire1 KwSnd_NOD_Specter_ArtilleryBombardFire2
   KwSnd_NOD_Avatar_VoiceDie:
     Sounds: /kwsfx/NUAvata_VoiDiea.wav /kwsfx/NUAvata_VoiDieb.wav /kwsfx/NUAvata_VoiDiec.wav /kwsfx/NUAvata_VoiDied.wav
     Volume: 70
@@ -4770,6 +4822,28 @@ AudioEvents:
     Type: world shrouded everyone voice
     Control: random
     PitchShift: -1 1
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Vertigo_DisruptionPodFire:
+    Sounds: /kwsfx/NUVerti_disPodFira.wav
+    Volume: 65
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -15 -11
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Confessor_GrenadeExplosion:
+    Sounds: /kwsfx/NUConfe_grenExpla.wav /kwsfx/NUConfe_grenExplb.wav /kwsfx/NUConfe_grenExplc.wav
+    Volume: 60
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -10 10
     MinRange: 200
     MaxRange: 800
   KwSnd_NOD_Mantis_Weapon1Fire:
@@ -4814,6 +4888,17 @@ AudioEvents:
     Type: world shrouded everyone
     Control: random interrupt
     PitchShift: -5 5
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Awakened_EMPBlast:
+    Sounds: /kwsfx/NURaide_EMPblasta.wav
+    Volume: 65
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: 10 20
     MinRange: 200
     MaxRange: 800
   KwSnd_Impact_AlienShardWeaponVsGeneric:
@@ -4904,6 +4989,8 @@ AudioEvents:
     PitchShift: 10 30
     MinRange: 300
     MaxRange: 800
+  KwSnd_ALI_Stalker_TiberiumAgitationFireMS:
+    AlsoPlay: KwSnd_ALI_Stalker_TiberiumAgitationFire1 KwSnd_ALI_Stalker_TiberiumAgitationFire2
   KwSnd_Impact_AlienGunVsGeneric:
     Sounds: /kwsfx/WIBulle_SciFi01.wav /kwsfx/WIBulle_SciFi02.wav /kwsfx/WIBulle_SciFi03.wav /kwsfx/WIBulle_SciFi04.wav /kwsfx/WIBulle_SciFi05.wav /kwsfx/WIBulle_SciFi06.wav /kwsfx/WIBulle_SciFi07.wav /kwsfx/WIBulle_SciFi08.wav /kwsfx/WIBulle_SciFi09.wav /kwsfx/WIBulle_SciFi10.wav /kwsfx/WIBulle_SciFi11.wav /kwsfx/WIBulle_SciFi12.wav /kwsfx/WIBulle_SciFi13.wav /kwsfx/WIBulle_SciFi14.wav /kwsfx/WIBulle_SciFi15.wav /kwsfx/WIBulle_SciFi16.wav /kwsfx/WIBulle_SciFi17.wav /kwsfx/WIBulle_SciFi18.wav /kwsfx/WIBulle_SciFi19.wav /kwsfx/WIBulle_SciFi20.wav /kwsfx/WIBulle_SciFi21.wav /kwsfx/WIBulle_SciFi22.wav /kwsfx/WIBulle_SciFi23.wav /kwsfx/WIBulle_SciFi24.wav /kwsfx/WIBulle_SciFi25.wav /kwsfx/WIBulle_SciFi26.wav /kwsfx/WIBulle_SciFi27.wav /kwsfx/WIBulle_SciFi28.wav /kwsfx/WIBulle_SciFi29.wav /kwsfx/WIBulle_SciFi30.wav /kwsfx/WIBulle_SciFi31.wav
     Volume: 35
@@ -7547,6 +7634,41 @@ AudioEvents:
     PitchShift: 0 15
     MinRange: 200
     MaxRange: 800
+  KwSnd_NOD_Redeemer_RageGenerator1:
+    Sounds: /kwsfx/NURedee_rageGenea.wav
+    Volume: 110
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    PitchShift: -10 0
+    Delay: 700 700
+    MinRange: 300
+    MaxRange: 900
+  KwSnd_NOD_Redeemer_RageGenerator2:
+    Sounds: /kwsfx/NURedee_RageGene2.wav
+    Volume: 100
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    PitchShift: -2 2
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Redeemer_RageGeneratorStereo:
+    Sounds: /kwsfx/NURedee_rageGeneStereoa.wav
+    Volume: 110
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    PitchShift: -20 -10
+    Delay: 800 800
+    MinRange: 300
+    MaxRange: 900
   KwSnd_NOD_Redeemer_VoiceSelect:
     Sounds: /kwsfx/NURedee_voicSelea.wav /kwsfx/NURedee_voicSeleb.wav /kwsfx/NURedee_voicSelec.wav /kwsfx/NURedee_voicSeled.wav /kwsfx/NURedee_voicSelee.wav /kwsfx/NURedee_voicSelef.wav /kwsfx/NURedee_voicSeleg.wav /kwsfx/NURedee_voicSeleh.wav /kwsfx/NURedee_voicSelei.wav /kwsfx/NURedee_voicSelej.wav
     Volume: 110
@@ -7590,6 +7712,29 @@ AudioEvents:
     Type: world allies enemies voice
     Control: random
     PitchShift: -1 1
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_BH_Confessor_GrenadeThrow:
+    Sounds: /kwsfx/GUGrena_grenThroa.wav /kwsfx/GUGrena_grenThrob.wav /kwsfx/GUGrena_grenThroc.wav /kwsfx/GUGrena_grenThrod.wav /kwsfx/GUGrena_grenThroe.wav /kwsfx/GUGrena_grenThrof.wav /kwsfx/GUGrena_grenThrog.wav /kwsfx/GUGrena_grenThroh.wav /kwsfx/GUGrena_grenThroi.wav /kwsfx/GUGrena_grenThroj.wav
+    Volume: 30
+    VolumeShift: -8
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    PitchShift: -12 -10
+    Delay: 0 200
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_BH_Confessor_VoiceEffortGrenadeThrow:
+    Sounds: /kwsfx/NUInfan_voiEffora.wav /kwsfx/NUInfan_voiEfforb.wav /kwsfx/NUInfan_voiEfforc.wav /kwsfx/NUInfan_voiEfford.wav /kwsfx/NUInfan_voiEffore.wav /kwsfx/NUInfan_voiEfforf.wav /kwsfx/NUInfan_voiEfforg.wav /kwsfx/NUInfan_voiEfforh.wav /kwsfx/NUInfan_voiEffori.wav /kwsfx/NUInfan_voiEfforj.wav /kwsfx/NUInfan_voiEffork.wav /kwsfx/NUInfan_voiEfforl.wav /kwsfx/NUInfan_voiEfform.wav /kwsfx/NUInfan_voiEfforn.wav /kwsfx/NUInfan_voiEfforo.wav /kwsfx/NUInfan_voiEfforp.wav /kwsfx/NUInfan_voiEfforq.wav /kwsfx/NUInfan_voiEfforr.wav /kwsfx/NUInfan_voiEffors.wav
+    Volume: 45
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    Delay: 0 400
     MinRange: 200
     MaxRange: 800
   KwSnd_NOD_Confessor_VoiceSelect:
@@ -8619,6 +8764,29 @@ AudioEvents:
     Delay: 500 1500
     MinRange: 200
     MaxRange: 800
+  KwSnd_GDI_SteelShatterer_WeaponShockwaveUpgraded:
+    Sounds: /kwsfx/GBSonic_shockwa2a.wav /kwsfx/GBSonic_shockwa2b.wav /kwsfx/GBSonic_shockwa2c.wav /kwsfx/GBSonic_shockwa2d.wav /kwsfx/GBSonic_shockwa2e.wav /kwsfx/GBSonic_shockwa2f.wav
+    Volume: 45
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random
+    PitchShift: -20 0
+    Delay: 200 300
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_GDI_SteelShatterer_OverloadBeamFire:
+    Sounds: /kwsfx/GUSteel_overBeama.wav
+    Volume: 70
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -15 -5
+    MinRange: 200
+    MaxRange: 800
   KwSnd_NOD_Commando_PlaceChargePreBeep:
     Sounds: /kwsfx/GUComma_charBeepa.wav
     Volume: 25
@@ -8662,6 +8830,51 @@ AudioEvents:
     Control: random interrupt
     PitchShift: -15 0
     Delay: 30 100
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Specter_ArtilleryBombardFire1:
+    Sounds: /kwsfx/NUSpect_weapFire1a.wav /kwsfx/NUSpect_weapFire1b.wav /kwsfx/NUSpect_weapFire1c.wav /kwsfx/NUSpect_weapFire1d.wav /kwsfx/NUSpect_weapFire1e.wav /kwsfx/NUSpect_weapFire1f.wav /kwsfx/NUSpect_weapFire1g.wav /kwsfx/NUSpect_weapFire1h.wav /kwsfx/NUSpect_weapFire1i.wav /kwsfx/NUSpect_weapFire1j.wav /kwsfx/NUSpect_weapFire1k.wav /kwsfx/NUSpect_weapFire1l.wav /kwsfx/NUSpect_weapFire1m.wav
+    Volume: 100
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -15 0
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_NOD_Specter_ArtilleryBombardFire2:
+    Sounds: /kwsfx/GUGuard_wea2firea.wav /kwsfx/GUGuard_wea2fireb.wav /kwsfx/GUGuard_wea2firec.wav /kwsfx/GUGuard_wea2fired.wav /kwsfx/GUGuard_wea2firee.wav /kwsfx/GUGuard_wea2firef.wav /kwsfx/GUGuard_wea2fireg.wav /kwsfx/GUGuard_wea2fireh.wav /kwsfx/GUGuard_wea2firei.wav /kwsfx/GUGuard_wea2firej.wav /kwsfx/GUGuard_wea2firek.wav
+    Volume: 75
+    VolumeShift: -10
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -45 -35
+    Delay: 70 160
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_ALI_Stalker_TiberiumAgitationFire1:
+    Sounds: /kwsfx/AUStalk_weapFire2a.wav /kwsfx/AUStalk_weapFire2b.wav /kwsfx/AUStalk_weapFire2c.wav /kwsfx/AUStalk_weapFire2d.wav /kwsfx/AUStalk_weapFire2e.wav /kwsfx/AUStalk_weapFire2f.wav /kwsfx/AUStalk_weapFire2g.wav /kwsfx/AUStalk_weapFire2h.wav /kwsfx/AUStalk_weapFire2i.wav
+    Volume: 60
+    VolumeShift: -15
+    Priority: normal
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: -15 -5
+    MinRange: 200
+    MaxRange: 800
+  KwSnd_ALI_Stalker_TiberiumAgitationFire2:
+    Sounds: /kwsfx/NBObeli_wea2Firea.wav /kwsfx/NBObeli_wea2Fireb.wav /kwsfx/NBObeli_wea2Firec.wav /kwsfx/NBObeli_wea2Fired.wav /kwsfx/NBObeli_wea2Firee.wav /kwsfx/NBObeli_wea2Firef.wav /kwsfx/NBObeli_wea2Fireg.wav /kwsfx/NBObeli_wea2Fireh.wav /kwsfx/NBObeli_wea2Firei.wav /kwsfx/NBObeli_wea2Firej.wav
+    Volume: 50
+    VolumeShift: -15
+    Priority: low
+    Limit: 3
+    Type: world shrouded everyone
+    Control: random interrupt
+    PitchShift: 30 40
     MinRange: 200
     MaxRange: 800
   KwSnd_ALI_Eradicator_TeleportEradicator1:
